@@ -1,0 +1,49 @@
+#!/usr/local/bin/node
+'use strict';
+
+var citgm = require('../lib/citgm');
+var app = require('commander');
+var util = require('util');
+
+var mod;
+app
+  .version('0.0.1')
+  .arguments('<module>')
+  .action(function(m) {
+    mod = m;
+  })
+  .option(
+    '-i, --init [path]',
+    'An initialization script')
+  .option(
+    '-s, --script [path]',
+    'The test script (if npm test is not implemented)')
+  .option(
+    '-t, --teardown [path]',
+    'A tear-down script')
+  .option(
+    '-r, --reporter [path]',
+    'A reporter script')
+  .parse(process.argv);
+
+if (!mod) {
+  app.outputHelp();
+  return;
+}
+
+citgm.Tester(
+  mod, {
+    init: app.init,
+    script: app.script,
+    teardown: app.teardown,
+    reporter: app.reporter
+  }
+).on('start', function(name, options) {
+  console.log(util.format('Starting [%s]', name));
+}).on('fail', function(err) {
+  console.log('Failure...', err);
+}).on('info', function(key,message) {
+  console.log('Info:', key, message);
+}).on('end', function(name) {
+  console.log(util.format('Done [%s]', name));
+}).run();
