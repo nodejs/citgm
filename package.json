@@ -1,8 +1,11 @@
 {
   "name": "citgm",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The Canary in the Goldmine",
   "main": "lib/citgm.js",
+  "bin": {
+    "citgm": "./bin/citgm"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

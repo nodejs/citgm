@@ -11,12 +11,12 @@ Show help
 bin/citgm --help
 ```
 
-Run the modules tests
+Run the default npm tests
 ```
 bin/citgm async
 ```
 
-With intialization and teardown scripts
+Run an alternate test script
 ```
-bin/citgm -i init.js -t teardown.js async
+bin/citgm lodash known/lodash/test.js
 ```

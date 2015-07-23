@@ -6,41 +6,47 @@ var app = require('commander');
 var util = require('util');
 
 var mod;
+var test;
 app
   .version('0.0.1')
-  .arguments('<module>')
-  .action(function(m) {
+  .arguments('<module> [test]')
+  .action(function(m, t) {
     mod = m;
+    test = t;
   })
   .option(
     '-v, --verbose', 'Verbose output')
   .option(
-    '-i, --init [path]',
-    'An initialization script')
+    '-r, --reporter <path>',
+    'A reporter script');
+
+if (process.platform !== 'win32') {
+  app.option(
+    '-u, --uid <uid>', 'Set the numeric uid (posix only)', parseInt
+  )
   .option(
-    '-s, --script [path]',
-    'The test script (if npm test is not implemented)')
-  .option(
-    '-t, --teardown [path]',
-    'A tear-down script')
-  .option(
-    '-r, --reporter [path]',
-    'A reporter script')
-  .parse(process.argv);
+    '-g, --gid <uid>', 'Set the numeric gid (posix only)', parseInt
+  );
+}
+
+app.parse(process.argv);
 
 if (!mod) {
   app.outputHelp();
   return;
 }
 
-citgm.Tester(
-  mod, {
-    init: app.init,
-    script: app.script,
-    teardown: app.teardown,
-    reporter: app.reporter
-  }
-).on('start', function(name, options) {
+var options = {
+  script: test,
+  reporter: app.reporter
+};
+if (process.platform !== 'win32') {
+  if (app.uid) options.uid = app.uid;
+  if (app.gid) options.gid = app.gid;
+}
+
+citgm.Tester(mod, options)
+.on('start', function(name, options) {
   console.log(util.format('Starting [%s]', name));
 }).on('fail', function(err) {
   console.log('Failure...', err);
