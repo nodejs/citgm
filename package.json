@@ -1,15 +1,19 @@
 {
   "name": "citgm",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "The Canary in the Goldmine",
   "main": "lib/citgm.js",
   "bin": {
     "citgm": "./bin/citgm"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test/test.js"
   },
   "author": "James M Snell <jasnell@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/jasnell/citgm"
+  },
   "license": "Apache v2.0",
   "dependencies": {
     "async": "^1.4.0",
@@ -18,5 +22,8 @@
     "node-uuid": "^1.4.3",
     "rimraf": "^2.4.2",
     "tar": "^2.1.1"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.5"
   }
 }
