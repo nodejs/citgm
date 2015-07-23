@@ -24,9 +24,24 @@ bin/citgm -v async@latest
 bin/citgm -v http://github.com/jasnell/activitystrea.ms.git
 ```
 
-Run an alternate test script
+Run an alternate test script (lodash does not currently support npm test
+and does not publish it's tests to npm, so we need to grab it directly
+from github and use a custom test script)
+
+using the git url:
 ```
-bin/citgm lodash known/lodash/test.js
+bin/citgm -v git+https://github.com/lodash/lodash known/lodash/test.js
+```
+or, using a tar ball:
+```
+bin/citgm -v https://github.com/lodash/lodash/archive/master.tar.gz known/lodash/test.js
+```
+
+The script can be pulled from a remote location... although, it's wise to
+be very very careful when doing so as the script will run with whatever
+permissions the citgm tool has:
+```
+bin/citgm -v git+https://github.com/lodash/lodash https://gist.githubusercontent.com/jasnell/b274b80db9acb8fa5839/raw/c2df819d589d5a7a91d2d48b0e787b4dcebf6e66/test.js
 ```
 
 The tool is published to npm and can be installed globally:
