@@ -15,17 +15,17 @@ app
     test = t;
   })
   .option(
-    '-v, --verbose', 'Verbose output')
-  .option(
-    '-r, --reporter <path>',
-    'A reporter script');
+    '-v, --verbose', 'Verbose output');
+  // .option(
+  //   '-r, --reporter <path>',
+  //   'A reporter script');
 
 if (process.platform !== 'win32') {
   app.option(
-    '-u, --uid <uid>', 'Set the numeric uid (posix only)', parseInt
+    '-u, --uid <uid>', 'Set the uid (posix only)'
   )
   .option(
-    '-g, --gid <uid>', 'Set the numeric gid (posix only)', parseInt
+    '-g, --gid <uid>', 'Set the gid (posix only)'
   );
 }
 
@@ -41,19 +41,29 @@ var options = {
   reporter: app.reporter
 };
 if (process.platform !== 'win32') {
-  if (app.uid) options.uid = app.uid;
-  if (app.gid) options.gid = app.gid;
+  var uidnumber = require('uid-number');
+  var uid = app.uid || process.getuid();
+  var gid = app.gid || process.getgid();
+  uidnumber(uid,gid, function(err, uid, gid) {
+    options.uid = uid;
+    options.gid = gid;
+    launch(mod, options);
+  });
+} else {
+  launch(mod,options);
 }
 
-citgm.Tester(mod, options)
-.on('start', function(name, options) {
-  console.log(util.format('Starting [%s]', name));
-}).on('fail', function(err) {
-  console.log('Failure...', err);
-  process.exitCode = 1;
-}).on('info', function(key,message) {
-  if (app.verbose)
-    console.log('Info:', key, message);
-}).on('end', function(name) {
-  console.log(util.format('Done [%s]', name));
-}).run();
+function launch(mod, options) {
+  citgm.Tester(mod, options)
+  .on('start', function(name, options) {
+    console.log(util.format('Starting [%s]', name));
+  }).on('fail', function(err) {
+    console.log('Failure...', err);
+    process.exitCode = 1;
+  }).on('info', function(key,message) {
+    if (app.verbose)
+      console.log('Info:', key, message);
+  }).on('end', function(name) {
+    console.log(util.format('Done [%s]', name));
+  }).run();
+}
