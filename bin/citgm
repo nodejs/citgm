@@ -15,7 +15,9 @@ app
     test = t;
   })
   .option(
-    '-v, --verbose', 'Verbose output');
+    '-v, --verbose', 'Verbose output')
+  .option(
+    '-h, --hmac <key>', 'HMAC Key for Script Verification');
   // .option(
   //   '-r, --reporter <path>',
   //   'A reporter script');
@@ -38,7 +40,8 @@ if (!mod) {
 
 var options = {
   script: test,
-  reporter: app.reporter
+  reporter: app.reporter,
+  hmac: app.hmac
 };
 if (process.platform !== 'win32') {
   var uidnumber = require('uid-number');
