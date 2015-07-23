@@ -13,6 +13,8 @@ app
     mod = m;
   })
   .option(
+    '-v, --verbose', 'Verbose output')
+  .option(
     '-i, --init [path]',
     'An initialization script')
   .option(
@@ -42,8 +44,10 @@ citgm.Tester(
   console.log(util.format('Starting [%s]', name));
 }).on('fail', function(err) {
   console.log('Failure...', err);
+  process.exitCode = 1;
 }).on('info', function(key,message) {
-  console.log('Info:', key, message);
+  if (app.verbose)
+    console.log('Info:', key, message);
 }).on('end', function(name) {
   console.log(util.format('Done [%s]', name));
 }).run();
