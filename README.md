@@ -13,15 +13,22 @@ bin/citgm --help
 
 Run the default npm tests
 ```
-bin/citgm async
+bin/citgm [module-name]
 ```
 
 You can identify the module to be tested using the same syntax supported by
 the `npm install` CLI command
 
 ```
-bin/citgm -v async@latest
+bin/citgm -v activitystrea.ms
 bin/citgm -v http://github.com/jasnell/activitystrea.ms.git
+```
+
+Quite a few modules published to npm do not have their tests included, so
+we end up having to go directly to github ...
+
+```
+bin/citgm -v https://github.com/caolan/async/archive/master.tar.gz
 ```
 
 Run an alternate test script (lodash does not currently support npm test
