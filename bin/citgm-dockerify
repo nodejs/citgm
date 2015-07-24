@@ -1,0 +1,180 @@
+#!/usr/bin/env node
+'use strict';
+
+var which = require('which');
+var out = require('../lib/out');
+var app = require('commander');
+var util = require('util');
+var child = require('child_process');
+var uuid = require('node-uuid');
+var async = require('async');
+var path = require('path');
+var url = require('url');
+
+// Collect the command line arguments
+var image, mod, test;
+app
+  .version('0.0.12')
+  .description(
+    'Generates a Docker image that can be used to run citgm for a ' +
+    'specific module')
+  .arguments('<image> <module> [test]')
+  .action(function(i, m, t) {
+    image = i;
+    mod = m;
+    test = t;
+  })
+  .option(
+    '-t, --tag <tag>', 'Docker image tag'
+  )
+  .option(
+    '-r, --run', 'Run the docker image immediately after build')
+  .option(
+    '-v, --verbose', 'Verbose output')
+  .option(
+    '-k, --hmac <key>', 'HMAC Key for Script Verification')
+  .option(
+    '-l, --lookup [path]',
+      'Use the lookup table. Optional [path] for alternate json file'
+  )
+  .option(
+    '-n, --no-color', 'Turns off colorized output'
+  )
+  .option(
+    '-u, --uid <uid>', 'Set the uid (posix only)'
+  )
+  .option(
+    '-g, --gid <uid>', 'Set the gid (posix only)'
+  )
+  .option(
+    '-d, --docker <name>', 'Alternate docker binary name'
+  );
+
+app.parse(process.argv);
+
+var bin = app.docker || 'docker';
+
+if (!image || !mod) {
+  app.outputHelp();
+  process.exit(0);
+}
+var tag = 'citgm-' + (app.tag || uuid.v4());
+
+// build the citgm CMD for the Dockerfile
+function buildCmd(next) {
+  var parts = ['citgm'];
+  if (app.lookup) {
+    parts.push('-l');
+    if (typeof app.lookup === 'string')
+      parts.push('custom-lookup.json');
+  }
+  if (app.verbose) {
+    parts.push('-v');
+  }
+  if (app.hmac) {
+    parts.push('-h');
+    parts.push('"' + app.hmac + '"');
+  }
+  if (app['no-color']) {
+    parts.push('-n');
+  }
+  if (app.uid) {
+    parts.push('-u');
+    parts.push(app.uid);
+  }
+  if (app.gid) {
+    parts.push('-g');
+    parts.push(app.gid);
+  }
+  parts.push(mod);
+  if (test) parts.push('custom-test');
+
+  next(null,parts.join(' '));
+}
+
+function writeCopy(str,src,dest) {
+  var p = path.resolve(process.cwd(),src);
+  src.write(
+    util.format('COPY ["%s","/usr/src/app/%s"]', p, dest));
+}
+
+// Creates the docker image using a basic Dockerfile
+function createImage(cmd, next) {
+  var proc = child.spawn(bin,
+    [
+      'build',
+      '--rm',
+      '-t',
+      tag,
+      '-'
+    ],
+    {stdio:['pipe',process.stdout,process.stderr]})
+    .on('error', function(err) {
+      out.error('failure', err);
+      process.exit(1);
+    })
+    .on('close', function(code) {
+      out.info('created', tag);
+      next(null,tag);
+    });
+  proc.stdin.write('FROM ' + image + '\n');
+  proc.stdin.write('RUN npm install -g citgm@latest\n');
+  if (typeof app.lookup === 'string') {
+    writeCopy(proc.stdin, app.lookup, "custom-lookup.json");
+  }
+  if (test && !test.match(/^http(s)?:/i)) {
+    writeCopy(proc.stdin, test, "custom-test");
+    proc.stdin.write('RUN chmod a+x /usr/src/app/custom-test');
+  }
+  proc.stdin.write('CMD ' + cmd + '\n');
+  proc.stdin.end();
+}
+
+// Optionally run's the docker image... uses no special arguments
+function runImage(tag, next) {
+  if (app.run) {
+    var proc = child.spawn(bin,
+      [
+        'run',
+         tag
+      ], {
+        stdio:[0,1,2]
+      });
+    proc.on('close', function(code) {
+      if (code > 0) {
+        out.error('failed', util.format('Docker run failed [%d]', code));
+      }
+      next(null,tag);
+    });
+  } else {
+    next(null,tag);
+  }
+}
+
+function ensureDocker(next) {
+  which(bin, function(err,docker) {
+    if (err) {
+      out.error('failed', 'The docker client could not be found');
+      next(Error('Aborting'));
+      return;
+    }
+    next(null);
+  });
+}
+
+// launch the waterfall process...
+
+async.waterfall([
+    ensureDocker,
+    buildCmd,
+    createImage,
+    runImage
+  ],
+  function(err, tag) {
+    if (err) {
+      out.error('failed', err.message);
+      process.exit(1);
+    }
+    out.info('done', tag);
+  }
+);

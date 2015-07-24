@@ -89,8 +89,48 @@ bin/citgm -v --lookup ../path/to/lookup.json lodash@latest
 
 For the most part, the built in table should be sufficient for general use.
 
+### Using Docker
 
-## Notes:
+You can optionally create a Docker image for running specific citgm tests
+using the `citgm-dockerify` tool.
+
+```
+Usage: citgm-dockerify [options] <image> <module> [test]
+
+Generates a Docker image that can be used to run citgm for a specific module
+
+Options:
+
+  -h, --help           output usage information
+  -V, --version        output the version number
+  -t, --tag <tag>      Docker image tag
+  -r, --run            Run the docker image immediately after build
+  -v, --verbose        Verbose output
+  -k, --hmac <key>     HMAC Key for Script Verification
+  -l, --lookup [path]  Use the lookup table. Optional [path] for alternate json file
+  -n, --no-color       Turns off colorized output
+  -u, --uid <uid>      Set the uid (posix only)
+  -g, --gid <uid>      Set the gid (posix only)
+  -d, --docker <name>  Alternate docker binary name
+```
+
+For example:
+
+```
+citgm-dockerify -t lodash -lv iojs@tatest lodash
+```
+
+If successful, this will create the `citgm-lodash` docker image, which
+can then be run using:
+
+```
+docker run citgm-lodash
+```
+
+You can automatically run the docker image after creating using the `-r`
+command line switch.
+
+### Additional Notes:
 
 * You may experience some wonkiness on Windows as I have not fully
   tested the tool on that platform.
