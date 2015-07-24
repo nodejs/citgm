@@ -3,13 +3,13 @@
 -----BEGIN PGP SIGNATURE-----
 Comment: GPGTools - https://gpgtools.org
 
-iQEcBAABCgAGBQJVsUdqAAoJEHNBsVwHCHesh+cH/1ZazkQakaERH2BCmvagwBMt
-n8MqAR7PiGh8n6SOlkzIIysqUpj5WG53KODHKrOrWvI4WiUopFDF4ooJK2XBiCFa
-F14v2MFnasi2JLLpZn51VomjQXHtdWRfTdfcbrBGKsIz/YPvUoQWGOpmaRP6xU4Q
-T/6Zz9/1Lz0rSDs/9U0t2jT5Yn3ubPplSWgXjIGy0WuVsFfczFSUZ0G80DdTyEpQ
-E9XUYu4tExD9p2H4r1b/Uo4TVprJkOkR9eIwnOi4W4clX1t9OKrNkqVd74MoQqnL
-Rfkn1FQyhtUJqTo22IJ+XYfBwhHUGE4BQIzdcO7wUMCOxN+w6V7XkpiRRn0/SU4=
-=JcIu
+iQEcBAABCgAGBQJVsdO8AAoJEHNBsVwHCHesICUH/01X+Q7zJMbU1TRXJwBpBpf6
+oynhTZL5ojbaFobDO9ab1JuQA5f6Gso7Wq11rPUBxEsJskl9dzsrLGdrmr2F5f9b
+YFPPDUotkgwhTOAZryHgkLsd/KT4WvUm874v5S+nd3YkV09HZZhyzduQr/snHfS8
+qRhnl9b5S1GdceIsb2qgP7lNHKGAXJRtaYhVI5HowSEXvu/XfmVJ4oMoz7qDZJho
+K3HcHv56Nmbl1Z/I5yVVDevCljRjo4L+xFdF2zEqoH19tY8HPv6jBihqSt3IZ7uM
+gywsaWIwMLZUIITeP+8Y02TH/NcepZYYHRw6TN2T5PnUZvEhx+kLicEfWasUww4=
+=Ogv+
 -----END PGP SIGNATURE-----
 
 ```
@@ -26,16 +26,16 @@ size   exec  file            contents
 13             .gitignore    16d30e4462189fb14dd611bdb708c510630c576a1f35b9383e89a4352da36c97
 19             .jshintrc     d862dcf6091929f90429363ddf72864c1076a22e9f2673f35552a05ba056ce49
                bin/                                                                          
-1555   x         citgm       879f1ab8fb08c94726736fc69cbe54ef3e5b405e3bfd3f703808b59911986f63
+1466   x         citgm       06497c247dea2de96ad1a6cc2e4f0477ac4dce4e957997ec6c334d7ada77d070
                known/                                                                        
                  lodash/                                                                     
 123    x           test.js   dca87bee9bc057b642eda9f0ae059cc245a7b7a81e63809221e7a59f4aca644f
                lib/                                                                          
-10480            citgm.js    ca47c45d54168b27b4287fd880f91fdc2b82aa2a2c47a4202443defa55a0b110
-705            package.json  f3b4e0bc468e35cf756ca65558ee84a66f4bc5eef0b484ea45f2d1235dcadea6
-1763           README.md     e4dd650abdc43fd5871f21a727b7639d28106b94165495c5f4bb20aba4cc8a8a
+10661            citgm.js    15fb6fde027397fb8e825ed729d56e64406d2353475605a2cd5a47c5264aa16e
+741            package.json  8abc25bba543a6e57b3b39dc849b55c59460b19abd507f32a8520a380c16a253
+4818           README.md     54d632b710a625b7236966a0db4a645cde7f7e0014d1406659ad8716b6a8304a
                test/                                                                         
-441              test.js     d31b6d84d9cf1252883c0dd1d2a4d2055c2a25e300430a80320eeba088f9791b
+488              test.js     03eafa6de5e62fb7ac981672fbf352843b8c69fd74f5a618be00883be7ed2873
 ```
 
 #### Ignore

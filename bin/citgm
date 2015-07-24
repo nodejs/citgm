@@ -18,9 +18,6 @@ app
     '-v, --verbose', 'Verbose output')
   .option(
     '-h, --hmac <key>', 'HMAC Key for Script Verification');
-  // .option(
-  //   '-r, --reporter <path>',
-  //   'A reporter script');
 
 if (process.platform !== 'win32') {
   app.option(
@@ -43,7 +40,7 @@ var options = {
   reporter: app.reporter,
   hmac: app.hmac
 };
-if (process.platform !== 'win32') {
+if (!citgm.windows) {
   var uidnumber = require('uid-number');
   var uid = app.uid || process.getuid();
   var gid = app.gid || process.getgid();

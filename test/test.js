@@ -7,7 +7,7 @@ describe('It should not die', function() {
     this.timeout(60 * 1000); // increase the timeout
     var proc = child.spawn(
       'bin/citgm',
-      ['lodash', 'known/lodash/test.js'],
+      ['http://github.com/lodash/lodash/archive/master.tar.gz', 'known/lodash/test.js'],
       {stdio:[0,1,2]});
     proc.on('close', function(code) {
       assert(!code);
