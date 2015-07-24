@@ -1,14 +1,15 @@
-#!/usr/local/bin/node
+#!/usr/bin/env node
 'use strict';
 
 var citgm = require('../lib/citgm');
+var out = require('../lib/out');
 var app = require('commander');
 var util = require('util');
 
 var mod;
 var test;
 app
-  .version('0.0.1')
+  .version('0.0.11')
   .arguments('<module> [test]')
   .action(function(m, t) {
     mod = m;
@@ -17,7 +18,14 @@ app
   .option(
     '-v, --verbose', 'Verbose output')
   .option(
-    '-h, --hmac <key>', 'HMAC Key for Script Verification');
+    '-k, --hmac <key>', 'HMAC Key for Script Verification')
+  .option(
+    '-l, --lookup [path]',
+      'Use the lookup table. Optional [path] for alternate json file'
+  )
+  .option(
+    '-n, --no-color', 'Turns off colorized output'
+  );
 
 if (process.platform !== 'win32') {
   app.option(
@@ -38,7 +46,8 @@ if (!mod) {
 var options = {
   script: test,
   reporter: app.reporter,
-  hmac: app.hmac
+  hmac: app.hmac,
+  lookup: app.lookup
 };
 if (!citgm.windows) {
   var uidnumber = require('uid-number');
@@ -56,14 +65,14 @@ if (!citgm.windows) {
 function launch(mod, options) {
   citgm.Tester(mod, options)
   .on('start', function(name, options) {
-    console.log(util.format('Starting [%s]', name));
+    out.info('starting', name);
   }).on('fail', function(err) {
-    console.log('Failure...', err);
+    out.error('failure', err.message);
     process.exitCode = 1;
   }).on('info', function(key,message) {
     if (app.verbose)
-      console.log('Info:', key, message);
+      out.info(key, message);
   }).on('end', function(name) {
-    console.log(util.format('Done [%s]', name));
+    out.info('done', name);
   }).run();
 }

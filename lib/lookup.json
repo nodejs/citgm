@@ -1,0 +1,102 @@
+{
+  "lodash": {
+    "replace": true,
+    "script": "known/lodash/test.js"
+  },
+  "underscore": {
+    "replace": true
+  },
+  "request": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "commander": {
+    "replace": true,
+    "prefix": "v",
+    "repo": "https://github.com/tj/commander.js"
+  },
+  "express": {
+    "replace": true
+  },
+  "chalk": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "q": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "colors": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "coffee-script": {
+    "replace": true
+  },
+  "through2": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "bluebird": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "moment": {
+    "replace": true
+  },
+  "yeoman-generator": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "glob": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "gulp-util": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "jade": {
+    "replace": true
+  },
+  "redis": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "socket.io": {
+    "replace": true
+  },
+  "fs-extra": {
+    "replace": true
+  },
+  "body-parser": {
+    "replace": true
+  },
+  "uglify-js": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "jquery": {
+    "replace": true
+  },
+  "handlebars": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "rimraf": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "yosay": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "mime": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "mongodb": {
+    "replace": true,
+    "prefix": "V"
+  }
+}
