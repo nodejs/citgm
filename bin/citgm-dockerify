@@ -10,11 +10,18 @@ var uuid = require('node-uuid');
 var async = require('async');
 var path = require('path');
 var url = require('url');
+var npa = require('npm-package-arg');
+var fs = require('fs');
+var fsx = require('fs-extra');
+var tar = require('tar');
+var fstream = require('fstream');
+var zlib = require('zlib');
+var osenv = require('osenv');
 
 // Collect the command line arguments
 var image, mod, test;
 app
-  .version('0.0.12')
+  .version('0.0.13')
   .description(
     'Generates a Docker image that can be used to run citgm for a ' +
     'specific module')
@@ -60,12 +67,14 @@ if (!image || !mod) {
 }
 var tag = 'citgm-' + (app.tag || uuid.v4());
 
+var detail = npa(mod);
+
 // build the citgm CMD for the Dockerfile
-function buildCmd(next) {
+function buildCmd(context, next) {
   var parts = ['citgm'];
   if (app.lookup) {
     parts.push('-l');
-    if (typeof app.lookup === 'string')
+    if (context.lookup)
       parts.push('custom-lookup.json');
   }
   if (app.verbose) {
@@ -86,95 +95,246 @@ function buildCmd(next) {
     parts.push('-g');
     parts.push(app.gid);
   }
-  parts.push(mod);
-  if (test) parts.push('custom-test');
 
-  next(null,parts.join(' '));
-}
-
-function writeCopy(str,src,dest) {
-  var p = path.resolve(process.cwd(),src);
-  src.write(
-    util.format('COPY ["%s","/usr/src/app/%s"]', p, dest));
-}
-
-// Creates the docker image using a basic Dockerfile
-function createImage(cmd, next) {
-  var proc = child.spawn(bin,
-    [
-      'build',
-      '--rm',
-      '-t',
-      tag,
-      '-'
-    ],
-    {stdio:['pipe',process.stdout,process.stderr]})
-    .on('error', function(err) {
-      out.error('failure', err);
-      process.exit(1);
-    })
-    .on('close', function(code) {
-      out.info('created', tag);
-      next(null,tag);
-    });
-  proc.stdin.write('FROM ' + image + '\n');
-  proc.stdin.write('RUN npm install -g citgm@latest\n');
-  if (typeof app.lookup === 'string') {
-    writeCopy(proc.stdin, app.lookup, "custom-lookup.json");
+  if (context.local) {
+    parts.push('./module.tar.gz');
+  } else {
+    parts.push(mod);
   }
-  if (test && !test.match(/^http(s)?:/i)) {
-    writeCopy(proc.stdin, test, "custom-test");
-    proc.stdin.write('RUN chmod a+x /usr/src/app/custom-test');
-  }
-  proc.stdin.write('CMD ' + cmd + '\n');
-  proc.stdin.end();
+
+  if (context.test)
+    parts.push('/usr/src/app/custom-test');
+  context.cmd = parts.join(' ');
+  next(null,context);
 }
+
 
 // Optionally run's the docker image... uses no special arguments
-function runImage(tag, next) {
+function runImage(context, next) {
   if (app.run) {
     var proc = child.spawn(bin,
       [
         'run',
-         tag
+         context.tag
       ], {
+        cwd: process.cwd(),
         stdio:[0,1,2]
       });
     proc.on('close', function(code) {
       if (code > 0) {
         out.error('failed', util.format('Docker run failed [%d]', code));
       }
-      next(null,tag);
+      next(null,context);
     });
   } else {
-    next(null,tag);
+    next(null,context);
   }
 }
 
-function ensureDocker(next) {
+function cleanLocal(context, next) {
+  fs.unlinkSync('Dockerfile');
+  if (context.local)
+    fs.unlinkSync('module.tar.gz');
+  if (context.test)
+    fs.unlinkSync('custom-test');
+  if (context.lookup)
+    fs.unlinkSync('custom-lookup.json');
+   next(null, context);
+}
+
+function buildImage(context, next) {
+  var cwd = process.cwd();
+  process.chdir(context.wd);
+  var proc = child.spawn('docker',
+    [
+      'build',
+      '--rm',
+      '-t', context.tag,
+      '.'
+    ],
+    {
+      cwd: context.wd,
+      stdio:[0,1,2]
+    }
+  )
+  .on('error', function(err) {
+    out.error('failure', err);
+    next(err);
+  })
+  .on('close', function(code) {
+    if (code > 0) {
+      next(Error('Image not created'));
+      return;
+    }
+    process.chdir(cwd);
+    out.info('created', tag);
+      next(null,context);
+    }
+  );
+}
+
+function writeDockerfile(context, next) {
+  var dest = fs.createWriteStream(path.join(context.wd, 'Dockerfile'), {encoding:'utf8'});
+  dest.on('close', function() {
+    next(null,context);
+  });
+  dest.on('error', function(err) {
+    next(err);
+  });
+  var m = util.format('FROM %s\n',context.image);
+  m += 'RUN npm install -g citgm@latest\n';
+  if (context.local)
+    m += 'COPY ["module.tar.gz","/usr/src/app/"]\n';
+  if (context.test) {
+    m += 'COPY ["custom-test","/usr/src/app/"]\n';
+    m += 'RUN chmod a+x /usr/src/app/custom-test\n';
+  }
+  if (context.lookup) {
+    m += 'COPY ["custom-lookup.json", "/usr/src/app/"]\n';
+  }
+  m += 'CMD ' + context.cmd;
+  dest.write(m);
+  out.info('docker-file', m);
+  dest.close();
+}
+
+function prepareCustomTest(context, next) {
+  var test = context.test;
+  if (test && !test.match(/^http(s)?:/i)) {
+    fsx.copy(
+      path.resolve(process.cwd(),test),
+      path.join(context.wd,'custom-test'),
+      function(err) {
+      if (err) {
+        next(err);
+        return;
+      }
+      context.test = true;
+      next(null,context);
+    });
+
+  } else {
+    next(null, context);
+  }
+}
+
+function prepareLookup(context, next) {
+    if (typeof app.lookup === 'string') {
+      fsx.copy(
+        path.resolve(process.cwd(),app.lookup),
+        path.join(context.wd,'custom-lookup.json'),
+        function(err) {
+          console.log('test');
+        if (err) {
+          next(err);
+          return;
+        }
+        context.lookup = true;
+        next(null,context);
+      });
+    } else {
+      next(null, context);
+    }
+}
+
+function packDirectory(raw, context, next) {
+  function error(err) {
+    next(Error(util.format('Could not pack module: ',path)));
+  }
+  var file = fs.createWriteStream(context.local)
+    .on('error', error);
+  var compressor = zlib.createGzip()
+    .on('end', function() {
+      file.close();
+      next(null,context);
+    })
+    .on('error', error);
+  var packer = tar.Pack({noProprietary: true}).
+    on('error', error);
+  fstream.Reader({path: raw, type: "Directory"}).
+     on('error', error).
+     pipe(packer).
+     pipe(compressor).
+     pipe(file);
+}
+
+function prepareLocalModule(context, next) {
+  if (detail.type === 'local') {
+    context.local = path.join(context.wd,'module.tar.gz');
+    var raw = path.resolve(process.cwd(), detail.raw);
+    out.info('prepare-local-src', raw);
+    out.info('prepare-local-dest', context.local);
+    fs.lstat(raw, function(err,stat) {
+      if (err) {
+        next(Error(util.format('Cannot access local module: %s', raw)));
+        return;
+      }
+      if (stat.isFile()) {
+        out.info('prepare-local-copy','');
+        fsx.copy(raw,context.local, function(err) {
+          if (err) {
+            next(err);
+            return;
+          }
+          next(null,context);
+        });
+      } else if (stat.isDirectory()) {
+        out.info('prepare-local-pack','');
+        packDirectory(raw, context, next);
+      } else {
+        next(Error(util.format('Cannot access localmodule: %s', raw)));
+        return;
+      }
+    });
+  } else {
+    next(null, context);
+  }
+}
+
+function initContext(next) {
+  next(null,{
+    tag:tag,
+    test:test,
+    image:image
+  });
+}
+
+function ensureDocker(context, next) {
   which(bin, function(err,docker) {
     if (err) {
       out.error('failed', 'The docker client could not be found');
       next(Error('Aborting'));
       return;
     }
-    next(null);
+    next(null, context);
   });
+}
+
+function workingDirectory(context,next) {
+  context.wd = process.cwd();
+  next(null,context);
 }
 
 // launch the waterfall process...
 
 async.waterfall([
+    initContext,
     ensureDocker,
+    workingDirectory,
+    prepareLocalModule,
+    prepareLookup,
+    prepareCustomTest,
     buildCmd,
-    createImage,
+    writeDockerfile,
+    buildImage,
+    cleanLocal,
     runImage
   ],
-  function(err, tag) {
+  function(err, context) {
     if (err) {
       out.error('failed', err.message);
       process.exit(1);
     }
-    out.info('done', tag);
+    out.info('done', context.tag);
   }
 );

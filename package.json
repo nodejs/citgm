@@ -1,6 +1,6 @@
 {
   "name": "citgm",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "The Canary in the Goldmine",
   "main": "lib/citgm.js",
   "bin": {
@@ -22,6 +22,8 @@
     "columnify": "^1.5.1",
     "commander": "^2.8.1",
     "flat": "^1.6.0",
+    "fs-extra": "^0.22.1",
+    "fstream": "^1.0.7",
     "node-uuid": "^1.4.3",
     "normalize-git-url": "^3.0.1",
     "npm-package-arg": "^4.0.2",
