@@ -21,7 +21,7 @@ var osenv = require('osenv');
 // Collect the command line arguments
 var image, mod, test;
 app
-  .version('0.0.13')
+  .version('0.0.14')
   .description(
     'Generates a Docker image that can be used to run citgm for a ' +
     'specific module')
@@ -75,7 +75,7 @@ function buildCmd(context, next) {
   if (app.lookup) {
     parts.push('-l');
     if (context.lookup)
-      parts.push('custom-lookup.json');
+      parts.push('/usr/src/app/custom-lookup.json');
   }
   if (app.verbose) {
     parts.push('-v');
@@ -97,7 +97,7 @@ function buildCmd(context, next) {
   }
 
   if (context.local) {
-    parts.push('./module.tar.gz');
+    parts.push('/usr/src/app/module.tar.gz');
   } else {
     parts.push(mod);
   }
@@ -187,7 +187,7 @@ function writeDockerfile(context, next) {
     m += 'COPY ["module.tar.gz","/usr/src/app/"]\n';
   if (context.test) {
     m += 'COPY ["custom-test","/usr/src/app/"]\n';
-    m += 'RUN chmod a+x /usr/src/app/custom-test\n';
+    //m += 'RUN chmod +x /usr/src/app/custom-test; sleep 2;\n';
   }
   if (context.lookup) {
     m += 'COPY ["custom-lookup.json", "/usr/src/app/"]\n';
