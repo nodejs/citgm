@@ -1,0 +1,72 @@
+.\" Manpage for citgm-dockerify
+.\" Contact jasnell@gmail.com to correct errors or typos
+.TH "0.0.15" "MIT"
+.SH NAME
+citgm-dockerify \- Canary in the Goldmine (Dockerify)
+.SH SYNOPSIS
+citgm-dockerify [options] <image> <module> [custom-test-script]
+.SH DESCRIPTION
+citgm-dockerify creates Docker images that can be used to run specific
+individual citgm tests.
+.SH OPTIONS
+.TP
+.BR \-h ", " \-\-help
+output usage information
+.TP
+.BR \-t ", " \-\-tag " " \fItag\fR
+the docker image tag
+.TP
+.BR \-r ", " \-\-run
+run the docker image immediately after building it
+.TP
+.BR \-V ", " \-\-version
+output the version number
+.TP
+.BR \-v ", " \-\-verbose
+Verbose output
+.TP
+.BR \-k ", " \-\-hmac " " \fIkey\fR
+HMAC Key for Script Verification
+.TP
+.BR \-l ", " \-\-lookup " " \fI[path]\fR
+Use the lookup table. Optional [path] for alternate json file
+.TP
+.BR \-n ", " \-\-no-color
+Turns off colorized output
+.TP
+.BR \-u ", " \-\-uid " " \fIuid\fR
+Set the uid (posix only)
+.TP
+.BR \-g ", " \-\-gid " " \fIuid\fR
+Set the gid (posix only)
+.SH EXAMPLES
+Create a docker image for testing underscore using the iojs docker image:
+.PP
+.nf
+.RS
+citgm-dockerify -lv iojs@latest underscore@latest
+.RE
+.fi
+.PP
+Create a docker image for testing a local module, the run it automatically:
+.PP
+.nf
+.RS
+citgm-dockerify -r -t my-module -v iojs@latest ./my-module
+.RE
+.fi
+.PP
+
+.SH SEE ALSO
+citgm
+.SH AUTHOR
+James M Snell <jasnell@gmail.com>
+.SH COPYRIGHT
+Copyright (c) 2015 citgm contributors
+.SH LICENSE
+The MIT License
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

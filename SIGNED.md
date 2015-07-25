@@ -3,13 +3,13 @@
 -----BEGIN PGP SIGNATURE-----
 Comment: GPGTools - https://gpgtools.org
 
-iQEcBAABCgAGBQJVs8fQAAoJEHNBsVwHCHescGMIAJGVfyTxLKIXqYWREVs3cYAX
-4r4yriRhBjl265nkXxENd+jPnDhQp0hiaDYplKlD4ZvwJEqgp+Guti4HPqwH0h5n
-08aZEC12dW5Znw0BbcozHBx+zxhtjYIkrvYUMVyB2TMwnsKELBgqTWBWxEskGxjK
-Gu27J0OPBXm/QysVm5LPEdgb0y0MmPS2Ud0JnAmpFgHkvbeT6y5nBiBsUIR+xTFx
-lyadbaLtRCIPDhmpSQ931WPF69o/DDAyozJ9SQEVYoG0jPE0uQjAZ0PKp/UIWcxm
-aczwCbu2wmMEzApVjJk7OEVkNDDpGeAZqn6hjVkAReN3Kpvf8UDNSubMA992bO4=
-=N09F
+iQEcBAABCgAGBQJVs9R9AAoJEHNBsVwHCHesQisH/RiJ7PT/bU6OpLGE0GqHAiEb
+ajfjIv7In0lIf0hdccsfCwk2kcvF6mJRiOdUPsvMIEBwWljE1CLN856/iCbXnkxC
+mVP1oiqAVj1hG95vXJ+bWc0YheCjfLl7gWYMF2nz+xePpqhn8S0Ajptu9II9GzUk
+6k14SZVi0M+9W8KQprQaN1RUu0YlGBBK9v4Sgsx5gOFYAUXZeG4mZi9DX6HhKHQM
+eeK4iKpdK3DPpd1duNC3JjuJde3AXh+lj0dvdg4guPpt44ZJcT7NDE91wKJR2Yqc
+fne6UuQcs/5ykHN8OTPGZwr8t2Jgpp8kGHq0K7EXseCST2otLQ1bpBELOUzfAeE=
+=SH6y
 -----END PGP SIGNATURE-----
 
 ```
@@ -25,9 +25,10 @@ size   exec  file                 contents
              ./                                                                                   
 13             .gitignore         16d30e4462189fb14dd611bdb708c510630c576a1f35b9383e89a4352da36c97
 19             .jshintrc          d862dcf6091929f90429363ddf72864c1076a22e9f2673f35552a05ba056ce49
+54             AUTHORS            47bb87633797121247b7c831c6090ddc32f3e7b91072914a7035398a3dd738b1
                bin/                                                                               
-1647   x         citgm            892f0b91df0e56e8cef52545718c50e5a2985a4779a6a9c889f46305ad3f1eec
-7696   x         citgm-dockerify  70b4e5ae17c722cc3627b600926ff3e5a22e58f1cce67629bceffde0d2d1dc40
+1647   x         citgm            bb9ebb4281d1e3c6bb9d2835199a35e7b419eb6a246421bda6da2db6ed8ab05b
+7696   x         citgm-dockerify  dd3b36a77f4e84d513ba78d4a0adcca52cdf2f592780229c7b41007958b64e56
                known/                                                                             
                  lodash/                                                                          
 43                 lookup.json    af3ecb554661a1664a9cc10db8b26dd8ab713aa2490c81f6f055fe36f66095dc
@@ -38,7 +39,10 @@ size   exec  file                 contents
 1504             lookup.json      cd41e56055054db234d3ca06b095ea67afba3a2b23ded9b52665228d915c36e1
 1505             out.js           d726c2820cca48ff7453f9e4e389160dfe7c92602aeefd17adb93789c5ea3aea
 1238           LICENSE.md         1e6b09b8752ff67f0dad3899a9eb205eeabd6001fcbe210bfb122ccdb1dbda4c
-945            package.json       269a3854fff84f27541e492d75a1a4e4744297fd01750f09e4333a0ab9e2f9d2
+               man/                                                                               
+2509             citgm.1          e7362eb6932819600b489f8eba2700d6eff40778b25e3f034a4f9f0993ef1fd3
+2510             dockerify.1      d3d072b551bf511b992c86def24e7c8acb84965245e4cee025d78a35b525169b
+1177           package.json       f9408c5530b7e16a3f13c26c09d6f1041424e4f3a84cdeffe112685cb7eb74c4
 8754           README.md          1d38b58b0e94676aabfb96227567d719a5fe0d8fc977ab3df4ac51fb5422e8e6
                test/                                                                              
                  test-dir/                                                                        

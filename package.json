@@ -1,8 +1,10 @@
 {
   "name": "citgm",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "The Canary in the Goldmine",
-  "main": "lib/citgm.js",
+  "homepage": "http://nodejs.org",
+  "main": "bin/citgm",
+  "preferGlobal": true,
   "bin": {
     "citgm": "./bin/citgm",
     "citgm-dockerify": "./bin/citgm-dockerify"
@@ -10,11 +12,16 @@
   "scripts": {
     "test": "mocha test/test.js"
   },
-  "author": "James M Snell <jasnell@gmail.com>",
+  "author": "James M Snell <jasnell@gmail.com> (http://jasnell.me)",
   "repository": {
     "type": "git",
-    "url": "http://github.com/jasnell/citgm"
+    "url": "https://github.com/jasnell/citgm"
   },
+  "bugs": {
+    "url": "https://github.com/jasnell/citgm/issues",
+    "email": "jasnell@gmail.com"
+  },
+  "man": [ "./man/citgm.1", "./man/dockerify.1" ],
   "license": "Apache v2.0",
   "dependencies": {
     "async": "^1.4.0",
