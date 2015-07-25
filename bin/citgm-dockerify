@@ -21,7 +21,7 @@ var osenv = require('osenv');
 // Collect the command line arguments
 var image, mod, test;
 app
-  .version('0.0.14')
+  .version('0.0.15')
   .description(
     'Generates a Docker image that can be used to run citgm for a ' +
     'specific module')
