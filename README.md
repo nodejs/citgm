@@ -15,6 +15,10 @@ npm install -g citgm
 ```
 bin/citgm --help
 ```
+
+(If citgm is installed globally, you can also `man citgm` and
+`man citgm-dockerify`)
+
 ```
 Usage: citgm [options] <module> [test]
 
@@ -31,6 +35,10 @@ Options:
   -g, --gid <uid>      Set the gid (posix only)
 ```
 
+The tool requires online access to the npm registry to run. If you want to
+point to a private npm registry, then you'll need to set that up in your
+npm config separately before running citgm.
+
 ## Notes
 
 You can identify the module to be tested using the same syntax supported by
@@ -38,7 +46,7 @@ the `npm install` CLI command
 
 ```
 bin/citgm -v activitystrea.ms@latest
-bin/citgm -v http://github.com/jasnell/activitystrea.ms
+bin/citgm -v git+http://github.com/jasnell/activitystrea.ms
 ```
 
 Quite a few modules published to npm do not have their tests included, so
@@ -64,10 +72,12 @@ are set on Posix systems only)
 bin/citgm -v git+https://github.com/lodash/lodash https://gist.githubusercontent.com/jasnell/b274b80db9acb8fa5839/raw/c2df819d589d5a7a91d2d48b0e787b4dcebf6e66/test.js
 ```
 
-*Experimental*: If a Content-HMAC header is returned in the HTTP response for
-the script, you can use the `-k` or `--hmac` command line option to pass in
-a HMAC key that will be used to verify the script. If the HMAC does not
-verify using the key, the script will not be run.
+If a Content-HMAC header is returned in the HTTP response for the script,
+you can use the `-k` or `--hmac` command line option to pass in an HMAC key
+that will be used to verify the script. If the HMAC does not verify using the
+key, the script will not be run. The server MUST include a Content-HMAC
+header in the response that provides the HMAC to check against
+(see http://progrium.com/blog/2012/12/17/http-signatures-with-content-hmac/).
 
 To simplify working with modules that we know need special handling, a lookup
 table mechanism is provided. This mechanism allows citgm to substitute certain
@@ -135,17 +145,16 @@ cwd when building an image, it's best to run `citgm-dockerify` from an
 empty directory. The tool will generate the Dockerfile and artifacts it
 needs, build the image, then delete the temporary files.
 
-Also, there's one known issue with regards to using custom scripts in
-the docker image. Namely, they may not work. I'll be debugging that
-issue shortly. 
+Also, there's an issue with using the docker image with tests in the lookup
+JSON file that use custom scripts (i.e. lodash). Specifically, using the
+lookup table will not currently work. If you want to dockerify a test using
+a custom script, pass it in explicitly and do not rely on the lookup table
+to identify the custom script for you.
 
 ### Additional Notes:
 
 * You may experience some wonkiness on Windows as I have not fully
   tested the tool on that platform.
-
-* On posix systems, you can specify the uid and gid the tool will use to
-  run npm, node and the test scripts using the `-u` and `-g` arguments.
 
 * The tool uses the npm and node in the PATH. To change which node and
   npm the tool uses, change the PATH before launching citgm
@@ -155,7 +164,7 @@ issue shortly.
 
 * PRs are welcome!
 
-## Tests
+## Examples
 
 ### lodash
 ```
