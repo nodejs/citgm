@@ -117,18 +117,27 @@ Options:
 For example:
 
 ```
-citgm-dockerify -t lodash -lv iojs@tatest lodash
+citgm-dockerify -t underscore -lv iojs@latest underscore
 ```
 
-If successful, this will create the `citgm-lodash` docker image, which
+If successful, this will create the `citgm-underscore` docker image, which
 can then be run using:
 
 ```
-docker run citgm-lodash
+docker run citgm-underscore
 ```
 
 You can automatically run the docker image after creating using the `-r`
 command line switch.
+
+Note: because of some weirdness in the way docker establishes the base
+cwd when building an image, it's best to run `citgm-dockerify` from an
+empty directory. The tool will generate the Dockerfile and artifacts it
+needs, build the image, then delete the temporary files.
+
+Also, there's one known issue with regards to using custom scripts in
+the docker image. Namely, they may not work. I'll be debugging that
+issue shortly. 
 
 ### Additional Notes:
 
