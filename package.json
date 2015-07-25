@@ -22,7 +22,7 @@
     "email": "jasnell@gmail.com"
   },
   "man": [ "./man/citgm.1", "./man/citgm-dockerify.1" ],
-  "license": "Apache v2.0",
+  "license": "MIT",
   "dependencies": {
     "async": "^1.4.0",
     "chalk": "^1.1.0",
