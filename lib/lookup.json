@@ -1,7 +1,6 @@
 {
   "lodash": {
-    "replace": true,
-    "script": "known/lodash/test.js"
+    "replace": true
   },
   "underscore": {
     "replace": true

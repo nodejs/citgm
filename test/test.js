@@ -1,16 +1,29 @@
 var child = require('child_process');
 var assert = require('assert');
 
-console.log(process.cwd());
-describe('It should not die', function() {
-  it('should run the test for the module correctly', function(done) {
+describe('It should run the test for the module correctlye', function() {
+  it('should have exit code 0', function(done) {
     this.timeout(60 * 1000); // increase the timeout
     var proc = child.spawn(
       'bin/citgm',
       ['./test/test-dir'],
       {stdio:[0,1,2]});
     proc.on('close', function(code) {
-      assert(!code);
+      assert.equal(0,code);
+      done();
+    });
+  });
+});
+
+describe('It not die because of no npm test support', function() {
+  it('should have exit code 1', function(done) {
+    this.timeout(60 * 1000); // increase the timeout
+    var proc = child.spawn(
+      'bin/citgm',
+      ['./test/test2-dir'],
+      {stdio:[0,1,2]});
+    proc.on('close', function(code) {
+      assert.equal(1,code);
       done();
     });
   });

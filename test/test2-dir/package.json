@@ -1,0 +1,8 @@
+{
+  "name": "test2-dir",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "James M Snell <jasnell@gmail.com> (http://jasnell.me)",
+  "license": "ISC"
+}
