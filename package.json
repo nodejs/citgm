@@ -21,7 +21,7 @@
     "url": "https://github.com/jasnell/citgm/issues",
     "email": "jasnell@gmail.com"
   },
-  "man": [ "./man/citgm.1", "./man/dockerify.1" ],
+  "man": [ "./man/citgm.1", "./man/citgm-dockerify.1" ],
   "license": "Apache v2.0",
   "dependencies": {
     "async": "^1.4.0",
