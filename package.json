@@ -1,6 +1,6 @@
 {
   "name": "citgm",
-  "version": "0.0.18",
+  "version": "0.1.0",
   "description": "The Canary in the Goldmine",
   "homepage": "http://nodejs.org",
   "main": "bin/citgm",
@@ -15,10 +15,10 @@
   "author": "James M Snell <jasnell@gmail.com> (http://jasnell.me)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jasnell/citgm"
+    "url": "https://github.com/nodejs/citgm"
   },
   "bugs": {
-    "url": "https://github.com/jasnell/citgm/issues",
+    "url": "https://github.com/nodejs/citgm/issues",
     "email": "jasnell@gmail.com"
   },
   "man": [

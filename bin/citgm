@@ -9,7 +9,7 @@ var util = require('util');
 var mod;
 var test;
 app
-  .version('0.0.18')
+  .version('0.1.0')
   .arguments('<module> [test]')
   .action(function(m, t) {
     mod = m;

@@ -3,13 +3,13 @@
 -----BEGIN PGP SIGNATURE-----
 Comment: GPGTools - https://gpgtools.org
 
-iQEcBAABCgAGBQJVtUUcAAoJEHNBsVwHCHesoYUH+wWpf/rXy83dxykNM+PNg1De
-GY7rPqoVexHglBaJfcaGJa8oFT2LAigiNxOGgt3Aw8F/5/eqz0LHTptaWxYqO+OY
-Q5EqhdMOZTYFGw2FyMOU+rMnU9hKm5ckuoNF6rrSx56HHe9e/T8YI2FT6y2z1UYI
-o3yRwSTR/WMch1BzSkK57wu2VI1kL9hHuJBWBxFhLkvsBmqZ0RcUd0vcqI4D7Tr+
-jVJdp5+WE5PiOFhsPl3x2fz2ED686UZ/QbuCppUG4Lj8W/j80qpAqCv9U5TAFNpH
-jvB2S9g8wW69KJTMm+FfYXmaj/1ChP+XG+OJ4axpUHu5bOsGrgNvrYzsOmQOQGc=
-=FSYx
+iQEcBAABCgAGBQJVtsCtAAoJEHNBsVwHCHes2FwIAIwdNFcEnbqrbZqn3aKqNGfv
+aCi5aK2IQwr/OWuIrHXLjFqJupdoB3WIxF0tX6JWLlDdc7UB7Xn4vHiyn4EbLuSG
+ig6krDsEo1WzXDPWv62CDx+DrjSVGJ1RlywsKQwbBn6+OvSm9OxZ3bqLLCtNU/z+
+aRann0IEzJ2mhlKOkkbtsjPPNV1RorM0JbQNBnL5W6jeN+N35TtNEJzwJc7bHgJ4
+fU6DBcVp4DhS3HJEc5Sky5lI7r3fExlxnFVZZJlm/5cTCFOz8uYvqSP6UgZwHU0l
+ab9oUALYJnq202s/yoLQtBcEXicgQbsox8+8Yg7rA/GfzByyYJf7tjAxpqI4NYY=
+=GG6r
 -----END PGP SIGNATURE-----
 
 ```
@@ -27,8 +27,8 @@ size   exec  file                   contents
 19             .jshintrc            d862dcf6091929f90429363ddf72864c1076a22e9f2673f35552a05ba056ce49
 54             AUTHORS              47bb87633797121247b7c831c6090ddc32f3e7b91072914a7035398a3dd738b1
                bin/                                                                                 
-1964   x         citgm              a05effec7302065b65340a81deb3231df8449d1e4e09657532007d1240b08103
-8057   x         citgm-dockerify    b2234a6c832b40e2d864999aa932fec52cc85816b2b43e87d5f6813534149754
+1963   x         citgm              4ea7a042f2150a19522c6b14f66a2d2c2b6254e9b6a15671293a6a66e2377929
+8056   x         citgm-dockerify    6b595088d589daf67e946f7e079f93a099942ced7091caca07a06a0757fa3a77
                known/                                                                               
                  lodash/                                                                            
 43                 lookup.json      af3ecb554661a1664a9cc10db8b26dd8ab713aa2490c81f6f055fe36f66095dc
@@ -41,9 +41,9 @@ size   exec  file                   contents
 515              update.js          5ff2e2fc6de8067dc7055d3869ac069c327f679d4f5e0efe37ce29162c00270a
 1245           LICENSE.md           4a5219d108dde0fd90f5cb67ff3eeeb1efad9569d785ccc1ea543d23d536fd5f
                man/                                                                                 
-2565             citgm-dockerify.1  6b3b6dd3247c9acefe2f0ce50183e6eb0ae7da9031db4065649ddb6d0adb77fa
-2564             citgm.1            ae040c3ecb5119b8d1a4753b48b446227f964700fb1efcf4f35fbd708ccb7082
-1305           package.json         5a9646c383dcff8d4327bf811190e76fa12fc9c886500ff0156b1d79507bb734
+2564             citgm-dockerify.1  7dbb503c53f7da4e8b1414665d0571ae8f86a7032132ac66ac3a5670493ac031
+2563             citgm.1            d5989c7f373bcba3704c0fc72e5e063aeda65ab826909c0bf0b0402b3eba0e97
+1302           package.json         f2df46b47415e8221787ddd9324a543e7af75164bd1710774c5ead99efc64bd4
 10299          README.md            ecc665d5f622812d29c8fededa190689b8b9768ece13df6d4b9996f88cdf29e0
                test/                                                                                
                  test-dir/                                                                          
