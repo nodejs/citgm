@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 'use strict';
-
+require('../lib/update');  // version update check
 var which = require('which');
 var out = require('../lib/out');
 var app = require('commander');
@@ -21,7 +21,7 @@ var osenv = require('osenv');
 // Collect the command line arguments
 var image, mod, test;
 app
-  .version('0.0.17')
+  .version('0.1.0')
   .description(
     'Generates a Docker image that can be used to run citgm for a ' +
     'specific module')
@@ -48,6 +48,9 @@ app
     '-n, --no-color', 'Turns off colorized output'
   )
   .option(
+    '-s, --su', 'Allow running the tool as root.'
+  )
+  .option(
     '-u, --uid <uid>', 'Set the uid (posix only)'
   )
   .option(
@@ -65,6 +68,14 @@ if (!image || !mod) {
   app.outputHelp();
   process.exit(0);
 }
+
+if (!app.su) {
+  require('root-check')(); // silently downgrade if running as root...
+                           // unless --su is passed
+} else {
+  out.warn('root', 'Running as root! Use caution!');
+}
+
 var tag = 'citgm-' + (app.tag || uuid.v4());
 
 var detail = npa(mod);
@@ -76,6 +87,9 @@ function buildCmd(context, next) {
     parts.push('-l');
     if (context.lookup)
       parts.push('/usr/src/app/custom-lookup.json');
+  }
+  if (app.su) {
+    parts.push('-s');
   }
   if (app.verbose) {
     parts.push('-v');

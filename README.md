@@ -31,6 +31,7 @@ Options:
   -l, --lookup [path]  Use the lookup table. Optional [path] for alternate
                        json file
   -n, --no-color       Turns off colorized output
+  -s, --su             Allow running the tool as root
   -u, --uid <uid>      Set the uid (posix only)
   -g, --gid <uid>      Set the gid (posix only)
 ```
@@ -38,6 +39,16 @@ Options:
 The tool requires online access to the npm registry to run. If you want to
 point to a private npm registry, then you'll need to set that up in your
 npm config separately before running citgm.
+
+By default, the tool will prevent users from running as root unless the
+`-s` or `--su` CLI switch is set. If the tool is launched as root, it will
+attempt to silently and automatically downgrade permissions. If it cannot
+downgrade, it will print an error and exit the process.
+
+The tool will also automatically check npm to see if there are updates
+available. If a newer version has been published to npm, an info notice
+will appear in the verbose output. If the `-v` or `--verbose` flag is not
+set, the update notice will not be displayed.
 
 ## Notes
 
@@ -119,6 +130,7 @@ Options:
   -k, --hmac <key>     HMAC Key for Script Verification
   -l, --lookup [path]  Use the lookup table. Optional [path] for alternate json file
   -n, --no-color       Turns off colorized output
+  -s, --su             Allow running the tool as root
   -u, --uid <uid>      Set the uid (posix only)
   -g, --gid <uid>      Set the gid (posix only)
   -d, --docker <name>  Alternate docker binary name
@@ -161,6 +173,13 @@ to identify the custom script for you.
 
 * Running the tool in verbose mode (CLI switch `-v`) outputs significantly
   more detail (which is likely what we'll want in a fully automated run)
+
+* If you've taken a look at the dependencies for this tool, you'll note that
+  there are quite a few, some of which may not be strictly required. The
+  reason for the large number of dependencies is that this *is* a testing
+  tool, and many of the dependencies are broadly used. A large part of the
+  reason for using them is to test that they'll work properly using the
+  version of node being tested.
 
 * PRs are welcome!
 

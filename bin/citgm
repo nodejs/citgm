@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 'use strict';
-
+require('../lib/update'); // version update check
 var citgm = require('../lib/citgm');
 var out = require('../lib/out');
 var app = require('commander');
@@ -9,7 +9,7 @@ var util = require('util');
 var mod;
 var test;
 app
-  .version('0.0.17')
+  .version('0.1.0')
   .arguments('<module> [test]')
   .action(function(m, t) {
     mod = m;
@@ -25,6 +25,9 @@ app
   )
   .option(
     '-n, --no-color', 'Turns off colorized output'
+  )
+  .option(
+    '-s, --su', 'Allow running the tool as root.'
   );
 
 if (process.platform !== 'win32') {
@@ -41,6 +44,13 @@ app.parse(process.argv);
 if (!mod) {
   app.outputHelp();
   return;
+}
+
+if (!app.su) {
+  require('root-check')(); // silently downgrade if running as root...
+                           // unless --su is passed
+} else {
+  out.warn('root', 'Running as root! Use caution!');
 }
 
 var options = {
