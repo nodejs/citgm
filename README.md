@@ -30,6 +30,8 @@ Options:
   -k, --hmac <key>     HMAC Key for Script Verification
   -l, --lookup [path]  Use the lookup table. Optional [path] for alternate
                        json file
+  -d, --nodedir <path> Path to the node source to use when compiling native
+                       addons
   -n, --no-color       Turns off colorized output
   -s, --su             Allow running the tool as root
   -u, --uid <uid>      Set the uid (posix only)
@@ -128,7 +130,16 @@ Options:
   -r, --run            Run the docker image immediately after build
   -v, --verbose        Verbose output
   -k, --hmac <key>     HMAC Key for Script Verification
-  -l, --lookup [path]  Use the lookup table. Optional [path] for alternate json file
+  -l, --lookup [path]  Use the lookup table. Optional [path] for alternate json
+                       file
+  -d, --nodedir        Create the docker image with a /nodedir volume.
+                       The workding directory MUST contain a nodedir
+                       directory containing the node source image to use.
+                       This must be located in the working directory in
+                       or docker will refuse to copy it.
+  -c, --citgmdir <path> By default, the docker image will install citgm from
+                        npm. Use this to tell the image to install from a host
+                        volume.
   -n, --no-color       Turns off colorized output
   -s, --su             Allow running the tool as root
   -u, --uid <uid>      Set the uid (posix only)

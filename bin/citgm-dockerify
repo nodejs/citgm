@@ -45,6 +45,19 @@ app
       'Use the lookup table. Optional [path] for alternate json file'
   )
   .option(
+      '-d, --nodedir',
+      'Create the docker image with a /nodedir volume. \n' +
+      '                The workding directory MUST contain a nodedir\n' +
+      '                directory containing the node source image to use.\n' +
+      '                This must be located in the working directory in\n' +
+      '                or docker will refuse to copy it.'
+  )
+  .option(
+      '-c, --citgmdir <path>',
+      'By default, the docker image will install citgm from npm.\n' +
+      '                Use this to tell the image to install from a host volume.'
+  )
+  .option(
     '-n, --no-color', 'Turns off colorized output'
   )
   .option(
@@ -88,6 +101,10 @@ function buildCmd(context, next) {
     if (context.lookup)
       parts.push('/usr/src/app/custom-lookup.json');
   }
+  if (app.nodedir) {
+    parts.push('-d');
+    parts.push('/nodedir');
+  }
   if (app.su) {
     parts.push('-s');
   }
@@ -123,9 +140,18 @@ function buildCmd(context, next) {
 }
 
 
-// Optionally run's the docker image... uses no special arguments
+// Optionally run's the docker image...
 function runImage(context, next) {
   if (app.run) {
+    var args = ['run'];
+    out.info('docker-run', 'Running docker image: ' + context.tag);
+    if (typeof app.nodedir === 'string') {
+      var dir = path.resolve(process.cwd(),app.nodedir);
+      out.info('nodedir', 'Using local nodedir: ' + dir);
+      args.push('-v');
+      args.push(util.format('"%s":/nodedir', dir));
+    }
+    args.push(context.tag);
     var proc = child.spawn(bin,
       [
         'run',
@@ -135,6 +161,7 @@ function runImage(context, next) {
         stdio:[0,1,2]
       });
     proc.on('close', function(code) {
+      out.info('docker-run', 'Finished running docker image');
       if (code > 0) {
         out.error('failed', util.format('Docker run failed [%d]', code));
       }
@@ -153,6 +180,8 @@ function cleanLocal(context, next) {
     fs.unlinkSync('custom-test');
   if (context.lookup)
     fs.unlinkSync('custom-lookup.json');
+  if (app.citgmdir)
+    fs.unlinkSync('citgm.tar.gz');
    next(null, context);
 }
 
@@ -187,16 +216,68 @@ function buildImage(context, next) {
   );
 }
 
+function packCitgm(context, next) {
+  function error(err) {
+    out.error('pack-citgm', err);
+    next(Error(util.format('Could not pack citgm')));
+  }
+  if (app.citgmdir) {
+    var dest = path.join(context.wd, 'citgm.tar.gz');
+    var src = path.resolve(process.cwd(), app.citgmdir);
+    var file = fs.createWriteStream(dest)
+      .on('error', error);
+    var compressor = zlib.createGzip()
+      .on('end', function() {
+        file.close();
+        out.info('pack-citgm', 'done');
+        next(null,context);
+      })
+      .on('error', error);
+    var packer = tar.Pack({noProprietary: true}).
+      on('error', error);
+    out.info('pack-citgm', 'packing ' + src);
+    out.info('pack-citgm', 'dest ' + dest);
+    fstream.Reader({path: src, type: "Directory"}).
+       on('error', error).
+       pipe(packer).
+       pipe(compressor).
+       pipe(file);
+  } else {
+    next();
+  }
+}
+
 function writeDockerfile(context, next) {
   var dest = fs.createWriteStream(path.join(context.wd, 'Dockerfile'), {encoding:'utf8'});
   dest.on('close', function() {
-    next(null,context);
+    packCitgm(context, function(err) {
+      if (err) {
+        next(err);
+        return;
+      }
+      next(null, context);
+    });
   });
   dest.on('error', function(err) {
     next(err);
   });
   var m = util.format('FROM %s\n',context.image);
-  m += 'RUN npm install -g citgm@latest\n';
+
+  if (app.nodedir) {
+     m += 'ADD nodedir /nodedir\n';
+  }
+
+  var args = ['-g'];
+  if (app.nodedir) {
+    args = ['--nodedir=/nodedir'].concat(args);
+  }
+  if (!app.citgmdir) {
+    m += 'RUN npm install ' + args.join(' ') + ' citgm@latest\n';
+  } else {
+    m += 'COPY ["citgm.tar.gz","/usr/src/app/"]\n';
+    m += 'RUN npm install ' + args.join(' ') + ' /usr/src/app/citgm.tar.gz\n';
+  }
+
   if (context.local)
     m += 'COPY ["module.tar.gz","/usr/src/app/"]\n';
   if (context.test) {

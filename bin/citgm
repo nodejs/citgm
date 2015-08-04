@@ -24,6 +24,10 @@ app
       'Use the lookup table. Optional [path] for alternate json file'
   )
   .option(
+      '-d, --nodedir <path>',
+      'Path to the node source to use when compiling native addons'
+  )
+  .option(
     '-n, --no-color', 'Turns off colorized output'
   )
   .option(
@@ -57,7 +61,8 @@ var options = {
   script: test,
   reporter: app.reporter,
   hmac: app.hmac,
-  lookup: app.lookup
+  lookup: app.lookup,
+  nodedir: app.nodedir
 };
 if (!citgm.windows) {
   var uidnumber = require('uid-number');
