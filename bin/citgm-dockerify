@@ -1,22 +1,22 @@
 #!/usr/bin/env node
 'use strict';
-require('../lib/update');  // version update check
-var which = require('which');
-var out = require('../lib/out');
-var app = require('commander');
-var util = require('util');
-var child = require('child_process');
-var uuid = require('node-uuid');
-var async = require('async');
-var path = require('path');
-var url = require('url');
-var npa = require('npm-package-arg');
-var fs = require('fs');
-var fsx = require('fs-extra');
-var tar = require('tar');
-var fstream = require('fstream');
-var zlib = require('zlib');
-var osenv = require('osenv');
+const update = require('../lib/update');  // version update check
+const which = require('which');
+const logger = require('../lib/out');
+const app = require('commander');
+const util = require('util');
+const child = require('child_process');
+const uuid = require('node-uuid');
+const async = require('async');
+const path = require('path');
+const url = require('url');
+const npa = require('npm-package-arg');
+const fs = require('fs');
+const fsx = require('fs-extra');
+const tar = require('tar');
+const fstream = require('fstream');
+const zlib = require('zlib');
+const osenv = require('osenv');
 
 // Collect the command line arguments
 var image, mod, test;
@@ -37,7 +37,8 @@ app
   .option(
     '-r, --run', 'Run the docker image immediately after build')
   .option(
-    '-v, --verbose', 'Verbose output')
+    '-v, --verbose [level]', 'Verbose output',
+    /^(info|warn|error)$/i, 'info')
   .option(
     '-k, --hmac <key>', 'HMAC Key for Script Verification')
   .option(
@@ -75,7 +76,13 @@ app
 
 app.parse(process.argv);
 
-var bin = app.docker || 'docker';
+const log = logger({
+  level:app.verbose,
+  nocolor: !app.color
+});
+update(log);
+
+const bin = app.docker || 'docker';
 
 if (!image || !mod) {
   app.outputHelp();
@@ -86,44 +93,45 @@ if (!app.su) {
   require('root-check')(); // silently downgrade if running as root...
                            // unless --su is passed
 } else {
-  out.warn('root', 'Running as root! Use caution!');
+  log.warn('root', 'Running as root! Use caution!');
 }
 
-var tag = 'citgm-' + (app.tag || uuid.v4());
+const tag = 'citgm-' + (app.tag || uuid.v4());
 
-var detail = npa(mod);
+const detail = npa(mod);
 
 // build the citgm CMD for the Dockerfile
 function buildCmd(context, next) {
   var parts = ['citgm'];
   if (app.lookup) {
-    parts.push('-l');
+    parts.push('--lookup');
     if (context.lookup)
       parts.push('/usr/src/app/custom-lookup.json');
   }
   if (app.nodedir) {
-    parts.push('-d');
+    parts.push('--nodedir');
     parts.push('/nodedir');
   }
   if (app.su) {
-    parts.push('-s');
+    parts.push('--su');
   }
   if (app.verbose) {
-    parts.push('-v');
+    parts.push('--verbose');
+    parts.push(app.verbose);
   }
   if (app.hmac) {
-    parts.push('-h');
+    parts.push('--hmac');
     parts.push('"' + app.hmac + '"');
   }
-  if (app['no-color']) {
-    parts.push('-n');
+  if (!app.color) {
+    parts.push('--no-color');
   }
   if (app.uid) {
-    parts.push('-u');
+    parts.push('--uid');
     parts.push(app.uid);
   }
   if (app.gid) {
-    parts.push('-g');
+    parts.push('--gid');
     parts.push(app.gid);
   }
 
@@ -144,10 +152,10 @@ function buildCmd(context, next) {
 function runImage(context, next) {
   if (app.run) {
     var args = ['run'];
-    out.info('docker-run', 'Running docker image: ' + context.tag);
+    log.info('docker-run', 'Running docker image: ' + context.tag);
     if (typeof app.nodedir === 'string') {
       var dir = path.resolve(process.cwd(),app.nodedir);
-      out.info('nodedir', 'Using local nodedir: ' + dir);
+      log.info('nodedir', 'Using local nodedir: ' + dir);
       args.push('-v');
       args.push(util.format('"%s":/nodedir', dir));
     }
@@ -161,9 +169,9 @@ function runImage(context, next) {
         stdio:[0,1,2]
       });
     proc.on('close', function(code) {
-      out.info('docker-run', 'Finished running docker image');
+      log.info('docker-run', 'Finished running docker image');
       if (code > 0) {
-        out.error('failed', util.format('Docker run failed [%d]', code));
+        log.error('failed', util.format('Docker run failed [%d]', code));
       }
       next(null,context);
     });
@@ -201,7 +209,7 @@ function buildImage(context, next) {
     }
   )
   .on('error', function(err) {
-    out.error('failure', err);
+    log.error('failure', err);
     next(err);
   })
   .on('close', function(code) {
@@ -210,7 +218,7 @@ function buildImage(context, next) {
       return;
     }
     process.chdir(cwd);
-    out.info('created', tag);
+    log.info('created', tag);
       next(null,context);
     }
   );
@@ -218,7 +226,7 @@ function buildImage(context, next) {
 
 function packCitgm(context, next) {
   function error(err) {
-    out.error('pack-citgm', err);
+    log.error('pack-citgm', err);
     next(Error(util.format('Could not pack citgm')));
   }
   if (app.citgmdir) {
@@ -229,14 +237,14 @@ function packCitgm(context, next) {
     var compressor = zlib.createGzip()
       .on('end', function() {
         file.close();
-        out.info('pack-citgm', 'done');
+        log.info('pack-citgm', 'done');
         next(null,context);
       })
       .on('error', error);
     var packer = tar.Pack({noProprietary: true}).
       on('error', error);
-    out.info('pack-citgm', 'packing ' + src);
-    out.info('pack-citgm', 'dest ' + dest);
+    log.info('pack-citgm', 'packing ' + src);
+    log.info('pack-citgm', 'dest ' + dest);
     fstream.Reader({path: src, type: "Directory"}).
        on('error', error).
        pipe(packer).
@@ -289,7 +297,7 @@ function writeDockerfile(context, next) {
   }
   m += 'CMD ' + context.cmd;
   dest.write(m);
-  out.info('docker-file', m);
+  log.info('docker-file', m);
   dest.close();
 }
 
@@ -357,15 +365,15 @@ function prepareLocalModule(context, next) {
   if (detail.type === 'local') {
     context.local = path.join(context.wd,'module.tar.gz');
     var raw = path.resolve(process.cwd(), detail.raw);
-    out.info('prepare-local-src', raw);
-    out.info('prepare-local-dest', context.local);
+    log.info('prepare-local-src', raw);
+    log.info('prepare-local-dest', context.local);
     fs.lstat(raw, function(err,stat) {
       if (err) {
         next(Error(util.format('Cannot access local module: %s', raw)));
         return;
       }
       if (stat.isFile()) {
-        out.info('prepare-local-copy','');
+        log.info('prepare-local-copy','');
         fsx.copy(raw,context.local, function(err) {
           if (err) {
             next(err);
@@ -374,7 +382,7 @@ function prepareLocalModule(context, next) {
           next(null,context);
         });
       } else if (stat.isDirectory()) {
-        out.info('prepare-local-pack','');
+        log.info('prepare-local-pack','');
         packDirectory(raw, context, next);
       } else {
         next(Error(util.format('Cannot access localmodule: %s', raw)));
@@ -397,7 +405,7 @@ function initContext(next) {
 function ensureDocker(context, next) {
   which(bin, function(err,docker) {
     if (err) {
-      out.error('failed', 'The docker client could not be found');
+      log.error('failed', 'The docker client could not be found');
       next(Error('Aborting'));
       return;
     }
@@ -427,9 +435,9 @@ async.waterfall([
   ],
   function(err, context) {
     if (err) {
-      out.error('failed', err.message);
+      log.error('failed', err.message);
       process.exit(1);
     }
-    out.info('done', context.tag);
+    log.info('done', context.tag);
   }
 );
