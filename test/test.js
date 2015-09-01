@@ -1,7 +1,9 @@
-var child = require('child_process');
-var assert = require('assert');
+const child = require('child_process');
+const assert = require('assert');
+const http = require('http');
+const fs = require('fs');
 
-describe('It should run the test for the module correctlye', function() {
+describe('It should run the test for the module correctly', function() {
   it('should have exit code 0', function(done) {
     this.timeout(60 * 1000); // increase the timeout
     var proc = child.spawn(
@@ -15,7 +17,7 @@ describe('It should run the test for the module correctlye', function() {
   });
 });
 
-describe('It not die because of no npm test support', function() {
+describe('It should die because of no npm test support', function() {
   it('should have exit code 1', function(done) {
     this.timeout(60 * 1000); // increase the timeout
     var proc = child.spawn(
@@ -30,8 +32,6 @@ describe('It not die because of no npm test support', function() {
 });
 
 var server;
-var http = require('http');
-var fs = require('fs');
 function runServer(hmac,done) {
   server = http.createServer(function(req,res) {
     var read = fs.createReadStream('./test/test-script.js');

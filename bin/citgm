@@ -1,13 +1,12 @@
 #!/usr/bin/env node
 'use strict';
-require('../lib/update'); // version update check
-var citgm = require('../lib/citgm');
-var out = require('../lib/out');
-var app = require('commander');
-var util = require('util');
+const update = require('../lib/update');
+const citgm = require('../lib/citgm');
+const logger = require('../lib/out');
+const app = require('commander');
+const util = require('util');
 
-var mod;
-var test;
+var mod, test;
 app
   .version('0.1.0')
   .arguments('<module> [test]')
@@ -16,7 +15,9 @@ app
     test = t;
   })
   .option(
-    '-v, --verbose', 'Verbose output')
+    '-v, --verbose [level]',
+    'Verbose output (info, warn, error)',
+    /^(info|warn|error)$/i, 'info')
   .option(
     '-k, --hmac <key>', 'HMAC Key for Script Verification')
   .option(
@@ -34,7 +35,7 @@ app
     '-s, --su', 'Allow running the tool as root.'
   );
 
-if (process.platform !== 'win32') {
+if (!citgm.windows) {
   app.option(
     '-u, --uid <uid>', 'Set the uid (posix only)'
   )
@@ -45,24 +46,30 @@ if (process.platform !== 'win32') {
 
 app.parse(process.argv);
 
+const log = logger({
+  level:app.verbose,
+  nocolor: !app.color
+});
+update(log);
+
 if (!mod) {
   app.outputHelp();
-  return;
+  process.exit(0);
 }
 
 if (!app.su) {
   require('root-check')(); // silently downgrade if running as root...
                            // unless --su is passed
 } else {
-  out.warn('root', 'Running as root! Use caution!');
+  log.warn('root', 'Running as root! Use caution!');
 }
 
-var options = {
+const options = {
   script: test,
-  reporter: app.reporter,
   hmac: app.hmac,
   lookup: app.lookup,
-  nodedir: app.nodedir
+  nodedir: app.nodedir,
+  level: app.verbose
 };
 if (!citgm.windows) {
   var uidnumber = require('uid-number');
@@ -80,14 +87,13 @@ if (!citgm.windows) {
 function launch(mod, options) {
   citgm.Tester(mod, options)
   .on('start', function(name, options) {
-    out.info('starting', name);
+    log.info('starting', name);
   }).on('fail', function(err) {
-    out.error('failure', err.message);
+    log.error('failure', err.message);
     process.exitCode = 1;
   }).on('info', function(key,message) {
-    if (app.verbose)
-      out.info(key, message);
+    log.info(key, message);
   }).on('end', function(name) {
-    out.info('done', name);
+    log.info('done', name);
   }).run();
 }
