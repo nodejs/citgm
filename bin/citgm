@@ -8,7 +8,7 @@ const util = require('util');
 
 var mod, test;
 app
-  .version('0.1.0')
+  .version('0.2.3')
   .arguments('<module> [test]')
   .action(function(m, t) {
     mod = m;
