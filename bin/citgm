@@ -91,8 +91,8 @@ function launch(mod, options) {
   }).on('fail', function(err) {
     log.error('failure', err.message);
     process.exitCode = 1;
-  }).on('info', function(key,message) {
-    log.info(key, message);
+  }).on('data', function(type,key,message) {
+    log[type](key, message);
   }).on('end', function(name) {
     log.info('done', name);
   }).run();
