@@ -94,6 +94,10 @@ function launch(mod, options) {
   }).on('data', function(type,key,message) {
     log[type](key, message);
   }).on('end', function(name) {
-    log.info('done', name);
+    if (process.exitCode) {
+      log.error('done', 'The test suite for ' + name + ' failed');
+      process.exit()
+    }
+    log.info('done', 'The test suite for ' + name + ' passed.');
   }).run();
 }
