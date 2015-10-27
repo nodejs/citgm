@@ -16,8 +16,8 @@ app
   })
   .option(
     '-v, --verbose [level]',
-    'Verbose output (info, warn, error)',
-    /^(info|warn|error)$/i, 'info')
+    'Verbose output (silly, vebose, info, warn, error)',
+    /^(silly|verbose|info|warn|error)$/i, 'info')
   .option(
     '-k, --hmac <key>', 'HMAC Key for Script Verification')
   .option(
