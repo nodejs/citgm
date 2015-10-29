@@ -21,8 +21,8 @@ app
   .option(
     '-k, --hmac <key>', 'HMAC Key for Script Verification')
   .option(
-    '-l, --lookup [path]',
-      'Use the lookup table. Optional [path] for alternate json file'
+    '-l, --lookup <path>',
+      'Use the lookup table provided at <path>'
   )
   .option(
       '-d, --nodedir <path>',
