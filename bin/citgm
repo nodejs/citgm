@@ -4,7 +4,6 @@ const update = require('../lib/update');
 const citgm = require('../lib/citgm');
 const logger = require('../lib/out');
 const app = require('commander');
-const util = require('util');
 
 var mod, test;
 app
@@ -86,7 +85,7 @@ if (!citgm.windows) {
 
 function launch(mod, options) {
   citgm.Tester(mod, options)
-  .on('start', function(name, options) {
+  .on('start', function(name) {
     log.info('starting', name);
   }).on('fail', function(err) {
     log.error('failure', err.message);
@@ -96,7 +95,7 @@ function launch(mod, options) {
   }).on('end', function(name) {
     if (process.exitCode) {
       log.error('done', 'The test suite for ' + name + ' failed');
-      process.exit()
+      process.exit();
     }
     log.info('done', 'The test suite for ' + name + ' passed.');
   }).run();
