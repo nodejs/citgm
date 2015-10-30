@@ -11,7 +11,8 @@
   },
   "scripts": {
     "test": "tap test/test-*.js",
-    "lint": "eslint bin/* lib/"
+    "lint": "eslint bin/* lib/",
+    "watch": "nodemon --ignore node_modules/ -e js,json --exec 'npm test'"
   },
   "author": "James M Snell <jasnell@gmail.com> (http://jasnell.me)",
   "repository": {
@@ -52,6 +53,7 @@
     "winston": "^1.0.1"
   },
   "devDependencies": {
+    "nodemon": "^1.8.0",
     "tap": "^2.2.0"
   }
 }
