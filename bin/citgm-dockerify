@@ -9,14 +9,12 @@ const child = require('child_process');
 const uuid = require('node-uuid');
 const async = require('async');
 const path = require('path');
-const url = require('url');
 const npa = require('npm-package-arg');
 const fs = require('fs');
 const fsx = require('fs-extra');
 const tar = require('tar');
 const fstream = require('fstream');
 const zlib = require('zlib');
-const osenv = require('osenv');
 
 // Collect the command line arguments
 var image, mod, test;
@@ -163,7 +161,7 @@ function runImage(context, next) {
     var proc = child.spawn(bin,
       [
         'run',
-         context.tag
+        context.tag
       ], {
         cwd: process.cwd(),
         stdio:[0,1,2]
@@ -190,7 +188,7 @@ function cleanLocal(context, next) {
     fs.unlinkSync('custom-lookup.json');
   if (app.citgmdir)
     fs.unlinkSync('citgm.tar.gz');
-   next(null, context);
+  next(null, context);
 }
 
 function buildImage(context, next) {
@@ -207,8 +205,8 @@ function buildImage(context, next) {
       cwd: context.wd,
       stdio:[0,1,2]
     }
-  )
-  .on('error', function(err) {
+  );
+  proc.on('error', function(err) {
     log.error('failure', err);
     next(err);
   })
@@ -219,9 +217,8 @@ function buildImage(context, next) {
     }
     process.chdir(cwd);
     log.info('created', tag);
-      next(null,context);
-    }
-  );
+    next(null,context);
+  });
 }
 
 function packCitgm(context, next) {
@@ -245,7 +242,7 @@ function packCitgm(context, next) {
       on('error', error);
     log.info('pack-citgm', 'packing ' + src);
     log.info('pack-citgm', 'dest ' + dest);
-    fstream.Reader({path: src, type: "Directory"}).
+    fstream.Reader({path: src, type: 'Directory'}).
        on('error', error).
        pipe(packer).
        pipe(compressor).
@@ -272,7 +269,7 @@ function writeDockerfile(context, next) {
   var m = util.format('FROM %s\n',context.image);
 
   if (app.nodedir) {
-     m += 'ADD nodedir /nodedir\n';
+    m += 'ADD nodedir /nodedir\n';
   }
 
   var args = ['-g'];
@@ -308,26 +305,24 @@ function prepareCustomTest(context, next) {
       path.resolve(process.cwd(),test),
       path.join(context.wd,'custom-test'),
       function(err) {
-      if (err) {
-        next(err);
-        return;
-      }
-      context.test = true;
-      next(null,context);
-    });
-
+        if (err) {
+          next(err);
+          return;
+        }
+        context.test = true;
+        next(null,context);
+      });
   } else {
     next(null, context);
   }
 }
 
 function prepareLookup(context, next) {
-    if (typeof app.lookup === 'string') {
-      fsx.copy(
-        path.resolve(process.cwd(),app.lookup),
-        path.join(context.wd,'custom-lookup.json'),
-        function(err) {
-          console.log('test');
+  if (typeof app.lookup === 'string') {
+    fsx.copy(
+      path.resolve(process.cwd(),app.lookup),
+      path.join(context.wd,'custom-lookup.json'),
+      function(err) {
         if (err) {
           next(err);
           return;
@@ -335,14 +330,14 @@ function prepareLookup(context, next) {
         context.lookup = true;
         next(null,context);
       });
-    } else {
-      next(null, context);
-    }
+  } else {
+    next(null, context);
+  }
 }
 
 function packDirectory(raw, context, next) {
-  function error(err) {
-    next(Error(util.format('Could not pack module: ',path)));
+  function error() {
+    next(Error(util.format('Could not pack module: ' ,path)));
   }
   var file = fs.createWriteStream(context.local)
     .on('error', error);
@@ -354,7 +349,7 @@ function packDirectory(raw, context, next) {
     .on('error', error);
   var packer = tar.Pack({noProprietary: true}).
     on('error', error);
-  fstream.Reader({path: raw, type: "Directory"}).
+  fstream.Reader({path: raw, type: 'Directory'}).
      on('error', error).
      pipe(packer).
      pipe(compressor).
@@ -403,7 +398,7 @@ function initContext(next) {
 }
 
 function ensureDocker(context, next) {
-  which(bin, function(err,docker) {
+  which(bin, function(err) {
     if (err) {
       log.error('failed', 'The docker client could not be found');
       next(Error('Aborting'));
@@ -421,23 +416,21 @@ function workingDirectory(context,next) {
 // launch the waterfall process...
 
 async.waterfall([
-    initContext,
-    ensureDocker,
-    workingDirectory,
-    prepareLocalModule,
-    prepareLookup,
-    prepareCustomTest,
-    buildCmd,
-    writeDockerfile,
-    buildImage,
-    cleanLocal,
-    runImage
-  ],
-  function(err, context) {
-    if (err) {
-      log.error('failed', err.message);
-      process.exit(1);
-    }
-    log.info('done', context.tag);
+  initContext,
+  ensureDocker,
+  workingDirectory,
+  prepareLocalModule,
+  prepareLookup,
+  prepareCustomTest,
+  buildCmd,
+  writeDockerfile,
+  buildImage,
+  cleanLocal,
+  runImage
+], function(err, context) {
+  if (err) {
+    log.error('failed', err.message);
+    process.exit(1);
   }
-);
+  log.info('done', context.tag);
+});

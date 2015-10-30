@@ -10,7 +10,8 @@
     "citgm-dockerify": "./bin/citgm-dockerify"
   },
   "scripts": {
-    "test": "mocha test/test.js"
+    "test": "mocha test/test.js",
+    "lint": "eslint bin/* lib/"
   },
   "author": "James M Snell <jasnell@gmail.com> (http://jasnell.me)",
   "repository": {
@@ -31,6 +32,7 @@
     "chalk": "^1.1.0",
     "columnify": "^1.5.1",
     "commander": "^2.8.1",
+    "eslint": "^1.8.0",
     "fs-extra": "^0.24.0",
     "fstream": "^1.0.7",
     "node-uuid": "^1.4.3",
