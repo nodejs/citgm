@@ -58,8 +58,8 @@ You can identify the module to be tested using the same syntax supported by
 the `npm install` CLI command
 
 ```
-bin/citgm -v activitystrea.ms@latest
-bin/citgm -v git+http://github.com/jasnell/activitystrea.ms
+bin/citgm activitystrea.ms@latest
+bin/citgm git+http://github.com/jasnell/activitystrea.ms
 ```
 
 Quite a few modules published to npm do not have their tests included, so
@@ -67,14 +67,14 @@ we end up having to go directly to github. The most reliable approach is
 pulling down a tar ball for a specific branch from github:
 
 ```
-bin/citgm -v https://github.com/caolan/async/archive/master.tar.gz
+bin/citgm https://github.com/caolan/async/archive/master.tar.gz
 ```
 
 If a module does not support npm test or requires additional init or
 teardown, you can run an alternative test script:
 
 ```
-bin/citgm -v https://github.com/lodash/lodash/archive/master.tar.gz known/lodash/test.js
+bin/citgm https://github.com/lodash/lodash/archive/master.tar.gz known/lodash/test.js
 ```
 
 The custom script can be pulled from a remote location... although, it's wise
@@ -82,7 +82,7 @@ to be very very careful when doing so as the script will run with whatever
 permissions the citgm tool has (unless the `-u` and `-g` command line options
 are set on Posix systems only)
 ```
-bin/citgm -v git+https://github.com/lodash/lodash https://gist.githubusercontent.com/jasnell/b274b80db9acb8fa5839/raw/c2df819d589d5a7a91d2d48b0e787b4dcebf6e66/test.js
+bin/citgm git+https://github.com/lodash/lodash https://gist.githubusercontent.com/jasnell/b274b80db9acb8fa5839/raw/c2df819d589d5a7a91d2d48b0e787b4dcebf6e66/test.js
 ```
 
 If a Content-HMAC header is returned in the HTTP response for the script,
@@ -99,7 +99,7 @@ and custom scripts. The lookup mechanism is switched on using the `-l` or
 `--lookup` command line option.
 
 ```
-bin/citgm -lv lodash@latest
+bin/citgm lodash@latest
 ```
 
 There is a built in lookup.json in the lib directory that will be used by
@@ -107,7 +107,7 @@ default. If you want to use an alternative lookup.json file, pass in the
 path:
 
 ```
-bin/citgm -v --lookup ../path/to/lookup.json lodash@latest
+bin/citgm --lookup ../path/to/lookup.json lodash@latest
 ```
 
 For the most part, the built in table should be sufficient for general use.
@@ -198,182 +198,183 @@ to identify the custom script for you.
 
 ### lodash
 ```
-citgm -lv lodash@latest
-citgm -v https://github.com/lodash/lodash/archive/3.10.0.tar.gz known/lodash/test.js
+citgm lodash@latest
+citgm https://github.com/lodash/lodash/archive/3.10.0.tar.gz known/lodash/test.js
 ```
 ### underscore
 ```
-citgm -lv underscore@latest
-citgm -v https://github.com/jashkenas/underscore/archive/1.8.3.tar.gz
+citgm underscore@latest
+citgm https://github.com/jashkenas/underscore/archive/1.8.3.tar.gz
 ```
 ### request
 ```
-citgm -lv request@latest
-citgm -v https://github.com/request/request/archive/v2.60.1.tar.gz
+citgm request@latest
+citgm https://github.com/request/request/archive/v2.60.1.tar.gz
 ```
 ### commander
 ```
-citgm -lv commander@latest
-citgm -v https://github.com/tj/commander.js/archive/v2.8.1.tar.gz
+citgm commander@latest
+citgm https://github.com/tj/commander.js/archive/v2.8.1.tar.gz
 ```
 ### express
 ```
-citgm -lv express@latest
-citgm -v https://github.com/strongloop/express/archive/4.13.1.tar.gz
+citgm express@latest
+citgm https://github.com/strongloop/express/archive/4.13.1.tar.gz
 ```
 ### debug
 ```
-citgm -v debug
+citgm debug
 ```
 ### chalk
 ```
-citgm -lv chalk@latest
-citgm -v https://github.com/chalk/chalk/archive/v1.1.0.tar.gz
+citgm chalk@latest
+citgm https://github.com/chalk/chalk/archive/v1.1.0.tar.gz
 ```
 ### q
 ```
-citgm -lv q@latest
-citgm -v https://github.com/kriskowal/q/archive/v1.4.1.tar.gz
+citgm q@latest
+citgm https://github.com/kriskowal/q/archive/v1.4.1.tar.gz
 ```
 ### colors
 ```
-citgm -lv colors@latest
-citgm -v https://github.com/Marak/colors.js/archive/v1.1.2.tar.gz
+citgm colors@latest
+citgm https://github.com/Marak/colors.js/archive/v1.1.2.tar.gz
 ```
 ### mkdirp
 ```
-citgm -v mkdirp
+citgm mkdirp
 ```
 ### coffee-script
 ```
-citgm -lv coffee-script@latest
-citgm -v https://github.com/jashkenas/coffeescript/archive/1.9.3.tar.gz
+citgm coffee-script@latest
+citgm https://github.com/jashkenas/coffeescript/archive/1.9.3.tar.gz
 ```
 ### through2
 ```
-citgm -lv through2@latest
-citgm -v https://github.com/rvagg/through2/archive/v2.0.0.tar.gz
+citgm through2@latest
+citgm https://github.com/rvagg/through2/archive/v2.0.0.tar.gz
 ```
 ### bluebird
 ```
-citgm -lv bluebird@latest
-citgm -v https://github.com/petkaantonov/bluebird/archive/v2.9.34.tar.gz
+citgm bluebird@latest
+citgm https://github.com/petkaantonov/bluebird/archive/v2.9.34.tar.gz
 ```
 (currently not working)
 ### moment
 ```
-citgm -lv moment@latest
-citgm -v https://github.com/moment/moment/archive/2.10.3.tar.gz
+citgm moment@latest
+citgm https://github.com/moment/moment/archive/2.10.3.tar.gz
 ```
 ### optimist
 ```
-citgm -v optimist
+citgm optimist
 ```
 ### yeoman-generator
 ```
-citgm -lv yeoman-generator@latest
-citgm -v https://github.com/yeoman/generator/archive/v0.20.2.tar.gz
+citgm yeoman-generator@latest
+citgm https://github.com/yeoman/generator/archive/v0.20.2.tar.gz
 ```
 ### glob
 ```
-citgm -lv glob@latest
-citgm -v https://github.com/isaacs/node-glob/archive/v5.0.14.tar.gz
+citgm glob@latest
+citgm https://github.com/isaacs/node-glob/archive/v5.0.14.tar.gz
 ```
 ### gulp-util
 ```
-citgm -lv gulp-util@latest
-citgm -v https://github.com/gulpjs/gulp-util/archive/v3.0.6.tar.gz
+citgm gulp-util@latest
+citgm https://github.com/gulpjs/gulp-util/archive/v3.0.6.tar.gz
 ```
 ### minimist
 ```
-citgm -lv minimist@latest
-citgm -v minimist
+citgm minimist@latest
+citgm minimist
 ```
 ### cheerio
 ```
-citgm -lv cheerio@latest
-citgm -v cheerio
+citgm cheerio@latest
+citgm cheerio
 ```
 ### node-uuid
 ```
-citgm -lv node-uuid@latest
-citgm -v node-uuid
+citgm node-uuid@latest
+citgm node-uuid
 ```
 ### jade
 ```
-citgm -lv jade@latest
-citgm -v https://github.com/jadejs/jade/archive/1.11.0.tar.gz
+citgm jade@latest
+citgm https://github.com/jadejs/jade/archive/1.11.0.tar.gz
 ```
 ### redis
 ```
-citgm -lv redis@latest
-citgm -v https://github.com/NodeRedis/node_redis/archive/v0.12.1.tar.gz
+citgm redis@latest
+citgm https://github.com/NodeRedis/node_redis/archive/v0.12.1.tar.gz
 ```
 (currently not working due to lack of redis server)
 ### socket.io
 ```
-citgm -lv socket.io@latest
-citgm -v https://github.com/Automattic/socket.io/archive/1.3.6.tar.gz
+citgm socket.io@latest
+citgm https://github.com/Automattic/socket.io/archive/1.3.6.tar.gz
 ```
 ### fs-extra
 ```
-citgm -lv fs-extra@latest
-citgm -v https://github.com/jprichardson/node-fs-extra/archive/0.22.1.tar.gz
+citgm fs-extra@latest
+citgm https://github.com/jprichardson/node-fs-extra/archive/0.22.1.tar.gz
 ```
 ### body-parser
 ```
-citgm -lv body-parser@latest
-citgm -v https://github.com/expressjs/body-parser/archive/1.13.2.tar.gz
+citgm body-parser@latest
+citgm https://github.com/expressjs/body-parser/archive/1.13.2.tar.gz
 ```
 ### uglify-js
 ```
-citgm -lv uglify-js@latest
-citgm -v https://github.com/mishoo/UglifyJS2/archive/v2.4.24.tar.gz
+citgm uglify-js@latest
+citgm https://github.com/mishoo/UglifyJS2/archive/v2.4.24.tar.gz
 ```
 ### winston
 ```
-citgm -v winston
+citgm winston
 ```
 ### jquery
 ```
-citgm -lv jqery@latest
-citgm -v https://github.com/jquery/jquery/archive/2.1.4.tar.gz
+citgm jqery@latest
+citgm https://github.com/jquery/jquery/archive/2.1.4.tar.gz
 ```
 (currently not working)
 ### handlebars
 ```
-citgm -lv handlebars@latest
-citgm -v https://github.com/wycats/handlebars.js/archive/v3.0.3.tar.gz
+citgm handlebars@latest
+citgm https://github.com/wycats/handlebars.js/archive/v3.0.3.tar.gz
 ```
 ### through
 ```
-citgm -v through
+citgm through
 ```
 ### rimraf
 ```
-citgm -lv rimraf@latest
-citgm -v https://github.com/isaacs/rimraf/archive/v2.4.2.tar.gz
+citgm rimraf@latest
+citgm https://github.com/isaacs/rimraf/archive/v2.4.2.tar.gz
 ```
 ### semver
 ```
-citgm -v semver
+citgm semver
 ```
 ### yosay
 ```
-citgm -lv yosay@latest
-citgm -v https://github.com/yeoman/yosay/archive/v1.0.5.tar.gz
+citgm yosay@latest
+citgm https://github.com/yeoman/yosay/archive/v1.0.5.tar.gz
 ```
 ### mime
 ```
-citgm -lv mime@latest
-citgm -v https://github.com/broofa/node-mime/archive/v1.3.4.tar.gz
+citgm mime@latest
+citgm https://github.com/broofa/node-mime/archive/v1.3.4.tar.gz
 ```
 ### mongodb
 ```
-citgm -lv mongodb@latest
-citgm -v https://github.com/mongodb/node-mongodb-native/archive/V2.0.39.tar.gz
+citgm mongodb@latest
+citgm https://github.com/mongodb/node-mongodb-native/archive/V2.0.39.tar.gz
 ```
 
 ## Contributors
 
 * James M Snell (@jasnell, jasnell@gmail.com / jasnell@us.ibm.com )
+* Myles Borins  (@thealphanerd, myles.borins@gmail.com / mborins@us.ibm.com )
