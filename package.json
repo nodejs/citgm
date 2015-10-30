@@ -10,7 +10,7 @@
     "citgm-dockerify": "./bin/citgm-dockerify"
   },
   "scripts": {
-    "test": "mocha test/test.js",
+    "test": "tap test/test-*.js",
     "lint": "eslint bin/* lib/"
   },
   "author": "James M Snell <jasnell@gmail.com> (http://jasnell.me)",
@@ -52,6 +52,6 @@
     "winston": "^1.0.1"
   },
   "devDependencies": {
-    "mocha": "^2.2.5"
+    "tap": "^2.2.0"
   }
 }
