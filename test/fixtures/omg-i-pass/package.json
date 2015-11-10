@@ -1,0 +1,18 @@
+{
+  "name": "omg-i-pass",
+  "version": "1.0.0",
+  "description": "Test suite always passes",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap test/test-*.js"
+  },
+  "keywords": [
+    "always",
+    "passes"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "tap": "^2.1.1"
+  }
+}
