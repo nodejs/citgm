@@ -10,6 +10,7 @@ test('citgm: omg-i-pass', function (t) {
   t.plan(1);
   var proc = spawn(citgmPath, ['omg-i-pass']);
   proc.on('error', function(err) {
+    t.error(err);
     t.fail('we should not get an error testing omg-i-pass');
   });
   proc.on('close', function (code) {
@@ -21,6 +22,7 @@ test('citgm: omg-i-fail', function (t) {
   t.plan(1);
   var proc = spawn(citgmPath, ['omg-i-fail']);
   proc.on('error', function(err) {
+    t.error(err);
     t.fail('we should not get an error testing omg-i-pass');
   });
   proc.on('close', function (code) {
