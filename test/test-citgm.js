@@ -1,4 +1,9 @@
 'use strict';
+
+// TODO this does not test HMAC
+// TODO this does not test the lookup table
+// TODO this does not test custom scripts
+
 var path = require('path');
 
 var test = require('tap').test;
