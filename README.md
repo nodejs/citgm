@@ -52,14 +52,24 @@ available. If a newer version has been published to npm, an info notice
 will appear in the verbose output. If the `-v` or `--verbose` flag is not
 set, the update notice will not be displayed.
 
+## Testing
+
+You can run the test suite using npm
+
+```bash
+npm run test
+```
+
+This will run both a linter as well as a tap based unit test suite.
+
 ## Notes
 
 You can identify the module to be tested using the same syntax supported by
 the `npm install` CLI command
 
 ```
-bin/citgm activitystrea.ms@latest
-bin/citgm git+http://github.com/jasnell/activitystrea.ms
+citgm activitystrea.ms@latest
+citgm git+http://github.com/jasnell/activitystrea.ms
 ```
 
 Quite a few modules published to npm do not have their tests included, so
@@ -67,14 +77,14 @@ we end up having to go directly to github. The most reliable approach is
 pulling down a tar ball for a specific branch from github:
 
 ```
-bin/citgm https://github.com/caolan/async/archive/master.tar.gz
+citgm https://github.com/caolan/async/archive/master.tar.gz
 ```
 
 If a module does not support npm test or requires additional init or
 teardown, you can run an alternative test script:
 
 ```
-bin/citgm https://github.com/lodash/lodash/archive/master.tar.gz known/lodash/test.js
+citgm https://github.com/lodash/lodash/archive/master.tar.gz known/lodash/test.js
 ```
 
 The custom script can be pulled from a remote location... although, it's wise
@@ -82,7 +92,7 @@ to be very very careful when doing so as the script will run with whatever
 permissions the citgm tool has (unless the `-u` and `-g` command line options
 are set on Posix systems only)
 ```
-bin/citgm git+https://github.com/lodash/lodash https://gist.githubusercontent.com/jasnell/b274b80db9acb8fa5839/raw/c2df819d589d5a7a91d2d48b0e787b4dcebf6e66/test.js
+citgm git+https://github.com/lodash/lodash https://gist.githubusercontent.com/jasnell/b274b80db9acb8fa5839/raw/c2df819d589d5a7a91d2d48b0e787b4dcebf6e66/test.js
 ```
 
 If a Content-HMAC header is returned in the HTTP response for the script,
@@ -99,7 +109,7 @@ and custom scripts. The lookup mechanism is switched on using the `-l` or
 `--lookup` command line option.
 
 ```
-bin/citgm lodash@latest
+citgm lodash@latest
 ```
 
 There is a built in lookup.json in the lib directory that will be used by
@@ -107,7 +117,7 @@ default. If you want to use an alternative lookup.json file, pass in the
 path:
 
 ```
-bin/citgm --lookup ../path/to/lookup.json lodash@latest
+citgm --lookup ../path/to/lookup.json lodash@latest
 ```
 
 For the most part, the built in table should be sufficient for general use.
@@ -176,13 +186,13 @@ to identify the custom script for you.
 
 ### Additional Notes:
 
-* You may experience some wonkiness on Windows as I have not fully
-  tested the tool on that platform.
+* You may experience some wonkiness on Windows as the tool has not been fully
+  tested on that platform.
 
 * The tool uses the npm and node in the PATH. To change which node and
   npm the tool uses, change the PATH before launching citgm
 
-* Running the tool in verbose mode (CLI switch `-v`) outputs significantly
+* Running the tool in verbose mode (CLI switch `-v silly`) outputs significantly
   more detail (which is likely what we'll want in a fully automated run)
 
 * If you've taken a look at the dependencies for this tool, you'll note that
