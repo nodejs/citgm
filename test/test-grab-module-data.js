@@ -1,3 +1,4 @@
+'use strict';
 // FIXME this is not a real unit test
 // FIXME it does not stub npm
 

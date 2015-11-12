@@ -1,3 +1,4 @@
+'use strict';
 var test = require('tap').test;
 
 var createOptions = require('../lib/create-options');

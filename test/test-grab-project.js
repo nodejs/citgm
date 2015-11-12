@@ -1,3 +1,4 @@
+'use strict';
 // FIXME not really a unit test
 // FIXME npm should be stubbed
 // TODO Test for local module... what does it even mean?
