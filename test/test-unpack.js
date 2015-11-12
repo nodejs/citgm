@@ -16,7 +16,7 @@ test('unpack: no unpack', function (t) {
   var context = {
     unpack: null,
     emit: function () {}
-  }
+  };
   
   unpack(context, function (err) {
     t.deepEquals(err, new Error('Nothing to unpack... Ending'), 'it should error out');
@@ -28,7 +28,7 @@ test('unpack: invalid unpack', function (t) {
   var context = {
     unpack: './test/fixtures/omg-i-fail.tar.gz',
     emit: function () {}
-  }
+  };
   
   unpack(context, function (err) {
     t.deepEquals(err, new Error('Nothing to unpack... Ending'), 'it should error out');
@@ -43,7 +43,7 @@ test('unpack: invalid unpack', function (t) {
     },
     unpack: './test/fixtures/omg-i-pass.tar.gz',
     emit: function () {}
-  }
+  };
 
   // FIXME I am not super convinced that the correct tar ball is being deflated
   // FIXME There is a possibility that the npm cache is trumping this 
@@ -61,5 +61,5 @@ test('unpack: invalid unpack', function (t) {
         });
       });
     });
-  })
+  });
 });

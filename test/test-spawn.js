@@ -16,7 +16,7 @@ test('spawn:', function (t) {
 
   child.on('close', function () {
     t.equals(message, 'Hello world.\n', 'we should receive "Hello world." on stdout');
-    t.equals(error, '', 'there should be no data on stderr')
+    t.equals(error, '', 'there should be no data on stderr');
     t.end();
   });
 
