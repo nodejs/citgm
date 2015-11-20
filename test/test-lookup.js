@@ -62,7 +62,10 @@ test('lookup[getLookupTable]: custom table', function (t) {
   }
 
   t.deepEquals(table, {
-    citgm: {
+    'omg-i-pass': {
+      replace: false
+    },
+    'rim-raf': {
       replace: true
     }
   }, 'we should receive the expected lookup table from the fixtures folder');
@@ -111,7 +114,8 @@ test('lookup: module in table', function (t) {
     lookup: null,
     module: {
       name: 'lodash',
-      raw: null
+      raw: null,
+      lookup: 'test/fixtures/custom-lookup.js'
     },
     meta: {
       repository: {
@@ -126,7 +130,7 @@ test('lookup: module in table', function (t) {
   
   lookup(context, function (err) {
     t.error(err);
-    t.ok(context.module.raw, 'raw should be truthy if the module was in the list');
+    t.equals(context.module.raw, 'https://github.com/lodash/lodash/archive/master.tar.gz', 'raw should be truthy if the module was in the list');
     t.end();
   });
 });

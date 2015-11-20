@@ -1,9 +1,11 @@
 {
   "lodash": {
-    "replace": true
+    "replace": true,
+    "master": true
   },
   "underscore": {
-    "replace": true
+    "replace": true,
+    "master": true
   },
   "request": {
     "replace": true,
