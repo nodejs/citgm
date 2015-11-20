@@ -9,7 +9,7 @@ var rewire = require('rewire');
 var lookup = rewire('../lib/lookup');
 
 var makeUrl = lookup.__get__('makeUrl');
-var getLookupTable = lookup.__get__('getLookupTable');
+var getLookupTable = lookup.get;
 
 test('lookup: makeUrl', function (t) {
   var repo = 'https://github.com/nodejs/citgm';
@@ -38,9 +38,7 @@ test('lookup: makeUrl', function (t) {
 test('lookup[getLookupTable]:', function (t) {
   try {
     var table = getLookupTable({
-      options: {
-        lookup: null
-      }
+      lookup: null
     });
   }
   catch (e) {
@@ -56,9 +54,7 @@ test('lookup[getLookupTable]:', function (t) {
 test('lookup[getLookupTable]: custom table', function (t) {
   try {
     var table = getLookupTable({
-      options: {
-        lookup: 'test/fixtures/custom-lookup.json'
-      }
+      lookup: 'test/fixtures/custom-lookup.json'
     });
   }
   catch (e) {
@@ -76,9 +72,7 @@ test('lookup[getLookupTable]: custom table', function (t) {
 test('lookup[getLookupTable]: custom table that does not exist', function (t) {
   try {
     var table = getLookupTable({
-      options: {
-        lookup: 'test/fixtures/i-am-not-a.json'
-      }
+      lookup: 'test/fixtures/i-am-not-a.json'
     });
   }
   catch (e) {
