@@ -4,34 +4,27 @@
 // TODO this does not test the lookup table
 // TODO this does not test custom scripts
 
-var path = require('path');
-
 var test = require('tap').test;
 
-var spawn = require('../lib/spawn');
-
-var citgmPath = path.resolve(__dirname, '..', 'bin', 'citgm');
+var citgm = require('../lib/citgm');
 
 test('citgm: omg-i-pass', function (t) {
-  t.plan(1);
-  var proc = spawn(citgmPath, ['omg-i-pass']);
-  proc.on('error', function(err) {
+  const options = {
+    script: null,
+    hmac: null,
+    lookup: null,
+    nodedir: null,
+    level: null
+  };
+  const mod = 'omg-i-pass';
+  
+  citgm.Tester(mod, options)
+  .on('start', function (name) {
+    t.equals(name, mod, 'it should be omg-i-pass');
+  }).on('fail', function (err) {
     t.error(err);
-    t.fail('we should not get an error testing omg-i-pass');
-  });
-  proc.on('close', function (code) {
-    t.ok(code === 0, 'omg-i-pass should pass and exit with a code of zero');
-  });
-});
-
-test('citgm: omg-i-fail', function (t) {
-  t.plan(1);
-  var proc = spawn(citgmPath, ['omg-i-fail']);
-  proc.on('error', function(err) {
-    t.error(err);
-    t.fail('we should not get an error testing omg-i-pass');
-  });
-  proc.on('close', function (code) {
-    t.equal(code, 1, 'omg-i-fail should fail and exit with a code of one');
-  });
+  }).on('end', function () {
+    t.notOk(process.exitCode, 'it should not exit');
+    t.done();
+  }).run();
 });
