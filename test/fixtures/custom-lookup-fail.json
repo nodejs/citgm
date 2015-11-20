@@ -1,0 +1,8 @@
+{
+  "omg-i-pass": {
+    "replace": true
+  },
+  "omg-i-fail": {
+    "replace": false
+  }
+}

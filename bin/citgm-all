@@ -1,0 +1,120 @@
+#!/usr/bin/env node
+'use strict';
+var update = require('../lib/update');
+var citgm = require('../lib/citgm');
+var logger = require('../lib/out');
+var getLookup = require('../lib/lookup').get;
+var app = require('commander');
+var async = require('async');
+
+app
+  .version('0.2.3')
+  .arguments('<module> [test]')
+  .action(function() {
+  })
+  .option(
+    '-v, --verbose [level]',
+    'Verbose output (silly, vebose, info, warn, error)',
+    /^(silly|verbose|info|warn|error)$/i, 'info')
+  .option(
+    '-l, --lookup <path>',
+      'Use the lookup table provided at <path>'
+  )
+  .option(
+      '-d, --nodedir <path>',
+      'Path to the node source to use when compiling native addons'
+  )
+  .option(
+    '-n, --no-color', 'Turns off colorized output'
+  )
+  .option(
+    '-s, --su', 'Allow running the tool as root.'
+  );
+
+if (!citgm.windows) {
+  app.option(
+    '-u, --uid <uid>', 'Set the uid (posix only)'
+  )
+  .option(
+    '-g, --gid <uid>', 'Set the gid (posix only)'
+  );
+}
+
+app.parse(process.argv);
+
+var log = logger({
+  level: app.verbose,
+  nocolor: !app.color
+});
+
+update(log);
+
+if (!app.su) {
+  require('root-check')(); // silently downgrade if running as root...
+                           // unless --su is passed
+} else {
+  log.warn('root', 'Running as root! Use caution!');
+}
+
+var options = {
+  lookup: app.lookup,
+  nodedir: app.nodedir,
+  level: app.verbose
+};
+
+var lookup = getLookup(options);
+var modules = Object.getOwnPropertyNames(lookup);
+
+if (!citgm.windows) {
+  var uidnumber = require('uid-number');
+  var uid = app.uid || process.getuid();
+  var gid = app.gid || process.getgid();
+  uidnumber(uid,gid, function(err, uid, gid) {
+    options.uid = uid;
+    options.gid = gid;
+    launch(options);
+  });
+} else {
+  launch(options);
+}
+
+var exitCode = 0;
+var failed = [];
+
+function runCitgm (mod, next) {
+  citgm.Tester(mod, options)
+  .on('start', function(name) {
+    log.info('starting', name);
+  }).on('fail', function(err) {
+    failed.push({
+      name: mod,
+      err: err.message
+    });
+    log.error('failure', err.message);
+    process.exitCode = 1;
+  }).on('data', function(type,key,message) {
+    log[type](key, message);
+  }).on('end', function(name) {
+    if (process.exitCode) {
+      log.error('done', 'The test suite for ' + name + ' failed');
+      exitCode = process.exitCode;
+      process.exitCode = 0;
+    }
+    else {
+      log.info('done', 'The test suite for ' + name + ' passed.');
+    }
+    next();
+  }).run();
+}
+
+function launch() {
+  async.eachSeries(modules, runCitgm, function done () {
+    if (exitCode) {
+      process.exitCode = exitCode;
+      log.error('done', 'citgm-all failed');
+      log.error('failed modules', failed);
+      process.exit();
+    }
+    log.info('done', 'citgm-all passed.');
+  });
+}

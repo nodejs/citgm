@@ -7,11 +7,12 @@
   "preferGlobal": true,
   "bin": {
     "citgm": "./bin/citgm",
-    "citgm-dockerify": "./bin/citgm-dockerify"
+    "citgm-dockerify": "./bin/citgm-dockerify",
+    "citgm-all": "./bin/citgm-all"
   },
   "scripts": {
     "test": "npm run lint && npm run tap",
-    "tap": "tap test/test-*.js",
+    "tap": "TAP_TIMEOUT=90 tap test/test-*.js",
     "lint": "eslint bin/* lib/ test/",
     "watch": "nodemon --ignore node_modules/ -e js,json --exec 'npm run tap'"
   },

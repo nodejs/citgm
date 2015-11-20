@@ -2,7 +2,8 @@
   "omg-i-pass": {
     "replace": false
   },
-  "rim-raf": {
-    "replace": true
+  "rimraf": {
+    "replace": true,
+    "prefix": "v"
   }
 }
