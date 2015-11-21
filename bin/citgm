@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 'use strict';
-const update = require('../lib/update');
-const citgm = require('../lib/citgm');
-const logger = require('../lib/out');
-const app = require('commander');
+var update = require('../lib/update');
+var citgm = require('../lib/citgm');
+var logger = require('../lib/out');
+var app = require('commander');
 
 var mod, test;
 app
@@ -45,7 +45,7 @@ if (!citgm.windows) {
 
 app.parse(process.argv);
 
-const log = logger({
+var log = logger({
   level:app.verbose,
   nocolor: !app.color
 });
@@ -63,7 +63,7 @@ if (!app.su) {
   log.warn('root', 'Running as root! Use caution!');
 }
 
-const options = {
+var options = {
   script: test,
   hmac: app.hmac,
   lookup: app.lookup,

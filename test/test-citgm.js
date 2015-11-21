@@ -9,14 +9,14 @@ var test = require('tap').test;
 var citgm = require('../lib/citgm');
 
 test('citgm: omg-i-pass', function (t) {
-  const options = {
+  var options = {
     script: null,
     hmac: null,
     lookup: null,
     nodedir: null,
     level: null
   };
-  const mod = 'omg-i-pass';
+  var mod = 'omg-i-pass';
   
   citgm.Tester(mod, options)
   .on('start', function (name) {
