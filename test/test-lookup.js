@@ -65,8 +65,9 @@ test('lookup[getLookupTable]: custom table', function (t) {
     'omg-i-pass': {
       replace: false
     },
-    'rim-raf': {
-      replace: true
+    'rimraf': {
+      replace: true,
+      prefix: 'v'
     }
   }, 'we should receive the expected lookup table from the fixtures folder');
   t.end();

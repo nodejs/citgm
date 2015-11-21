@@ -63,7 +63,6 @@ var options = {
 };
 
 var lookup = getLookup(options);
-var modules = Object.getOwnPropertyNames(lookup);
 
 if (!citgm.windows) {
   var uidnumber = require('uid-number');
@@ -81,13 +80,18 @@ if (!citgm.windows) {
 var exitCode = 0;
 var failed = [];
 
-function runCitgm (mod, next) {
-  citgm.Tester(mod, options)
+function runCitgm (module, name, next) {
+  if (module.skip) {
+    next();
+    return;
+  }
+  
+  citgm.Tester(name, options)
   .on('start', function(name) {
     log.info('starting', name);
   }).on('fail', function(err) {
     failed.push({
-      name: mod,
+      name: name,
       err: err.message
     });
     log.error('failure', err.message);
@@ -108,12 +112,12 @@ function runCitgm (mod, next) {
 }
 
 function launch() {
-  async.eachSeries(modules, runCitgm, function done () {
+  async.forEachOfSeries(lookup, runCitgm, function done () {
     if (exitCode) {
       process.exitCode = exitCode;
       log.error('done', 'citgm-all failed');
       log.error('failed modules', failed);
-      process.exit();
+      process.exit(exitCode);
     }
     log.info('done', 'citgm-all passed.');
   });

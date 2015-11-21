@@ -30,3 +30,14 @@ test('citgm-all: fail', function (t) {
     t.equals(code, 1, 'citgm-all should have failed');
   });
 });
+
+test('citgm-all: skip', function (t) {
+  t.plan(1);
+  var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup-skip.json']);
+  proc.on('error', function(err) {
+    t.error(err);
+  });
+  proc.on('close', function (code) {
+    t.equals(code, 0, 'it should run omg-i-pass and skip omg-i-fail');
+  });
+});

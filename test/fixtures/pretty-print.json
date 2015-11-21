@@ -1,0 +1,14 @@
+{
+  "chalk": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "colors": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "yosay": {
+    "replace": true,
+    "prefix": "v"
+  }
+}
