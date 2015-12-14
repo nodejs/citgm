@@ -16,8 +16,7 @@ npm install -g citgm
 bin/citgm --help
 ```
 
-(If citgm is installed globally, you can also `man citgm` and
-`man citgm-dockerify`)
+(If citgm is installed globally, you can also `man citgm`)
 
 ```
 Usage: citgm [options] <module> [test]
@@ -121,68 +120,6 @@ citgm --lookup ../path/to/lookup.json lodash@latest
 ```
 
 For the most part, the built in table should be sufficient for general use.
-
-### Using Docker
-
-You can optionally create a Docker image for running specific citgm tests
-using the `citgm-dockerify` tool.
-
-```
-Usage: citgm-dockerify [options] <image> <module> [test]
-
-Generates a Docker image that can be used to run citgm for a specific module
-
-Options:
-
-  -h, --help           output usage information
-  -V, --version        output the version number
-  -t, --tag <tag>      Docker image tag
-  -r, --run            Run the docker image immediately after build
-  -v, --verbose        Verbose output
-  -k, --hmac <key>     HMAC Key for Script Verification
-  -l, --lookup [path]  Use the lookup table. Optional [path] for alternate json
-                       file
-  -d, --nodedir        Create the docker image with a /nodedir volume.
-                       The workding directory MUST contain a nodedir
-                       directory containing the node source image to use.
-                       This must be located in the working directory in
-                       or docker will refuse to copy it.
-  -c, --citgmdir <path> By default, the docker image will install citgm from
-                        npm. Use this to tell the image to install from a host
-                        volume.
-  -n, --no-color       Turns off colorized output
-  -s, --su             Allow running the tool as root
-  -u, --uid <uid>      Set the uid (posix only)
-  -g, --gid <uid>      Set the gid (posix only)
-  -d, --docker <name>  Alternate docker binary name
-```
-
-For example:
-
-```
-citgm-dockerify -t underscore -lv iojs@latest underscore
-```
-
-If successful, this will create the `citgm-underscore` docker image, which
-can then be run using:
-
-```
-docker run citgm-underscore
-```
-
-You can automatically run the docker image after creating using the `-r`
-command line switch.
-
-Note: because of some weirdness in the way docker establishes the base
-cwd when building an image, it's best to run `citgm-dockerify` from an
-empty directory. The tool will generate the Dockerfile and artifacts it
-needs, build the image, then delete the temporary files.
-
-Also, there's an issue with using the docker image with tests in the lookup
-JSON file that use custom scripts (i.e. lodash). Specifically, using the
-lookup table will not currently work. If you want to dockerify a test using
-a custom script, pass it in explicitly and do not rely on the lookup table
-to identify the custom script for you.
 
 ### Additional Notes:
 
