@@ -17,17 +17,10 @@
     "repo": "https://github.com/tj/commander.js"
   },
   "express": {
-    "replace": true
-  },
-  "chalk": {
     "replace": true,
-    "prefix": "v"
+    "flakey": true
   },
   "q": {
-    "replace": true,
-    "prefix": "v"
-  },
-  "colors": {
     "replace": true,
     "prefix": "v"
   },
@@ -38,16 +31,8 @@
     "replace": true,
     "prefix": "v"
   },
-  "bluebird": {
-    "replace": true,
-    "prefix": "v"
-  },
   "moment": {
     "replace": true
-  },
-  "yeoman-generator": {
-    "replace": true,
-    "prefix": "v"
   },
   "glob": {
     "replace": true,
@@ -59,10 +44,6 @@
   },
   "jade": {
     "replace": true
-  },
-  "redis": {
-    "replace": true,
-    "prefix": "v"
   },
   "socket.io": {
     "replace": true
@@ -78,26 +59,44 @@
     "prefix": "v"
   },
   "jquery": {
-    "replace": true
-  },
-  "handlebars": {
     "replace": true,
-    "prefix": "v"
+    "flakey": true
   },
   "rimraf": {
     "replace": true,
     "prefix": "v"
   },
-  "yosay": {
+  "david": {
+    "replace": true
+  },
+  "eslint": {
     "replace": true,
     "prefix": "v"
   },
-  "mime": {
+  "tape": {
     "replace": true,
     "prefix": "v"
   },
-  "mongodb": {
+  "browserify": {
+    "replace": true
+  },
+  "watchify": {
     "replace": true,
-    "prefix": "V"
+    "prefix": "v"
+  },
+  "stylus": {
+    "replace": true
+  },
+  "level": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "torrent-stream": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "webpack": {
+    "replace": true,
+    "prefix": "v"
   }
 }
