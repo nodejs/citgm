@@ -89,14 +89,14 @@ function launch(mod, options) {
     log.info('starting', name);
   }).on('fail', function(err) {
     log.error('failure', err.message);
-    process.exitCode = 1;
   }).on('data', function(type,key,message) {
     log[type](key, message);
-  }).on('end', function(name) {
-    if (process.exitCode) {
-      log.error('done', 'The test suite for ' + name + ' failed');
+  }).on('end', function(module) {
+    if (module.error) {
+      process.exitCode = 1;
+      log.error('done', 'The test suite for ' + module.name + ' failed');
       process.exit();
     }
-    log.info('done', 'The test suite for ' + name + ' passed.');
+    log.info('done', 'The test suite for ' + module.name + ' passed.');
   }).run();
 }
