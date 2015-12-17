@@ -7,7 +7,6 @@
   "preferGlobal": true,
   "bin": {
     "citgm": "./bin/citgm",
-    "citgm-dockerify": "./bin/citgm-dockerify",
     "citgm-all": "./bin/citgm-all"
   },
   "scripts": {
