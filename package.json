@@ -37,6 +37,7 @@
     "eslint": "^1.8.0",
     "fs-extra": "^0.24.0",
     "fstream": "^1.0.7",
+    "lodash": "^3.10.1",
     "node-uuid": "^1.4.3",
     "normalize-git-url": "^3.0.1",
     "npm-package-arg": "^4.0.2",
