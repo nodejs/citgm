@@ -16,7 +16,7 @@ app
   })
   .option(
     '-v, --verbose [level]',
-    'Verbose output (silly, vebose, info, warn, error)',
+    'Verbose output (silly, verbose, info, warn, error)',
     /^(silly|verbose|info|warn|error)$/i, 'info')
   .option(
     '-l, --lookup <path>',
