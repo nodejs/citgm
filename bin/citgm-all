@@ -136,10 +136,10 @@ function printModules(logType, modules) {
 function printModulesMarkdown(title, modules) {
   /*eslint-disable no-console*/
   if (modules.length > 0) {
-    console.log('##' + title + ' Modules');
+    console.log('### ' + title + ' Modules');
     _.each(modules, function (module) {
       console.log('* ' + module.name);
-      console.log('  * version ' + module.version);
+      console.log('  - version ' + module.version);
       if (module.error) {
         console.log('  * ' + module.error.message);
       }
@@ -147,6 +147,20 @@ function printModulesMarkdown(title, modules) {
     console.log('');
   }
   /*eslint-enable no-console*/
+}
+
+function printMarkdown() {
+  /*eslint-disable no-console*/
+  if (failed.length === 0) {
+    console.log('## CITGM Passed')
+  }
+  else {
+    console.log('## CITGM FAILED')
+  }
+  /*eslint-enable no-console*/
+  printModulesMarkdown('Passing', passed);
+  printModulesMarkdown('Flakey', flakey);
+  printModulesMarkdown('Failing', failed);
 }
 
 function launch() {
@@ -169,9 +183,7 @@ function launch() {
       log.info('done', 'citgm-all passed.');
     }
     if (app.markdown) {
-      printModulesMarkdown('Passing', passed);
-      printModulesMarkdown('Flakey', flakey);
-      printModulesMarkdown('Failing', failed);
+      printMarkdown();
     }
     process.exit(exitCode);
   });
