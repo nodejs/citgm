@@ -67,7 +67,8 @@
     "prefix": "v"
   },
   "david": {
-    "replace": true
+    "replace": true,
+    "prefix": "v"
   },
   "eslint": {
     "replace": true,
@@ -95,7 +96,11 @@
     "replace": true,
     "prefix": "v"
   },
-  "webpack": {
+  "react": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "gulp": {
     "replace": true,
     "prefix": "v"
   }
