@@ -152,10 +152,10 @@ function printModulesMarkdown(title, modules) {
 function printMarkdown() {
   /*eslint-disable no-console*/
   if (failed.length === 0) {
-    console.log('## CITGM Passed')
+    console.log('## 🎉🎉 CITGM Passed 🎉🎉');
   }
   else {
-    console.log('## CITGM FAILED')
+    console.log('## 🔥⚠️🔥 CITGM FAILED 🔥⚠️🔥');
   }
   /*eslint-enable no-console*/
   printModulesMarkdown('Passing', passed);
