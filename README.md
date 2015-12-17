@@ -51,6 +51,30 @@ available. If a newer version has been published to npm, an info notice
 will appear in the verbose output. If the `-v` or `--verbose` flag is not
 set, the update notice will not be displayed.
 
+## citgm-all
+
+If you want to run all the test suites for all modules found in a lookup
+table use citgm-all. It will automate the running of all tests and give
+itemized results at the end. It has all the same options as citgm except
+for the added markdown option which will print the results in markdown.
+
+```
+Usage: citgm-all [options]
+
+Options:
+
+  -h, --help             output usage information
+  -V, --version          output the version number
+  -v, --verbose [level]  Verbose output (silly, verbose, info, warn, error)
+  -l, --lookup <path>    Use the lookup table provided at <path>
+  -d, --nodedir <path>   Path to the node source to use when compiling native addons
+  -n, --no-color         Turns off colorized output
+  -s, --su               Allow running the tool as root.
+  -m, --markdown         Output results in markdown
+  -u, --uid <uid>        Set the uid (posix only)
+  -g, --gid <uid>        Set the gid (posix only)
+```
+
 ## Testing
 
 You can run the test suite using npm
