@@ -94,9 +94,9 @@ function launch(mod, options) {
   }).on('end', function(module) {
     if (module.error) {
       process.exitCode = 1;
-      log.error('done', 'The test suite for ' + module.name + ' failed');
+      log.error('done', 'The test suite for ' + module.name + ' version ' + module.version + ' failed');
       process.exit();
     }
-    log.info('done', 'The test suite for ' + module.name + ' passed.');
+    log.info('done', 'The test suite for ' + module.name + ' version ' + module.version + ' passed.');
   }).run();
 }

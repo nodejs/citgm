@@ -3,6 +3,7 @@
 var app = require('commander');
 var async = require('async');
 var _ = require('lodash');
+var chalk = require('chalk');
 
 var update = require('../lib/update');
 var citgm = require('../lib/citgm');
@@ -101,7 +102,7 @@ function runCitgm (mod, name, next) {
     log[type](key, message);
   }).on('end', function(module) {
     if (module.error) {
-      log.error('done', 'The test suite for ' + module.name + ' failed');
+      log.error('done', 'The test suite for ' + module.name + ' version ' + module.version + ' failed');
       if (mod.flakey) {
         flakey.push(module);
       }
@@ -112,14 +113,15 @@ function runCitgm (mod, name, next) {
     }
     else {
       passed.push(module);
-      log.info('done', 'The test suite for ' + module.name + ' passed.');
+      log.info('done', 'The test suite for ' + module.name + ' version ' + module.version + ' passed.');
     }
     next();
   }).run();
 }
 
 function printModule(logType, module) {
-  log[logType]('module name', module.name);
+  log[logType](chalk.yellow('module name:'), module.name);
+  log[logType](chalk.yellow('version:'), module.version);
   if (module.error) {
     log[logType]('error', module.error.message);
   }
@@ -132,16 +134,19 @@ function printModules(logType, modules) {
 }
 
 function printModulesMarkdown(title, modules) {
+  /*eslint-disable no-console*/
   if (modules.length > 0) {
     console.log('##' + title + ' Modules');
     _.each(modules, function (module) {
       console.log('* ' + module.name);
+      console.log('  * version ' + module.version);
       if (module.error) {
         console.log('  * ' + module.error.message);
       }
     });
     console.log('');
   }
+  /*eslint-enable no-console*/
 }
 
 function launch() {
