@@ -2,7 +2,6 @@
 'use strict';
 var app = require('commander');
 var async = require('async');
-var _ = require('lodash');
 var chalk = require('chalk');
 
 var update = require('../lib/update');
@@ -128,8 +127,8 @@ function printModule(logType, module) {
 }
 
 function printModules(logType, modules) {
-  _.each(modules, function (module) {
-    printModule(logType, module);
+  Object.keys(modules).forEach(function (k) {
+    printModule(logType, modules[k]);
   });
 }
 
@@ -137,7 +136,8 @@ function printModulesMarkdown(title, modules) {
   /*eslint-disable no-console*/
   if (modules.length > 0) {
     console.log('##' + title + ' Modules');
-    _.each(modules, function (module) {
+    Object.keys(modules).forEach(function (k) {
+      var module = modules[k]
       console.log('* ' + module.name);
       console.log('  * version ' + module.version);
       if (module.error) {
