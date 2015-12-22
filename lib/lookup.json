@@ -31,9 +31,6 @@
     "replace": true,
     "prefix": "v"
   },
-  "moment": {
-    "replace": true
-  },
   "glob": {
     "replace": true,
     "prefix": "v"
@@ -98,7 +95,8 @@
   },
   "react": {
     "replace": true,
-    "prefix": "v"
+    "prefix": "v",
+    "flakey": true
   },
   "gulp": {
     "replace": true,
