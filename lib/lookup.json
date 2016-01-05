@@ -43,7 +43,8 @@
     "replace": true
   },
   "socket.io": {
-    "replace": true
+    "replace": true,
+    "flakey": true
   },
   "fs-extra": {
     "replace": true
