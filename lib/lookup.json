@@ -9,7 +9,8 @@
   },
   "request": {
     "replace": true,
-    "prefix": "v"
+    "prefix": "v",
+    "flakey": true
   },
   "commander": {
     "replace": true,
