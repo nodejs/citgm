@@ -10,7 +10,7 @@
   "request": {
     "replace": true,
     "prefix": "v",
-    "flakey": true
+    "flaky": true
   },
   "commander": {
     "replace": true,
@@ -19,7 +19,7 @@
   },
   "express": {
     "replace": true,
-    "flakey": true
+    "flaky": true
   },
   "q": {
     "replace": true,
@@ -45,7 +45,7 @@
   },
   "socket.io": {
     "replace": true,
-    "flakey": true
+    "flaky": true
   },
   "fs-extra": {
     "replace": true
@@ -59,7 +59,7 @@
   },
   "jquery": {
     "replace": true,
-    "flakey": true
+    "flaky": true
   },
   "rimraf": {
     "replace": true,
@@ -98,7 +98,7 @@
   "react": {
     "replace": true,
     "prefix": "v",
-    "flakey": true
+    "flaky": true
   },
   "gulp": {
     "replace": true,

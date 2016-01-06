@@ -85,7 +85,7 @@ if (!citgm.windows) {
 var exitCode = 0;
 var failed = [];
 var passed = [];
-var flakey = [];
+var flaky = [];
 
 function runCitgm (mod, name, next) {
   if (mod.skip) {
@@ -103,8 +103,8 @@ function runCitgm (mod, name, next) {
   }).on('end', function(module) {
     if (module.error) {
       log.error('done', 'The test suite for ' + module.name + ' version ' + module.version + ' failed');
-      if (mod.flakey) {
-        flakey.push(module);
+      if (mod.flaky) {
+        flaky.push(module);
       }
       else {
         exitCode = 1;
@@ -159,7 +159,7 @@ function printMarkdown() {
   }
   /*eslint-enable no-console*/
   printModulesMarkdown('Passing', passed);
-  printModulesMarkdown('Flakey', flakey);
+  printModulesMarkdown('Flaky', flaky);
   printModulesMarkdown('Failing', failed);
 }
 
@@ -169,9 +169,9 @@ function launch() {
       log.info('passing modules');
       printModules('info', passed);
     }
-    if (flakey.length > 0) {
-      log.warn('flakey modules');
-      printModules('warn', flakey);
+    if (flaky.length > 0) {
+      log.warn('flaky modules');
+      printModules('warn', flaky);
     }
     if (failed.length > 0) {
       process.exitCode = exitCode;
