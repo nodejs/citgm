@@ -93,7 +93,8 @@
   },
   "torrent-stream": {
     "replace": true,
-    "prefix": "v"
+    "prefix": "v",
+    "flaky": true
   },
   "react": {
     "replace": true,
