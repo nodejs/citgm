@@ -103,7 +103,9 @@ function runCitgm (mod, name, next) {
   }).on('end', function(module) {
     if (module.error) {
       log.error('done', 'The test suite for ' + module.name + ' version ' + module.version + ' failed');
-      if (mod.flaky) {
+      // TODO the module should likely mark itself flaky on error
+      //       but currently all flaky logic lives in citgm-all
+      if (mod.flaky || module.error.message === 'No project downloaded') {
         flaky.push(module);
       }
       else {
