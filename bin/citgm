@@ -19,6 +19,10 @@ app
     'Verbose output (silly, verbose, info, warn, error)',
     /^(silly|verbose|info|warn|error)$/i, 'info')
   .option(
+    '-q, --npm-loglevel [level]',
+    'Verbose output (silent, error, warn, http, info, verbose, silly)',
+    /^(silent|error|warn|http|info|verbose|silly)$/i, 'error')
+  .option(
     '-l, --lookup <path>',
     'Use the lookup table provided at <path>'
   )
@@ -66,7 +70,8 @@ if (!app.su) {
 var options = {
   lookup: app.lookup,
   nodedir: app.nodedir,
-  level: app.verbose
+  level: app.verbose,
+  npmLevel: app.npmLoglevel
 };
 
 if (!citgm.windows) {

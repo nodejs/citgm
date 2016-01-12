@@ -23,17 +23,16 @@ Usage: citgm [options] <module>
 
 Options:
 
-  -h, --help           output usage information
-  -V, --version        output the version number
-  -v, --verbose        Verbose output
-  -l, --lookup [path]  Use the lookup table. Optional [path] for alternate
-                       json file
-  -d, --nodedir <path> Path to the node source to use when compiling native
-                       addons
-  -n, --no-color       Turns off colorized output
-  -s, --su             Allow running the tool as root
-  -u, --uid <uid>      Set the uid (posix only)
-  -g, --gid <uid>      Set the gid (posix only)
+  -h, --help                 output usage information
+  -V, --version              output the version number
+  -v, --verbose [level]      Verbose output (silly, verbose, info, warn, error)
+  -q, --npm-loglevel [level]  Verbose output (silent, error, warn, http, info, verbose, silly)
+  -l, --lookup <path>        Use the lookup table provided at <path>
+  -d, --nodedir <path>       Path to the node source to use when compiling native addons
+  -n, --no-color             Turns off colorized output
+  -s, --su                   Allow running the tool as root.
+  -u, --uid <uid>            Set the uid (posix only)
+  -g, --gid <uid>            Set the gid (posix only)
 ```
 
 The tool requires online access to the npm registry to run. If you want to
@@ -62,16 +61,17 @@ Usage: citgm-all [options]
 
 Options:
 
-  -h, --help             output usage information
-  -V, --version          output the version number
-  -v, --verbose [level]  Verbose output (silly, verbose, info, warn, error)
-  -l, --lookup <path>    Use the lookup table provided at <path>
-  -d, --nodedir <path>   Path to the node source to use when compiling native addons
-  -n, --no-color         Turns off colorized output
-  -s, --su               Allow running the tool as root.
-  -m, --markdown         Output results in markdown
-  -u, --uid <uid>        Set the uid (posix only)
-  -g, --gid <uid>        Set the gid (posix only)
+  -h, --help                 output usage information
+  -V, --version              output the version number
+  -v, --verbose [level]      Verbose output (silly, verbose, info, warn, error)
+  -q, --npm-loglevel [level]  Verbose output (silent, error, warn, http, info, verbose, silly)
+  -l, --lookup <path>        Use the lookup table provided at <path>
+  -d, --nodedir <path>       Path to the node source to use when compiling native addons
+  -n, --no-color             Turns off colorized output
+  -s, --su                   Allow running the tool as root.
+  -m, --markdown             Output results in markdown
+  -u, --uid <uid>            Set the uid (posix only)
+  -g, --gid <uid>            Set the gid (posix only)
 ```
 
 ## Testing
