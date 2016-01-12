@@ -104,5 +104,8 @@
   "gulp": {
     "replace": true,
     "prefix": "v"
+  },
+  "moment": {
+    "replace": true
   }
 }
