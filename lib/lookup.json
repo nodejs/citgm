@@ -1,7 +1,8 @@
 {
   "lodash": {
     "replace": true,
-    "master": true
+    "master": true,
+    "flaky": true
   },
   "underscore": {
     "replace": true,
