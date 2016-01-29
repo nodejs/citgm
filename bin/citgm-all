@@ -10,8 +10,10 @@ var citgm = require('../lib/citgm');
 var logger = require('../lib/out');
 var getLookup = require('../lib/lookup').get;
 
+var pkg = require('../package.json');
+
 app
-  .version('0.2.3')
+  .version(pkg.version)
   .action(function() {
   })
   .option(

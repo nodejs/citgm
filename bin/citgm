@@ -5,9 +5,11 @@ var citgm = require('../lib/citgm');
 var logger = require('../lib/out');
 var app = require('commander');
 
+var pkg = require('../package.json');
+
 var mod, test;
 app
-  .version('0.2.3')
+  .version(pkg.version)
   .arguments('<module>')
   .action(function(m) {
     mod = m;
