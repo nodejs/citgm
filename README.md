@@ -19,14 +19,13 @@ bin/citgm --help
 (If citgm is installed globally, you can also `man citgm`)
 
 ```
-Usage: citgm [options] <module> [test]
+Usage: citgm [options] <module>
 
 Options:
 
   -h, --help           output usage information
   -V, --version        output the version number
   -v, --verbose        Verbose output
-  -k, --hmac <key>     HMAC Key for Script Verification
   -l, --lookup [path]  Use the lookup table. Optional [path] for alternate
                        json file
   -d, --nodedir <path> Path to the node source to use when compiling native

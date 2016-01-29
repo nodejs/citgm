@@ -4,7 +4,7 @@
 .SH NAME
 citgm \- Canary in the Goldmine
 .SH SYNOPSIS
-citgm [options] <module> [custom-test-script]
+citgm [options] <module>
 .SH DESCRIPTION
 citgm is a tool for testing Node.js modules against different Node.js builds.
 Specifically, it automates the 'npm install' and 'npm test' steps and reports
@@ -19,9 +19,6 @@ output the version number
 .TP
 .BR \-v ", " \-\-verbose " " \fI[silly|verbose|info|warn|error]\fR
 Verbose output (silly,verbose,info,warn,error)
-.TP
-.BR \-k ", " \-\-hmac " " \fIkey\fR
-HMAC Key for Script Verification
 .TP
 .BR \-l ", " \-\-lookup " " \fI<path>\fR
 Use the lookup table provided at <path>
@@ -48,14 +45,6 @@ Test the latest underscore module:
 Test a local module:
 
   citgm ./my-module
-
-Test using a custom script:
-
-  citgm ./my-module ./my-custom-test.js
-
-Test using a custom remote script:
-
-  citgm -k hmackey ./my-module http://example.org/my-custom-test.js
 
 Test using a tar.gz from Github:
 
