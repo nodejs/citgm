@@ -8,24 +8,21 @@ var app = require('commander');
 var mod, test;
 app
   .version('0.2.3')
-  .arguments('<module> [test]')
-  .action(function(m, t) {
+  .arguments('<module>')
+  .action(function(m) {
     mod = m;
-    test = t;
   })
   .option(
     '-v, --verbose [level]',
     'Verbose output (silly, verbose, info, warn, error)',
     /^(silly|verbose|info|warn|error)$/i, 'info')
   .option(
-    '-k, --hmac <key>', 'HMAC Key for Script Verification')
-  .option(
     '-l, --lookup <path>',
-      'Use the lookup table provided at <path>'
+    'Use the lookup table provided at <path>'
   )
   .option(
-      '-d, --nodedir <path>',
-      'Path to the node source to use when compiling native addons'
+    '-d, --nodedir <path>',
+    'Path to the node source to use when compiling native addons'
   )
   .option(
     '-n, --no-color', 'Turns off colorized output'
@@ -49,6 +46,7 @@ var log = logger({
   level:app.verbose,
   nocolor: !app.color
 });
+
 update(log);
 
 if (!mod) {
@@ -64,23 +62,22 @@ if (!app.su) {
 }
 
 var options = {
-  script: test,
-  hmac: app.hmac,
   lookup: app.lookup,
   nodedir: app.nodedir,
   level: app.verbose
 };
+
 if (!citgm.windows) {
   var uidnumber = require('uid-number');
   var uid = app.uid || process.getuid();
   var gid = app.gid || process.getgid();
-  uidnumber(uid,gid, function(err, uid, gid) {
+  uidnumber(uid, gid, function(err, uid, gid) {
     options.uid = uid;
     options.gid = gid;
     launch(mod, options);
   });
 } else {
-  launch(mod,options);
+  launch(mod, options);
 }
 
 function launch(mod, options) {
@@ -89,7 +86,7 @@ function launch(mod, options) {
     log.info('starting', name);
   }).on('fail', function(err) {
     log.error('failure', err.message);
-  }).on('data', function(type,key,message) {
+  }).on('data', function(type, key, message) {
     log[type](key, message);
   }).on('end', function(module) {
     if (module.error) {
