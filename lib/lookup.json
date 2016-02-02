@@ -110,5 +110,81 @@
   },
   "ws": {
     "replace": true
+  },
+  "vinyl": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "vinyl-fs": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "readable-stream": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "ftp": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "split2": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "throughv": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "duplexer2": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "bl": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "binary-split": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "spdy": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "dicer": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "spdy-transport": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "sax": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "duplexify": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "pumpify": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "from2": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "flush-write-stream": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "jsonstream": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "csv-parser": {
+    "replace": true,
+    "prefix": "v"
   }
 }
