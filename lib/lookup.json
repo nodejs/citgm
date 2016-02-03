@@ -194,5 +194,47 @@
   "csv-parser": {
     "replace": true,
     "prefix": "v"
+  },
+  "async": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "bluebird": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "mkdirp": {
+    "replace": true,
+    "master": true
+  },
+  "yeoman-generator": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "minimist": {
+    "replace": true
+  },
+  "cheerio": {
+    "replace": true
+  },
+  "node-uuid": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "winston": {
+    "replace": true
+  },
+  "yargs": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "semver": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "mime": {
+    "replace": true,
+    "prefix": "v",
+    "flaky": true
   }
 }
