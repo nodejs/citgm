@@ -41,7 +41,8 @@
     "prefix": "v"
   },
   "jade": {
-    "replace": true
+    "replace": true,
+    "repo": "https://github.com/pugjs/jade"
   },
   "socket.io": {
     "replace": true,
