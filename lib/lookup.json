@@ -1,7 +1,6 @@
 {
   "lodash": {
-    "replace": true,
-    "master": true
+    "replace": true
   },
   "underscore": {
     "replace": true,
@@ -68,8 +67,7 @@
   },
   "david": {
     "replace": true,
-    "prefix": "v",
-    "master": true
+    "prefix": "v"
   },
   "eslint": {
     "replace": true,
