@@ -107,5 +107,8 @@
   },
   "moment": {
     "replace": true
+  },
+  "ws": {
+    "replace": true
   }
 }
