@@ -149,7 +149,8 @@
   },
   "spdy": {
     "replace": true,
-    "prefix": "v"
+    "prefix": "v",
+    "flaky": true
   },
   "dicer": {
     "replace": true,
