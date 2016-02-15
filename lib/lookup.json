@@ -274,5 +274,9 @@
   "assert-plus": {
     "replace": true,
     "prefix": "v"
+  },
+  "cordova": {
+    "replace": true,
+    "repo": "https://github.com/apache/cordova-cli.git"
   }
 }
