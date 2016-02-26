@@ -3,6 +3,7 @@
 var update = require('../lib/update');
 var citgm = require('../lib/citgm');
 var logger = require('../lib/out');
+var reporter = require('../lib/reporter');
 var app = require('commander');
 
 var pkg = require('../package.json');
@@ -35,6 +36,9 @@ app
   )
   .option(
     '-s, --su', 'Allow running the tool as root.'
+  )
+  .option(
+    '-m, --markdown', 'Output results in markdown'
   );
 
 if (!citgm.windows) {
@@ -96,11 +100,12 @@ function launch(mod, options) {
   }).on('data', function(type, key, message) {
     log[type](key, message);
   }).on('end', function(module) {
-    if (module.error) {
-      process.exitCode = 1;
-      log.error('done', 'The test suite for ' + module.name + ' version ' + module.version + ' failed');
-      process.exit();
+    reporter.logger(log, module);
+
+    if (app.markdown) {
+      reporter.markdown(log.bypass, module);
     }
-    log.info('done', 'The test suite for ' + module.name + ' version ' + module.version + ' passed.');
+
+    process.exit(module.error ? 1 : 0);
   }).run();
 }

@@ -18,21 +18,22 @@ bin/citgm --help
 
 (If citgm is installed globally, you can also `man citgm`)
 
-```
+```bash
 Usage: citgm [options] <module>
 
 Options:
 
-  -h, --help                 output usage information
-  -V, --version              output the version number
-  -v, --verbose [level]      Verbose output (silly, verbose, info, warn, error)
+  -h, --help                  output usage information
+  -V, --version               output the version number
+  -v, --verbose [level]       Verbose output (silly, verbose, info, warn, error)
   -q, --npm-loglevel [level]  Verbose output (silent, error, warn, http, info, verbose, silly)
-  -l, --lookup <path>        Use the lookup table provided at <path>
-  -d, --nodedir <path>       Path to the node source to use when compiling native addons
-  -n, --no-color             Turns off colorized output
-  -s, --su                   Allow running the tool as root.
-  -u, --uid <uid>            Set the uid (posix only)
-  -g, --gid <uid>            Set the gid (posix only)
+  -l, --lookup <path>         Use the lookup table provided at <path>
+  -d, --nodedir <path>        Path to the node source to use when compiling native addons
+  -n, --no-color              Turns off colorized output
+  -s, --su                    Allow running the tool as root.
+  -m, --markdown              Output results in markdown
+  -u, --uid <uid>             Set the uid (posix only)
+  -g, --gid <uid>             Set the gid (posix only)
 ```
 
 The tool requires online access to the npm registry to run. If you want to
@@ -56,22 +57,22 @@ table use citgm-all. It will automate the running of all tests and give
 itemized results at the end. It has all the same options as citgm except
 for the added markdown option which will print the results in markdown.
 
-```
+```bash
 Usage: citgm-all [options]
 
 Options:
 
-  -h, --help                 output usage information
-  -V, --version              output the version number
-  -v, --verbose [level]      Verbose output (silly, verbose, info, warn, error)
+  -h, --help                  output usage information
+  -V, --version               output the version number
+  -v, --verbose [level]       Verbose output (silly, verbose, info, warn, error)
   -q, --npm-loglevel [level]  Verbose output (silent, error, warn, http, info, verbose, silly)
-  -l, --lookup <path>        Use the lookup table provided at <path>
-  -d, --nodedir <path>       Path to the node source to use when compiling native addons
-  -n, --no-color             Turns off colorized output
-  -s, --su                   Allow running the tool as root.
-  -m, --markdown             Output results in markdown
-  -u, --uid <uid>            Set the uid (posix only)
-  -g, --gid <uid>            Set the gid (posix only)
+  -l, --lookup <path>         Use the lookup table provided at <path>
+  -d, --nodedir <path>        Path to the node source to use when compiling native addons
+  -n, --no-color              Turns off colorized output
+  -s, --su                    Allow running the tool as root.
+  -m, --markdown              Output results in markdown
+  -u, --uid <uid>             Set the uid (posix only)
+  -g, --gid <uid>             Set the gid (posix only)
 ```
 
 You can also test your own list of modules:

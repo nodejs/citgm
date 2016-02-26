@@ -1,0 +1,22 @@
+{
+  "iPass": {
+    "name": "iPass",
+    "version": "4.2.2"
+  },
+  "iFail": {
+    "name": "iFail",
+    "version": "3.0.1",
+    "error": "I dun wurk"
+  },
+  "iFlakyPass": {
+    "name": "iFlakyPass",
+    "version": "3.0.1",
+    "flaky": true
+  },
+  "iFlakyFail": {
+    "name": "iFlakyFail",
+    "version": "3.3.3",
+    "flaky": true,
+    "error": "I dun wurk"
+  }
+}

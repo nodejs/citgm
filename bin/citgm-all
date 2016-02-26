@@ -2,12 +2,11 @@
 'use strict';
 var app = require('commander');
 var async = require('async');
-var _ = require('lodash');
-var chalk = require('chalk');
 
 var update = require('../lib/update');
 var citgm = require('../lib/citgm');
 var logger = require('../lib/out');
+var reporter = require('../lib/reporter');
 var getLookup = require('../lib/lookup').get;
 
 var pkg = require('../package.json');
@@ -26,11 +25,11 @@ app
     /^(silent|error|warn|http|info|verbose|silly)$/i, 'error')
   .option(
     '-l, --lookup <path>',
-      'Use the lookup table provided at <path>'
+    'Use the lookup table provided at <path>'
   )
   .option(
-      '-d, --nodedir <path>',
-      'Path to the node source to use when compiling native addons'
+    '-d, --nodedir <path>',
+    'Path to the node source to use when compiling native addons'
   )
   .option(
     '-n, --no-color', 'Turns off colorized output'
@@ -89,10 +88,7 @@ if (!citgm.windows) {
   launch(options);
 }
 
-var exitCode = 0;
-var failed = [];
-var passed = [];
-var flaky = [];
+var modules = [];
 
 function runCitgm (mod, name, next) {
   if (mod.skip) {
@@ -110,90 +106,27 @@ function runCitgm (mod, name, next) {
   }).on('end', function(module) {
     if (module.error) {
       log.error('done', 'The test suite for ' + module.name + ' version ' + module.version + ' failed');
-      // TODO the module should likely mark itself flaky on error
-      //       but currently all flaky logic lives in citgm-all
-      if (mod.flaky || module.error.message === 'No project downloaded') {
-        flaky.push(module);
-      }
-      else {
-        exitCode = 1;
-        failed.push(module);
-      }
     }
     else {
-      passed.push(module);
       log.info('done', 'The test suite for ' + module.name + ' version ' + module.version + ' passed.');
     }
-    next();
+    modules.push(module);
+    next(null);
   }).run();
 }
 
-function printModule(logType, module) {
-  log[logType](chalk.yellow('module name:'), module.name);
-  log[logType](chalk.yellow('version:'), module.version);
-  if (module.error) {
-    log[logType]('error', module.error.message);
-  }
-}
-
-function printModules(logType, modules) {
-  _.each(modules, function (module) {
-    printModule(logType, module);
-  });
-}
-
-function printModulesMarkdown(title, modules) {
-  /*eslint-disable no-console*/
-  if (modules.length > 0) {
-    console.log('### ' + title + ' Modules');
-    _.each(modules, function (module) {
-      console.log('* ' + module.name);
-      console.log('  - version ' + module.version);
-      if (module.error) {
-        console.log('  * ' + module.error.message);
-      }
-    });
-    console.log('');
-  }
-  /*eslint-enable no-console*/
-}
-
-function printMarkdown() {
-  /*eslint-disable no-console*/
-  if (failed.length === 0) {
-    console.log('## 🎉🎉 CITGM Passed 🎉🎉');
-  }
-  else {
-    console.log('## 🔥⚠️🔥 CITGM FAILED 🔥⚠️🔥');
-  }
-  /*eslint-enable no-console*/
-  printModulesMarkdown('Passing', passed);
-  printModulesMarkdown('Flaky', flaky);
-  printModulesMarkdown('Failing', failed);
-}
-
 function launch() {
-  async.forEachOfSeries(lookup, runCitgm, function done () {
-    if (passed.length > 0) {
-      log.info('passing modules');
-      printModules('info', passed);
+  async.forEachOfSeries(lookup, runCitgm, function done (err) {
+    if (err) {
+      log.error('citgm-all failure:', err.message);
     }
-    if (flaky.length > 0) {
-      log.warn('flaky modules');
-      printModules('warn', flaky);
-    }
-    if (failed.length > 0) {
-      process.exitCode = exitCode;
-      log.error('failing modules');
-      printModules('error', failed);
-      log.error('done', 'citgm-all failed');
-    }
-    else {
-      log.info('done', 'citgm-all passed.');
-    }
+
+    reporter.logger(log, modules);
+
     if (app.markdown) {
-      printMarkdown();
+      reporter.markdown(log.bypass, modules);
     }
-    process.exit(exitCode);
+
+    process.exit(reporter.util.hasFailures(modules));
   });
 }
