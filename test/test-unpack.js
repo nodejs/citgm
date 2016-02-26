@@ -24,24 +24,12 @@ test('unpack: no unpack', function (t) {
   });
 });
 
-test('unpack: invalid unpack', function (t) {
-  var context = {
-    unpack: './test/fixtures/omg-i-fail.tar.gz',
-    emit: function () {}
-  };
-  
-  unpack(context, function (err) {
-    t.deepEquals(err, new Error('Nothing to unpack... Ending'), 'it should error out');
-    t.done();
-  });
-});
-
-test('unpack: invalid unpack', function (t) {
+test('unpack: valid unpack', function (t) {
   var context = {
     module: {
       name: 'omg-i-pass'
     },
-    unpack: './test/fixtures/omg-i-pass.tar.gz',
+    unpack: './test/fixtures/omg-i-pass.tgz',
     emit: function () {}
   };
 
