@@ -29,7 +29,8 @@
   },
   "through2": {
     "replace": true,
-    "prefix": "v"
+    "prefix": "v",
+    "stripAnsi": true
   },
   "glob": {
     "replace": true,
@@ -134,7 +135,8 @@
   },
   "throughv": {
     "replace": true,
-    "prefix": "v"
+    "prefix": "v",
+    "stripAnsi": true
   },
   "duplexer2": {
     "replace": true,
@@ -142,7 +144,8 @@
   },
   "bl": {
     "replace": true,
-    "prefix": "v"
+    "prefix": "v",
+    "stripAnsi": true
   },
   "binary-split": {
     "replace": true,

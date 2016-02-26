@@ -15,3 +15,9 @@ test('reporter.logger():', function (t) {
   t.equals(typeof reporter.logger, 'function', 'logger is a function');
   t.end();
 });
+
+test('reporter.tap():', function (t) {
+  t.ok(reporter.logger, 'it should have a tap reporter');
+  t.equals(typeof reporter.logger, 'function', 'tap is a function');
+  t.end();
+});

@@ -32,6 +32,7 @@ Options:
   -n, --no-color              Turns off colorized output
   -s, --su                    Allow running the tool as root.
   -m, --markdown              Output results in markdown
+  -t, --tap [path]            Output results in tap with optional file path
   -u, --uid <uid>             Set the uid (posix only)
   -g, --gid <uid>             Set the gid (posix only)
 ```
@@ -71,6 +72,7 @@ Options:
   -n, --no-color              Turns off colorized output
   -s, --su                    Allow running the tool as root.
   -m, --markdown              Output results in markdown
+  -t, --tap [path]            Output results in tap with optional file path
   -u, --uid <uid>             Set the uid (posix only)
   -g, --gid <uid>             Set the gid (posix only)
 ```
@@ -89,6 +91,7 @@ For syntax, see [lookup.json](./lib/lookup.json), the available attributes are:
 "flaky": true                Ignore failures
 "skip": true                 Completely skip the module
 "repo": "https://github.com/pugjs/jade" - Use a different github repo
+"skipAnsi": true             Strip ansi data from output stream of npm
 ```
 ## Testing
 

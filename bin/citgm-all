@@ -39,6 +39,9 @@ app
   )
   .option(
     '-m, --markdown', 'Output results in markdown'
+  )
+  .option(
+    '-t, --tap [path]', 'Output results in tap with optional file path'
   );
 
 if (!citgm.windows) {
@@ -103,14 +106,15 @@ function runCitgm (mod, name, next) {
     log.error('failure', err.message);
   }).on('data', function(type,key,message) {
     log[type](key, message);
-  }).on('end', function(module) {
-    if (module.error) {
-      log.error('done', 'The test suite for ' + module.name + ' version ' + module.version + ' failed');
+  }).on('end', function(result) {
+    if (result.error) {
+      log.error('done', 'The test suite for ' + result.name + ' version ' + result.version + ' failed');
     }
     else {
-      log.info('done', 'The test suite for ' + module.name + ' version ' + module.version + ' passed.');
+      log.info('done', 'The test suite for ' + result.name + ' version ' + result.version + ' passed.');
     }
-    modules.push(module);
+    result.flaky = mod.flaky;
+    modules.push(result);
     next(null);
   }).run();
 }
@@ -125,6 +129,14 @@ function launch() {
 
     if (app.markdown) {
       reporter.markdown(log.bypass, modules);
+    }
+    
+    if (app.tap) {
+      // if tap is a string it should be a path to write output to
+      // if not use `log.bypass` which is currently process.stdout.write
+      // TODO check that we can write to that path, perhaps require a flag to overwrite
+      var tap = (typeof app.tap === 'string') ? app.tap : log.bypass;
+      reporter.tap(tap, modules);
     }
 
     process.exit(reporter.util.hasFailures(modules));

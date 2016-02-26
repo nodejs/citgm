@@ -9,6 +9,7 @@ var app = require('commander');
 var pkg = require('../package.json');
 
 var mod;
+
 app
   .version(pkg.version)
   .arguments('<module>')
@@ -39,6 +40,9 @@ app
   )
   .option(
     '-m, --markdown', 'Output results in markdown'
+  )
+  .option(
+    '-t, --tap [path]', 'Output results in tap with optional file path'
   );
 
 if (!citgm.windows) {
@@ -104,6 +108,14 @@ function launch(mod, options) {
 
     if (app.markdown) {
       reporter.markdown(log.bypass, module);
+    }
+
+    if (app.tap) {
+      // if tap is a string it should be a path to write output to
+      // if not use `log.bypass` which is currently process.stdout.write
+      // TODO check that we can write to that path, perhaps require a flag to overwrite
+      var tap = (typeof app.tap === 'string') ? app.tap : log.bypass;
+      reporter.tap(tap, module);
     }
 
     process.exit(module.error ? 1 : 0);

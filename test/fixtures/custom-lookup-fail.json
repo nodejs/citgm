@@ -1,6 +1,7 @@
 {
   "omg-i-pass": {
-    "replace": true
+    "replace": true,
+    "flaky": true
   },
   "omg-i-fail": {
     "replace": false

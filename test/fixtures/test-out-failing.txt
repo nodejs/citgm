@@ -1,0 +1,4 @@
+TAP version 13
+ok 1 - omg-i-pass v1.2.3
+not ok 2 - lodash v2.2.2  Error: I do not work
+1..2
