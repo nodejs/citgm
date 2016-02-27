@@ -1,3 +1,5 @@
 node_modules
 test/scaffold/*/node_modules
 test/.*
+coverage/
+.nyc_output/
