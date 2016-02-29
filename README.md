@@ -74,6 +74,21 @@ Options:
   -g, --gid <uid>            Set the gid (posix only)
 ```
 
+You can also test your own list of modules:
+
+```
+citgm-all -l ./path/to/my_lookup.json
+```
+For syntax, see [lookup.json](./lib/lookup.json), the available attributes are:
+
+```
+"replace": true              Download module from github repo in package.json
+"master": true               Use the master branch
+"prefix": "v"                Specify the prefix used in the module version.
+"flaky": true                Ignore failures
+"skip": true                 Completely skip the module
+"repo": "https://github.com/pugjs/jade" - Use a different github repo
+```
 ## Testing
 
 You can run the test suite using npm
@@ -82,7 +97,7 @@ You can run the test suite using npm
 npm run test
 ```
 
-This will run both a linter as well as a tap based unit test suite.
+This will run both a linter and a tap based unit test suite.
 
 ## Notes
 
