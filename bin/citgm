@@ -65,16 +65,16 @@ var log = logger({
 
 update(log);
 
-if (!mod) {
-  app.outputHelp();
-  process.exit(0);
-}
-
 if (!app.su) {
   require('root-check')(); // silently downgrade if running as root...
                            // unless --su is passed
 } else {
   log.warn('root', 'Running as root! Use caution!');
+}
+
+if (!mod) {
+  app.outputHelp();
+  process.exit(0);
 }
 
 var options = {

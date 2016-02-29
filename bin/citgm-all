@@ -13,8 +13,6 @@ var pkg = require('../package.json');
 
 app
   .version(pkg.version)
-  .action(function() {
-  })
   .option(
     '-v, --verbose [level]',
     'Verbose output (silly, verbose, info, warn, error)',
@@ -95,8 +93,7 @@ var modules = [];
 
 function runCitgm (mod, name, next) {
   if (mod.skip) {
-    next();
-    return;
+    return next();
   }
   
   citgm.Tester(name, options)
@@ -120,11 +117,7 @@ function runCitgm (mod, name, next) {
 }
 
 function launch() {
-  async.forEachOfSeries(lookup, runCitgm, function done (err) {
-    if (err) {
-      log.error('citgm-all failure:', err.message);
-    }
-
+  async.forEachOfSeries(lookup, runCitgm, function done () {
     reporter.logger(log, modules);
 
     if (app.markdown) {

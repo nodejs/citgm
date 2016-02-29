@@ -3,14 +3,13 @@
 var path = require('path');
 
 var test = require('tap').test;
-
 var spawn = require('../lib/spawn');
 
 var citgmAllPath = path.resolve(__dirname, '..', 'bin', 'citgm-all');
 
-test('citgm-all:', function (t) {
+test('citgm-all: /w markdown', function (t) {
   t.plan(1);
-  var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup.json']);
+  var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup.json', '-m']);
   proc.on('error', function(err) {
     t.error(err);
     t.fail('we should not get an error testing omg-i-pass');
@@ -20,9 +19,9 @@ test('citgm-all:', function (t) {
   });
 });
 
-test('citgm-all: fail', function (t) {
+test('citgm-all: fail /w tap', function (t) {
   t.plan(1);
-  var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup-fail.json']);
+  var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup-fail.json', '-t']);
   proc.on('error', function(err) {
     t.error(err);
   });
@@ -31,9 +30,9 @@ test('citgm-all: fail', function (t) {
   });
 });
 
-test('citgm-all: skip', function (t) {
+test('citgm-all: skip /w rootcheck /w tap to fs', function (t) {
   t.plan(1);
-  var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup-skip.json']);
+  var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup-skip.json', '-s', '-t', '/dev/null']);
   proc.on('error', function(err) {
     t.error(err);
   });
