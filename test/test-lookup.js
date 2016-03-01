@@ -65,7 +65,7 @@ test('lookup[getLookupTable]: custom table', function (t) {
     'omg-i-pass': {
       replace: false
     },
-    'rimraf': {
+    'omg-i-pass-too': {
       replace: true,
       prefix: 'v'
     }
