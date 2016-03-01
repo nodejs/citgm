@@ -6,17 +6,24 @@
   "iFail": {
     "name": "iFail",
     "version": "3.0.1",
-    "error": "I dun wurk"
+    "error": {
+      "message": "I dun wurk"
+    },
+    "testOutput": "Thanks for testing!"
   },
   "iFlakyPass": {
     "name": "iFlakyPass",
     "version": "3.0.1",
-    "flaky": true
+    "flaky": true,
+    "testOutput": "Thanks for testing!"
   },
   "iFlakyFail": {
     "name": "iFlakyFail",
     "version": "3.3.3",
     "flaky": true,
-    "error": "I dun wurk"
+    "error": {
+      "message": "I dun wurk"
+    },
+    "testOutput": "Thanks for testing!"
   }
 }

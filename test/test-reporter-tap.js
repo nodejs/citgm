@@ -9,17 +9,15 @@ var mkdirp = require('mkdirp');
 var rimraf = require('rimraf');
 
 var tap = require('../lib/reporter/tap');
+var fixtures = require('./fixtures/reporter-fixtures');
 
 var sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now());
 var outputFile = path.join(sandbox, 'test.tap');
 
-var passingInput = [{
-  name: 'omg-i-pass',
-  version: '1.2.3'
-}, {
-  name: 'lodash',
-  version: '2.2.2'
-}];
+var passingInput = [
+  fixtures.iPass,
+  fixtures.iFlakyPass
+];
 
 var passingExpectedPath = path.join(
   __dirname,
@@ -29,14 +27,11 @@ var passingExpectedPath = path.join(
 
 var passingExpected = fs.readFileSync(passingExpectedPath, 'utf-8');
 
-var failingInput = [{
-  name: 'omg-i-pass',
-  version: '1.2.3'
-}, {
-  name: 'lodash',
-  version: '2.2.2',
-  error: 'Error: I do not work'
-}];
+var failingInput = [
+  fixtures.iPass,
+  fixtures.iFlakyFail,
+  fixtures.iFail
+];
 
 var failingExpectedPath = path.join(
   __dirname,
