@@ -4,6 +4,7 @@
   },
   "omg-i-pass-too": {
     "replace": true,
-    "prefix": "v"
+    "prefix": "v",
+    "stripAnsi": true
   }
 }
