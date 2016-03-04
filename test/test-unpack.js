@@ -5,16 +5,24 @@ var path = require('path');
 
 var test = require('tap').test;
 
-// TODO we could argue that tempDirectory should not be in here
-// TODO it could make it not so unit
-// TODO it is a super helpful abstraction though
-
 var tempDirectory = require('../lib/temp-directory');
 var unpack = require('../lib/unpack');
 
-test('unpack: no unpack', function (t) {
+test('unpack: context.unpack = null', function (t) {
   var context = {
     unpack: null,
+    emit: function () {}
+  };
+  
+  unpack(context, function (err) {
+    t.deepEquals(err, new Error('Nothing to unpack... Ending'), 'it should error out');
+    t.done();
+  });
+});
+
+test('unpack: context.unpack is invalid path', function (t) {
+  var context = {
+    unpack: path.join(__dirname, '..', 'fixtures', 'do-not-exist.tar.gz'),
     emit: function () {}
   };
   
