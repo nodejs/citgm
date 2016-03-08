@@ -72,8 +72,7 @@
   },
   "eslint": {
     "replace": true,
-    "prefix": "v",
-    "master": true
+    "prefix": "v"
   },
   "tape": {
     "replace": true,
