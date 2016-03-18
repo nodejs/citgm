@@ -9,12 +9,14 @@ var app = require('commander');
 var pkg = require('../package.json');
 
 var mod;
+var script;
 
 app
   .version(pkg.version)
-  .arguments('<module>')
-  .action(function(m) {
+  .arguments('<module> [script]')
+  .action(function(m, s) {
     mod = m;
+    script = s;
   })
   .option(
     '-v, --verbose [level]',
@@ -76,6 +78,7 @@ if (!app.su) {
 }
 
 var options = {
+  script: script,
   lookup: app.lookup,
   nodedir: app.nodedir,
   level: app.verbose,

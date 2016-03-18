@@ -19,7 +19,7 @@ bin/citgm --help
 (If citgm is installed globally, you can also `man citgm`)
 
 ```bash
-Usage: citgm [options] <module>
+Usage: citgm [options] <module> [script]
 
 Options:
 
@@ -92,6 +92,7 @@ For syntax, see [lookup.json](./lib/lookup.json), the available attributes are:
 "skip": true                 Completely skip the module
 "repo": "https://github.com/pugjs/jade" - Use a different github repo
 "skipAnsi": true             Strip ansi data from output stream of npm
+"script": /path/to/script | https://url/to/script - Use a custom test script
 ```
 ## Testing
 
