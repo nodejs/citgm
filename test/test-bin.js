@@ -32,6 +32,18 @@ test('bin: omg-i-fail /w markdown output /w nodedir', function (t) {
   });
 });
 
+test('bin: omg-i-have-script /w custom script', function (t) {
+  t.plan(1);
+  var proc = spawn(citgmPath, ['omg-i-pass', '-l', './fixtures/custom-lookup-script.json']);
+  proc.on('error', function(err) {
+    t.error(err);
+    t.fail('we should not get an error testing omg-i-pass');
+  });
+  proc.on('close', function (code) {
+    t.equal(code, 1, 'omg-i-fail should fail and exit with a code of one');
+  });
+});
+
 test('bin: no module /w root check', function (t) {
   t.plan(1);
   var proc = spawn(citgmPath, ['-s']);

@@ -42,6 +42,26 @@ test('fetch: given a file path', function (t) {
   });
 });
 
+test('fetch: given a custom lookup table and relative path', function (t) {
+  var context = {
+    path: sandbox,
+    emit: function () {},
+    options: {
+      lookup: path.join(__dirname, 'fixtures', 'custom-lookup-script.json')
+    }
+  };
+  fetch(context, './example-test-script-passing.sh', function (err, _path)  {
+    t.error(err);
+    t.match(_path, context.path, 'the resolved path should be in the context path');
+    fs.stat(_path, function (e, stats) {
+      t.error(err);
+      t.ok(stats.isFile(), 'The script should exist on the system');
+      fs.unlinkSync(_path);
+      t.end();
+    });
+  });
+});
+
 test('fetch: given a uri with http', function (t) {
   var context = {
     path: sandbox,

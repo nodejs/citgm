@@ -113,8 +113,7 @@ test('lookup: module in table', function (t) {
     lookup: null,
     module: {
       name: 'lodash',
-      raw: null,
-      lookup: 'test/fixtures/custom-lookup.js'
+      raw: null
     },
     meta: {
       repository: {
@@ -165,6 +164,29 @@ test('lookup: replace with no repo', function (t) {
 
   lookup(context, function (err) {
     t.equals(err.message, 'no-repository-field in package.json');
+    t.done();
+  });
+});
+
+test('lookup: lookup with script', function (t) {
+  var context = {
+    module: {
+      name: 'omg-i-have-script',
+      raw: null
+    },
+    meta: {
+      repository: '/dev/null',
+      version: '0.1.1'
+    },
+    options: {
+      lookup: 'test/fixtures/custom-lookup-script.json'
+    },
+    emit: function () {}
+  };
+
+  lookup(context, function (err) {
+    t.error(err);
+    t.equals(context.options.script, './example-test-script-passing.sh');
     t.done();
   });
 });
