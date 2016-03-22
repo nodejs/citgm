@@ -26,7 +26,8 @@ test('npm.script.run: should pass with passing script', function (t) {
     path: sandbox,
     emit: function () {},
     module: {
-      name: 'run-test'
+      name: 'run-test',
+      stripAnsi: true
     },
     options: {}
   };
