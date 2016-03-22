@@ -22,7 +22,7 @@ test('npm-setup: setup', function (t) {
       t.error(e);
       t.ok(fs.existsSync(path.join(moduleTemp, 'package.json')));
       t.done();
-    })
+    });
   });
 });
 
