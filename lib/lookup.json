@@ -72,7 +72,8 @@
   },
   "eslint": {
     "replace": true,
-    "prefix": "v"
+    "prefix": "v",
+    "flaky": true
   },
   "tape": {
     "replace": true,
@@ -86,7 +87,8 @@
     "prefix": "v"
   },
   "stylus": {
-    "replace": true
+    "replace": true,
+    "master": true
   },
   "level": {
     "replace": true,
