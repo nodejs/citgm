@@ -86,7 +86,8 @@
     "prefix": "v"
   },
   "stylus": {
-    "replace": true
+    "replace": true,
+    "flaky": true
   },
   "level": {
     "replace": true,
