@@ -88,7 +88,7 @@
   },
   "stylus": {
     "replace": true,
-    "master": true
+    "flaky": true
   },
   "level": {
     "replace": true,
