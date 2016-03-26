@@ -8,14 +8,14 @@ var mkdirp = require('mkdirp');
 var rimraf = require('rimraf');
 var ncp = require('ncp');
 
-var npmSetup = require('../lib/npm/setup');
+var npmInstall = require('../lib/npm/install');
 
 var sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now());
 var fixtures = path.join(__dirname, 'fixtures');
 var moduleFixtures = path.join(fixtures, 'omg-i-pass');
 var moduleTemp = path.join(sandbox, 'omg-i-pass');
 
-test('npm-setup: setup', function (t) {
+test('npm-install: setup', function (t) {
   mkdirp(sandbox, function (err) {
     t.error(err);
     ncp(moduleFixtures, moduleTemp, function (e) {
@@ -26,7 +26,7 @@ test('npm-setup: setup', function (t) {
   });
 });
 
-test('npm-setup: basic module', function (t) {
+test('npm-install: basic module', function (t) {
   var context = {
     emit: function() {},
     path: sandbox,
@@ -38,13 +38,13 @@ test('npm-setup: basic module', function (t) {
       npmLevel: 'silly'
     }
   };
-  npmSetup(context, function (err) {
+  npmInstall(context, function (err) {
     t.error(err);
     t.done();
   });
 });
 
-test('npm-setup: no package.json', function (t) {
+test('npm-install: no package.json', function (t) {
   var context = {
     emit: function() {},
     path: sandbox,
@@ -56,13 +56,13 @@ test('npm-setup: no package.json', function (t) {
       npmLevel: 'silly'
     }
   };
-  npmSetup(context, function (err) {
+  npmInstall(context, function (err) {
     t.equals(err.message, 'Install Failed');
     t.done();
   });
 });
 
-test('npm-setup: teardown', function (t) {
+test('npm-install: teardown', function (t) {
   rimraf(sandbox, function (err) {
     t.error(err);
     t.done();
