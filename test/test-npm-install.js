@@ -14,14 +14,20 @@ var sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now());
 var fixtures = path.join(__dirname, 'fixtures');
 var moduleFixtures = path.join(fixtures, 'omg-i-pass');
 var moduleTemp = path.join(sandbox, 'omg-i-pass');
+var badFixtures = path.join(fixtures, 'omg-bad-tree');
+var badTemp = path.join(sandbox, 'omg-bad-tree');
 
 test('npm-install: setup', function (t) {
+  t.plan(5);
   mkdirp(sandbox, function (err) {
     t.error(err);
     ncp(moduleFixtures, moduleTemp, function (e) {
       t.error(e);
       t.ok(fs.existsSync(path.join(moduleTemp, 'package.json')));
-      t.done();
+    });
+    ncp(badFixtures, badTemp, function (e) {
+      t.error(e);
+      t.ok(fs.existsSync(path.join(badTemp, 'package.json')));
     });
   });
 });
@@ -54,6 +60,24 @@ test('npm-install: no package.json', function (t) {
     meta: {},
     options: {
       npmLevel: 'silly'
+    }
+  };
+  npmInstall(context, function (err) {
+    t.equals(err.message, 'Install Failed');
+    t.done();
+  });
+});
+
+test('npm-install: failed install', function (t) {
+  var context = {
+    emit: function() {},
+    path: sandbox,
+    module: {
+      name: 'omg-bad-tree'
+    },
+    meta: {},
+    options: {
+      npmLevel: 'http'
     }
   };
   npmInstall(context, function (err) {

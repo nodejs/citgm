@@ -1,0 +1,19 @@
+{
+  "name": "omg-bad-tree",
+  "version": "1.0.0",
+  "description": "Test suite always passes",
+  "repository": "https://github.com/TheAlphaNerd/omg-i-pass",
+  "main": "index.js",
+  "scripts": {
+    "test": "exit 0"
+  },
+  "keywords": [
+    "always",
+    "passes"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "THIS-WILL-FAIL": "0.0.1"
+  }
+}
