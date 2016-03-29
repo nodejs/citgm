@@ -102,8 +102,17 @@ if (!citgm.windows) {
 }
 
 function launch(mod, options) {
-  citgm.Tester(mod, options)
-  .on('start', function(name) {
+  var runner = citgm.Tester(mod, options);
+  
+  function cleanup() {
+    runner.cleanup();
+  }
+
+  process.on('SIGINT', cleanup);
+  process.on('SIGHUP', cleanup);
+  process.on('SIGBREAK', cleanup);
+  
+  runner.on('start', function(name) {
     log.info('starting', name);
   }).on('fail', function(err) {
     log.error('failure', err.message);
@@ -123,7 +132,9 @@ function launch(mod, options) {
       var tap = (typeof app.tap === 'string') ? app.tap : log.bypass;
       reporter.tap(tap, module);
     }
-
+    process.removeListener('SIGINT', cleanup);
+    process.removeListener('SIGHUP', cleanup);
+    process.removeListener('SIGBREAK', cleanup);
     process.exit(module.error ? 1 : 0);
   }).run();
 }

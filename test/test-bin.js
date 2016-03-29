@@ -32,9 +32,9 @@ test('bin: omg-i-fail /w markdown output /w nodedir', function (t) {
   });
 });
 
-test('bin: omg-i-have-script /w custom script', function (t) {
+test('bin: omg-i-have-script /w custom script /w tap to file', function (t) {
   t.plan(1);
-  var proc = spawn(citgmPath, ['omg-i-pass', '-l', './fixtures/custom-lookup-script.json']);
+  var proc = spawn(citgmPath, ['omg-i-pass', '-l', './fixtures/custom-lookup-script.json', '-t', '/dev/null']);
   proc.on('error', function(err) {
     t.error(err);
     t.fail('we should not get an error testing omg-i-pass');
@@ -53,5 +53,21 @@ test('bin: no module /w root check', function (t) {
   });
   proc.on('close', function (code) {
     t.equal(code, 0, 'we should exit with a code of 0');
+  });
+});
+
+test('bin: sigterm', function (t) {
+  t.plan(1);
+  
+  var proc = spawn(citgmPath, ['omg-i-pass', '-v', 'verbose']);
+  proc.on('error', function(err) {
+    t.error(err);
+    t.fail('we should not get an error testing omg-i-pass');
+  });
+  proc.stdout.once('data', function () {
+    proc.kill('SIGINT');
+  });
+  proc.on('exit', function (code) {
+    t.equal(code, 1, 'omg-i-pass should fail from a sigint');
   });
 });

@@ -40,3 +40,19 @@ test('citgm-all: skip /w rootcheck /w tap to fs', function (t) {
     t.equals(code, 0, 'it should run omg-i-pass and skip omg-i-fail');
   });
 });
+
+test('bin: sigterm', function (t) {
+  t.plan(1);
+  
+  var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup.json', '-m']);
+  proc.on('error', function(err) {
+    t.error(err);
+    t.fail('we should not get an error testing omg-i-pass');
+  });
+  proc.stdout.once('data', function () {
+    proc.kill('SIGINT');
+  });
+  proc.on('exit', function (code) {
+    t.equal(code, 1, 'citgm-all should fail');
+  });
+});

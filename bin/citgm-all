@@ -99,8 +99,19 @@ function runCitgm (mod, name, next) {
     return next();
   }
   
-  citgm.Tester(name, options)
-  .on('start', function(name) {
+  var runner = citgm.Tester(name, options);
+  var bailed = false;
+
+  function cleanup() {
+    bailed = true;
+    runner.cleanup();
+  }
+
+  process.on('SIGINT', cleanup);
+  process.on('SIGHUP', cleanup);
+  process.on('SIGBREAK', cleanup);
+  
+  runner.on('start', function(name) {
     log.info('starting', name);
   }).on('fail', function(err) {
     log.error('failure', err.message);
@@ -115,7 +126,10 @@ function runCitgm (mod, name, next) {
     }
     result.flaky = mod.flaky;
     modules.push(result);
-    next(null);
+    process.removeListener('SIGINT', cleanup);
+    process.removeListener('SIGHUP', cleanup);
+    process.removeListener('SIGBREAK', cleanup);
+    return next(bailed);
   }).run();
 }
 
