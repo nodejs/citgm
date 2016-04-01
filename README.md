@@ -33,6 +33,7 @@ Options:
   -s, --su                    Allow running the tool as root.
   -m, --markdown              Output results in markdown
   -t, --tap [path]            Output results in tap with optional file path
+  -o, --timeout <length>      Set timeout for npm install
   -u, --uid <uid>             Set the uid (posix only)
   -g, --gid <uid>             Set the gid (posix only)
 ```
@@ -73,6 +74,7 @@ Options:
   -s, --su                    Allow running the tool as root.
   -m, --markdown              Output results in markdown
   -t, --tap [path]            Output results in tap with optional file path
+  -o, --timeout <length>      Set timeout for npm install
   -u, --uid <uid>             Set the uid (posix only)
   -g, --gid <uid>             Set the gid (posix only)
 ```

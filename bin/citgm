@@ -45,6 +45,8 @@ app
   )
   .option(
     '-t, --tap [path]', 'Output results in tap with optional file path'
+  ).option(
+    '-o, --timeout <length>', 'Set timeout for npm install', 1000 * 60 * 10
   );
 
 if (!citgm.windows) {
@@ -82,7 +84,8 @@ var options = {
   lookup: app.lookup,
   nodedir: app.nodedir,
   level: app.verbose,
-  npmLevel: app.npmLoglevel
+  npmLevel: app.npmLoglevel,
+  timeoutLength: app.timeout
 };
 
 if (!citgm.windows) {

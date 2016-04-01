@@ -68,6 +68,25 @@ test('npm-install: no package.json', function (t) {
   });
 });
 
+test('npm-install: timout', function (t) {
+  var context = {
+    emit: function() {},
+    path: sandbox,
+    module: {
+      name: 'omg-i-pass'
+    },
+    meta: {},
+    options: {
+      npmLevel: 'silly',
+      timeoutLength: 100
+    }
+  };
+  npmInstall(context, function (err) {
+    t.equals(err.message, 'Install Failed');
+    t.done();
+  });
+});
+
 test('npm-install: failed install', function (t) {
   var context = {
     emit: function() {},

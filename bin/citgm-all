@@ -40,6 +40,8 @@ app
   )
   .option(
     '-t, --tap [path]', 'Output results in tap with optional file path'
+  ).option(
+    '-o, --timeout <length>', 'Output results in tap with optional file path', 1000 * 60 * 10
   );
 
 if (!citgm.windows) {
@@ -71,7 +73,8 @@ var options = {
   lookup: app.lookup,
   nodedir: app.nodedir,
   level: app.verbose,
-  npmLevel: app.npmLoglevel
+  npmLevel: app.npmLoglevel,
+  timeoutLength: app.timeout
 };
 
 var lookup = getLookup(options);
