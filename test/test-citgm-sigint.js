@@ -20,7 +20,7 @@ test('citgm: omg-i-pass', function (t) {
     t.equals(name, mod, 'it should be omg-i-pass');
     process.emit('SIGINT');
   }).on('fail', function (err) {
-    t.equals(err.message, 'Process Interrupted', 'it should fail with a process Interrupted message');
+    t.equals(err && err.message, 'Process Interrupted', 'it should fail with a process Interrupted message');
   }).on('end', function () {
     t.notOk(process.exitCode, 'it should exit with a code of 0');
     t.done();

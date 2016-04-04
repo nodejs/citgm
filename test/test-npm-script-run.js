@@ -48,7 +48,7 @@ test('npm.script.run: should fail with failing script', function (t) {
   };
   var failingMsg = 'the canary is dead';
   run(context, failingScript, failingMsg, function (err) {
-    t.equals(err.message, failingMsg);
+    t.equals(err && err.message, failingMsg);
     t.done();
   });
 });

@@ -56,7 +56,7 @@ test('citgm: internal function find with error', function (t) {
     return next('Error');
   });
   find(undefined, undefined, function (err) {
-    t.equals(err.message, 'undefined not found in path!');
+    t.equals(err && err.message, 'undefined not found in path!');
     citgm.__set__('which', which);
     t.done();
   });

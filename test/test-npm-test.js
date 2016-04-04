@@ -72,7 +72,7 @@ test('npm-test: basic module failing', function (t) {
     options: {}
   };
   npmTest(context, function (err) {
-    t.equals(err.message, 'The canary is dead:');
+    t.equals(err && err.message, 'The canary is dead:');
     t.done();
   });
 });
@@ -88,7 +88,7 @@ test('npm-test: basic module no test script', function (t) {
     options: {}
   };
   npmTest(context, function (err) {
-    t.equals(err.message, 'Module does not support npm-test!');
+    t.equals(err && err.message, 'Module does not support npm-test!');
     t.done();
   });
 });
@@ -104,7 +104,7 @@ test('npm-test: no package.json', function (t) {
     options: {}
   };
   npmTest(context, function (err) {
-    t.equals(err.message, 'Package.json Could not be found');
+    t.equals(err && err.message, 'Package.json Could not be found');
     t.done();
   });
 });

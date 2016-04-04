@@ -106,7 +106,7 @@ test('fetch: properly handle errors from request', function (t) {
   fs.createWriteStream = function () {};
   fetch.__set__('request', RequestMock);
   fetch(context, 'http://do-nothing.com', function (err) {
-    t.equals(err.message, 'I am broken');
+    t.equals(err && err.message, 'I am broken');
     fetch.__set__('request', request);
     fs.createWriteStream = createWriteStream;
     t.end();

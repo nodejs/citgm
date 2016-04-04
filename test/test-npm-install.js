@@ -63,7 +63,7 @@ test('npm-install: no package.json', function (t) {
     }
   };
   npmInstall(context, function (err) {
-    t.equals(err.message, 'Install Failed');
+    t.equals(err && err.message, 'Install Failed');
     t.done();
   });
 });
@@ -82,7 +82,7 @@ test('npm-install: timout', function (t) {
     }
   };
   npmInstall(context, function (err) {
-    t.equals(err.message, 'Install Failed');
+    t.equals(err && err.message, 'Install Failed');
     t.done();
   });
 });
@@ -100,7 +100,7 @@ test('npm-install: failed install', function (t) {
     }
   };
   npmInstall(context, function (err) {
-    t.equals(err.message, 'Install Failed');
+    t.equals(err && err.message, 'Install Failed');
     t.done();
   });
 });
