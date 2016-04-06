@@ -4,7 +4,7 @@ citgm is a simple tool for pulling down an arbitrary module
 from npm and testing it using a specific version of the
 node runtime.
 
-Still a work in progress.
+[![Build Status](https://travis-ci.org/nodejs/citgm.svg?branch=master)](https://travis-ci.org/nodejs/citgm)
 
 ## Installation
 ```
