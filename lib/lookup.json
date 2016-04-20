@@ -155,8 +155,7 @@
   },
   "spdy": {
     "replace": true,
-    "prefix": "v",
-    "flaky": true
+    "prefix": "v"
   },
   "dicer": {
     "replace": true,
