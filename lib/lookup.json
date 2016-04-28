@@ -73,7 +73,7 @@
   "eslint": {
     "replace": true,
     "prefix": "v",
-    "flaky": true
+    "flaky": "ppc"
   },
   "tape": {
     "replace": true,
