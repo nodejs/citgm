@@ -34,7 +34,8 @@
   },
   "glob": {
     "replace": true,
-    "prefix": "v"
+    "prefix": "v",
+    "flaky": ["v6", "v7"]
   },
   "gulp-util": {
     "replace": true,
@@ -52,7 +53,8 @@
     "replace": true
   },
   "body-parser": {
-    "replace": true
+    "replace": true,
+    "flaky": ["v6", "v7"]
   },
   "uglify-js": {
     "replace": true,
