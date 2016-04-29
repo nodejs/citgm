@@ -9,7 +9,10 @@
   "request": {
     "replace": true,
     "prefix": "v",
-    "flaky": true
+    "flaky": {
+      "osx": true,
+      "ppc": true
+    }
   },
   "commander": {
     "replace": true,
@@ -18,7 +21,9 @@
   },
   "express": {
     "replace": true,
-    "flaky": true
+    "flaky": {
+      "ppc": ["v5"]
+    }
   },
   "q": {
     "replace": true,
@@ -43,7 +48,10 @@
   },
   "jade": {
     "replace": true,
-    "repo": "https://github.com/pugjs/jade"
+    "repo": "https://github.com/pugjs/jade",
+    "flaky": {
+      "ppc": ["v6", "v7"]
+    }
   },
   "socket.io": {
     "replace": true,
@@ -61,8 +69,7 @@
     "prefix": "v"
   },
   "jquery": {
-    "replace": true,
-    "flaky": true
+    "replace": true
   },
   "rimraf": {
     "replace": true,
@@ -79,18 +86,19 @@
   },
   "tape": {
     "replace": true,
-    "prefix": "v"
+    "prefix": "v",
+    "flaky": "linux"
   },
   "browserify": {
     "replace": true
   },
   "watchify": {
     "replace": true,
-    "prefix": "v"
+    "prefix": "v",
+    "flaky": "ppc"
   },
   "stylus": {
-    "replace": true,
-    "flaky": true
+    "replace": true
   },
   "level": {
     "replace": true,
@@ -104,15 +112,17 @@
   "react": {
     "replace": true,
     "prefix": "v",
-    "flaky": ["v6", "v7"]
+    "flaky": ["v0.10", "v0.12", "v6", "v7"]
   },
   "gulp": {
     "replace": true,
-    "prefix": "v"
+    "prefix": "v",
+    "flaky": {
+      "ppc": ["v5", "v6"]
+    }
   },
   "moment": {
-    "replace": true,
-    "flaky": true
+    "replace": true
   },
   "ws": {
     "replace": true
@@ -123,7 +133,10 @@
   },
   "vinyl-fs": {
     "replace": true,
-    "prefix": "v"
+    "prefix": "v",
+    "flaky": {
+      "ppc": ["v6", "v7"]
+    }
   },
   "readable-stream": {
     "replace": true,
@@ -197,7 +210,11 @@
   },
   "async": {
     "replace": true,
-    "prefix": "v"
+    "prefix": "v",
+    "flaky": {
+      "osx": true,
+      "v0.12": ["fedroa21", "fedora22", "ubuntu1204"]
+    }
   },
   "bluebird": {
     "replace": true,
@@ -205,11 +222,13 @@
   },
   "mkdirp": {
     "replace": true,
-    "master": true
+    "master": true,
+    "flaky": ["v6", "v7"]
   },
   "yeoman-generator": {
     "replace": true,
-    "prefix": "v"
+    "prefix": "v",
+    "flaky": "ppc"
   },
   "minimist": {
     "replace": true
