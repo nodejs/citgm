@@ -77,7 +77,8 @@
   },
   "david": {
     "replace": true,
-    "prefix": "v"
+    "prefix": "v",
+    "flaky": true
   },
   "eslint": {
     "replace": true,
