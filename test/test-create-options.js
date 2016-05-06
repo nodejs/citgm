@@ -7,11 +7,13 @@ test('create-options:', function (t) {
   var cwd = __dirname;
 
   var context = {
-    options: {}
+    options: {},
+    npmConfigTmp: 'npm_config_tmp'
   };
 
   var env = Object.create(process.env);
-  env.npm_loglevel = 'error';
+  env['npm_loglevel'] = 'error';
+  env['npm_config_tmp'] = 'npm_config_tmp';
 
   var options = createOptions(cwd, context);
 
