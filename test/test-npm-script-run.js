@@ -12,7 +12,7 @@ var passingScript = path.join(__dirname, 'fixtures', 'example-test-script-passin
 var failingScript = path.join(__dirname, 'fixtures', 'example-test-script-failing.sh');
 var badPath = path.join(__dirname, 'fixtures', 'example-test-script-does-not-exist');
 
-var sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now(), 'run-test');
+var sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now() + 'run-test');
 
 test('npm.script.run: setup', function (t) {
   mkdirp(sandbox, function (err) {
