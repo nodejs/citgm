@@ -61,8 +61,7 @@
     "replace": true
   },
   "body-parser": {
-    "replace": true,
-    "flaky": ["v6", "v7"]
+    "replace": true
   },
   "uglify-js": {
     "replace": true,
