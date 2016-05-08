@@ -255,5 +255,8 @@
     "replace": true,
     "prefix": "v",
     "flaky": true
+  },
+  "serialport": {
+    "replace": true
   }
 }
