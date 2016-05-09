@@ -274,5 +274,12 @@
   "assert-plus": {
     "replace": true,
     "prefix": "v"
+  },
+  "compression": {
+    "replace":  true
+  },
+  "decompress-targz": {
+    "replace": true,
+    "prefix": "v"
   }
 }
