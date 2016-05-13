@@ -122,7 +122,8 @@
     }
   },
   "moment": {
-    "replace": true
+    "replace": true,
+    "flaky": true
   },
   "ws": {
     "replace": true
