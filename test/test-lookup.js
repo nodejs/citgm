@@ -17,6 +17,8 @@ test('lookup: makeUrl', function (t) {
 
   var prefix = 'v';
 
+  var sha = 'abc123';
+
   var expected = repo + '/archive/master.tar.gz';
   var url = makeUrl(repo);
   t.equal(url, expected, 'by default makeUrl should give a link to master');
@@ -28,6 +30,10 @@ test('lookup: makeUrl', function (t) {
   expected = repo + '/archive/' + prefix + tags.latest + '.tar.gz';
   url = makeUrl(repo, 'latest', tags, prefix);
   t.equal(url, expected, 'if given a prefix it should be included in the filename');
+
+  expected = repo + '/archive/' + sha + '.tar.gz';
+  url = makeUrl(repo, 'latest', tags, prefix, sha);
+  t.equal(url, expected, 'if given sha, it should be used to create download URL');
 
   t.end();
 });
