@@ -45,8 +45,12 @@ app
   )
   .option(
     '-t, --tap [path]', 'Output results in tap with optional file path'
-  ).option(
+  )
+  .option(
     '-o, --timeout <length>', 'Set timeout for npm install', 1000 * 60 * 10
+  )
+  .option(
+    '-c, --sha <commit-sha>', 'Install module from commit-sha'
   );
 
 if (!citgm.windows) {
@@ -85,7 +89,8 @@ var options = {
   nodedir: app.nodedir,
   level: app.verbose,
   npmLevel: app.npmLoglevel,
-  timeoutLength: app.timeout
+  timeoutLength: app.timeout,
+  sha: app.sha
 };
 
 if (!citgm.windows) {
@@ -103,7 +108,7 @@ if (!citgm.windows) {
 
 function launch(mod, options) {
   var runner = citgm.Tester(mod, options);
-  
+
   function cleanup() {
     runner.cleanup();
   }
@@ -111,7 +116,7 @@ function launch(mod, options) {
   process.on('SIGINT', cleanup);
   process.on('SIGHUP', cleanup);
   process.on('SIGBREAK', cleanup);
-  
+
   runner.on('start', function(name) {
     log.info('starting', name);
   }).on('fail', function(err) {
