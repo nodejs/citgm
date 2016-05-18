@@ -58,7 +58,7 @@ test('bin: no module /w root check', function (t) {
 
 test('bin: sigterm', function (t) {
   t.plan(1);
-  
+
   var proc = spawn(citgmPath, ['omg-i-pass', '-v', 'verbose']);
   proc.on('error', function(err) {
     t.error(err);
@@ -69,5 +69,17 @@ test('bin: sigterm', function (t) {
   });
   proc.on('exit', function (code) {
     t.equal(code, 1, 'omg-i-pass should fail from a sigint');
+  });
+});
+
+test('bin: install from sha', function (t) {
+  t.plan(1);
+  var proc = spawn(citgmPath, ['omg-i-pass', '-t', '-c', '37c34bad563599782c622baf3aaf55776fbc38a8']);
+  proc.on('error', function(err) {
+    t.error(err);
+    t.fail('we should not get an error testing omg-i-pass');
+  });
+  proc.on('close', function (code) {
+    t.ok(code === 0, 'omg-i-pass should pass and exit with a code of zero');
   });
 });
