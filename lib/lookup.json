@@ -258,6 +258,7 @@
     "flaky": true
   },
   "serialport": {
-    "replace": true
+    "replace": true,
+    "flaky": "ppc"
   }
 }
