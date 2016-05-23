@@ -6,6 +6,8 @@ node runtime.
 
 [![Build Status](https://travis-ci.org/nodejs/citgm.svg?branch=master)](https://travis-ci.org/nodejs/citgm)
 
+The Node.js project uses citmg to smoketest our releases and controversial changes. The Jenkins job that utilizes citgm can be found [on our CI](https://ci.nodejs.org/view/Node.js-citgm/job/citgm-smoker/).
+
 ## Installation
 ```
 npm install -g citgm
