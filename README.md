@@ -6,6 +6,8 @@ node runtime.
 
 [![Build Status](https://travis-ci.org/nodejs/citgm.svg?branch=master)](https://travis-ci.org/nodejs/citgm)
 
+The deployed version of this, used by the Node.js Core team and hosted on multiple platforms, can be found [on our Jenkins CI](https://ci.nodejs.org/view/Node.js-citgm/job/thealphanerd-smoker/).
+
 ## Installation
 ```
 npm install -g citgm
