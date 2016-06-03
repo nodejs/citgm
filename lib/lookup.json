@@ -141,7 +141,8 @@
   },
   "readable-stream": {
     "replace": true,
-    "prefix": "v"
+    "prefix": "v",
+    "flaky": ["ppc", "darwin"]
   },
   "ftp": {
     "replace": true,
