@@ -68,7 +68,7 @@ test('npm-install: no package.json', function (t) {
   });
 });
 
-test('npm-install: timout', function (t) {
+test('npm-install: timeout', function (t) {
   var context = {
     emit: function() {},
     path: sandbox,
@@ -82,7 +82,7 @@ test('npm-install: timout', function (t) {
     }
   };
   npmInstall(context, function (err) {
-    t.equals(err && err.message, 'Install Failed');
+    t.equals(err && err.message, 'Install Timed Out');
     t.done();
   });
 });
