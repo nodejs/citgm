@@ -100,6 +100,25 @@ test('grab-project: module does not exist', function (t) {
   });
 });
 
+test('grab-project: timeout', function (t) {
+  var context = {
+    emit: function() {},
+    path: sandbox,
+    module: {
+      name: 'omg-i-pass'
+    },
+    meta: {},
+    options: {
+      npmLevel: 'silly',
+      timeoutLength: 10
+    }
+  };
+  grabProject(context, function (err) {
+    t.equals(err && err.message, 'Download Timed Out');
+    t.done();
+  });
+});
+
 test('grab-project: teardown', function (t) {
   rimraf(sandbox, function (err) {
     t.error(err);
