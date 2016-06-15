@@ -68,7 +68,8 @@
     "prefix": "v"
   },
   "jquery": {
-    "replace": true
+    "replace": true,
+    "skip": true
   },
   "rimraf": {
     "replace": true,
