@@ -69,7 +69,7 @@
   },
   "jquery": {
     "replace": true,
-    "skip": true
+    "flaky": true
   },
   "rimraf": {
     "replace": true,
