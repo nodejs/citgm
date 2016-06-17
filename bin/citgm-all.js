@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 'use strict';
 var yargs = require('yargs');
+var os = require('os');
+
 var async = require('async');
+var _ = require('lodash');
 
 var update = require('../lib/update');
 var citgm = require('../lib/citgm');
@@ -78,6 +81,9 @@ function runCitgm (mod, name, next) {
   function cleanup() {
     bailed = true;
     runner.cleanup();
+    process.removeListener('SIGINT', cleanup);
+    process.removeListener('SIGHUP', cleanup);
+    process.removeListener('SIGBREAK', cleanup);
   }
 
   process.on('SIGINT', cleanup);
@@ -100,15 +106,34 @@ function runCitgm (mod, name, next) {
       log.info('done', 'The test suite for ' + result.name + ' version ' + result.version + ' passed.');
     }
     modules.push(result);
-    process.removeListener('SIGINT', cleanup);
-    process.removeListener('SIGHUP', cleanup);
-    process.removeListener('SIGBREAK', cleanup);
+    if (!bailed) {
+      process.removeListener('SIGINT', cleanup);
+      process.removeListener('SIGHUP', cleanup);
+      process.removeListener('SIGBREAK', cleanup);
+    }
     return next(bailed);
   }).run();
 }
 
+function runTask(task, next) {
+  runCitgm(task.mod, task.name, next);
+}
+
+function filterLookup(result, value, key) {
+  result.push({
+    name: key,
+    mod: value
+  });
+  return result;
+}
+
 function launch() {
-  async.forEachOfSeries(lookup, runCitgm, function done () {
+  var collection = _.reduce(lookup, filterLookup, []);
+
+  var q = async.queue(runTask, os.cpus().length || 1);
+  q.push(collection);
+  function done () {
+    q.drain = null;
     reporter.logger(log, modules);
 
     if (app.markdown) {
@@ -129,5 +154,21 @@ function launch() {
     }
 
     process.exit(reporter.util.hasFailures(modules));
-  });
+  }
+
+  function abort() {
+    q.pause();
+    q.kill();
+    process.exitCode = 1;
+    process.removeListener('SIGINT', abort);
+    process.removeListener('SIGHUP', abort);
+    process.removeListener('SIGBREAK', abort);
+    done();
+  }
+
+  q.drain = done;
+
+  process.on('SIGINT', abort);
+  process.on('SIGHUP', abort);
+  process.on('SIGBREAK', abort);
 }

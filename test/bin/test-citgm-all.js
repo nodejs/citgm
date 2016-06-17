@@ -5,9 +5,9 @@ var spawn = require('../../lib/spawn');
 
 var citgmAllPath = require.resolve('../../bin/citgm-all.js');
 
-test('citgm-all: /w markdown', function (t) {
+test('citgm-all: /w markdown /w -j', function (t) {
   t.plan(1);
-  var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup.json', '-m']);
+  var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup.json', '-m', '-j', '1']);
   proc.on('error', function(err) {
     t.error(err);
     t.fail('we should not get an error testing omg-i-pass');
@@ -17,9 +17,9 @@ test('citgm-all: /w markdown', function (t) {
   });
 });
 
-test('citgm-all: envVar', function (t) {
+test('citgm-all: envVar /w -J', function (t) {
   t.plan(1);
-  var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup-envVar.json']);
+  var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup-envVar.json', '-J']);
   proc.on('error', function(err) {
     t.error(err);
   });
