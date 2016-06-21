@@ -262,5 +262,17 @@
   "serialport": {
     "replace": true,
     "flaky": "ppc"
+  },
+  "isarray": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "inherits": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "assert-plus": {
+    "replace": true,
+    "prefix": "v"
   }
 }
