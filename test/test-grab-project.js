@@ -43,6 +43,27 @@ test('grab-project: npm module', function (t) {
   });
 });
 
+test('grab-project: local', function (t) {
+  var context = {
+    emit: function() {},
+    path: sandbox,
+    module: {
+      raw: './test/fixtures/omg-i-pass',
+      type: 'local'
+    },
+    meta: {},
+    options: {}
+  };
+  grabProject(context, function (err) {
+    t.error(err);
+    fs.stat(context.unpack, function (err, stats) {
+      t.error(err);
+      t.ok(stats.isFile(), 'The tar ball should exist on the system');
+      t.done();
+    });
+  });
+});
+
 test('grab-project: lookup table', function (t) {
   var context = {
     emit: function() {},
