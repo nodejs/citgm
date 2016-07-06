@@ -6,9 +6,9 @@ var spawn = require('../../lib/spawn');
 
 var citgmPath = require.resolve('../../bin/citgm.js');
 
-test('bin: omg-i-pass /w tap output', function (t) {
+test('bin: omg-i-pass /w tap output /w junit', function (t) {
   t.plan(1);
-  var proc = spawn(citgmPath, ['omg-i-pass', '-t']);
+  var proc = spawn(citgmPath, ['omg-i-pass', '-t', '-x']);
   proc.on('error', function(err) {
     t.error(err);
     t.fail('we should not get an error testing omg-i-pass');
@@ -30,9 +30,9 @@ test('bin: omg-i-fail /w markdown output /w nodedir', function (t) {
   });
 });
 
-test('bin: omg-i-have-script /w custom script /w tap to file', function (t) {
+test('bin: omg-i-have-script /w custom script /w tap to file /w junit to file', function (t) {
   t.plan(1);
-  var proc = spawn(citgmPath, ['omg-i-pass', '-l', './fixtures/custom-lookup-script.json', '-t', '/dev/null']);
+  var proc = spawn(citgmPath, ['omg-i-pass', '-l', './fixtures/custom-lookup-script.json', '--tap', '/dev/null', '--junit', '/dev/null']);
   proc.on('error', function(err) {
     t.error(err);
     t.fail('we should not get an error testing omg-i-pass');

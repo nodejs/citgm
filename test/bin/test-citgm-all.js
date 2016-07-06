@@ -17,9 +17,9 @@ test('citgm-all: /w markdown', function (t) {
   });
 });
 
-test('citgm-all: fail /w tap', function (t) {
+test('citgm-all: fail /w tap /w junit', function (t) {
   t.plan(1);
-  var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup-fail.json', '-t']);
+  var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup-fail.json', '-t', '-x']);
   proc.on('error', function(err) {
     t.error(err);
   });
@@ -50,9 +50,9 @@ test('citgm-all: flaky-fail ignoring flakyness', function (t) {
   });
 });
 
-test('citgm-all: skip /w rootcheck /w tap to fs', function (t) {
+test('citgm-all: skip /w rootcheck /w tap to fs /w junit to fs', function (t) {
   t.plan(1);
-  var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup-skip.json', '-s', '-t', '/dev/null']);
+  var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup-skip.json', '-s', '--tap', '/dev/null', '--junit', '/dev/null']);
   proc.on('error', function(err) {
     t.error(err);
   });

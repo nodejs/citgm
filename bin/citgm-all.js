@@ -43,7 +43,11 @@ app
   )
   .option(
     '-t, --tap [path]', 'Output results in tap with optional file path'
-  ).option(
+  )
+  .option(
+    '-x, --junit [path]', 'Output results in junit xml with optional file path'
+  )
+  .option(
     '-o, --timeout <length>', 'Output results in tap with optional file path', 1000 * 60 * 10
   )
   .option(
@@ -154,6 +158,11 @@ function launch() {
       // TODO check that we can write to that path, perhaps require a flag to overwrite
       var tap = (typeof app.tap === 'string') ? app.tap : log.bypass;
       reporter.tap(tap, modules);
+    }
+
+    if (app.junit) {
+      var junit = (typeof app.junit === 'string') ? app.junit : log.bypass;
+      reporter.junit(junit, modules);
     }
 
     process.exit(reporter.util.hasFailures(modules));

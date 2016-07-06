@@ -1,0 +1,21 @@
+<testsuite name="citgm">
+  <testcase name="iPass-v4.2.2">
+    <system-out>
+      <![CDATA[]]>
+    </system-out>
+  </testcase>
+  <testcase name="iFlakyFail-v3.3.3">
+    <system-out>
+      <![CDATA[ Thanks for testing!]]>
+    </system-out>
+    <skipped/>
+    <failure message="module test suite failed">[object Object] </failure>
+  </testcase>
+  <testcase name="iFail-v3.0.1">
+    <system-out>
+      <![CDATA[ Thanks for testing!]]>
+    </system-out>
+    <failure message="module test suite failed">[object Object] </failure>
+  </testcase>
+</testsuite>
+

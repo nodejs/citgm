@@ -54,7 +54,9 @@
     "uid-number": "0.0.6",
     "update-notifier": "^0.7.0",
     "which": "^1.2.8",
-    "winston": "^2.2.0"
+    "winston": "^2.2.0",
+    "xml-sanitizer": "^1.1.2",
+    "xmlbuilder": "^8.2.2"
   },
   "devDependencies": {
     "eslint": "^2.10.2",

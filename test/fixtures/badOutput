@@ -1,0 +1,82 @@
+ > request@2.73.0 test /private/var/folders/ty/q7q6b07j5r3c7nvnpzm6hkq40000gn/T/fc1a5d97-1eb3-4de7-952f-25c33f92963e/request
+ > npm run lint && npm run test-ci && npm run test-browser
+ > request@2.73.0 lint /private/var/folders/ty/q7q6b07j5r3c7nvnpzm6hkq40000gn/T/fc1a5d97-1eb3-4de7-952f-25c33f92963e/request
+ > eslint lib/ *.js tests/ && echo Lint passed.
+ Lint passed.
+ > request@2.73.0 test-ci /private/var/folders/ty/q7q6b07j5r3c7nvnpzm6hkq40000gn/T/fc1a5d97-1eb3-4de7-952f-25c33f92963e/request
+ > taper tests/test-*.js
+ [32mok test-agent.js .................. 20/20[39m
+ [32mok test-agentOptions.js ............. 4/4[39m
+ [32mok test-api.js ...................... 1/1[39m
+ [32mok test-aws.js ...................... 4/4[39m
+ [32mok test-baseUrl.js ................ 63/63[39m
+ [32mok test-basic-auth.js ............. 32/32[39m
+ [32mok test-bearer-auth.js ............ 17/17[39m
+ [32mok test-body.js ................... 19/19[39m
+ [32mok test-cookies.js ................ 25/25[39m
+ [32mok test-defaults.js ............... 56/56[39m
+ [32mok test-digest-auth.js ............ 15/15[39m
+ [32mok test-emptyBody.js ................ 9/9[39m
+ [32mok test-errors.js ................. 11/11[39m
+ [32mok test-event-forwarding.js ......... 4/4[39m
+ [32mok test-follow-all-303.js ........... 3/3[39m
+ [32mok test-follow-all.js ............... 3/3[39m
+ [32mok test-form-data-error.js .......... 3/3[39m
+ [32mok test-form-data.js .............. 64/64[39m
+ [32mok test-form-urlencoded.js ........ 28/28[39m
+ [32mok test-form.js ................... 19/19[39m
+ [32mok test-gzip.js ................... 38/38[39m
+ [32mok test-har.js .................... 24/24[39m
+ [32mok test-hawk.js ..................... 3/3[39m
+ [32mok test-headers.js ................ 29/29[39m
+ [32mok test-http-signature.js ........... 4/4[39m
+ [32mok test-httpModule.js ............. 50/50[39m
+ [32mok test-https.js .................. 20/20[39m
+ [32mok test-isUrl.js .................. 17/17[39m
+ [32mok test-json-request.js ........... 37/37[39m
+ [32mok test-localAddress.js ............. 7/7[39m
+ [32mok test-multipart-encoding.js ..... 70/70[39m
+ [32mok test-multipart.js ............ 172/172[39m
+ [32mok test-node-debug.js ............. 20/20[39m
+ [32mok test-oauth.js .................. 41/41[39m
+ [32mok test-onelineproxy.js ............. 3/3[39m
+ [32mok test-option-reuse.js ........... 10/10[39m
+ [32mok test-params.js ................. 12/12[39m
+ [32mok test-piped-redirect.js ........... 2/2[39m
+ [32mok test-pipes.js .................. 35/35[39m
+ [32mok test-pool.js ................... 16/16[39m
+ [32mok test-promise.js .................. 3/3[39m
+ [32mok test-proxy-connect.js ............ 5/5[39m
+ [32mok test-proxy.js ................ 104/104[39m
+ [32mok test-qs.js ..................... 24/24[39m
+ [32mok test-redirect-auth.js .......... 18/18[39m
+ [32mok test-redirect-complex.js ....... 40/40[39m
+ [32mok test-redirect.js ............... 87/87[39m
+ [32mok test-rfc3986.js ................ 44/44[39m
+ [32mok test-stream.js ................... 1/1[39m
+ [32mok test-timeout.js ................ 19/19[39m
+ [32mok test-timing.js ................... 7/7[39m
+ [32mok test-toJSON.js ................... 7/7[39m
+ [32mok test-tunnel.js ................. 26/26[39m
+ [32mok test-unix.js ..................... 6/6[39m
+ [32mtotal ......................... 1455/1455
+ ok[39m
+ > request@2.73.0 test-browser /private/var/folders/ty/q7q6b07j5r3c7nvnpzm6hkq40000gn/T/fc1a5d97-1eb3-4de7-952f-25c33f92963e/request
+ > node tests/browser/start.js
+ Started https server for karma tests on port 6767
+ DEPRECATED: use your own version of lodash, this will go away in karma@2.0
+ DEPRECATED: use your own version of lodash, this will go away in karma@2.0
+ PhantomJS 2.1.1 (Mac OS X 0.0.0) LOG: 'TAP version 13'
+ PhantomJS 2.1.1 (Mac OS X 0.0.0) LOG: '# returns on error'
+ PhantomJS 2.1.1 (Mac OS X 0.0.0) LOG: 'ok 1 should be equal'
+ PhantomJS 2.1.1 (Mac OS X 0.0.0) LOG: '# succeeds on valid URLs (with https and CORS)'
+ PhantomJS 2.1.1 (Mac OS X 0.0.0) LOG: 'ok 2 should be equal'
+ PhantomJS 2.1.1 (Mac OS X 0.0.0) LOG: ''
+ PhantomJS 2.1.1 (Mac OS X 0.0.0) LOG: '1..2'
+ PhantomJS 2.1.1 (Mac OS X 0.0.0) LOG: '# tests 2'
+ PhantomJS 2.1.1 (Mac OS X 0.0.0) LOG: '# pass  2'
+ PhantomJS 2.1.1 (Mac OS X 0.0.0) LOG: ''
+ ..
+ PhantomJS 2.1.1 (Mac OS X 0.0.0): Executed 2 of 2 SUCCESS (0.018 secs / 0.437 secs)
+ LOG: '# ok'
+ LOG: ''

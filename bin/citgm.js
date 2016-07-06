@@ -50,6 +50,9 @@ app
     '-t, --tap [path]', 'Output results in tap with optional file path'
   )
   .option(
+    '-x, --junit [path]', 'Output results in junit xml with optional file path'
+  )
+  .option(
     '-o, --timeout <length>', 'Set timeout for npm install', 1000 * 60 * 10
   )
   .option(
@@ -141,6 +144,12 @@ function launch(mod, options) {
       var tap = (typeof app.tap === 'string') ? app.tap : log.bypass;
       reporter.tap(tap, module);
     }
+    
+    if (app.junit) {
+      var junit = (typeof app.junit === 'string') ? app.junit : log.bypass;
+      reporter.junit(junit, module);
+    }
+    
     process.removeListener('SIGINT', cleanup);
     process.removeListener('SIGHUP', cleanup);
     process.removeListener('SIGBREAK', cleanup);

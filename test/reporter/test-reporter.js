@@ -21,3 +21,9 @@ test('reporter.tap():', function (t) {
   t.equals(typeof reporter.logger, 'function', 'tap is a function');
   t.end();
 });
+
+test('reporter.junit():', function (t) {
+  t.ok(reporter.junit, 'it should have a junit reporter');
+  t.equals(typeof reporter.junit, 'function', 'junit is a function');
+  t.end();
+});

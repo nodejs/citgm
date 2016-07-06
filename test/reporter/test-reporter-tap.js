@@ -20,7 +20,7 @@ var passingInput = [
   fixtures.iFlakyPass
 ];
 
-var passingExpectedPath = path.join(fixturesPath, 'test-out-passing.txt');
+var passingExpectedPath = path.join(fixturesPath, 'test-out-tap-passing.txt');
 
 var passingExpected = fs.readFileSync(passingExpectedPath, 'utf-8');
 
@@ -30,7 +30,7 @@ var failingInput = [
   fixtures.iFail
 ];
 
-var failingExpectedPath = path.join(fixturesPath, 'test-out-failing.txt');
+var failingExpectedPath = path.join(fixturesPath, 'test-out-tap-failing.txt');
 
 var failingExpected = fs.readFileSync(failingExpectedPath, 'utf-8');
 

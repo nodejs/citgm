@@ -31,11 +31,14 @@ Options:
   -q, --npm-loglevel [level]  Verbose output (silent, error, warn, http, info, verbose, silly)
   -l, --lookup <path>         Use the lookup table provided at <path>
   -d, --nodedir <path>        Path to the node source to use when compiling native addons
+  -p, --test-path <path>      Path to prepend to $PATH when running tests
   -n, --no-color              Turns off colorized output
   -s, --su                    Allow running the tool as root.
   -m, --markdown              Output results in markdown
   -t, --tap [path]            Output results in tap with optional file path
+  -x, --junit [path]          Output results in junit xml with optional file path
   -o, --timeout <length>      Set timeout for npm install
+  -c, --sha <commit-sha>      Install module from commit-sha
   -u, --uid <uid>             Set the uid (posix only)
   -g, --gid <uid>             Set the gid (posix only)
 ```
@@ -72,10 +75,12 @@ Options:
   -q, --npm-loglevel [level]  Verbose output (silent, error, warn, http, info, verbose, silly)
   -l, --lookup <path>         Use the lookup table provided at <path>
   -d, --nodedir <path>        Path to the node source to use when compiling native addons
+  -p, --test-path <path>      Path to prepend to $PATH when running tests
   -n, --no-color              Turns off colorized output
   -s, --su                    Allow running the tool as root.
   -m, --markdown              Output results in markdown
   -t, --tap [path]            Output results in tap with optional file path
+  -x, --junit [path]          Output results in junit xml with optional file path
   -o, --timeout <length>      Set timeout for npm install
   -f, --fail-flaky            Ignore flaky flags. Don't ignore any failures.
   -u, --uid <uid>             Set the uid (posix only)
