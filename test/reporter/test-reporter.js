@@ -2,7 +2,7 @@
 'use strict';
 var test = require('tap').test;
 
-var reporter = require('../lib/reporter');
+var reporter = require('../../lib/reporter');
 
 test('reporter.markdown():', function (t) {
   t.ok(reporter.markdown, 'it should have a markdown reporter');

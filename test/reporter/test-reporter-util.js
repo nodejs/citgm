@@ -1,8 +1,8 @@
 'use strict';
 var test = require('tap').test;
 
-var util = require('../lib/reporter/util');
-var fixtures = require('./fixtures/reporter-fixtures');
+var util = require('../../lib/reporter/util');
+var fixtures = require('../fixtures/reporter-fixtures');
 
 var noPassing = [
   fixtures.iFail,

@@ -8,9 +8,10 @@ var test = require('tap').test;
 var mkdirp = require('mkdirp');
 var rimraf = require('rimraf');
 
-var tap = require('../lib/reporter/tap');
-var fixtures = require('./fixtures/reporter-fixtures');
+var tap = require('../../lib/reporter/tap');
+var fixtures = require('../fixtures/reporter-fixtures');
 
+var fixturesPath = path.join(__dirname, '..', 'fixtures');
 var sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now());
 var outputFile = path.join(sandbox, 'test.tap');
 
@@ -19,11 +20,7 @@ var passingInput = [
   fixtures.iFlakyPass
 ];
 
-var passingExpectedPath = path.join(
-  __dirname,
-  'fixtures',
-  'test-out-passing.txt'
-);
+var passingExpectedPath = path.join(fixturesPath, 'test-out-passing.txt');
 
 var passingExpected = fs.readFileSync(passingExpectedPath, 'utf-8');
 
@@ -33,11 +30,7 @@ var failingInput = [
   fixtures.iFail
 ];
 
-var failingExpectedPath = path.join(
-  __dirname,
-  'fixtures',
-  'test-out-failing.txt'
-);
+var failingExpectedPath = path.join(fixturesPath, 'test-out-failing.txt');
 
 var failingExpected = fs.readFileSync(failingExpectedPath, 'utf-8');
 

@@ -1,8 +1,8 @@
 'use strict';
 var test = require('tap').test;
 
-var loggerReporter = require('../lib/reporter/logger');
-var fixtures = require('./fixtures/reporter-fixtures');
+var loggerReporter = require('../../lib/reporter/logger');
+var fixtures = require('../fixtures/reporter-fixtures');
 
 var output = '';
 

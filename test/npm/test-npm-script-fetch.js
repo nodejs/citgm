@@ -9,10 +9,11 @@ var mkdirp = require('mkdirp');
 var rimraf = require('rimraf');
 var rewire = require('rewire');
 
-var fetch = rewire('../lib/npm/script/fetch');
-var RequestMock = require('./fixtures/request-mock');
+var fetch = rewire('../../lib/npm/script/fetch');
+var RequestMock = require('../fixtures/request-mock');
 
-var passing = path.join(__dirname, 'fixtures', 'example-test-script-passing.sh');
+var fixtures = path.join(__dirname, '..', 'fixtures');
+var passing = path.join(fixtures, 'example-test-script-passing.sh');
 var uriHttp = 'http://gist.githubusercontent.com/TheAlphaNerd/0bf45af05c7580c4d80f/raw/08e52f1a64410e91203c909a6a90255d48273b75/example-test-script-passing.sh';
 var uriHttps = 'https://gist.githubusercontent.com/TheAlphaNerd/0bf45af05c7580c4d80f/raw/08e52f1a64410e91203c909a6a90255d48273b75/example-test-script-passing.sh';
 
@@ -47,7 +48,7 @@ test('fetch: given a custom lookup table and relative path', function (t) {
     path: sandbox,
     emit: function () {},
     options: {
-      lookup: path.join(__dirname, 'fixtures', 'custom-lookup-script.json')
+      lookup: path.join(fixtures, 'custom-lookup-script.json')
     }
   };
   fetch(context, './example-test-script-passing.sh', function (err, _path)  {

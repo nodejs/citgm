@@ -1,8 +1,8 @@
 'use strict';
 var test = require('tap').test;
 
-var markdown = require('../lib/reporter/markdown');
-var fixtures = require('./fixtures/reporter-fixtures');
+var markdown = require('../../lib/reporter/markdown');
+var fixtures = require('../fixtures/reporter-fixtures');
 
 test('single passing module:', function (t) {
   var output = '';

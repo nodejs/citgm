@@ -11,7 +11,7 @@
   },
   "scripts": {
     "test": "npm run lint && npm run tap",
-    "tap": "TAP_TIMEOUT=90 tap test/test-*.js",
+    "tap": "TAP_TIMEOUT=90 tap 'test/**/**/test-*.js'",
     "coverage": "TAP_TIMEOUT=90 nyc tap test/test-*.js",
     "coverage-html": "TAP_TIMEOUT=90 nyc --reporter=html tap test/test-*.js && opener coverage/index.html",
     "lint": "eslint bin/* lib/ test/",

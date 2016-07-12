@@ -8,10 +8,10 @@ var mkdirp = require('mkdirp');
 var rimraf = require('rimraf');
 var ncp = require('ncp');
 
-var npmTest = require('../lib/npm/test');
+var npmTest = require('../../lib/npm/test');
 
 var sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now());
-var fixtures = path.join(__dirname, 'fixtures');
+var fixtures = path.join(__dirname, '..', 'fixtures');
 
 var passFixtures = path.join(fixtures, 'omg-i-pass');
 var passTemp = path.join(sandbox, 'omg-i-pass');

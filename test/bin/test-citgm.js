@@ -4,9 +4,9 @@ var path = require('path');
 
 var test = require('tap').test;
 
-var spawn = require('../lib/spawn');
+var spawn = require('../../lib/spawn');
 
-var citgmPath = path.resolve(__dirname, '..', 'bin', 'citgm');
+var citgmPath = path.resolve(__dirname, '..', '..', 'bin', 'citgm');
 
 test('bin: omg-i-pass /w tap output', function (t) {
   t.plan(1);
