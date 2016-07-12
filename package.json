@@ -6,8 +6,8 @@
   "main": "bin/citgm",
   "preferGlobal": true,
   "bin": {
-    "citgm": "./bin/citgm",
-    "citgm-all": "./bin/citgm-all"
+    "citgm": "./bin/citgm.js",
+    "citgm-all": "./bin/citgm-all.js"
   },
   "scripts": {
     "test": "npm run lint && npm run tap",

@@ -5,7 +5,7 @@ var path = require('path');
 var test = require('tap').test;
 var spawn = require('../../lib/spawn');
 
-var citgmAllPath = path.resolve(__dirname, '..', '..', 'bin', 'citgm-all');
+var citgmAllPath = path.resolve(__dirname, '..', '..', 'bin', 'citgm-all.js');
 
 test('citgm-all: /w markdown', function (t) {
   t.plan(1);
