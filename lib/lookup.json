@@ -295,5 +295,9 @@
   "ember-cli": {
     "replace": true,
     "prefix": "v"
+  },
+  "node-sass": {
+    "replace": true,
+    "master": true
   }
 }
