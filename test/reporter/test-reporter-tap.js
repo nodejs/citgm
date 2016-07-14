@@ -37,7 +37,7 @@ var failingExpected = fs.readFileSync(failingExpectedPath, 'utf-8');
 test('reporter.tap(): setup', function (t) {
   mkdirp(sandbox, function (err) {
     t.error(err);
-    t.done();
+    t.end();
   });
 });
 
@@ -75,6 +75,6 @@ test('reporter.tap(): write to disk', function (t) {
 test('reporter.tap(): teardown', function (t) {
   rimraf(sandbox, function (err) {
     t.error(err);
-    t.done();
+    t.end();
   });
 });

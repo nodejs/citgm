@@ -24,7 +24,7 @@ test('citgm: omg-i-pass', function (t) {
     t.error(err);
   }).on('end', function () {
     t.notOk(process.exitCode, 'it should not exit');
-    t.done();
+    t.end();
   }).run();
 });
 
@@ -46,7 +46,7 @@ test('citgm: omg-i-pass from git url', function (t) {
     t.error(err);
   }).on('end', function () {
     t.notOk(process.exitCode, 'it should not exit');
-    t.done();
+    t.end();
   }).run();
 });
 
@@ -58,6 +58,6 @@ test('citgm: internal function find with error', function (t) {
   find(undefined, undefined, function (err) {
     t.equals(err && err.message, 'undefined not found in path!');
     citgm.__set__('which', which);
-    t.done();
+    t.end();
   });
 });

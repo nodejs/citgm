@@ -19,7 +19,7 @@ var sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now() + 'run-test');
 test('npm.script.run: setup', function (t) {
   mkdirp(sandbox, function (err) {
     t.error(err);
-    t.done();
+    t.end();
   });
 });
 
@@ -35,7 +35,7 @@ test('npm.script.run: should pass with passing script', function (t) {
   };
   run(context, passingScript, 'the canary is dead', function (err) {
     t.error(err);
-    t.done();
+    t.end();
   });
 });
 
@@ -51,7 +51,7 @@ test('npm.script.run: should fail with failing script', function (t) {
   var failingMsg = 'the canary is dead';
   run(context, failingScript, failingMsg, function (err) {
     t.equals(err && err.message, failingMsg);
-    t.done();
+    t.end();
   });
 });
 
@@ -66,7 +66,7 @@ test('npm.script.run: should fail with failing script (no msg)', function (t) {
   };
   run(context, failingScript, function (err) {
     t.match(err.message, /failed/);
-    t.done();
+    t.end();
   });
 });
 
@@ -81,13 +81,13 @@ test('npm.script.run: should fail with a bad path', function (t) {
   };
   run(context, badPath, 'the canary is dead', function (err) {
     t.match(err.message, /ENOENT/, 'we should receive a ENOENT warning');
-    t.done();
+    t.end();
   });
 });
 
 test('npm.script.run: teardown', function (t) {
   rimraf(sandbox, function (err) {
     t.error(err);
-    t.done();
+    t.end();
   });
 });

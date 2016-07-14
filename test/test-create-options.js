@@ -21,7 +21,7 @@ test('create-options:', function (t) {
   t.notOk(options.uid, 'There should not be a uid in the options');
   t.notOk(options.gid, 'There should not be a gid in the options');
   t.deepequal(options.env, env, 'The created env should be a clone of process.env with the added npm_loglevel');
-  t.done();
+  t.end();
 });
 
 test('create-options: with uid / gid', function (t) {
@@ -39,5 +39,5 @@ test('create-options: with uid / gid', function (t) {
   t.equals(typeof options, 'object', 'We should get back an object');
   t.equals(options.uid, 1337, 'The uid should be set to the expected value');
   t.equals(options.gid, 1337, 'The gid should be set to the expected value');
-  t.done();
+  t.end();
 });

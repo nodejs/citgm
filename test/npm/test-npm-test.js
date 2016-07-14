@@ -57,7 +57,7 @@ test('npm-test: basic module passing', function (t) {
   };
   npmTest(context, function (err) {
     t.error(err);
-    t.done();
+    t.end();
   });
 });
 
@@ -73,7 +73,7 @@ test('npm-test: basic module failing', function (t) {
   };
   npmTest(context, function (err) {
     t.equals(err && err.message, 'The canary is dead:');
-    t.done();
+    t.end();
   });
 });
 
@@ -89,7 +89,7 @@ test('npm-test: basic module no test script', function (t) {
   };
   npmTest(context, function (err) {
     t.equals(err && err.message, 'Module does not support npm-test!');
-    t.done();
+    t.end();
   });
 });
 
@@ -105,7 +105,7 @@ test('npm-test: no package.json', function (t) {
   };
   npmTest(context, function (err) {
     t.equals(err && err.message, 'Package.json Could not be found');
-    t.done();
+    t.end();
   });
 });
 
@@ -124,7 +124,7 @@ test('npm-test: custom script', function (t) {
   };
   npmTest(context, function (err) {
     t.error(err);
-    t.done();
+    t.end();
   });
 });
 
@@ -143,13 +143,13 @@ test('npm-test: custom script does not exist', function (t) {
   };
   npmTest(context, function (err) {
     t.match(err, /ENOENT/, 'we should receive an error including ENOENT');
-    t.done();
+    t.end();
   });
 });
 
 test('npm-test: teardown', function (t) {
   rimraf(sandbox, function (err) {
     t.error(err);
-    t.done();
+    t.end();
   });
 });

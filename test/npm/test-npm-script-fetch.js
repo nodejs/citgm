@@ -22,7 +22,7 @@ var sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now());
 test('fetch: setup', function (t) {
   mkdirp(sandbox, function (err) {
     t.error(err);
-    t.done();
+    t.end();
   });
 });
 
@@ -117,6 +117,6 @@ test('fetch: properly handle errors from request', function (t) {
 test('fetch: teardown', function (t) {
   rimraf(sandbox, function (err) {
     t.error(err);
-    t.done();
+    t.end();
   });
 });

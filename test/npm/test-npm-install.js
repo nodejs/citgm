@@ -46,7 +46,7 @@ test('npm-install: basic module', function (t) {
   };
   npmInstall(context, function (err) {
     t.error(err);
-    t.done();
+    t.end();
   });
 });
 
@@ -64,7 +64,7 @@ test('npm-install: no package.json', function (t) {
   };
   npmInstall(context, function (err) {
     t.equals(err && err.message, 'Install Failed');
-    t.done();
+    t.end();
   });
 });
 
@@ -83,7 +83,7 @@ test('npm-install: timeout', function (t) {
   };
   npmInstall(context, function (err) {
     t.equals(err && err.message, 'Install Timed Out');
-    t.done();
+    t.end();
   });
 });
 
@@ -101,13 +101,13 @@ test('npm-install: failed install', function (t) {
   };
   npmInstall(context, function (err) {
     t.equals(err && err.message, 'Install Failed');
-    t.done();
+    t.end();
   });
 });
 
 test('npm-install: teardown', function (t) {
   rimraf(sandbox, function (err) {
     t.error(err);
-    t.done();
+    t.end();
   });
 });

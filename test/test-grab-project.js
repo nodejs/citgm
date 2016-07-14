@@ -19,7 +19,7 @@ var fixtures = path.join(__dirname, 'fixtures');
 test('grab-project: setup', function (t) {
   mkdirp(sandbox, function (err) {
     t.error(err);
-    t.done();
+    t.end();
   });
 });
 
@@ -38,7 +38,7 @@ test('grab-project: npm module', function (t) {
     fs.stat(context.unpack, function (err, stats) {
       t.error(err);
       t.ok(stats.isFile(), 'The tar ball should exist on the system');
-      t.done();
+      t.end();
     });
   });
 });
@@ -59,7 +59,7 @@ test('grab-project: local', function (t) {
     fs.stat(context.unpack, function (err, stats) {
       t.error(err);
       t.ok(stats.isFile(), 'The tar ball should exist on the system');
-      t.done();
+      t.end();
     });
   });
 });
@@ -79,7 +79,7 @@ test('grab-project: lookup table', function (t) {
     fs.stat(context.unpack, function (err, stats) {
       t.error(err);
       t.ok(stats.isFile(), 'The tar ball should exist on the system');
-      t.done();
+      t.end();
     });
   });
 });
@@ -101,7 +101,7 @@ test('grab-project: local', function (t) {
       t.error(err);
       t.ok(stats.isFile(), 'The tar ball should exist on the system');
       process.chdir(__dirname);
-      t.done();
+      t.end();
     });
   });
 });
@@ -136,13 +136,13 @@ test('grab-project: timeout', function (t) {
   };
   grabProject(context, function (err) {
     t.equals(err && err.message, 'Download Timed Out');
-    t.done();
+    t.end();
   });
 });
 
 test('grab-project: teardown', function (t) {
   rimraf(sandbox, function (err) {
     t.error(err);
-    t.done();
+    t.end();
   });
 });

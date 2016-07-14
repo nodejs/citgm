@@ -148,7 +148,7 @@ test('lookup: no table', function (t) {
 
   lookup(context, function (err) {
     t.equals(err && err.message, 'Lookup table could not be loaded');
-    t.done();
+    t.end();
   });
 });
 
@@ -170,7 +170,7 @@ test('lookup: replace with no repo', function (t) {
 
   lookup(context, function (err) {
     t.equals(err && err.message, 'no-repository-field in package.json');
-    t.done();
+    t.end();
   });
 });
 
@@ -193,6 +193,6 @@ test('lookup: lookup with script', function (t) {
   lookup(context, function (err) {
     t.error(err);
     t.equals(context.options.script, './example-test-script-passing.sh');
-    t.done();
+    t.end();
   });
 });

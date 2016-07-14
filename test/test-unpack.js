@@ -16,7 +16,7 @@ test('unpack: context.unpack = null', function (t) {
   
   unpack(context, function (err) {
     t.deepEquals(err, new Error('Nothing to unpack... Ending'), 'it should error out');
-    t.done();
+    t.end();
   });
 });
 
@@ -28,7 +28,7 @@ test('unpack: context.unpack is invalid path', function (t) {
   
   unpack(context, function (err) {
     t.deepEquals(err, new Error('Nothing to unpack... Ending'), 'it should error out');
-    t.done();
+    t.end();
   });
 });
 
@@ -53,7 +53,7 @@ test('unpack: valid unpack', function (t) {
         t.ok(stats.isDirectory(), 'the untarred result should be a directory');
         tempDirectory.remove(context, function (error) {
           t.error(error);
-          t.done();
+          t.end();
         });
       });
     });
