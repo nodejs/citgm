@@ -1,12 +1,10 @@
 'use strict';
 
-var path = require('path');
-
 var test = require('tap').test;
 
 var spawn = require('../../lib/spawn');
 
-var citgmPath = path.resolve(__dirname, '..', '..', 'bin', 'citgm.js');
+var citgmPath = require.resolve('../../bin/citgm.js');
 
 test('bin: omg-i-pass /w tap output', function (t) {
   t.plan(1);
