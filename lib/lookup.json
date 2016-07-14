@@ -270,9 +270,5 @@
   "inherits": {
     "replace": true,
     "prefix": "v"
-  },
-  "assert-plus": {
-    "replace": true,
-    "prefix": "v"
   }
 }
