@@ -47,9 +47,8 @@
     "replace": true,
     "prefix": "v"
   },
-  "jade": {
+  "pug": {
     "replace": true,
-    "repo": "https://github.com/pugjs/jade",
     "flaky": {
       "ppc": ["v6", "v7"]
     }
