@@ -147,6 +147,26 @@ test('npm-test: custom script does not exist', function (t) {
   });
 });
 
+test('npm-test: alternative test-path', function (t) {
+  // Same test as 'basic module passing', except with alt node bin which fails.
+  var context = {
+    emit: function() {},
+    path: sandbox,
+    module: {
+      name: 'omg-i-pass'
+    },
+    meta: {},
+    options: {
+      npmLevel: 'silly',
+      testPath: path.resolve(__dirname, '..', 'fixtures', 'fakenodebin')
+    }
+  };
+  npmTest(context, function (err) {
+    t.equals(err && err.message, 'The canary is dead:');
+    t.end();
+  });
+});
+
 test('npm-test: teardown', function (t) {
   rimraf(sandbox, function (err) {
     t.error(err);

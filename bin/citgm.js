@@ -35,6 +35,9 @@ app
     'Path to the node source to use when compiling native addons'
   )
   .option(
+    '-p, --test-path <path>', 'Path to prepend to $PATH when running tests'
+  )
+  .option(
     '-n, --no-color', 'Turns off colorized output'
   )
   .option(
@@ -87,6 +90,7 @@ var options = {
   script: script,
   lookup: app.lookup,
   nodedir: app.nodedir,
+  testPath: app.testPath,
   level: app.verbose,
   npmLevel: app.npmLoglevel,
   timeoutLength: app.timeout,
