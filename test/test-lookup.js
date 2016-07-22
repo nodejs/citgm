@@ -196,3 +196,28 @@ test('lookup: lookup with script', function (t) {
     t.end();
   });
 });
+
+test('lookup: --fail-flaky', function (t) {
+  var context = {
+    lookup: null,
+    module: {
+      name: 'lodash',
+      raw: null
+    },
+    meta: {
+      repository: {
+        url: 'https://github.com/lodash/lodash'
+      }
+    },
+    options: {
+      failFlaky: true
+    },
+    emit: function () {}
+  };
+
+  lookup(context, function (err) {
+    t.error(err);
+    t.false(context.module.flaky, 'flaky should be disabled');
+    t.end();
+  });
+});
