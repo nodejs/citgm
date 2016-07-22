@@ -77,6 +77,7 @@ Options:
   -m, --markdown              Output results in markdown
   -t, --tap [path]            Output results in tap with optional file path
   -o, --timeout <length>      Set timeout for npm install
+  -f, --fail-flaky            Ignore flaky flags. Don't ignore any failures.
   -u, --uid <uid>             Set the uid (posix only)
   -g, --gid <uid>             Set the gid (posix only)
 ```
