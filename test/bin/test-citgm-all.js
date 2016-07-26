@@ -28,6 +28,17 @@ test('citgm-all: fail /w tap', function (t) {
   });
 });
 
+test('citgm-all: flaky-fail', function (t) {
+  t.plan(1);
+  var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup-flaky.json']);
+  proc.on('error', function(err) {
+    t.error(err);
+  });
+  proc.on('close', function (code) {
+    t.equals(code, 0, 'citgm-all should exit with signal 0');
+  });
+});
+
 test('citgm-all: skip /w rootcheck /w tap to fs', function (t) {
   t.plan(1);
   var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup-skip.json', '-s', '-t', '/dev/null']);

@@ -1,0 +1,7 @@
+{
+  "omg-i-fail": {
+    "replace": true,
+    "prefix": "v",
+    "flaky": true
+  }
+}

@@ -124,7 +124,6 @@ function runCitgm (mod, name, next) {
     else {
       log.info('done', 'The test suite for ' + result.name + ' version ' + result.version + ' passed.');
     }
-    result.flaky = mod.flaky;
     modules.push(result);
     process.removeListener('SIGINT', cleanup);
     process.removeListener('SIGHUP', cleanup);
