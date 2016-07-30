@@ -137,7 +137,8 @@
     "prefix": "v",
     "flaky": {
       "ppc": ["v6", "v7"]
-    }
+    },
+    "master": true
   },
   "readable-stream": {
     "replace": true,
