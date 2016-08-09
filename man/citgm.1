@@ -29,6 +29,9 @@ Use the lookup table provided at <path>
 .BR \-d ", " \-\-nodedir " " \fI<path>\fR
 Path to the node source to use when compiling native addons
 .TP
+.BR \-p ", " \-\-test-path " " \fI<path>\fR
+Path to prepend to $PATH when running tests
+.TP
 .BR \-n ", " \-\-no-color
 Turns off colorized output
 .TP
@@ -40,8 +43,15 @@ Output results in markdown
 .TP
 .BR \-t ", " \-\-tap " " \fI[path]\fR
 Output results in tap
+.TP
+.BR \-x ", " \-\-junit " " \fI[path]\fR
+Output results in junit xml with optional file path
+.TP
 .BR \-o ", " \-\-timeout " " \fI<length>\fR
 Set timeout for npm install
+.TP
+.BR \-c ", " \-\-sha " " \fI<commit-sha>\fR
+Install module from commit-sha
 .TP
 .BR \-u ", " \-\-uid " " \fIuid\fR
 Set the uid (posix only)
