@@ -169,5 +169,5 @@ For the most part, the built in table should be sufficient for general use.
 
 ## Contributors
 
-* James M Snell (@jasnell, jasnell@gmail.com / jasnell@us.ibm.com )
-* Myles Borins  (@thealphanerd, myles.borins@gmail.com / mborins@us.ibm.com )
+* as listed in <https://github.com/nodejs/citgm/blob/master/AUTHORS>
+
