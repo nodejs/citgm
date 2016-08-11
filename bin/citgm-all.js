@@ -2,6 +2,8 @@
 'use strict';
 var app = require('commander');
 var async = require('async');
+var util = require('util');
+var resolve = require('resolve-from');
 
 var update = require('../lib/update');
 var citgm = require('../lib/citgm');
@@ -52,6 +54,8 @@ app
   )
   .option(
     '-f, --fail-flaky', 'Ignore flaky flags. Don\'t ignore any failures.'
+  ).option(
+    '-C, --config <filename>', 'Config file (loaded with `require`)'
   );
 
 if (!citgm.windows) {
@@ -65,14 +69,16 @@ if (!citgm.windows) {
 
 app.parse(process.argv);
 
+var config = app.config ? util._extend(require(resolve(process.cwd(), app.config)), app) : app;
+
 var log = logger({
-  level: app.verbose,
-  nocolor: !app.color
+  level: config.verbose,
+  nocolor: !config.color
 });
 
 update(log);
 
-if (!app.su) {
+if (!config.su) {
   require('root-check')(); // silently downgrade if running as root...
                            // unless --su is passed
 } else {
@@ -80,21 +86,21 @@ if (!app.su) {
 }
 
 var options = {
-  lookup: app.lookup,
-  nodedir: app.nodedir,
-  testPath: app.testPath,
-  failFlaky: app.failFlaky,
-  level: app.verbose,
-  npmLevel: app.npmLoglevel,
-  timeoutLength: app.timeout
+  lookup: config.lookup,
+  nodedir: config.nodedir,
+  testPath: config.testPath,
+  failFlaky: config.failFlaky,
+  level: config.verbose,
+  npmLevel: config.npmLoglevel,
+  timeoutLength: config.timeout
 };
 
 var lookup = getLookup(options);
 
 if (!citgm.windows) {
   var uidnumber = require('uid-number');
-  var uid = app.uid || process.getuid();
-  var gid = app.gid || process.getgid();
+  var uid = config.uid || process.getuid();
+  var gid = config.gid || process.getgid();
   uidnumber(uid,gid, function(err, uid, gid) {
     options.uid = uid;
     options.gid = gid;
@@ -148,15 +154,15 @@ function launch() {
   async.forEachOfSeries(lookup, runCitgm, function done () {
     reporter.logger(log, modules);
 
-    if (app.markdown) {
+    if (config.markdown) {
       reporter.markdown(log.bypass, modules);
     }
     
-    if (app.tap) {
+    if (config.tap) {
       // if tap is a string it should be a path to write output to
       // if not use `log.bypass` which is currently process.stdout.write
       // TODO check that we can write to that path, perhaps require a flag to overwrite
-      var tap = (typeof app.tap === 'string') ? app.tap : log.bypass;
+      var tap = (typeof config.tap === 'string') ? config.tap : log.bypass;
       reporter.tap(tap, modules);
     }
 

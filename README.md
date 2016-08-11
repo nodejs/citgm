@@ -39,6 +39,7 @@ Options:
   -x, --junit [path]          Output results in junit xml with optional file path
   -o, --timeout <length>      Set timeout for npm install
   -c, --sha <commit-sha>      Install module from commit-sha
+  -C, --config <filename>     Config file (loaded with `require`)
   -u, --uid <uid>             Set the uid (posix only)
   -g, --gid <uid>             Set the gid (posix only)
 ```
@@ -83,6 +84,7 @@ Options:
   -x, --junit [path]          Output results in junit xml with optional file path
   -o, --timeout <length>      Set timeout for npm install
   -f, --fail-flaky            Ignore flaky flags. Don't ignore any failures.
+  -C, --config <filename>     Config file (loaded with `require`)
   -u, --uid <uid>             Set the uid (posix only)
   -g, --gid <uid>             Set the gid (posix only)
 ```

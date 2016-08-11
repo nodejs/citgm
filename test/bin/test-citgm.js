@@ -18,6 +18,18 @@ test('bin: omg-i-pass /w tap output /w junit', function (t) {
   });
 });
 
+test('bin: omg-i-pass /w config file and several options', function (t) {
+  t.plan(1);
+  var proc = spawn(citgmPath, ['omg-i-pass', '-C', './test/fixtures/test-citgm-config.json']);
+  proc.on('error', function(err) {
+    t.error(err);
+    t.fail('we should not get an error testing omg-i-pass');
+  });
+  proc.on('close', function (code) {
+    t.ok(code === 0, 'omg-i-pass should pass and exit with a code of zero');
+  });
+});
+
 test('bin: omg-i-fail /w markdown output /w nodedir', function (t) {
   t.plan(1);
   var proc = spawn(citgmPath, ['omg-i-fail', '-m', '-d', '/dev/null']);

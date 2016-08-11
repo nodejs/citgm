@@ -1,0 +1,6 @@
+{
+  "verbose": "silly",
+  "npmLoglevel": "silly",
+  "markdown": true,
+  "lookup": "test/fixtures/custom-lookup.json"
+}
