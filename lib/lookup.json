@@ -291,5 +291,9 @@
   "bson": {
     "replace": true,
     "prefix": "V"
+  },
+  "ember-cli": {
+    "replace": true,
+    "prefix": "v"
   }
 }
