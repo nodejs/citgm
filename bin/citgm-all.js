@@ -45,6 +45,9 @@ app
     '-t, --tap [path]', 'Output results in tap with optional file path'
   ).option(
     '-o, --timeout <length>', 'Output results in tap with optional file path', 1000 * 60 * 10
+  )
+  .option(
+    '-f, --fail-flaky', 'Ignore flaky flags. Don\'t ignore any failures.'
   );
 
 if (!citgm.windows) {
@@ -76,6 +79,7 @@ var options = {
   lookup: app.lookup,
   nodedir: app.nodedir,
   testPath: app.testPath,
+  failFlaky: app.failFlaky,
   level: app.verbose,
   npmLevel: app.npmLoglevel,
   timeoutLength: app.timeout
