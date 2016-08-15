@@ -11,7 +11,7 @@
     "replace": true,
     "prefix": "v",
     "flaky": {
-      "osx": true,
+      "darwin": true,
       "ppc": true
     }
   },
@@ -215,7 +215,7 @@
     "replace": true,
     "prefix": "v",
     "flaky": {
-      "osx": true,
+      "darwin": true,
       "v0.12": ["fedroa21", "fedora22", "ubuntu1204"]
     }
   },
