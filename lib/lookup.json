@@ -270,5 +270,9 @@
   "inherits": {
     "replace": true,
     "prefix": "v"
+  },
+  "graceful-fs": {
+    "replace": true,
+    "prefix": "v"
   }
 }
