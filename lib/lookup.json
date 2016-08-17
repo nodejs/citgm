@@ -274,5 +274,23 @@
   "graceful-fs": {
     "replace": true,
     "prefix": "v"
+  },
+  "leveldown": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "bcrypt": {
+    "replace": true,
+    "prefix": "v"
+  },
+  "ref": {
+    "replace": true
+  },
+  "time": {
+    "replace": true
+  },
+  "bson": {
+    "replace": true,
+    "prefix": "V"
   }
 }
