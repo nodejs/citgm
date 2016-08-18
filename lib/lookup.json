@@ -132,11 +132,7 @@
   "vinyl-fs": {
     "replace": true,
     "prefix": "v",
-    "flaky": [
-      "ppc",
-      "ubuntu",
-      "debian"
-    ],
+    "flaky": true,
     "master": true
   },
   "readable-stream": {
