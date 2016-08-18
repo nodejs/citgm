@@ -221,3 +221,14 @@ test('lookup: --fail-flaky', function (t) {
     t.end();
   });
 });
+
+test('lookup: ensure lookup works', function (t) {
+  try {
+    var lookup = require('../lib/lookup.json');
+  }
+  catch (err) {
+    t.error(err);
+  }
+  t.ok(lookup, 'the lookup table should exist');
+  t.end();
+});

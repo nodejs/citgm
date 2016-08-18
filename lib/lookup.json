@@ -127,7 +127,7 @@
   },
   "vinyl": {
     "replace": true,
-    "prefix": "v",
+    "prefix": "v"
   },
   "vinyl-fs": {
     "replace": true,
