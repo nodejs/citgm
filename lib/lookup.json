@@ -10,10 +10,7 @@
   "request": {
     "replace": true,
     "prefix": "v",
-    "flaky": {
-      "darwin": true,
-      "ppc": true
-    }
+    "flaky": true
   },
   "commander": {
     "replace": true,
@@ -130,14 +127,16 @@
   },
   "vinyl": {
     "replace": true,
-    "prefix": "v"
+    "prefix": "v",
   },
   "vinyl-fs": {
     "replace": true,
     "prefix": "v",
-    "flaky": {
-      "ppc": ["v6", "v7"]
-    },
+    "flaky": [
+      "ppc",
+      "ubuntu",
+      "debian"
+    ],
     "master": true
   },
   "readable-stream": {
