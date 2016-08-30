@@ -14,8 +14,7 @@
     "tap": "TAP_TIMEOUT=90 tap 'test/**/**/test-*.js'",
     "coverage": "TAP_TIMEOUT=90 nyc tap test/test-*.js",
     "coverage-html": "TAP_TIMEOUT=90 nyc --reporter=html tap test/test-*.js && opener coverage/index.html",
-    "lint": "eslint bin/* lib/ test/",
-    "watch": "nodemon --ignore node_modules/ -e js,json --exec 'npm run tap'"
+    "lint": "eslint bin/* lib/ test/"
   },
   "author": "James M Snell <jasnell@gmail.com> (http://jasnell.me)",
   "repository": {
@@ -61,7 +60,6 @@
   "devDependencies": {
     "eslint": "^2.10.2",
     "ncp": "^2.0.0",
-    "nodemon": "^1.9.2",
     "nyc": "^6.4.4",
     "opener": "^1.4.1",
     "rewire": "^2.4.0",
