@@ -62,7 +62,8 @@
   },
   "uglify-js": {
     "replace": true,
-    "prefix": "v"
+    "prefix": "v",
+    "flaky": "darwin"
   },
   "jquery": {
     "replace": true
@@ -87,12 +88,13 @@
     "flaky": "linux"
   },
   "browserify": {
-    "replace": true
+    "replace": true,
+    "flaky": ["v7"]
   },
   "watchify": {
     "replace": true,
     "prefix": "v",
-    "flaky": "ppc"
+    "flaky": ["ppc", "v7"]
   },
   "stylus": {
     "replace": true
