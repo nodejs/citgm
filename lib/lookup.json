@@ -55,7 +55,8 @@
     "flaky": true
   },
   "fs-extra": {
-    "replace": true
+    "replace": true,
+    "flaky": "linux-ia32"
   },
   "body-parser": {
     "replace": true
@@ -284,7 +285,8 @@
     "replace": true
   },
   "time": {
-    "replace": true
+    "replace": true,
+    "flaky": "linux-ia32"
   },
   "bson": {
     "replace": true,
