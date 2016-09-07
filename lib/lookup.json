@@ -307,5 +307,9 @@
     "replace": true,
     "prefix": "v",
     "flaky": ["ppc", "v7", "s390"]
+  },
+  "full-icu-test": {
+    "replace": true,
+    "prefix": "v"
   }
 }
