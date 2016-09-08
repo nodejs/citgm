@@ -77,7 +77,7 @@ test('reporter.junit(): bad output', function (t) {
     junit(logger, corruptXmlToo);
   }, 'parsing bad data should not throw');
 
-  t.ok(true);
+  t.ok(output);
 });
 
 test('reporter.junit(): failing', function (t) {
