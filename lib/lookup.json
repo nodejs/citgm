@@ -81,7 +81,7 @@
   "eslint": {
     "replace": true,
     "prefix": "v",
-    "flaky": ["ppc", "v7"]
+    "flaky": ["ppc", "v7", "s390"]
   },
   "tape": {
     "replace": true,
@@ -102,7 +102,8 @@
   },
   "level": {
     "replace": true,
-    "prefix": "v"
+    "prefix": "v",
+    "flaky": ["aix", "s390"]
   },
   "torrent-stream": {
     "replace": true,
@@ -275,7 +276,8 @@
   },
   "leveldown": {
     "replace": true,
-    "prefix": "v"
+    "prefix": "v",
+    "flaky": ["aix", "s390"]
   },
   "bcrypt": {
     "replace": true,
