@@ -17,6 +17,18 @@ test('citgm-all: /w markdown', function (t) {
   });
 });
 
+test('citgm-all: config file', function (t) {
+  t.plan(1);
+  var proc = spawn(citgmAllPath, ['-C', './test/fixtures/test-citgm-all-config.json']);
+  proc.on('error', function(err) {
+    t.error(err);
+    t.fail('we should not get an error testing omg-i-pass');
+  });
+  proc.on('close', function (code) {
+    t.equals(code, 0, 'citgm-all should run all the tests in the lookup');
+  });
+});
+
 test('citgm-all: fail /w tap /w junit', function (t) {
   t.plan(1);
   var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup-fail.json', '-t', '-x']);

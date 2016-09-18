@@ -1,0 +1,5 @@
+{
+  "verbose": "silly",
+  "npmLoglevel": "silly",
+  "tap": true
+}
