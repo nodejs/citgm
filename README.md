@@ -27,6 +27,7 @@ Options:
 
   -h, --help                  output usage information
   -V, --version               output the version number
+  --config                    Path to a JSON config file
   -v, --verbose [level]       Verbose output (silly, verbose, info, warn, error)
   -q, --npm-loglevel [level]  Verbose output (silent, error, warn, http, info, verbose, silly)
   -l, --lookup <path>         Use the lookup table provided at <path>
@@ -42,6 +43,10 @@ Options:
   -u, --uid <uid>             Set the uid (posix only)
   -g, --gid <uid>             Set the gid (posix only)
 ```
+
+When using a JSON config file, the properties need to be the same as the
+longer-form CLI options. You can also use environment variables. For example,
+`CITGM_TEST_PATH=$HOME/bin` is the same as `--test-path $HOME/bin`.
 
 The tool requires online access to the npm registry to run. If you want to
 point to a private npm registry, then you'll need to set that up in your
@@ -71,6 +76,7 @@ Options:
 
   -h, --help                  output usage information
   -V, --version               output the version number
+  --config                    Path to a JSON config file
   -v, --verbose [level]       Verbose output (silly, verbose, info, warn, error)
   -q, --npm-loglevel [level]  Verbose output (silent, error, warn, http, info, verbose, silly)
   -l, --lookup <path>         Use the lookup table provided at <path>
@@ -86,6 +92,10 @@ Options:
   -u, --uid <uid>             Set the uid (posix only)
   -g, --gid <uid>             Set the gid (posix only)
 ```
+
+When using a JSON config file, the properties need to be the same as the
+longer-form CLI options. You can also use environment variables. For example,
+`CITGM_TEST_PATH=$HOME/bin` is the same as `--test-path $HOME/bin`.
 
 You can also test your own list of modules:
 

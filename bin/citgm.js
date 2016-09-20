@@ -4,75 +4,28 @@ var update = require('../lib/update');
 var citgm = require('../lib/citgm');
 var logger = require('../lib/out');
 var reporter = require('../lib/reporter');
-var app = require('commander');
-
-var pkg = require('../package.json');
+var commonArgs = require('../lib/common-args');
+var yargs = require('yargs');
 
 var mod;
 var script;
 
-app
-  .version(pkg.version)
-  .arguments('<module> [script]')
-  .action(function(m, s) {
-    mod = m;
-    script = s;
-  })
-  .option(
-    '-v, --verbose [level]',
-    'Verbose output (silly, verbose, info, warn, error)',
-    /^(silly|verbose|info|warn|error)$/i, 'info')
-  .option(
-    '-q, --npm-loglevel [level]',
-    'Verbose output (silent, error, warn, http, info, verbose, silly)',
-    /^(silent|error|warn|http|info|verbose|silly)$/i, 'error')
-  .option(
-    '-l, --lookup <path>',
-    'Use the lookup table provided at <path>'
-  )
-  .option(
-    '-d, --nodedir <path>',
-    'Path to the node source to use when compiling native addons'
-  )
-  .option(
-    '-p, --test-path <path>', 'Path to prepend to $PATH when running tests'
-  )
-  .option(
-    '-n, --no-color', 'Turns off colorized output'
-  )
-  .option(
-    '-s, --su', 'Allow running the tool as root.'
-  )
-  .option(
-    '-m, --markdown', 'Output results in markdown'
-  )
-  .option(
-    '-t, --tap [path]', 'Output results in tap with optional file path'
-  )
-  .option(
-    '-x, --junit [path]', 'Output results in junit xml with optional file path'
-  )
-  .option(
-    '-o, --timeout <length>', 'Set timeout for npm install', 1000 * 60 * 10
-  )
-  .option(
-    '-c, --sha <commit-sha>', 'Install module from commit-sha'
-  );
+yargs = commonArgs(yargs)
+  .usage('citgm [options] <module> [script]')
+  .option('sha', {
+    alias: 'c',
+    type: 'string',
+    description: 'Install module from commit-sha'
+  });
 
-if (!citgm.windows) {
-  app.option(
-    '-u, --uid <uid>', 'Set the uid (posix only)'
-  )
-  .option(
-    '-g, --gid <uid>', 'Set the gid (posix only)'
-  );
-}
+var app = yargs.argv;
 
-app.parse(process.argv);
+mod = app._[0];
+script = app._[1];
 
 var log = logger({
   level:app.verbose,
-  nocolor: !app.color
+  nocolor: app.noColor
 });
 
 update(log);
@@ -85,7 +38,7 @@ if (!app.su) {
 }
 
 if (!mod) {
-  app.outputHelp();
+  yargs.showHelp();
   process.exit(0);
 }
 
