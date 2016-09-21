@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 'use strict';
-var app = require('commander');
+var yargs = require('yargs');
 var async = require('async');
 
 var update = require('../lib/update');
@@ -8,66 +8,21 @@ var citgm = require('../lib/citgm');
 var logger = require('../lib/out');
 var reporter = require('../lib/reporter');
 var getLookup = require('../lib/lookup').get;
+var commonArgs = require('../lib/common-args');
 
-var pkg = require('../package.json');
+yargs = commonArgs(yargs)
+  .usage('citgm-all [options]')
+  .option('fail-flaky', {
+    alias: 'f',
+    type: 'boolean',
+    description: 'Ignore flaky flags. Don\'t ignore any failures.'
+  });
 
-app
-  .version(pkg.version)
-  .option(
-    '-v, --verbose [level]',
-    'Verbose output (silly, verbose, info, warn, error)',
-    /^(silly|verbose|info|warn|error)$/i, 'info')
-  .option(
-    '-q, --npm-loglevel [level]',
-    'Verbose output (silent, error, warn, http, info, verbose, silly)',
-    /^(silent|error|warn|http|info|verbose|silly)$/i, 'error')
-  .option(
-    '-l, --lookup <path>',
-    'Use the lookup table provided at <path>'
-  )
-  .option(
-    '-d, --nodedir <path>',
-    'Path to the node source to use when compiling native addons'
-  )
-  .option(
-    '-p, --test-path <path>', 'Path to prepend to $PATH when running tests'
-  )
-  .option(
-    '-n, --no-color', 'Turns off colorized output'
-  )
-  .option(
-    '-s, --su', 'Allow running the tool as root.'
-  )
-  .option(
-    '-m, --markdown', 'Output results in markdown'
-  )
-  .option(
-    '-t, --tap [path]', 'Output results in tap with optional file path'
-  )
-  .option(
-    '-x, --junit [path]', 'Output results in junit xml with optional file path'
-  )
-  .option(
-    '-o, --timeout <length>', 'Output results in tap with optional file path', 1000 * 60 * 10
-  )
-  .option(
-    '-f, --fail-flaky', 'Ignore flaky flags. Don\'t ignore any failures.'
-  );
-
-if (!citgm.windows) {
-  app.option(
-    '-u, --uid <uid>', 'Set the uid (posix only)'
-  )
-  .option(
-    '-g, --gid <uid>', 'Set the gid (posix only)'
-  );
-}
-
-app.parse(process.argv);
+var app = yargs.argv;
 
 var log = logger({
   level: app.verbose,
-  nocolor: !app.color
+  nocolor: app.color
 });
 
 update(log);
