@@ -46,6 +46,7 @@ test('npm-test: setup', function (t) {
 test('npm-test: basic module passing', function (t) {
   var context = {
     emit: function() {},
+    testNodeBin: 'node',
     path: sandbox,
     module: {
       name: 'omg-i-pass'
@@ -64,6 +65,7 @@ test('npm-test: basic module passing', function (t) {
 test('npm-test: basic module failing', function (t) {
   var context = {
     emit: function() {},
+    testNodeBin: 'node',
     path: sandbox,
     module: {
       name: 'omg-i-fail'
@@ -80,6 +82,7 @@ test('npm-test: basic module failing', function (t) {
 test('npm-test: basic module no test script', function (t) {
   var context = {
     emit: function() {},
+    testNodeBin: 'node',
     path: sandbox,
     module: {
       name: 'omg-i-do-not-support-testing'
@@ -96,6 +99,7 @@ test('npm-test: basic module no test script', function (t) {
 test('npm-test: no package.json', function (t) {
   var context = {
     emit: function() {},
+    testNodeBin: 'node',
     path: sandbox,
     module: {
       name: 'omg-i-dont-exist'
@@ -112,6 +116,7 @@ test('npm-test: no package.json', function (t) {
 test('npm-test: custom script', function (t) {
   var context = {
     emit: function() {},
+    testNodeBin: 'node',
     path: sandbox,
     module: {
       name: 'omg-i-pass'
@@ -131,6 +136,7 @@ test('npm-test: custom script', function (t) {
 test('npm-test: custom script does not exist', function (t) {
   var context = {
     emit: function() {},
+    testNodeBin: 'node',
     path: sandbox,
     module: {
       name: 'omg-i-pass'
@@ -151,6 +157,7 @@ test('npm-test: alternative test-path', function (t) {
   // Same test as 'basic module passing', except with alt node bin which fails.
   var context = {
     emit: function() {},
+    testNodeBin: 'node',
     path: sandbox,
     module: {
       name: 'omg-i-pass'
