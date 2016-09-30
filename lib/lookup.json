@@ -300,7 +300,7 @@
   },
   "node-sass": {
     "replace": true,
-    "master": true,
-    "flaky": "ppc"
+    "prefix": "v",
+    "flaky": ["ppc", "v7"]
   }
 }
