@@ -90,16 +90,13 @@ function launch(mod, options) {
       reporter.markdown(log.bypass, module);
     }
 
-    if (app.tap) {
-      // if tap is a string it should be a path to write output to
-      // if not use `log.bypass` which is currently process.stdout.write
-      // TODO check that we can write to that path, perhaps require a flag to overwrite
-      var tap = (typeof app.tap === 'string') ? app.tap : log.bypass;
+    if (typeof app.tap === 'string') {
+      var tap = (app.tap) ? app.tap : log.bypass;
       reporter.tap(tap, module);
     }
-    
-    if (app.junit) {
-      var junit = (typeof app.junit === 'string') ? app.junit : log.bypass;
+
+    if (typeof app.junit === 'string') {
+      var junit = (app.junit) ? app.junit : log.bypass;
       reporter.junit(junit, module);
     }
     
