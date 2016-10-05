@@ -1,8 +1,15 @@
 'use strict';
+var fs = require('fs');
+var path = require('path');
+
 var test = require('tap').test;
 
 var util = require('../../lib/reporter/util');
 var fixtures = require('../fixtures/reporter-fixtures');
+
+var fixturesPath = path.join(__dirname, '..', 'fixtures');
+var carriageReturnPath = path.join(fixturesPath, 'CR-raw.txt');
+var carriageReturnExpectedPath = path.join(fixturesPath, 'CR-sanitized.txt');
 
 var noPassing = [
   fixtures.iFail,
@@ -64,5 +71,14 @@ test('hasFailures:', function (t) {
   t.ok(util.hasFailures(somePassing), 'there should be failures in the somePassing list');
   t.notok(util.hasFailures(allPassing), 'there should be no failures in the allPassing list');
   t.notok(util.hasFailures(flakeCityUsa), 'there should be no failures in the flakeCityUsa list');
+  t.end();
+});
+
+test('util.sanitizeOutput', function (t) {
+  // var result = util.sanitizeOutput();
+  var raw = fs.readFileSync(carriageReturnPath, 'utf-8');
+  var expected = fs.readFileSync(carriageReturnExpectedPath, 'utf-8');
+  var result = util.sanitizeOutput(raw, '#');
+  t.equals(result, expected, 'there should be a # on every line');
   t.end();
 });

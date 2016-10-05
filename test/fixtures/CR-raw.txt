@@ -1,0 +1,6 @@
+  Route
+    ✓ should work without handlers
+    .all
+      ✓ should add handler
+      ✓ should handle VERBS
+      ✓ should stack
