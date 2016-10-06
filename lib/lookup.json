@@ -56,7 +56,7 @@
   },
   "fs-extra": {
     "replace": true,
-    "flaky": "linux-ia32"
+    "flaky": ["linux-ia32", "aix"]
   },
   "body-parser": {
     "replace": true
@@ -64,7 +64,7 @@
   "uglify-js": {
     "replace": true,
     "prefix": "v",
-    "flaky": "darwin"
+    "flaky": ["darwin", "aix"]
   },
   "jquery": {
     "replace": true
@@ -172,7 +172,8 @@
   },
   "spdy": {
     "replace": true,
-    "prefix": "v"
+    "prefix": "v",
+    "flaky": "aix"
   },
   "dicer": {
     "replace": true,
@@ -247,7 +248,8 @@
   },
   "yargs": {
     "replace": true,
-    "prefix": "v"
+    "prefix": "v",
+    "flaky": "aix"
   },
   "semver": {
     "replace": true,
@@ -288,7 +290,7 @@
   },
   "time": {
     "replace": true,
-    "flaky": "linux-ia32"
+    "flaky": ["linux-ia32", "aix"]
   },
   "bson": {
     "replace": true,
