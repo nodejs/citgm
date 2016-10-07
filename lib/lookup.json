@@ -284,7 +284,8 @@
     "prefix": "v"
   },
   "ref": {
-    "replace": true
+    "replace": true,
+    "flaky": "aix"
   },
   "time": {
     "replace": true,
