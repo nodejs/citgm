@@ -1,0 +1,14 @@
+This is a test!
+<testsuite name="citgm">
+  <testcase name="iPass-v4.2.2">
+    <system-out>
+      <![CDATA[]]>
+    </system-out>
+  </testcase>
+  <testcase name="iFlakyPass-v3.0.1">
+    <system-out>
+      <![CDATA[ Thanks for testing!]]>
+    </system-out>
+  </testcase>
+</testsuite>
+

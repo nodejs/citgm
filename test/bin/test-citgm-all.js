@@ -17,9 +17,11 @@ test('citgm-all: /w markdown', function (t) {
   });
 });
 
-test('citgm-all: fail /w tap /w junit', function (t) {
+
+
+test('citgm-all: fail /w tap /w junit /w append', function (t) {
   t.plan(1);
-  var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup-fail.json', '-t', '-x']);
+  var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup-fail.json', '-t', '-x', '-a']);
   proc.on('error', function(err) {
     t.error(err);
   });
