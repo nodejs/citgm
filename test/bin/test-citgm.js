@@ -30,9 +30,9 @@ test('bin: omg-i-fail /w markdown output /w nodedir', function (t) {
   });
 });
 
-test('bin: omg-i-have-script /w custom script /w tap to file /w junit to file', function (t) {
+test('bin: omg-i-have-script /w custom script /w tap to file /w junit to file  /w append', function (t) {
   t.plan(1);
-  var proc = spawn(citgmPath, ['omg-i-pass', '-l', './fixtures/custom-lookup-script.json', '--tap', '/dev/null', '--junit', '/dev/null']);
+  var proc = spawn(citgmPath, ['omg-i-pass', '-l', './fixtures/custom-lookup-script.json', '--tap', '/dev/null', '--junit', '/dev/null', '--append']);
   proc.on('error', function(err) {
     t.error(err);
     t.fail('we should not get an error testing omg-i-pass');

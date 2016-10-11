@@ -92,12 +92,12 @@ function launch(mod, options) {
 
     if (typeof app.tap === 'string') {
       var tap = (app.tap) ? app.tap : log.bypass;
-      reporter.tap(tap, module);
+      reporter.tap(tap, module, app.append);
     }
 
     if (typeof app.junit === 'string') {
       var junit = (app.junit) ? app.junit : log.bypass;
-      reporter.junit(junit, module);
+      reporter.junit(junit, module, app.append);
     }
     
     process.removeListener('SIGINT', cleanup);

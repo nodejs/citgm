@@ -14,6 +14,10 @@ var fixtures = require('../fixtures/reporter-fixtures');
 var fixturesPath = path.join(__dirname, '..', 'fixtures');
 var sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now());
 var outputFile = path.join(sandbox, 'test.tap');
+var outputFileAppend = path.join(sandbox, 'test-append.tap');
+var outputFileAppendBlank = path.join(sandbox, 'test-append-blank.tap');
+
+var appendStartFilePath = path.join(fixturesPath, 'appendTestFileStart.txt');
 
 var passingInput = [
   fixtures.iPass,
@@ -21,8 +25,10 @@ var passingInput = [
 ];
 
 var passingExpectedPath = path.join(fixturesPath, 'test-out-tap-passing.txt');
+var passingExpectedPathAppend = path.join(fixturesPath, 'test-out-tap-passing-append.txt');
 
 var passingExpected = fs.readFileSync(passingExpectedPath, 'utf-8');
+var passingExpectedAppend = fs.readFileSync(passingExpectedPathAppend, 'utf-8');
 
 var failingInput = [
   fixtures.iPass,
@@ -31,7 +37,6 @@ var failingInput = [
 ];
 
 var failingExpectedPath = path.join(fixturesPath, 'test-out-tap-failing.txt');
-
 var failingExpected = fs.readFileSync(failingExpectedPath, 'utf-8');
 
 test('reporter.tap(): setup', function (t) {
@@ -68,6 +73,22 @@ test('reporter.tap(): failing', function (t) {
 test('reporter.tap(): write to disk', function (t) {
   tap(outputFile, passingInput);
   var expected = fs.readFileSync(outputFile, 'utf8');
+  t.equals(expected, passingExpected), 'the file on disk should match the expected output';
+  t.end();
+});
+
+test('reporter.tap(): append to disk', function (t) {
+  var appendStartFile = fs.readFileSync(appendStartFilePath, 'utf-8');
+  fs.writeFileSync(outputFileAppend, appendStartFile);
+  tap(outputFileAppend, passingInput, true);
+  var expected = fs.readFileSync(outputFileAppend, 'utf8');
+  t.equals(expected, passingExpectedAppend), 'the file on disk should match the expected output';
+  t.end();
+});
+
+test('reporter.tap(): append to disk when file does not exist', function (t) {
+  tap(outputFileAppendBlank, passingInput, true);
+  var expected = fs.readFileSync(outputFileAppendBlank, 'utf8');
   t.equals(expected, passingExpected), 'the file on disk should match the expected output';
   t.end();
 });

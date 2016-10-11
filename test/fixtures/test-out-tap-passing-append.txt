@@ -1,0 +1,6 @@
+This is a test!
+TAP version 13
+ok 1 - iPass v4.2.2
+ok 2 - iFlakyPass v3.0.1
+#  Thanks for testing!
+1..2

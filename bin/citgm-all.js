@@ -112,12 +112,12 @@ function launch() {
       // if not use `log.bypass` which is currently process.stdout.write
       // TODO check that we can write to that path, perhaps require a flag to overwrite
       var tap = (typeof app.tap === 'string') ? app.tap : log.bypass;
-      reporter.tap(tap, modules);
+      reporter.tap(tap, modules, app.append);
     }
 
     if (app.junit) {
       var junit = (typeof app.junit === 'string') ? app.junit : log.bypass;
-      reporter.junit(junit, modules);
+      reporter.junit(junit, modules, app.append);
     }
 
     process.exit(reporter.util.hasFailures(modules));
