@@ -56,7 +56,7 @@
   },
   "fs-extra": {
     "replace": true,
-    "flaky": ["linux-ia32", "aix"]
+    "flaky": ["linux-ia32", "aix", "s390"]
   },
   "body-parser": {
     "replace": true
@@ -215,6 +215,7 @@
     "replace": true,
     "prefix": "v",
     "flaky": {
+      "s390": true,
       "darwin": true,
       "v0.12": ["fedroa21", "fedora22", "ubuntu1204"]
     }
@@ -291,7 +292,7 @@
   },
   "time": {
     "replace": true,
-    "flaky": ["linux-ia32", "aix"]
+    "flaky": ["linux-ia32", "aix", "s390"]
   },
   "bson": {
     "replace": true,
@@ -304,6 +305,6 @@
   "node-sass": {
     "replace": true,
     "prefix": "v",
-    "flaky": ["ppc", "v7"]
+    "flaky": ["ppc", "v7", "s390"]
   }
 }
