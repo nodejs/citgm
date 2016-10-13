@@ -5,7 +5,8 @@
   },
   "underscore": {
     "replace": true,
-    "master": true
+    "master": true,
+    "flaky": "aix"
   },
   "request": {
     "replace": true,
