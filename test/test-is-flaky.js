@@ -24,7 +24,8 @@ var invalid = {
 
 function shim() {
   isFlaky.__set__('version', 'v5.3.1');
-  isFlaky.__set__('platform', 'darwin-x64');
+  isFlaky.__set__('platform', 'darwin');
+  isFlaky.__set__('arch', 'x64');
 }
 
 function revertShim() {
@@ -67,26 +68,26 @@ function testArrays(t, testFunction) {
     notFlake,
     invalid
   ]), 'not flaky array of objects');
-  
+
   t.ok(testFunction([
     'hurd',
     'x86',
     'v4',
     'darwin'
   ]), 'flakey array of string');
-  
+
   t.notok(testFunction([
     'hurd',
     'x86',
     'v4'
   ]), 'not flakey array of string');
-  
+
   t.notok(testFunction([
     true,
     false,
     123
   ]), 'not flaky invalid input');
-  
+
   revertShim();
 }
 
