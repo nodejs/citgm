@@ -218,7 +218,7 @@
     "flaky": {
       "s390": true,
       "darwin": true,
-      "v0.12": ["fedroa21", "fedora22", "ubuntu1204"]
+      "v0.12": ["fedora22", "ubuntu1204"]
     }
   },
   "bluebird": {
