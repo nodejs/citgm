@@ -1,0 +1,9 @@
+{
+  "omg-i-pass": {
+    "replace": false,
+    "envVar": {
+      "testenvVar": "thisisatest"
+    },
+    "script": "test-envVar.sh"
+  }
+}
