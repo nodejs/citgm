@@ -13,7 +13,7 @@ test('unpack: context.unpack = null', function (t) {
     unpack: null,
     emit: function () {}
   };
-  
+
   unpack(context, function (err) {
     t.deepEquals(err, new Error('Nothing to unpack... Ending'), 'it should error out');
     t.end();
@@ -25,7 +25,7 @@ test('unpack: context.unpack is invalid path', function (t) {
     unpack: path.join(__dirname, '..', 'fixtures', 'do-not-exist.tar.gz'),
     emit: function () {}
   };
-  
+
   unpack(context, function (err) {
     t.deepEquals(err, new Error('Nothing to unpack... Ending'), 'it should error out');
     t.end();
@@ -42,7 +42,7 @@ test('unpack: valid unpack', function (t) {
   };
 
   // FIXME I am not super convinced that the correct tar ball is being deflated
-  // FIXME There is a possibility that the npm cache is trumping this 
+  // FIXME There is a possibility that the npm cache is trumping this
 
   tempDirectory.create(context, function (e) {
     t.error(e);

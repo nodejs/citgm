@@ -65,7 +65,7 @@ function runCitgm (mod, name, next) {
   if (mod.skip) {
     return next();
   }
-  
+
   var runner = citgm.Tester(name, options);
   var bailed = false;
 
@@ -77,7 +77,7 @@ function runCitgm (mod, name, next) {
   process.on('SIGINT', cleanup);
   process.on('SIGHUP', cleanup);
   process.on('SIGBREAK', cleanup);
-  
+
   runner.on('start', function(name) {
     log.info('starting', name);
   }).on('fail', function(err) {
@@ -106,7 +106,7 @@ function launch() {
     if (app.markdown) {
       reporter.markdown(log.bypass, modules);
     }
-    
+
     if (app.tap) {
       // if tap is a string it should be a path to write output to
       // if not use `log.bypass` which is currently process.stdout.write
