@@ -8,12 +8,14 @@ test('create-options:', function (t) {
 
   var context = {
     options: {},
-    npmConfigTmp: 'npm_config_tmp'
+    npmConfigTmp: 'npm_config_tmp',
+    module: {envVar: {testenvVar: 'thisisatest'}}
   };
 
   var env = Object.create(process.env);
   env['npm_loglevel'] = 'error';
   env['npm_config_tmp'] = 'npm_config_tmp';
+  env['testenvVar'] = 'thisisatest';
 
   var options = createOptions(cwd, context);
 

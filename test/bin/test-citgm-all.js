@@ -17,6 +17,17 @@ test('citgm-all: /w markdown', function (t) {
   });
 });
 
+test('citgm-all: envVar', function (t) {
+  t.plan(1);
+  var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup-envVar.json']);
+  proc.on('error', function(err) {
+    t.error(err);
+  });
+  proc.on('close', function (code) {
+    t.equals(code, 0, 'citgm-all should export an environment variable');
+  });
+});
+
 test('citgm-all: fail /w tap /w junit', function (t) {
   t.plan(1);
   var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup-fail.json', '-t', '-x']);
