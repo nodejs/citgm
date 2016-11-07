@@ -39,7 +39,7 @@ test('spawn: windows mock', function (t) {
       options: options
     };
   };
-  
+
   var result = spawn('echo', ['Hello world.']);
   var expected = {
     cmd: 'cmd',
@@ -55,7 +55,7 @@ test('spawn: windows mock', function (t) {
   Object.defineProperty(process, 'platform', {
     value: platform
   });
-  
+
   t.deepEqual(result, expected, 'we should have the expected options for win32');
   t.end();
 });

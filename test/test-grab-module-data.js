@@ -19,7 +19,7 @@ test('grab-module-data: lodash', function (t) {
     emit: function () {},
     options: {}
   };
-  
+
   grabModuleData(context, function (err, result) {
     t.error(err);
     t.ok(result.meta, 'There should be a result.meta');
@@ -44,7 +44,7 @@ test('grab-module-data: does not exist', function (t) {
     emit: function () {},
     options: {}
   };
-  
+
   grabModuleData(context, function (err, result) {
     t.error(err);
     t.notOk(result.meta, 'There should not be a result.meta');
@@ -66,14 +66,14 @@ test('grab-module-data: hosted', function (t) {
     emit: function () {},
     options: {}
   };
-  
+
   var expected = {
     repository: {
       type: 'git',
       url: context.module.hosted.gitUrl
     }
   };
-  
+
   grabModuleData(context, function (err, result) {
     t.error(err);
     t.deepequals(result.meta, expected, 'The returned meta object should include a type of git and the supplied url');

@@ -63,7 +63,7 @@ test('citgm-all: skip /w rootcheck /w tap to fs /w junit to fs', function (t) {
 
 test('bin: sigterm', function (t) {
   t.plan(1);
-  
+
   var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup.json', '-m']);
   proc.on('error', function(err) {
     t.error(err);

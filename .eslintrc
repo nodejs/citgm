@@ -8,6 +8,7 @@
       2,
       "single"
     ],
+    no-trailing-spaces: 2,
     "linebreak-style": [
       2,
       "unix"

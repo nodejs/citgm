@@ -99,7 +99,7 @@ function launch(mod, options) {
       var junit = (app.junit) ? app.junit : log.bypass;
       reporter.junit(junit, module);
     }
-    
+
     process.removeListener('SIGINT', cleanup);
     process.removeListener('SIGHUP', cleanup);
     process.removeListener('SIGBREAK', cleanup);
