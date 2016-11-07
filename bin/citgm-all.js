@@ -45,6 +45,10 @@ var options = {
 };
 
 var lookup = getLookup(options);
+if (!lookup) {
+  log.error('the json file cannot be found or there is an error in the file!');
+  process.exit(1);
+}
 
 if (!citgm.windows) {
   var uidnumber = require('uid-number');

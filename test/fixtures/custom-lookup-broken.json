@@ -1,0 +1,11 @@
+{
+  "omg-i-pass": {
+    "replace": false
+  },
+  "omg-i-pass-too": {
+    "replace": true,
+    "prefix": "v",
+    "stripAnsi": true
+  },
+}
+}

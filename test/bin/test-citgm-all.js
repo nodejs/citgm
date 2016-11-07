@@ -28,6 +28,28 @@ test('citgm-all: envVar', function (t) {
   });
 });
 
+test('citgm-all: /w missing lookup.json', function (t) {
+  t.plan(1);
+  var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/this-does-not-exist-json']);
+  proc.on('error', function(err) {
+    t.error(err);
+  });
+  proc.on('close', function (code) {
+    t.equals(code, 1, 'citgm-all should fail if the lookup.json does not exist');
+  });
+});
+
+test('citgm-all: /w bad lookup.json', function (t) {
+  t.plan(1);
+  var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup-broken.json']);
+  proc.on('error', function(err) {
+    t.error(err);
+  });
+  proc.on('close', function (code) {
+    t.equals(code, 1, 'citgm-all should fail if the lookup.json contains errors');
+  });
+});
+
 test('citgm-all: fail /w tap /w junit /w append', function (t) {
   t.plan(1);
   var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup-fail.json', '-t', '-x', '-a']);
