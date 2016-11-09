@@ -1,7 +1,6 @@
 {
   "lodash": {
-    "replace": true,
-    "skip": true
+    "replace": true
   },
   "underscore": {
     "replace": true,
