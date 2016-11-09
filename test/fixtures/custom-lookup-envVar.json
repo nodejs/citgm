@@ -1,6 +1,6 @@
 {
   "omg-i-pass": {
-    "replace": false,
+    "npm": true,
     "envVar": {
       "testenvVar": "thisisatest"
     },

@@ -107,7 +107,7 @@ citgm-all -l ./path/to/my_lookup.json
 For syntax, see [lookup.json](./lib/lookup.json), the available attributes are:
 
 ```
-"replace": true              Download module from github repo in package.json
+"npm": true                  Download the module from npm instead of github
 "master": true               Use the master branch
 "prefix": "v"                Specify the prefix used in the module version.
 "flaky": true                Ignore failures

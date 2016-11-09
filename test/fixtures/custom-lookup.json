@@ -1,9 +1,8 @@
 {
   "omg-i-pass": {
-    "replace": false
+    "npm": true
   },
   "omg-i-pass-too": {
-    "replace": true,
     "prefix": "v",
     "stripAnsi": true
   }

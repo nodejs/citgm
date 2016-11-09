@@ -1,356 +1,276 @@
 {
   "lodash": {
-    "replace": true
   },
   "underscore": {
-    "replace": true,
     "master": true,
     "flaky": "aix"
   },
   "request": {
-    "replace": true,
     "prefix": "v",
     "flaky": true
   },
   "commander": {
-    "replace": true,
     "prefix": "v",
     "repo": "https://github.com/tj/commander.js"
   },
   "express": {
-    "replace": true,
     "flaky": {
       "ppc": ["v5"]
     }
   },
   "q": {
-    "replace": true,
     "prefix": "v"
   },
   "coffee-script": {
-    "replace": true
   },
   "through2": {
-    "replace": true,
     "prefix": "v",
     "stripAnsi": true
   },
   "glob": {
-    "replace": true,
     "prefix": "v",
     "flaky": ["v6", "v7"]
   },
   "gulp-util": {
-    "replace": true,
     "prefix": "v"
   },
   "pug": {
-    "replace": true,
     "flaky": {
       "ppc": ["v6", "v7"]
     }
   },
   "socket.io": {
-    "replace": true,
     "flaky": true
   },
   "fs-extra": {
-    "replace": true,
     "flaky": ["linux-ia32", "aix", "s390"]
   },
   "body-parser": {
-    "replace": true
   },
   "uglify-js": {
-    "replace": true,
     "prefix": "v",
     "flaky": ["darwin", "aix"]
   },
   "jquery": {
-    "replace": true
   },
   "rimraf": {
-    "replace": true,
     "prefix": "v"
   },
   "david": {
-    "replace": true,
     "prefix": "v",
     "flaky": true
   },
   "eslint": {
-    "replace": true,
     "prefix": "v",
     "flaky": ["ppc", "v7", "s390"],
     "skip": "v8"
   },
   "tape": {
-    "replace": true,
     "prefix": "v",
     "flaky": "linux"
   },
   "browserify": {
-    "replace": true,
     "flaky": ["v7"]
   },
   "watchify": {
-    "replace": true,
     "prefix": "v",
     "flaky": ["ppc", "v7", "s390"]
   },
   "stylus": {
-    "replace": true
   },
   "level": {
-    "replace": true,
     "prefix": "v",
     "flaky": ["aix", "s390"]
   },
   "torrent-stream": {
-    "replace": true,
     "prefix": "v",
     "flaky": true
   },
   "react": {
-    "replace": true,
     "prefix": "v",
     "flaky": ["v0.10", "v0.12", "v6", "v7"],
     "skip": true
   },
   "gulp": {
-    "replace": true,
     "prefix": "v",
     "flaky": {
       "ppc": ["v5", "v6"]
     }
   },
   "moment": {
-    "replace": true,
     "flaky": true
   },
   "ws": {
-    "replace": true,
     "flaky": "s390"
   },
   "vinyl": {
-    "replace": true,
     "prefix": "v"
   },
   "vinyl-fs": {
-    "replace": true,
     "prefix": "v",
     "flaky": true,
     "master": true
   },
   "readable-stream": {
-    "replace": true,
     "prefix": "v",
     "flaky": ["ppc", "darwin"]
   },
   "ftp": {
-    "replace": true,
     "prefix": "v"
   },
   "split2": {
-    "replace": true,
     "prefix": "v"
   },
   "throughv": {
-    "replace": true,
     "prefix": "v",
     "stripAnsi": true
   },
   "duplexer2": {
-    "replace": true,
     "prefix": "v"
   },
   "bl": {
-    "replace": true,
     "prefix": "v",
     "stripAnsi": true
   },
   "binary-split": {
-    "replace": true,
     "prefix": "v"
   },
   "spdy": {
-    "replace": true,
     "prefix": "v",
     "flaky": "aix"
   },
   "dicer": {
-    "replace": true,
     "prefix": "v"
   },
   "spdy-transport": {
-    "replace": true,
     "prefix": "v"
   },
   "sax": {
-    "replace": true,
     "prefix": "v"
   },
   "duplexify": {
-    "replace": true,
     "prefix": "v"
   },
   "pumpify": {
-    "replace": true,
     "prefix": "v"
   },
   "from2": {
-    "replace": true,
     "prefix": "v"
   },
   "flush-write-stream": {
-    "replace": true,
     "prefix": "v"
   },
   "jsonstream": {
-    "replace": true,
     "prefix": "v"
   },
   "csv-parser": {
-    "replace": true,
     "prefix": "v"
   },
   "async": {
-    "replace": true,
     "prefix": "v",
     "flaky": true
   },
   "bluebird": {
-    "replace": true,
     "prefix": "v"
   },
   "mkdirp": {
-    "replace": true,
     "master": true,
     "flaky": ["v6", "v7"],
     "skip": ["v8"]
   },
   "yeoman-generator": {
-    "replace": true,
     "prefix": "v",
     "flaky": "ppc"
   },
   "minimist": {
-    "replace": true
   },
   "cheerio": {
-    "replace": true
   },
   "uuid": {
-    "replace": true,
     "prefix": "v"
   },
   "winston": {
-    "replace": true
   },
   "yargs": {
-    "replace": true,
     "prefix": "v",
     "flaky": "aix"
   },
   "semver": {
-    "replace": true,
     "prefix": "v"
   },
   "mime": {
-    "replace": true,
     "prefix": "v",
     "flaky": true
   },
   "serialport": {
-    "replace": true,
     "flaky": "ppc"
   },
   "isarray": {
-    "replace": true,
     "prefix": "v"
   },
   "inherits": {
-    "replace": true,
     "prefix": "v"
   },
   "graceful-fs": {
-    "replace": true,
     "prefix": "v"
   },
   "leveldown": {
-    "replace": true,
     "prefix": "v",
     "flaky": ["aix", "s390"]
   },
   "bcrypt": {
-    "replace": true,
     "prefix": "v"
   },
   "ref": {
-    "replace": true,
     "flaky": "aix"
   },
   "time": {
-    "replace": true,
     "flaky": ["linux-ia32", "aix", "s390"]
   },
   "bson": {
-    "replace": true,
     "prefix": "V"
   },
   "ember-cli": {
-    "replace": true,
     "prefix": "v"
   },
   "node-sass": {
-    "replace": true,
     "prefix": "v",
     "flaky": ["ppc", "v7", "s390"],
     "skip": true
   },
   "full-icu-test": {
-    "replace": true,
     "prefix": "v"
   },
   "sqlite3": {
-    "replace": true,
     "prefix": "v",
     "flaky": "aix"
   },
   "iconv": {
-    "replace": true,
     "prefix": "v",
     "flaky": "aix"
   },
   "electron-prebuilt": {
-    "replace": true,
     "prefix": "v",
     "flaky": ["ppc", "aix", "s390"]
   },
   "libxmljs": {
-    "replace": true,
     "prefix": "v",
     "flaky": "aix"
   },
   "radium": {
-    "replace": true,
     "prefix": "v",
     "flaky": ["ppc", "aix", "s390", "fedora"]
   },
   "ffi": {
-    "replace": true,
     "flaky": ["ppc", "aix", "s390"]
   },
   "microtime": {
-    "replace": true,
     "prefix": "v"
   },
   "koa": {
-    "replace": true,
     "skip": "<4"
   },
   "spawn-wrap": {
-    "replace": true,
     "prefix": "v"
   }
 }

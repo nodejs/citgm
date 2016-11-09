@@ -1,5 +1,6 @@
 {
   "omg-i-pass-with-install-param": {
-    "install": ["--extra-param"]
+    "install": ["--extra-param"],
+    "npm": true
   }
 }

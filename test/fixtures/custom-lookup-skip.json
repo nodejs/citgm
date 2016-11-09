@@ -1,9 +1,9 @@
 {
   "omg-i-pass": {
-    "replace": false
+    "npm": true
   },
   "omg-i-fail": {
-    "replace": false,
+    "npm": true,
     "skip": true
   }
 }

@@ -72,6 +72,17 @@ test('citgm-all: flaky-fail', function (t) {
   });
 });
 
+test('citgm-all: test with replace', function (t) {
+  t.plan(1);
+  var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup-backwards-compatibilty.json']);
+  proc.on('error', function(err) {
+    t.error(err);
+  });
+  proc.on('close', function (code) {
+    t.equals(code, 0, 'citgm-all should exit with signal 0');
+  });
+});
+
 test('citgm-all: flaky-fail ignoring flakyness', function (t) {
   t.plan(1);
   var proc = spawn(citgmAllPath, ['-f', '-l', 'test/fixtures/custom-lookup-flaky.json']);

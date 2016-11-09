@@ -49,7 +49,7 @@ test('lookup[getLookupTable]:', function (t) {
   }
   t.ok(table, 'table should exist');
   t.ok(table.lodash, 'lodash should be in the table');
-  t.ok(table.lodash.replace, 'lodash should need to be replaced');
+  t.ok(table.underscore.master, 'underscore should contain a master paramter');
 
   t.end();
 });
@@ -66,10 +66,9 @@ test('lookup[getLookupTable]: custom table', function (t) {
 
   t.deepEquals(table, {
     'omg-i-pass': {
-      replace: false
+      npm: true
     },
     'omg-i-pass-too': {
-      replace: true,
       prefix: 'v',
       stripAnsi: true
     }

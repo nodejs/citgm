@@ -1,9 +1,8 @@
 {
   "omg-i-fail": {
-    "replace": true,
     "flaky": true
   },
   "omg-i-fail": {
-    "replace": false
+    "npm": true
   }
 }
