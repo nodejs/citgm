@@ -71,6 +71,7 @@ function runCitgm (mod, name, next) {
     return next();
   }
 
+  var start = new Date();
   var runner = citgm.Tester(name, options);
   var bailed = false;
 
@@ -90,6 +91,8 @@ function runCitgm (mod, name, next) {
   }).on('data', function(type,key,message) {
     log[type](key, message);
   }).on('end', function(result) {
+    result.duration = new Date() - start;
+    log.info('duration', 'test duration: ' + result.duration + 'ms');
     if (result.error) {
       log.error('done', 'The test suite for ' + result.name + ' version ' + result.version + ' failed');
     }

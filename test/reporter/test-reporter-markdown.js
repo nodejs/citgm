@@ -11,7 +11,7 @@ test('single passing module:', function (t) {
   }, fixtures.iPass);
   var expected = '## 🎉🎉 CITGM Passed 🎉🎉';
   expected += '### Passing Modules';
-  expected += '  * iPass v4.2.2';
+  expected += '  * iPass v4.2.2 duration:50ms';
   t.equals(output, expected, 'we should have the expected markdown output');
   t.end();
 });
@@ -23,7 +23,7 @@ test('single failing module:', function (t) {
   }, fixtures.iFail);
   var expected = '## 🔥⚠️🔥 CITGM FAILED 🔥⚠️🔥';
   expected += '### Failing Modules';
-  expected += '  * iFail v3.0.1';
+  expected += '  * iFail v3.0.1 duration:50ms';
   expected += '    - I dun wurk';
   expected += '    -  Thanks for testing!';
   t.equals(output, expected, 'we should have the expected markdown output');
@@ -38,10 +38,10 @@ test('multiple modules passing, with a flaky module that fails:', function (t) {
   var expected = '## 🎉🎉 CITGM Passed 🎉🎉';
   expected += '## 📛 But with Flaky Failures 📛';
   expected += '### Passing Modules';
-  expected += '  * iPass v4.2.2';
-  expected += '  * iFlakyPass v3.0.1';
+  expected += '  * iPass v4.2.2 duration:50ms';
+  expected += '  * iFlakyPass v3.0.1 duration:50ms';
   expected += '### Flaky Modules';
-  expected += '  * iFlakyFail v3.3.3';
+  expected += '  * iFlakyFail v3.3.3 duration:50ms';
   expected += '    - I dun wurk';
   expected += '    -  Thanks for testing!';
   t.equals(output, expected, 'we should have the expected markdown output');

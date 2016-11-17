@@ -66,6 +66,7 @@ if (!citgm.windows) {
   launch(mod, options);
 }
 
+var start = new Date();
 function launch(mod, options) {
   var runner = citgm.Tester(mod, options);
 
@@ -84,8 +85,10 @@ function launch(mod, options) {
   }).on('data', function(type, key, message) {
     log[type](key, message);
   }).on('end', function(module) {
+    module.duration = new Date() - start;
     reporter.logger(log, module);
 
+    log.info('duration', 'test duration: ' + module.duration + 'ms');
     if (app.markdown) {
       reporter.markdown(log.bypass, module);
     }

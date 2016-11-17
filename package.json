@@ -65,6 +65,7 @@
     "rewire": "^2.4.0",
     "tap": "^8.0.0",
     "tap-parser": "^3.0.3",
-    "string-to-stream": "^1.1.0"
+    "string-to-stream": "^1.1.0",
+    "xml2js": "^0.4.17"
   }
 }
