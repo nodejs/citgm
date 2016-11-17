@@ -308,5 +308,8 @@
   "spawn-wrap": {
     "prefix": "v",
     "flaky": ["win32", "sles"]
+  },
+  "node-report": {
+    "prefix": "v"
   }
 }
