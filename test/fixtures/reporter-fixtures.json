@@ -1,7 +1,8 @@
 {
   "iPass": {
     "name": "iPass",
-    "version": "4.2.2"
+    "version": "4.2.2",
+    "duration": 50
   },
   "iFail": {
     "name": "iFail",
@@ -9,13 +10,15 @@
     "error": {
       "message": "I dun wurk"
     },
-    "testOutput": "Thanks for testing!"
+    "testOutput": "Thanks for testing!",
+    "duration": 50
   },
   "iFlakyPass": {
     "name": "iFlakyPass",
     "version": "3.0.1",
     "flaky": true,
-    "testOutput": "Thanks for testing!"
+    "testOutput": "Thanks for testing!",
+    "duration": 50
   },
   "iFlakyFail": {
     "name": "iFlakyFail",
@@ -24,6 +27,7 @@
     "error": {
       "message": "I dun wurk"
     },
-    "testOutput": "Thanks for testing!"
+    "testOutput": "Thanks for testing!",
+    "duration": 50
   }
 }

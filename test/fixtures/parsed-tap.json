@@ -4,7 +4,9 @@
   "fail": 1,
   "failures": [
     {
-      "diag": null,
+      "diag": {
+        "duration_ms": 50
+      },
       "id": 3,
       "name": "iFail v3.0.1 I dun wurk",
       "ok": false

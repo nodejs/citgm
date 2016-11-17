@@ -1,11 +1,16 @@
 TAP version 13
 ok 1 - iPass v4.2.2
+  ---
+  duration_ms: 50
+  ...
 ok 2 - iFlakyFail v3.3.3 # SKIP I dun wurk
   ---
   # Thanks for testing!
+  duration_ms: 50
   ...
 not ok 3 - iFail v3.0.1 I dun wurk
   ---
   # Thanks for testing!
+  duration_ms: 50
   ...
 1..3
