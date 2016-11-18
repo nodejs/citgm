@@ -1,4 +1,7 @@
 {
+  "citgm": {
+    "flaky": ["win32"]
+  },
   "lodash": {
     "replace": true
   },
@@ -309,6 +312,71 @@
   },
   "full-icu-test": {
     "replace": true,
-    "prefix": "v"
+    "prefix": "v",
+    "flaky": "win32"
+  },
+  "bufferutil": {
+    "replace": true,
+    "verify-node-gyp-called": true
+  },
+  "utf-8-validate": {
+    "replace": true,
+    "verify-node-gyp-called": true
+  },
+  "kerberos": {
+    "test-command": " ",
+    "verify-node-gyp-called": true
+  },
+  "weak": {
+    "replace": true,
+    "verify-node-gyp-called": true
+  },
+  "hiredis": {
+    "verify-node-gyp-called": true
+  },
+  "iconv": {
+    "prefix": "v",
+    "replace": true,
+    "verify-node-gyp-called": true
+  },
+  "contextify": {
+    "prefix": "v",
+    "install": ["--build-from-source"],
+    "replace": true,
+    "flaky": true,
+    "verify-node-gyp-called": true
+  },
+  "thread-sleep": {
+    "replace": true,
+    "install": ["--build-from-source"],
+    "verify-node-gyp-called": true      
+  },
+  "sqlite3": [ {
+      "test-name": "using node-gyp",
+      "master": true,
+      "prefix": "v",
+      "replace": true,
+      "install": ["--build-from-source"],
+      "verify-node-gyp-called": true
+    }, {
+      "test-name": "not using node-gyp",
+      "prefix": "v",
+      "replace": true,
+      "verify-node-gyp-not-called": true
+    }
+  ],
+   "v8-profiler":  {
+      "node-version": ">=6.0.0",
+      "prefix": "v",
+      "replace": true,
+      "flaky": true,
+      "verify-node-gyp-called": true
+  },
+  "v8-debug": {
+      "node-version": ">=6.0.0",
+      "prefix": "v",
+      "replace": true,
+      "flaky": true,
+      "verify-node-gyp-called": true
   }
 }
