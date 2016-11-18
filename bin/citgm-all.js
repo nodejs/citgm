@@ -2,6 +2,7 @@
 'use strict';
 var yargs = require('yargs');
 var async = require('async');
+var semver = require('semver');
 
 var update = require('../lib/update');
 var citgm = require('../lib/citgm');
@@ -68,6 +69,16 @@ var modules = [];
 function runCitgm (mod, name, next) {
   if (mod.skip) {
     return next();
+  }
+
+  if (mod['node-version']) {
+    // Get node version, stripping prerealase
+    var nodeVersion = semver.major(process.version) + '.' +
+                      semver.minor(process.version) + '.' +
+                      semver.patch(process.version);
+    if (!semver.satisfies(nodeVersion, mod['node-version'])) {
+      return next();
+    }
   }
 
   var runner = citgm.Tester(name, options);
