@@ -99,8 +99,13 @@ test('npm-install: failed install', function (t) {
       npmLevel: 'http'
     }
   };
+  var expected = {
+    testOutput: /^$/,
+    testError: /npm ERR! 404 Registry returned 404 for GET on https:\/\/registry.npmjs.org\/THIS-WILL-FAIL/
+  };
   npmInstall(context, function (err) {
     t.equals(err && err.message, 'Install Failed');
+    t.match(context, expected, 'Install error reported');
     t.end();
   });
 });
