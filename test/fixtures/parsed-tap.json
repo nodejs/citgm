@@ -1,0 +1,24 @@
+{
+  "bailout": false,
+  "count": 3,
+  "fail": 1,
+  "failures": [
+    {
+      "diag": null,      
+      "id": 3,
+      "name": "iFail v3.0.1 I dun wurk",
+      "ok": false
+    }
+  ],
+  "ok": false,
+  "pass": 2,
+  "plan": {
+    "comment": "",
+    "start": 1,
+    "skipAll": false,
+    "skipReason": "",
+    "end": 3
+  },
+  "skip": 1,
+  "todo": 0
+}
