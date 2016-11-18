@@ -120,6 +120,13 @@ For syntax, see [lookup.json](./lib/lookup.json), the available attributes are:
   `build` or `rebuild`
   * `"vertify-node-gyp-not-called": true` - Asserts that `npm` did not call `node-gyp`
   * `"envVar": { "var": "value" }` - Pass an environment variable before running
+  * `"test-command"` - Use custom test command:
+```javascript
+"test-command": {
+  "default": "./node_modules/.bin/nodeunit test",
+  "win32": "node_modules\\\\.bin\\\\nodeunit test"
+}
+```
 
 If you want to pass options to npm, eg `--registry`, you can usually define an
 environment variable, eg `"npm_config_registry": "https://www.xyz.com"`.
