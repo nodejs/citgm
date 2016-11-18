@@ -7,6 +7,8 @@ var os = require('os');
 var test = require('tap').test;
 var mkdirp = require('mkdirp');
 var rimraf = require('rimraf');
+var parser = require('tap-parser');
+var str = require('string-to-stream');
 
 var tap = require('../../lib/reporter/tap');
 var fixtures = require('../fixtures/reporter-fixtures');
@@ -27,6 +29,7 @@ var passingInput = [
 var passingExpectedPath = path.join(fixturesPath, 'test-out-tap-passing.txt');
 var passingExpectedPathAppend = path.join(fixturesPath, 'test-out-tap-passing-append.txt');
 
+var tapParserExpected = require('../fixtures/parsed-tap.json');
 var passingExpected = fs.readFileSync(passingExpectedPath, 'utf-8');
 var passingExpectedAppend = fs.readFileSync(passingExpectedPathAppend, 'utf-8');
 
@@ -68,6 +71,20 @@ test('reporter.tap(): failing', function (t) {
   tap(logger, failingInput);
   t.equals(output, failingExpected), 'we should get the expected output when a module fails';
   t.end();
+});
+
+test('reporter.tap(): parser', function (t) {
+  var output = '';
+  function logger(message) {
+    output += message;
+  }
+
+  tap(logger, failingInput);
+  var p = parser(function (results) {
+    t.deepEquals(results, tapParserExpected), 'the tap parser should correctly parse the tap file';
+    t.end();
+  });
+  str(output).pipe(p);
 });
 
 test('reporter.tap(): write to disk', function (t) {

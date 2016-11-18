@@ -1,7 +1,11 @@
 TAP version 13
 ok 1 - iPass v4.2.2
 ok 2 - iFlakyFail v3.3.3 # SKIP I dun wurk
-#  Thanks for testing!
+  ---
+  # Thanks for testing!
+  ...
 not ok 3 - iFail v3.0.1 I dun wurk
-#  Thanks for testing!
+  ---
+  # Thanks for testing!
+  ...
 1..3
