@@ -305,11 +305,19 @@
     "replace": true,
     "prefix": "v"
   },
-  "node-sass": {
-    "replace": true,
-    "prefix": "v",
-    "flaky": ["ppc", "v7", "s390"]
-  },
+  "node-sass": [ {
+      "replace": true,
+      "prefix": "v",
+      "test-name": "using node-gyp",
+      "flaky": ["ppc", "v7", "s390", "win32"],
+      "envVar": { "SKIP_SASS_BINARY_DOWNLOAD_FOR_CI": 1 }
+    }, {
+      "replace": true,
+      "prefix": "v",
+      "test-name": "not using node-gyp",
+      "flaky": ["ppc", "v7", "s390", "win32"]
+    }
+  ],
   "full-icu-test": {
     "replace": true,
     "prefix": "v",
