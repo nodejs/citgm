@@ -106,18 +106,17 @@ citgm-all -l ./path/to/my_lookup.json
 ```
 For syntax, see [lookup.json](./lib/lookup.json), the available attributes are:
 
-```
-"replace": true              Download module from github repo in package.json
-"master": true               Use the master branch
-"prefix": "v"                Specify the prefix used in the module version.
-"flaky": true                Ignore failures
-"skip": true                 Completely skip the module
-"repo": "https://github.com/pugjs/jade" - Use a different github repo
-"skipAnsi": true             Strip ansi data from output stream of npm
-"script": /path/to/script | https://url/to/script - Use a custom test script
-"sha": "<git-commit-sha>"    Test against a specific commit
-"envVar"                     Pass an environment variable before running
-```
+  * `"replace": true` - Download module from github repo in package.json
+  * `"master": true` - Use the master branch
+  * `"prefix": "v"` - Specify the prefix used in the module version.
+  * `"flaky": true` - Ignore failures
+  * `"skip": true` - Completely skip the module
+  * `"repo": "https://github.com/pugjs/jade"` - Use a different github repo
+  * `"skipAnsi": true` - Strip ansi data from output stream of npm
+  * `"script": /path/to/script | https://url/to/script` - Use a custom test script
+  * `"sha": "<git-commit-sha>"` - Test against a specific commit
+  * `"test-name": "name"` - Custom name for test case
+  * `"envVar": { "var": "value" }` - Pass an environment variable before running
 
 If you want to pass options to npm, eg `--registry`, you can usually define an
 environment variable, eg `"npm_config_registry": "https://www.xyz.com"`.

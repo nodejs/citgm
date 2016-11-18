@@ -82,20 +82,23 @@ function runCitgm (mod, name, next) {
   process.on('SIGHUP', cleanup);
   process.on('SIGBREAK', cleanup);
 
-  runner.on('start', function(name) {
+  runner.on('start', function(name, test) {
     log.info('starting', name);
+    if (test) {
+      log.info('test', test);
+    }
   }).on('fail', function(err) {
     log.error('failure', err.message);
   }).on('data', function(type,key,message) {
     log[type](key, message);
-  }).on('end', function(result) {
+  }).on('done', function(result) {
     if (result.error) {
-      log.error('done', 'The test suite for ' + result.name + ' version ' + result.version + ' failed');
-    }
-    else {
-      log.info('done', 'The test suite for ' + result.name + ' version ' + result.version + ' passed.');
+      log.error('done', 'The test suite for ' + result.useName + ' failed');
+    } else {
+      log.info('done', 'The test suite for ' + result.useName + ' passed.');
     }
     modules.push(result);
+  }).on('end', function() {
     process.removeListener('SIGINT', cleanup);
     process.removeListener('SIGHUP', cleanup);
     process.removeListener('SIGBREAK', cleanup);

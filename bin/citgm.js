@@ -77,32 +77,44 @@ function launch(mod, options) {
   process.on('SIGHUP', cleanup);
   process.on('SIGBREAK', cleanup);
 
-  runner.on('start', function(name) {
+  var modules = [];
+
+  runner.on('start', function(name, test) {
     log.info('starting', name);
+    if (test) {
+      log.info('test', test);
+    }
   }).on('fail', function(err) {
     log.error('failure', err.message);
   }).on('data', function(type, key, message) {
     log[type](key, message);
-  }).on('end', function(module) {
-    reporter.logger(log, module);
+  }).on('done', function(result) {
+    if (result.error) {
+      log.error('done', 'The test suite for ' + result.useName + ' failed');
+    } else {
+      log.info('done', 'The test suite for ' + result.useName + ' passed.');
+    }
+    modules.push(result);
+  }).on('end', function() {
+    reporter.logger(log, modules);
 
     if (app.markdown) {
-      reporter.markdown(log.bypass, module);
+      reporter.markdown(log.bypass, modules);
     }
 
     if (typeof app.tap === 'string') {
       var tap = (app.tap) ? app.tap : log.bypass;
-      reporter.tap(tap, module, app.append);
+      reporter.tap(tap, modules, app.append);
     }
 
     if (typeof app.junit === 'string') {
       var junit = (app.junit) ? app.junit : log.bypass;
-      reporter.junit(junit, module, app.append);
+      reporter.junit(junit, modules, app.append);
     }
 
     process.removeListener('SIGINT', cleanup);
     process.removeListener('SIGHUP', cleanup);
     process.removeListener('SIGBREAK', cleanup);
-    process.exit(module.error ? 1 : 0);
+    process.exit(reporter.util.hasFailures(modules));
   }).run();
 }
