@@ -2,13 +2,17 @@
 
 var test = require('tap').test;
 
-var spawn = require('../../lib/spawn');
+var spawn = require('child_process').spawn;
 
 var citgmPath = require.resolve('../../bin/citgm.js');
 
+function callCitgm(params) {
+  return spawn(process.argv[0], [citgmPath].concat(params));
+}
+
 test('bin: omg-i-pass /w tap output /w junit', function (t) {
   t.plan(1);
-  var proc = spawn(citgmPath, ['omg-i-pass', '-t', '-x']);
+  var proc = callCitgm(['omg-i-pass', '-t', '-x']);
   proc.on('error', function(err) {
     t.error(err);
     t.fail('we should not get an error testing omg-i-pass');
@@ -20,7 +24,7 @@ test('bin: omg-i-pass /w tap output /w junit', function (t) {
 
 test('bin: omg-i-fail /w markdown output /w nodedir', function (t) {
   t.plan(1);
-  var proc = spawn(citgmPath, ['omg-i-fail', '-m', '-d', '/dev/null']);
+  var proc = callCitgm(['omg-i-fail', '-m', '-d', '/dev/null']);
   proc.on('error', function(err) {
     t.error(err);
     t.fail('we should not get an error testing omg-i-pass');
@@ -30,12 +34,12 @@ test('bin: omg-i-fail /w markdown output /w nodedir', function (t) {
   });
 });
 
-test('bin: omg-i-have-script /w custom script /w tap to file /w junit to file  /w append', function (t) {
+test('bin: omg-i-fail /w custom script /w tap to file /w junit to file /w append', function (t) {
   t.plan(1);
-  var proc = spawn(citgmPath, ['omg-i-pass', '-l', './fixtures/custom-lookup-script.json', '--tap', '/dev/null', '--junit', '/dev/null', '--append']);
+  var proc = callCitgm(['omg-i-fail', '-l', './test/fixtures/custom-lookup-script.json', '--tap', '/dev/null', '--junit', '/dev/null', '--append']);
   proc.on('error', function(err) {
     t.error(err);
-    t.fail('we should not get an error testing omg-i-pass');
+    t.fail('we should not get an error testing omg-i-fail');
   });
   proc.on('close', function (code) {
     t.equal(code, 1, 'omg-i-fail should fail and exit with a code of one');
@@ -44,7 +48,7 @@ test('bin: omg-i-have-script /w custom script /w tap to file /w junit to file  /
 
 test('bin: no module /w root check', function (t) {
   t.plan(1);
-  var proc = spawn(citgmPath, ['-s']);
+  var proc = callCitgm(['-s']);
   proc.on('error', function(err) {
     t.error(err);
     t.fail('we should not get an error');
@@ -57,7 +61,7 @@ test('bin: no module /w root check', function (t) {
 test('bin: sigterm', function (t) {
   t.plan(1);
 
-  var proc = spawn(citgmPath, ['omg-i-pass', '-v', 'verbose']);
+  var proc = callCitgm(['omg-i-pass', '-v', 'verbose']);
   proc.on('error', function(err) {
     t.error(err);
     t.fail('we should not get an error testing omg-i-pass');
@@ -72,7 +76,7 @@ test('bin: sigterm', function (t) {
 
 test('bin: install from sha', function (t) {
   t.plan(1);
-  var proc = spawn(citgmPath, ['omg-i-pass', '-t', '-c', '37c34bad563599782c622baf3aaf55776fbc38a8']);
+  var proc = callCitgm(['omg-i-pass', '-t', '-c', '37c34bad563599782c622baf3aaf55776fbc38a8']);
   proc.on('error', function(err) {
     t.error(err);
     t.fail('we should not get an error testing omg-i-pass');

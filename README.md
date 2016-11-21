@@ -106,17 +106,28 @@ citgm-all -l ./path/to/my_lookup.json
 ```
 For syntax, see [lookup.json](./lib/lookup.json), the available attributes are:
 
-```
-"replace": true              Download module from github repo in package.json
-"master": true               Use the master branch
-"prefix": "v"                Specify the prefix used in the module version.
-"flaky": true                Ignore failures
-"skip": true                 Completely skip the module
-"repo": "https://github.com/pugjs/jade" - Use a different github repo
-"skipAnsi": true             Strip ansi data from output stream of npm
-"script": /path/to/script | https://url/to/script - Use a custom test script
-"sha": "<git-commit-sha>"    Test against a specific commit
-"envVar"                     Pass an environment variable before running
+  * `"replace": true` - Download module from github repo in package.json
+  * `"master": true` - Use the master branch
+  * `"prefix": "v"` - Specify the prefix used in the module version.
+  * `"flaky": true` - Ignore failures
+  * `"skip": true` - Completely skip the module
+  * `"repo": "https://github.com/pugjs/jade"` - Use a different github repo
+  * `"skipAnsi": true` - Strip ansi data from output stream of npm
+  * `"script": /path/to/script | https://url/to/script` - Use a custom test script
+  * `"sha": "<git-commit-sha>"` - Test against a specific commit
+  * `"test-name": "name"` - Custom name for test case
+  * `"verify-node-gyp-called": true` - Asserts that `npm` called `node-gyp` with either
+  `build` or `rebuild`
+  * `"vertify-node-gyp-not-called": true` - Asserts that `npm` did not call `node-gyp`
+  * `"envVar": { "var": "value" }` - Pass an environment variable before running
+  * `"install": ["--build-from-source"]` - Array of extra parameters passed to `npm install`
+  * `"node-version": ">=6.0.0"` - Required minimal node.js version. Uses `node-semver` syntax.  
+  * `"test-command"` - Use custom test command:
+```javascript
+"test-command": {
+  "default": "./node_modules/.bin/nodeunit test",
+  "win32": "node_modules\\\\.bin\\\\nodeunit test"
+}
 ```
 
 If you want to pass options to npm, eg `--registry`, you can usually define an
