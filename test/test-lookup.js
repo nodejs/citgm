@@ -232,3 +232,51 @@ test('lookup: ensure lookup works', function (t) {
   t.ok(lookup, 'the lookup table should exist');
   t.end();
 });
+
+test('lookup: lookup with verify-node-gyp-called', function (t) {
+  var context = {
+    module: {
+      name: 'omg-i-pass',
+      raw: null
+    },
+    meta: {
+      repository: '/dev/null',
+      version: '0.1.1'
+    },
+    options: {
+      lookup: 'test/fixtures/custom-lookup-verify-node-gyp.json'
+    },
+    emit: function () {}
+  };
+
+  lookup(context, function (err) {
+    t.error(err);
+    t.ok(context.module.verifyNodeGyp, 'verifyNodeGyp set to true');
+    t.ok(context.module.verifyNodeGypCalled, 'verifyNodeGypCalled set to true');
+    t.end();
+  });
+});
+
+test('lookup: lookup with verify-node-gyp-not-called', function (t) {
+  var context = {
+    module: {
+      name: 'omg-i-pass-too',
+      raw: null
+    },
+    meta: {
+      repository: '/dev/null',
+      version: '0.1.1'
+    },
+    options: {
+      lookup: 'test/fixtures/custom-lookup-verify-node-gyp.json'
+    },
+    emit: function () {}
+  };
+
+  lookup(context, function (err) {
+    t.error(err);
+    t.ok(context.module.verifyNodeGyp, 'verifyNodeGyp set to true');
+    t.ok(context.module.verifyNodeGypNotCalled, 'verifyNodeGypNotCalled set to true');
+    t.end();
+  });
+});
