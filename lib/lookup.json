@@ -300,7 +300,8 @@
   },
   "ember-cli": {
     "replace": true,
-    "prefix": "v"
+    "prefix": "v",
+    "skip": true
   },
   "node-sass": {
     "replace": true,
