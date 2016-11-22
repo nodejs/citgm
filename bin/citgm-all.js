@@ -9,6 +9,7 @@ var logger = require('../lib/out');
 var reporter = require('../lib/reporter');
 var getLookup = require('../lib/lookup').get;
 var commonArgs = require('../lib/common-args');
+var isMatch = require('../lib/match-conditions');
 
 yargs = commonArgs(yargs)
   .usage('citgm-all [options]')
@@ -66,7 +67,7 @@ if (!citgm.windows) {
 var modules = [];
 
 function runCitgm (mod, name, next) {
-  if (mod.skip) {
+  if (isMatch(mod.skip)) {
     return next();
   }
 
