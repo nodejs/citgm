@@ -240,7 +240,7 @@
   "cheerio": {
     "replace": true
   },
-  "node-uuid": {
+  "uuid": {
     "replace": true,
     "prefix": "v"
   },
