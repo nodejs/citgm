@@ -113,7 +113,8 @@
   "react": {
     "replace": true,
     "prefix": "v",
-    "flaky": ["v0.10", "v0.12", "v6", "v7"]
+    "flaky": ["v0.10", "v0.12", "v6", "v7"],
+    "skip": true
   },
   "gulp": {
     "replace": true,
