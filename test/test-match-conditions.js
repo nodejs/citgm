@@ -7,6 +7,7 @@ var isMatch = rewire('../lib/match-conditions');
 
 var platformCache = isMatch.__get__('platform');
 var versionCache = isMatch.__get__('version');
+var semVersionCache = isMatch.__get__('semVersion');
 
 var match = {
   v5: ['darwin', 'hurd', 'x86']
@@ -26,18 +27,22 @@ function shim() {
   isMatch.__set__('version', 'v5.3.1');
   isMatch.__set__('platform', 'darwin');
   isMatch.__set__('arch', 'x64');
+  isMatch.__set__('semVersion', 'v5.3.1');
 }
 
 function revertShim() {
   isMatch.__set__('version', versionCache);
   isMatch.__set__('platform', platformCache);
+  isMatch.__set__('semVersion', semVersionCache);
 }
 
 function testVersions(t, testFunction) {
   t.ok(testFunction(process.version), 'the current version is what it is matched against');
   shim();
   t.ok(testFunction('v5'), 'the module is matched on the current platform');
+  t.ok(testFunction('> 5.0.0'), 'the module is matched on the current platform');
   t.notok(testFunction('v2'), 'the module is not matched on the current platform');
+  t.notok(testFunction('<=v2.0.0'), 'the module is not matched on the current platform');
   revertShim();
 }
 
