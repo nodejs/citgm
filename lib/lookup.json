@@ -307,7 +307,8 @@
   "node-sass": {
     "replace": true,
     "prefix": "v",
-    "flaky": ["ppc", "v7", "s390"]
+    "flaky": ["ppc", "v7", "s390"],
+    "skip": true
   },
   "full-icu-test": {
     "replace": true,
