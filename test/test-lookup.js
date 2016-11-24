@@ -192,7 +192,7 @@ test('lookup: lookup with script', function (t) {
 
   lookup(context, function (err) {
     t.error(err);
-    t.equals(context.options.script, './example-test-script-passing.sh');
+    t.equals(context.module.script, './example-test-script-passing.sh');
     t.end();
   });
 });

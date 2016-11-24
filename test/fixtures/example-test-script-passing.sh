@@ -1,2 +1,2 @@
-ECHO I PASS
+echo I PASS
 exit 0
