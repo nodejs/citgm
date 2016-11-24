@@ -114,12 +114,12 @@ test('npm-test: custom script', function (t) {
     emit: function() {},
     path: sandbox,
     module: {
-      name: 'omg-i-pass'
+      name: 'omg-i-pass',
+      script: customScript
     },
     meta: {},
     options: {
-      npmLevel: 'silly',
-      script: customScript
+      npmLevel: 'silly'
     }
   };
   npmTest(context, function (err) {
@@ -133,12 +133,12 @@ test('npm-test: custom script does not exist', function (t) {
     emit: function() {},
     path: sandbox,
     module: {
-      name: 'omg-i-pass'
+      name: 'omg-i-pass',
+      script: './i/do/not/exist.lol'
     },
     meta: {},
     options: {
-      npmLevel: 'silly',
-      script: './i/do/not/exist.lol'
+      npmLevel: 'silly'
     }
   };
   npmTest(context, function (err) {
