@@ -232,3 +232,29 @@ test('lookup: ensure lookup works', function (t) {
   t.ok(lookup, 'the lookup table should exist');
   t.end();
 });
+
+test('lookup: lookup with install', function (t) {
+  var context = {
+    module: {
+      name: 'omg-i-pass-with-install-param',
+      raw: null
+    },
+    meta: {
+      repository: '/dev/null',
+      version: '0.1.1'
+    },
+    options: {
+      lookup: 'test/fixtures/custom-lookup-install.json'
+    },
+    emit: function () {}
+  };
+  var expected = {
+    install: [/--extra-param/]
+  };
+
+  lookup(context, function (err) {
+    t.error(err);
+    t.match(context.module, expected, 'Read extra install parameter');
+    t.end();
+  });
+});

@@ -14,14 +14,20 @@ var sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now());
 var fixtures = path.join(__dirname, '..', 'fixtures');
 var moduleFixtures = path.join(fixtures, 'omg-i-pass');
 var moduleTemp = path.join(sandbox, 'omg-i-pass');
+var extraParamFixtures = path.join(fixtures, 'omg-i-pass-with-install-param');
+var extraParamTemp = path.join(sandbox, 'omg-i-pass-with-install-param');
 var badFixtures = path.join(fixtures, 'omg-bad-tree');
 var badTemp = path.join(sandbox, 'omg-bad-tree');
 
 test('npm-install: setup', function (t) {
-  t.plan(5);
+  t.plan(7);
   mkdirp(sandbox, function (err) {
     t.error(err);
     ncp(moduleFixtures, moduleTemp, function (e) {
+      t.error(e);
+      t.ok(fs.existsSync(path.join(moduleTemp, 'package.json')));
+    });
+    ncp(extraParamFixtures, extraParamTemp, function (e) {
       t.error(e);
       t.ok(fs.existsSync(path.join(moduleTemp, 'package.json')));
     });
@@ -38,6 +44,25 @@ test('npm-install: basic module', function (t) {
     path: sandbox,
     module: {
       name: 'omg-i-pass'
+    },
+    meta: {},
+    options: {
+      npmLevel: 'silly'
+    }
+  };
+  npmInstall(context, function (err) {
+    t.error(err);
+    t.end();
+  });
+});
+
+test('npm-install: extra install parameters', function (t) {
+  var context = {
+    emit: function() {},
+    path: sandbox,
+    module: {
+      name: 'omg-i-pass-with-install-param',
+      install: ['--extra-param']
     },
     meta: {},
     options: {
