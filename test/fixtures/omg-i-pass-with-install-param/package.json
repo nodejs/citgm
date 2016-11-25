@@ -1,0 +1,20 @@
+{
+  "name": "omg-i-pass-with-install-param",
+  "version": "3.0.0",
+  "description": "Test package for CITGM test suite",
+  "main": "index.js",
+  "scripts": {
+    "test": "exit 0",
+    "install": "node test_args.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bzoz/omg-i-pass-with-install-param.git"
+  },
+  "author": "Bartosz Sosnowski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bzoz/omg-i-pass-with-install-param/issues"
+  },
+  "homepage": "https://github.com/bzoz/omg-i-pass-with-install-param#readme"
+}
