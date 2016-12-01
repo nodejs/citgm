@@ -251,8 +251,7 @@
   "yargs": {
     "replace": true,
     "prefix": "v",
-    "flaky": "aix",
-    "skip": true
+    "flaky": "aix"
   },
   "semver": {
     "replace": true,
