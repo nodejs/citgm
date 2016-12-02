@@ -81,7 +81,8 @@
   "eslint": {
     "replace": true,
     "prefix": "v",
-    "flaky": ["ppc", "v7", "s390"]
+    "flaky": ["ppc", "v7", "s390"],
+    "skip": "v8"
   },
   "tape": {
     "replace": true,
