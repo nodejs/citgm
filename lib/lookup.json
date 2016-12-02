@@ -228,7 +228,8 @@
   "mkdirp": {
     "replace": true,
     "master": true,
-    "flaky": ["v6", "v7"]
+    "flaky": ["v6", "v7"],
+    "skip": ["v8"]
   },
   "yeoman-generator": {
     "replace": true,
