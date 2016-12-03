@@ -29,7 +29,10 @@ test('fetch: setup', function (t) {
 test('fetch: given a file path', function (t) {
   var context = {
     path: sandbox,
-    emit: function () {}
+    emit: function () {},
+    module: {
+      name: 'test-module'
+    }
   };
   fetch(context, passing, function (err, _path)  {
     t.error(err);
@@ -47,6 +50,9 @@ test('fetch: given a custom lookup table and relative path', function (t) {
   var context = {
     path: sandbox,
     emit: function () {},
+    module: {
+      name: 'test-module'
+    },
     options: {
       lookup: path.join(fixtures, 'custom-lookup-script.json')
     }
@@ -66,7 +72,10 @@ test('fetch: given a custom lookup table and relative path', function (t) {
 test('fetch: given a uri with http', function (t) {
   var context = {
     path: sandbox,
-    emit: function () {}
+    emit: function () {},
+    module: {
+      name: 'test-module'
+    }
   };
   fetch(context, uriHttp, function (err, _path) {
     t.error(err);
@@ -82,7 +91,10 @@ test('fetch: given a uri with http', function (t) {
 test('fetch: given a uri with https', function (t) {
   var context = {
     path: sandbox,
-    emit: function () {}
+    emit: function () {},
+    module: {
+      name: 'test-module'
+    }
   };
   fetch(context, uriHttps, function (err, _path) {
     t.error(err);
@@ -98,7 +110,10 @@ test('fetch: given a uri with https', function (t) {
 test('fetch: properly handle errors from request', function (t) {
   var context = {
     path: sandbox,
-    emit: function () {}
+    emit: function () {},
+    module: {
+      name: 'test-module'
+    }
   };
 
   var request = fetch.__get__('request');

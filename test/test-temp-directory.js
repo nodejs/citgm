@@ -9,12 +9,18 @@ var tempDirectory = rewire('../lib/temp-directory');
 
 var context = {
   path: null,
-  emit: function () {}
+  emit: function () {},
+  module: {
+    name: 'test-module'
+  }
 };
 
 var badContext = {
   path: null,
-  emit: function () {}
+  emit: function () {},
+  module: {
+    name: 'test-module-bad'
+  }
 };
 
 test('tempDirectory.create:', function (t) {

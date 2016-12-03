@@ -93,6 +93,8 @@ Options:
   -u, --uid <uid>             Set the uid (posix only)
   -g, --gid <uid>             Set the gid (posix only)
   -a, --append                Turns on append results to file mode rather than replace
+  -j, --parallel <number>     Run tests in parallel
+  -J, --autoParallel          Run tests in parallel (automatically detect core count)
 ```
 
 When using a JSON config file, the properties need to be the same as the

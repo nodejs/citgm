@@ -263,13 +263,13 @@ test('lookup: logging', function (t) {
     { type: 'info', key: 'lookup', msg: 'omg-i-pass' },
     { type: 'info', key: 'lookup-found', msg: 'omg-i-pass' },
     { type: 'info',
-      key: 'lookup-replace',
+      key: 'omg-i-pass lookup-replace',
       msg: 'https://github.com/nodejs/citgm/archive/master.tar.gz' },
     { type: 'verbose',
-      key: 'lookup-install',
+      key: 'omg-i-pass lookup-install',
       msg: [ '--extra-param' ] },
     { type: 'info',
-      key: 'lookup-script',
+      key: 'omg-i-pass lookup-script',
       msg: './example-test-script-passing.sh' }
   ];
   var EventEmitter = require('events').EventEmitter;

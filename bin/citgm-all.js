@@ -20,6 +20,16 @@ yargs = commonArgs(yargs)
     alias: 'f',
     type: 'boolean',
     description: 'Ignore flaky flags. Do not ignore any failures.'
+  })
+  .option('parallel', {
+    alias: 'j',
+    type: 'number',
+    description: 'Number of tests to run in parallel'
+  })
+  .option('autoParallel', {
+    alias: 'J',
+    type: 'boolean',
+    description: 'Auto detect number of cores to use to run tests in parallel'
   });
 
 var app = yargs.argv;
@@ -52,6 +62,15 @@ var lookup = getLookup(options);
 if (!lookup) {
   log.error('the json file cannot be found or there is an error in the file!');
   process.exit(1);
+}
+
+var cpus = os.cpus().length;
+if (app.autoParallel || (app.parallel && app.parallel > cpus)) {
+  app.parallel = cpus;
+  log.info('cores', 'running tests using ' + app.parallel + ' cores');
+}
+if (app.parallel && ((app.parallel + 1) > process.getMaxListeners())) {
+  process.setMaxListeners(app.parallel + 1);
 }
 
 if (!citgm.windows) {
@@ -100,10 +119,10 @@ function runCitgm (mod, name, next) {
     result.duration = new Date() - start;
     log.info('duration', 'test duration: ' + result.duration + 'ms');
     if (result.error) {
-      log.error('done', 'The test suite for ' + result.name + ' version ' + result.version + ' failed');
+      log.error(result.name + ' done', 'done - the test suite for ' + result.name + ' version ' + result.version + ' failed');
     }
     else {
-      log.info('done', 'The test suite for ' + result.name + ' version ' + result.version + ' passed.');
+      log.info(result.name + ' done', 'done - the test suite for ' + result.name + ' version ' + result.version + ' passed.');
     }
     modules.push(result);
     if (!bailed) {
@@ -130,7 +149,7 @@ function filterLookup(result, value, key) {
 function launch() {
   var collection = _.reduce(lookup, filterLookup, []);
 
-  var q = async.queue(runTask, os.cpus().length || 1);
+  var q = async.queue(runTask, app.parallel || 1);
   q.push(collection);
   function done () {
     q.drain = null;
