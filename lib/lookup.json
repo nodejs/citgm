@@ -310,5 +310,38 @@
   "full-icu-test": {
     "replace": true,
     "prefix": "v"
+  },
+  "sqlite3": {
+    "replace": true,
+    "prefix": "v",
+    "flaky": "aix"
+  },
+  "iconv": {
+    "replace": true,
+    "prefix": "v",
+    "flaky": "aix"
+  },
+  "electron-prebuilt": {
+    "replace": true,
+    "prefix": "v",
+    "flaky": ["ppc", "aix", "s390"]
+  },
+  "libxmljs": {
+    "replace": true,
+    "prefix": "v",
+    "flaky": "aix"
+  },
+  "radium": {
+    "replace": true,
+    "prefix": "v",
+    "flaky": ["ppc", "aix", "s390"]
+  },
+  "ffi": {
+    "replace": true,
+    "flaky": ["ppc", "aix", "s390"]
+  },
+  "microtime": {
+    "replace": true,
+    "prefix": "v"
   }
 }
