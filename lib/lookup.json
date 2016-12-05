@@ -216,11 +216,7 @@
   "async": {
     "replace": true,
     "prefix": "v",
-    "flaky": {
-      "s390": true,
-      "darwin": true,
-      "v0.12": ["fedora22", "ubuntu1204"]
-    }
+    "flaky": true
   },
   "bluebird": {
     "replace": true,
