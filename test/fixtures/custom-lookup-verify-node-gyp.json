@@ -1,0 +1,8 @@
+{
+    "omg-i-pass": {
+        "verify-node-gyp-called": true
+    },
+    "omg-i-pass-too": {
+        "verify-node-gyp-not-called": true
+    }
+}
