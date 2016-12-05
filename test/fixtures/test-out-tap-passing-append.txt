@@ -1,8 +1,12 @@
 This is a test!
 TAP version 13
 ok 1 - iPass v4.2.2
+  ---
+  duration_ms: 50
+  ...
 ok 2 - iFlakyPass v3.0.1
   ---
   # Thanks for testing!
+  duration_ms: 50
   ...
 1..2

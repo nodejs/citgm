@@ -7,6 +7,7 @@ var test = require('tap').test;
 var mkdirp = require('mkdirp');
 var rimraf = require('rimraf');
 var _ = require('lodash');
+var parseString = require('xml2js').parseString;
 
 var junit = require('../../lib/reporter/junit');
 var fixtures = require('../fixtures/reporter-fixtures');
@@ -35,6 +36,7 @@ var failingInput = [
   fixtures.iFail
 ];
 
+var junitParserExpected = require('../fixtures/parsed-junit.json');
 var failingExpectedPath = path.join(fixturesPath, 'test-out-xml-failing.txt');
 var failingExpected = fs.readFileSync(failingExpectedPath, 'utf-8');
 
@@ -96,6 +98,20 @@ test('reporter.junit(): failing', function (t) {
   junit(logger, failingInput);
   t.equals(output, failingExpected), 'we should get the expected output when a module fails';
   t.end();
+});
+
+test('reporter.junit(): parser', function (t) {
+  var output = '';
+  function logger(message) {
+    output += message;
+    output += '\n';
+  }
+
+  junit(logger, failingInput);
+  parseString(output, function (err, result) {
+    t.deepEquals(result, junitParserExpected), 'we should get the expected output when a module fails';
+    t.end();
+  });
 });
 
 test('reporter.junit(): write to disk', function (t) {

@@ -1,10 +1,10 @@
 <testsuite name="citgm">
-  <testcase name="iPass-v4.2.2">
+  <testcase name="iPass-v4.2.2" time="0.05">
     <system-out>
       <![CDATA[]]>
     </system-out>
   </testcase>
-  <testcase name="iFlakyPass-v3.0.1">
+  <testcase name="iFlakyPass-v3.0.1" time="0.05">
     <system-out>
       <![CDATA[ Thanks for testing!]]>
     </system-out>
