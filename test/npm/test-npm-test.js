@@ -7,8 +7,9 @@ var test = require('tap').test;
 var mkdirp = require('mkdirp');
 var rimraf = require('rimraf');
 var ncp = require('ncp');
+var rewire = require('rewire');
 
-var npmTest = require('../../lib/npm/test');
+var npmTest = rewire('../../lib/npm/test');
 
 var sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now());
 var fixtures = path.join(__dirname, '..', 'fixtures');
@@ -149,6 +150,8 @@ test('npm-test: custom script does not exist', function (t) {
 
 test('npm-test: alternative test-path', function (t) {
   // Same test as 'basic module passing', except with alt node bin which fails.
+  var nodeBinName = npmTest.__get__('nodeBinName');
+  npmTest.__set__('nodeBinName', 'fake-node');
   var context = {
     emit: function() {},
     path: sandbox,
@@ -162,6 +165,7 @@ test('npm-test: alternative test-path', function (t) {
     }
   };
   npmTest(context, function (err) {
+    npmTest.__set__('nodeBinName', nodeBinName);
     t.equals(err && err.message, 'The canary is dead:');
     t.end();
   });
