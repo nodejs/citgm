@@ -116,7 +116,7 @@ test('grab-project: module does not exist', function (t) {
     options: {}
   };
   grabProject(context, function (err) {
-    t.equals(err && err.message, 'Failure getting project from npm');
+    t.equals(err && err.message, 'Failure getting tarball');
     t.end();
   });
 });

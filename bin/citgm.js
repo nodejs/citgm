@@ -53,6 +53,7 @@ var options = {
   sha: app.sha
 };
 
+/* istanbul ignore else: windows specific edge case */
 if (!citgm.windows) {
   var uidnumber = require('uid-number');
   var uid = app.uid || process.getuid();

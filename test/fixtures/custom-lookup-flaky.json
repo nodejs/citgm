@@ -1,6 +1,7 @@
 {
   "omg-i-fail": {
     "replace": true,
+    "master": true,
     "prefix": "v",
     "flaky": true
   }

@@ -62,7 +62,8 @@ test('npm-install: extra install parameters', function (t) {
     path: sandbox,
     module: {
       name: 'omg-i-pass-with-install-param',
-      install: ['--extra-param']
+      install: ['--extra-param'],
+      stripAnsi: true
     },
     meta: {},
     options: {
@@ -80,7 +81,8 @@ test('npm-install: no package.json', function (t) {
     emit: function() {},
     path: sandbox,
     module: {
-      name: 'omg-i-fail'
+      name: 'omg-i-fail',
+      stripAnsi: true
     },
     meta: {},
     options: {
@@ -98,7 +100,8 @@ test('npm-install: timeout', function (t) {
     emit: function() {},
     path: sandbox,
     module: {
-      name: 'omg-i-pass'
+      name: 'omg-i-pass',
+      stripAnsi: true
     },
     meta: {},
     options: {

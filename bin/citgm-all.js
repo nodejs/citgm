@@ -51,6 +51,7 @@ if (!lookup) {
   process.exit(1);
 }
 
+/* istanbul ignore else: windows specific edge case */
 if (!citgm.windows) {
   var uidnumber = require('uid-number');
   var uid = app.uid || process.getuid();
@@ -114,7 +115,6 @@ function launch() {
     if (app.markdown) {
       reporter.markdown(log.bypass, modules);
     }
-
     if (app.tap) {
       // if tap is a string it should be a path to write output to
       // if not use `log.bypass` which is currently process.stdout.write
