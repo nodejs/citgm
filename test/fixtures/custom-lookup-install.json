@@ -1,0 +1,5 @@
+{
+  "omg-i-pass-with-install-param": {
+    "install": ["--extra-param"]
+  }
+}
