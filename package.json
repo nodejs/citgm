@@ -12,8 +12,8 @@
   "scripts": {
     "test": "npm run lint && npm run tap",
     "tap": "TAP_TIMEOUT=90 tap 'test/**/**/test-*.js'",
-    "coverage": "TAP_TIMEOUT=90 nyc tap test/test-*.js",
-    "coverage-html": "TAP_TIMEOUT=90 nyc --reporter=html tap test/test-*.js && opener coverage/index.html",
+    "coverage": "npm run tap -- --coverage",
+    "coverage-html": "npm run tap -- --coverage --coverage-report=html && opener coverage/index.html",
     "lint": "eslint bin/* lib/ test/"
   },
   "author": "James M Snell <jasnell@gmail.com> (http://jasnell.me)",
@@ -60,12 +60,11 @@
   "devDependencies": {
     "eslint": "^2.13.1",
     "ncp": "^2.0.0",
-    "nyc": "^8.4.0",
     "opener": "^1.4.1",
     "rewire": "^2.4.0",
+    "string-to-stream": "^1.1.0",
     "tap": "^8.0.0",
     "tap-parser": "^3.0.3",
-    "string-to-stream": "^1.1.0",
     "xml2js": "^0.4.17"
   }
 }
