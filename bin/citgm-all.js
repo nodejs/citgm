@@ -16,7 +16,7 @@ yargs = commonArgs(yargs)
   .option('fail-flaky', {
     alias: 'f',
     type: 'boolean',
-    description: 'Ignore flaky flags. Don\'t ignore any failures.'
+    description: 'Ignore flaky flags. Do not ignore any failures.'
   });
 
 var app = yargs.argv;

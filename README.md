@@ -20,7 +20,7 @@ bin/citgm --help
 
 (If citgm is installed globally, you can also `man citgm`)
 
-```bash
+```
 Usage: citgm [options] <module> [script]
 
 Options:
@@ -70,7 +70,7 @@ table use citgm-all. It will automate the running of all tests and give
 itemized results at the end. It has all the same options as citgm except
 for the added markdown option which will print the results in markdown.
 
-```bash
+```
 Usage: citgm-all [options]
 
 Options:
@@ -89,7 +89,7 @@ Options:
   -t, --tap [path]            Output results in tap with optional file path
   -x, --junit [path]          Output results in junit xml with optional file path
   -o, --timeout <length>      Set timeout for npm install
-  -f, --fail-flaky            Ignore flaky flags. Don't ignore any failures.
+  -f, --fail-flaky            Ignore flaky flags. Do not ignore any failures.
   -u, --uid <uid>             Set the uid (posix only)
   -g, --gid <uid>             Set the gid (posix only)
   -a, --append                Turns on append results to file mode rather than replace
