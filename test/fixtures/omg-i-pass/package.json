@@ -2,15 +2,19 @@
   "name": "omg-i-pass",
   "version": "2.0.1",
   "description": "Test suite always passes",
-  "repository": "https://github.com/TheAlphaNerd/omg-i-pass",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheAlphaNerd/omg-i-pass.git"
+  },
   "main": "index.js",
   "scripts": {
-    "test": "exit 0"
+    "test": "exit 0",
+    "install": "exit 0"
   },
   "keywords": [
     "always",
     "passes"
   ],
-  "author": "",
+  "author": "Myles Borins",
   "license": "MIT"
 }

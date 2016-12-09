@@ -92,14 +92,13 @@ function launch(mod, options) {
     if (app.markdown) {
       reporter.markdown(log.bypass, module);
     }
-
-    if (typeof app.tap === 'string') {
-      var tap = (app.tap) ? app.tap : log.bypass;
+    if (app.tap) {
+      var tap = (typeof app.tap === 'string') ? app.tap : log.bypass;
       reporter.tap(tap, module, app.append);
     }
 
-    if (typeof app.junit === 'string') {
-      var junit = (app.junit) ? app.junit : log.bypass;
+    if (app.junit) {
+      var junit = (typeof app.junit === 'string') ? app.junit : log.bypass;
       reporter.junit(junit, module, app.append);
     }
 
