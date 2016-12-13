@@ -343,5 +343,8 @@
   "microtime": {
     "replace": true,
     "prefix": "v"
+  },
+  "bufferutil": {
+    "replace": true
   }
 }
