@@ -258,3 +258,40 @@ test('lookup: lookup with install', function (t) {
     t.end();
   });
 });
+
+test('lookup: logging', function (t) {
+  var expectedLogMsgs = [
+    { type: 'info', key: 'lookup', msg: 'omg-i-pass' },
+    { type: 'info', key: 'lookup-found', msg: 'omg-i-pass' },
+    { type: 'info',
+      key: 'lookup-replace',
+      msg: 'https://github.com/nodejs/citgm/archive/master.tar.gz' },
+    { type: 'verbose',
+      key: 'lookup-install',
+      msg: [ '--extra-param' ] },
+    { type: 'info',
+      key: 'lookup-script',
+      msg: './example-test-script-passing.sh' }
+  ];
+  var EventEmitter = require('events').EventEmitter;
+  var context = new EventEmitter();
+  var log = [];
+  context.meta = {
+    repository: '/dev/null',
+    version: '0.1.1'
+  };
+  context.module = {
+    name: 'omg-i-pass'
+  };
+  context.options = {
+    lookup: 'test/fixtures/custom-lookup-log.json'
+  };
+  context.on('data', function (type, key, msg) {
+    log.push({ type: type, key: key, msg: msg });
+  });
+  lookup(context, function () {
+    t.plan(1);
+    t.strictSame(log, expectedLogMsgs);
+    t.end();
+  });
+});
