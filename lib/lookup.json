@@ -343,5 +343,8 @@
   "microtime": {
     "replace": true,
     "prefix": "v"
+  },
+  "utf-8-validate": {
+    "replace": true
   }
 }
