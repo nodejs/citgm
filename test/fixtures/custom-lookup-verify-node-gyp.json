@@ -1,0 +1,17 @@
+{
+  "omg-i-pass": {
+    "verify-node-gyp": "called",
+    "npm": true
+  },
+  "omg-i-pass-too": {
+    "verify-node-gyp": "not called",
+    "npm": true
+  },
+  "omg-i-fail": {
+    "verify-node-gyp": "wrong value",
+    "npm": true
+  },
+  "omg-i-have-binding-gyp": {
+    "npm": true
+  }
+}
