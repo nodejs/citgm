@@ -343,5 +343,12 @@
   "microtime": {
     "replace": true,
     "prefix": "v"
+  },
+  "v8-profiler":  {
+    "skip": "<6.0.0",
+    "prefix": "v",
+    "replace": true,
+    "flaky": true,
+    "verify-node-gyp-called": true
   }
 }
