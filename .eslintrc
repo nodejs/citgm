@@ -9,6 +9,10 @@
       "single"
     ],
     no-trailing-spaces: 2,
+    eqeqeq: [
+      "error",
+      "always"
+    ],
     "linebreak-style": [
       2,
       "unix"
