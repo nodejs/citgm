@@ -343,5 +343,11 @@
   "microtime": {
     "replace": true,
     "prefix": "v"
+  },
+  "contextify": {
+    "replace": true,
+    "prefix": "v",
+    "install": ["--build-from-source"],    
+    "flaky": true
   }
 }
