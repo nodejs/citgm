@@ -343,5 +343,11 @@
   "microtime": {
     "replace": true,
     "prefix": "v"
+  },
+  "v8-debug": {
+    "skip": "<6.0.0",
+    "prefix": "v",
+    "replace": true,
+    "flaky": true
   }
 }
