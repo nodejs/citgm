@@ -343,5 +343,9 @@
   "microtime": {
     "replace": true,
     "prefix": "v"
+  },
+  "thread-sleep": {
+    "replace": true,
+    "install": ["--build-from-source"]
   }
 }
