@@ -347,5 +347,9 @@
   "koa": {
     "replace": true,
     "skip": "<4"
+  },
+  "spawn-wrap": {
+    "replace": true,
+    "prefix": "v"
   }
 }
