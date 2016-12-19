@@ -343,5 +343,9 @@
   "microtime": {
     "replace": true,
     "prefix": "v"
+  },
+  "koa": {
+    "replace": true,
+    "skip": "<4"
   }
 }
