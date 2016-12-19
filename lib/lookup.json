@@ -96,7 +96,7 @@
   "watchify": {
     "replace": true,
     "prefix": "v",
-    "flaky": ["ppc", "v7"]
+    "flaky": ["ppc", "v7", "s390"]
   },
   "stylus": {
     "replace": true
@@ -129,7 +129,8 @@
     "flaky": true
   },
   "ws": {
-    "replace": true
+    "replace": true,
+    "flaky": "s390"
   },
   "vinyl": {
     "replace": true,
