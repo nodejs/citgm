@@ -9,6 +9,7 @@ const rimraf = require('rimraf');
 const ncp = require('ncp');
 
 const npmInstall = require('../../lib/npm/install');
+const makeContext = require('../helpers/make-context');
 
 const sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now());
 const fixtures = path.join(__dirname, '..', 'fixtures');
@@ -39,17 +40,9 @@ test('npm-install: setup', function (t) {
 });
 
 test('npm-install: basic module', function (t) {
-  const context = {
-    emit: function() {},
-    path: sandbox,
-    module: {
-      name: 'omg-i-pass'
-    },
-    meta: {},
-    options: {
-      npmLevel: 'silly'
-    }
-  };
+  const context = makeContext.npmContext('omg-i-pass', sandbox, {
+    npmLevel: 'silly'
+  });
   npmInstall(context, function (err) {
     t.error(err);
     t.end();
@@ -57,18 +50,12 @@ test('npm-install: basic module', function (t) {
 });
 
 test('npm-install: extra install parameters', function (t) {
-  const context = {
-    emit: function() {},
-    path: sandbox,
-    module: {
-      name: 'omg-i-pass-with-install-param',
-      install: ['--extra-param']
-    },
-    meta: {},
-    options: {
-      npmLevel: 'silly'
-    }
-  };
+  const context = makeContext.npmContext({
+    name: 'omg-i-pass-with-install-param',
+    install: ['--extra-param']
+  }, sandbox, {
+    npmLevel: 'silly'
+  });
   npmInstall(context, function (err) {
     t.error(err);
     t.end();
@@ -76,17 +63,9 @@ test('npm-install: extra install parameters', function (t) {
 });
 
 test('npm-install: no package.json', function (t) {
-  const context = {
-    emit: function() {},
-    path: sandbox,
-    module: {
-      name: 'omg-i-fail'
-    },
-    meta: {},
-    options: {
-      npmLevel: 'silly'
-    }
-  };
+  const context = makeContext.npmContext('omg-i-fail', sandbox, {
+    npmLevel: 'silly'
+  });
   npmInstall(context, function (err) {
     t.equals(err && err.message, 'Install Failed');
     t.end();
@@ -94,18 +73,10 @@ test('npm-install: no package.json', function (t) {
 });
 
 test('npm-install: timeout', function (t) {
-  const context = {
-    emit: function() {},
-    path: sandbox,
-    module: {
-      name: 'omg-i-pass'
-    },
-    meta: {},
-    options: {
-      npmLevel: 'silly',
-      timeoutLength: 100
-    }
-  };
+  const context = makeContext.npmContext('omg-i-pass', sandbox, {
+    npmLevel: 'silly',
+    timeoutLength: 100
+  });
   npmInstall(context, function (err) {
     t.equals(err && err.message, 'Install Timed Out');
     t.end();
@@ -113,22 +84,13 @@ test('npm-install: timeout', function (t) {
 });
 
 test('npm-install: failed install', function (t) {
-  const context = {
-    emit: function() {},
-    path: sandbox,
-    module: {
-      name: 'omg-bad-tree'
-    },
-    meta: {},
-    options: {
-      npmLevel: 'http'
-    }
-  };
-
+  const context = makeContext.npmContext('omg-bad-tree', sandbox, {
+    npmLevel: 'http'
+  });
   const expected = {
     testOutput: /^$/,
-    testError: 'npm ERR! 404 Registry returned 404 for GET on'
-    + ' https://registry.npmjs.org/THIS-WILL-FAIL'
+    testError: new RegExp(['npm ERR! 404 Registry returned 404 for GET on',
+      'https://registry.npmjs.org/THIS-WILL-FAIL'].join(' '))
   };
   npmInstall(context, function (err) {
     t.equals(err && err.message, 'Install Failed');
