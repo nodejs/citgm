@@ -388,5 +388,16 @@
   "node-report": {
     "prefix": "v",
     "maintainers": ["rnchamberlain", "richardlau"]
+  },
+  "thread-sleep": {
+    "install": ["--build-from-source"],
+    "maintainers": ["forbeslindesay", "timothygu"]
+  },
+  "bufferutil": {
+    "prefix": "v",
+    "maintainers": ["3rdeden", "einaros", "lpinca"]
+  },
+  "weak": {
+    "maintainers": "tootallnate"
   }
 }
