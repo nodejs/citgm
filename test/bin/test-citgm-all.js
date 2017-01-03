@@ -166,6 +166,19 @@ function (t) {
   });
 });
 
+test('citgm-all: /w multiple tests', function (t) {
+  t.plan(1);
+  const proc = spawn(citgmAllPath,
+    ['-l', 'test/fixtures/custom-lookup-multiple-tests.json', '-m']);
+  proc.on('error', function(err) {
+    t.error(err);
+    t.fail('we should not get an error');
+  });
+  proc.on('close', function (code) {
+    t.equals(code, 0, 'citgm-all should run all the tests in the lookup');
+  });
+});
+
 test('bin: sigterm', function (t) {
   t.plan(1);
 

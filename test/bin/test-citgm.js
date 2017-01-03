@@ -85,3 +85,37 @@ test('bin: install from sha', function (t) {
     t.ok(code === 0, 'omg-i-pass should pass and exit with a code of zero');
   });
 });
+
+test('bin: omg-i-pass-with-install-param /w multiple tests /w custom lookup',
+  function (t) {
+    t.plan(1);
+    const proc = spawn(citgmPath,
+      ['-l', './test/fixtures/custom-lookup-multiple-tests.json',
+        'omg-i-pass-with-install-param#works']);
+    proc.on('error', function(err) {
+      t.error(err);
+      t.fail('we should not get an error testing ' +
+             'omg-i-pass-with-install-param');
+    });
+    proc.on('close', function (code) {
+      t.ok(code === 0, 'omg-i-pass-with-install-param should pass and exit ' +
+        'with a code of zero');
+    });
+  }
+);
+
+test('bin: omg-i-pass-with-install-param should fail /w multiple tests /w ' +
+  'custom lookup', function (t) {
+  t.plan(1);
+  const proc = spawn(citgmPath,
+    ['-l', './test/fixtures/custom-lookup-multiple-tests.json',
+      'omg-i-pass-with-install-param']);
+  proc.on('error', function(err) {
+    t.error(err);
+    t.fail('we should not get an error testing omg-i-pass-with-install-param');
+  });
+  proc.on('close', function (code) {
+    t.ok(code === 1, 'omg-i-pass-with-install-param should fail and exit ' +
+      'with a code of 1');
+  });
+});

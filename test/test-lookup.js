@@ -274,3 +274,155 @@ test('lookup: logging', function (t) {
     t.end();
   });
 });
+
+test('lookup: fail if test requested for module without tests', function(t) {
+  const context = {
+    module: {
+      name: 'omg-i-fail',
+      test: 'test',
+      raw: null
+    },
+    meta: {
+      repository: '/dev/null',
+      version: '0.1.1'
+    },
+    options: {
+      lookup: 'test/fixtures/custom-lookup-multiple-tests.json'
+    },
+    emit: function () {}
+  };
+
+  lookup(context, function (err) {
+    t.match(err && err.message, 'No tests specified for module');
+    t.end();
+  });
+});
+
+test('lookup: fail if test requested for module not in lookup', function(t) {
+  const context = {
+    module: {
+      name: 'omg-i-do-not-support-testing',
+      test: 'test',
+      raw: null
+    },
+    meta: {
+      repository: '/dev/null',
+      version: '0.1.1'
+    },
+    options: {
+      lookup: 'test/fixtures/custom-lookup-multiple-tests.json'
+    },
+    emit: function () {}
+  };
+
+  lookup(context, function (err) {
+    t.match(err && err.message, 'Test specified for module not in lookup');
+    t.end();
+  });
+});
+
+test('lookup: fail if test requested for module with wrong name', function(t) {
+  const context = {
+    module: {
+      name: 'omg-i-pass',
+      test: 'wrong name',
+      raw: null
+    },
+    meta: {
+      repository: '/dev/null',
+      version: '0.1.1'
+    },
+    options: {
+      lookup: 'test/fixtures/custom-lookup-multiple-tests.json'
+    },
+    emit: function () {}
+  };
+
+  lookup(context, function (err) {
+    t.match(err && err.message, 'This module does not have such test');
+    t.end();
+  });
+});
+
+test('lookup: default test name is set', function(t) {
+  const context = {
+    module: {
+      name: 'omg-i-pass',
+      raw: null
+    },
+    meta: {
+      repository: '/dev/null',
+      version: '0.1.1'
+    },
+    options: {
+      lookup: 'test/fixtures/custom-lookup-multiple-tests.json'
+    },
+    emit: function () {}
+  };
+  const expected = {
+    test: /default test name/,
+    install: [/--default-install-param/]
+  };
+
+  lookup(context, function(err) {
+    t.error(err);
+    t.match(context.module, expected, 'Read proper test data');
+    t.end();
+  });
+});
+
+test('lookup: read default test by its name', function(t) {
+  const context = {
+    module: {
+      name: 'omg-i-pass',
+      test: 'default test name',
+      raw: null
+    },
+    meta: {
+      repository: '/dev/null',
+      version: '0.1.1'
+    },
+    options: {
+      lookup: 'test/fixtures/custom-lookup-multiple-tests.json'
+    },
+    emit: function () {}
+  };
+  const expected = {
+    test: /default test name/,
+    install: [/--default-install-param/]
+  };
+
+  lookup(context, function(err) {
+    t.error(err);
+    t.match(context.module, expected, 'Read proper test data');
+    t.end();
+  });
+});
+
+test('lookup: read required test', function(t) {
+  const context = {
+    module: {
+      name: 'omg-i-pass',
+      test: 'second',
+      raw: null
+    },
+    meta: {
+      repository: '/dev/null',
+      version: '0.1.1'
+    },
+    options: {
+      lookup: 'test/fixtures/custom-lookup-multiple-tests.json'
+    },
+    emit: function () {}
+  };
+  const expected = {
+    test: /second/,
+    install: [/--second-test-install-param/]
+  };
+
+  lookup(context, function(err) {
+    t.error(err);
+    t.match(context.module, expected, 'Read proper test data');
+    t.end();
+  });
+});
