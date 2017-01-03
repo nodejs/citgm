@@ -404,6 +404,7 @@
   },
   "node-report": {
     "prefix": "v",
+    "flaky": "win32",
     "tags": "native",
     "maintainers": ["rnchamberlain", "richardlau"]
   },
@@ -437,5 +438,19 @@
     "maintainers": ["mafintosh", "emilbayes"],
     "prefix": "v",
     "tags": "native"
+  },
+  "mocha": {
+    "prefix": "v",
+    "flaky": "aix",
+    "maintainers": ["tj", "boneskull"]
+  },
+  "rewire": {
+    "prefix": "v",
+    "maintainers": "jhnns"
+  },
+  "ava": {
+    "prefix": "v",
+    "flaky": "aix",
+    "maintainers": ["sindresorhus", "novemberborn"]
   }
 }
