@@ -37,7 +37,7 @@ test('citgm: omg-i-pass from git url', function (t) {
     level: null
   };
 
-  var mod = 'git+https://github.com/thealphanerd/omg-i-pass';
+  var mod = 'git+https://github.com/MylesBorins/omg-i-pass';
 
   citgm.Tester(mod, options)
   .on('start', function (name) {

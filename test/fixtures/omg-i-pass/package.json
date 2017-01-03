@@ -4,7 +4,7 @@
   "description": "Test suite always passes",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TheAlphaNerd/omg-i-pass.git"
+    "url": "git+https://github.com/MylesBorins/omg-i-pass.git"
   },
   "main": "index.js",
   "scripts": {
