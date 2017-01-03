@@ -2,7 +2,7 @@
   "name": "omg-i-fail",
   "version": "2.0.1",
   "description": "Test suite always passes",
-  "repository": "https://github.com/TheAlphaNerd/omg-i-fail",
+  "repository": "https://github.com/MylesBorins/omg-i-fail",
   "main": "index.js",
   "scripts": {
     "test": "exit 1"
