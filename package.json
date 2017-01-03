@@ -12,9 +12,10 @@
   "scripts": {
     "test": "npm run lint && npm run tap",
     "tap": "TAP_TIMEOUT=90 tap 'test/**/**/test-*.js'",
-    "coverage": "npm run tap -- --coverage",
+    "coverage": "npm run tap -- --coverage --100",
     "coverage-html": "npm run tap -- --coverage --coverage-report=html",
-    "lint": "eslint bin/* lib/ test/"
+    "lint": "eslint bin/* lib/ test/",
+    "ci": "npm run lint && npm run coverage"
   },
   "author": "James M Snell <jasnell@gmail.com> (http://jasnell.me)",
   "repository": {
