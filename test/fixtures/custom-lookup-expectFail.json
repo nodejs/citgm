@@ -1,0 +1,10 @@
+{
+  "omg-i-fail": {
+    "flaky": true,
+    "expectFail": true
+  },
+  "omg-i-fail": {
+    "npm": true,
+    "expectFail": true
+  }
+}
