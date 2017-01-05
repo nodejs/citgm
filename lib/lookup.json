@@ -3,7 +3,8 @@
   },
   "underscore": {
     "master": true,
-    "flaky": "aix"
+    "flaky": "aix",
+    "skip": "win32"
   },
   "request": {
     "prefix": "v",
@@ -11,7 +12,8 @@
   },
   "commander": {
     "prefix": "v",
-    "repo": "https://github.com/tj/commander.js"
+    "repo": "https://github.com/tj/commander.js",
+    "skip": "win32"
   },
   "express": {
     "flaky": {
@@ -29,7 +31,7 @@
   },
   "glob": {
     "prefix": "v",
-    "flaky": ["v6", "v7"]
+    "flaky": ["v6", "v7", "win32"]
   },
   "gulp-util": {
     "prefix": "v"
@@ -43,18 +45,20 @@
     "flaky": true
   },
   "fs-extra": {
-    "flaky": ["linux-ia32", "aix", "s390"]
+    "flaky": ["linux-ia32", "aix", "s390", "win32"]
   },
   "body-parser": {
   },
   "uglify-js": {
     "prefix": "v",
-    "flaky": ["darwin", "aix"]
+    "flaky": ["darwin", "aix", "win32"]
   },
   "jquery": {
+    "skip": "win32"
   },
   "rimraf": {
-    "prefix": "v"
+    "prefix": "v",
+    "flaky": "win32"
   },
   "david": {
     "prefix": "v",
@@ -70,13 +74,14 @@
     "flaky": "linux"
   },
   "browserify": {
-    "flaky": ["v7"]
+    "flaky": ["v7", "win32"]
   },
   "watchify": {
     "prefix": "v",
     "flaky": ["ppc", "v7", "s390"]
   },
   "stylus": {
+    "flaky": "win32"
   },
   "level": {
     "prefix": "v",
@@ -95,13 +100,15 @@
     "prefix": "v",
     "flaky": {
       "ppc": ["v5", "v6"]
-    }
+    },
+    "skip": "win32"
   },
   "moment": {
     "flaky": true
   },
   "ws": {
-    "flaky": "s390"
+    "flaky": "s390",
+    "skip": "win32"
   },
   "vinyl": {
     "prefix": "v"
@@ -133,17 +140,20 @@
     "stripAnsi": true
   },
   "binary-split": {
-    "prefix": "v"
+    "prefix": "v",
+    "flaky": "win32"
   },
   "spdy": {
     "prefix": "v",
-    "flaky": "aix"
+    "flaky": "aix",
+    "skip": "win32"
   },
   "dicer": {
     "prefix": "v"
   },
   "spdy-transport": {
-    "prefix": "v"
+    "prefix": "v",
+    "skip": "win32"
   },
   "sax": {
     "prefix": "v"
@@ -161,10 +171,12 @@
     "prefix": "v"
   },
   "jsonstream": {
-    "prefix": "v"
+    "prefix": "v",
+    "skip": "win32"
   },
   "csv-parser": {
-    "prefix": "v"
+    "prefix": "v",
+    "flaky": "win32"
   },
   "async": {
     "prefix": "v",
@@ -180,16 +192,18 @@
   },
   "yeoman-generator": {
     "prefix": "v",
-    "flaky": "ppc"
+    "flaky": ["ppc", "win32"]
   },
   "minimist": {
   },
   "cheerio": {
+    "skip": "win32"
   },
   "uuid": {
     "prefix": "v"
   },
   "winston": {
+    "flaky": "win32"
   },
   "yargs": {
     "prefix": "v",
@@ -203,7 +217,7 @@
     "flaky": true
   },
   "serialport": {
-    "flaky": "ppc"
+    "flaky": ["ppc", "win32"]
   },
   "isarray": {
     "prefix": "v"
@@ -219,19 +233,22 @@
     "flaky": ["aix", "s390"]
   },
   "bcrypt": {
-    "prefix": "v"
+    "prefix": "v",
+    "skip": "win32"
   },
   "ref": {
     "flaky": "aix"
   },
   "time": {
-    "flaky": ["linux-ia32", "aix", "s390"]
+    "flaky": ["linux-ia32", "aix", "s390"],
+    "skip": "win32"
   },
   "bson": {
     "prefix": "V"
   },
   "ember-cli": {
-    "prefix": "v"
+    "prefix": "v",
+    "flaky": "win32"
   },
   "node-sass": {
     "prefix": "v",
@@ -255,22 +272,25 @@
   },
   "libxmljs": {
     "prefix": "v",
-    "flaky": "aix"
+    "flaky": "aix",
+    "skip": "win32"
   },
   "radium": {
     "prefix": "v",
     "flaky": ["ppc", "aix", "s390", "fedora"]
   },
   "ffi": {
-    "flaky": ["ppc", "aix", "s390"]
+    "flaky": ["ppc", "aix", "s390"],
+    "skip": "win32"
   },
   "microtime": {
     "prefix": "v"
   },
   "koa": {
-    "skip": "<4"
+    "skip": ["<4", "win32"]
   },
   "spawn-wrap": {
-    "prefix": "v"
+    "prefix": "v",
+    "flaky": "win32"
   }
 }
