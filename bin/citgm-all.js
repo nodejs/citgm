@@ -1,20 +1,19 @@
 #!/usr/bin/env node
 'use strict';
-var yargs = require('yargs');
-var os = require('os');
+const os = require('os');
 
-var async = require('async');
-var _ = require('lodash');
+const async = require('async');
+const _ = require('lodash');
 
-var update = require('../lib/update');
-var citgm = require('../lib/citgm');
-var logger = require('../lib/out');
-var reporter = require('../lib/reporter');
-var getLookup = require('../lib/lookup').get;
-var commonArgs = require('../lib/common-args');
-var isMatch = require('../lib/match-conditions');
+const update = require('../lib/update');
+const citgm = require('../lib/citgm');
+const logger = require('../lib/out');
+const reporter = require('../lib/reporter');
+const getLookup = require('../lib/lookup').get;
+const commonArgs = require('../lib/common-args');
+const isMatch = require('../lib/match-conditions');
 
-yargs = commonArgs(yargs)
+const yargs = commonArgs(require('yargs'))
   .usage('citgm-all [options]')
   .option('fail-flaky', {
     alias: 'f',

@@ -1,16 +1,15 @@
 #!/usr/bin/env node
 'use strict';
-var update = require('../lib/update');
-var citgm = require('../lib/citgm');
-var logger = require('../lib/out');
-var reporter = require('../lib/reporter');
-var commonArgs = require('../lib/common-args');
-var yargs = require('yargs');
+const update = require('../lib/update');
+const citgm = require('../lib/citgm');
+const logger = require('../lib/out');
+const reporter = require('../lib/reporter');
+const commonArgs = require('../lib/common-args');
 
 var mod;
 var script;
 
-yargs = commonArgs(yargs)
+const yargs = commonArgs(require('yargs'))
   .usage('citgm [options] <module> [script]')
   .option('sha', {
     alias: 'c',
