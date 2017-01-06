@@ -2,16 +2,16 @@
 'use strict';
 const os = require('os');
 
-const async = require('async');
 const _ = require('lodash');
+const async = require('async');
 
-const update = require('../lib/update');
 const citgm = require('../lib/citgm');
+const commonArgs = require('../lib/common-args');
+const getLookup = require('../lib/lookup').get;
+const isMatch = require('../lib/match-conditions');
 const logger = require('../lib/out');
 const reporter = require('../lib/reporter');
-const getLookup = require('../lib/lookup').get;
-const commonArgs = require('../lib/common-args');
-const isMatch = require('../lib/match-conditions');
+const update = require('../lib/update');
 
 const yargs = commonArgs(require('yargs'))
   .usage('citgm-all [options]')

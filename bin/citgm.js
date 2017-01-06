@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 'use strict';
-const update = require('../lib/update');
 const citgm = require('../lib/citgm');
+const commonArgs = require('../lib/common-args');
 const logger = require('../lib/out');
 const reporter = require('../lib/reporter');
-const commonArgs = require('../lib/common-args');
+const update = require('../lib/update');
 
 var mod;
 var script;
