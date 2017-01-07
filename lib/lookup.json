@@ -51,7 +51,8 @@
   },
   "uglify-js": {
     "prefix": "v",
-    "flaky": ["darwin", "aix", "win32"]
+    "flaky": ["darwin", "aix", "win32"],
+    "skip": true
   },
   "jquery": {
     "skip": "win32"
