@@ -21,7 +21,7 @@ bin/citgm --help
 (If citgm is installed globally, you can also `man citgm`)
 
 ```
-Usage: citgm [options] <module> [script]
+Usage: citgm [options] <module>
 
 Options:
 
@@ -129,7 +129,6 @@ For syntax, see [lookup.json](./lib/lookup.json), the available attributes are:
 "expectFail"                 Expect the module to fail, error if it passes
 "repo": "https://github.com/pugjs/jade" - Use a different github repo
 "skipAnsi": true             Strip ansi data from output stream of npm
-"script": /path/to/script | https://url/to/script - Use a custom test script
 "sha": "<git-commit-sha>"    Test against a specific commit
 "envVar"                     Pass an environment variable before running
 "install": ["--param1", "--param2"] - Array of extra command line parameters passed to 'npm install'
@@ -197,8 +196,8 @@ citgm https://github.com/caolan/async/archive/master.tar.gz
 
 To simplify working with modules that we know need special handling, a lookup
 table mechanism is provided. This mechanism allows citgm to substitute certain
-known npm specs (lodash for instance) with their github tarball alternatives
-and custom scripts. The lookup mechanism is switched on using the `-l` or
+known npm specs (lodash for instance) with their github tarball alternatives.
+The lookup mechanism is switched on using the `-l` or
 `--lookup` command line option.
 
 ```

@@ -7,10 +7,9 @@ const reporter = require('../lib/reporter');
 const update = require('../lib/update');
 
 let mod;
-let script;
 
 const yargs = commonArgs(require('yargs'))
-  .usage('citgm [options] <module> [script]')
+  .usage('citgm [options] <module>')
   .option('sha', {
     alias: 'c',
     type: 'string',
@@ -20,7 +19,6 @@ const yargs = commonArgs(require('yargs'))
 const app = yargs.argv;
 
 mod = app._[0];
-script = app._[1];
 
 const log = logger({
   level:app.verbose,
@@ -42,7 +40,6 @@ if (!mod) {
 }
 
 const options = {
-  script: script,
   lookup: app.lookup,
   nodedir: app.nodedir,
   testPath: app.testPath,

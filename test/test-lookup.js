@@ -179,29 +179,6 @@ test('lookup: replace with no repo', function (t) {
   });
 });
 
-test('lookup: lookup with script', function (t) {
-  const context = {
-    module: {
-      name: 'omg-i-have-script',
-      raw: null
-    },
-    meta: {
-      repository: '/dev/null',
-      version: '0.1.1'
-    },
-    options: {
-      lookup: 'test/fixtures/custom-lookup-script.json'
-    },
-    emit: function () {}
-  };
-
-  lookup(context, function (err) {
-    t.error(err);
-    t.equals(context.module.script, './example-test-script-passing.sh');
-    t.end();
-  });
-});
-
 test('lookup: --fail-flaky', function (t) {
   const context = {
     lookup: null,
@@ -273,10 +250,7 @@ test('lookup: logging', function (t) {
       msg: 'https://github.com/nodejs/citgm/archive/master.tar.gz' },
     { type: 'verbose',
       key: 'omg-i-pass lookup-install',
-      msg: ['--extra-param'] },
-    { type: 'info',
-      key: 'omg-i-pass lookup-script',
-      msg: './example-test-script-passing.sh' }
+      msg: ['--extra-param']}
   ];
   const EventEmitter = require('events').EventEmitter;
   const context = new EventEmitter();

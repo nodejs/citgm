@@ -1,9 +1,0 @@
-{
-  "omg-i-pass": {
-    "npm": true,
-    "envVar": {
-      "testenvVar": "thisisatest"
-    },
-    "script": "test-envVar.sh"
-  }
-}

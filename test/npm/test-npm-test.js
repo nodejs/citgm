@@ -23,8 +23,6 @@ const failTemp = path.join(sandbox, 'omg-i-fail');
 const badFixtures = path.join(fixtures, 'omg-i-do-not-support-testing');
 const badTemp = path.join(sandbox, 'omg-i-do-not-support-testing');
 
-const customScript = path.join(fixtures, 'example-test-script-passing.sh');
-
 test('npm-test: setup', function (t) {
   t.plan(7);
   mkdirp(sandbox, function (err) {
@@ -106,44 +104,6 @@ test('npm-test: no package.json', function (t) {
   };
   npmTest(context, function (err) {
     t.equals(err && err.message, 'Package.json Could not be found');
-    t.end();
-  });
-});
-
-test('npm-test: custom script', function (t) {
-  const context = {
-    emit: function() {},
-    path: sandbox,
-    module: {
-      name: 'omg-i-pass',
-      script: customScript
-    },
-    meta: {},
-    options: {
-      npmLevel: 'silly'
-    }
-  };
-  npmTest(context, function (err) {
-    t.error(err);
-    t.end();
-  });
-});
-
-test('npm-test: custom script does not exist', function (t) {
-  const context = {
-    emit: function() {},
-    path: sandbox,
-    module: {
-      name: 'omg-i-pass',
-      script: './i/do/not/exist.lol'
-    },
-    meta: {},
-    options: {
-      npmLevel: 'silly'
-    }
-  };
-  npmTest(context, function (err) {
-    t.match(err, /ENOENT/, 'we should receive an error including ENOENT');
     t.end();
   });
 });

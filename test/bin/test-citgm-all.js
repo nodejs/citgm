@@ -18,18 +18,6 @@ test('citgm-all: /w markdown /w -j', function (t) {
   });
 });
 
-test('citgm-all: envVar /w -J', function (t) {
-  t.plan(1);
-  const proc = spawn(citgmAllPath, ['-l',
-    'test/fixtures/custom-lookup-envVar.json', '-J']);
-  proc.on('error', function(err) {
-    t.error(err);
-  });
-  proc.on('close', function (code) {
-    t.equals(code, 0, 'citgm-all should export an environment variable');
-  });
-});
-
 test('citgm-all: /w missing lookup.json', function (t) {
   t.plan(1);
   const proc = spawn(citgmAllPath, ['-l',

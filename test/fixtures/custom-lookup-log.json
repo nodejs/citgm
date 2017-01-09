@@ -3,7 +3,6 @@
     "install": ["--extra-param"],
     "master": true,
     "replace": true,
-    "repo": "https://github.com/nodejs/citgm",
-    "script": "./example-test-script-passing.sh"
+    "repo": "https://github.com/nodejs/citgm"
   }
 }

@@ -8,7 +8,6 @@ const find = citgm.__get__('find');
 
 test('citgm: omg-i-pass', function (t) {
   const options = {
-    script: null,
     hmac: null,
     lookup: null,
     nodedir: null,
@@ -30,7 +29,6 @@ test('citgm: omg-i-pass', function (t) {
 
 test('citgm: omg-i-pass from git url', function (t) {
   const options = {
-    script: null,
     hmac: null,
     lookup: null,
     nodedir: null,
