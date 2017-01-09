@@ -16,6 +16,11 @@ yargs = commonArgs(yargs)
     alias: 'c',
     type: 'string',
     description: 'Install module from commit-sha'
+  })
+  .option('tag', {
+    alias: 'T',
+    type: 'string',
+    description: 'Install module from tag'
   });
 
 var app = yargs.argv;
@@ -50,7 +55,8 @@ var options = {
   level: app.verbose,
   npmLevel: app.npmLoglevel,
   timeoutLength: app.timeout,
-  sha: app.sha
+  sha: app.sha,
+  tag: app.tag
 };
 
 if (!citgm.windows) {
