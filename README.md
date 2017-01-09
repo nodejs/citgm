@@ -135,6 +135,33 @@ npm run test
 
 This will run both a linter and a tap based unit test suite.
 
+## Requirements for inclusion in Node.js Citgm runs
+
+#### Hard Requirements
+
+* Module source code must be on Github.
+* Published versions must include a tag on Github
+* The test process must be executable with only the commands
+`npm install && npm test` using the tarball downloaded from the Github tag
+mentioned above
+* The tests pass on supported major release lines
+* The maintainers of the module remain responsive when there are problems
+
+#### Soft Requirements
+
+At least one of:
+* The module must be actively used by the community
+OR
+* The module must be heavily depended on
+OR
+* The module must cover unique portions of our API
+OR
+* The module fits into a key category (e.g. Testing, Streams, Monitoring, etc.)
+OR
+* The module is under the Node.js foundation Github org
+OR
+* The module is identified as an important module by a Node.js Working Group
+
 ## Notes
 
 You can identify the module to be tested using the same syntax supported by
