@@ -107,6 +107,8 @@ Options:
   -j, --parallel <number>     Run tests in parallel
   -J, --autoParallel          Run tests in parallel (automatically detect core count)
   --tmpDir <path>             Directory to test modules in
+  --includeTags tag1 tag2     Only test modules from the lookup that contain a matching tag field
+  --excludeTags tag1 tag2     Specify which tags to skip from the lookup (takes priority over includeTags)
 ```
 
 When using a JSON config file, the properties need to be the same as the
@@ -133,6 +135,7 @@ For syntax, see [lookup.json](./lib/lookup.json), the available attributes are:
 "envVar"                     Pass an environment variable before running
 "install": ["--param1", "--param2"] - Array of extra command line parameters passed to 'npm install'
 "maintainers": ["user1", "user2"] - List of module maintainers to be contacted with issues
+"tags": ["tag1", "tag2"]     Specify which tags apply to the module
 ```
 
 If you want to pass options to npm, eg `--registry`, you can usually define an

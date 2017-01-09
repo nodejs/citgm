@@ -5,6 +5,7 @@ const os = require('os');
 const _ = require('lodash');
 const async = require('async');
 
+const checkTags = require('../lib/check-tags');
 const citgm = require('../lib/citgm');
 const commonArgs = require('../lib/common-args');
 const getLookup = require('../lib/lookup').get;
@@ -29,6 +30,14 @@ const yargs = commonArgs(require('yargs'))
     alias: 'J',
     type: 'boolean',
     description: 'Auto detect number of cores to use to run tests in parallel'
+  })
+  .option('includeTags', {
+    type: 'array',
+    description: 'Define which tags from the lookup to run'
+  })
+  .option('excludeTags', {
+    type: 'array',
+    description: 'Define which tags from the lookup to skip'
   });
 
 const app = yargs.argv;
@@ -55,8 +64,19 @@ const options = {
   level: app.verbose,
   npmLevel: app.npmLoglevel,
   timeoutLength: app.timeout,
-  tmpDir: app.tmpDir
+  tmpDir: app.tmpDir,
+  includeTags: app.includeTags || [],
+  excludeTags: app.excludeTags || []
 };
+
+if (options.includeTags.length){
+  log.info('includeTags', 'Only running tests matching these tags: '
+      + app.includeTags);
+}
+if (options.excludeTags.length){
+  log.info('excludeTags', 'Not running tests matching these tags: '
+     + app.excludeTags);
+}
 
 const lookup = getLookup(options);
 if (!lookup) {
@@ -96,6 +116,10 @@ function runCitgm (mod, name, next) {
   const start = new Date();
   const runner = citgm.Tester(name, options);
   let bailed = false;
+
+  if (checkTags(options, mod, name, log)) {
+    return next(); // Skip this module
+  }
 
   function cleanup() {
     bailed = true;

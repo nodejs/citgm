@@ -70,6 +70,12 @@ Run tests in parallel (automatically detect core count)
 .TP
 .BR \-\-tmpDir " " \fI<path>\fR
 Directory to test modules in
+.TP
+.BR \-\-includeTags " " \fI<tag1 tag2>\fR
+Only test modules from the lookup that contain a matching tag field
+.TP
+.BR \-\-excludeTags " " \fI<tag1 tag2>\fR
+Specify which tags to skip from the lookup (takes priority over includeTags)
 
 .SH SEE ALSO
 citgm

@@ -1,0 +1,13 @@
+{
+  "omg-i-pass": {
+    "npm": true,
+    "tags": "tag1"
+  },
+  "omg-i-fail": {
+    "npm": true,
+    "tags": ["tag2", "tagNotUsed"]
+  },
+  "omg-i-pass-too": {
+    "npm": true
+  }
+}
