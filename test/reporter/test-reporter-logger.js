@@ -50,6 +50,9 @@ test('multiple modules passing, with a flaky module that fails:', function (t) {
   expected += 'version:' + '4.2.2';
   expected += 'module name:' + 'iFlakyPass';
   expected += 'version:' + '3.0.1';
+  expected += 'flaky but passed:';
+  expected += 'module name:' + 'iFlakyPass';
+  expected += 'version:' + '3.0.1';
   expected += 'flaky module(s)';
   expected += 'module name:' + 'iFlakyFail';
   expected += 'version:' + '3.3.3';
