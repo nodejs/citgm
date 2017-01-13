@@ -9,7 +9,8 @@
   },
   "request": {
     "prefix": "v",
-    "flaky": true
+    "flaky": true,
+    "skip": "aix"
   },
   "commander": {
     "prefix": "v",
@@ -17,9 +18,7 @@
     "skip": "win32"
   },
   "express": {
-    "flaky": {
-      "ppc": ["v5"]
-    },
+    "flaky": "ppc",
     "expectFail": "fips"
   },
   "q": {
@@ -40,9 +39,7 @@
     "prefix": "v"
   },
   "pug": {
-    "flaky": {
-      "ppc": ["v6", "v7"]
-    },
+    "flaky": "ppc",
     "skip": true
   },
   "socket.io": {
@@ -53,6 +50,7 @@
     "expectFail": "fips"
   },
   "body-parser": {
+    "flaky": "aix"
   },
   "uglify-js": {
     "prefix": "v",
@@ -60,7 +58,8 @@
     "skip": true
   },
   "jquery": {
-    "skip": "win32"
+    "skip": "win32",
+    "flaky": "aix"
   },
   "rimraf": {
     "prefix": "v",
@@ -68,12 +67,11 @@
   },
   "david": {
     "prefix": "v",
-    "flaky": true
+    "skip": true
   },
   "eslint": {
     "prefix": "v",
-    "flaky": ["ppc", "v7", "s390"],
-    "skip": "v8",
+    "skip": ["v8", "v7", "ppc", "s390"],
     "expectFail": "fips"
   },
   "tape": {
@@ -89,7 +87,7 @@
     "flaky": ["ppc", "v7", "s390"]
   },
   "stylus": {
-    "flaky": "win32"
+    "flaky": ["win32", "aix"]
   },
   "level": {
     "prefix": "v",
@@ -101,14 +99,12 @@
   },
   "react": {
     "prefix": "v",
-    "flaky": ["v0.10", "v0.12", "v6", "v7"],
+    "flaky": ["v6", "v7"],
     "skip": true
   },
   "gulp": {
     "prefix": "v",
-    "flaky": {
-      "ppc": ["v5", "v6"]
-    },
+    "flaky": "ppc",
     "skip": "win32"
   },
   "moment": {
@@ -163,7 +159,8 @@
   },
   "spdy-transport": {
     "prefix": "v",
-    "skip": "win32"
+    "skip": "win32",
+    "flaky": "aix"
   },
   "sax": {
     "prefix": "v",
@@ -190,8 +187,7 @@
     "flaky": "win32"
   },
   "async": {
-    "prefix": "v",
-    "flaky": true
+    "prefix": "v"
   },
   "bluebird": {
     "prefix": "v"
@@ -215,7 +211,7 @@
     "prefix": "v"
   },
   "winston": {
-    "flaky": "win32"
+    "flaky": ["win32", "ppc"]
   },
   "yargs": {
     "prefix": "v",
@@ -254,15 +250,15 @@
     "flaky": "aix"
   },
   "time": {
-    "flaky": ["linux-ia32", "aix", "s390"],
-    "skip": "win32"
+    "flaky": ["linux-ia32", "s390"],
+    "skip": ["win32", "aix"]
   },
   "bson": {
     "prefix": "V"
   },
   "ember-cli": {
     "prefix": "v",
-    "flaky": "win32",
+    "flaky": ["win32", "aix"],
     "expectFail": "fips"
   },
   "node-sass": {
@@ -273,8 +269,7 @@
     "prefix": "v"
   },
   "sqlite3": {
-    "prefix": "v",
-    "flaky": "aix"
+    "prefix": "v"
   },
   "iconv": {
     "prefix": "v",
@@ -282,7 +277,8 @@
   },
   "electron-prebuilt": {
     "prefix": "v",
-    "flaky": ["ppc", "aix", "s390"]
+    "flaky": "s390",
+    "skip": "ppc"
   },
   "libxmljs": {
     "prefix": "v",
@@ -291,21 +287,22 @@
   },
   "radium": {
     "prefix": "v",
-    "flaky": ["ppc", "aix", "s390", "fedora"],
+    "flaky": "fedora",
+    "skip": ["ppc", "s390"],
     "expectFail": "fips"
   },
   "ffi": {
-    "flaky": ["ppc", "aix", "s390"],
-    "skip": "win32"
+    "flaky": "s390",
+    "skip": ["win32", "ppc"]
   },
   "microtime": {
     "prefix": "v"
   },
   "koa": {
-    "skip": ["<4", "win32"]
+    "skip": ["<4", "win32", "aix"]
   },
   "spawn-wrap": {
     "prefix": "v",
-    "flaky": "win32"
+    "flaky": ["win32", "aix"]
   }
 }
