@@ -18,7 +18,8 @@
   "express": {
     "flaky": {
       "ppc": ["v5"]
-    }
+    },
+    "expectFail": "fips"
   },
   "q": {
     "prefix": "v"
@@ -31,7 +32,8 @@
   },
   "glob": {
     "prefix": "v",
-    "flaky": ["v6", "v7", "win32"]
+    "flaky": ["v6", "v7", "win32"],
+    "expectFail": "fips"
   },
   "gulp-util": {
     "prefix": "v"
@@ -45,7 +47,8 @@
     "flaky": true
   },
   "fs-extra": {
-    "flaky": ["linux-ia32", "aix", "s390", "win32"]
+    "flaky": ["linux-ia32", "aix", "s390", "win32"],
+    "expectFail": "fips"
   },
   "body-parser": {
   },
@@ -75,7 +78,8 @@
     "flaky": "linux"
   },
   "browserify": {
-    "flaky": ["v7", "win32"]
+    "flaky": ["v7", "win32"],
+    "expectFail": "fips"
   },
   "watchify": {
     "prefix": "v",
@@ -109,7 +113,8 @@
   },
   "ws": {
     "flaky": "s390",
-    "skip": "win32"
+    "skip": "win32",
+    "expectFail": "fips"
   },
   "vinyl": {
     "prefix": "v"
@@ -138,7 +143,8 @@
   },
   "bl": {
     "prefix": "v",
-    "stripAnsi": true
+    "stripAnsi": true,
+    "expectFail": "fips"
   },
   "binary-split": {
     "prefix": "v",
@@ -157,7 +163,8 @@
     "skip": "win32"
   },
   "sax": {
-    "prefix": "v"
+    "prefix": "v",
+    "expectFail": "fips"
   },
   "duplexify": {
     "prefix": "v"
@@ -193,7 +200,8 @@
   },
   "yeoman-generator": {
     "prefix": "v",
-    "flaky": ["ppc", "win32"]
+    "flaky": ["ppc", "win32"],
+    "expectFail": "fips"
   },
   "minimist": {
   },
@@ -208,7 +216,8 @@
   },
   "yargs": {
     "prefix": "v",
-    "flaky": "aix"
+    "flaky": "aix",
+    "expectFail": "fips"
   },
   "semver": {
     "prefix": "v"
@@ -218,7 +227,8 @@
     "flaky": true
   },
   "serialport": {
-    "flaky": ["ppc", "win32"]
+    "flaky": ["ppc", "win32"],
+    "expectFail": "fips"
   },
   "isarray": {
     "prefix": "v"
@@ -249,7 +259,8 @@
   },
   "ember-cli": {
     "prefix": "v",
-    "flaky": "win32"
+    "flaky": "win32",
+    "expectFail": "fips"
   },
   "node-sass": {
     "prefix": "v",
