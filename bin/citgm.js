@@ -50,7 +50,8 @@ var options = {
   level: app.verbose,
   npmLevel: app.npmLoglevel,
   timeoutLength: app.timeout,
-  sha: app.sha
+  sha: app.sha,
+  tmpDir: app.tmpDir
 };
 
 if (!citgm.windows) {

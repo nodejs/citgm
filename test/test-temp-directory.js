@@ -15,6 +15,17 @@ var context = {
   }
 };
 
+var contextTmpDir = {
+  options: {
+    tmpDir: 'thisisatest'
+  },
+  path: null,
+  emit: function () {},
+  module: {
+    name: 'test-module'
+  }
+};
+
 var badContext = {
   path: null,
   emit: function () {},
@@ -28,6 +39,18 @@ test('tempDirectory.create:', function (t) {
   tempDirectory.create(context, function (e, ctx) {
     t.error(e);
     t.ok(ctx.path, 'context should now have a path');
+    fs.stat(ctx.path, function (err, stats) {
+      t.error(err);
+      t.ok(stats.isDirectory(), 'the path should exist and be a folder');
+      t.end();
+    });
+  });
+});
+
+test('tempDirectory.create --tmpDir:', function (t) {
+  tempDirectory.create(contextTmpDir, function (e, ctx) {
+    t.error(e);
+    t.ok(ctx.path.match(/thisisatest\/.*-.*-.*-.*-.*/), 'the path should match --tmpDir');
     fs.stat(ctx.path, function (err, stats) {
       t.error(err);
       t.ok(stats.isDirectory(), 'the path should exist and be a folder');

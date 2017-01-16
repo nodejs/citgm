@@ -55,7 +55,8 @@ var options = {
   failFlaky: app.failFlaky,
   level: app.verbose,
   npmLevel: app.npmLoglevel,
-  timeoutLength: app.timeout
+  timeoutLength: app.timeout,
+  tmpDir: app.tmpDir
 };
 
 var lookup = getLookup(options);
