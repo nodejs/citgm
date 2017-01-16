@@ -286,7 +286,7 @@
   },
   "libxmljs": {
     "prefix": "v",
-    "flaky": "aix",
+    "flaky": ["aix", "sles", "rhel"],
     "skip": "win32"
   },
   "radium": {
