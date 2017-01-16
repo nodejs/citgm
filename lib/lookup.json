@@ -1,5 +1,6 @@
 {
   "lodash": {
+    "expectFail": "fips"
   },
   "underscore": {
     "master": true,
@@ -71,7 +72,8 @@
   "eslint": {
     "prefix": "v",
     "flaky": ["ppc", "v7", "s390"],
-    "skip": "v8"
+    "skip": "v8",
+    "expectFail": "fips"
   },
   "tape": {
     "prefix": "v",
@@ -289,7 +291,8 @@
   },
   "radium": {
     "prefix": "v",
-    "flaky": ["ppc", "aix", "s390", "fedora"]
+    "flaky": ["ppc", "aix", "s390", "fedora"],
+    "expectFail": "fips"
   },
   "ffi": {
     "flaky": ["ppc", "aix", "s390"],
