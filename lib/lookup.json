@@ -4,7 +4,7 @@
   },
   "underscore": {
     "master": true,
-    "flaky": "aix",
+    "flaky": ["aix", "s390"],
     "skip": "win32"
   },
   "request": {
@@ -36,7 +36,8 @@
     "expectFail": "fips"
   },
   "gulp-util": {
-    "prefix": "v"
+    "prefix": "v",
+    "flaky": "rhel"
   },
   "pug": {
     "flaky": "ppc",
@@ -59,7 +60,7 @@
   },
   "jquery": {
     "skip": "win32",
-    "flaky": "aix"
+    "flaky": ["linux", "aix"]
   },
   "rimraf": {
     "prefix": "v",
@@ -71,7 +72,8 @@
   },
   "eslint": {
     "prefix": "v",
-    "skip": ["v8", "v7", "ppc", "s390"],
+    "flaky": ["v7", "s390", "ubuntu"],
+    "skip": ["v8", "ppc"],
     "expectFail": "fips"
   },
   "tape": {
@@ -84,7 +86,7 @@
   },
   "watchify": {
     "prefix": "v",
-    "flaky": ["ppc", "v7", "s390"]
+    "flaky": ["ppc", "v7", "s390", "ubuntu", "rhel"]
   },
   "stylus": {
     "flaky": ["win32", "aix"]
@@ -104,14 +106,14 @@
   },
   "gulp": {
     "prefix": "v",
-    "flaky": "ppc",
+    "flaky": ["ppc", "rhel"],
     "skip": "win32"
   },
   "moment": {
     "flaky": true
   },
   "ws": {
-    "flaky": "s390",
+    "flaky": "linux",
     "skip": "win32",
     "expectFail": "fips"
   },
@@ -151,7 +153,7 @@
   },
   "spdy": {
     "prefix": "v",
-    "flaky": "aix",
+    "flaky": ["aix", "sles"],
     "skip": "win32"
   },
   "dicer": {
@@ -187,7 +189,8 @@
     "flaky": "win32"
   },
   "async": {
-    "prefix": "v"
+    "prefix": "v",
+    "flaky": true
   },
   "bluebird": {
     "prefix": "v"
@@ -199,7 +202,7 @@
   },
   "yeoman-generator": {
     "prefix": "v",
-    "flaky": ["ppc", "win32"],
+    "flaky": ["ppc", "win32", "rhel"],
     "expectFail": "fips"
   },
   "minimist": {
@@ -258,7 +261,7 @@
   },
   "ember-cli": {
     "prefix": "v",
-    "flaky": ["win32", "aix"],
+    "flaky": ["win32", "rhel", "sles"],
     "expectFail": "fips"
   },
   "node-sass": {
@@ -282,27 +285,28 @@
   },
   "libxmljs": {
     "prefix": "v",
-    "flaky": ["aix", "sles", "rhel"],
+    "flaky": ["aix", "sles", "rhel", "darwin"],
     "skip": "win32"
   },
   "radium": {
     "prefix": "v",
-    "flaky": "fedora",
+    "flaky": ["fedora", "ubuntu"],
     "skip": ["ppc", "s390"],
     "expectFail": "fips"
   },
   "ffi": {
-    "flaky": "s390",
-    "skip": ["win32", "ppc"]
+    "flaky": ["ppc", "aix", "s390", "ubuntu"],
+    "skip": "win32"
   },
   "microtime": {
     "prefix": "v"
   },
   "koa": {
-    "skip": ["<4", "win32", "aix"]
+    "skip": ["<4", "win32", "rhel"],
+    "flaky": "ubuntu"
   },
   "spawn-wrap": {
     "prefix": "v",
-    "flaky": ["win32", "aix"]
+    "flaky": ["win32", "sles"]
   }
 }
