@@ -266,8 +266,7 @@
   },
   "node-sass": {
     "prefix": "v",
-    "flaky": ["ppc", "v7", "s390"],
-    "skip": true
+    "flaky": ["ppc", "s390"]
   },
   "full-icu-test": {
     "prefix": "v"
