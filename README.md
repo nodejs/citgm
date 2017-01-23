@@ -46,6 +46,16 @@ Options:
   --tmpDir <path>             Directory to test modules in
 ```
 
+### Examples:
+  Test the latest underscore module:
+    `citgm underscore@latest`
+
+  Test a local module:
+    `citgm ./my-module`
+
+   Test using a tar.gz from Github:
+    `citgm http://github.com/jasnell/activitystrea.ms/archive/master.tar.gz`
+
 When using a JSON config file, the properties need to be the same as the
 longer-form CLI options. You can also use environment variables. For example,
 `CITGM_TEST_PATH=$HOME/bin` is the same as `--test-path $HOME/bin`.
