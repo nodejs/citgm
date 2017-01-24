@@ -43,6 +43,7 @@ Options:
   -u, --uid <uid>             Set the uid (posix only)
   -g, --gid <uid>             Set the gid (posix only)
   -a, --append                Turns on append results to file mode rather than replace
+  -T  --tag <tag>             Install module from a specific tag
 ```
 
 When using a JSON config file, the properties need to be the same as the
