@@ -9,6 +9,10 @@
       "single"
     ],
     "no-trailing-spaces": 2,
+    "comma-spacing": [
+      "error",
+      { "before": false, "after": true }
+    ],
     "eqeqeq": [
       "error",
       "always"

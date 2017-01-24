@@ -78,7 +78,7 @@ if (!citgm.windows) {
   var uidnumber = require('uid-number');
   var uid = app.uid || process.getuid();
   var gid = app.gid || process.getgid();
-  uidnumber(uid,gid, function(err, uid, gid) {
+  uidnumber(uid, gid, function(err, uid, gid) {
     options.uid = uid;
     options.gid = gid;
     launch(options);
@@ -114,7 +114,7 @@ function runCitgm (mod, name, next) {
     log.info('starting', name);
   }).on('fail', function(err) {
     log.error('failure', err.message);
-  }).on('data', function(type,key,message) {
+  }).on('data', function(type, key, message) {
     log[type](key, message);
   }).on('end', function(result) {
     result.duration = new Date() - start;
