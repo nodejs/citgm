@@ -42,7 +42,8 @@
   "pug": {
     "flaky": {
       "ppc": ["v6", "v7"]
-    }
+    },
+    "skip": true
   },
   "socket.io": {
     "flaky": true
