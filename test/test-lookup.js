@@ -25,15 +25,18 @@ test('lookup: makeUrl', function (t) {
 
   expected = repo + '/archive/' + tags.latest + '.tar.gz';
   url = makeUrl(repo, 'latest', tags);
-  t.equal(url, expected, 'if given a spec and tags it should give a link to associated version');
+  t.equal(url, expected,
+        'if given a spec and tags it should give a link to associated version');
 
   expected = repo + '/archive/' + prefix + tags.latest + '.tar.gz';
   url = makeUrl(repo, 'latest', tags, prefix);
-  t.equal(url, expected, 'if given a prefix it should be included in the filename');
+  t.equal(url, expected,
+        'if given a prefix it should be included in the filename');
 
   expected = repo + '/archive/' + sha + '.tar.gz';
   url = makeUrl(repo, 'latest', tags, prefix, sha);
-  t.equal(url, expected, 'if given sha, it should be used to create download URL');
+  t.equal(url, expected,
+        'if given sha, it should be used to create download URL');
 
   t.end();
 });
@@ -108,7 +111,8 @@ test('lookup: module not in table', function (t) {
 
   lookup(context, function (err) {
     t.error(err);
-    t.notOk(context.module.raw, 'raw should remain falsey if module is not in lookup');
+    t.notOk(context.module.raw,
+          'raw should remain falsey if module is not in lookup');
     t.end();
   });
 });
@@ -133,7 +137,9 @@ test('lookup: module in table', function (t) {
 
   lookup(context, function (err) {
     t.error(err);
-    t.equals(context.module.raw, 'https://github.com/lodash/lodash/archive/master.tar.gz', 'raw should be truthy if the module was in the list');
+    t.equals(context.module.raw,
+          'https://github.com/lodash/lodash/archive/master.tar.gz',
+              'raw should be truthy if the module was in the list');
     t.end();
   });
 });

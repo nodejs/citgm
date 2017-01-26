@@ -25,7 +25,8 @@ var passingInput = [
 ];
 
 var passingExpectedPath = path.join(fixturesPath, 'test-out-xml-passing.txt');
-var passingExpectedPathAppend = path.join(fixturesPath, 'test-out-xml-passing-append.txt');
+var passingExpectedPathAppend = path.join(fixturesPath,
+      'test-out-xml-passing-append.txt');
 
 var passingExpected = fs.readFileSync(passingExpectedPath, 'utf-8');
 var passingExpectedAppend = fs.readFileSync(passingExpectedPathAppend, 'utf-8');
@@ -60,7 +61,8 @@ test('reporter.junit(): passing', function (t) {
   }
 
   junit(logger, passingInput);
-  t.equals(output, passingExpected, 'we should get expected output when all modules pass');
+  t.equals(output, passingExpected, 'we should get expected output when all'
+  + ' modules pass');
   t.end();
 });
 
@@ -96,7 +98,8 @@ test('reporter.junit(): failing', function (t) {
   }
 
   junit(logger, failingInput);
-  t.equals(output, failingExpected), 'we should get the expected output when a module fails';
+  t.equals(output, failingExpected), 'we should get the expected output when a'
+  + ' module fails';
   t.end();
 });
 
@@ -109,7 +112,8 @@ test('reporter.junit(): parser', function (t) {
 
   junit(logger, failingInput);
   parseString(output, function (err, result) {
-    t.deepEquals(result, junitParserExpected), 'we should get the expected output when a module fails';
+    t.deepEquals(result, junitParserExpected), 'we should get the expected'
+    + ' output when a module fails';
     t.end();
   });
 });
@@ -117,7 +121,8 @@ test('reporter.junit(): parser', function (t) {
 test('reporter.junit(): write to disk', function (t) {
   junit(outputFile, passingInput);
   var expected = fs.readFileSync(outputFile, 'utf8');
-  t.equals(expected, passingExpected), 'the file on disk should match the expected output';
+  t.equals(expected, passingExpected), 'the file on disk should match the'
+  + ' expected output';
   t.end();
 });
 
@@ -126,7 +131,8 @@ test('reporter.junit(): append to disk', function (t) {
   fs.writeFileSync(outputFileAppend, appendStartFile);
   junit(outputFileAppend, passingInput, true);
   var expected = fs.readFileSync(outputFileAppend, 'utf-8');
-  t.equals(expected, passingExpectedAppend), 'the file on disk should match the expected output';
+  t.equals(expected, passingExpectedAppend), 'the file on disk should match the'
+  + ' expected output';
   t.end();
 });
 

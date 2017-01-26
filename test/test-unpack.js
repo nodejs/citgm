@@ -15,7 +15,8 @@ test('unpack: context.unpack = null', function (t) {
   };
 
   unpack(context, function (err) {
-    t.deepEquals(err, new Error('Nothing to unpack... Ending'), 'it should error out');
+    t.deepEquals(err, new Error('Nothing to unpack... Ending'),
+        'it should error out');
     t.end();
   });
 });
@@ -27,7 +28,8 @@ test('unpack: context.unpack is invalid path', function (t) {
   };
 
   unpack(context, function (err) {
-    t.deepEquals(err, new Error('Nothing to unpack... Ending'), 'it should error out');
+    t.deepEquals(err, new Error('Nothing to unpack... Ending'),
+        'it should error out');
     t.end();
   });
 });

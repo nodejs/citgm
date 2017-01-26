@@ -16,7 +16,8 @@ test('npm.test() authorName:', function (t) {
   };
   var authorExpected = 'Randy Savage <randy@wwe.rekt> (omg.html)';
   t.equals(authorName(name), name, 'it should return any string');
-  t.equals(authorName(author), authorExpected, 'it should return the expected string when given an object');
+  t.equals(authorName(author), authorExpected, 'it should return the expected'
+    + ' string when given an object');
   t.end();
 });
 
@@ -31,7 +32,9 @@ test('npm.test() authorName partial data:', function (t) {
   };
   var authorTwoExpected = '<thedude@abides.net>';
   t.equals(authorName(name), name, 'it should return any string');
-  t.equals(authorName(authorOne), authorOneExpected, 'it should return the expected string when given an object');
-  t.equals(authorName(authorTwo), authorTwoExpected, 'it should return the expected string when given an object');
+  t.equals(authorName(authorOne), authorOneExpected, 'it should return the'
+    + ' expected string when given an object');
+  t.equals(authorName(authorTwo), authorTwoExpected, 'it should return the'
+  + ' expected string when given an object');
   t.end();
 });

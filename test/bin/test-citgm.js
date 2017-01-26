@@ -42,9 +42,12 @@ test('bin: omg-i-pass /w local module', function (t) {
   });
 });
 
-test('bin: omg-i-fail /w custom script /w tap to file /w junit to file /w append', function (t) {
+test('bin: omg-i-fail /w custom script /w tap to file /w'
+  + ' junit to file /w append', function (t) {
   t.plan(1);
-  var proc = spawn(citgmPath, ['omg-i-fail', '-l', './test/fixtures/custom-lookup-script.json', '--tap', '/dev/null', '--junit', '/dev/null', '--append']);
+  var proc = spawn(citgmPath, ['omg-i-fail', '-l',
+    './test/fixtures/custom-lookup-script.json', '--tap', '/dev/null',
+    '--junit', '/dev/null', '--append']);
   proc.on('error', function(err) {
     t.error(err);
     t.fail('we should not get an error testing omg-i-fail');
@@ -54,9 +57,12 @@ test('bin: omg-i-fail /w custom script /w tap to file /w junit to file /w append
   });
 });
 
-test('bin: omg-i-pass /w custom script /w tap to file /w junit to file /w append', function (t) {
+test('bin: omg-i-pass /w custom script /w tap to file /w junit to file'
+  + ' /w append', function (t) {
   t.plan(1);
-  var proc = spawn(citgmPath, ['omg-i-pass', '-l', './test/fixtures/custom-lookup-script.json', '--tap', '/dev/null', '--junit', '/dev/null', '--append']);
+  var proc = spawn(citgmPath, ['omg-i-pass', '-l',
+    './test/fixtures/custom-lookup-script.json', '--tap', '/dev/null',
+    '--junit', '/dev/null', '--append']);
   proc.on('error', function(err) {
     t.error(err);
     t.fail('we should not get an error testing omg-i-pass');
@@ -68,19 +74,22 @@ test('bin: omg-i-pass /w custom script /w tap to file /w junit to file /w append
 
 test('bin: omg-i-fail /w custom test script passing', function (t) {
   t.plan(1);
-  var proc = spawn(citgmPath, ['omg-i-fail', './test/fixtures/example-test-script-passing.sh']);
+  var proc = spawn(citgmPath, ['omg-i-fail',
+    './test/fixtures/example-test-script-passing.sh']);
   proc.on('error', function(err) {
     t.error(err);
     t.fail('we should not get an error running the custom test script');
   });
   proc.on('close', function (code) {
-    t.equal(code, 0, 'the test script should pass and exit with a code of zero');
+    t.equal(code, 0, 'the test script should pass and exit with a code'
+      + ' of zero');
   });
 });
 
 test('bin: omg-i-pass /w custom test script failing', function (t) {
   t.plan(1);
-  var proc = spawn(citgmPath, ['omg-i-pass', './test/fixtures/example-test-script-failing.sh']);
+  var proc = spawn(citgmPath, ['omg-i-pass',
+    './test/fixtures/example-test-script-failing.sh']);
   proc.on('error', function(err) {
     t.error(err);
     t.fail('we should not get an error running the custom test script');
@@ -120,7 +129,8 @@ test('bin: sigterm', function (t) {
 
 test('bin: install from sha', function (t) {
   t.plan(1);
-  var proc = spawn(citgmPath, ['omg-i-pass', '-t', '-c', '37c34bad563599782c622baf3aaf55776fbc38a8']);
+  var proc = spawn(citgmPath, ['omg-i-pass', '-t', '-c',
+    '37c34bad563599782c622baf3aaf55776fbc38a8']);
   proc.on('error', function(err) {
     t.error(err);
     t.fail('we should not get an error testing omg-i-pass');

@@ -120,10 +120,12 @@ function runCitgm (mod, name, next) {
     result.duration = new Date() - start;
     log.info('duration', 'test duration: ' + result.duration + 'ms');
     if (result.error) {
-      log.error(result.name + ' done', 'done - the test suite for ' + result.name + ' version ' + result.version + ' failed');
+      log.error(result.name + ' done', 'done - the test suite for ' +
+          result.name + ' version ' + result.version + ' failed');
     }
     else {
-      log.info(result.name + ' done', 'done - the test suite for ' + result.name + ' version ' + result.version + ' passed.');
+      log.info(result.name + ' done', 'done - the test suite for ' + result.name
+          + ' version ' + result.version + ' passed.');
     }
     modules.push(result);
     if (!bailed) {
@@ -163,7 +165,8 @@ function launch() {
     if (app.tap) {
       // if tap is a string it should be a path to write output to
       // if not use `log.bypass` which is currently process.stdout.write
-      // TODO check that we can write to that path, perhaps require a flag to overwrite
+      // TODO check that we can write to that path, perhaps require a flag to
+      // overwrite
       var tap = (typeof app.tap === 'string') ? app.tap : log.bypass;
       reporter.tap(tap, modules, app.append);
     }

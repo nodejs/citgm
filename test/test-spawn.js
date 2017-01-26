@@ -16,7 +16,8 @@ test('spawn:', function (t) {
   });
 
   child.on('close', function () {
-    t.equals(message, 'Hello world.\n', 'we should receive "Hello world." on stdout');
+    t.equals(message,
+        'Hello world.\n', 'we should receive "Hello world." on stdout');
     t.equals(error, '', 'there should be no data on stderr');
     t.end();
   });
@@ -56,6 +57,7 @@ test('spawn: windows mock', function (t) {
     value: platform
   });
 
-  t.deepEqual(result, expected, 'we should have the expected options for win32');
+  t.deepEqual(result, expected,
+        'we should have the expected options for win32');
   t.end();
 });

@@ -23,7 +23,8 @@ test('grab-module-data: lodash', function (t) {
   grabModuleData(context, function (err, result) {
     t.error(err);
     t.ok(result.meta, 'There should be a result.meta');
-    t.equals(result.meta.name, 'lodash', 'The name of the results should be lodash');
+    t.equals(result.meta.name, 'lodash',
+        'The name of the results should be lodash');
     t.ok(result.meta.dist, 'It should have a dist object');
     t.ok(result.meta.dist.shasum, 'The dist should have a shasum');
     t.ok(result.meta.dist.tarball, 'The dist should have a tarball');
@@ -76,8 +77,8 @@ test('grab-module-data: hosted', function (t) {
 
   grabModuleData(context, function (err, result) {
     t.error(err);
-    t.deepequals(result.meta, expected, 'The returned meta object should include a type of git and the supplied url');
+    t.deepequals(result.meta, expected, 'The returned meta object should'
+    + ' include a type of git and the supplied url');
     t.end();
   });
 });
-

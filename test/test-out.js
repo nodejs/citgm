@@ -24,11 +24,17 @@ test('out: with color', function (t) {
     return true;
   });
   var log = Logger();
-  t.notok(log.silly(), 'there should be a silly logging level that is a function with no return');
-  t.notok(log.verbose(), 'there should be a verbose logging level that is a function with no return');
-  t.notok(log.info(), 'there should be a info logging level that is a function with no return');
-  t.notok(log.warn(), 'there should be a warn logging level that is a function with no return');
-  t.notok(log.error(), 'there should be a error logging level that is a function with no return');
+  t.notok(log.silly(), 'there should be a silly logging level that is a'
+  + ' function with no return');
+  t.notok(log.verbose(),
+      'there should be a verbose logging level that is a function with no'
+      + ' return');
+  t.notok(log.info(),
+      'there should be a info logging level that is a function with no return');
+  t.notok(log.warn(),
+      'there should be a warn logging level that is a function with no return');
+  t.notok(log.error(), 'there should be a error logging level that is a'
+  + ' function with no return');
   Logger.__set__('supportscolor', supportscolor);
   Logger.__set__('output', output);
   t.end();

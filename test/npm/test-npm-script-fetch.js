@@ -14,8 +14,12 @@ var RequestMock = require('../fixtures/request-mock');
 
 var fixtures = path.join(__dirname, '..', 'fixtures');
 var passing = path.join(fixtures, 'example-test-script-passing.sh');
-var uriHttp = 'http://gist.githubusercontent.com/MylesBorins/0bf45af05c7580c4d80f/raw/08e52f1a64410e91203c909a6a90255d48273b75/example-test-script-passing.sh';
-var uriHttps = 'https://gist.githubusercontent.com/MylesBorins/0bf45af05c7580c4d80f/raw/08e52f1a64410e91203c909a6a90255d48273b75/example-test-script-passing.sh';
+var uriHttp = 'http://gist.githubusercontent.com/MylesBorins/0bf45af05c7580c4d8'
+    + '0f/raw/08e52f1a64410e91203c909a6a90255d48273b75/example-test-script-'
+    + 'passing.sh';
+var uriHttps = 'https://gist.githubusercontent.com/MylesBorins/0bf45af05c7580c4'
+    + 'd80f/raw/08e52f1a64410e91203c909a6a90255d48273b75/example-test-script-'
+    + 'passing.sh';
 
 var sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now());
 
@@ -36,7 +40,8 @@ test('fetch: given a file path', function (t) {
   };
   fetch(context, passing, function (err, _path)  {
     t.error(err);
-    t.match(_path, context.path, 'the resolved path should be in the context path');
+    t.match(_path, context.path, 'the resolved path should be in the context'
+    + ' path');
     fs.stat(_path, function (e, stats) {
       t.error(err);
       t.ok(stats.isFile(), 'The script should exist on the system');
@@ -59,7 +64,8 @@ test('fetch: given a custom lookup table and relative path', function (t) {
   };
   fetch(context, './example-test-script-passing.sh', function (err, _path)  {
     t.error(err);
-    t.match(_path, context.path, 'the resolved path should be in the context path');
+    t.match(_path, context.path, 'the resolved path should be in the context'
+    + ' path');
     fs.stat(_path, function (e, stats) {
       t.error(err);
       t.ok(stats.isFile(), 'The script should exist on the system');

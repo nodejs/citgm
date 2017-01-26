@@ -37,17 +37,22 @@ function revertShim() {
 }
 
 function testVersions(t, testFunction) {
-  t.ok(testFunction(process.version), 'the current version is what it is matched against');
+  t.ok(testFunction(process.version),
+      'the current version is what it is matched against');
   shim();
   t.ok(testFunction('v5'), 'the module is matched on the current platform');
-  t.ok(testFunction('> 5.0.0'), 'the module is matched on the current platform');
-  t.notok(testFunction('v2'), 'the module is not matched on the current platform');
-  t.notok(testFunction('<=v2.0.0'), 'the module is not matched on the current platform');
+  t.ok(testFunction('> 5.0.0'),
+      'the module is matched on the current platform');
+  t.notok(testFunction('v2'),
+      'the module is not matched on the current platform');
+  t.notok(testFunction('<=v2.0.0'),
+      'the module is not matched on the current platform');
   revertShim();
 }
 
 function testPlatforms(t, testFunction) {
-  t.ok(testFunction(process.platform), 'the current platform is what it is matched against');
+  t.ok(testFunction(process.platform),
+      'the current platform is what it is matched against');
   shim();
   t.ok(testFunction('darwin'), 'darwin is matched');
   t.ok(testFunction('x64'), 'x64 is matched');
@@ -100,7 +105,8 @@ function testObjects(t, testFunction) {
   shim();
   t.ok(testFunction(match), 'it should be matched');
   t.notok(testFunction(notMatch), 'it should not be matched');
-  t.notok(testFunction(invalid), 'invalid input should not give a false positive');
+  t.notok(testFunction(invalid),
+      'invalid input should not give a false positive');
   t.notok(testFunction({
     a: 123,
     v5: false

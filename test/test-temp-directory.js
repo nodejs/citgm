@@ -50,7 +50,8 @@ test('tempDirectory.create:', function (t) {
 test('tempDirectory.create --tmpDir:', function (t) {
   tempDirectory.create(contextTmpDir, function (e, ctx) {
     t.error(e);
-    t.ok(ctx.path.match(/thisisatest\/.*-.*-.*-.*-.*/), 'the path should match --tmpDir');
+    t.ok(ctx.path.match(/thisisatest\/.*-.*-.*-.*-.*/),
+        'the path should match --tmpDir');
     fs.stat(ctx.path, function (err, stats) {
       t.error(err);
       t.ok(stats.isDirectory(), 'the path should exist and be a folder');
@@ -68,7 +69,8 @@ test('tempDirectory.create: bad path', function (t) {
   });
   t.notOk(badContext.path, 'badContext should not have a path');
   tempDirectory.create(badContext, function (e) {
-    t.notEquals(e.message.search(/\/dev\/null/), -1, 'the message should include the path /dev/null');
+    t.notEquals(e.message.search(/\/dev\/null/), -1,
+        'the message should include the path /dev/null');
     tempDirectory.__set__('path', path);
     t.end();
   });
@@ -89,7 +91,8 @@ test('tempDirectory.remove:', function (t) {
 test('tempDirectory.remove: bad path', function (t) {
   t.ok(badContext, 'badContext should have a path');
   tempDirectory.remove(badContext, function (e) {
-    t.notEquals(e.message.search(/\/dev\/null/), -1, 'the message should include the path /dev/null');
+    t.notEquals(e.message.search(/\/dev\/null/), -1,
+        'the message should include the path /dev/null');
     t.end();
   });
 });
