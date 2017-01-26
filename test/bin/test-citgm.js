@@ -30,6 +30,18 @@ test('bin: omg-i-fail /w markdown output /w nodedir', function (t) {
   });
 });
 
+test('bin: omg-i-pass /w local module', function (t) {
+  t.plan(1);
+  var proc = spawn(citgmPath, ['./test/fixtures/omg-i-pass']);
+  proc.on('error', function(err) {
+    t.error(err);
+    t.fail('we should not get an error testing omg-i-pass');
+  });
+  proc.on('close', function (code) {
+    t.ok(code === 0, 'omg-i-pass should pass and exit with a code of zero');
+  });
+});
+
 test('bin: omg-i-fail /w custom script /w tap to file /w junit to file /w append', function (t) {
   t.plan(1);
   var proc = spawn(citgmPath, ['omg-i-fail', '-l', './test/fixtures/custom-lookup-script.json', '--tap', '/dev/null', '--junit', '/dev/null', '--append']);
