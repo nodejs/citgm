@@ -38,7 +38,7 @@ test('fetch: given a file path', function (t) {
       name: 'test-module'
     }
   };
-  fetch(context, passing, function (err, _path)  {
+  fetch(context, passing, function (err, _path) {
     t.error(err);
     t.match(_path, context.path, 'the resolved path should be in the context'
     + ' path');
@@ -62,7 +62,7 @@ test('fetch: given a custom lookup table and relative path', function (t) {
       lookup: path.join(fixtures, 'custom-lookup-script.json')
     }
   };
-  fetch(context, './example-test-script-passing.sh', function (err, _path)  {
+  fetch(context, './example-test-script-passing.sh', function (err, _path) {
     t.error(err);
     t.match(_path, context.path, 'the resolved path should be in the context'
     + ' path');

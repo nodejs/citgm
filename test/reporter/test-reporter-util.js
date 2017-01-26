@@ -91,7 +91,7 @@ test('hasFailures:', function (t) {
 });
 
 test('util.sanitizeOutput', function (t) {
-  // var result = util.sanitizeOutput();
+  // Var result = util.sanitizeOutput();
   var raw = fs.readFileSync(carriageReturnPath, 'utf-8');
   var expected = fs.readFileSync(carriageReturnExpectedPath, 'utf-8');
   var result = util.sanitizeOutput(raw, '#');

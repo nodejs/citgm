@@ -46,8 +46,7 @@ test('lookup[getLookupTable]:', function (t) {
     var table = getLookupTable({
       lookup: null
     });
-  }
-  catch (e) {
+  } catch (e) {
     t.error(e);
   }
   t.ok(table, 'table should exist');
@@ -62,8 +61,7 @@ test('lookup[getLookupTable]: custom table', function (t) {
     var table = getLookupTable({
       lookup: 'test/fixtures/custom-lookup.json'
     });
-  }
-  catch (e) {
+  } catch (e) {
     t.error(e);
   }
 
@@ -84,8 +82,7 @@ test('lookup[getLookupTable]: custom table that does not exist', function (t) {
     var table = getLookupTable({
       lookup: 'test/fixtures/i-am-not-a.json'
     });
-  }
-  catch (e) {
+  } catch (e) {
     t.error(e);
   }
 
@@ -230,8 +227,7 @@ test('lookup: --fail-flaky', function (t) {
 test('lookup: ensure lookup works', function (t) {
   try {
     var lookup = require('../lib/lookup.json');
-  }
-  catch (err) {
+  } catch (err) {
     t.error(err);
   }
   t.ok(lookup, 'the lookup table should exist');
@@ -273,7 +269,7 @@ test('lookup: logging', function (t) {
       msg: 'https://github.com/nodejs/citgm/archive/master.tar.gz' },
     { type: 'verbose',
       key: 'omg-i-pass lookup-install',
-      msg: [ '--extra-param' ] },
+      msg: ['--extra-param'] },
     { type: 'info',
       key: 'omg-i-pass lookup-script',
       msg: './example-test-script-passing.sh' }

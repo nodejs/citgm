@@ -31,8 +31,8 @@ var log = logger({
 update(log);
 
 if (!app.su) {
-  require('root-check')(); // silently downgrade if running as root...
-                           // unless --su is passed
+  require('root-check')(); // Silently downgrade if running as root...
+                           // Unless --su is passed
 } else {
   log.warn('root', 'Running as root! Use caution!');
 }

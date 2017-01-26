@@ -42,8 +42,8 @@ var log = logger({
 update(log);
 
 if (!app.su) {
-  require('root-check')(); // silently downgrade if running as root...
-                           // unless --su is passed
+  require('root-check')(); // Silently downgrade if running as root...
+                           // Unless --su is passed
 } else {
   log.warn('root', 'Running as root! Use caution!');
 }
@@ -122,8 +122,7 @@ function runCitgm (mod, name, next) {
     if (result.error) {
       log.error(result.name + ' done', 'done - the test suite for ' +
           result.name + ' version ' + result.version + ' failed');
-    }
-    else {
+    } else {
       log.info(result.name + ' done', 'done - the test suite for ' + result.name
           + ' version ' + result.version + ' passed.');
     }
@@ -163,10 +162,10 @@ function launch() {
     }
 
     if (app.tap) {
-      // if tap is a string it should be a path to write output to
-      // if not use `log.bypass` which is currently process.stdout.write
+      // If tap is a string it should be a path to write output to
+      // If not use `log.bypass` which is currently process.stdout.write
       // TODO check that we can write to that path, perhaps require a flag to
-      // overwrite
+      // Overwrite
       var tap = (typeof app.tap === 'string') ? app.tap : log.bypass;
       reporter.tap(tap, modules, app.append);
     }

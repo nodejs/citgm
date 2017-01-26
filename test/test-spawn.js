@@ -34,7 +34,7 @@ test('spawn: windows mock', function (t) {
   });
 
   child.spawn = function (cmd, args, options) {
-    return  {
+    return {
       cmd: cmd,
       args: args,
       options: options

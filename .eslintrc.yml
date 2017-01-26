@@ -10,5 +10,13 @@
     linebreak-style: [2, unix]
     semi: [2, always]
     max-len: [2, 80]
+    no-multi-spaces: 2
+    no-useless-escape: 2
+    array-bracket-spacing: [2, never]
+    brace-style: 2
+    capitalized-comments: 2
+    eol-last: [2, always]
+    func-call-spacing: [2, never]
+    semi-spacing: 2
 
   extends: eslint:recommended
