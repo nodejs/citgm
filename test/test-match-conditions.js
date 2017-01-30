@@ -7,7 +7,10 @@ var isMatch = rewire('../lib/match-conditions');
 
 var platformCache = isMatch.__get__('platform');
 var versionCache = isMatch.__get__('version');
+var archCache = isMatch.__get__('arch');
 var semVersionCache = isMatch.__get__('semVersion');
+var distroCache = isMatch.__get__('distro');
+var releaseCache = isMatch.__get__('release');
 
 var match = {
   v5: ['darwin', 'hurd', 'x86']
@@ -28,12 +31,17 @@ function shim() {
   isMatch.__set__('platform', 'darwin');
   isMatch.__set__('arch', 'x64');
   isMatch.__set__('semVersion', 'v5.3.1');
+  isMatch.__set__('distro', 'macos');
+  isMatch.__set__('release', '10.12.2');
 }
 
 function revertShim() {
   isMatch.__set__('version', versionCache);
   isMatch.__set__('platform', platformCache);
+  isMatch.__set__('arch', archCache);
   isMatch.__set__('semVersion', semVersionCache);
+  isMatch.__set__('distro', distroCache);
+  isMatch.__set__('release', releaseCache);
 }
 
 function testVersions(t, testFunction) {
@@ -43,6 +51,7 @@ function testVersions(t, testFunction) {
   t.ok(testFunction('v5'), 'the module is matched on the current platform');
   t.ok(testFunction('> 5.0.0'),
       'the module is matched on the current platform');
+  t.ok(testFunction('macos'), 'the distro is correct');
   t.notok(testFunction('v2'),
       'the module is not matched on the current platform');
   t.notok(testFunction('<=v2.0.0'),
