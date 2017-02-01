@@ -11,7 +11,7 @@
   },
   "scripts": {
     "test": "npm run lint && npm run tap",
-    "tap": "tap --timeout 90 \"test/**/test-*.js\"",
+    "tap": "tap -J --timeout 90 \"test/**/test-*.js\"",
     "coverage": "npm run tap -- --coverage",
     "coverage-html": "npm run tap -- --coverage --coverage-report=html",
     "lint": "eslint bin/* lib/ test/"
@@ -61,7 +61,7 @@
     "ncp": "^2.0.0",
     "rewire": "^2.4.0",
     "string-to-stream": "^1.1.0",
-    "tap": "^9.0.3",
+    "tap": "^10.1.0",
     "tap-parser": "^5.1.0",
     "xml2js": "^0.4.17"
   }
