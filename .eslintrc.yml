@@ -1,5 +1,6 @@
   env:
     node: true
+    es6: true
 
   rules:
     indent: [2, 2]
