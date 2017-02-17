@@ -55,7 +55,7 @@ test('reporter.junit(): setup', function (t) {
 });
 
 test('reporter.junit(): passing', function (t) {
-  var output = '';
+  let output = '';
   function logger(message) {
     output += message;
     output += '\n';
@@ -69,15 +69,15 @@ test('reporter.junit(): passing', function (t) {
 
 test('reporter.junit(): bad output', function (t) {
   t.plan(3);
-  var output = '';
+  let output = '';
   function logger(message) {
     output += message;
     output += '\n';
   }
 
-  var corruptXml = _.cloneDeep(passingInput);
+  const corruptXml = _.cloneDeep(passingInput);
   corruptXml[0].testOutput = badOutput;
-  var corruptXmlToo = _.cloneDeep(passingInput);
+  const corruptXmlToo = _.cloneDeep(passingInput);
   corruptXmlToo[0].testOutput = badOutputToo;
 
   t.doesNotThrow(function () {
@@ -92,7 +92,7 @@ test('reporter.junit(): bad output', function (t) {
 });
 
 test('reporter.junit(): failing', function (t) {
-  var output = '';
+  let output = '';
   function logger(message) {
     output += message;
     output += '\n';
@@ -105,7 +105,7 @@ test('reporter.junit(): failing', function (t) {
 });
 
 test('reporter.junit(): parser', function (t) {
-  var output = '';
+  let output = '';
   function logger(message) {
     output += message;
     output += '\n';
@@ -121,17 +121,17 @@ test('reporter.junit(): parser', function (t) {
 
 test('reporter.junit(): write to disk', function (t) {
   junit(outputFile, passingInput);
-  var expected = fs.readFileSync(outputFile, 'utf8');
+  const expected = fs.readFileSync(outputFile, 'utf8');
   t.equals(expected, passingExpected), 'the file on disk should match the'
   + ' expected output';
   t.end();
 });
 
 test('reporter.junit(): append to disk', function (t) {
-  var appendStartFile = fs.readFileSync(appendStartFilePath, 'utf-8');
+  const appendStartFile = fs.readFileSync(appendStartFilePath, 'utf-8');
   fs.writeFileSync(outputFileAppend, appendStartFile);
   junit(outputFileAppend, passingInput, true);
-  var expected = fs.readFileSync(outputFileAppend, 'utf-8');
+  const expected = fs.readFileSync(outputFileAppend, 'utf-8');
   t.equals(expected, passingExpectedAppend), 'the file on disk should match the'
   + ' expected output';
   t.end();

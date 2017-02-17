@@ -54,9 +54,9 @@ const options = {
 };
 
 if (!citgm.windows) {
-  var uidnumber = require('uid-number');
-  var uid = app.uid || process.getuid();
-  var gid = app.gid || process.getgid();
+  const uidnumber = require('uid-number');
+  const uid = app.uid || process.getuid();
+  const gid = app.gid || process.getgid();
   uidnumber(uid, gid, function(err, uid, gid) {
     options.uid = uid;
     options.gid = gid;
@@ -93,12 +93,12 @@ function launch(mod, options) {
       reporter.markdown(log.bypass, module);
     }
     if (app.tap) {
-      var tap = (typeof app.tap === 'string') ? app.tap : log.bypass;
+      const tap = (typeof app.tap === 'string') ? app.tap : log.bypass;
       reporter.tap(tap, module, app.append);
     }
 
     if (app.junit) {
-      var junit = (typeof app.junit === 'string') ? app.junit : log.bypass;
+      const junit = (typeof app.junit === 'string') ? app.junit : log.bypass;
       reporter.junit(junit, module, app.append);
     }
 

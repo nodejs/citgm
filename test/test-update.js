@@ -9,7 +9,7 @@ const pkg = update.__get__('pkg');
 pkg.version = '0.0.0';
 
 test('update: /w callback', function (t) {
-  var log = {
+  const log = {
     warn: function (data) {
       t.equals(data, 'update-available');
       t.end();

@@ -25,7 +25,7 @@ test('npm.script.run: setup', function (t) {
 });
 
 test('npm.script.run: should pass with passing script', function (t) {
-  var context = {
+  const context = {
     path: sandbox,
     emit: function () {},
     module: {
@@ -41,7 +41,7 @@ test('npm.script.run: should pass with passing script', function (t) {
 });
 
 test('npm.script.run: should fail with failing script', function (t) {
-  var context = {
+  const context = {
     path: sandbox,
     emit: function () {},
     module: {
@@ -49,7 +49,7 @@ test('npm.script.run: should fail with failing script', function (t) {
     },
     options: {}
   };
-  var failingMsg = 'the canary is dead';
+  const failingMsg = 'the canary is dead';
   run(context, failingScript, failingMsg, function (err) {
     t.equals(err && err.message, failingMsg);
     t.end();
@@ -57,7 +57,7 @@ test('npm.script.run: should fail with failing script', function (t) {
 });
 
 test('npm.script.run: should fail with failing script (no msg)', function (t) {
-  var context = {
+  const context = {
     path: sandbox,
     emit: function () {},
     module: {
@@ -72,7 +72,7 @@ test('npm.script.run: should fail with failing script (no msg)', function (t) {
 });
 
 test('npm.script.run: should fail with a bad path', function (t) {
-  var context = {
+  const context = {
     path: sandbox,
     emit: function () {},
     module: {

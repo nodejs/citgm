@@ -20,5 +20,6 @@
     func-call-spacing: [2, never]
     semi-spacing: 2
     strict: 2
+    no-var: 2
 
   extends: eslint:recommended

@@ -42,8 +42,9 @@ test('lookup: makeUrl', function (t) {
 });
 
 test('lookup[getLookupTable]:', function (t) {
+  let table;
   try {
-    var table = getLookupTable({
+    table = getLookupTable({
       lookup: null
     });
   } catch (e) {
@@ -57,8 +58,9 @@ test('lookup[getLookupTable]:', function (t) {
 });
 
 test('lookup[getLookupTable]: custom table', function (t) {
+  let table;
   try {
-    var table = getLookupTable({
+    table = getLookupTable({
       lookup: 'test/fixtures/custom-lookup.json'
     });
   } catch (e) {
@@ -78,8 +80,9 @@ test('lookup[getLookupTable]: custom table', function (t) {
 });
 
 test('lookup[getLookupTable]: custom table that does not exist', function (t) {
+  let table;
   try {
-    var table = getLookupTable({
+    table = getLookupTable({
       lookup: 'test/fixtures/i-am-not-a.json'
     });
   } catch (e) {
@@ -91,7 +94,7 @@ test('lookup[getLookupTable]: custom table that does not exist', function (t) {
 });
 
 test('lookup: module not in table', function (t) {
-  var context = {
+  const context = {
     lookup: null,
     module: {
       name: 'omg-i-pass',
@@ -115,7 +118,7 @@ test('lookup: module not in table', function (t) {
 });
 
 test('lookup: module in table', function (t) {
-  var context = {
+  const context = {
     lookup: null,
     module: {
       name: 'lodash',
@@ -225,8 +228,9 @@ test('lookup: --fail-flaky', function (t) {
 });
 
 test('lookup: ensure lookup works', function (t) {
+  let lookup;
   try {
-    var lookup = require('../lib/lookup.json');
+    lookup = require('../lib/lookup.json');
   } catch (err) {
     t.error(err);
   }
@@ -249,7 +253,7 @@ test('lookup: lookup with install', function (t) {
     },
     emit: function () {}
   };
-  var expected = {
+  const expected = {
     install: [/--extra-param/]
   };
 

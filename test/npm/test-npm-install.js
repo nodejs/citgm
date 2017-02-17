@@ -39,7 +39,7 @@ test('npm-install: setup', function (t) {
 });
 
 test('npm-install: basic module', function (t) {
-  var context = {
+  const context = {
     emit: function() {},
     path: sandbox,
     module: {
@@ -57,7 +57,7 @@ test('npm-install: basic module', function (t) {
 });
 
 test('npm-install: extra install parameters', function (t) {
-  var context = {
+  const context = {
     emit: function() {},
     path: sandbox,
     module: {
@@ -76,7 +76,7 @@ test('npm-install: extra install parameters', function (t) {
 });
 
 test('npm-install: no package.json', function (t) {
-  var context = {
+  const context = {
     emit: function() {},
     path: sandbox,
     module: {
@@ -94,7 +94,7 @@ test('npm-install: no package.json', function (t) {
 });
 
 test('npm-install: timeout', function (t) {
-  var context = {
+  const context = {
     emit: function() {},
     path: sandbox,
     module: {
@@ -113,7 +113,7 @@ test('npm-install: timeout', function (t) {
 });
 
 test('npm-install: failed install', function (t) {
-  var context = {
+  const context = {
     emit: function() {},
     path: sandbox,
     module: {
@@ -125,7 +125,7 @@ test('npm-install: failed install', function (t) {
     }
   };
 
-  var expected = {
+  const expected = {
     testOutput: /^$/,
     testError: 'npm ERR! 404 Registry returned 404 for GET on'
     + ' https://registry.npmjs.org/THIS-WILL-FAIL'

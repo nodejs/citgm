@@ -45,7 +45,7 @@ test('npm-test: setup', function (t) {
 });
 
 test('npm-test: basic module passing', function (t) {
-  var context = {
+  const context = {
     emit: function() {},
     path: sandbox,
     module: {
@@ -63,7 +63,7 @@ test('npm-test: basic module passing', function (t) {
 });
 
 test('npm-test: basic module failing', function (t) {
-  var context = {
+  const context = {
     emit: function() {},
     path: sandbox,
     module: {
@@ -79,7 +79,7 @@ test('npm-test: basic module failing', function (t) {
 });
 
 test('npm-test: basic module no test script', function (t) {
-  var context = {
+  const context = {
     emit: function() {},
     path: sandbox,
     module: {
@@ -95,7 +95,7 @@ test('npm-test: basic module no test script', function (t) {
 });
 
 test('npm-test: no package.json', function (t) {
-  var context = {
+  const context = {
     emit: function() {},
     path: sandbox,
     module: {
@@ -111,7 +111,7 @@ test('npm-test: no package.json', function (t) {
 });
 
 test('npm-test: custom script', function (t) {
-  var context = {
+  const context = {
     emit: function() {},
     path: sandbox,
     module: {
@@ -130,7 +130,7 @@ test('npm-test: custom script', function (t) {
 });
 
 test('npm-test: custom script does not exist', function (t) {
-  var context = {
+  const context = {
     emit: function() {},
     path: sandbox,
     module: {
@@ -150,9 +150,9 @@ test('npm-test: custom script does not exist', function (t) {
 
 test('npm-test: alternative test-path', function (t) {
   // Same test as 'basic module passing', except with alt node bin which fails.
-  var nodeBinName = npmTest.__get__('nodeBinName');
+  const nodeBinName = npmTest.__get__('nodeBinName');
   npmTest.__set__('nodeBinName', 'fake-node');
-  var context = {
+  const context = {
     emit: function() {},
     path: sandbox,
     module: {

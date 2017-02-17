@@ -124,20 +124,20 @@ function testObjects(t, testFunction) {
 }
 
 test('isStringMatch', function (t) {
-  var isStringMatch = isMatch.__get__('isStringMatch');
+  const isStringMatch = isMatch.__get__('isStringMatch');
   testVersions(t, isStringMatch);
   testPlatforms(t, isStringMatch);
   t.end();
 });
 
 test('isObjectMatch', function (t) {
-  var isObjectMatch = isMatch.__get__('isObjectMatch');
+  const isObjectMatch = isMatch.__get__('isObjectMatch');
   testObjects(t, isObjectMatch);
   t.end();
 });
 
 test('isArrayMatch', function (t) {
-  var isArrayMatch = isMatch.__get__('isArrayMatch');
+  const isArrayMatch = isMatch.__get__('isArrayMatch');
   testArrays(t, isArrayMatch);
   t.end();
 });

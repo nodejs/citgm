@@ -31,7 +31,7 @@ test('fetch: setup', function (t) {
 });
 
 test('fetch: given a file path', function (t) {
-  var context = {
+  const context = {
     path: sandbox,
     emit: function () {},
     module: {
@@ -52,7 +52,7 @@ test('fetch: given a file path', function (t) {
 });
 
 test('fetch: given a custom lookup table and relative path', function (t) {
-  var context = {
+  const context = {
     path: sandbox,
     emit: function () {},
     module: {
@@ -76,7 +76,7 @@ test('fetch: given a custom lookup table and relative path', function (t) {
 });
 
 test('fetch: given a uri with http', function (t) {
-  var context = {
+  const context = {
     path: sandbox,
     emit: function () {},
     module: {
@@ -95,7 +95,7 @@ test('fetch: given a uri with http', function (t) {
 });
 
 test('fetch: given a uri with https', function (t) {
-  var context = {
+  const context = {
     path: sandbox,
     emit: function () {},
     module: {
@@ -114,7 +114,7 @@ test('fetch: given a uri with https', function (t) {
 });
 
 test('fetch: properly handle errors from request', function (t) {
-  var context = {
+  const context = {
     path: sandbox,
     emit: function () {},
     module: {
@@ -122,9 +122,9 @@ test('fetch: properly handle errors from request', function (t) {
     }
   };
 
-  var request = fetch.__get__('request');
-  var fs = fetch.__get__('fs');
-  var createWriteStream = fs.createWriteStream;
+  const request = fetch.__get__('request');
+  const fs = fetch.__get__('fs');
+  const createWriteStream = fs.createWriteStream;
   fs.createWriteStream = function () {};
   fetch.__set__('request', RequestMock);
   fetch(context, 'http://do-nothing.com', function (err) {

@@ -84,7 +84,7 @@ test('reporter.tap(): parser', function (t) {
   }
 
   tap(logger, failingInput);
-  var p = parser(function (results) {
+  const p = parser(function (results) {
     t.deepEquals(results, tapParserExpected), 'the tap parser should correctly'
     + ' parse the tap file';
     t.end();
