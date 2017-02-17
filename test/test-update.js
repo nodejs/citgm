@@ -1,9 +1,9 @@
-var test = require('tap').test;
-var rewire = require('rewire');
+const test = require('tap').test;
+const rewire = require('rewire');
 
-var update = rewire('../lib/update');
+const update = rewire('../lib/update');
 
-var pkg = update.__get__('pkg');
+const pkg = update.__get__('pkg');
 
 pkg.version = '0.0.0';
 

@@ -1,5 +1,5 @@
-var EventEmitter = require('events').EventEmitter;
-var util = require('util');
+const EventEmitter = require('events').EventEmitter;
+const util = require('util');
 
 function RequestMock() {
   if (!(this instanceof RequestMock))

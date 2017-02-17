@@ -1,10 +1,10 @@
 'use strict';
-var test = require('tap').test;
+const test = require('tap').test;
 
-var loggerReporter = require('../../lib/reporter/logger');
-var fixtures = require('../fixtures/reporter-fixtures');
+const loggerReporter = require('../../lib/reporter/logger');
+const fixtures = require('../fixtures/reporter-fixtures');
 
-var output = '';
+let output = '';
 
 function metaLogger(title, msg) {
   output += title;
@@ -12,7 +12,7 @@ function metaLogger(title, msg) {
     output += msg;
   }
 }
-var logger = {
+const logger = {
   info: metaLogger,
   error: metaLogger,
   warn: metaLogger

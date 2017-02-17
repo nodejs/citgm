@@ -1,10 +1,10 @@
 'use strict';
 
-var test = require('tap').test;
+const test = require('tap').test;
 
-var spawn = require('../../lib/spawn');
+const spawn = require('../../lib/spawn');
 
-var citgmPath = require.resolve('../../bin/citgm.js');
+const citgmPath = require.resolve('../../bin/citgm.js');
 
 test('bin: omg-i-pass /w tap output /w junit', function (t) {
   t.plan(1);

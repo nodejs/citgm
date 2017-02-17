@@ -3,18 +3,18 @@
 // FIXME npm should be stubbed
 // TODO Test for local module... what does it even mean?
 
-var os = require('os');
-var path = require('path');
-var fs = require('fs');
+const os = require('os');
+const path = require('path');
+const fs = require('fs');
 
-var test = require('tap').test;
-var mkdirp = require('mkdirp');
-var rimraf = require('rimraf');
+const test = require('tap').test;
+const mkdirp = require('mkdirp');
+const rimraf = require('rimraf');
 
-var grabProject = require('../lib/grab-project');
+const grabProject = require('../lib/grab-project');
 
-var sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now());
-var fixtures = path.join(__dirname, 'fixtures');
+const sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now());
+const fixtures = path.join(__dirname, 'fixtures');
 
 test('grab-project: setup', function (t) {
   mkdirp(sandbox, function (err) {
@@ -24,7 +24,7 @@ test('grab-project: setup', function (t) {
 });
 
 test('grab-project: npm module', function (t) {
-  var context = {
+  const context = {
     emit: function() {},
     path: sandbox,
     module: {
@@ -44,7 +44,7 @@ test('grab-project: npm module', function (t) {
 });
 
 test('grab-project: local', function (t) {
-  var context = {
+  const context = {
     emit: function() {},
     path: sandbox,
     module: {
@@ -65,7 +65,7 @@ test('grab-project: local', function (t) {
 });
 
 test('grab-project: lookup table', function (t) {
-  var context = {
+  const context = {
     emit: function() {},
     path: sandbox,
     module: {
@@ -85,7 +85,7 @@ test('grab-project: lookup table', function (t) {
 });
 
 test('grab-project: local', function (t) {
-  var context = {
+  const context = {
     emit: function() {},
     path: sandbox,
     module: {
@@ -107,7 +107,7 @@ test('grab-project: local', function (t) {
 });
 
 test('grab-project: module does not exist', function (t) {
-  var context = {
+  const context = {
     emit: function() {},
     path: sandbox,
     module: {
@@ -122,7 +122,7 @@ test('grab-project: module does not exist', function (t) {
 });
 
 test('grab-project: timeout', function (t) {
-  var context = {
+  const context = {
     emit: function() {},
     path: sandbox,
     module: {

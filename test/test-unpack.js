@@ -1,15 +1,15 @@
 'use strict';
 
-var fs = require('fs');
-var path = require('path');
+const fs = require('fs');
+const path = require('path');
 
-var test = require('tap').test;
+const test = require('tap').test;
 
-var tempDirectory = require('../lib/temp-directory');
-var unpack = require('../lib/unpack');
+const tempDirectory = require('../lib/temp-directory');
+const unpack = require('../lib/unpack');
 
 test('unpack: context.unpack = null', function (t) {
-  var context = {
+  const context = {
     unpack: null,
     emit: function () {}
   };
@@ -22,7 +22,7 @@ test('unpack: context.unpack = null', function (t) {
 });
 
 test('unpack: context.unpack is invalid path', function (t) {
-  var context = {
+  const context = {
     unpack: path.join(__dirname, '..', 'fixtures', 'do-not-exist.tar.gz'),
     emit: function () {}
   };
@@ -35,7 +35,7 @@ test('unpack: context.unpack is invalid path', function (t) {
 });
 
 test('unpack: valid unpack', function (t) {
-  var context = {
+  const context = {
     module: {
       name: 'omg-i-pass'
     },

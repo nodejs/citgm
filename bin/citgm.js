@@ -6,8 +6,8 @@ const logger = require('../lib/out');
 const reporter = require('../lib/reporter');
 const update = require('../lib/update');
 
-var mod;
-var script;
+let mod;
+let script;
 
 const yargs = commonArgs(require('yargs'))
   .usage('citgm [options] <module> [script]')
@@ -17,12 +17,12 @@ const yargs = commonArgs(require('yargs'))
     description: 'Install module from commit-sha'
   });
 
-var app = yargs.argv;
+const app = yargs.argv;
 
 mod = app._[0];
 script = app._[1];
 
-var log = logger({
+const log = logger({
   level:app.verbose,
   nocolor: app.noColor
 });
@@ -41,7 +41,7 @@ if (!mod) {
   process.exit(0);
 }
 
-var options = {
+const options = {
   script: script,
   lookup: app.lookup,
   nodedir: app.nodedir,
@@ -66,9 +66,9 @@ if (!citgm.windows) {
   launch(mod, options);
 }
 
-var start = new Date();
+const start = new Date();
 function launch(mod, options) {
-  var runner = citgm.Tester(mod, options);
+  const runner = citgm.Tester(mod, options);
 
   function cleanup() {
     runner.cleanup();

@@ -1,20 +1,20 @@
-var test = require('tap').test;
-var path = require('path');
-var os = require('os');
+const test = require('tap').test;
+const path = require('path');
+const os = require('os');
 
-var mkdirp = require('mkdirp');
-var rimraf = require('rimraf');
-var rewire = require('rewire');
+const mkdirp = require('mkdirp');
+const rimraf = require('rimraf');
+const rewire = require('rewire');
 
-var run = rewire('../../lib/npm/script/run');
+const run = rewire('../../lib/npm/script/run');
 
-var fixtures = path.join(__dirname, '..', 'fixtures');
+const fixtures = path.join(__dirname, '..', 'fixtures');
 
-var passingScript = path.join(fixtures, 'example-test-script-passing.sh');
-var failingScript = path.join(fixtures, 'example-test-script-failing.sh');
-var badPath = path.join(fixtures, 'example-test-script-does-not-exist');
+const passingScript = path.join(fixtures, 'example-test-script-passing.sh');
+const failingScript = path.join(fixtures, 'example-test-script-failing.sh');
+const badPath = path.join(fixtures, 'example-test-script-does-not-exist');
 
-var sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now() + 'run-test');
+const sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now() + 'run-test');
 
 test('npm.script.run: setup', function (t) {
   mkdirp(sandbox, function (err) {

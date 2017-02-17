@@ -1,28 +1,28 @@
 'use strict';
 
-var test = require('tap').test;
-var rewire = require('rewire');
+const test = require('tap').test;
+const rewire = require('rewire');
 
-var isMatch = rewire('../lib/match-conditions');
+const isMatch = rewire('../lib/match-conditions');
 
-var platformCache = isMatch.__get__('platform');
-var versionCache = isMatch.__get__('version');
-var archCache = isMatch.__get__('arch');
-var semVersionCache = isMatch.__get__('semVersion');
-var distroCache = isMatch.__get__('distro');
-var releaseCache = isMatch.__get__('release');
+const platformCache = isMatch.__get__('platform');
+const versionCache = isMatch.__get__('version');
+const archCache = isMatch.__get__('arch');
+const semVersionCache = isMatch.__get__('semVersion');
+const distroCache = isMatch.__get__('distro');
+const releaseCache = isMatch.__get__('release');
 
-var match = {
+const match = {
   v5: ['darwin', 'hurd', 'x86']
 };
 
-var notMatch = {
+const notMatch = {
   v4: ['darwin', 'hurd', 'x86'],
   x86: 'hurd',
   darwin: 'v0.10'
 };
 
-var invalid = {
+const invalid = {
   'v5': [123, false, false]
 };
 

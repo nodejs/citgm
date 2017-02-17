@@ -1,11 +1,11 @@
 'use strict';
 
-var test = require('tap').test;
-var rewire = require('rewire');
+const test = require('tap').test;
+const rewire = require('rewire');
 
-var npmTest = rewire('../../lib/npm/test');
+const npmTest = rewire('../../lib/npm/test');
 
-var authorName = npmTest.__get__('authorName');
+const authorName = npmTest.__get__('authorName');
 
 test('npm.test() authorName:', function (t) {
   var name = 'titus';

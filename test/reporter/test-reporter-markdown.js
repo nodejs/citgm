@@ -1,15 +1,15 @@
 'use strict';
-var test = require('tap').test;
+const test = require('tap').test;
 
-var markdown = require('../../lib/reporter/markdown');
-var fixtures = require('../fixtures/reporter-fixtures');
+const markdown = require('../../lib/reporter/markdown');
+const fixtures = require('../fixtures/reporter-fixtures');
 
 test('single passing module:', function (t) {
-  var output = '';
+  let output = '';
   markdown(function logger(data) {
     output += data;
   }, fixtures.iPass);
-  var expected = '## 🎉🎉 CITGM Passed 🎉🎉';
+  let expected = '## 🎉🎉 CITGM Passed 🎉🎉';
   expected += '### Passing Modules';
   expected += '  * iPass v4.2.2 duration:50ms';
   t.equals(output, expected, 'we should have the expected markdown output');
@@ -17,11 +17,11 @@ test('single passing module:', function (t) {
 });
 
 test('single failing module:', function (t) {
-  var output = '';
+  let output = '';
   markdown(function logger(data) {
     output += data;
   }, fixtures.iFail);
-  var expected = '## 🔥⚠️🔥 CITGM FAILED 🔥⚠️🔥';
+  let expected = '## 🔥⚠️🔥 CITGM FAILED 🔥⚠️🔥';
   expected += '### Failing Modules';
   expected += '  * iFail v3.0.1 duration:50ms';
   expected += '    - I dun wurk';
@@ -31,11 +31,11 @@ test('single failing module:', function (t) {
 });
 
 test('multiple modules passing, with a flaky module that fails:', function (t) {
-  var output = '';
+  let output = '';
   markdown(function logger(data) {
     output += data;
   }, [fixtures.iPass, fixtures.iFlakyPass, fixtures.iFlakyFail]);
-  var expected = '## 🎉🎉 CITGM Passed 🎉🎉';
+  let expected = '## 🎉🎉 CITGM Passed 🎉🎉';
   expected += '## 📛 But with Flaky Failures 📛';
   expected += '### Passing Modules';
   expected += '  * iPass v4.2.2 duration:50ms';

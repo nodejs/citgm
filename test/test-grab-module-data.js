@@ -2,12 +2,12 @@
 // FIXME this is not a real unit test
 // FIXME it does not stub npm
 
-var test = require('tap').test;
+const test = require('tap').test;
 
-var grabModuleData = require('../lib/grab-module-data');
+const grabModuleData = require('../lib/grab-module-data');
 
 test('grab-module-data: lodash', function (t) {
-  var context = {
+  const context = {
     path: __dirname,
     module: {
       raw: 'lodash',
@@ -33,7 +33,7 @@ test('grab-module-data: lodash', function (t) {
 });
 
 test('grab-module-data: does not exist', function (t) {
-  var context = {
+  const context = {
     path: __dirname,
     module: {
       raw: 'FAIL',
@@ -54,7 +54,7 @@ test('grab-module-data: does not exist', function (t) {
 });
 
 test('grab-module-data: hosted', function (t) {
-  var context = {
+  const context = {
     path: __dirname,
     module: {
       raw: 'FAIL',
@@ -68,7 +68,7 @@ test('grab-module-data: hosted', function (t) {
     options: {}
   };
 
-  var expected = {
+  const expected = {
     repository: {
       type: 'git',
       url: context.module.hosted.gitUrl
