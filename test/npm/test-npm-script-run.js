@@ -1,3 +1,4 @@
+'use strict';
 const test = require('tap').test;
 const path = require('path');
 const os = require('os');
