@@ -1,17 +1,17 @@
 'use strict';
-var fs = require('fs');
-var path = require('path');
+const fs = require('fs');
+const path = require('path');
 
-var test = require('tap').test;
+const test = require('tap').test;
 
-var util = require('../../lib/reporter/util');
-var fixtures = require('../fixtures/reporter-fixtures');
+const util = require('../../lib/reporter/util');
+const fixtures = require('../fixtures/reporter-fixtures');
 
-var fixturesPath = path.join(__dirname, '..', 'fixtures');
-var carriageReturnPath = path.join(fixturesPath, 'CR-raw.txt');
-var carriageReturnExpectedPath = path.join(fixturesPath, 'CR-sanitized.txt');
+const fixturesPath = path.join(__dirname, '..', 'fixtures');
+const carriageReturnPath = path.join(fixturesPath, 'CR-raw.txt');
+const carriageReturnExpectedPath = path.join(fixturesPath, 'CR-sanitized.txt');
 
-var noPassing = [
+const noPassing = [
   fixtures.iFail,
   fixtures.iFail,
   fixtures.iFail,
@@ -21,20 +21,20 @@ var noPassing = [
   fixtures.iFlakyFail
 ];
 
-var somePassing = [
+const somePassing = [
   fixtures.iPass,
   fixtures.iFlakyPass,
   fixtures.iFlakyFail,
   fixtures.iFail
 ];
 
-var allPassing = [
+const allPassing = [
   fixtures.iPass,
   fixtures.iFlakyPass,
   fixtures.iPass
 ];
 
-var flakeCityUsa = [
+const flakeCityUsa = [
   fixtures.iFlakyFail,
   fixtures.iFlakyFail,
   fixtures.iFlakyPass,
@@ -92,9 +92,9 @@ test('hasFailures:', function (t) {
 
 test('util.sanitizeOutput', function (t) {
   // Var result = util.sanitizeOutput();
-  var raw = fs.readFileSync(carriageReturnPath, 'utf-8');
-  var expected = fs.readFileSync(carriageReturnExpectedPath, 'utf-8');
-  var result = util.sanitizeOutput(raw, '#');
+  const raw = fs.readFileSync(carriageReturnPath, 'utf-8');
+  const expected = fs.readFileSync(carriageReturnExpectedPath, 'utf-8');
+  const result = util.sanitizeOutput(raw, '#');
   t.equals(result, expected, 'there should be a # on every line');
   t.end();
 });

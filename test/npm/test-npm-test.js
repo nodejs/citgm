@@ -1,29 +1,29 @@
 'use strict';
-var os = require('os');
-var path = require('path');
-var fs = require('fs');
+const os = require('os');
+const path = require('path');
+const fs = require('fs');
 
-var test = require('tap').test;
-var mkdirp = require('mkdirp');
-var rimraf = require('rimraf');
-var ncp = require('ncp');
-var rewire = require('rewire');
+const test = require('tap').test;
+const mkdirp = require('mkdirp');
+const rimraf = require('rimraf');
+const ncp = require('ncp');
+const rewire = require('rewire');
 
-var npmTest = rewire('../../lib/npm/test');
+const npmTest = rewire('../../lib/npm/test');
 
-var sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now());
-var fixtures = path.join(__dirname, '..', 'fixtures');
+const sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now());
+const fixtures = path.join(__dirname, '..', 'fixtures');
 
-var passFixtures = path.join(fixtures, 'omg-i-pass');
-var passTemp = path.join(sandbox, 'omg-i-pass');
+const passFixtures = path.join(fixtures, 'omg-i-pass');
+const passTemp = path.join(sandbox, 'omg-i-pass');
 
-var failFixtures = path.join(fixtures, 'omg-i-fail');
-var failTemp = path.join(sandbox, 'omg-i-fail');
+const failFixtures = path.join(fixtures, 'omg-i-fail');
+const failTemp = path.join(sandbox, 'omg-i-fail');
 
-var badFixtures = path.join(fixtures, 'omg-i-do-not-support-testing');
-var badTemp = path.join(sandbox, 'omg-i-do-not-support-testing');
+const badFixtures = path.join(fixtures, 'omg-i-do-not-support-testing');
+const badTemp = path.join(sandbox, 'omg-i-do-not-support-testing');
 
-var customScript = path.join(fixtures, 'example-test-script-passing.sh');
+const customScript = path.join(fixtures, 'example-test-script-passing.sh');
 
 test('npm-test: setup', function (t) {
   t.plan(7);
@@ -45,7 +45,7 @@ test('npm-test: setup', function (t) {
 });
 
 test('npm-test: basic module passing', function (t) {
-  var context = {
+  const context = {
     emit: function() {},
     path: sandbox,
     module: {
@@ -63,7 +63,7 @@ test('npm-test: basic module passing', function (t) {
 });
 
 test('npm-test: basic module failing', function (t) {
-  var context = {
+  const context = {
     emit: function() {},
     path: sandbox,
     module: {
@@ -79,7 +79,7 @@ test('npm-test: basic module failing', function (t) {
 });
 
 test('npm-test: basic module no test script', function (t) {
-  var context = {
+  const context = {
     emit: function() {},
     path: sandbox,
     module: {
@@ -95,7 +95,7 @@ test('npm-test: basic module no test script', function (t) {
 });
 
 test('npm-test: no package.json', function (t) {
-  var context = {
+  const context = {
     emit: function() {},
     path: sandbox,
     module: {
@@ -111,7 +111,7 @@ test('npm-test: no package.json', function (t) {
 });
 
 test('npm-test: custom script', function (t) {
-  var context = {
+  const context = {
     emit: function() {},
     path: sandbox,
     module: {
@@ -130,7 +130,7 @@ test('npm-test: custom script', function (t) {
 });
 
 test('npm-test: custom script does not exist', function (t) {
-  var context = {
+  const context = {
     emit: function() {},
     path: sandbox,
     module: {
@@ -150,9 +150,9 @@ test('npm-test: custom script does not exist', function (t) {
 
 test('npm-test: alternative test-path', function (t) {
   // Same test as 'basic module passing', except with alt node bin which fails.
-  var nodeBinName = npmTest.__get__('nodeBinName');
+  const nodeBinName = npmTest.__get__('nodeBinName');
   npmTest.__set__('nodeBinName', 'fake-node');
-  var context = {
+  const context = {
     emit: function() {},
     path: sandbox,
     module: {

@@ -1,13 +1,13 @@
 'use strict';
 
-var fs = require('fs');
+const fs = require('fs');
 
-var test = require('tap').test;
-var rewire = require('rewire');
+const test = require('tap').test;
+const rewire = require('rewire');
 
-var tempDirectory = rewire('../lib/temp-directory');
+const tempDirectory = rewire('../lib/temp-directory');
 
-var context = {
+const context = {
   path: null,
   emit: function () {},
   module: {
@@ -15,7 +15,7 @@ var context = {
   }
 };
 
-var contextTmpDir = {
+const contextTmpDir = {
   options: {
     tmpDir: 'thisisatest'
   },
@@ -26,7 +26,7 @@ var contextTmpDir = {
   }
 };
 
-var badContext = {
+const badContext = {
   path: null,
   emit: function () {},
   module: {
@@ -61,7 +61,7 @@ test('tempDirectory.create --tmpDir:', function (t) {
 });
 
 test('tempDirectory.create: bad path', function (t) {
-  var path = tempDirectory.__get__('path');
+  const path = tempDirectory.__get__('path');
   tempDirectory.__set__('path', {
     join: function () {
       return '/dev/null';

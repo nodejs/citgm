@@ -1,10 +1,10 @@
 'use strict';
-var test = require('tap').test;
+const test = require('tap').test;
 
-var loggerReporter = require('../../lib/reporter/logger');
-var fixtures = require('../fixtures/reporter-fixtures');
+const loggerReporter = require('../../lib/reporter/logger');
+const fixtures = require('../fixtures/reporter-fixtures');
 
-var output = '';
+let output = '';
 
 function metaLogger(title, msg) {
   output += title;
@@ -12,14 +12,14 @@ function metaLogger(title, msg) {
     output += msg;
   }
 }
-var logger = {
+const logger = {
   info: metaLogger,
   error: metaLogger,
   warn: metaLogger
 };
 
 test('single passing module:', function (t) {
-  var expected = 'passing module(s)';
+  let expected = 'passing module(s)';
   expected += 'module name:' + 'iPass';
   expected += 'version:' + '4.2.2';
   expected += 'done';
@@ -31,7 +31,7 @@ test('single passing module:', function (t) {
 });
 
 test('single failing module:', function (t) {
-  var expected = 'failing module(s)';
+  let expected = 'failing module(s)';
   expected += 'module name:' + 'iFail';
   expected += 'version:' + '3.0.1';
   expected += 'error:' + 'I dun wurk';
@@ -45,7 +45,7 @@ test('single failing module:', function (t) {
 });
 
 test('multiple modules passing, with a flaky module that fails:', function (t) {
-  var expected = 'passing module(s)';
+  let expected = 'passing module(s)';
   expected += 'module name:' + 'iPass';
   expected += 'version:' + '4.2.2';
   expected += 'module name:' + 'iFlakyPass';

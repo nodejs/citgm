@@ -1,13 +1,13 @@
 'use strict';
 
-var test = require('tap').test;
-var spawn = require('../../lib/spawn');
+const test = require('tap').test;
+const spawn = require('../../lib/spawn');
 
-var citgmAllPath = require.resolve('../../bin/citgm-all.js');
+const citgmAllPath = require.resolve('../../bin/citgm-all.js');
 
 test('citgm-all: /w markdown /w -j', function (t) {
   t.plan(1);
-  var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup.json',
+  const proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup.json',
     '-m', '-j', '1']);
   proc.on('error', function(err) {
     t.error(err);
@@ -20,7 +20,7 @@ test('citgm-all: /w markdown /w -j', function (t) {
 
 test('citgm-all: envVar /w -J', function (t) {
   t.plan(1);
-  var proc = spawn(citgmAllPath, ['-l',
+  const proc = spawn(citgmAllPath, ['-l',
     'test/fixtures/custom-lookup-envVar.json', '-J']);
   proc.on('error', function(err) {
     t.error(err);
@@ -32,7 +32,7 @@ test('citgm-all: envVar /w -J', function (t) {
 
 test('citgm-all: /w missing lookup.json', function (t) {
   t.plan(1);
-  var proc = spawn(citgmAllPath, ['-l',
+  const proc = spawn(citgmAllPath, ['-l',
     'test/fixtures/this-does-not-exist-json']);
   proc.on('error', function(err) {
     t.error(err);
@@ -45,7 +45,7 @@ test('citgm-all: /w missing lookup.json', function (t) {
 
 test('citgm-all: /w bad lookup.json', function (t) {
   t.plan(1);
-  var proc = spawn(citgmAllPath, ['-l',
+  const proc = spawn(citgmAllPath, ['-l',
     'test/fixtures/custom-lookup-broken.json']);
   proc.on('error', function(err) {
     t.error(err);
@@ -58,8 +58,8 @@ test('citgm-all: /w bad lookup.json', function (t) {
 
 test('citgm-all: fail /w tap /w junit', function (t) {
   t.plan(1);
-  var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup-fail.json',
-    '-t', '-x']);
+  const proc = spawn(citgmAllPath, ['-l',
+    'test/fixtures/custom-lookup-fail.json', '-t', '-x']);
   proc.on('error', function(err) {
     t.error(err);
   });
@@ -70,7 +70,7 @@ test('citgm-all: fail /w tap /w junit', function (t) {
 
 test('citgm-all: flaky-fail', function (t) {
   t.plan(1);
-  var proc = spawn(citgmAllPath, ['-l',
+  const proc = spawn(citgmAllPath, ['-l',
     'test/fixtures/custom-lookup-flaky.json']);
   proc.on('error', function(err) {
     t.error(err);
@@ -82,7 +82,7 @@ test('citgm-all: flaky-fail', function (t) {
 
 test('citgm-all: fail expectFail', function (t) {
   t.plan(1);
-  var proc = spawn(citgmAllPath, ['-l',
+  const proc = spawn(citgmAllPath, ['-l',
     'test/fixtures/custom-lookup-expectFail.json']);
   proc.on('error', function(err) {
     t.error(err);
@@ -94,7 +94,7 @@ test('citgm-all: fail expectFail', function (t) {
 
 test('citgm-all: pass expectFail', function (t) {
   t.plan(1);
-  var proc = spawn(citgmAllPath, ['-l',
+  const proc = spawn(citgmAllPath, ['-l',
     'test/fixtures/custom-lookup-expectFail-fail.json']);
   proc.on('error', function(err) {
     t.error(err);
@@ -106,7 +106,7 @@ test('citgm-all: pass expectFail', function (t) {
 
 test('citgm-all: test with replace', function (t) {
   t.plan(1);
-  var proc = spawn(citgmAllPath, ['-l',
+  const proc = spawn(citgmAllPath, ['-l',
     'test/fixtures/custom-lookup-backwards-compatibilty.json']);
   proc.on('error', function(err) {
     t.error(err);
@@ -118,7 +118,7 @@ test('citgm-all: test with replace', function (t) {
 
 test('citgm-all: flaky-fail ignoring flakyness', function (t) {
   t.plan(1);
-  var proc = spawn(citgmAllPath, ['-f', '-l',
+  const proc = spawn(citgmAllPath, ['-f', '-l',
     'test/fixtures/custom-lookup-flaky.json']);
   proc.on('error', function(err) {
     t.error(err);
@@ -131,8 +131,9 @@ test('citgm-all: flaky-fail ignoring flakyness', function (t) {
 test('citgm-all: skip /w rootcheck /w tap to fs /w junit to fs /w append',
 function (t) {
   t.plan(1);
-  var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup-skip.json',
-    '-s', '--tap', '/dev/null', '--junit', '/dev/null', '-a']);
+  const proc = spawn(citgmAllPath, ['-l',
+    'test/fixtures/custom-lookup-skip.json', '-s', '--tap', '/dev/null',
+    '--junit', '/dev/null', '-a']);
   proc.on('error', function(err) {
     t.error(err);
   });
@@ -144,7 +145,7 @@ function (t) {
 test('bin: sigterm', function (t) {
   t.plan(1);
 
-  var proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup.json',
+  const proc = spawn(citgmAllPath, ['-l', 'test/fixtures/custom-lookup.json',
     '-m']);
   proc.on('error', function(err) {
     t.error(err);

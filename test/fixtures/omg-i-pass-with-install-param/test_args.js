@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+'use strict';
 
 /*
   Test 'npm-install: extra install parameters' from 'npm/test-npm-install.js'

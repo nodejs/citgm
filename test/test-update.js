@@ -1,14 +1,15 @@
-var test = require('tap').test;
-var rewire = require('rewire');
+'use strict';
+const test = require('tap').test;
+const rewire = require('rewire');
 
-var update = rewire('../lib/update');
+const update = rewire('../lib/update');
 
-var pkg = update.__get__('pkg');
+const pkg = update.__get__('pkg');
 
 pkg.version = '0.0.0';
 
 test('update: /w callback', function (t) {
-  var log = {
+  const log = {
     warn: function (data) {
       t.equals(data, 'update-available');
       t.end();

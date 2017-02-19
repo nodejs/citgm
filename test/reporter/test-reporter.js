@@ -1,8 +1,8 @@
 // TODO this test does not test any functionality currently
 'use strict';
-var test = require('tap').test;
+const test = require('tap').test;
 
-var reporter = require('../../lib/reporter');
+const reporter = require('../../lib/reporter');
 
 test('reporter.markdown():', function (t) {
   t.ok(reporter.markdown, 'it should have a markdown reporter');

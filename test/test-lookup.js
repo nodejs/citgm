@@ -1,26 +1,26 @@
 'use strict';
 
-var test = require('tap').test;
-var rewire = require('rewire');
+const test = require('tap').test;
+const rewire = require('rewire');
 
-var lookup = rewire('../lib/lookup');
+const lookup = rewire('../lib/lookup');
 
-var makeUrl = lookup.__get__('makeUrl');
-var getLookupTable = lookup.get;
+const makeUrl = lookup.__get__('makeUrl');
+const getLookupTable = lookup.get;
 
 test('lookup: makeUrl', function (t) {
-  var repo = 'https://github.com/nodejs/citgm';
+  const repo = 'https://github.com/nodejs/citgm';
 
-  var tags = {
+  const tags = {
     latest: '0.1.0'
   };
 
-  var prefix = 'v';
+  const prefix = 'v';
 
-  var sha = 'abc123';
+  const sha = 'abc123';
 
-  var expected = repo + '/archive/master.tar.gz';
-  var url = makeUrl(repo);
+  let expected = repo + '/archive/master.tar.gz';
+  let url = makeUrl(repo);
   t.equal(url, expected, 'by default makeUrl should give a link to master');
 
   expected = repo + '/archive/' + tags.latest + '.tar.gz';
@@ -42,8 +42,9 @@ test('lookup: makeUrl', function (t) {
 });
 
 test('lookup[getLookupTable]:', function (t) {
+  let table;
   try {
-    var table = getLookupTable({
+    table = getLookupTable({
       lookup: null
     });
   } catch (e) {
@@ -57,8 +58,9 @@ test('lookup[getLookupTable]:', function (t) {
 });
 
 test('lookup[getLookupTable]: custom table', function (t) {
+  let table;
   try {
-    var table = getLookupTable({
+    table = getLookupTable({
       lookup: 'test/fixtures/custom-lookup.json'
     });
   } catch (e) {
@@ -78,8 +80,9 @@ test('lookup[getLookupTable]: custom table', function (t) {
 });
 
 test('lookup[getLookupTable]: custom table that does not exist', function (t) {
+  let table;
   try {
-    var table = getLookupTable({
+    table = getLookupTable({
       lookup: 'test/fixtures/i-am-not-a.json'
     });
   } catch (e) {
@@ -91,7 +94,7 @@ test('lookup[getLookupTable]: custom table that does not exist', function (t) {
 });
 
 test('lookup: module not in table', function (t) {
-  var context = {
+  const context = {
     lookup: null,
     module: {
       name: 'omg-i-pass',
@@ -115,7 +118,7 @@ test('lookup: module not in table', function (t) {
 });
 
 test('lookup: module in table', function (t) {
-  var context = {
+  const context = {
     lookup: null,
     module: {
       name: 'lodash',
@@ -142,7 +145,7 @@ test('lookup: module in table', function (t) {
 });
 
 test('lookup: no table', function (t) {
-  var context = {
+  const context = {
     options: {
       lookup: 'test/fixtures/custom-lookup-does-not-exist.json'
     }
@@ -155,7 +158,7 @@ test('lookup: no table', function (t) {
 });
 
 test('lookup: replace with no repo', function (t) {
-  var context = {
+  const context = {
     module: {
       name: 'omg-i-pass',
       raw: null
@@ -177,7 +180,7 @@ test('lookup: replace with no repo', function (t) {
 });
 
 test('lookup: lookup with script', function (t) {
-  var context = {
+  const context = {
     module: {
       name: 'omg-i-have-script',
       raw: null
@@ -200,7 +203,7 @@ test('lookup: lookup with script', function (t) {
 });
 
 test('lookup: --fail-flaky', function (t) {
-  var context = {
+  const context = {
     lookup: null,
     module: {
       name: 'lodash',
@@ -225,8 +228,9 @@ test('lookup: --fail-flaky', function (t) {
 });
 
 test('lookup: ensure lookup works', function (t) {
+  let lookup;
   try {
-    var lookup = require('../lib/lookup.json');
+    lookup = require('../lib/lookup.json');
   } catch (err) {
     t.error(err);
   }
@@ -235,7 +239,7 @@ test('lookup: ensure lookup works', function (t) {
 });
 
 test('lookup: lookup with install', function (t) {
-  var context = {
+  const context = {
     module: {
       name: 'omg-i-pass-with-install-param',
       raw: null
@@ -249,7 +253,7 @@ test('lookup: lookup with install', function (t) {
     },
     emit: function () {}
   };
-  var expected = {
+  const expected = {
     install: [/--extra-param/]
   };
 
@@ -261,7 +265,7 @@ test('lookup: lookup with install', function (t) {
 });
 
 test('lookup: logging', function (t) {
-  var expectedLogMsgs = [
+  const expectedLogMsgs = [
     { type: 'info', key: 'lookup', msg: 'omg-i-pass' },
     { type: 'info', key: 'lookup-found', msg: 'omg-i-pass' },
     { type: 'info',
@@ -274,9 +278,9 @@ test('lookup: logging', function (t) {
       key: 'omg-i-pass lookup-script',
       msg: './example-test-script-passing.sh' }
   ];
-  var EventEmitter = require('events').EventEmitter;
-  var context = new EventEmitter();
-  var log = [];
+  const EventEmitter = require('events').EventEmitter;
+  const context = new EventEmitter();
+  const log = [];
   context.meta = {
     repository: '/dev/null',
     version: '0.1.1'

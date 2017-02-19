@@ -1,23 +1,23 @@
 'use strict';
-var os = require('os');
-var path = require('path');
-var fs = require('fs');
+const os = require('os');
+const path = require('path');
+const fs = require('fs');
 
-var test = require('tap').test;
-var mkdirp = require('mkdirp');
-var rimraf = require('rimraf');
-var ncp = require('ncp');
+const test = require('tap').test;
+const mkdirp = require('mkdirp');
+const rimraf = require('rimraf');
+const ncp = require('ncp');
 
-var npmInstall = require('../../lib/npm/install');
+const npmInstall = require('../../lib/npm/install');
 
-var sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now());
-var fixtures = path.join(__dirname, '..', 'fixtures');
-var moduleFixtures = path.join(fixtures, 'omg-i-pass');
-var moduleTemp = path.join(sandbox, 'omg-i-pass');
-var extraParamFixtures = path.join(fixtures, 'omg-i-pass-with-install-param');
-var extraParamTemp = path.join(sandbox, 'omg-i-pass-with-install-param');
-var badFixtures = path.join(fixtures, 'omg-bad-tree');
-var badTemp = path.join(sandbox, 'omg-bad-tree');
+const sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now());
+const fixtures = path.join(__dirname, '..', 'fixtures');
+const moduleFixtures = path.join(fixtures, 'omg-i-pass');
+const moduleTemp = path.join(sandbox, 'omg-i-pass');
+const extraParamFixtures = path.join(fixtures, 'omg-i-pass-with-install-param');
+const extraParamTemp = path.join(sandbox, 'omg-i-pass-with-install-param');
+const badFixtures = path.join(fixtures, 'omg-bad-tree');
+const badTemp = path.join(sandbox, 'omg-bad-tree');
 
 test('npm-install: setup', function (t) {
   t.plan(7);
@@ -39,7 +39,7 @@ test('npm-install: setup', function (t) {
 });
 
 test('npm-install: basic module', function (t) {
-  var context = {
+  const context = {
     emit: function() {},
     path: sandbox,
     module: {
@@ -57,7 +57,7 @@ test('npm-install: basic module', function (t) {
 });
 
 test('npm-install: extra install parameters', function (t) {
-  var context = {
+  const context = {
     emit: function() {},
     path: sandbox,
     module: {
@@ -76,7 +76,7 @@ test('npm-install: extra install parameters', function (t) {
 });
 
 test('npm-install: no package.json', function (t) {
-  var context = {
+  const context = {
     emit: function() {},
     path: sandbox,
     module: {
@@ -94,7 +94,7 @@ test('npm-install: no package.json', function (t) {
 });
 
 test('npm-install: timeout', function (t) {
-  var context = {
+  const context = {
     emit: function() {},
     path: sandbox,
     module: {
@@ -113,7 +113,7 @@ test('npm-install: timeout', function (t) {
 });
 
 test('npm-install: failed install', function (t) {
-  var context = {
+  const context = {
     emit: function() {},
     path: sandbox,
     module: {
@@ -125,7 +125,7 @@ test('npm-install: failed install', function (t) {
     }
   };
 
-  var expected = {
+  const expected = {
     testOutput: /^$/,
     testError: 'npm ERR! 404 Registry returned 404 for GET on'
     + ' https://registry.npmjs.org/THIS-WILL-FAIL'

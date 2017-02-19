@@ -1,16 +1,15 @@
 #!/usr/bin/env node
 'use strict';
-var update = require('../lib/update');
-var citgm = require('../lib/citgm');
-var logger = require('../lib/out');
-var reporter = require('../lib/reporter');
-var commonArgs = require('../lib/common-args');
-var yargs = require('yargs');
+const citgm = require('../lib/citgm');
+const commonArgs = require('../lib/common-args');
+const logger = require('../lib/out');
+const reporter = require('../lib/reporter');
+const update = require('../lib/update');
 
-var mod;
-var script;
+let mod;
+let script;
 
-yargs = commonArgs(yargs)
+const yargs = commonArgs(require('yargs'))
   .usage('citgm [options] <module> [script]')
   .option('sha', {
     alias: 'c',
@@ -18,12 +17,12 @@ yargs = commonArgs(yargs)
     description: 'Install module from commit-sha'
   });
 
-var app = yargs.argv;
+const app = yargs.argv;
 
 mod = app._[0];
 script = app._[1];
 
-var log = logger({
+const log = logger({
   level:app.verbose,
   nocolor: app.noColor
 });
@@ -42,7 +41,7 @@ if (!mod) {
   process.exit(0);
 }
 
-var options = {
+const options = {
   script: script,
   lookup: app.lookup,
   nodedir: app.nodedir,
@@ -55,9 +54,9 @@ var options = {
 };
 
 if (!citgm.windows) {
-  var uidnumber = require('uid-number');
-  var uid = app.uid || process.getuid();
-  var gid = app.gid || process.getgid();
+  const uidnumber = require('uid-number');
+  const uid = app.uid || process.getuid();
+  const gid = app.gid || process.getgid();
   uidnumber(uid, gid, function(err, uid, gid) {
     options.uid = uid;
     options.gid = gid;
@@ -67,9 +66,9 @@ if (!citgm.windows) {
   launch(mod, options);
 }
 
-var start = new Date();
+const start = new Date();
 function launch(mod, options) {
-  var runner = citgm.Tester(mod, options);
+  const runner = citgm.Tester(mod, options);
 
   function cleanup() {
     runner.cleanup();
@@ -94,12 +93,12 @@ function launch(mod, options) {
       reporter.markdown(log.bypass, module);
     }
     if (app.tap) {
-      var tap = (typeof app.tap === 'string') ? app.tap : log.bypass;
+      const tap = (typeof app.tap === 'string') ? app.tap : log.bypass;
       reporter.tap(tap, module, app.append);
     }
 
     if (app.junit) {
-      var junit = (typeof app.junit === 'string') ? app.junit : log.bypass;
+      const junit = (typeof app.junit === 'string') ? app.junit : log.bypass;
       reporter.junit(junit, module, app.append);
     }
 

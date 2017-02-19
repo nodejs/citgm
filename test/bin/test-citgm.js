@@ -1,14 +1,14 @@
 'use strict';
 
-var test = require('tap').test;
+const test = require('tap').test;
 
-var spawn = require('../../lib/spawn');
+const spawn = require('../../lib/spawn');
 
-var citgmPath = require.resolve('../../bin/citgm.js');
+const citgmPath = require.resolve('../../bin/citgm.js');
 
 test('bin: omg-i-pass /w tap output /w junit', function (t) {
   t.plan(1);
-  var proc = spawn(citgmPath, ['omg-i-pass', '-t', '-x']);
+  const proc = spawn(citgmPath, ['omg-i-pass', '-t', '-x']);
   proc.on('error', function(err) {
     t.error(err);
     t.fail('we should not get an error testing omg-i-pass');
@@ -20,7 +20,7 @@ test('bin: omg-i-pass /w tap output /w junit', function (t) {
 
 test('bin: omg-i-fail /w markdown output /w nodedir', function (t) {
   t.plan(1);
-  var proc = spawn(citgmPath, ['omg-i-fail', '-m', '-d', '/dev/null']);
+  const proc = spawn(citgmPath, ['omg-i-fail', '-m', '-d', '/dev/null']);
   proc.on('error', function(err) {
     t.error(err);
     t.fail('we should not get an error testing omg-i-pass');
@@ -32,7 +32,7 @@ test('bin: omg-i-fail /w markdown output /w nodedir', function (t) {
 
 test('bin: omg-i-pass /w local module', function (t) {
   t.plan(1);
-  var proc = spawn(citgmPath, ['./test/fixtures/omg-i-pass']);
+  const proc = spawn(citgmPath, ['./test/fixtures/omg-i-pass']);
   proc.on('error', function(err) {
     t.error(err);
     t.fail('we should not get an error testing omg-i-pass');
@@ -45,7 +45,7 @@ test('bin: omg-i-pass /w local module', function (t) {
 test('bin: omg-i-fail /w custom script /w tap to file /w'
   + ' junit to file /w append', function (t) {
   t.plan(1);
-  var proc = spawn(citgmPath, ['omg-i-fail', '-l',
+  const proc = spawn(citgmPath, ['omg-i-fail', '-l',
     './test/fixtures/custom-lookup-script.json', '--tap', '/dev/null',
     '--junit', '/dev/null', '--append']);
   proc.on('error', function(err) {
@@ -60,7 +60,7 @@ test('bin: omg-i-fail /w custom script /w tap to file /w'
 test('bin: omg-i-pass /w custom script /w tap to file /w junit to file'
   + ' /w append', function (t) {
   t.plan(1);
-  var proc = spawn(citgmPath, ['omg-i-pass', '-l',
+  const proc = spawn(citgmPath, ['omg-i-pass', '-l',
     './test/fixtures/custom-lookup-script.json', '--tap', '/dev/null',
     '--junit', '/dev/null', '--append']);
   proc.on('error', function(err) {
@@ -74,7 +74,7 @@ test('bin: omg-i-pass /w custom script /w tap to file /w junit to file'
 
 test('bin: omg-i-fail /w custom test script passing', function (t) {
   t.plan(1);
-  var proc = spawn(citgmPath, ['omg-i-fail',
+  const proc = spawn(citgmPath, ['omg-i-fail',
     './test/fixtures/example-test-script-passing.sh']);
   proc.on('error', function(err) {
     t.error(err);
@@ -88,7 +88,7 @@ test('bin: omg-i-fail /w custom test script passing', function (t) {
 
 test('bin: omg-i-pass /w custom test script failing', function (t) {
   t.plan(1);
-  var proc = spawn(citgmPath, ['omg-i-pass',
+  const proc = spawn(citgmPath, ['omg-i-pass',
     './test/fixtures/example-test-script-failing.sh']);
   proc.on('error', function(err) {
     t.error(err);
@@ -101,7 +101,7 @@ test('bin: omg-i-pass /w custom test script failing', function (t) {
 
 test('bin: no module /w root check', function (t) {
   t.plan(1);
-  var proc = spawn(citgmPath, ['-s']);
+  const proc = spawn(citgmPath, ['-s']);
   proc.on('error', function(err) {
     t.error(err);
     t.fail('we should not get an error');
@@ -114,7 +114,7 @@ test('bin: no module /w root check', function (t) {
 test('bin: sigterm', function (t) {
   t.plan(1);
 
-  var proc = spawn(citgmPath, ['omg-i-pass', '-v', 'verbose']);
+  const proc = spawn(citgmPath, ['omg-i-pass', '-v', 'verbose']);
   proc.on('error', function(err) {
     t.error(err);
     t.fail('we should not get an error testing omg-i-pass');
@@ -129,7 +129,7 @@ test('bin: sigterm', function (t) {
 
 test('bin: install from sha', function (t) {
   t.plan(1);
-  var proc = spawn(citgmPath, ['omg-i-pass', '-t', '-c',
+  const proc = spawn(citgmPath, ['omg-i-pass', '-t', '-c',
     '37c34bad563599782c622baf3aaf55776fbc38a8']);
   proc.on('error', function(err) {
     t.error(err);

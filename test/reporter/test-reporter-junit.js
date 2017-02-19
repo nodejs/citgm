@@ -1,50 +1,51 @@
 'use strict';
-var fs = require('fs');
-var path = require('path');
-var os = require('os');
+const fs = require('fs');
+const path = require('path');
+const os = require('os');
 
-var test = require('tap').test;
-var mkdirp = require('mkdirp');
-var rimraf = require('rimraf');
-var _ = require('lodash');
-var parseString = require('xml2js').parseString;
+const test = require('tap').test;
+const mkdirp = require('mkdirp');
+const rimraf = require('rimraf');
+const _ = require('lodash');
+const parseString = require('xml2js').parseString;
 
-var junit = require('../../lib/reporter/junit');
-var fixtures = require('../fixtures/reporter-fixtures');
+const junit = require('../../lib/reporter/junit');
+const fixtures = require('../fixtures/reporter-fixtures');
 
-var fixturesPath = path.join(__dirname, '..', 'fixtures');
-var sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now());
-var outputFile = path.join(sandbox, 'test.xml');
-var outputFileAppend = path.join(sandbox, 'test-append.xml');
+const fixturesPath = path.join(__dirname, '..', 'fixtures');
+const sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now());
+const outputFile = path.join(sandbox, 'test.xml');
+const outputFileAppend = path.join(sandbox, 'test-append.xml');
 
-var appendStartFilePath = path.join(fixturesPath, 'appendTestFileStart.txt');
+const appendStartFilePath = path.join(fixturesPath, 'appendTestFileStart.txt');
 
-var passingInput = [
+const passingInput = [
   fixtures.iPass,
   fixtures.iFlakyPass
 ];
 
-var passingExpectedPath = path.join(fixturesPath, 'test-out-xml-passing.txt');
-var passingExpectedPathAppend = path.join(fixturesPath,
+const passingExpectedPath = path.join(fixturesPath, 'test-out-xml-passing.txt');
+const passingExpectedPathAppend = path.join(fixturesPath,
       'test-out-xml-passing-append.txt');
 
-var passingExpected = fs.readFileSync(passingExpectedPath, 'utf-8');
-var passingExpectedAppend = fs.readFileSync(passingExpectedPathAppend, 'utf-8');
+const passingExpected = fs.readFileSync(passingExpectedPath, 'utf-8');
+const passingExpectedAppend = fs.readFileSync(passingExpectedPathAppend,
+      'utf-8');
 
-var failingInput = [
+const failingInput = [
   fixtures.iPass,
   fixtures.iFlakyFail,
   fixtures.iFail
 ];
 
-var junitParserExpected = require('../fixtures/parsed-junit.json');
-var failingExpectedPath = path.join(fixturesPath, 'test-out-xml-failing.txt');
-var failingExpected = fs.readFileSync(failingExpectedPath, 'utf-8');
+const junitParserExpected = require('../fixtures/parsed-junit.json');
+const failingExpectedPath = path.join(fixturesPath, 'test-out-xml-failing.txt');
+const failingExpected = fs.readFileSync(failingExpectedPath, 'utf-8');
 
-var badOutputPath = path.join(fixturesPath, 'badOutput');
-var badOutputTooPath = path.join(fixturesPath, 'badOutput2');
-var badOutput = fs.readFileSync(badOutputPath, 'utf-8');
-var badOutputToo = fs.readFileSync(badOutputTooPath, 'utf-8');
+const badOutputPath = path.join(fixturesPath, 'badOutput');
+const badOutputTooPath = path.join(fixturesPath, 'badOutput2');
+const badOutput = fs.readFileSync(badOutputPath, 'utf-8');
+const badOutputToo = fs.readFileSync(badOutputTooPath, 'utf-8');
 
 test('reporter.junit(): setup', function (t) {
   mkdirp(sandbox, function (err) {
@@ -54,7 +55,7 @@ test('reporter.junit(): setup', function (t) {
 });
 
 test('reporter.junit(): passing', function (t) {
-  var output = '';
+  let output = '';
   function logger(message) {
     output += message;
     output += '\n';
@@ -68,15 +69,15 @@ test('reporter.junit(): passing', function (t) {
 
 test('reporter.junit(): bad output', function (t) {
   t.plan(3);
-  var output = '';
+  let output = '';
   function logger(message) {
     output += message;
     output += '\n';
   }
 
-  var corruptXml = _.cloneDeep(passingInput);
+  const corruptXml = _.cloneDeep(passingInput);
   corruptXml[0].testOutput = badOutput;
-  var corruptXmlToo = _.cloneDeep(passingInput);
+  const corruptXmlToo = _.cloneDeep(passingInput);
   corruptXmlToo[0].testOutput = badOutputToo;
 
   t.doesNotThrow(function () {
@@ -91,7 +92,7 @@ test('reporter.junit(): bad output', function (t) {
 });
 
 test('reporter.junit(): failing', function (t) {
-  var output = '';
+  let output = '';
   function logger(message) {
     output += message;
     output += '\n';
@@ -104,7 +105,7 @@ test('reporter.junit(): failing', function (t) {
 });
 
 test('reporter.junit(): parser', function (t) {
-  var output = '';
+  let output = '';
   function logger(message) {
     output += message;
     output += '\n';
@@ -120,17 +121,17 @@ test('reporter.junit(): parser', function (t) {
 
 test('reporter.junit(): write to disk', function (t) {
   junit(outputFile, passingInput);
-  var expected = fs.readFileSync(outputFile, 'utf8');
+  const expected = fs.readFileSync(outputFile, 'utf8');
   t.equals(expected, passingExpected), 'the file on disk should match the'
   + ' expected output';
   t.end();
 });
 
 test('reporter.junit(): append to disk', function (t) {
-  var appendStartFile = fs.readFileSync(appendStartFilePath, 'utf-8');
+  const appendStartFile = fs.readFileSync(appendStartFilePath, 'utf-8');
   fs.writeFileSync(outputFileAppend, appendStartFile);
   junit(outputFileAppend, passingInput, true);
-  var expected = fs.readFileSync(outputFileAppend, 'utf-8');
+  const expected = fs.readFileSync(outputFileAppend, 'utf-8');
   t.equals(expected, passingExpectedAppend), 'the file on disk should match the'
   + ' expected output';
   t.end();

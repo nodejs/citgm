@@ -1,20 +1,20 @@
 'use strict';
 
-var test = require('tap').test;
-var rewire = require('rewire');
+const test = require('tap').test;
+const rewire = require('rewire');
 
-var npmTest = rewire('../../lib/npm/test');
+const npmTest = rewire('../../lib/npm/test');
 
-var authorName = npmTest.__get__('authorName');
+const authorName = npmTest.__get__('authorName');
 
 test('npm.test() authorName:', function (t) {
-  var name = 'titus';
-  var author = {
+  const name = 'titus';
+  const author = {
     name: 'Randy Savage',
     email: 'randy@wwe.rekt',
     url: 'omg.html'
   };
-  var authorExpected = 'Randy Savage <randy@wwe.rekt> (omg.html)';
+  const authorExpected = 'Randy Savage <randy@wwe.rekt> (omg.html)';
   t.equals(authorName(name), name, 'it should return any string');
   t.equals(authorName(author), authorExpected, 'it should return the expected'
     + ' string when given an object');
@@ -22,15 +22,15 @@ test('npm.test() authorName:', function (t) {
 });
 
 test('npm.test() authorName partial data:', function (t) {
-  var name = 'titus';
-  var authorOne = {
+  const name = 'titus';
+  const authorOne = {
     name: 'Randy Savage'
   };
-  var authorOneExpected = 'Randy Savage';
-  var authorTwo = {
+  const authorOneExpected = 'Randy Savage';
+  const authorTwo = {
     email: 'thedude@abides.net'
   };
-  var authorTwoExpected = '<thedude@abides.net>';
+  const authorTwoExpected = '<thedude@abides.net>';
   t.equals(authorName(name), name, 'it should return any string');
   t.equals(authorName(authorOne), authorOneExpected, 'it should return the'
     + ' expected string when given an object');

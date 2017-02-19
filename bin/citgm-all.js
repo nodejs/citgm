@@ -1,20 +1,19 @@
 #!/usr/bin/env node
 'use strict';
-var yargs = require('yargs');
-var os = require('os');
+const os = require('os');
 
-var async = require('async');
-var _ = require('lodash');
+const _ = require('lodash');
+const async = require('async');
 
-var update = require('../lib/update');
-var citgm = require('../lib/citgm');
-var logger = require('../lib/out');
-var reporter = require('../lib/reporter');
-var getLookup = require('../lib/lookup').get;
-var commonArgs = require('../lib/common-args');
-var isMatch = require('../lib/match-conditions');
+const citgm = require('../lib/citgm');
+const commonArgs = require('../lib/common-args');
+const getLookup = require('../lib/lookup').get;
+const isMatch = require('../lib/match-conditions');
+const logger = require('../lib/out');
+const reporter = require('../lib/reporter');
+const update = require('../lib/update');
 
-yargs = commonArgs(yargs)
+const yargs = commonArgs(require('yargs'))
   .usage('citgm-all [options]')
   .option('fail-flaky', {
     alias: 'f',
@@ -32,9 +31,9 @@ yargs = commonArgs(yargs)
     description: 'Auto detect number of cores to use to run tests in parallel'
   });
 
-var app = yargs.argv;
+const app = yargs.argv;
 
-var log = logger({
+const log = logger({
   level: app.verbose,
   nocolor: app.color
 });
@@ -48,7 +47,7 @@ if (!app.su) {
   log.warn('root', 'Running as root! Use caution!');
 }
 
-var options = {
+const options = {
   lookup: app.lookup,
   nodedir: app.nodedir,
   testPath: app.testPath,
@@ -59,13 +58,13 @@ var options = {
   tmpDir: app.tmpDir
 };
 
-var lookup = getLookup(options);
+const lookup = getLookup(options);
 if (!lookup) {
   log.error('the json file cannot be found or there is an error in the file!');
   process.exit(1);
 }
 
-var cpus = os.cpus().length;
+const cpus = os.cpus().length;
 if (app.autoParallel || (app.parallel && app.parallel > cpus)) {
   app.parallel = cpus;
   log.info('cores', 'running tests using ' + app.parallel + ' cores');
@@ -75,9 +74,9 @@ if (app.parallel && ((app.parallel + 1) > process.getMaxListeners())) {
 }
 
 if (!citgm.windows) {
-  var uidnumber = require('uid-number');
-  var uid = app.uid || process.getuid();
-  var gid = app.gid || process.getgid();
+  const uidnumber = require('uid-number');
+  const uid = app.uid || process.getuid();
+  const gid = app.gid || process.getgid();
   uidnumber(uid, gid, function(err, uid, gid) {
     options.uid = uid;
     options.gid = gid;
@@ -87,16 +86,16 @@ if (!citgm.windows) {
   launch(options);
 }
 
-var modules = [];
+const modules = [];
 
 function runCitgm (mod, name, next) {
   if (isMatch(mod.skip)) {
     return next();
   }
 
-  var start = new Date();
-  var runner = citgm.Tester(name, options);
-  var bailed = false;
+  const start = new Date();
+  const runner = citgm.Tester(name, options);
+  let bailed = false;
 
   function cleanup() {
     bailed = true;
@@ -149,9 +148,9 @@ function filterLookup(result, value, key) {
 }
 
 function launch() {
-  var collection = _.reduce(lookup, filterLookup, []);
+  const collection = _.reduce(lookup, filterLookup, []);
 
-  var q = async.queue(runTask, app.parallel || 1);
+  const q = async.queue(runTask, app.parallel || 1);
   q.push(collection);
   function done () {
     q.drain = null;
@@ -166,12 +165,12 @@ function launch() {
       // If not use `log.bypass` which is currently process.stdout.write
       // TODO check that we can write to that path, perhaps require a flag to
       // Overwrite
-      var tap = (typeof app.tap === 'string') ? app.tap : log.bypass;
+      const tap = (typeof app.tap === 'string') ? app.tap : log.bypass;
       reporter.tap(tap, modules, app.append);
     }
 
     if (app.junit) {
-      var junit = (typeof app.junit === 'string') ? app.junit : log.bypass;
+      const junit = (typeof app.junit === 'string') ? app.junit : log.bypass;
       reporter.junit(junit, modules, app.append);
     }
 

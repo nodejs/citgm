@@ -1,13 +1,13 @@
 'use strict';
 
-var test = require('tap').test;
-var rewire = require('rewire');
+const test = require('tap').test;
+const rewire = require('rewire');
 
-var citgm = rewire('../lib/citgm');
-var find = citgm.__get__('find');
+const citgm = rewire('../lib/citgm');
+const find = citgm.__get__('find');
 
 test('citgm: omg-i-pass', function (t) {
-  var options = {
+  const options = {
     script: null,
     hmac: null,
     lookup: null,
@@ -15,7 +15,7 @@ test('citgm: omg-i-pass', function (t) {
     level: null
   };
 
-  var mod = 'omg-i-pass';
+  const mod = 'omg-i-pass';
 
   citgm.Tester(mod, options)
   .on('start', function (name) {
@@ -29,7 +29,7 @@ test('citgm: omg-i-pass', function (t) {
 });
 
 test('citgm: omg-i-pass from git url', function (t) {
-  var options = {
+  const options = {
     script: null,
     hmac: null,
     lookup: null,
@@ -37,7 +37,7 @@ test('citgm: omg-i-pass from git url', function (t) {
     level: null
   };
 
-  var mod = 'git+https://github.com/MylesBorins/omg-i-pass';
+  const mod = 'git+https://github.com/MylesBorins/omg-i-pass';
 
   citgm.Tester(mod, options)
   .on('start', function (name) {
@@ -51,7 +51,7 @@ test('citgm: omg-i-pass from git url', function (t) {
 });
 
 test('citgm: internal function find with error', function (t) {
-  var which = citgm.__get__('which');
+  const which = citgm.__get__('which');
   citgm.__set__('which', function (app, next) {
     return next('Error');
   });

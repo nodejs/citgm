@@ -1,15 +1,15 @@
 'use strict';
 
-var test = require('tap').test;
-var rewire = require('rewire');
+const test = require('tap').test;
+const rewire = require('rewire');
 
-var spawn = rewire('../lib/spawn');
+const spawn = rewire('../lib/spawn');
 
 test('spawn:', function (t) {
-  var child = spawn('echo', ['Hello world.']);
+  const child = spawn('echo', ['Hello world.']);
 
-  var error = '';
-  var message = '';
+  let error = '';
+  let message = '';
 
   child.stdout.on('data', function (chunk) {
     message += chunk;
@@ -26,9 +26,9 @@ test('spawn:', function (t) {
 });
 
 test('spawn: windows mock', function (t) {
-  var child = spawn.__get__('child');
-  var sp = child.spawn;
-  var platform = process.platform;
+  const child = spawn.__get__('child');
+  const sp = child.spawn;
+  const platform = process.platform;
   Object.defineProperty(process, 'platform', {
     value: 'win32'
   });
@@ -41,8 +41,8 @@ test('spawn: windows mock', function (t) {
     };
   };
 
-  var result = spawn('echo', ['Hello world.']);
-  var expected = {
+  const result = spawn('echo', ['Hello world.']);
+  const expected = {
     cmd: 'cmd',
     args: [
       '/c',

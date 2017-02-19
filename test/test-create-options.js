@@ -1,23 +1,23 @@
 'use strict';
-var test = require('tap').test;
+const test = require('tap').test;
 
-var createOptions = require('../lib/create-options');
+const createOptions = require('../lib/create-options');
 
 test('create-options:', function (t) {
-  var cwd = __dirname;
+  const cwd = __dirname;
 
-  var context = {
+  const context = {
     options: {},
     npmConfigTmp: 'npm_config_tmp',
     module: {envVar: {testenvVar: 'thisisatest'}}
   };
 
-  var env = Object.create(process.env);
+  const env = Object.create(process.env);
   env['npm_loglevel'] = 'error';
   env['npm_config_tmp'] = 'npm_config_tmp';
   env['testenvVar'] = 'thisisatest';
 
-  var options = createOptions(cwd, context);
+  const options = createOptions(cwd, context);
 
   t.equals(typeof options, 'object', 'We should get back an object');
   t.notOk(options.uid, 'There should not be a uid in the options');
@@ -28,16 +28,16 @@ test('create-options:', function (t) {
 });
 
 test('create-options: with uid / gid', function (t) {
-  var cwd = __dirname;
+  const cwd = __dirname;
 
-  var context = {
+  const context = {
     options: {
       uid: 1337,
       gid: 1337
     }
   };
 
-  var options = createOptions(cwd, context);
+  const options = createOptions(cwd, context);
 
   t.equals(typeof options, 'object', 'We should get back an object');
   t.equals(options.uid, 1337, 'The uid should be set to the expected value');
