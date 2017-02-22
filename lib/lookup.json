@@ -326,13 +326,13 @@
   },
   "ember-cli": {
     "prefix": "v",
-    "flaky": ["win32", "rhel", "sles"],
+    "flaky": ["win32", "rhel", "sles", {"ubuntu": "big"}],
     "expectFail": "fips",
     "maintainers": ["stefanpenner", "rwjblue", "Turbo87", "kellyselden"]
   },
   "node-sass": {
     "prefix": "v",
-    "flaky": ["ppc", "s390"],
+    "flaky": ["ppc", "s390", "win32"],
     "maintainers": "xzyfer"
   },
   "full-icu-test": {
