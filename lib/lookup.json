@@ -4,7 +4,6 @@
     "maintainers": "jdalton"
   },
   "underscore": {
-    "master": true,
     "flaky": ["aix", "s390"],
     "skip": "win32",
     "maintainers": "jashkenas"

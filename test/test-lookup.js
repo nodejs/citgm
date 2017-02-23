@@ -51,8 +51,8 @@ test('lookup[getLookupTable]:', function (t) {
   }
   t.ok(table, 'table should exist');
   t.ok(table.lodash, 'lodash should be in the table');
-  t.ok(table.underscore.master, 'underscore should contain a master paramter');
-
+  t.ok(table.underscore.maintainers,
+      'underscore should contain a maintainers parameter');
   t.end();
 });
 
