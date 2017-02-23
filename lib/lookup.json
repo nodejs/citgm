@@ -14,7 +14,6 @@
   },
   "commander": {
     "prefix": "v",
-    "repo": "https://github.com/tj/commander.js",
     "skip": "win32"
   },
   "express": {
