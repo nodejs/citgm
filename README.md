@@ -133,6 +133,7 @@ For syntax, see [lookup.json](./lib/lookup.json), the available attributes are:
 "sha": "<git-commit-sha>"    Test against a specific commit
 "envVar"                     Pass an environment variable before running
 "install": ["--param1", "--param2"] - Array of extra command line parameters passed to 'npm install'
+"maintainers": ["user1", "user2"] - List of module maintainers to be contacted with issues
 ```
 
 If you want to pass options to npm, eg `--registry`, you can usually define an
@@ -159,6 +160,7 @@ This will run both a linter and a tap based unit test suite.
 mentioned above
 * The tests pass on supported major release lines
 * The maintainers of the module remain responsive when there are problems
+* At least one module maintainer must be added to the lookup maintainers field
 
 #### Soft Requirements
 
