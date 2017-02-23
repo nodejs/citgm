@@ -67,8 +67,7 @@
     "flaky": "win32"
   },
   "david": {
-    "prefix": "v",
-    "skip": true
+    "prefix": "v"
   },
   "eslint": {
     "prefix": "v",
