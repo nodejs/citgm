@@ -309,5 +309,12 @@
   },
   "node-report": {
     "prefix": "v"
+  },
+  "compression": {
+    "replace":  true
+  },
+  "decompress-targz": {
+    "replace": true,
+    "prefix": "v"
   }
 }
