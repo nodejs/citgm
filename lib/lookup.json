@@ -80,6 +80,7 @@
   },
   "browserify": {
     "flaky": ["v7", "win32"],
+    "prefix": "v",
     "expectFail": "fips"
   },
   "watchify": {
