@@ -422,5 +422,10 @@
   "esprima": {
     "maintainers": "ariya",
     "expectFail": "fips"
+  },
+  "node-gyp": {
+    "prefix": "v",
+    "tags": "native",
+    "maintainers": ["nodejs/node-gyp"]
   }
 }
