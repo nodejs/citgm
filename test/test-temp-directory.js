@@ -4,6 +4,7 @@ var fs = require('fs');
 
 var test = require('tap').test;
 var rewire = require('rewire');
+var rimraf = require('rimraf');
 
 var tempDirectory = rewire('../lib/temp-directory');
 
@@ -17,7 +18,7 @@ var context = {
 
 var contextTmpDir = {
   options: {
-    tmpDir: 'thisisatest'
+    tmpDir: '.thisisatest'
   },
   path: null,
   emit: function () {},
@@ -55,6 +56,8 @@ test('tempDirectory.create --tmpDir:', function (t) {
     fs.stat(ctx.path, function (err, stats) {
       t.error(err);
       t.ok(stats.isDirectory(), 'the path should exist and be a folder');
+      rimraf('./.thisisatest', function() {
+      });
       t.end();
     });
   });
