@@ -15,7 +15,7 @@ npm install -g citgm
 
 ## Usage
 ```
-bin/citgm --help
+citgm --help
 ```
 
 (If citgm is installed globally, you can also `man citgm`)
