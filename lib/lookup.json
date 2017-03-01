@@ -286,6 +286,7 @@
   "serialport": {
     "flaky": ["ppc", "win32"],
     "expectFail": "fips",
+    "tags": "native",
     "maintainers": "broofa"
   },
   "isarray": {
@@ -303,20 +304,24 @@
   "leveldown": {
     "prefix": "v",
     "flaky": ["aix", "s390"],
+    "tags": "native",
     "maintainers": "rvagg"
   },
   "bcrypt": {
     "prefix": "v",
     "skip": "win32",
+    "tags": "native",
     "maintainers": "ncb000gt"
   },
   "ref": {
     "flaky": "aix",
+    "tags": "native",
     "maintainers": "TooTallNate"
   },
   "time": {
     "flaky": ["linux-ia32", "s390"],
     "skip": ["win32", "aix"],
+    "tags": "native",
     "maintainers": "TooTallNate"
   },
   "bson": {
@@ -332,6 +337,7 @@
   "node-sass": {
     "prefix": "v",
     "flaky": ["ppc", "s390", "win32"],
+    "tags": "native",
     "maintainers": "xzyfer"
   },
   "full-icu-test": {
@@ -340,11 +346,13 @@
   },
   "sqlite3": {
     "prefix": "v",
+    "tags": "native",
     "maintainers": "koistya"
   },
   "iconv": {
     "prefix": "v",
     "flaky": "aix",
+    "tags": "native",
     "maintainers": "bnoordhuis"
   },
   "electron-prebuilt": {
@@ -357,6 +365,7 @@
     "prefix": "v",
     "flaky": ["aix", "sles", "rhel", "darwin"],
     "skip": "win32",
+    "tags": "native",
     "maintainers": "defunctzombie"
   },
   "radium": {
@@ -369,10 +378,12 @@
   "ffi": {
     "flaky": ["ppc", "aix", "s390", "ubuntu"],
     "skip": "win32",
+    "tags": "native",
     "maintainers": "TooTallNate"
   },
   "microtime": {
     "prefix": "v",
+    "tags": "native",
     "maintainers": "wadey"
   },
   "koa": {
@@ -387,17 +398,21 @@
   },
   "node-report": {
     "prefix": "v",
+    "tags": "native",
     "maintainers": ["rnchamberlain", "richardlau"]
   },
   "thread-sleep": {
     "install": ["--build-from-source"],
+    "tags": "native",
     "maintainers": ["forbeslindesay", "timothygu"]
   },
   "bufferutil": {
     "prefix": "v",
+    "tags": "native",
     "maintainers": ["3rdeden", "einaros", "lpinca"]
   },
   "weak": {
+    "tags": "native",
     "maintainers": "tootallnate"
   },
   "acorn": {
