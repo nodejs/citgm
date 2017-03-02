@@ -388,5 +388,10 @@
   "node-report": {
     "prefix": "v",
     "maintainers": ["rnchamberlain", "richardlau"]
+  },
+  "babel": {
+    "prefix": "v",
+    "repo": "https://github.com/babel/babel",
+    "maintainers": "sebmck"
   }
 }
