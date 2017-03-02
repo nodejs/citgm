@@ -28,7 +28,7 @@ Options:
   -h, --help                  output usage information
   -V, --version               output the version number
   --config                    Path to a JSON config file
-  -v, --verbose [level]       Verbose output (silly, verbose, info, warn, error)
+  -v, --verbose, --loglevel [level], Verbose output (silly, verbose, info, warn, error)
   -q, --npm-loglevel [level]  Verbose output (silent, error, warn, http, info, verbose, silly)
   -l, --lookup <path>         Use the lookup table provided at <path>
   -d, --nodedir <path>        Path to the node source to use when compiling native addons
@@ -89,7 +89,7 @@ Options:
   -h, --help                  output usage information
   -V, --version               output the version number
   --config                    Path to a JSON config file
-  -v, --verbose [level]       Verbose output (silly, verbose, info, warn, error)
+  -v, --verbose, --loglevel [level], Verbose output (silly, verbose, info, warn, error)
   -q, --npm-loglevel [level]  Verbose output (silent, error, warn, http, info, verbose, silly)
   -l, --lookup <path>         Use the lookup table provided at <path>
   -d, --nodedir <path>        Path to the node source to use when compiling native addons
