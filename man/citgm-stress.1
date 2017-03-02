@@ -1,14 +1,15 @@
 .\" Manpage for citgm
-.\" Contact jasnell@gmail.com to correct errors or typos
+.\" Contact george.adams@uk.ibm.com to correct errors or typos
 .TH "0.1.0" "MIT"
 .SH NAME
-citgm \- Canary in the Goldmine
+citgm-stress \- Canary in the Goldmine
 .SH SYNOPSIS
-citgm [options] <module>
+citgm-stress [options] <module> <repeat>
 .SH DESCRIPTION
 citgm is a tool for testing Node.js modules against different Node.js builds.
 Specifically, it automates the 'npm install' and 'npm test' steps and reports
-back the status.
+back the status. citgm-stress will run the same module multiple times to check
+flakiness
 .SH OPTIONS
 .TP
 .BR \-h ", " \-\-help
@@ -17,7 +18,7 @@ output usage information
 .BR \-V ", " \-\-version
 output the version number
 .TP
-.BR \-v ", " \-\-verbose ", " \-\-loglevel " " \fI[level]\fR
+.BR \-v ", " \-\-verbose " " \fI[level]\fR
 Verbose output (silly,verbose,info,warn,error)
 .TP
 .BR \-q ", " \-\-npm-loglevel " " \fI[level]\fR
@@ -64,24 +65,12 @@ Turns on append results to file mode rather than replace
 .TP
 .BR \-\-tmpDir " " \fI<path>\fR
 Directory to test modules in
-.SH EXAMPLES
-Test the latest underscore module:
-
-  citgm underscore@latest
-
-Test a local module:
-
-  citgm ./my-module
-
-Test using a tar.gz from Github:
-
-  citgm http://github.com/jasnell/activitystrea.ms/archive/master.tar.gz
 
 .SH SEE ALSO
 citgm-all
-citgm-stress
+citgm
 .SH AUTHOR
-James M Snell <jasnell@gmail.com>
+George Adams <george.adams@uk.ibm.com>
 .SH COPYRIGHT
 Copyright (c) 2015 citgm contributors
 .SH LICENSE
