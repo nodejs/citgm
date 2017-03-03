@@ -44,4 +44,31 @@ Fixes: https://github.com/nodejs/citgm/issues/313
 ```
 
 ## Submitting a module to CitGM
-[Read the module requirements](README.md#requirements-for-inclusion-in-nodejs-citgm-runs)
+
+This is for adding a module to be included in the default `citgm-all` runs.
+
+#### Hard Requirements
+
+* Module source code must be on Github.
+* Published versions must include a tag on Github
+* The test process must be executable with only the commands
+`npm install && npm test` using the tarball downloaded from the Github tag
+mentioned above
+* The tests pass on supported major release lines
+* The maintainers of the module remain responsive when there are problems
+* At least one module maintainer must be added to the lookup maintainers field
+
+#### Soft Requirements
+
+At least one of:
+* The module must be actively used by the community
+OR
+* The module must be heavily depended on
+OR
+* The module must cover unique portions of our API
+OR
+* The module fits into a key category (e.g. Testing, Streams, Monitoring, etc.)
+OR
+* The module is under the Node.js foundation Github org
+OR
+* The module is identified as an important module by a Node.js Working Group
