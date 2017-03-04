@@ -10,4 +10,3 @@ the requirements below.
 - [ ] tests are included
 - [ ] documentation is changed or added
 - [ ] contribution guidelines followed [here](https://github.com/nodejs/citgm/blob/master/CONTRIBUTING.md)
-- [ ] commit message follows commit guidelines
