@@ -54,7 +54,7 @@
     "winston": "^2.2.0",
     "xml-sanitizer": "^1.1.2",
     "xmlbuilder": "^8.2.2",
-    "yargs": "^6.3.0"
+    "yargs": "^7.0.1"
   },
   "devDependencies": {
     "eslint": "^3.13.1",
