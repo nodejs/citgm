@@ -47,8 +47,8 @@ Options:
 ```
 
 ### Examples:
-  Test the latest underscore module:
-    `citgm underscore@latest`
+  Test the latest underscore module or a specific version:
+    `citgm underscore@latest` or `citgm underscore@1.3.0`
 
   Test a local module:
     `citgm ./my-module`

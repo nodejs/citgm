@@ -28,6 +28,11 @@ test('lookup: makeUrl', function (t) {
   t.equal(url, expected,
         'if given a spec and tags it should give a link to associated version');
 
+  expected = repo + '/archive/' + '1.0.0' + '.tar.gz';
+  url = makeUrl(repo, '1.0.0', tags);
+  t.equal(url, expected,
+        'given a spec which is not an npm tag we should assume a Github tag');
+
   expected = repo + '/archive/' + prefix + tags.latest + '.tar.gz';
   url = makeUrl(repo, 'latest', tags, prefix);
   t.equal(url, expected,
