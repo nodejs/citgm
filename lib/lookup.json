@@ -21,7 +21,6 @@
   },
   "express": {
     "flaky": "ppc",
-    "expectFail": "fips",
     "maintainers": "tj"
   },
   "q": {
