@@ -94,7 +94,7 @@
   },
   "tape": {
     "prefix": "v",
-    "flaky": "linux",
+    "flaky": ["linux", "win32"],
     "maintainers": "substack"
   },
   "browserify": {
@@ -332,7 +332,7 @@
   },
   "node-sass": {
     "prefix": "v",
-    "flaky": ["ppc", "s390"],
+    "flaky": ["ppc", "s390", "win32"],
     "maintainers": "xzyfer"
   },
   "full-icu-test": {
