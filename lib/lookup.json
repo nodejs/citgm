@@ -403,5 +403,8 @@
   },
   "acorn": {
     "maintainers": "marijnh"
+  },
+  "esprima": {
+    "maintainers": "ariya"
   }
 }
