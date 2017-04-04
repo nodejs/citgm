@@ -400,5 +400,8 @@
   },
   "weak": {
     "maintainers": "tootallnate"
+  },
+  "acorn": {
+    "maintainers": "marijnh"
   }
 }
