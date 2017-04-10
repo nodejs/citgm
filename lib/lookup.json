@@ -325,7 +325,7 @@
   },
   "ember-cli": {
     "prefix": "v",
-    "flaky": ["win32", "rhel", "sles"],
+    "flaky": ["win32", "rhel", "sles", {"ubuntu": "big"}],
     "expectFail": "fips",
     "maintainers": ["stefanpenner", "rwjblue", "Turbo87", "kellyselden"]
   },
