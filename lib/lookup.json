@@ -56,7 +56,6 @@
     "maintainers": "rauchg"
   },
   "fs-extra": {
-    "prefix": "v",
     "flaky": ["linux-ia32", "aix", "s390", "win32"],
     "expectFail": "fips",
     "maintainers": "jprichardson"
