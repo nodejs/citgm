@@ -10,6 +10,7 @@ test('create-options:', function (t) {
   const context = {
     options: {
       nodedir: nodePath,
+      npmLevel: 'warning',
     },
     emit: function() {},
     npmConfigTmp: 'npm_config_tmp',
@@ -17,7 +18,7 @@ test('create-options:', function (t) {
   };
 
   const env = Object.create(process.env);
-  env['npm_loglevel'] = 'error';
+  env['npm_loglevel'] = 'warning';
   env['npm_config_tmp'] = 'npm_config_tmp';
   env['testenvVar'] = 'thisisatest';
   env['npm_config_nodedir'] = nodePath;
