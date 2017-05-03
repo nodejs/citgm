@@ -419,5 +419,10 @@
   },
   "esprima": {
     "maintainers": "ariya"
+  },
+  "node-gyp": {
+    "prefix": "v",
+    "tags": "native",
+    "maintainers": ["nodejs/node-gyp"]
   }
 }
