@@ -418,6 +418,7 @@
     "maintainers": "marijnh"
   },
   "esprima": {
-    "maintainers": "ariya"
+    "maintainers": "ariya",
+    "expectFail": "fips"
   }
 }
