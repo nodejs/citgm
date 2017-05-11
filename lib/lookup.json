@@ -432,5 +432,10 @@
     "prefix": "v",
     "tags": "native",
     "maintainers": ["nodejs/node-gyp"]
+  },
+  "sodium-native": {
+    "maintainers": ["mafintosh", "emilbayes"],
+    "prefix": "v",
+    "tags": "native"
   }
 }
