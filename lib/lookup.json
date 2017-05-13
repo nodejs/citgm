@@ -21,7 +21,26 @@
   },
   "express": {
     "flaky": "ppc",
-    "maintainers": "tj"
+    "maintainers": "dougwilson"
+  },
+  "router": {
+    "prefix": "v",
+    "maintainers": "dougwilson"
+  },
+  "path-to-regexp": {
+    "prefix": "v",
+    "maintainers": "blakeembrey"
+  },
+  "multer": {
+    "prefix": "v",
+    "maintainers": "linusu"
+  },
+  "express-session": {
+    "prefix": "v",
+    "maintainers": "dougwilson"
+  },
+  "body-parser": {
+    "maintainers": "dougwilson"
   },
   "q": {
     "prefix": "v",
