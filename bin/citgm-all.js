@@ -31,6 +31,11 @@ const yargs = commonArgs(require('yargs'))
     type: 'boolean',
     description: 'Auto detect number of cores to use to run tests in parallel'
   })
+  .option('repeat', {
+    alias: 'r',
+    type: 'number',
+    description: 'Number of times to test each module.'
+  })
   .option('includeTags', {
     type: 'array',
     description: 'Define which tags from the lookup to run'
@@ -63,6 +68,7 @@ const options = {
   failFlaky: app.failFlaky,
   level: app.verbose,
   npmLevel: app.npmLoglevel,
+  repeat: app.repeat,
   timeoutLength: app.timeout,
   tmpDir: app.tmpDir,
   includeTags: app.includeTags || [],
@@ -173,6 +179,23 @@ function filterLookup(result, value, key) {
 
 function launch() {
   const collection = _.reduce(lookup, filterLookup, []);
+
+  for (let module of collection) {
+    if (module.mod.repeat !== undefined) {
+      let repeat = module.mod.repeat;
+      while (repeat-- > 0) {
+        collection.push(module);
+      }
+    }
+  }
+
+  if (app.repeat !== undefined) {
+    let singleCollection = collection;
+    let repeat = app.repeat;
+    while (repeat-- > 0) {
+      collection.push(...singleCollection);
+    }
+  }
 
   const q = async.queue(runTask, app.parallel || 1);
   q.push(collection);
