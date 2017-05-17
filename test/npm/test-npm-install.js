@@ -58,6 +58,7 @@ test('npm-install: extra install parameters', function (t) {
   });
   npmInstall(context, function (err) {
     t.error(err);
+    t.notOk(context.module.flaky, 'Module passed and is not flaky');
     t.end();
   });
 });
@@ -68,6 +69,7 @@ test('npm-install: no package.json', function (t) {
   });
   npmInstall(context, function (err) {
     t.equals(err && err.message, 'Install Failed');
+    t.notOk(context.module.flaky, 'Module failed but is not flaky');
     t.end();
   });
 });
@@ -78,6 +80,7 @@ test('npm-install: timeout', function (t) {
     timeoutLength: 100
   });
   npmInstall(context, function (err) {
+    t.ok(context.module.flaky, 'Module is Flaky because install timed out');
     t.equals(err && err.message, 'Install Timed Out');
     t.end();
   });
@@ -93,6 +96,7 @@ test('npm-install: failed install', function (t) {
       'https://registry.npmjs.org/THIS-WILL-FAIL'].join(' '))
   };
   npmInstall(context, function (err) {
+    t.notOk(context.module.flaky, 'Module failed is not flaky');
     t.equals(err && err.message, 'Install Failed');
     t.match(context, expected, 'Install error reported');
     t.end();
