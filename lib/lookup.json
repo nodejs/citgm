@@ -393,6 +393,7 @@
   "spawn-wrap": {
     "prefix": "v",
     "flaky": ["win32", "sles"],
+    "skip": true,
     "maintainers": "isaacs"
   },
   "node-report": {
