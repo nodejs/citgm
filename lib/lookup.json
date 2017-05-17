@@ -331,7 +331,7 @@
     "prefix": "v",
     "flaky": ["win32", "rhel", "sles"],
     "expectFail": "fips",
-    "skip": "true",
+    "skip": true,
     "maintainers": ["stefanpenner", "rwjblue", "Turbo87", "kellyselden"]
   },
   "node-sass": {
