@@ -264,7 +264,7 @@
     "maintainers": ["ctavan", "broofa"]
   },
   "winston": {
-    "flaky": ["win32", "ppc"],
+    "flaky": ["win32", "ppc", "s390"],
     "maintainers": "indexzero"
   },
   "yargs": {
