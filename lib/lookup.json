@@ -283,7 +283,7 @@
     "maintainers": "broofa"
   },
   "serialport": {
-    "flaky": ["ppc", "win32", "ubuntu"],
+    "flaky": ["ppc", "win32"],
     "expectFail": "fips",
     "tags": "native",
     "maintainers": "broofa"
