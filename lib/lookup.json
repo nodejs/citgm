@@ -139,7 +139,7 @@
     "flaky": "linux",
     "skip": "win32",
     "expectFail": "fips",
-    "maintainers": ["einaros", "Ipincha"]
+    "maintainers": ["einaros", "3rd-Eden", "lpinca"]
   },
   "vinyl": {
     "prefix": "v",
