@@ -422,5 +422,10 @@
   "esprima": {
     "maintainers": "ariya",
     "expectFail": "fips"
+  },
+  "sodium-native": {
+    "maintainers": ["mafintosh", "emilbayes"],
+    "prefix": "v",
+    "tags": "native"
   }
 }
