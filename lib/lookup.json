@@ -188,7 +188,7 @@
     "prefix": "v",
     "flaky": ["aix", "sles"],
     "skip": "win32",
-    "maintainers": "indutny"
+    "maintainers": "diasdavid"
   },
   "dicer": {
     "prefix": "v",
@@ -198,7 +198,7 @@
     "prefix": "v",
     "skip": "win32",
     "flaky": "aix",
-    "maintainers": "indutny"
+    "maintainers": "diasdavid"
   },
   "sax": {
     "prefix": "v",
