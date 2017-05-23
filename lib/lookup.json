@@ -309,7 +309,8 @@
   "zeromq": {
     "prefix": "v",
     "tags": "native",
-    "maintainers": ["lgeiger", "rgbkrk"]
+    "maintainers": ["lgeiger", "rgbkrk"],
+    "skip": "s390"
   },
   "bcrypt": {
     "prefix": "v",
