@@ -2,7 +2,7 @@
   "name": "citgm",
   "version": "2.0.0",
   "description": "The Canary in the Goldmine",
-  "homepage": "http://nodejs.org",
+  "homepage": "https://nodejs.org",
   "main": "bin/citgm",
   "preferGlobal": true,
   "bin": {
