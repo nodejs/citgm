@@ -15,8 +15,8 @@ test('out: no color', function (t) {
 });
 
 test('out: with color', function (t) {
-  const supportscolor = Logger.__get__('supportscolor');
-  Logger.__set__('supportscolor', function () {
+  const supportsColor = Logger.__get__('supportsColor');
+  Logger.__set__('supportsColor', function () {
     return {stdout: true, stderr: true};
   });
   const output = Logger.__get__('output');
@@ -35,7 +35,7 @@ test('out: with color', function (t) {
       'there should be a warn logging level that is a function with no return');
   t.notok(log.error(), 'there should be a error logging level that is a'
   + ' function with no return');
-  Logger.__set__('supportscolor', supportscolor);
+  Logger.__set__('supportsColor', supportsColor);
   Logger.__set__('output', output);
   t.end();
 });
