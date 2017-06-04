@@ -22,7 +22,7 @@ mod = app._[0];
 
 const log = logger({
   level:app.verbose,
-  nocolor: app.noColor
+  noColor: app.noColor
 });
 
 update(log);
