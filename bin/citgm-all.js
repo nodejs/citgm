@@ -44,7 +44,7 @@ const app = yargs.argv;
 
 const log = logger({
   level: app.verbose,
-  nocolor: app.color
+  nocolor: app.noColor
 });
 
 update(log);
