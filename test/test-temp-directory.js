@@ -1,6 +1,7 @@
 'use strict';
 
 const fs = require('fs');
+const path = require('path');
 
 const test = require('tap').test;
 const rewire = require('rewire');
@@ -43,7 +44,12 @@ test('tempDirectory.create:', function (t) {
     fs.stat(ctx.path, function (err, stats) {
       t.error(err);
       t.ok(stats.isDirectory(), 'the path should exist and be a folder');
-      t.end();
+      const eslintrcPath = path.join(ctx.path, '.eslintrc.yml');
+      fs.readFile(eslintrcPath, 'utf-8', function (err, data) {
+        t.error(err);
+        t.equal(data, 'root: true', 'tmpDir should have a .eslintrc.yml file');
+        t.end();
+      });
     });
   });
 });
