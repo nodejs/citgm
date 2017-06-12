@@ -310,8 +310,7 @@
     "prefix": "v",
     "tags": "native",
     "maintainers": ["lgeiger", "rgbkrk"],
-    "skip": "s390",
-    "flaky": "ppc"
+    "skip": ["s390", "ppc"]
   },
   "bcrypt": {
     "prefix": "v",
