@@ -93,6 +93,18 @@ test('npm-test: alternative test-path', function (t) {
   });
 });
 
+test('npm-test: timeout', function (t) {
+  const context = makeContext.npmContext('omg-i-pass', sandbox, {
+    npmLevel: 'silly',
+    timeoutLength: 100
+  });
+  npmTest(context, function (err) {
+    t.ok(context.module.flaky, 'Module is Flaky because tests timed out');
+    t.equals(err && err.message, 'Test Timed Out');
+    t.end();
+  });
+});
+
 test('npm-test: teardown', function (t) {
   rimraf(sandbox, function (err) {
     t.error(err);
