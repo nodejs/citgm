@@ -439,5 +439,11 @@
     "prefix": "v",
     "flaky": "ppc",
     "tags": "native"
+  },
+  "redis": {
+    "maintainers": "BridgeAR",
+    "prefix": "v",
+    "flaky": "win32",
+    "tags": "native"
   }
 }
