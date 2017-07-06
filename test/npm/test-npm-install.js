@@ -93,7 +93,8 @@ test('npm-install: failed install', function (t) {
   const expected = {
     testOutput: /^$/,
     testError: new RegExp(['npm ERR! 404 Registry returned 404 for GET on',
-      'https://registry.npmjs.org/THIS-WILL-FAIL'].join(' '))
+      'https://registry.npmjs.org/THIS-WILL-FAIL|npm ERR! 404 Not Found:',
+      'THIS-WILL-FAIL@0\\.0\\.1'].join(' '))
   };
   npmInstall(context, function (err) {
     t.notOk(context.module.flaky, 'Module failed is not flaky');
