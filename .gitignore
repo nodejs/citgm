@@ -3,3 +3,4 @@ test/scaffold/*/node_modules
 test/.*
 coverage/
 .nyc_output/
+package-lock.json
