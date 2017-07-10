@@ -3,7 +3,7 @@
     es6: true
 
   rules:
-    indent: [2, 2]
+    indent-legacy: [2, 2]
     quotes: [2, single]
     no-trailing-spaces: 2
     comma-spacing: [2, { before: false, after: true }]
