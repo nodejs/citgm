@@ -49,7 +49,7 @@ test('grab-project: local', function (t) {
     path: sandbox,
     module: {
       raw: './test/fixtures/omg-i-pass',
-      type: 'local'
+      type: 'directory'
     },
     meta: {},
     options: {}
@@ -90,7 +90,7 @@ test('grab-project: local', function (t) {
     path: sandbox,
     module: {
       raw: 'omg-i-pass',
-      type: 'local'
+      type: 'directory'
     },
     options: {}
   };

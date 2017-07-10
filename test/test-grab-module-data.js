@@ -58,10 +58,10 @@ test('grab-module-data: hosted', function (t) {
     path: __dirname,
     module: {
       raw: 'FAIL',
-      type: 'hosted',
+      type: 'git',
       hosted: {
         type: 'github',
-        gitUrl: 'git://nope@nope:~/nope.git'
+        git: () => 'git://nope@nope:~/nope.git'
       }
     },
     emit: function () {},
@@ -71,7 +71,7 @@ test('grab-module-data: hosted', function (t) {
   const expected = {
     repository: {
       type: 'git',
-      url: context.module.hosted.gitUrl
+      url: context.module.hosted.git()
     }
   };
 
