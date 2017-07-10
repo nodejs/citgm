@@ -58,12 +58,12 @@
     "yargs": "^7.0.1"
   },
   "devDependencies": {
-    "eslint": "^3.13.1",
+    "eslint": "^4.2.0",
     "ncp": "^2.0.0",
     "rewire": "^2.4.0",
     "string-to-stream": "^1.1.0",
     "tap": "^10.1.0",
-    "tap-parser": "^5.1.0",
+    "tap-parser": "^6.0.1",
     "xml2js": "^0.4.17"
   }
 }

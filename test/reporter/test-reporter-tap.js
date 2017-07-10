@@ -7,7 +7,7 @@ const os = require('os');
 const test = require('tap').test;
 const mkdirp = require('mkdirp');
 const rimraf = require('rimraf');
-const parser = require('tap-parser');
+const Parser = require('tap-parser');
 const str = require('string-to-stream');
 
 const tap = require('../../lib/reporter/tap');
@@ -84,7 +84,7 @@ test('reporter.tap(): parser', function (t) {
   }
 
   tap(logger, failingInput);
-  const p = parser(function (results) {
+  const p = new Parser(function (results) {
     t.deepEquals(results, tapParserExpected), 'the tap parser should correctly'
     + ' parse the tap file';
     t.end();
