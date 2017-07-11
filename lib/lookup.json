@@ -28,7 +28,8 @@
     "maintainers": "kriskowal"
   },
   "coffee-script": {
-    "maintainers": "jashkenas"
+    "maintainers": "jashkenas",
+    "skip": "v4"
   },
   "through2": {
     "prefix": "v",
