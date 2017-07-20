@@ -477,5 +477,9 @@
     "prefix": "v",
     "flaky": "aix",
     "maintainers": ["sindresorhus", "novemberborn"]
+  },
+  "shot": {
+    "prefix": "v",
+    "maintainers": "mtharrison"
   }
 }
