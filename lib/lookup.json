@@ -440,5 +440,9 @@
     "prefix": "v",
     "flaky": "ppc",
     "tags": "native"
+  },
+  "shot": {
+    "prefix": "v",
+    "maintainers": "mtharrison"
   }
 }
