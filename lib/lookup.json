@@ -424,11 +424,13 @@
     "maintainers": "tootallnate"
   },
   "acorn": {
-    "maintainers": "marijnh"
+    "maintainers": "marijnh",
+    "skip": "win32"
   },
   "esprima": {
     "maintainers": "ariya",
-    "expectFail": "fips"
+    "expectFail": "fips",
+    "skip": "win32"
   },
   "node-gyp": {
     "prefix": "v",
