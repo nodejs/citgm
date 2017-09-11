@@ -372,7 +372,7 @@
   "libxmljs": {
     "prefix": "v",
     "flaky": ["aix", "sles", "rhel", "darwin"],
-    "skip": "win32",
+    "skip": ["win32", ">=8"],
     "tags": "native",
     "maintainers": "defunctzombie"
   },
