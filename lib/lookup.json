@@ -446,5 +446,8 @@
     "prefix": "v",
     "flaky": "ppc",
     "tags": "native"
+  },
+  "chokidar": {
+    "maintainers": ["paulmillr", "es128"]
   }
 }
