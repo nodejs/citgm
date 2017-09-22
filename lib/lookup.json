@@ -446,5 +446,10 @@
     "prefix": "v",
     "flaky": "ppc",
     "tags": "native"
+  },
+  "blake2b-wasm": {
+    "maintainers": ["mafintosh", "addaleax"],
+    "prefix": "v",
+    "skip": "<8"
   }
 }
