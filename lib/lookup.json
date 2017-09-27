@@ -43,9 +43,9 @@
     "prefix": "v",
     "maintainers": "kriskowal"
   },
-  "coffee-script": {
-    "maintainers": "jashkenas",
-    "skip": "v4"
+  "coffeescript": {
+    "maintainers": ["jashkenas", "GeoffreyBooth"],
+    "skip": "<=v4"
   },
   "through2": {
     "prefix": "v",
