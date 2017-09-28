@@ -476,6 +476,7 @@
   "ava": {
     "prefix": "v",
     "flaky": "aix",
+    "skip": ["ppc", "windows"],
     "maintainers": ["sindresorhus", "novemberborn"]
   },
   "shot": {
