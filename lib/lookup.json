@@ -480,7 +480,8 @@
   },
   "shot": {
     "prefix": "v",
-    "maintainers": "mtharrison"
+    "maintainers": "mtharrison",
+    "skip": "<8"
   },
   "blake2b-wasm": {
     "maintainers": ["mafintosh", "addaleax"],
