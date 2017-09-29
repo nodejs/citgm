@@ -266,6 +266,7 @@
   },
   "yeoman-generator": {
     "prefix": "v",
+    "skip": true,
     "flaky": ["ppc", "win32", "rhel"],
     "expectFail": "fips",
     "maintainers": ["SBoudrias", "sindresorhus"]
