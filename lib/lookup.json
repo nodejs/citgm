@@ -33,6 +33,7 @@
   },
   "multer": {
     "prefix": "v",
+    "skip": "win32",
     "maintainers": "linusu"
   },
   "express-session": {
@@ -45,7 +46,7 @@
   },
   "coffeescript": {
     "maintainers": ["jashkenas", "GeoffreyBooth"],
-    "skip": "<=v4"
+    "skip": ["<=v4", "win32"]
   },
   "through2": {
     "prefix": "v",
@@ -468,6 +469,7 @@
   "mocha": {
     "prefix": "v",
     "flaky": "aix",
+    "skip": "windows",
     "maintainers": ["tj", "boneskull"]
   },
   "rewire": {
@@ -477,7 +479,7 @@
   "ava": {
     "prefix": "v",
     "flaky": "aix",
-    "skip": ["ppc", "windows"],
+    "skip": ["ppc", "win32"],
     "maintainers": ["sindresorhus", "novemberborn"]
   },
   "shot": {
