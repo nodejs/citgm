@@ -468,8 +468,7 @@
   },
   "mocha": {
     "prefix": "v",
-    "flaky": "aix",
-    "skip": "windows",
+    "skip": ["win32", "rhel", "aix", "fedora", "ppc"],
     "maintainers": ["tj", "boneskull"]
   },
   "rewire": {
@@ -478,8 +477,7 @@
   },
   "ava": {
     "prefix": "v",
-    "flaky": "aix",
-    "skip": ["ppc", "win32"],
+    "skip": ["ppc", "win32", "rhel", "aix"],
     "maintainers": ["sindresorhus", "novemberborn"]
   },
   "shot": {
