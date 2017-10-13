@@ -295,7 +295,8 @@
   },
   "semver": {
     "prefix": "v",
-    "maintainers": "isaacs"
+    "maintainers": "isaacs",
+    "expectFail": "fips"
   },
   "mime": {
     "prefix": "v",
