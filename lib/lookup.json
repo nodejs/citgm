@@ -304,10 +304,11 @@
     "maintainers": "broofa"
   },
   "serialport": {
+    "prefix": "v",
     "flaky": ["ppc", "win32"],
     "expectFail": "fips",
     "tags": "native",
-    "maintainers": "broofa"
+    "maintainers": "reconbot"
   },
   "isarray": {
     "prefix": "v",
