@@ -480,7 +480,7 @@
   },
   "ava": {
     "prefix": "v",
-    "skip": ["ppc", "win32", "rhel", "aix"],
+    "skip": ["ppc", "win32", "rhel", "aix", "<6"],
     "maintainers": ["sindresorhus", "novemberborn"]
   },
   "shot": {
