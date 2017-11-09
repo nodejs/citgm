@@ -495,7 +495,7 @@
   },
   "node-core-utils": {
     "prefix": "v",
-    "maintainers": ["joyeecheung", "refack", "tiriel"],
+    "maintainers": "nodejs/automation",
     "skip": "<8"
   }
 }
