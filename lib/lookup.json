@@ -492,5 +492,9 @@
     "maintainers": ["mafintosh", "addaleax"],
     "prefix": "v",
     "skip": "<8"
+  },
+  "node-core-utils": {
+    "prefix": "v",
+    "maintainers": "joyeecheung"
   }
 }
