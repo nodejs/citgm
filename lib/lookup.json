@@ -495,6 +495,7 @@
   },
   "node-core-utils": {
     "prefix": "v",
-    "maintainers": "joyeecheung"
+    "maintainers": "joyeecheung",
+    "skip": "<8"
   }
 }
