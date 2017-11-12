@@ -131,7 +131,7 @@
     "prefix": "v",
     "flaky": ["aix", "s390"],
     "maintainers": ["ralphtheninja", "rvagg"],
-    "skip": "<6"
+    "skip": "<4"
   },
   "torrent-stream": {
     "prefix": "v",
