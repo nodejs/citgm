@@ -1,0 +1,27 @@
+{
+  "omg-i-pass": {
+    "npm": true,
+    "install": ["--default-install-param"],
+    "tests": {
+      "default-name": "default test name",
+      "second": {
+        "install": ["--second-test-install-param"]
+      }
+    }
+  },
+  "omg-i-pass-with-install-param": {
+    "npm": true,
+    "skip": true,
+    "install": ["--some-param"],
+    "tests": {
+      "works": {
+        "skip": false,
+        "install": ["--extra-param"]
+      }
+    }
+  },
+  "omg-i-fail": {
+    "npm": true,
+    "skip": true
+  }
+}

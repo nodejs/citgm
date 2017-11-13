@@ -141,6 +141,52 @@ For syntax, see [lookup.json](./lib/lookup.json), the available attributes are:
 If you want to pass options to npm, eg `--registry`, you can usually define an
 environment variable, eg `"npm_config_registry": "https://www.xyz.com"`.
 
+## Multiple tests for single module
+
+You can provide more than one configuration option for a module by using
+`tests` attribute in [lookup.json](./lib/lookup.json). Entire entry without the
+`test` attribute will be the default test. Each key of the `test` attribute is
+an object that defines separate test. Keys of each test will be used to
+overwrite values of the default test.
+
+Special key `default-name` can be used to rename default test.
+
+For example, this can be used to test both prebuilt and locally built addons:
+```
+"sample_module": {
+  "prefix": "v",
+  "flaky": true,
+  "tests": {
+    "default-name": "prebuilt",
+    "built-locally": {
+      "flaky": false,
+      "install": ["--build-from-source"]
+    }
+  }
+}
+```
+
+This defines two test for `sample_module`. Default one called "prebuilt" with:
+```
+{
+  "prefix:": "v",
+  "flaky": true
+}
+```
+And "built-locally" with:
+```
+{
+  "prefix": "v",
+  "flaky": false,
+  "install": ["--build-from-source"]
+}
+```
+
+`citgm-all` will use both tests when running. Running `citgm sample_module` will
+call the default test. You can select the test by adding `#test name` to module
+name - `citgm sample_module#prebuilt` will run default test and
+`citgm sample_module#build-locally` will use the "built-locally" test.
+
 ## Testing
 
 You can run the test suite using npm

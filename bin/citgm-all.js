@@ -133,8 +133,11 @@ function runCitgm (mod, name, next) {
   process.on('SIGHUP', cleanup);
   process.on('SIGBREAK', cleanup);
 
-  runner.on('start', function(name) {
+  runner.on('start', function(name, test) {
     log.info('starting', name);
+    if (test) {
+      log.info('test', test);
+    }
   }).on('fail', function(err) {
     log.error('failure', err.message);
   }).on('data', function(type, key, message) {
@@ -164,10 +167,36 @@ function runTask(task, next) {
 }
 
 function filterLookup(result, value, key) {
-  result.push({
-    name: key,
-    mod: value
-  });
+  const module = value;
+  const module_name = key;
+  if (module.tests) {
+    const original = _.assign({}, module);
+    if (module.tests['default-name']) {
+      result.push({
+        name: module_name + '#' + module.tests['default-name'],
+        mod: original
+      });
+    } else {
+      result.push({
+        name: module_name,
+        mod: original
+      });
+    }
+    for (const testName in module.tests) {
+      if (testName === 'default-name')
+        continue;
+      const test = _.assign({}, original, module.tests[testName]);
+      result.push({
+        name: module_name + '#' + testName,
+        mod: test
+      });
+    }
+  } else {
+    result.push({
+      name: module_name,
+      mod: module
+    });
+  }
   return result;
 }
 
