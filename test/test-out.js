@@ -17,7 +17,7 @@ test('out: no color', function (t) {
 test('out: with color', function (t) {
   const supportscolor = Logger.__get__('supportscolor');
   Logger.__set__('supportscolor', function () {
-    return true;
+    return {stdout: true, stderr: true};
   });
   const output = Logger.__get__('output');
   Logger.__set__('output', function () {
