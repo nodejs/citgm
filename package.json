@@ -63,7 +63,7 @@
     "rewire": "^3.0.1",
     "string-to-stream": "^1.1.0",
     "tap": "^10.1.0",
-    "tap-parser": "^6.0.1",
+    "tap-parser": "^7.0.0",
     "xml2js": "^0.4.17"
   }
 }
