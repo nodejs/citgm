@@ -14,7 +14,7 @@
     "tap": "tap -J --timeout 90 \"test/**/test-*.js\"",
     "coverage": "npm run tap -- --coverage",
     "coverage-html": "npm run tap -- --coverage --coverage-report=html",
-    "lint": "eslint bin/* lib/ test/"
+    "lint": "eslint bin/* lib/ test/ --cache"
   },
   "author": "James M Snell <jasnell@gmail.com> (http://jasnell.me)",
   "repository": {
