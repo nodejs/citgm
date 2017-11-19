@@ -46,7 +46,7 @@
     "root-check": "^1.0.0",
     "semver": "^5.0.1",
     "strip-ansi": "^4.0.0",
-    "supports-color": "^4.2.0",
+    "supports-color": "^5.0.0",
     "tar": "^4.0.2",
     "uid-number": "0.0.6",
     "update-notifier": "^2.1.0",
