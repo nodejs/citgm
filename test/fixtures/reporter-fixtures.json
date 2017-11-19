@@ -4,6 +4,11 @@
     "version": "4.2.2",
     "duration": 50
   },
+  "iSkipped": {
+    "name": "iSkipped",
+    "version": "4.2.2",
+    "skipped": true
+  },
   "iFail": {
     "name": "iFail",
     "version": "3.0.1",

@@ -110,6 +110,11 @@ const modules = [];
 
 function runCitgm (mod, name, next) {
   if (isMatch(mod.skip)) {
+    modules.push({
+      name,
+      skipped: true
+    });
+    log.info('skipped', name);
     return next();
   }
 
