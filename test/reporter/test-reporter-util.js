@@ -15,6 +15,7 @@ const noPassing = [
   fixtures.iFail,
   fixtures.iFail,
   fixtures.iFail,
+  fixtures.iSkipped,
   fixtures.iFlakyFail,
   fixtures.iFlakyFail,
   fixtures.iFlakyFail,
@@ -23,6 +24,7 @@ const noPassing = [
 
 const somePassing = [
   fixtures.iPass,
+  fixtures.iSkipped,
   fixtures.iFlakyPass,
   fixtures.iFlakyFail,
   fixtures.iFail
@@ -30,6 +32,7 @@ const somePassing = [
 
 const allPassing = [
   fixtures.iPass,
+  fixtures.iSkipped,
   fixtures.iFlakyPass,
   fixtures.iPass
 ];
@@ -51,6 +54,16 @@ test('getPassing:', function (t) {
       'there should be three passing modules in the allPassing list');
   t.equals(util.getPassing(flakeCityUsa).length, 3,
       'there should be two passing modules in the flakeCityUsa list');
+  t.end();
+});
+
+test('getSkipped:', function (t) {
+  t.equals(util.getSkipped(noPassing).length, 1,
+      'there should be one skipped module in the noPassing list');
+  t.equals(util.getSkipped(somePassing).length, 1,
+      'there should be one skipped module  in the somePassing list');
+  t.equals(util.getSkipped(allPassing).length, 1,
+      'there should be one skipped module  in the allPassing list');
   t.end();
 });
 
