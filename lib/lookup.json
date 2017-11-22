@@ -463,12 +463,6 @@
   "crc32-stream": {
     "maintainers": "ctalkington"
   },
-  "sodium-native": {
-    "maintainers": ["mafintosh", "emilbayes"],
-    "prefix": "v",
-    "flaky": "ppc",
-    "tags": "native"
-  },
   "mocha": {
     "prefix": "v",
     "skip": ["win32", "rhel", "aix", "fedora", "ppc"],
