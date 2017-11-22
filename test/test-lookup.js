@@ -122,6 +122,34 @@ test('lookup: module not in table', function (t) {
   });
 });
 
+test('lookup: module not in table with gitHead', function (t) {
+  const context = {
+    lookup: null,
+    module: {
+      name: 'omg-i-pass',
+      raw: null
+    },
+    meta: {
+      repository: {
+        url: 'https://github.com/nodejs/omg-i-pass'
+      },
+      gitHead: 'abc123'
+    },
+    options: {
+
+    },
+    emit: function () {}
+  };
+
+  lookup(context, function (err) {
+    t.error(err);
+    t.equals(context.module.raw,
+             'https://github.com/nodejs/omg-i-pass/archive/abc123.tar.gz',
+             'raw should use commit SHA if package has gitHead');
+    t.end();
+  });
+});
+
 test('lookup: module in table', function (t) {
   const context = {
     lookup: null,
@@ -145,6 +173,34 @@ test('lookup: module in table', function (t) {
     t.equals(context.module.raw,
           'https://github.com/lodash/lodash/archive/master.tar.gz',
               'raw should be truthy if the module was in the list');
+    t.end();
+  });
+});
+
+test('lookup: module in table with gitHead', function (t) {
+  const context = {
+    lookup: null,
+    module: {
+      name: 'lodash',
+      raw: null
+    },
+    meta: {
+      repository: {
+        url: 'https://github.com/lodash/lodash'
+      },
+      gitHead: 'abc123'
+    },
+    options: {
+
+    },
+    emit: function () {}
+  };
+
+  lookup(context, function (err) {
+    t.error(err);
+    t.equals(context.module.raw,
+             'https://github.com/lodash/lodash/archive/abc123.tar.gz',
+             'raw should use commit SHA if package has gitHead');
     t.end();
   });
 });
