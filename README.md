@@ -6,7 +6,7 @@ node runtime.
 
 [![Build Status](https://travis-ci.org/nodejs/citgm.svg?branch=master)](https://travis-ci.org/nodejs/citgm) [![dependencies Status](https://david-dm.org/nodejs/citgm/status.svg)](https://david-dm.org/nodejs/citgm) [![devDependencies Status](https://david-dm.org/nodejs/citgm/dev-status.svg)](https://david-dm.org/nodejs/citgm?type=dev)
 
-The Node.js project uses citgm to smoketest our releases and controversial changes. The Jenkins job that utilizes citgm can be found [on our CI](https://ci.nodejs.org/view/Node.js-citgm/job/citgm-smoker/).
+The Node.js project uses citgm to smoke test our releases and controversial changes. The Jenkins job that utilizes citgm can be found [on our CI](https://ci.nodejs.org/view/Node.js-citgm/job/citgm-smoker/).
 
 ## Installation
 ```
