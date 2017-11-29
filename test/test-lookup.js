@@ -335,3 +335,96 @@ test('lookup: logging', function (t) {
     t.end();
   });
 });
+
+test('lookup: lookup with verify-node-gyp:called', function (t) {
+  const context = {
+    module: {
+      name: 'omg-i-pass',
+      raw: null
+    },
+    meta: {
+      repository: '/dev/null',
+      version: '0.1.1'
+    },
+    options: {
+      lookup: 'test/fixtures/custom-lookup-verify-node-gyp.json'
+    },
+    emit: function () {}
+  };
+
+  lookup(context, function (err) {
+    t.error(err);
+    t.equal(context.module.verifyNodeGyp, true, 'verifyNodeGyp set to true');
+    t.end();
+  });
+});
+
+test('lookup: lookup with verify-node-gyp:not called', function (t) {
+  const context = {
+    module: {
+      name: 'omg-i-pass-too',
+      raw: null
+    },
+    meta: {
+      repository: '/dev/null',
+      version: '0.1.1'
+    },
+    options: {
+      lookup: 'test/fixtures/custom-lookup-verify-node-gyp.json'
+    },
+    emit: function () {}
+  };
+
+  lookup(context, function (err) {
+    t.error(err);
+    t.equal(context.module.verifyNodeGyp, false, 'verifyNodeGyp set to false');
+    t.end();
+  });
+});
+
+test('lookup: lookup with verify-node-gyp: unsupported value', function (t) {
+  const context = {
+    module: {
+      name: 'omg-i-fail',
+      raw: null
+    },
+    meta: {
+      repository: '/dev/null',
+      version: '0.1.1'
+    },
+    options: {
+      lookup: 'test/fixtures/custom-lookup-verify-node-gyp.json'
+    },
+    emit: function () {}
+  };
+
+  lookup(context, function (err) {
+    t.equals(err && err.message,
+      'unsupported verify-node-gyp value in package.json');
+    t.end();
+  });
+});
+
+test('lookup: lookup with verify-node-gyp:not set', function (t) {
+  const context = {
+    module: {
+      name: 'omg-i-have-binding-gyp',
+      raw: null
+    },
+    meta: {
+      repository: '/dev/null',
+      version: '0.1.1'
+    },
+    options: {
+      lookup: 'test/fixtures/custom-lookup-verify-node-gyp.json'
+    },
+    emit: function () {}
+  };
+
+  lookup(context, function (err) {
+    t.error(err);
+    t.equal(context.module.verifyNodeGyp, undefined,
+      'verifyNodeGyp set to undefined');
+    t.end();
+  });
+});

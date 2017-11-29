@@ -136,7 +136,15 @@ For syntax, see [lookup.json](./lib/lookup.json), the available attributes are:
 "install": ["--param1", "--param2"] - Array of extra command line parameters passed to 'npm install'
 "maintainers": ["user1", "user2"] - List of module maintainers to be contacted with issues
 "tags": ["tag1", "tag2"]     Specify which tags apply to the module
+"verify-node-gyp": "called" | "not called" - If set will check if npm called (or not) node-gyp with 
+                                             either 'build' or 'rebuild'
 ```
+
+When using `verify-node-gyp` CITGM will set `npm_config_node_gyp` environment
+variable to its `node-gyp` script, and `citgm_node_gyp_bin_filename` to the
+location of the real `node-gyp binary`. Provided script is used to detect if
+`node-gyp` was called with either `build` or `rebuild` and will run real
+`node-gyp` in the process.
 
 If you want to pass options to npm, eg `--registry`, you can usually define an
 environment variable, eg `"npm_config_registry": "https://www.xyz.com"`.
