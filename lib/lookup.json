@@ -407,8 +407,8 @@
     "maintainers": ["ianobermiller", "alexlande"]
   },
   "ffi": {
-    "flaky": ["ppc", "aix", "s390", "ubuntu", "v8"],
-    "skip": "win32",
+    "flaky": ["ppc", "aix", "s390", "ubuntu"],
+    "skip": ["win32", ">=8"],
     "tags": "native",
     "maintainers": "TooTallNate"
   },
