@@ -88,9 +88,10 @@
     "maintainers": "mishoo"
   },
   "jquery": {
-    "skip": ["win32", true],
+    "skip": "win32",
     "flaky": ["linux", "aix"],
-    "maintainers": "jeresig"
+    "maintainers": "jeresig",
+    "ignoreGitHead": true
   },
   "rimraf": {
     "prefix": "v",
