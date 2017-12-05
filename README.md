@@ -95,7 +95,7 @@ Options:
   -d, --nodedir <path>        Path to the node source to use when compiling native addons
   -p, --test-path <path>      Path to prepend to $PATH when running tests
   -n, --no-color              Turns off colorized output
-  -s, --su                    Allow running the tool as root.
+  -s, --su                    Allow running the tool as root
   -m, --markdown              Output results in markdown
   -t, --tap [path]            Output results in tap with optional file path
   -x, --junit [path]          Output results in junit xml with optional file path
@@ -125,7 +125,7 @@ For syntax, see [lookup.json](./lib/lookup.json), the available attributes are:
 ```
 "npm": true                  Download the module from npm instead of github
 "master": true               Use the master branch
-"prefix": "v"                Specify the prefix used in the module version.
+"prefix": "v"                Specify the prefix used in the module version
 "flaky": true                Ignore failures
 "skip": true                 Completely skip the module
 "expectFail"                 Expect the module to fail, error if it passes
@@ -141,6 +141,38 @@ For syntax, see [lookup.json](./lib/lookup.json), the available attributes are:
 
 If you want to pass options to npm, eg `--registry`, you can usually define an
 environment variable, eg `"npm_config_registry": "https://www.xyz.com"`.
+
+## citgm-stress
+
+//Need to write a description here//
+
+```
+Usage: citgm-stress [options] <module> <repeat>
+
+Options:
+
+  -h, --help                  output usage information
+  -V, --version               output the version number
+  --config                    Path to a JSON config file
+  -v, --verbose [level]       Verbose output (silly, verbose, info, warn, error)
+  -q, --npm-loglevel [level]  Verbose output (silent, error, warn, http, info, verbose, silly)
+  -l, --lookup <path>         Use the lookup table provided at <path>
+  -d, --nodedir <path>        Path to the node source to use when compiling native addons
+  -p, --test-path <path>      Path to prepend to $PATH when running tests
+  -n, --no-color              Turns off colorized output
+  -s, --su                    Allow running the tool as root
+  -m, --markdown              Output results in markdown
+  -t, --tap [path]            Output results in tap with optional file path
+  -x, --junit [path]          Output results in junit xml with optional file path
+  -o, --timeout <length>      Set timeout for npm install
+  -c, --sha <commit-sha>      Install module from commit-sha
+  -u, --uid <uid>             Set the uid (posix only)
+  -g, --gid <uid>             Set the gid (posix only)
+  -a, --append                Turns on append results to file mode rather than replace
+  -j, --parallel <number>     Run tests in parallel
+  -J, --autoParallel          Run tests in parallel (automatically detect core count)
+  --tmpDir <path>             Directory to test modules in
+```
 
 ## Testing
 
