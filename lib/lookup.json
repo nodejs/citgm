@@ -372,8 +372,7 @@
   },
   "full-icu-test": {
     "prefix": "v",
-    "maintainers": "srl295",
-    "skip": ">=9"
+    "maintainers": "srl295"
   },
   "sqlite3": {
     "prefix": "v",
