@@ -403,7 +403,7 @@
   "radium": {
     "prefix": "v",
     "flaky": ["fedora", "ubuntu"],
-    "skip": ["ppc", "s390"],
+    "skip": ["ppc", "s390", "v4"],
     "expectFail": "fips",
     "maintainers": ["ianobermiller", "alexlande"]
   },
@@ -476,7 +476,7 @@
   },
   "ava": {
     "prefix": "v",
-    "skip": ["ppc", "win32", "rhel", "aix", "<6"],
+    "skip": ["ppc", "win32", "rhel", "aix", "<6", "10"],
     "flaky": "<8",
     "maintainers": ["sindresorhus", "novemberborn"]
   },
