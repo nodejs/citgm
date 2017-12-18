@@ -332,7 +332,7 @@
     "prefix": "v",
     "tags": "native",
     "maintainers": ["lgeiger", "rgbkrk"],
-    "skip": ["s390", "ppc"]
+    "skip": ["s390", "ppc", "linux-ia32"]
   },
   "bcrypt": {
     "prefix": "v",
