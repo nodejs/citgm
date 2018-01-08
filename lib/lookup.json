@@ -463,7 +463,8 @@
   },
   "mocha": {
     "prefix": "v",
-    "skip": ["win32", "rhel", "aix", "fedora", "ppc"],
+    "skip": ["s390", "win32", "aix", "fedora", "ppc"],
+    "expectFail": "fips",
     "maintainers": ["tj", "boneskull"]
   },
   "rewire": {
