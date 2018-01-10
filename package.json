@@ -47,7 +47,7 @@
     "semver": "^5.0.1",
     "strip-ansi": "^4.0.0",
     "supports-color": "^5.0.0",
-    "tar": "^4.1.1",
+    "tar": "^3.2.1",
     "uid-number": "0.0.6",
     "update-notifier": "^2.1.0",
     "uuid": "^3.0.0",
