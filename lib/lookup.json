@@ -75,6 +75,7 @@
   },
   "fs-extra": {
     "flaky": ["linux-ia32", "aix", "s390", "win32"],
+    "skip": ">=8",
     "expectFail": "fips",
     "maintainers": "jprichardson"
   },
