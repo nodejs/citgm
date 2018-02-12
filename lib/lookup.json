@@ -464,7 +464,7 @@
   },
   "mocha": {
     "prefix": "v",
-    "skip": ["win32", "rhel", "aix", "fedora", "ppc"],
+    "skip": ["true"],
     "expectFail": "fips",
     "maintainers": ["tj", "boneskull"]
   },
