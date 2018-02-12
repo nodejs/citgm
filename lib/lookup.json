@@ -464,7 +464,7 @@
   },
   "mocha": {
     "prefix": "v",
-    "skip": ["true"],
+    "skip": true,
     "expectFail": "fips",
     "maintainers": ["tj", "boneskull"]
   },
