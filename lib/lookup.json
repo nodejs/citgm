@@ -116,6 +116,7 @@
   },
   "browserify": {
     "flaky": [">=v8", "win32"],
+    "skip": "<=v8",
     "expectFail": "fips",
     "maintainers": "substack"
   },
