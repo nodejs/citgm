@@ -179,7 +179,6 @@
   "ftp": {
     "prefix": "v",
     "skip": ">=8",
-    "skipIssue": "https://github.com/nodejs/citgm/issues/466",
     "maintainers": "mscdex"
   },
   "split2": {
