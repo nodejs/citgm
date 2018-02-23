@@ -178,7 +178,7 @@
   },
   "ftp": {
     "prefix": "v",
-		"skip": ">=8",
+    "skip": ">=8",
     "maintainers": "mscdex"
   },
   "split2": {
