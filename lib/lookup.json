@@ -332,7 +332,10 @@
     "prefix": "v",
     "tags": "native",
     "maintainers": ["lgeiger", "rgbkrk"],
-    "skip": ["s390", "ppc"]
+    "skip": ["s390", "ppc"],
+    "envVar": {
+      "npm_config_msvs_version": 2015
+    }
   },
   "bcrypt": {
     "prefix": "v",
