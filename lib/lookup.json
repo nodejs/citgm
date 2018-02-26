@@ -222,6 +222,7 @@
     "maintainers": "diasdavid"
   },
   "sax": {
+    "skip": "win32",
     "prefix": "v",
     "expectFail": "fips",
     "maintainers": "isaacs"
@@ -295,6 +296,7 @@
     "maintainers": ["bcoe", "addaleax"]
   },
   "semver": {
+    "skip": "win32",
     "prefix": "v",
     "maintainers": "isaacs",
     "expectFail": "fips"
