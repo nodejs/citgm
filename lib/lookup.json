@@ -167,7 +167,7 @@
   },
   "vinyl-fs": {
     "prefix": "v",
-    "flaky": true,
+    "flaky": "win32",
     "master": true,
     "maintainers": ["contra", "phated"]
   },
