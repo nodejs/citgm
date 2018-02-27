@@ -418,7 +418,7 @@
     "maintainers": "wadey"
   },
   "koa": {
-    "skip": ["<7", "win32", "rhel"],
+    "skip": "<7",
     "flaky": "ubuntu",
     "maintainers": "tj"
   },
