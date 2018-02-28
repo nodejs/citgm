@@ -107,7 +107,9 @@ test('util.sanitizeOutput', function (t) {
   // Var result = util.sanitizeOutput();
   const raw = fs.readFileSync(carriageReturnPath, 'utf-8');
   const expected = fs.readFileSync(carriageReturnExpectedPath, 'utf-8');
-  const result = util.sanitizeOutput(raw, '#');
-  t.equals(result, expected, 'there should be a # on every line');
+  let result = util.sanitizeOutput(raw, '#');
+  result += '\n';
+  t.equals(result, expected, 'there should be a # on every line & escape char' +
+  'should be removed');
   t.end();
 });

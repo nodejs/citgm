@@ -1,5 +1,5 @@
   Route
-    ✓ should work without handlers
+ # this line contains escape characters    ✓ should work without handlers
     .all
       ✓ should add handler
       ✓ should handle VERBS
