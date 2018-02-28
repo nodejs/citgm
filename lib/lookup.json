@@ -2,7 +2,7 @@
   "lodash": {
     "expectFail": "fips",
     "maintainers": "jdalton",
-    "lkgr": "4.17.5"
+    "lkgr": "4.17.3"
   },
   "underscore": {
     "flaky": ["aix", "s390"],

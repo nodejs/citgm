@@ -39,10 +39,10 @@ const yargs = commonArgs(require('yargs'))
     type: 'array',
     description: 'Define which tags from the lookup to skip'
   })
-  .option('latest-know-good-release', {
+  .option('last-know-good-release', {
     alias: 'lkgr',
     type: 'boolean',
-    description: 'Latest know good release'
+    description: 'Uses last know good release'
   });
 
 const app = yargs.argv;
