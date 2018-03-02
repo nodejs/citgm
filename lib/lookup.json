@@ -2,68 +2,81 @@
   "lodash": {
     "expectFail": "fips",
     "maintainers": "jdalton",
-    "lkgr": "4.17.3"
+    "lkgr": "4.17.5"
   },
   "underscore": {
     "flaky": ["aix", "s390"],
     "skip": "win32",
-    "maintainers": "jashkenas"
+    "maintainers": "jashkenas",
+    "lkgr": "1.8.3"
   },
   "request": {
     "prefix": "v",
     "flaky": true,
     "skip": "aix",
-    "maintainers": "mikeal"
+    "maintainers": "mikeal",
+    "lkgr": "2.83.0"
   },
   "commander": {
     "prefix": "v",
     "skip": "win32",
-    "maintainers": "tj"
+    "maintainers": "tj",
+    "lkgr": "2.14.1"
   },
   "express": {
     "flaky": "ppc",
-    "maintainers": "dougwilson"
+    "maintainers": "dougwilson",
+    "lkgr": "4.16.2"
   },
   "router": {
     "prefix": "v",
-    "maintainers": "dougwilson"
+    "maintainers": "dougwilson",
+    "lkgr": "1.3.2"
   },
   "path-to-regexp": {
     "prefix": "v",
-    "maintainers": "blakeembrey"
+    "maintainers": "blakeembrey",
+    "lkgr": "2.1.0"
   },
   "multer": {
     "prefix": "v",
     "skip": "win32",
-    "maintainers": "linusu"
+    "maintainers": "linusu",
+    "lkgr": "1.3.0"
   },
   "express-session": {
     "prefix": "v",
-    "maintainers": "dougwilson"
+    "maintainers": "dougwilson",
+    "lkgr": "1.15.6"
   },
   "q": {
     "prefix": "v",
-    "maintainers": "kriskowal"
+    "maintainers": "kriskowal",
+    "lkgr": "1.5.1"
   },
   "coffeescript": {
     "maintainers": ["jashkenas", "GeoffreyBooth"],
-    "skip": ["<=v4", "win32"]
+    "skip": ["<=v4", "win32"],
+    "lkgr": "2.2.2"
   },
   "through2": {
     "prefix": "v",
     "stripAnsi": true,
-    "maintainers": "rvagg"
+    "maintainers": "rvagg",
+    "lkgr": "2.0.3"
   },
   "glob": {
     "prefix": "v",
     "flaky": ["v6", "v7", "win32"],
     "expectFail": "fips",
-    "maintainers": "isaacs"
+    "maintainers": "isaacs",
+    "lkgr": "7.1.2"
   },
   "gulp-util": {
     "prefix": "v",
     "flaky": "rhel",
-    "maintainers": "contra"
+    "maintainers": "contra",
+    "lkgr": "3.0.8"
   },
   "pug": {
     "flaky": "ppc",
@@ -72,7 +85,8 @@
   },
   "socket.io": {
     "flaky": true,
-    "maintainers": "rauchg"
+    "maintainers": "rauchg",
+    "lkgr": "2.0.4"
   },
   "fs-extra": {
     "flaky": ["linux-ia32", "aix", "s390", "win32"],
@@ -82,63 +96,75 @@
   },
   "body-parser": {
     "flaky": "aix",
-    "maintainers": "dougwilson"
+    "maintainers": "dougwilson",
+    "lkgr": "1.18.2"
   },
   "uglify-js": {
     "prefix": "v",
     "flaky": ["ppc", "win32", "v7", "darwin"],
-    "maintainers": "mishoo"
+    "maintainers": "mishoo",
+    "lkgr": "3.3.12"
   },
   "jquery": {
     "skip": "win32",
     "flaky": ["linux", "aix"],
     "maintainers": "jeresig",
-    "ignoreGitHead": true
+    "ignoreGitHead": true,
+    "lkgr": "3.3.1"
   },
   "rimraf": {
     "prefix": "v",
     "flaky": "win32",
-    "maintainers": "isaacs"
+    "maintainers": "isaacs",
+    "lkgr": "2.6.2"
   },
   "david": {
     "prefix": "v",
-    "maintainers": "alanshaw"
+    "maintainers": "alanshaw",
+    "lkgr": "11.0.0"
   },
   "eslint": {
     "prefix": "v",
     "flaky": ["v7", "s390", "ubuntu"],
     "skip": ["v8", "ppc"],
     "expectFail": "fips",
-    "maintainers": ["nzakas", "mysticatea", "not-an-aardvark"]
+    "maintainers": ["nzakas", "mysticatea", "not-an-aardvark"],
+    "lkgr": "4.18.1"
   },
   "tape": {
     "prefix": "v",
     "flaky": ["linux", "win32"],
-    "maintainers": "substack"
+    "maintainers": "substack",
+    "lkgr": "4.9.0"
   },
   "browserify": {
     "flaky": [">=v8", "win32"],
     "expectFail": "fips",
-    "maintainers": "substack"
+    "maintainers": "substack",
+    "lkgr": "16.1.0"
   },
   "watchify": {
     "prefix": "v",
     "flaky": ["ppc", "v7", "s390", "ubuntu", "rhel"],
-    "maintainers": "substack"
+    "maintainers": "substack",
+    "lkgr": "3.10.0"
   },
   "stylus": {
     "flaky": ["win32", "aix"],
-    "maintainers": "tj"
+    "maintainers": "tj",
+    "lkgr": "0.54.5"
   },
   "level": {
     "prefix": "v",
     "flaky": ["aix", "s390"],
-    "maintainers": ["ralphtheninja", "rvagg"]
+    "maintainers": ["ralphtheninja", "rvagg"],
+    "lkgr": "3.0.0"
   },
   "torrent-stream": {
     "prefix": "v",
     "flaky": true,
-    "maintainers": "mafintosh"
+    "maintainers": "mafintosh",
+    "lkgr": "1.0.3"
   },
   "react": {
     "prefix": "v",
@@ -150,7 +176,8 @@
     "prefix": "v",
     "flaky": ["ppc", "rhel"],
     "skip": "win32",
-    "maintainers": "contra"
+    "maintainers": "contra",
+    "lkgr": "3.9.1"
   },
   "moment": {
     "flaky": true,
@@ -160,108 +187,130 @@
     "flaky": "linux",
     "skip": "win32",
     "expectFail": "fips",
-    "maintainers": ["einaros", "3rd-Eden", "lpinca"]
+    "maintainers": ["einaros", "3rd-Eden", "lpinca"],
+    "lkgr": "4.1.0"
   },
   "vinyl": {
     "prefix": "v",
-    "maintainers": ["contra", "phated"]
+    "maintainers": ["contra", "phated"],
+    "lkgr": "2.1.0"
   },
   "vinyl-fs": {
     "prefix": "v",
     "flaky": true,
     "master": true,
-    "maintainers": ["contra", "phated"]
+    "maintainers": ["contra", "phated"],
+    "lkgr": "3.0.2"
   },
   "readable-stream": {
     "prefix": "v",
     "flaky": ["ppc", "darwin"],
-    "maintainers": "nodejs/streams"
+    "maintainers": "nodejs/streams",
+    "lkgr": "2.3.4"
   },
   "ftp": {
     "prefix": "v",
     "skip": ">=8",
-    "maintainers": "mscdex"
+    "maintainers": "mscdex",
+    "lkgr": "0.3.10"
   },
   "split2": {
     "prefix": "v",
-    "maintainers": "mcollina"
+    "maintainers": "mcollina",
+    "lkgr": "2.2.0"
   },
   "throughv": {
     "prefix": "v",
     "stripAnsi": true,
-    "maintainers": "mcollina"
+    "maintainers": "mcollina",
+    "lkgr": "1.0.3"
   },
   "duplexer2": {
     "prefix": "v",
-    "maintainers": ["shinn", "deoxxa"]
+    "maintainers": ["shinn", "deoxxa"],
+    "lkgr": "0.1.4"
   },
   "bl": {
     "prefix": "v",
     "stripAnsi": true,
     "expectFail": "fips",
-    "maintainers": "rvagg"
+    "maintainers": "rvagg",
+    "lkgr": "1.2.1"
   },
   "binary-split": {
     "prefix": "v",
     "flaky": "win32",
-    "maintainers": ["maxogden", "mourner"]
+    "maintainers": ["maxogden", "mourner"],
+    "lkgr": "1.0.3"
   },
   "spdy": {
     "prefix": "v",
     "flaky": ["aix", "sles"],
     "skip": "win32",
-    "maintainers": "diasdavid"
+    "maintainers": "diasdavid",
+    "lkgr": "3.4.7"
   },
   "dicer": {
     "prefix": "v",
-    "maintainers": "mscdex"
+    "maintainers": "mscdex",
+    "lkgr": "0.2.5"
   },
   "spdy-transport": {
     "prefix": "v",
     "skip": "win32",
     "flaky": "aix",
-    "maintainers": "diasdavid"
+    "maintainers": "diasdavid",
+    "lkgr": "2.0.20"
   },
   "sax": {
     "skip": "win32",
     "prefix": "v",
     "expectFail": "fips",
-    "maintainers": "isaacs"
+    "maintainers": "isaacs",
+    "lkgr": "1.2.4"
   },
   "duplexify": {
     "prefix": "v",
-    "maintainers": "mafintosh"
+    "maintainers": "mafintosh",
+    "lkgr": "3.5.3"
   },
   "pumpify": {
     "prefix": "v",
-    "maintainers": "mafintosh"
+    "maintainers": "mafintosh",
+    "lkgr": "1.4.0"
   },
   "from2": {
     "prefix": "v",
-    "maintainers": ["mafintosh", "hughsk"]
+    "maintainers": ["mafintosh", "hughsk"],
+    "lkgr": "2.3.0"
   },
   "flush-write-stream": {
     "prefix": "v",
-    "maintainers": "mafintosh"
+    "maintainers": "mafintosh",
+    "lkgr": "1.0.2"
   },
   "jsonstream": {
     "prefix": "v",
     "skip": "win32",
-    "maintainers": "dominictarr"
+    "maintainers": "dominictarr",
+    "lkgr": "1.0.3"
   },
   "csv-parser": {
     "prefix": "v",
     "flaky": "win32",
-    "maintainers": "mafintosh"
+    "maintainers": "mafintosh",
+    "lkgr": "1.12.0"
   },
   "async": {
     "prefix": "v",
     "flaky": true,
-    "maintainers": ["aearly", "megawac"]
+    "maintainers": ["aearly", "megawac"],
+    "lkgr": "2.6.0"
   },
   "bluebird": {
     "prefix": "v",
-    "maintainers": "petkaantonov"
+    "maintainers": "petkaantonov",
+    "lkgr": "3.5.1"
   },
   "mkdirp": {
     "master": true,
@@ -273,91 +322,108 @@
     "prefix": "v",
     "flaky": ["ppc", "win32", "rhel"],
     "expectFail": "fips",
-    "maintainers": ["SBoudrias", "sindresorhus"]
+    "maintainers": ["SBoudrias", "sindresorhus"],
+    "lkgr": "2.0.3"
   },
   "minimist": {
-    "maintainers": "substack"
+    "maintainers": "substack",
+    "lkgr": "1.2.0"
   },
   "cheerio": {
     "skip": "win32",
-    "maintainers": ["matthewmueller", "jugglinmike"]
+    "maintainers": ["matthewmueller", "jugglinmike"],
+    "lkgr": "1.0.0-rc.2"
   },
   "uuid": {
     "prefix": "v",
-    "maintainers": ["ctavan", "broofa"]
+    "maintainers": ["ctavan", "broofa"],
+    "lkgr": "3.2.1"
   },
   "winston": {
     "flaky": ["win32", "ppc", "s390"],
-    "maintainers": "indexzero"
+    "maintainers": "indexzero",
+    "lkgr": "2.4.0"
   },
   "yargs": {
     "prefix": "v",
     "flaky": "ppc",
     "expectFail": "fips",
-    "maintainers": ["bcoe", "addaleax"]
+    "maintainers": ["bcoe", "addaleax"],
+    "lkgr": "11.0.0"
   },
   "semver": {
     "skip": "win32",
     "prefix": "v",
     "maintainers": "isaacs",
-    "expectFail": "fips"
+    "expectFail": "fips",
+    "lkgr": "5.5.0"
   },
   "mime": {
     "prefix": "v",
     "flaky": true,
-    "maintainers": "broofa"
+    "maintainers": "broofa",
+    "lkgr": "2.2.0"
   },
   "serialport": {
     "prefix": "v",
     "flaky": ["ppc", "win32"],
     "tags": "native",
-    "maintainers": "reconbot"
+    "maintainers": "reconbot",
+    "lkgr": "6.1.1"
   },
   "isarray": {
     "prefix": "v",
-    "maintainers": "juliangruber"
+    "maintainers": "juliangruber",
+    "lkgr": "2.0.4"
   },
   "inherits": {
     "prefix": "v",
-    "maintainers": "isaacs"
+    "maintainers": "isaacs",
+    "lkgr": "2.0.3"
   },
   "graceful-fs": {
     "prefix": "v",
-    "maintainers": "isaacs"
+    "maintainers": "isaacs",
+    "lkgr": "4.1.11"
   },
   "leveldown": {
     "prefix": "v",
     "flaky": ["ppc", "s390"],
     "tags": "native",
-    "maintainers": "rvagg"
+    "maintainers": "rvagg",
+    "lkgr": "3.0.0"
   },
   "zeromq": {
     "prefix": "v",
-    "skip": "win32",
+    "skip": ["s390", "ppc"],
     "tags": "native",
     "maintainers": ["lgeiger", "rgbkrk"],
-    "skip": ["s390", "ppc"]
+    "lkgr": "4.6.0"
   },
   "bcrypt": {
     "prefix": "v",
     "skip": "win32",
     "tags": "native",
-    "maintainers": "ncb000gt"
+    "maintainers": "ncb000gt",
+    "lkgr": "1.0.3"
   },
   "ref": {
     "flaky": "aix",
     "tags": "native",
-    "maintainers": "TooTallNate"
+    "maintainers": "TooTallNate",
+    "lkgr": "1.3.5"
   },
   "time": {
     "flaky": ["linux-ia32", "s390"],
     "skip": ["win32", "aix"],
     "tags": "native",
-    "maintainers": "TooTallNate"
+    "maintainers": "TooTallNate",
+    "lkgr": "0.12.0"
   },
   "bson": {
     "prefix": "V",
-    "maintainers": "christkv"
+    "maintainers": "christkv",
+    "lkgr": "2.0.1"
   },
   "ember-cli": {
     "prefix": "v",
@@ -370,54 +436,63 @@
     "prefix": "v",
     "flaky": true,
     "tags": "native",
-    "maintainers": "xzyfer"
+    "maintainers": "xzyfer",
+    "lkgr": "4.7.2"
   },
   "full-icu-test": {
     "prefix": "v",
-    "maintainers": "srl295"
+    "maintainers": "srl295",
+    "lkgr": "1.0.3"
   },
   "sqlite3": {
     "prefix": "v",
     "tags": "native",
     "flaky": "ppc",
-    "maintainers": "koistya"
+    "maintainers": "koistya",
+    "lkgr": "3.1.13"
   },
   "iconv": {
     "prefix": "v",
     "flaky": "aix",
     "tags": "native",
-    "maintainers": "bnoordhuis"
+    "maintainers": "bnoordhuis",
+    "lkgr": "2.3.0"
   },
   "electron-prebuilt": {
     "prefix": "v",
     "flaky": "s390",
     "skip": "ppc",
-    "maintainers": "maxogden"
+    "maintainers": "maxogden",
+    "lkgr": "1.4.13"
   },
   "libxmljs": {
     "prefix": "v",
     "flaky": ["aix", "sles", "rhel", "darwin"],
     "skip": ["win32", ">=8"],
     "tags": "native",
-    "maintainers": "defunctzombie"
+    "maintainers": "defunctzombie",
+    "lkgr": "0.18.7"
   },
   "radium": {
     "prefix": "v",
     "flaky": ["fedora", "ubuntu"],
     "skip": ["ppc", "s390", "v4"],
     "expectFail": "fips",
-    "maintainers": ["ianobermiller", "alexlande"]
+    "maintainers": ["ianobermiller", "alexlande"],
+    "lkgr": "0.22.1"
   },
   "ffi": {
     "flaky": ["ppc", "aix", "s390", "ubuntu"],
     "skip": ["win32", ">=8"],
     "tags": "native",
-    "maintainers": "TooTallNate"
+    "maintainers": "TooTallNate",
+    "lkgr": "2.2.0"
   },
   "microtime": {
     "prefix": "v",
     "tags": "native",
-    "maintainers": "wadey"
+    "maintainers": "wadey",
+    "lkgr": "2.1.7"
   },
   "koa": {
     "skip": "<7",
@@ -427,44 +502,53 @@
   "spawn-wrap": {
     "prefix": "v",
     "flaky": ["win32", "sles", "aix", "darwin"],
-    "maintainers": "isaacs"
+    "maintainers": "isaacs",
+    "lkgr": "1.4.2"
   },
   "node-report": {
     "prefix": "v",
     "flaky": "win32",
     "tags": "native",
-    "maintainers": ["rnchamberlain", "richardlau"]
+    "maintainers": ["rnchamberlain", "richardlau"],
+    "lkgr": "2.2.1"
   },
   "thread-sleep": {
     "install": ["--build-from-source"],
     "tags": "native",
-    "maintainers": ["forbeslindesay", "timothygu"]
+    "maintainers": ["forbeslindesay", "timothygu"],
+    "lkgr": "2.0.0"
   },
   "bufferutil": {
     "prefix": "v",
     "tags": "native",
-    "maintainers": ["3rdeden", "einaros", "lpinca"]
+    "maintainers": ["3rdeden", "einaros", "lpinca"],
+    "lkgr": "3.0.3"
   },
   "weak": {
     "tags": "native",
-    "maintainers": "tootallnate"
+    "maintainers": "tootallnate",
+    "lkgr": "1.0.1"
   },
   "acorn": {
     "maintainers": "marijnh",
-    "skip": "win32"
+    "skip": "win32",
+    "lkgr": "5.5.0"
   },
   "esprima": {
     "maintainers": "ariya",
     "expectFail": "fips",
-    "skip": "win32"
+    "skip": "win32",
+    "lkgr": "4.0.0"
   },
   "node-gyp": {
     "prefix": "v",
     "tags": "native",
-    "maintainers": ["nodejs/node-gyp"]
+    "maintainers": ["nodejs/node-gyp"],
+    "lkgr": "3.6.2"
   },
   "crc32-stream": {
-    "maintainers": "ctalkington"
+    "maintainers": "ctalkington",
+    "lkgr": "2.0.0"
   },
   "mocha": {
     "prefix": "v",
@@ -474,7 +558,8 @@
   },
   "rewire": {
     "prefix": "v",
-    "maintainers": "jhnns"
+    "maintainers": "jhnns",
+    "lkgr": "3.0.2"
   },
   "ava": {
     "prefix": "v",
