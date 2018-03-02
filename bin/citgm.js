@@ -18,12 +18,12 @@ const yargs = commonArgs(require('yargs'))
   .option('last-known-good-release', {
     alias: 'lkgr',
     type: 'boolean',
-    description: 'Install last know good release'
+    description: 'Install last known good release'
   })
-  .option('update-last-known-good-release', {
+  .option('update-lkgr', {
     alias: 'ulkgr',
     type: 'boolean',
-    description: 'Update last know good release'
+    description: 'Update last known good release'
   });
 
 const app = yargs.argv;
