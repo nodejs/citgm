@@ -70,6 +70,7 @@ const options = {
   npmLevel: app.npmLoglevel,
   timeoutLength: app.timeout,
   tmpDir: app.tmpDir,
+  customTest: app.customTest,
   includeTags: app.includeTags || [],
   excludeTags: app.excludeTags || []
 };
