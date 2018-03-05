@@ -206,3 +206,27 @@ test('bin: sigterm', function (t) {
     t.equal(code, 1, 'citgm-all should fail');
   });
 });
+
+test('bin: test custom test', function (t) {
+  t.plan(1);
+  const proc = spawn(citgmAllPath, ['-l',
+    'test/fixtures/custom-lookup-customTest.json',
+    '--customTest', `${process.cwd()}/test/fixtures/custom test script.js`]);
+  proc.on('error', function(err) {
+    t.error(err);
+    t.fail('we should not get an error testing omg-i-fail');
+  });
+  proc.on('close', function (code) {
+    t.ok(code === 0, 'omg-i-fail should pass and exit with a code of zero');
+  });
+});
+
+test('bin: test custom test', function (t) {
+  t.plan(1);
+  const proc = spawn(citgmAllPath, ['-l',
+    'test/fixtures/custom-lookup-customTest.json',
+    '--customTest', `${process.cwd()}/test/fixtures/no such file.js`]);
+  proc.on('close', function (code) {
+    t.ok(code !== 0, 'omg-i-fail should fail with a non-zero exit code');
+  });
+});

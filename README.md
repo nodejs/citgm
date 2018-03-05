@@ -37,6 +37,7 @@ Options:
   -s, --su                    Allow running the tool as root.
   -m, --markdown              Output results in markdown
   -t, --tap [path]            Output results in tap with optional file path
+  --customTest <path>         Run a custom node test script instead of "npm test"
   -x, --junit [path]          Output results in junit xml with optional file path
   -o, --timeout <length>      Set timeout for npm install
   -c, --sha <commit-sha>      Install module from commit-sha
@@ -98,6 +99,7 @@ Options:
   -s, --su                    Allow running the tool as root.
   -m, --markdown              Output results in markdown
   -t, --tap [path]            Output results in tap with optional file path
+  --customTest <path>         Run a custom node test script instead of "npm test"
   -x, --junit [path]          Output results in junit xml with optional file path
   -o, --timeout <length>      Set timeout for npm install
   -f, --fail-flaky            Ignore flaky flags. Do not ignore any failures.
@@ -193,6 +195,36 @@ citgm --lookup ../path/to/lookup.json lodash@latest
 ```
 
 For the most part, the built in table should be sufficient for general use.
+
+You can run a custom test script instead of `npm test` CLI command:
+
+```
+citgm --customTest path/to/customTestScript
+```
+
+If you want to get code coverage results, your custom test script may look like:
+
+```js
+"use strict";
+
+const { spawnSync } = require("child_process");
+const path = require("path");
+const packageName = require(path.join(process.cwd(), "package.json")).name;
+
+const coverageProcess = spawnSync("nyc", [
+  "--reporter=json-summary",
+  `--report-dir=${process.env.WORKSPACE}/${packageName}`,
+  "npm", "test"
+]);
+
+const coverageSummary = require(path.join(process.env.WORKSPACE, packageName, "coverage-summary.json"));
+console.log(packageName, "total coverage result(%)", coverageSummary.total.lines.pct);
+```
+
+You will have to globally install dependencies from the `customTestScript`, in this case:
+```
+npm install -g nyc
+```
 
 ### Additional Notes:
 
