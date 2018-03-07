@@ -39,6 +39,9 @@ const yargs = commonArgs(require('yargs'))
     type: 'array',
     description: 'Define which tags from the lookup to skip'
   })
+  .example('citgm-all -t /path/to/output.tap',
+           'Write test results as tap to file.')
+  .example('citgm-all -l /path/to/lookup.json', 'Test a custom set of modules.')
   .example('citgm-all --includeTags express', 'Only test express.')
   .example('citgm-all --excludeTags native', 'Don\'t test native modules.');
 
