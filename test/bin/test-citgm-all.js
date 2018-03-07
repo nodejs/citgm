@@ -152,6 +152,30 @@ test('citgm-all: includeTags multiple', function (t) {
   });
 });
 
+test('citgm-all: excludeTags modulename', function (t) {
+  t.plan(1);
+  const proc = spawn(citgmAllPath, ['--excludeTags', 'omg-i-fail', '-l',
+    'test/fixtures/custom-lookup-tags.json']);
+  proc.on('error', function(err) {
+    t.error(err);
+  });
+  proc.on('close', function (code) {
+    t.equals(code, 0, 'citgm-all should not run omg-i-fail');
+  });
+});
+
+test('citgm-all: includeTags modulename multiple', function (t) {
+  t.plan(1);
+  const proc = spawn(citgmAllPath, ['--includeTags', 'omg-i-pass noTag1 NoTag2',
+    '-l', 'test/fixtures/custom-lookup-tags.json']);
+  proc.on('error', function(err) {
+    t.error(err);
+  });
+  proc.on('close', function (code) {
+    t.equals(code, 0, 'citgm-all should only run omg-i-pass');
+  });
+});
+
 test('citgm-all: skip /w rootcheck /w tap to fs /w junit to fs /w append',
 function (t) {
   t.plan(1);

@@ -109,6 +109,7 @@ Options:
   --tmpDir <path>             Directory to test modules in
   --includeTags tag1 tag2     Only test modules from the lookup that contain a matching tag field
   --excludeTags tag1 tag2     Specify which tags to skip from the lookup (takes priority over includeTags)
+                              Module names are automatically added as tags.
 ```
 
 When using a JSON config file, the properties need to be the same as the

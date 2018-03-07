@@ -38,7 +38,9 @@ const yargs = commonArgs(require('yargs'))
   .option('excludeTags', {
     type: 'array',
     description: 'Define which tags from the lookup to skip'
-  });
+  })
+  .example('citgm-all --includeTags express', 'Only test express.')
+  .example('citgm-all --excludeTags native', 'Don\'t test native modules.');
 
 const app = yargs.argv;
 

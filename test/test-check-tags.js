@@ -316,3 +316,48 @@ test('test excludeTags, includeTags and no matching tags', function (t) {
   const result = checkTags(options, mod, 'test', log);
   t.true(result, 'should return true');
 });
+
+test('test module name can be used in includeTags/excludeTags', function (t) {
+  t.plan(2);
+
+  t.equal(
+    checkTags(
+      { excludeTags: [], includeTags: ['test'] },
+      { tags: 'b' },
+      'test',
+      log),
+    false
+  );
+
+  t.equal(
+    checkTags(
+      { excludeTags: ['test'], includeTags: [] },
+      { tags: 'b' },
+      'test',
+      log),
+    true
+  );
+});
+
+test('test tags matching module name with includeTags/excludeTags',
+    function (t) {
+      t.plan(2);
+
+      t.equal(
+        checkTags(
+          { excludeTags: [], includeTags: ['test'] },
+          { tags: 'test' },
+          'test',
+          log),
+        false
+      );
+
+      t.equal(
+        checkTags(
+          { excludeTags: ['test'], includeTags: [] },
+          { tags: 'test' },
+          'test',
+          log),
+        true
+      );
+    });
