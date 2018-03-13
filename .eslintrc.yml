@@ -15,7 +15,7 @@
     no-useless-escape: 2
     array-bracket-spacing: [2, never]
     brace-style: 2
-    capitalized-comments: 2
+    capitalized-comments: [2, always, { ignoreConsecutiveComments: true }]
     eol-last: [2, always]
     func-call-spacing: [2, never]
     semi-spacing: 2
