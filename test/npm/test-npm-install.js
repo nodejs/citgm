@@ -8,7 +8,7 @@ const mkdirp = require('mkdirp');
 const rimraf = require('rimraf');
 const ncp = require('ncp');
 
-const npmInstall = require('../../lib/npm/install');
+const npmInstall = require('../../lib/package-manager/install');
 const makeContext = require('../helpers/make-context');
 
 const sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now());
@@ -43,7 +43,7 @@ test('npm-install: basic module', function (t) {
   const context = makeContext.npmContext('omg-i-pass', sandbox, {
     npmLevel: 'silly'
   });
-  npmInstall(context, function (err) {
+  npmInstall('npm', context, function (err) {
     t.error(err);
     t.end();
   });
@@ -56,7 +56,7 @@ test('npm-install: extra install parameters', function (t) {
   }, sandbox, {
     npmLevel: 'silly'
   });
-  npmInstall(context, function (err) {
+  npmInstall('npm', context, function (err) {
     t.error(err);
     t.notOk(context.module.flaky, 'Module passed and is not flaky');
     t.end();
@@ -67,7 +67,7 @@ test('npm-install: no package.json', function (t) {
   const context = makeContext.npmContext('omg-i-fail', sandbox, {
     npmLevel: 'silly'
   });
-  npmInstall(context, function (err) {
+  npmInstall('npm', context, function (err) {
     t.equals(err && err.message, 'Install Failed');
     t.notOk(context.module.flaky, 'Module failed but is not flaky');
     t.end();
@@ -79,7 +79,7 @@ test('npm-install: timeout', function (t) {
     npmLevel: 'silly',
     timeoutLength: 100
   });
-  npmInstall(context, function (err) {
+  npmInstall('npm', context, function (err) {
     t.ok(context.module.flaky, 'Module is Flaky because install timed out');
     t.equals(err && err.message, 'Install Timed Out');
     t.end();
@@ -94,7 +94,7 @@ test('npm-install: failed install', function (t) {
     testOutput: /^$/,
     testError: /npm ERR! 404 Not [Ff]ound\s*: THIS-WILL-FAIL(@0\.0\.1)?/
   };
-  npmInstall(context, function (err) {
+  npmInstall('npm', context, function (err) {
     t.notOk(context.module.flaky, 'Module failed is not flaky');
     t.equals(err && err.message, 'Install Failed');
     t.match(context, expected, 'Install error reported');

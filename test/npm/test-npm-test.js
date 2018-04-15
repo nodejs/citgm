@@ -10,7 +10,7 @@ const ncp = require('ncp');
 const rewire = require('rewire');
 
 const makeContext = require('../helpers/make-context');
-const npmTest = rewire('../../lib/npm/test');
+const npmTest = rewire('../../lib/package-manager/test');
 
 const sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now());
 const fixtures = path.join(__dirname, '..', 'fixtures');
@@ -47,7 +47,7 @@ test('npm-test: basic module passing', function (t) {
   const context = makeContext.npmContext('omg-i-pass', sandbox, {
     npmLevel: 'silly'
   });
-  npmTest(context, function (err) {
+  npmTest('npm', context, function (err) {
     t.error(err);
     t.end();
   });
@@ -55,7 +55,7 @@ test('npm-test: basic module passing', function (t) {
 
 test('npm-test: basic module failing', function (t) {
   const context = makeContext.npmContext('omg-i-fail', sandbox);
-  npmTest(context, function (err) {
+  npmTest('npm', context, function (err) {
     t.equals(err && err.message, 'The canary is dead:');
     t.end();
   });
@@ -64,7 +64,7 @@ test('npm-test: basic module failing', function (t) {
 test('npm-test: basic module no test script', function (t) {
   const context =
     makeContext.npmContext('omg-i-do-not-support-testing', sandbox);
-  npmTest(context, function (err) {
+  npmTest('npm', context, function (err) {
     t.equals(err && err.message, 'Module does not support npm-test!');
     t.end();
   });
@@ -72,7 +72,7 @@ test('npm-test: basic module no test script', function (t) {
 
 test('npm-test: no package.json', function (t) {
   const context = makeContext.npmContext('omg-i-dont-exist', sandbox);
-  npmTest(context, function (err) {
+  npmTest('npm', context, function (err) {
     t.equals(err && err.message, 'Package.json Could not be found');
     t.end();
   });
@@ -86,7 +86,7 @@ test('npm-test: alternative test-path', function (t) {
     npmLevel: 'silly',
     testPath: path.resolve(__dirname, '..', 'fixtures', 'fakenodebin')
   });
-  npmTest(context, function (err) {
+  npmTest('npm', context, function (err) {
     npmTest.__set__('nodeBinName', nodeBinName);
     t.equals(err && err.message, 'The canary is dead:');
     t.end();
@@ -98,7 +98,7 @@ test('npm-test: timeout', function (t) {
     npmLevel: 'silly',
     timeoutLength: 100
   });
-  npmTest(context, function (err) {
+  npmTest('npm', context, function (err) {
     t.ok(context.module.flaky, 'Module is Flaky because tests timed out');
     t.equals(err && err.message, 'Test Timed Out');
     t.end();
