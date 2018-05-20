@@ -436,6 +436,7 @@
   },
   "thread-sleep": {
     "install": ["--build-from-source"],
+    "flaky": true,
     "tags": "native",
     "maintainers": ["forbeslindesay", "timothygu"]
   },
