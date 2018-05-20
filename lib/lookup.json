@@ -208,7 +208,7 @@
   "spdy": {
     "prefix": "v",
     "flaky": ["aix", "sles"],
-    "skip": "win32",
+    "skip": [">9", "win32"],
     "maintainers": "diasdavid"
   },
   "dicer": {
