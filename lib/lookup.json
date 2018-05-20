@@ -157,7 +157,7 @@
   },
   "ws": {
     "flaky": "linux",
-    "skip": "win32",
+    "skip": ["win32", "aix", "darwin"],
     "expectFail": "fips",
     "maintainers": ["einaros", "3rd-Eden", "lpinca"]
   },
