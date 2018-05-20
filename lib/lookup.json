@@ -446,6 +446,7 @@
   },
   "weak": {
     "tags": "native",
+    "skip": [">10"],
     "maintainers": "tootallnate"
   },
   "acorn": {
