@@ -332,10 +332,9 @@
   },
   "zeromq": {
     "prefix": "v",
-    "skip": "win32",
     "tags": "native",
     "maintainers": ["lgeiger", "rgbkrk"],
-    "skip": ["s390", "ppc"]
+    "skip": ["s390", "ppc", "win32"]
   },
   "bcrypt": {
     "prefix": "v",
