@@ -379,6 +379,7 @@
     "prefix": "v",
     "tags": "native",
     "flaky": "ppc",
+    "skip": "win32",
     "maintainers": "koistya"
   },
   "iconv": {
