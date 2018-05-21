@@ -479,7 +479,7 @@
   },
   "ava": {
     "prefix": "v",
-    "skip": ["ppc", "win32", "rhel", "aix", "<6", "10"],
+    "skip": ["ppc", "win32", "x86", "rhel", "aix", "<6", "10"],
     "flaky": "<8",
     "maintainers": ["sindresorhus", "novemberborn"]
   },
