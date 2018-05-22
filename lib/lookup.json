@@ -46,7 +46,7 @@
   },
   "coffeescript": {
     "maintainers": ["jashkenas", "GeoffreyBooth"],
-    "skip": ["<=v4", "win32"]
+    "skip": ["win32"]
   },
   "through2": {
     "prefix": "v",
@@ -55,7 +55,7 @@
   },
   "glob": {
     "prefix": "v",
-    "flaky": ["v6", "v7", "win32"],
+    "flaky": ["v6", "win32"],
     "expectFail": "fips",
     "maintainers": "isaacs"
   },
@@ -85,7 +85,7 @@
   },
   "uglify-js": {
     "prefix": "v",
-    "flaky": ["ppc", "win32", "v7", "darwin"],
+    "flaky": ["ppc", "win32", "darwin"],
     "maintainers": "mishoo"
   },
   "jquery": {
@@ -105,7 +105,7 @@
   },
   "eslint": {
     "prefix": "v",
-    "flaky": ["v7", "s390", "ubuntu"],
+    "flaky": ["s390", "ubuntu"],
     "skip": ["v8", "ppc"],
     "expectFail": "fips",
     "maintainers": ["nzakas", "mysticatea", "not-an-aardvark"]
@@ -122,7 +122,7 @@
   },
   "watchify": {
     "prefix": "v",
-    "flaky": ["ppc", "v7", "s390", "ubuntu", "rhel"],
+    "flaky": ["ppc", "s390", "ubuntu", "rhel"],
     "maintainers": "substack"
   },
   "stylus": {
@@ -141,7 +141,7 @@
   },
   "react": {
     "prefix": "v",
-    "flaky": ["v6", "v7"],
+    "flaky": ["v6"],
     "skip": true,
     "maintainers": ["zpao", "spicyj", "sebmarkbage"]
   },
@@ -264,7 +264,7 @@
   },
   "mkdirp": {
     "master": true,
-    "flaky": ["v6", "v7"],
+    "flaky": ["v6"],
     "skip": [">=8"],
     "maintainers": "substack"
   },
@@ -403,7 +403,7 @@
   "radium": {
     "prefix": "v",
     "flaky": ["fedora", "ubuntu"],
-    "skip": ["ppc", "s390", "v4"],
+    "skip": ["ppc", "s390"],
     "expectFail": "fips",
     "maintainers": ["ianobermiller", "alexlande"]
   },
@@ -479,7 +479,7 @@
   },
   "ava": {
     "prefix": "v",
-    "skip": ["ppc", "win32", "x86", "rhel", "aix", "<6", "10"],
+    "skip": ["ppc", "win32", "x86", "rhel", "aix", "10"],
     "flaky": "<8",
     "maintainers": ["sindresorhus", "novemberborn"]
   },
