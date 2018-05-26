@@ -5,17 +5,23 @@ const createOptions = require('../lib/create-options');
 
 test('create-options:', function (t) {
   const cwd = __dirname;
+  const nodePath = '/path/to/node';
 
   const context = {
-    options: {},
+    options: {
+      nodedir: nodePath,
+      npmLevel: 'warning',
+    },
+    emit: function() {},
     npmConfigTmp: 'npm_config_tmp',
     module: {envVar: {testenvVar: 'thisisatest'}}
   };
 
   const env = Object.create(process.env);
-  env['npm_loglevel'] = 'error';
+  env['npm_loglevel'] = 'warning';
   env['npm_config_tmp'] = 'npm_config_tmp';
   env['testenvVar'] = 'thisisatest';
+  env['npm_config_nodedir'] = nodePath;
 
   const options = createOptions(cwd, context);
 
@@ -23,7 +29,7 @@ test('create-options:', function (t) {
   t.notOk(options.uid, 'There should not be a uid in the options');
   t.notOk(options.gid, 'There should not be a gid in the options');
   t.deepequal(options.env, env, 'The created env should be a clone of'
-  + ' process.env with the added npm_loglevel');
+  + ' process.env with the added npm_loglevel and nodedir');
   t.end();
 });
 
