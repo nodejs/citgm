@@ -10,6 +10,11 @@ let mod;
 
 const yargs = commonArgs(require('yargs'))
   .usage('citgm [options] <module>')
+  .option('repeat', {
+    alias: 'r',
+    type: 'number',
+    description: 'Number of times to test each module.'
+  })
   .option('sha', {
     alias: 'c',
     type: 'string',
@@ -46,6 +51,7 @@ const options = {
   level: app.verbose,
   npmLevel: app.npmLoglevel,
   timeoutLength: app.timeout,
+  repeat: app.repeat,
   sha: app.sha,
   tmpDir: app.tmpDir
 };
@@ -102,6 +108,12 @@ function launch(mod, options) {
     process.removeListener('SIGINT', cleanup);
     process.removeListener('SIGHUP', cleanup);
     process.removeListener('SIGBREAK', cleanup);
-    process.exit(module.error ? 1 : 0);
+
+    if (options.repeat && --options.repeat > 0) {
+      launch(mod, options);
+    } else {
+      process.exit(module.error ? 1 : 0);
+    }
+
   }).run();
 }
