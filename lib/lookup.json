@@ -101,12 +101,13 @@
   },
   "david": {
     "prefix": "v",
-    "maintainers": "alanshaw"
+    "maintainers": "alanshaw",
+    "skip": "true"
   },
   "eslint": {
     "prefix": "v",
     "flaky": ["s390", "ubuntu"],
-    "skip": ["ppc", "v8", ">=10"],
+    "skip": [">=8", "ppc"],
     "expectFail": "fips",
     "maintainers": ["nzakas", "mysticatea", "not-an-aardvark"]
   },
@@ -270,6 +271,7 @@
   },
   "yeoman-generator": {
     "prefix": "v",
+    "skip": [">=10"],
     "flaky": ["ppc", "win32", "rhel"],
     "expectFail": "fips",
     "maintainers": ["SBoudrias", "sindresorhus"]
@@ -355,7 +357,8 @@
   },
   "bson": {
     "prefix": "V",
-    "maintainers": "christkv"
+    "maintainers": "christkv",
+    "skip": ">=10"
   },
   "ember-cli": {
     "prefix": "v",
@@ -403,7 +406,7 @@
   "radium": {
     "prefix": "v",
     "flaky": ["fedora", "ubuntu"],
-    "skip": ["ppc", "s390"],
+    "skip": [">=10", "ppc", "s390"],
     "expectFail": "fips",
     "maintainers": ["ianobermiller", "alexlande"]
   },
@@ -447,7 +450,7 @@
   },
   "weak": {
     "tags": "native",
-    "skip": [">10"],
+    "skip": [">=10"],
     "maintainers": "tootallnate"
   },
   "acorn": {
