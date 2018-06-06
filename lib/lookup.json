@@ -102,7 +102,7 @@
   "david": {
     "prefix": "v",
     "maintainers": "alanshaw",
-    "skip": "true"
+    "skip": true
   },
   "eslint": {
     "prefix": "v",
