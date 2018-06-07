@@ -69,6 +69,7 @@ if (!citgm.windows) {
   launch(mod, options);
 }
 
+let numOfFails = 0;
 const start = new Date();
 function launch(mod, options) {
   const runner = citgm.Tester(mod, options);
@@ -109,8 +110,14 @@ function launch(mod, options) {
     process.removeListener('SIGHUP', cleanup);
     process.removeListener('SIGBREAK', cleanup);
 
-    if (options.repeat && --options.repeat > 0) {
-      launch(mod, options);
+    if (options.repeat) {
+      module.error ? numOfFails++ : numOfFails;
+      if (--options.repeat > 0) {
+        launch(mod, options);
+      } else {
+        log.info('number of failures', `${module.name} failed ${numOfFails} times`);
+        process.exit(numOfFails > 0 ? 1 : 0);
+      }
     } else {
       process.exit(module.error ? 1 : 0);
     }
