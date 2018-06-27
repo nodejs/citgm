@@ -89,7 +89,6 @@
     "maintainers": "mishoo"
   },
   "jquery": {
-    "skip": "win32",
     "flaky": ["linux", "aix"],
     "maintainers": "jeresig",
     "ignoreGitHead": true
