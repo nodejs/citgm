@@ -85,7 +85,7 @@
   },
   "uglify-js": {
     "prefix": "v",
-    "flaky": ["ppc", "win32", "darwin"],
+    "flaky": ["ppc", "darwin"],
     "maintainers": "mishoo"
   },
   "jquery": {
