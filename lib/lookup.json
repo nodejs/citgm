@@ -424,7 +424,6 @@
   },
   "tape": {
     "prefix": "v",
-    "flaky": ["linux", "win32"],
     "maintainers": "substack"
   },
   "thread-sleep": {
