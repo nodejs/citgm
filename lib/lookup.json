@@ -495,5 +495,9 @@
     "maintainers": ["mafintosh", "addaleax"],
     "prefix": "v",
     "skip": "<8"
+  },
+  "fastify": {
+    "maintainers": ["mcollina", "delvedor"],
+    "prefix": "v"
   }
 }
