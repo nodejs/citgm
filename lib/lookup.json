@@ -433,7 +433,6 @@
   },
   "node-report": {
     "prefix": "v",
-    "flaky": "win32",
     "tags": "native",
     "maintainers": ["rnchamberlain", "richardlau"]
   },
