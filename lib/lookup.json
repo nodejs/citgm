@@ -340,7 +340,6 @@
   },
   "bcrypt": {
     "prefix": "v",
-    "skip": "win32",
     "tags": "native",
     "maintainers": "ncb000gt"
   },
