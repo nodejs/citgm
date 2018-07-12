@@ -336,7 +336,7 @@
     "prefix": "v",
     "tags": "native",
     "maintainers": ["lgeiger", "rgbkrk"],
-    "skip": ["s390", "ppc", "win32"]
+    "skip": ["s390", "ppc"]
   },
   "bcrypt": {
     "prefix": "v",
