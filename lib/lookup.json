@@ -45,8 +45,7 @@
     "maintainers": "kriskowal"
   },
   "coffeescript": {
-    "maintainers": ["jashkenas", "GeoffreyBooth"],
-    "skip": ["win32"]
+    "maintainers": ["jashkenas", "GeoffreyBooth"]
   },
   "through2": {
     "prefix": "v",
