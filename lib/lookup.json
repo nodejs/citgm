@@ -428,7 +428,7 @@
   },
   "spawn-wrap": {
     "prefix": "v",
-    "flaky": ["win32", "sles", "aix", "darwin"],
+    "flaky": ["sles", "aix", "darwin"],
     "maintainers": "isaacs"
   },
   "node-report": {
