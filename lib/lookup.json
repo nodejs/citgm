@@ -452,8 +452,7 @@
     "maintainers": "tootallnate"
   },
   "acorn": {
-    "maintainers": "marijnh",
-    "skip": "win32"
+    "maintainers": "marijnh"
   },
   "esprima": {
     "maintainers": "ariya",
