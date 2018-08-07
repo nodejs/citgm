@@ -208,7 +208,7 @@
   "spdy": {
     "prefix": "v",
     "flaky": ["aix", "sles"],
-    "skip": [">9", "win32"],
+    "skip": ">9",
     "maintainers": "diasdavid"
   },
   "dicer": {
@@ -217,7 +217,7 @@
   },
   "spdy-transport": {
     "prefix": "v",
-    "skip": [">9", "win32"],
+    "skip": ">9",
     "flaky": "aix",
     "maintainers": "diasdavid"
   },
