@@ -309,7 +309,7 @@
   },
   "serialport": {
     "prefix": "v",
-    "flaky": ["ppc", "win32"],
+    "flaky": "ppc",
     "tags": "native",
     "maintainers": "reconbot"
   },
