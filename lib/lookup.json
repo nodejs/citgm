@@ -116,7 +116,7 @@
     "maintainers": "substack"
   },
   "browserify": {
-    "flaky": [">=v8", "win32"],
+    "flaky": ">=v8",
     "expectFail": "fips",
     "maintainers": "substack"
   },
