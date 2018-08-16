@@ -270,8 +270,7 @@
   },
   "yeoman-generator": {
     "prefix": "v",
-    "skip": [">=10"],
-    "flaky": ["ppc", "win32", "rhel"],
+    "flaky": ["ppc", "rhel"],
     "expectFail": "fips",
     "maintainers": ["SBoudrias", "sindresorhus"]
   },
