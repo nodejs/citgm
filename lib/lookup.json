@@ -401,8 +401,7 @@
   },
   "radium": {
     "prefix": "v",
-    "flaky": ["fedora", "ubuntu"],
-    "skip": [true, ">=10", "ppc", "s390"],
+    "skip": true,
     "expectFail": "fips",
     "maintainers": ["ianobermiller", "alexlande"]
   },
