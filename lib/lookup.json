@@ -402,7 +402,7 @@
   "radium": {
     "prefix": "v",
     "flaky": ["fedora", "ubuntu"],
-    "skip": [">=10", "ppc", "s390"],
+    "skip": [true, ">=10", "ppc", "s390"],
     "expectFail": "fips",
     "maintainers": ["ianobermiller", "alexlande"]
   },
