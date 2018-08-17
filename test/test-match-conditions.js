@@ -45,31 +45,37 @@ function revertShim() {
 }
 
 function testVersions(t, testFunction) {
-  t.ok(testFunction(process.version),
+  t.ok(testFunction(process.version).matched,
       'the current version is what it is matched against');
+  t.equal(testFunction(process.version).reason, 'version',
+      'the version match reason is "version"');
   shim();
-  t.ok(testFunction('v5'), 'the module is matched on the current platform');
-  t.ok(testFunction('> 5.0.0'),
+  t.ok(testFunction('v5').matched,
       'the module is matched on the current platform');
-  t.ok(testFunction('macos'), 'the distro is correct');
-  t.notok(testFunction('v2'),
+  t.ok(testFunction('> 5.0.0').matched,
+      'the module is matched on the current platform');
+  t.ok(testFunction('macos').matched, 'the distro is correct');
+  t.notok(testFunction('v2').matched,
       'the module is not matched on the current platform');
-  t.notok(testFunction('<=v2.0.0'),
+  t.notok(testFunction('<=v2.0.0').matched,
       'the module is not matched on the current platform');
   revertShim();
 }
 
 function testPlatforms(t, testFunction) {
-  t.ok(testFunction(process.platform),
+  t.ok(testFunction(process.platform).matched,
       'the current platform is what it is matched against');
+  t.equal(testFunction(process.platform).reason, 'platform',
+      'the platform matched reason is "platform"');
+
   shim();
-  t.ok(testFunction('darwin'), 'darwin is matched');
-  t.ok(testFunction('x64'), 'x64 is matched');
-  t.ok(testFunction('darwin-x64'), 'darwin-x64 is matched');
-  t.notok(testFunction('darwin-x86'), 'darwin-x86 is not matched');
-  t.notok(testFunction('hurd-x86'), 'hurd-x86 is not matched');
-  t.notok(testFunction('hurd-x64'), 'hurd-x64 is not matched');
-  t.notok(testFunction('hurd'), 'hurd is not matched');
+  t.ok(testFunction('darwin').matched, 'darwin is matched');
+  t.ok(testFunction('x64').matched, 'x64 is matched');
+  t.ok(testFunction('darwin-x64').matched, 'darwin-x64 is matched');
+  t.notok(testFunction('darwin-x86').matched, 'darwin-x86 is not matched');
+  t.notok(testFunction('hurd-x86').matched, 'hurd-x86 is not matched');
+  t.notok(testFunction('hurd-x64').matched, 'hurd-x64 is not matched');
+  t.notok(testFunction('hurd').matched, 'hurd is not matched');
   revertShim();
 }
 
@@ -80,46 +86,46 @@ function testArrays(t, testFunction) {
     match,
     notMatch,
     invalid
-  ]), 'matched array of object');
+  ]).matched, 'matched array of object');
   t.notok(testFunction([
     notMatch,
     notMatch,
     notMatch,
     invalid
-  ]), 'not matched array of objects');
+  ]).matched, 'not matched array of objects');
 
   t.ok(testFunction([
     'hurd',
     'x86',
     'v4',
     'darwin'
-  ]), 'matchy array of string');
+  ]).matched, 'matchy array of string');
 
   t.notok(testFunction([
     'hurd',
     'x86',
     'v4'
-  ]), 'not matchy array of string');
+  ]).matched, 'not matchy array of string');
 
   t.notok(testFunction([
     true,
     false,
     123
-  ]), 'not matched invalid input');
+  ]).matched, 'not matched invalid input');
 
   revertShim();
 }
 
 function testObjects(t, testFunction) {
   shim();
-  t.ok(testFunction(match), 'it should be matched');
-  t.notok(testFunction(notMatch), 'it should not be matched');
-  t.notok(testFunction(invalid),
+  t.ok(testFunction(match).matched, 'it should be matched');
+  t.notok(testFunction(notMatch).matched, 'it should not be matched');
+  t.notok(testFunction(invalid).matched,
       'invalid input should not give a false positive');
   t.notok(testFunction({
     a: 123,
     v5: false
-  }), 'another invalid input that should not give a false positive');
+  }).matched, 'another invalid input that should not give a false positive');
   revertShim();
 }
 
@@ -147,8 +153,9 @@ test('isMatch', function (t) {
   testPlatforms(t, isMatch);
   testArrays(t, isMatch);
   testObjects(t, isMatch);
-  t.ok(isMatch(true), 'true is matched');
-  t.notok(isMatch(false), 'false is not matched');
-  t.notok(isMatch(123), 'invalid input is not matched');
+  t.ok(isMatch(true).matched, 'true is matched');
+  t.equal(isMatch(true).reason, 'explicit', 'true match reason is "explicit"');
+  t.notok(isMatch(false).matched, 'false is not matched');
+  t.notok(isMatch(123).matched, 'invalid input is not matched');
   t.end();
 });

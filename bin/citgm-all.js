@@ -39,6 +39,14 @@ const yargs = commonArgs(require('yargs'))
     type: 'array',
     description: 'Define which tags from the lookup to skip'
   })
+  .option('audit', {
+    type: 'array',
+    description: 'Run only module tests that are skipped or flaky'
+  })
+  .option('auditList', {
+    type: 'array',
+    description: 'List module tests that are skipped or flaky'
+  })
   .example('citgm-all -t /path/to/output.tap',
            'Write test results as tap to file.')
   .example('citgm-all -l /path/to/lookup.json', 'Test a custom set of modules.')
@@ -72,7 +80,11 @@ const options = {
   tmpDir: app.tmpDir,
   customTest: app.customTest,
   includeTags: app.includeTags || [],
-  excludeTags: app.excludeTags || []
+  excludeTags: app.excludeTags || [],
+  audit: app.audit !== undefined,
+  auditReasons: app.audit || [],
+  auditList: app.auditList !== undefined,
+  auditListReasons: app.auditList || []
 };
 
 if (options.includeTags.length){
@@ -114,8 +126,39 @@ if (!citgm.windows) {
 
 const modules = [];
 
+function matchedWithReason(match, reasons) {
+  if (!match.matched)
+    return false;
+  if (reasons.length === 0)
+    return true;
+  return reasons.indexOf(match.reason) !== -1;
+}
+
 function runCitgm (mod, name, next) {
-  if (isMatch(mod.skip)) {
+  let skip = isMatch(mod.skip);
+  let flaky = isMatch(mod.flaky);
+  if (options.audit || options.auditList) {
+    const reasons = options.audit
+                  ? options.auditReasons
+                  : options.auditListReasons;
+    const run = options.audit;
+    let result;
+    let what;
+    if (matchedWithReason(skip, reasons)) {
+      result = skip;
+      what = 'skipped';
+    } else if (matchedWithReason(flaky, reasons)) {
+      result = flaky;
+      what = 'flaky';
+    } else {
+      return next();
+    }
+    log.info('audit', name + ' is ' + what + ' because it matches \'' +
+                      result.reason + '\'');
+    mod.skip = false;
+    mod.flaky = false;
+    if (!run) return next();
+  } else if (skip.matched) {
     modules.push({
       name,
       skipped: true
