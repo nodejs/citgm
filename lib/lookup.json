@@ -307,7 +307,7 @@
     "maintainers": "broofa"
   },
   "serialport": {
-    "prefix": "v",
+    "prefix": "serialport@",
     "flaky": "ppc",
     "tags": "native",
     "maintainers": "reconbot"
