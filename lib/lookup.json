@@ -493,5 +493,21 @@
   "fastify": {
     "maintainers": ["mcollina", "delvedor"],
     "prefix": "v"
+  },
+  "clinic": {
+    "maintainers": ["mcollina", "BridgeAR"],
+    "prefix": "v"
+  },
+  "@nearform/flame": {
+    "maintainers": ["mcollina", "BridgeAR"],
+    "prefix": "v"
+  },
+  "@nearform/doctor": {
+    "maintainers": ["mcollina", "BridgeAR"],
+    "prefix": "v"
+  },
+  "@nearform/bubbleprof": {
+    "maintainers": ["mcollina", "BridgeAR"],
+    "prefix": "v"
   }
 }
