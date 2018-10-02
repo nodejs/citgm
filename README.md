@@ -2,7 +2,7 @@
 
 citgm is a simple tool for pulling down an arbitrary module
 from npm and testing it using a specific version of the
-node runtime.
+node runtime. This tool is now deprecated.
 
 [![Build Status](https://travis-ci.com/nodejs/citgm.svg?branch=master)](https://travis-ci.com/nodejs/citgm) [![dependencies Status](https://david-dm.org/nodejs/citgm/status.svg)](https://david-dm.org/nodejs/citgm) [![devDependencies Status](https://david-dm.org/nodejs/citgm/dev-status.svg)](https://david-dm.org/nodejs/citgm?type=dev)
 
