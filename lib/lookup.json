@@ -156,7 +156,6 @@
     "maintainers": "ichernev"
   },
   "ws": {
-    "flaky": "linux",
     "skip": "win32",
     "expectFail": "fips",
     "maintainers": ["einaros", "3rd-Eden", "lpinca"]
