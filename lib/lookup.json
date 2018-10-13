@@ -535,6 +535,12 @@
     "prefix": "v",
     "maintainers": ["mcollina", "ronag"]
   },
+  "utp-native": {
+    "maintainers": ["mafintosh"],
+    "prefix": "v",
+    "install": ["install", "--ignore-scripts"],
+    "scripts": ["fetch-libutp", "install", "test"]
+  },
   "uuid": {
     "prefix": "v",
     "maintainers": ["ctavan", "broofa"],
