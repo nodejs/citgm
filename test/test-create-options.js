@@ -10,11 +10,11 @@ test('create-options:', (t) => {
   const context = {
     options: {
       nodedir: nodePath,
-      npmLevel: 'warning',
+      npmLevel: 'warning'
     },
     emit: function() {},
     npmConfigTmp: 'npm_config_tmp',
-    module: {envVar: {testenvVar: 'thisisatest'}}
+    module: { envVar: { testenvVar: 'thisisatest' } }
   };
 
   const env = Object.create(process.env);
@@ -28,8 +28,12 @@ test('create-options:', (t) => {
   t.equals(typeof options, 'object', 'We should get back an object');
   t.notOk(options.uid, 'There should not be a uid in the options');
   t.notOk(options.gid, 'There should not be a gid in the options');
-  t.deepequal(options.env, env, 'The created env should be a clone of'
-  + ' process.env with the added npm_loglevel and nodedir');
+  t.deepequal(
+    options.env,
+    env,
+    'The created env should be a clone of' +
+      ' process.env with the added npm_loglevel and nodedir'
+  );
   t.end();
 });
 

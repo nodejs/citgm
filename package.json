@@ -62,11 +62,28 @@
   },
   "devDependencies": {
     "eslint": "^5.7.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-prettier": "^3.0.0",
     "ncp": "^2.0.0",
+    "prettier": "1.15.2",
     "rewire": "^4.0.1",
     "string-to-stream": "^1.1.1",
     "tap": "^12.0.1",
     "tap-parser": "^7.0.0",
     "xml2js": "^0.4.19"
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "endOfLine": "lf",
+    "proseWrap": "always",
+    "singleQuote": true,
+    "overrides": [
+      {
+        "files": "LICENSE.md",
+        "options": {
+          "proseWrap": "never"
+        }
+      }
+    ]
   }
 }

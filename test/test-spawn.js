@@ -16,8 +16,11 @@ test('spawn:', (t) => {
   });
 
   child.on('close', () => {
-    t.equals(message,
-        'Hello world.\n', 'we should receive "Hello world." on stdout');
+    t.equals(
+      message,
+      'Hello world.\n',
+      'we should receive "Hello world." on stdout'
+    );
     t.equals(error, '', 'there should be no data on stderr');
     t.end();
   });
@@ -33,7 +36,7 @@ test('spawn: windows mock', (t) => {
     value: 'win32'
   });
 
-  child.spawn = function (cmd, args, options) {
+  child.spawn = function(cmd, args, options) {
     return {
       cmd: cmd,
       args: args,
@@ -44,11 +47,7 @@ test('spawn: windows mock', (t) => {
   const result = spawn('echo', ['Hello world.']);
   const expected = {
     cmd: 'cmd',
-    args: [
-      '/c',
-      'echo',
-      'Hello world.'
-    ],
+    args: ['/c', 'echo', 'Hello world.'],
     options: undefined
   };
 
@@ -57,7 +56,10 @@ test('spawn: windows mock', (t) => {
     value: platform
   });
 
-  t.deepEqual(result, expected,
-        'we should have the expected options for win32');
+  t.deepEqual(
+    result,
+    expected,
+    'we should have the expected options for win32'
+  );
   t.end();
 });

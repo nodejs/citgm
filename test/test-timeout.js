@@ -21,11 +21,15 @@ test('timeout: setup', (t) => {
 });
 
 test('timeout:', (t) => {
-  const context = makeContext.npmContext('omg-i-pass', packageManagers,
-    sandbox, {
+  const context = makeContext.npmContext(
+    'omg-i-pass',
+    packageManagers,
+    sandbox,
+    {
       npmLevel: 'silly',
       timeoutLength: 100
-    });
+    }
+  );
   const proc = {
     kill() {
       this.killed++;
@@ -50,15 +54,18 @@ test('timeout:', (t) => {
     t.equals(proc.killed, 1);
     t.end();
   }, 200);
-
 });
 
 test('timeout:', (t) => {
-  const context = makeContext.npmContext('omg-i-pass', packageManagers,
-    sandbox, {
+  const context = makeContext.npmContext(
+    'omg-i-pass',
+    packageManagers,
+    sandbox,
+    {
       npmLevel: 'silly',
       timeoutLength: 100
-    });
+    }
+  );
   const proc = {
     kill() {
       this.killed++;

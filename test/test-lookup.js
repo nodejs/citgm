@@ -25,23 +25,35 @@ test('lookup: makeUrl', (t) => {
 
   expected = `${repo}/archive/${tags.latest}.tar.gz`;
   url = makeUrl(repo, 'latest', tags);
-  t.equal(url, expected,
-        'if given a spec and tags it should give a link to associated version');
+  t.equal(
+    url,
+    expected,
+    'if given a spec and tags it should give a link to associated version'
+  );
 
   expected = `${repo}/archive/` + '1.0.0' + '.tar.gz';
   url = makeUrl(repo, '1.0.0', tags);
-  t.equal(url, expected,
-        'given a spec which is not an npm tag we should assume a Github tag');
+  t.equal(
+    url,
+    expected,
+    'given a spec which is not an npm tag we should assume a Github tag'
+  );
 
   expected = `${repo}/archive/${prefix}${tags.latest}.tar.gz`;
   url = makeUrl(repo, 'latest', tags, prefix);
-  t.equal(url, expected,
-        'if given a prefix it should be included in the filename');
+  t.equal(
+    url,
+    expected,
+    'if given a prefix it should be included in the filename'
+  );
 
   expected = `${repo}/archive/${sha}.tar.gz`;
   url = makeUrl(repo, 'latest', tags, prefix, sha);
-  t.equal(url, expected,
-        'if given sha, it should be used to create download URL');
+  t.equal(
+    url,
+    expected,
+    'if given sha, it should be used to create download URL'
+  );
 
   t.end();
 });
@@ -57,8 +69,10 @@ test('lookup[getLookupTable]:', (t) => {
   }
   t.ok(table, 'table should exist');
   t.ok(table.lodash, 'lodash should be in the table');
-  t.ok(table.underscore.maintainers,
-      'underscore should contain a maintainers parameter');
+  t.ok(
+    table.underscore.maintainers,
+    'underscore should contain a maintainers parameter'
+  );
   t.end();
 });
 
@@ -72,15 +86,19 @@ test('lookup[getLookupTable]: custom table', (t) => {
     t.error(e);
   }
 
-  t.deepEquals(table, {
-    'omg-i-pass': {
-      npm: true
+  t.deepEquals(
+    table,
+    {
+      'omg-i-pass': {
+        npm: true
+      },
+      'omg-i-pass-too': {
+        prefix: 'v',
+        stripAnsi: true
+      }
     },
-    'omg-i-pass-too': {
-      prefix: 'v',
-      stripAnsi: true
-    }
-  }, 'we should receive the expected lookup table from the fixtures folder');
+    'we should receive the expected lookup table from the fixtures folder'
+  );
   t.end();
 });
 
@@ -105,19 +123,17 @@ test('lookup: module not in table', (t) => {
       name: 'omg-i-pass',
       raw: null
     },
-    meta: {
-
-    },
-    options: {
-
-    },
-    emit: function () {}
+    meta: {},
+    options: {},
+    emit: function() {}
   };
 
   lookup(context, (err) => {
     t.error(err);
-    t.notOk(context.module.raw,
-          'raw should remain falsey if module is not in lookup');
+    t.notOk(
+      context.module.raw,
+      'raw should remain falsey if module is not in lookup'
+    );
     t.end();
   });
 });
@@ -135,17 +151,17 @@ test('lookup: module not in table with gitHead', (t) => {
       },
       gitHead: 'abc123'
     },
-    options: {
-
-    },
-    emit: function () {}
+    options: {},
+    emit: function() {}
   };
 
   lookup(context, (err) => {
     t.error(err);
-    t.equals(context.module.raw,
-             'https://github.com/nodejs/omg-i-pass/archive/abc123.tar.gz',
-             'raw should use commit SHA if package has gitHead');
+    t.equals(
+      context.module.raw,
+      'https://github.com/nodejs/omg-i-pass/archive/abc123.tar.gz',
+      'raw should use commit SHA if package has gitHead'
+    );
     t.end();
   });
 });
@@ -162,17 +178,17 @@ test('lookup: module in table', (t) => {
         url: 'https://github.com/lodash/lodash'
       }
     },
-    options: {
-
-    },
-    emit: function () {}
+    options: {},
+    emit: function() {}
   };
 
   lookup(context, (err) => {
     t.error(err);
-    t.equals(context.module.raw,
-          'https://github.com/lodash/lodash/archive/master.tar.gz',
-              'raw should be truthy if the module was in the list');
+    t.equals(
+      context.module.raw,
+      'https://github.com/lodash/lodash/archive/master.tar.gz',
+      'raw should be truthy if the module was in the list'
+    );
     t.end();
   });
 });
@@ -190,17 +206,17 @@ test('lookup: module in table with gitHead', (t) => {
       },
       gitHead: 'abc123'
     },
-    options: {
-
-    },
-    emit: function () {}
+    options: {},
+    emit: function() {}
   };
 
   lookup(context, (err) => {
     t.error(err);
-    t.equals(context.module.raw,
-             'https://github.com/lodash/lodash/archive/abc123.tar.gz',
-             'raw should use commit SHA if package has gitHead');
+    t.equals(
+      context.module.raw,
+      'https://github.com/lodash/lodash/archive/abc123.tar.gz',
+      'raw should use commit SHA if package has gitHead'
+    );
     t.end();
   });
 });
@@ -231,7 +247,7 @@ test('lookup: replace with no repo', (t) => {
     options: {
       lookup: 'test/fixtures/custom-lookup-no-repo.json'
     },
-    emit: function () {}
+    emit: function() {}
   };
 
   lookup(context, (err) => {
@@ -255,7 +271,7 @@ test('lookup: --fail-flaky', (t) => {
     options: {
       failFlaky: true
     },
-    emit: function () {}
+    emit: function() {}
   };
 
   lookup(context, (err) => {
@@ -289,7 +305,7 @@ test('lookup: lookup with install', (t) => {
     options: {
       lookup: 'test/fixtures/custom-lookup-install.json'
     },
-    emit: function () {}
+    emit: function() {}
   };
   const expected = {
     install: [/--extra-param/]
@@ -306,12 +322,16 @@ test('lookup: logging', (t) => {
   const expectedLogMsgs = [
     { type: 'info', key: 'lookup', msg: 'omg-i-pass' },
     { type: 'info', key: 'lookup-found', msg: 'omg-i-pass' },
-    { type: 'info',
+    {
+      type: 'info',
       key: 'omg-i-pass lookup-replace',
-      msg: 'https://github.com/nodejs/citgm/archive/master.tar.gz' },
-    { type: 'verbose',
+      msg: 'https://github.com/nodejs/citgm/archive/master.tar.gz'
+    },
+    {
+      type: 'verbose',
       key: 'omg-i-pass lookup-install',
-      msg: ['--extra-param']}
+      msg: ['--extra-param']
+    }
   ];
   const EventEmitter = require('events').EventEmitter;
   const context = new EventEmitter();

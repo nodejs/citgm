@@ -11,12 +11,15 @@ const unpack = require('../lib/unpack');
 test('unpack: context.unpack = null', (t) => {
   const context = {
     unpack: null,
-    emit: function () {}
+    emit: function() {}
   };
 
   unpack(context, (err) => {
-    t.deepEquals(err, new Error('Nothing to unpack... Ending'),
-        'it should error out');
+    t.deepEquals(
+      err,
+      new Error('Nothing to unpack... Ending'),
+      'it should error out'
+    );
     t.end();
   });
 });
@@ -24,12 +27,15 @@ test('unpack: context.unpack = null', (t) => {
 test('unpack: context.unpack is invalid path', (t) => {
   const context = {
     unpack: path.join(__dirname, '..', 'fixtures', 'do-not-exist.tar.gz'),
-    emit: function () {}
+    emit: function() {}
   };
 
   unpack(context, (err) => {
-    t.deepEquals(err, new Error('Nothing to unpack... Ending'),
-        'it should error out');
+    t.deepEquals(
+      err,
+      new Error('Nothing to unpack... Ending'),
+      'it should error out'
+    );
     t.end();
   });
 });
@@ -40,7 +46,7 @@ test('unpack: valid unpack', (t) => {
       name: 'omg-i-pass'
     },
     unpack: './test/fixtures/omg-i-pass.tgz',
-    emit: function () {}
+    emit: function() {}
   };
 
   // FIXME I am not super convinced that the correct tar ball is being deflated

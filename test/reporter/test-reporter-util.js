@@ -46,60 +46,113 @@ const flakeCityUsa = [
 ];
 
 test('getPassing:', (t) => {
-  t.equals(util.getPassing(noPassing).length, 0,
-      'there should be no passing modules in the noPassing list');
-  t.equals(util.getPassing(somePassing).length, 2,
-      'there should be two passing modules in the somePassing list');
-  t.equals(util.getPassing(allPassing).length, 3,
-      'there should be three passing modules in the allPassing list');
-  t.equals(util.getPassing(flakeCityUsa).length, 3,
-      'there should be two passing modules in the flakeCityUsa list');
+  t.equals(
+    util.getPassing(noPassing).length,
+    0,
+    'there should be no passing modules in the noPassing list'
+  );
+  t.equals(
+    util.getPassing(somePassing).length,
+    2,
+    'there should be two passing modules in the somePassing list'
+  );
+  t.equals(
+    util.getPassing(allPassing).length,
+    3,
+    'there should be three passing modules in the allPassing list'
+  );
+  t.equals(
+    util.getPassing(flakeCityUsa).length,
+    3,
+    'there should be two passing modules in the flakeCityUsa list'
+  );
   t.end();
 });
 
 test('getSkipped:', (t) => {
-  t.equals(util.getSkipped(noPassing).length, 1,
-      'there should be one skipped module in the noPassing list');
-  t.equals(util.getSkipped(somePassing).length, 1,
-      'there should be one skipped module  in the somePassing list');
-  t.equals(util.getSkipped(allPassing).length, 1,
-      'there should be one skipped module  in the allPassing list');
+  t.equals(
+    util.getSkipped(noPassing).length,
+    1,
+    'there should be one skipped module in the noPassing list'
+  );
+  t.equals(
+    util.getSkipped(somePassing).length,
+    1,
+    'there should be one skipped module  in the somePassing list'
+  );
+  t.equals(
+    util.getSkipped(allPassing).length,
+    1,
+    'there should be one skipped module  in the allPassing list'
+  );
   t.end();
 });
 
 test('getFlakyFails:', (t) => {
-  t.equals(util.getFlakyFails(noPassing).length, 4,
-      'there should be two flaky failing modules in the noPassing list');
-  t.equals(util.getFlakyFails(somePassing).length, 1,
-      'there should be one flaky failing modules in the somePassing list');
-  t.equals(util.getFlakyFails(allPassing).length, 0,
-      'there should be no flaky failing modules in the allPassing list');
-  t.equals(util.getFlakyFails(flakeCityUsa).length, 2,
-      'there should be two flaky failing modules in the flakeCityUsa list');
+  t.equals(
+    util.getFlakyFails(noPassing).length,
+    4,
+    'there should be two flaky failing modules in the noPassing list'
+  );
+  t.equals(
+    util.getFlakyFails(somePassing).length,
+    1,
+    'there should be one flaky failing modules in the somePassing list'
+  );
+  t.equals(
+    util.getFlakyFails(allPassing).length,
+    0,
+    'there should be no flaky failing modules in the allPassing list'
+  );
+  t.equals(
+    util.getFlakyFails(flakeCityUsa).length,
+    2,
+    'there should be two flaky failing modules in the flakeCityUsa list'
+  );
   t.end();
 });
 
 test('getFails:', (t) => {
-  t.equals(util.getFails(noPassing).length, 3,
-      'there should be three failing modules in the noPassing list');
-  t.equals(util.getFails(somePassing).length, 1,
-      'there should be one failing modules in the somePassing list');
-  t.equals(util.getFails(allPassing).length, 0,
-      'there should be no failing modules in the allPassing list');
-  t.equals(util.getFails(flakeCityUsa).length, 0,
-      'there should be no failing modules in the flakeCityUsa list');
+  t.equals(
+    util.getFails(noPassing).length,
+    3,
+    'there should be three failing modules in the noPassing list'
+  );
+  t.equals(
+    util.getFails(somePassing).length,
+    1,
+    'there should be one failing modules in the somePassing list'
+  );
+  t.equals(
+    util.getFails(allPassing).length,
+    0,
+    'there should be no failing modules in the allPassing list'
+  );
+  t.equals(
+    util.getFails(flakeCityUsa).length,
+    0,
+    'there should be no failing modules in the flakeCityUsa list'
+  );
   t.end();
 });
 
 test('hasFailures:', (t) => {
-  t.ok(util.hasFailures(noPassing),
-      'there should be failures in the noPassing list');
-  t.ok(util.hasFailures(somePassing),
-      'there should be failures in the somePassing list');
-  t.notok(util.hasFailures(allPassing),
-      'there should be no failures in the allPassing list');
-  t.notok(util.hasFailures(flakeCityUsa),
-      'there should be no failures in the flakeCityUsa list');
+  t.ok(
+    util.hasFailures(noPassing),
+    'there should be failures in the noPassing list'
+  );
+  t.ok(
+    util.hasFailures(somePassing),
+    'there should be failures in the somePassing list'
+  );
+  t.notok(
+    util.hasFailures(allPassing),
+    'there should be no failures in the allPassing list'
+  );
+  t.notok(
+    util.hasFailures(flakeCityUsa),
+    'there should be no failures in the flakeCityUsa list'
+  );
   t.end();
 });
 
@@ -109,7 +162,10 @@ test('util.sanitizeOutput', (t) => {
   const expected = fs.readFileSync(carriageReturnExpectedPath, 'utf-8');
   let result = util.sanitizeOutput(raw, '#');
   result += '\n';
-  t.equals(result, expected, 'there should be a # on every line & escape char' +
-  'should be removed');
+  t.equals(
+    result,
+    expected,
+    'there should be a # on every line & escape char' + 'should be removed'
+  );
   t.end();
 });

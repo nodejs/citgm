@@ -58,8 +58,11 @@ test('multiple modules passing, with a flaky module that fails:', (t) => {
   expected += 'done';
   expected += 'The smoke test has passed.';
   output = '';
-  loggerReporter(logger, [fixtures.iPass, fixtures.iFlakyPass,
-    fixtures.iFlakyFail]);
+  loggerReporter(logger, [
+    fixtures.iPass,
+    fixtures.iFlakyPass,
+    fixtures.iFlakyFail
+  ]);
   t.equals(output, expected, 'we should have the expected logged output');
   t.end();
 });

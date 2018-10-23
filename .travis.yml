@@ -3,9 +3,9 @@ os:
   - linux
   - osx
 node_js:
-  - "11"
-  - "10"
-  - "8"
-  - "6"
-script: "npm run test-ci"
-after_script: "bash <(curl -s https://codecov.io/bash)"
+  - '11'
+  - '10'
+  - '8'
+  - '6'
+script: 'npm run test-ci'
+after_script: 'bash <(curl -s https://codecov.io/bash)'
