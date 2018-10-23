@@ -19,26 +19,26 @@ test('lookup: makeUrl', function (t) {
 
   const sha = 'abc123';
 
-  let expected = repo + '/archive/master.tar.gz';
+  let expected = `${repo}/archive/master.tar.gz`;
   let url = makeUrl(repo);
   t.equal(url, expected, 'by default makeUrl should give a link to master');
 
-  expected = repo + '/archive/' + tags.latest + '.tar.gz';
+  expected = `${repo}/archive/${tags.latest}.tar.gz`;
   url = makeUrl(repo, 'latest', tags);
   t.equal(url, expected,
         'if given a spec and tags it should give a link to associated version');
 
-  expected = repo + '/archive/' + '1.0.0' + '.tar.gz';
+  expected = `${repo}/archive/` + '1.0.0' + '.tar.gz';
   url = makeUrl(repo, '1.0.0', tags);
   t.equal(url, expected,
         'given a spec which is not an npm tag we should assume a Github tag');
 
-  expected = repo + '/archive/' + prefix + tags.latest + '.tar.gz';
+  expected = `${repo}/archive/${prefix}${tags.latest}.tar.gz`;
   url = makeUrl(repo, 'latest', tags, prefix);
   t.equal(url, expected,
         'if given a prefix it should be included in the filename');
 
-  expected = repo + '/archive/' + sha + '.tar.gz';
+  expected = `${repo}/archive/${sha}.tar.gz`;
   url = makeUrl(repo, 'latest', tags, prefix, sha);
   t.equal(url, expected,
         'if given sha, it should be used to create download URL');

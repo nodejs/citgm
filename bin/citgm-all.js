@@ -77,12 +77,12 @@ const options = {
 };
 
 if (options.includeTags.length){
-  log.info('includeTags', 'Only running tests matching these tags: '
-      + app.includeTags);
+  log.info('includeTags', `Only running tests matching these tags: ${
+       app.includeTags}`);
 }
 if (options.excludeTags.length){
-  log.info('excludeTags', 'Not running tests matching these tags: '
-     + app.excludeTags);
+  log.info('excludeTags', `Not running tests matching these tags: ${
+      app.excludeTags}`);
 }
 
 const lookup = getLookup(options);
@@ -94,7 +94,7 @@ if (!lookup) {
 const cpus = os.cpus().length;
 if (app.autoParallel || (app.parallel && app.parallel > cpus)) {
   app.parallel = cpus;
-  log.info('cores', 'running tests using ' + app.parallel + ' cores');
+  log.info('cores', `running tests using ${app.parallel} cores`);
 }
 if (app.parallel && ((app.parallel + 1) > process.getMaxListeners())) {
   process.setMaxListeners(app.parallel + 1);
@@ -153,13 +153,13 @@ function runCitgm (mod, name, next) {
     log[type](key, message);
   }).on('end', function(result) {
     result.duration = new Date() - start;
-    log.info('duration', 'test duration: ' + result.duration + 'ms');
+    log.info('duration', `test duration: ${result.duration}ms`);
     if (result.error) {
-      log.error(result.name + ' done', 'done - the test suite for ' +
-          result.name + ' version ' + result.version + ' failed');
+      log.error(`${result.name} done`, `done - the test suite for ${
+          result.name} version ${result.version} failed`);
     } else {
-      log.info(result.name + ' done', 'done - the test suite for ' + result.name
-          + ' version ' + result.version + ' passed.');
+      log.info(`${result.name} done`, `done - the test suite for ${result.name
+           } version ${result.version} passed.`);
     }
     modules.push(result);
     if (!bailed) {

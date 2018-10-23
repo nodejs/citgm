@@ -14,7 +14,7 @@ const tap = require('../../lib/reporter/tap');
 const fixtures = require('../fixtures/reporter-fixtures');
 
 const fixturesPath = path.join(__dirname, '..', 'fixtures');
-const sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now());
+const sandbox = path.join(os.tmpdir(), `citgm-${Date.now()}`);
 const outputFile = path.join(sandbox, 'test.tap');
 const outputFileAppend = path.join(sandbox, 'test-append.tap');
 const outputFileAppendBlank = path.join(sandbox, 'test-append-blank.tap');
