@@ -10,7 +10,7 @@ pkg.version = '0.0.0';
 
 test('update: /w callback', (t) => {
   const log = {
-    warn: function (data) {
+    warn: function(data) {
       t.equals(data, 'update-available');
       t.end();
     }

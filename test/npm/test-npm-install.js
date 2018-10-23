@@ -47,10 +47,14 @@ test('npm-install: setup', (t) => {
 });
 
 test('npm-install: basic module', (t) => {
-  const context = makeContext.npmContext('omg-i-pass', packageManagers,
-    sandbox, {
+  const context = makeContext.npmContext(
+    'omg-i-pass',
+    packageManagers,
+    sandbox,
+    {
       npmLevel: 'silly'
-    });
+    }
+  );
   packageManagerInstall('npm', context, (err) => {
     t.error(err);
     t.end();
@@ -58,12 +62,17 @@ test('npm-install: basic module', (t) => {
 });
 
 test('npm-install: extra install parameters', (t) => {
-  const context = makeContext.npmContext({
-    name: 'omg-i-pass-with-install-param',
-    install: ['--extra-param']
-  }, packageManagers, sandbox, {
-    npmLevel: 'silly'
-  });
+  const context = makeContext.npmContext(
+    {
+      name: 'omg-i-pass-with-install-param',
+      install: ['--extra-param']
+    },
+    packageManagers,
+    sandbox,
+    {
+      npmLevel: 'silly'
+    }
+  );
   packageManagerInstall('npm', context, (err) => {
     t.error(err);
     t.notOk(context.module.flaky, 'Module passed and is not flaky');
@@ -72,10 +81,14 @@ test('npm-install: extra install parameters', (t) => {
 });
 
 test('npm-install: no package.json', (t) => {
-  const context = makeContext.npmContext('omg-i-fail', packageManagers,
-    sandbox, {
+  const context = makeContext.npmContext(
+    'omg-i-fail',
+    packageManagers,
+    sandbox,
+    {
       npmLevel: 'silly'
-    });
+    }
+  );
   packageManagerInstall('npm', context, (err) => {
     t.equals(err && err.message, 'Install Failed');
     t.notOk(context.module.flaky, 'Module failed but is not flaky');
@@ -84,11 +97,15 @@ test('npm-install: no package.json', (t) => {
 });
 
 test('npm-install: timeout', (t) => {
-  const context = makeContext.npmContext('omg-i-pass', packageManagers,
-    sandbox, {
+  const context = makeContext.npmContext(
+    'omg-i-pass',
+    packageManagers,
+    sandbox,
+    {
       npmLevel: 'silly',
       timeoutLength: 100
-    });
+    }
+  );
   packageManagerInstall('npm', context, (err) => {
     t.ok(context.module.flaky, 'Module is Flaky because install timed out');
     t.equals(err && err.message, 'Install Timed Out');
@@ -97,10 +114,14 @@ test('npm-install: timeout', (t) => {
 });
 
 test('npm-install: failed install', (t) => {
-  const context = makeContext.npmContext('omg-bad-tree', packageManagers,
-    sandbox, {
+  const context = makeContext.npmContext(
+    'omg-bad-tree',
+    packageManagers,
+    sandbox,
+    {
       npmLevel: 'http'
-    });
+    }
+  );
   const expected = {
     testOutput: /^$/,
     testError: /npm ERR! 404 Not [Ff]ound\s*: THIS-WILL-FAIL(@0\.0\.1)?/

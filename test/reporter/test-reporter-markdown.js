@@ -32,9 +32,12 @@ test('single failing module:', (t) => {
 
 test('multiple modules passing, with a flaky module that fails:', (t) => {
   let output = '';
-  markdown((data) => {
-    output += data;
-  }, [fixtures.iPass, fixtures.iFlakyPass, fixtures.iFlakyFail]);
+  markdown(
+    (data) => {
+      output += data;
+    },
+    [fixtures.iPass, fixtures.iFlakyPass, fixtures.iFlakyFail]
+  );
   let expected = '## 🎉🎉 CITGM Passed 🎉🎉';
   expected += '## 📛 But with Flaky Failures 📛';
   expected += '### Passing Modules';

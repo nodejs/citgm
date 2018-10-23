@@ -3,8 +3,7 @@ const EventEmitter = require('events').EventEmitter;
 const util = require('util');
 
 function RequestMock() {
-  if (!(this instanceof RequestMock))
-    return new RequestMock;
+  if (!(this instanceof RequestMock)) return new RequestMock();
   EventEmitter.call(this);
 }
 

@@ -47,8 +47,11 @@ test('yarn-install: setup', (t) => {
 });
 
 test('yarn-install: basic module', (t) => {
-  const context = makeContext.npmContext('omg-i-pass', packageManagers,
-    sandbox);
+  const context = makeContext.npmContext(
+    'omg-i-pass',
+    packageManagers,
+    sandbox
+  );
   packageManagerInstall('yarn', context, (err) => {
     context.testOutput = context.testOutput.toString();
     context.testError = context.testError.toString();
@@ -58,8 +61,11 @@ test('yarn-install: basic module', (t) => {
 });
 
 test('yarn-install: no package.json', (t) => {
-  const context = makeContext.npmContext('omg-i-fail', packageManagers,
-    sandbox);
+  const context = makeContext.npmContext(
+    'omg-i-fail',
+    packageManagers,
+    sandbox
+  );
   packageManagerInstall('yarn', context, (err) => {
     context.testOutput = context.testOutput.toString();
     context.testError = context.testError.toString();
@@ -70,10 +76,14 @@ test('yarn-install: no package.json', (t) => {
 });
 
 test('yarn-install: timeout', (t) => {
-  const context = makeContext.npmContext('omg-i-pass', packageManagers,
-    sandbox, {
+  const context = makeContext.npmContext(
+    'omg-i-pass',
+    packageManagers,
+    sandbox,
+    {
       timeoutLength: 100
-    });
+    }
+  );
   packageManagerInstall('yarn', context, (err) => {
     context.testOutput = context.testOutput.toString();
     context.testError = context.testError.toString();
@@ -84,8 +94,11 @@ test('yarn-install: timeout', (t) => {
 });
 
 test('yarn-install: failed install', (t) => {
-  const context = makeContext.npmContext('omg-bad-tree', packageManagers,
-    sandbox);
+  const context = makeContext.npmContext(
+    'omg-bad-tree',
+    packageManagers,
+    sandbox
+  );
   const expected = {
     testError: /\/THIS-WILL-FAIL: Not found/
   };

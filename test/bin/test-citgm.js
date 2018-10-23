@@ -8,8 +8,14 @@ const citgmPath = require.resolve('../../bin/citgm.js');
 
 test('bin: omg-i-pass /w tap to file /w junit to file /w append', (t) => {
   t.plan(1);
-  const proc = spawn(citgmPath, ['omg-i-pass', '--tap', '/dev/null', '--junit',
-    '/dev/null', '--append']);
+  const proc = spawn(citgmPath, [
+    'omg-i-pass',
+    '--tap',
+    '/dev/null',
+    '--junit',
+    '/dev/null',
+    '--append'
+  ]);
   proc.on('error', (err) => {
     t.error(err);
     t.fail('we should not get an error testing omg-i-pass');
@@ -19,11 +25,16 @@ test('bin: omg-i-pass /w tap to file /w junit to file /w append', (t) => {
   });
 });
 
-test('bin: omg-i-fail /w tap /w junit /w markdown output /w nodedir',
-(t) => {
+test('bin: omg-i-fail /w tap /w junit /w markdown output /w nodedir', (t) => {
   t.plan(1);
-  const proc = spawn(citgmPath, ['omg-i-fail', '-m', '-t', '-x', '-d',
-    '/dev/null']);
+  const proc = spawn(citgmPath, [
+    'omg-i-fail',
+    '-m',
+    '-t',
+    '-x',
+    '-d',
+    '/dev/null'
+  ]);
   proc.on('error', (err) => {
     t.error(err);
     t.fail('we should not get an error testing omg-i-pass');
@@ -75,8 +86,12 @@ test('bin: sigterm', (t) => {
 
 test('bin: install from sha', (t) => {
   t.plan(1);
-  const proc = spawn(citgmPath, ['omg-i-pass', '-t', '-c',
-    '37c34bad563599782c622baf3aaf55776fbc38a8']);
+  const proc = spawn(citgmPath, [
+    'omg-i-pass',
+    '-t',
+    '-c',
+    '37c34bad563599782c622baf3aaf55776fbc38a8'
+  ]);
   proc.on('error', (err) => {
     t.error(err);
     t.fail('we should not get an error testing omg-i-pass');
@@ -88,8 +103,11 @@ test('bin: install from sha', (t) => {
 
 test('bin: test custom test', (t) => {
   t.plan(1);
-  const proc = spawn(citgmPath, ['omg-i-fail', '--customTest',
-    `${process.cwd()}/test/fixtures/custom test script.js`]);
+  const proc = spawn(citgmPath, [
+    'omg-i-fail',
+    '--customTest',
+    `${process.cwd()}/test/fixtures/custom test script.js`
+  ]);
   proc.on('error', (err) => {
     t.error(err);
     t.fail('we should not get an error testing omg-i-fail');
@@ -101,8 +119,11 @@ test('bin: test custom test', (t) => {
 
 test('bin: test custom test', (t) => {
   t.plan(1);
-  const proc = spawn(citgmPath, ['omg-i-fail', '--customTest',
-    `${process.cwd()}/test/fixtures/no such file.js`]);
+  const proc = spawn(citgmPath, [
+    'omg-i-fail',
+    '--customTest',
+    `${process.cwd()}/test/fixtures/no such file.js`
+  ]);
   proc.on('close', (code) => {
     t.ok(code !== 0, 'omg-i-fail should fail with a non-zero exit code');
   });

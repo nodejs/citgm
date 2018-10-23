@@ -258,8 +258,7 @@ test('test excludeTags, includeTags and no matching tags', (t) => {
     excludeTags: ['b'],
     includeTags: ['a']
   };
-  const mod = {
-  };
+  const mod = {};
   t.plan(1);
   const result = checkTags(options, mod, 'test', log);
   t.true(result, 'should return true');
@@ -325,7 +324,8 @@ test('test module name can be used in includeTags/excludeTags', (t) => {
       { excludeTags: [], includeTags: ['test'] },
       { tags: 'b' },
       'test',
-      log),
+      log
+    ),
     false
   );
 
@@ -334,30 +334,32 @@ test('test module name can be used in includeTags/excludeTags', (t) => {
       { excludeTags: ['test'], includeTags: [] },
       { tags: 'b' },
       'test',
-      log),
+      log
+    ),
     true
   );
 });
 
-test('test tags matching module name with includeTags/excludeTags',
-    (t) => {
-      t.plan(2);
+test('test tags matching module name with includeTags/excludeTags', (t) => {
+  t.plan(2);
 
-      t.equal(
-        checkTags(
-          { excludeTags: [], includeTags: ['test'] },
-          { tags: 'test' },
-          'test',
-          log),
-        false
-      );
+  t.equal(
+    checkTags(
+      { excludeTags: [], includeTags: ['test'] },
+      { tags: 'test' },
+      'test',
+      log
+    ),
+    false
+  );
 
-      t.equal(
-        checkTags(
-          { excludeTags: ['test'], includeTags: [] },
-          { tags: 'test' },
-          'test',
-          log),
-        true
-      );
-    });
+  t.equal(
+    checkTags(
+      { excludeTags: ['test'], includeTags: [] },
+      { tags: 'test' },
+      'test',
+      log
+    ),
+    true
+  );
+});
