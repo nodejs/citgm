@@ -21,5 +21,6 @@
     semi-spacing: 2
     strict: 2
     no-var: 2
+    prefer-arrow-callback: 2
 
   extends: eslint:recommended

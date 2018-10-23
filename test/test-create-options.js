@@ -3,7 +3,7 @@ const test = require('tap').test;
 
 const createOptions = require('../lib/create-options');
 
-test('create-options:', function (t) {
+test('create-options:', (t) => {
   const cwd = __dirname;
   const nodePath = '/path/to/node';
 
@@ -33,7 +33,7 @@ test('create-options:', function (t) {
   t.end();
 });
 
-test('create-options: with uid / gid', function (t) {
+test('create-options: with uid / gid', (t) => {
   const cwd = __dirname;
 
   const context = {

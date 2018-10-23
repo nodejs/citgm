@@ -123,26 +123,26 @@ function testObjects(t, testFunction) {
   revertShim();
 }
 
-test('isStringMatch', function (t) {
+test('isStringMatch', (t) => {
   const isStringMatch = isMatch.__get__('isStringMatch');
   testVersions(t, isStringMatch);
   testPlatforms(t, isStringMatch);
   t.end();
 });
 
-test('isObjectMatch', function (t) {
+test('isObjectMatch', (t) => {
   const isObjectMatch = isMatch.__get__('isObjectMatch');
   testObjects(t, isObjectMatch);
   t.end();
 });
 
-test('isArrayMatch', function (t) {
+test('isArrayMatch', (t) => {
   const isArrayMatch = isMatch.__get__('isArrayMatch');
   testArrays(t, isArrayMatch);
   t.end();
 });
 
-test('isMatch', function (t) {
+test('isMatch', (t) => {
   testVersions(t, isMatch);
   testPlatforms(t, isMatch);
   testArrays(t, isMatch);

@@ -27,67 +27,67 @@ const badTemp = path.join(sandbox, 'omg-i-do-not-support-testing');
 
 let packageManagers;
 
-test('yarn-test: setup', function (t) {
+test('yarn-test: setup', (t) => {
   t.plan(8);
   packageManager.getPackageManagers((e, res) => {
     packageManagers = res;
     t.error(e);
   });
-  mkdirp(sandbox, function (err) {
+  mkdirp(sandbox, (err) => {
     t.error(err);
-    ncp(passFixtures, passTemp, function (e) {
+    ncp(passFixtures, passTemp, (e) => {
       t.error(e);
       t.ok(fs.existsSync(path.join(passTemp, 'package.json')));
     });
-    ncp(failFixtures, failTemp, function (e) {
+    ncp(failFixtures, failTemp, (e) => {
       t.error(e);
       t.ok(fs.existsSync(path.join(failTemp, 'package.json')));
     });
-    ncp(badFixtures, badTemp, function (e) {
+    ncp(badFixtures, badTemp, (e) => {
       t.error(e);
       t.ok(fs.existsSync(path.join(badTemp, 'package.json')));
     });
   });
 });
 
-test('yarn-test: basic module passing', function (t) {
+test('yarn-test: basic module passing', (t) => {
   const context = makeContext.npmContext('omg-i-pass',
     packageManagers, sandbox);
-  packageManagerTest('yarn', context, function (err) {
+  packageManagerTest('yarn', context, (err) => {
     t.error(err);
     t.end();
   });
 });
 
-test('yarn-test: basic module failing', function (t) {
+test('yarn-test: basic module failing', (t) => {
   const context = makeContext.npmContext('omg-i-fail',
     packageManagers, sandbox);
-  packageManagerTest('yarn', context, function (err) {
+  packageManagerTest('yarn', context, (err) => {
     t.equals(err && err.message, 'The canary is dead:');
     t.end();
   });
 });
 
-test('yarn-test: basic module no test script', function (t) {
+test('yarn-test: basic module no test script', (t) => {
   const context =
     makeContext.npmContext('omg-i-do-not-support-testing',
       packageManagers, sandbox);
-  packageManagerTest('yarn', context, function (err) {
+  packageManagerTest('yarn', context, (err) => {
     t.equals(err && err.message, 'Module does not support yarn-test!');
     t.end();
   });
 });
 
-test('yarn-test: no package.json', function (t) {
+test('yarn-test: no package.json', (t) => {
   const context = makeContext.npmContext('omg-i-dont-exist',
     packageManagers, sandbox);
-  packageManagerTest('yarn', context, function (err) {
+  packageManagerTest('yarn', context, (err) => {
     t.equals(err && err.message, 'Package.json Could not be found');
     t.end();
   });
 });
 
-test('yarn-test: alternative test-path', function (t) {
+test('yarn-test: alternative test-path', (t) => {
   // Same test as 'basic module passing', except with alt node bin which fails.
   const nodeBinName = packageManagerTest.__get__('nodeBinName');
   packageManagerTest.__set__('nodeBinName', 'fake-node');
@@ -95,27 +95,27 @@ test('yarn-test: alternative test-path', function (t) {
     sandbox, {
       testPath: path.resolve(__dirname, '..', 'fixtures', 'fakenodebin')
     });
-  packageManagerTest('yarn', context, function (err) {
+  packageManagerTest('yarn', context, (err) => {
     packageManagerTest.__set__('nodeBinName', nodeBinName);
     t.equals(err && err.message, 'The canary is dead:');
     t.end();
   });
 });
 
-test('yarn-test: timeout', function (t) {
+test('yarn-test: timeout', (t) => {
   const context = makeContext.npmContext('omg-i-pass', packageManagers,
     sandbox, {
       timeoutLength: 100
     });
-  packageManagerTest('yarn', context, function (err) {
+  packageManagerTest('yarn', context, (err) => {
     t.ok(context.module.flaky, 'Module is Flaky because tests timed out');
     t.equals(err && err.message, 'Test Timed Out');
     t.end();
   });
 });
 
-test('yarn-test: teardown', function (t) {
-  rimraf(sandbox, function (err) {
+test('yarn-test: teardown', (t) => {
+  rimraf(sandbox, (err) => {
     t.error(err);
     t.end();
   });

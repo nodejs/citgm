@@ -5,17 +5,17 @@ const rewire = require('rewire');
 
 const spawn = rewire('../lib/spawn');
 
-test('spawn:', function (t) {
+test('spawn:', (t) => {
   const child = spawn('echo', ['Hello world.']);
 
   let error = '';
   let message = '';
 
-  child.stdout.on('data', function (chunk) {
+  child.stdout.on('data', (chunk) => {
     message += chunk;
   });
 
-  child.on('close', function () {
+  child.on('close', () => {
     t.equals(message,
         'Hello world.\n', 'we should receive "Hello world." on stdout');
     t.equals(error, '', 'there should be no data on stderr');
@@ -25,7 +25,7 @@ test('spawn:', function (t) {
   child.on('error', t.error);
 });
 
-test('spawn: windows mock', function (t) {
+test('spawn: windows mock', (t) => {
   const child = spawn.__get__('child');
   const sp = child.spawn;
   const platform = process.platform;

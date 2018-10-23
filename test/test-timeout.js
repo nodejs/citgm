@@ -12,7 +12,7 @@ const sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now());
 
 let packageManagers;
 
-test('timeout: setup', function (t) {
+test('timeout: setup', (t) => {
   t.plan(1);
   packageManager.getPackageManagers((e, res) => {
     packageManagers = res;
@@ -20,7 +20,7 @@ test('timeout: setup', function (t) {
   });
 });
 
-test('timeout:', function (t) {
+test('timeout:', (t) => {
   const context = makeContext.npmContext('omg-i-pass', packageManagers,
     sandbox, {
       npmLevel: 'silly',
@@ -53,7 +53,7 @@ test('timeout:', function (t) {
 
 });
 
-test('timeout:', function (t) {
+test('timeout:', (t) => {
   const context = makeContext.npmContext('omg-i-pass', packageManagers,
     sandbox, {
       npmLevel: 'silly',

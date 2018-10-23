@@ -23,33 +23,33 @@ const badTemp = path.join(sandbox, 'omg-bad-tree');
 
 let packageManagers;
 
-test('yarn-install: setup', function (t) {
+test('yarn-install: setup', (t) => {
   t.plan(8);
   packageManager.getPackageManagers((e, res) => {
     packageManagers = res;
     t.error(e);
   });
-  mkdirp(sandbox, function (err) {
+  mkdirp(sandbox, (err) => {
     t.error(err);
-    ncp(moduleFixtures, moduleTemp, function (e) {
+    ncp(moduleFixtures, moduleTemp, (e) => {
       t.error(e);
       t.ok(fs.existsSync(path.join(moduleTemp, 'package.json')));
     });
-    ncp(extraParamFixtures, extraParamTemp, function (e) {
+    ncp(extraParamFixtures, extraParamTemp, (e) => {
       t.error(e);
       t.ok(fs.existsSync(path.join(moduleTemp, 'package.json')));
     });
-    ncp(badFixtures, badTemp, function (e) {
+    ncp(badFixtures, badTemp, (e) => {
       t.error(e);
       t.ok(fs.existsSync(path.join(badTemp, 'package.json')));
     });
   });
 });
 
-test('yarn-install: basic module', function (t) {
+test('yarn-install: basic module', (t) => {
   const context = makeContext.npmContext('omg-i-pass', packageManagers,
     sandbox);
-  packageManagerInstall('yarn', context, function (err) {
+  packageManagerInstall('yarn', context, (err) => {
     context.testOutput = context.testOutput.toString();
     context.testError = context.testError.toString();
     t.error(err);
@@ -57,10 +57,10 @@ test('yarn-install: basic module', function (t) {
   });
 });
 
-test('yarn-install: no package.json', function (t) {
+test('yarn-install: no package.json', (t) => {
   const context = makeContext.npmContext('omg-i-fail', packageManagers,
     sandbox);
-  packageManagerInstall('yarn', context, function (err) {
+  packageManagerInstall('yarn', context, (err) => {
     context.testOutput = context.testOutput.toString();
     context.testError = context.testError.toString();
     t.equals(err && err.message, 'Install Failed');
@@ -69,12 +69,12 @@ test('yarn-install: no package.json', function (t) {
   });
 });
 
-test('yarn-install: timeout', function (t) {
+test('yarn-install: timeout', (t) => {
   const context = makeContext.npmContext('omg-i-pass', packageManagers,
     sandbox, {
       timeoutLength: 100
     });
-  packageManagerInstall('yarn', context, function (err) {
+  packageManagerInstall('yarn', context, (err) => {
     context.testOutput = context.testOutput.toString();
     context.testError = context.testError.toString();
     t.ok(context.module.flaky, 'Module is Flaky because install timed out');
@@ -83,13 +83,13 @@ test('yarn-install: timeout', function (t) {
   });
 });
 
-test('yarn-install: failed install', function (t) {
+test('yarn-install: failed install', (t) => {
   const context = makeContext.npmContext('omg-bad-tree', packageManagers,
     sandbox);
   const expected = {
     testError: /\/THIS-WILL-FAIL: Not found/
   };
-  packageManagerInstall('yarn', context, function (err) {
+  packageManagerInstall('yarn', context, (err) => {
     context.testOutput = context.testOutput.toString();
     context.testError = context.testError.toString();
     t.notOk(context.module.flaky, 'Module failed is not flaky');
@@ -99,8 +99,8 @@ test('yarn-install: failed install', function (t) {
   });
 });
 
-test('yarn-install: teardown', function (t) {
-  rimraf(sandbox, function (err) {
+test('yarn-install: teardown', (t) => {
+  rimraf(sandbox, (err) => {
     t.error(err);
     t.end();
   });

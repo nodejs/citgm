@@ -7,7 +7,7 @@ const npmTest = rewire('../../lib/package-manager/test');
 
 const authorName = npmTest.__get__('authorName');
 
-test('npm.test() authorName:', function (t) {
+test('npm.test() authorName:', (t) => {
   const name = 'titus';
   const author = {
     name: 'Randy Savage',
@@ -21,7 +21,7 @@ test('npm.test() authorName:', function (t) {
   t.end();
 });
 
-test('npm.test() authorName partial data:', function (t) {
+test('npm.test() authorName partial data:', (t) => {
   const name = 'titus';
   const authorOne = {
     name: 'Randy Savage'

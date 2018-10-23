@@ -56,7 +56,7 @@ if (!citgm.windows) {
   const uidnumber = require('uid-number');
   const uid = app.uid || process.getuid();
   const gid = app.gid || process.getgid();
-  uidnumber(uid, gid, function(err, uid, gid) {
+  uidnumber(uid, gid, (err, uid, gid) => {
     options.uid = uid;
     options.gid = gid;
     launch(mod, options);
@@ -77,13 +77,13 @@ function launch(mod, options) {
   process.on('SIGHUP', cleanup);
   process.on('SIGBREAK', cleanup);
 
-  runner.on('start', function(name) {
+  runner.on('start', (name) => {
     log.info('starting', name);
-  }).on('fail', function(err) {
+  }).on('fail', (err) => {
     log.error('failure', err.message);
-  }).on('data', function(type, key, message) {
+  }).on('data', (type, key, message) => {
     log[type](key, message);
-  }).on('end', function(module) {
+  }).on('end', (module) => {
     module.duration = new Date() - start;
     reporter.logger(log, module);
 
