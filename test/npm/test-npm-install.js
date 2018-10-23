@@ -23,80 +23,80 @@ const badTemp = path.join(sandbox, 'omg-bad-tree');
 
 let packageManagers;
 
-test('npm-install: setup', function (t) {
+test('npm-install: setup', (t) => {
   t.plan(8);
   packageManager.getPackageManagers((e, res) => {
     packageManagers = res;
     t.error(e);
   });
-  mkdirp(sandbox, function (err) {
+  mkdirp(sandbox, (err) => {
     t.error(err);
-    ncp(moduleFixtures, moduleTemp, function (e) {
+    ncp(moduleFixtures, moduleTemp, (e) => {
       t.error(e);
       t.ok(fs.existsSync(path.join(moduleTemp, 'package.json')));
     });
-    ncp(extraParamFixtures, extraParamTemp, function (e) {
+    ncp(extraParamFixtures, extraParamTemp, (e) => {
       t.error(e);
       t.ok(fs.existsSync(path.join(moduleTemp, 'package.json')));
     });
-    ncp(badFixtures, badTemp, function (e) {
+    ncp(badFixtures, badTemp, (e) => {
       t.error(e);
       t.ok(fs.existsSync(path.join(badTemp, 'package.json')));
     });
   });
 });
 
-test('npm-install: basic module', function (t) {
+test('npm-install: basic module', (t) => {
   const context = makeContext.npmContext('omg-i-pass', packageManagers,
     sandbox, {
       npmLevel: 'silly'
     });
-  packageManagerInstall('npm', context, function (err) {
+  packageManagerInstall('npm', context, (err) => {
     t.error(err);
     t.end();
   });
 });
 
-test('npm-install: extra install parameters', function (t) {
+test('npm-install: extra install parameters', (t) => {
   const context = makeContext.npmContext({
     name: 'omg-i-pass-with-install-param',
     install: ['--extra-param']
   }, packageManagers, sandbox, {
     npmLevel: 'silly'
   });
-  packageManagerInstall('npm', context, function (err) {
+  packageManagerInstall('npm', context, (err) => {
     t.error(err);
     t.notOk(context.module.flaky, 'Module passed and is not flaky');
     t.end();
   });
 });
 
-test('npm-install: no package.json', function (t) {
+test('npm-install: no package.json', (t) => {
   const context = makeContext.npmContext('omg-i-fail', packageManagers,
     sandbox, {
       npmLevel: 'silly'
     });
-  packageManagerInstall('npm', context, function (err) {
+  packageManagerInstall('npm', context, (err) => {
     t.equals(err && err.message, 'Install Failed');
     t.notOk(context.module.flaky, 'Module failed but is not flaky');
     t.end();
   });
 });
 
-test('npm-install: timeout', function (t) {
+test('npm-install: timeout', (t) => {
   const context = makeContext.npmContext('omg-i-pass', packageManagers,
     sandbox, {
       npmLevel: 'silly',
       timeoutLength: 100
     });
-  packageManagerInstall('npm', context, function (err) {
+  packageManagerInstall('npm', context, (err) => {
     t.ok(context.module.flaky, 'Module is Flaky because install timed out');
     t.equals(err && err.message, 'Install Timed Out');
     t.end();
   });
 });
 
-test('npm-install: failed install', function (t) {
+test('npm-install: failed install', (t) => {
   const context = makeContext.npmContext('omg-bad-tree', packageManagers,
     sandbox, {
       npmLevel: 'http'
@@ -105,7 +105,7 @@ test('npm-install: failed install', function (t) {
     testOutput: /^$/,
     testError: /npm ERR! 404 Not [Ff]ound\s*: THIS-WILL-FAIL(@0\.0\.1)?/
   };
-  packageManagerInstall('npm', context, function (err) {
+  packageManagerInstall('npm', context, (err) => {
     t.notOk(context.module.flaky, 'Module failed is not flaky');
     t.equals(err && err.message, 'Install Failed');
     t.match(context, expected, 'Install error reported');
@@ -113,8 +113,8 @@ test('npm-install: failed install', function (t) {
   });
 });
 
-test('npm-install: teardown', function (t) {
-  rimraf(sandbox, function (err) {
+test('npm-install: teardown', (t) => {
+  rimraf(sandbox, (err) => {
     t.error(err);
     t.end();
   });

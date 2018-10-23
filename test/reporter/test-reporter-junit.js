@@ -47,14 +47,14 @@ const badOutputTooPath = path.join(fixturesPath, 'badOutput2');
 const badOutput = fs.readFileSync(badOutputPath, 'utf-8');
 const badOutputToo = fs.readFileSync(badOutputTooPath, 'utf-8');
 
-test('reporter.junit(): setup', function (t) {
-  mkdirp(sandbox, function (err) {
+test('reporter.junit(): setup', (t) => {
+  mkdirp(sandbox, (err) => {
     t.error(err);
     t.end();
   });
 });
 
-test('reporter.junit(): passing', function (t) {
+test('reporter.junit(): passing', (t) => {
   let output = '';
   function logger(message) {
     output += message;
@@ -67,7 +67,7 @@ test('reporter.junit(): passing', function (t) {
   t.end();
 });
 
-test('reporter.junit(): bad output', function (t) {
+test('reporter.junit(): bad output', (t) => {
   t.plan(3);
   let output = '';
   function logger(message) {
@@ -80,18 +80,18 @@ test('reporter.junit(): bad output', function (t) {
   const corruptXmlToo = _.cloneDeep(passingInput);
   corruptXmlToo[0].testOutput = badOutputToo;
 
-  t.doesNotThrow(function () {
+  t.doesNotThrow(() => {
     junit(logger, corruptXml);
   }, 'parsing bad data should not throw');
 
-  t.doesNotThrow(function () {
+  t.doesNotThrow(() => {
     junit(logger, corruptXmlToo);
   }, 'parsing bad data should not throw');
 
   t.ok(output);
 });
 
-test('reporter.junit(): failing', function (t) {
+test('reporter.junit(): failing', (t) => {
   let output = '';
   function logger(message) {
     output += message;
@@ -104,7 +104,7 @@ test('reporter.junit(): failing', function (t) {
   t.end();
 });
 
-test('reporter.junit(): parser', function (t) {
+test('reporter.junit(): parser', (t) => {
   let output = '';
   function logger(message) {
     output += message;
@@ -112,14 +112,14 @@ test('reporter.junit(): parser', function (t) {
   }
 
   junit(logger, failingInput);
-  parseString(output, function (err, result) {
+  parseString(output, (err, result) => {
     t.deepEquals(result, junitParserExpected), 'we should get the expected'
     + ' output when a module fails';
     t.end();
   });
 });
 
-test('reporter.junit(): write to disk', function (t) {
+test('reporter.junit(): write to disk', (t) => {
   junit(outputFile, passingInput);
   const expected = fs.readFileSync(outputFile, 'utf8');
   t.equals(expected, passingExpected), 'the file on disk should match the'
@@ -127,7 +127,7 @@ test('reporter.junit(): write to disk', function (t) {
   t.end();
 });
 
-test('reporter.junit(): append to disk', function (t) {
+test('reporter.junit(): append to disk', (t) => {
   const appendStartFile = fs.readFileSync(appendStartFilePath, 'utf-8');
   fs.writeFileSync(outputFileAppend, appendStartFile);
   junit(outputFileAppend, passingInput, true);
@@ -137,8 +137,8 @@ test('reporter.junit(): append to disk', function (t) {
   t.end();
 });
 
-test('reporter.junit(): teardown', function (t) {
-  rimraf(sandbox, function (err) {
+test('reporter.junit(): teardown', (t) => {
+  rimraf(sandbox, (err) => {
     t.error(err);
     t.end();
   });

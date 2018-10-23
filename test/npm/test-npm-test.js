@@ -27,69 +27,69 @@ const badTemp = path.join(sandbox, 'omg-i-do-not-support-testing');
 
 let packageManagers;
 
-test('npm-test: setup', function (t) {
+test('npm-test: setup', (t) => {
   t.plan(8);
   packageManager.getPackageManagers((e, res) => {
     packageManagers = res;
     t.error(e);
   });
-  mkdirp(sandbox, function (err) {
+  mkdirp(sandbox, (err) => {
     t.error(err);
-    ncp(passFixtures, passTemp, function (e) {
+    ncp(passFixtures, passTemp, (e) => {
       t.error(e);
       t.ok(fs.existsSync(path.join(passTemp, 'package.json')));
     });
-    ncp(failFixtures, failTemp, function (e) {
+    ncp(failFixtures, failTemp, (e) => {
       t.error(e);
       t.ok(fs.existsSync(path.join(failTemp, 'package.json')));
     });
-    ncp(badFixtures, badTemp, function (e) {
+    ncp(badFixtures, badTemp, (e) => {
       t.error(e);
       t.ok(fs.existsSync(path.join(badTemp, 'package.json')));
     });
   });
 });
 
-test('npm-test: basic module passing', function (t) {
+test('npm-test: basic module passing', (t) => {
   const context = makeContext.npmContext('omg-i-pass', packageManagers,
     sandbox, {
       npmLevel: 'silly'
     });
-  packageManagerTest('npm', context, function (err) {
+  packageManagerTest('npm', context, (err) => {
     t.error(err);
     t.end();
   });
 });
 
-test('npm-test: basic module failing', function (t) {
+test('npm-test: basic module failing', (t) => {
   const context = makeContext.npmContext('omg-i-fail', packageManagers,
     sandbox);
-  packageManagerTest('npm', context, function (err) {
+  packageManagerTest('npm', context, (err) => {
     t.equals(err && err.message, 'The canary is dead:');
     t.end();
   });
 });
 
-test('npm-test: basic module no test script', function (t) {
+test('npm-test: basic module no test script', (t) => {
   const context =
     makeContext.npmContext('omg-i-do-not-support-testing', packageManagers,
       sandbox);
-  packageManagerTest('npm', context, function (err) {
+  packageManagerTest('npm', context, (err) => {
     t.equals(err && err.message, 'Module does not support npm-test!');
     t.end();
   });
 });
 
-test('npm-test: no package.json', function (t) {
+test('npm-test: no package.json', (t) => {
   const context = makeContext.npmContext('omg-i-dont-exist', packageManagers,
     sandbox);
-  packageManagerTest('npm', context, function (err) {
+  packageManagerTest('npm', context, (err) => {
     t.equals(err && err.message, 'Package.json Could not be found');
     t.end();
   });
 });
 
-test('npm-test: alternative test-path', function (t) {
+test('npm-test: alternative test-path', (t) => {
   // Same test as 'basic module passing', except with alt node bin which fails.
   const nodeBinName = packageManagerTest.__get__('nodeBinName');
   packageManagerTest.__set__('nodeBinName', 'fake-node');
@@ -98,28 +98,28 @@ test('npm-test: alternative test-path', function (t) {
       npmLevel: 'silly',
       testPath: path.resolve(__dirname, '..', 'fixtures', 'fakenodebin')
     });
-  packageManagerTest('npm', context, function (err) {
+  packageManagerTest('npm', context, (err) => {
     packageManagerTest.__set__('nodeBinName', nodeBinName);
     t.equals(err && err.message, 'The canary is dead:');
     t.end();
   });
 });
 
-test('npm-test: timeout', function (t) {
+test('npm-test: timeout', (t) => {
   const context = makeContext.npmContext('omg-i-pass', packageManagers,
     sandbox, {
       npmLevel: 'silly',
       timeoutLength: 100
     });
-  packageManagerTest('npm', context, function (err) {
+  packageManagerTest('npm', context, (err) => {
     t.ok(context.module.flaky, 'Module is Flaky because tests timed out');
     t.equals(err && err.message, 'Test Timed Out');
     t.end();
   });
 });
 
-test('npm-test: teardown', function (t) {
-  rimraf(sandbox, function (err) {
+test('npm-test: teardown', (t) => {
+  rimraf(sandbox, (err) => {
     t.error(err);
     t.end();
   });

@@ -45,7 +45,7 @@ const flakeCityUsa = [
   fixtures.iFlakyPass
 ];
 
-test('getPassing:', function (t) {
+test('getPassing:', (t) => {
   t.equals(util.getPassing(noPassing).length, 0,
       'there should be no passing modules in the noPassing list');
   t.equals(util.getPassing(somePassing).length, 2,
@@ -57,7 +57,7 @@ test('getPassing:', function (t) {
   t.end();
 });
 
-test('getSkipped:', function (t) {
+test('getSkipped:', (t) => {
   t.equals(util.getSkipped(noPassing).length, 1,
       'there should be one skipped module in the noPassing list');
   t.equals(util.getSkipped(somePassing).length, 1,
@@ -67,7 +67,7 @@ test('getSkipped:', function (t) {
   t.end();
 });
 
-test('getFlakyFails:', function (t) {
+test('getFlakyFails:', (t) => {
   t.equals(util.getFlakyFails(noPassing).length, 4,
       'there should be two flaky failing modules in the noPassing list');
   t.equals(util.getFlakyFails(somePassing).length, 1,
@@ -79,7 +79,7 @@ test('getFlakyFails:', function (t) {
   t.end();
 });
 
-test('getFails:', function (t) {
+test('getFails:', (t) => {
   t.equals(util.getFails(noPassing).length, 3,
       'there should be three failing modules in the noPassing list');
   t.equals(util.getFails(somePassing).length, 1,
@@ -91,7 +91,7 @@ test('getFails:', function (t) {
   t.end();
 });
 
-test('hasFailures:', function (t) {
+test('hasFailures:', (t) => {
   t.ok(util.hasFailures(noPassing),
       'there should be failures in the noPassing list');
   t.ok(util.hasFailures(somePassing),
@@ -103,7 +103,7 @@ test('hasFailures:', function (t) {
   t.end();
 });
 
-test('util.sanitizeOutput', function (t) {
+test('util.sanitizeOutput', (t) => {
   // Var result = util.sanitizeOutput();
   const raw = fs.readFileSync(carriageReturnPath, 'utf-8');
   const expected = fs.readFileSync(carriageReturnExpectedPath, 'utf-8');

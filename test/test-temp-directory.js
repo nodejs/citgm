@@ -35,12 +35,12 @@ const badContext = {
   }
 };
 
-test('tempDirectory.create:', function (t) {
+test('tempDirectory.create:', (t) => {
   t.notOk(context.path, 'context should not have a path');
-  tempDirectory.create(context, function (e, ctx) {
+  tempDirectory.create(context, (e, ctx) => {
     t.error(e);
     t.ok(ctx.path, 'context should now have a path');
-    fs.stat(ctx.path, function (err, stats) {
+    fs.stat(ctx.path, (err, stats) => {
       t.error(err);
       t.ok(stats.isDirectory(), 'the path should exist and be a folder');
       t.end();
@@ -48,22 +48,22 @@ test('tempDirectory.create:', function (t) {
   });
 });
 
-test('tempDirectory.create --tmpDir:', function (t) {
-  tempDirectory.create(contextTmpDir, function (e, ctx) {
+test('tempDirectory.create --tmpDir:', (t) => {
+  tempDirectory.create(contextTmpDir, (e, ctx) => {
     t.error(e);
     t.ok(ctx.path.match(/thisisatest\/.*-.*-.*-.*-.*/),
         'the path should match --tmpDir');
-    fs.stat(ctx.path, function (err, stats) {
+    fs.stat(ctx.path, (err, stats) => {
       t.error(err);
       t.ok(stats.isDirectory(), 'the path should exist and be a folder');
-      rimraf('./.thisisatest', function() {
+      rimraf('./.thisisatest', () => {
       });
       t.end();
     });
   });
 });
 
-test('tempDirectory.create: bad path', function (t) {
+test('tempDirectory.create: bad path', (t) => {
   const path = tempDirectory.__get__('path');
   tempDirectory.__set__('path', {
     join: function () {
@@ -71,7 +71,7 @@ test('tempDirectory.create: bad path', function (t) {
     }
   });
   t.notOk(badContext.path, 'badContext should not have a path');
-  tempDirectory.create(badContext, function (e) {
+  tempDirectory.create(badContext, (e) => {
     t.notEquals(e.message.search(/\/dev\/null/), -1,
         'the message should include the path /dev/null');
     tempDirectory.__set__('path', path);
@@ -79,11 +79,11 @@ test('tempDirectory.create: bad path', function (t) {
   });
 });
 
-test('tempDirectory.remove:', function (t) {
+test('tempDirectory.remove:', (t) => {
   t.ok(context.path, 'context should have a path');
-  tempDirectory.remove(context, function (e, ctx) {
+  tempDirectory.remove(context, (e, ctx) => {
     t.error(e);
-    fs.stat(ctx.path, function (err, stats) {
+    fs.stat(ctx.path, (err, stats) => {
       t.ok(err, 'we should get an error as the path does not exist');
       t.notOk(stats, 'stats should be falsey');
       t.end();
@@ -91,9 +91,9 @@ test('tempDirectory.remove:', function (t) {
   });
 });
 
-test('tempDirectory.remove: bad path', function (t) {
+test('tempDirectory.remove: bad path', (t) => {
   t.ok(badContext, 'badContext should have a path');
-  tempDirectory.remove(badContext, function (e) {
+  tempDirectory.remove(badContext, (e) => {
     t.notEquals(e.message.search(/\/dev\/null/), -1,
         'the message should include the path /dev/null');
     t.end();

@@ -18,7 +18,7 @@ const logger = {
   warn: metaLogger
 };
 
-test('single passing module:', function (t) {
+test('single passing module:', (t) => {
   let expected = 'passing module(s)';
   expected += 'module name:' + 'iPass';
   expected += 'version:' + '4.2.2';
@@ -30,7 +30,7 @@ test('single passing module:', function (t) {
   t.end();
 });
 
-test('single failing module:', function (t) {
+test('single failing module:', (t) => {
   let expected = 'failing module(s)';
   expected += 'module name:' + 'iFail';
   expected += 'version:' + '3.0.1';
@@ -44,7 +44,7 @@ test('single failing module:', function (t) {
   t.end();
 });
 
-test('multiple modules passing, with a flaky module that fails:', function (t) {
+test('multiple modules passing, with a flaky module that fails:', (t) => {
   let expected = 'passing module(s)';
   expected += 'module name:' + 'iPass';
   expected += 'version:' + '4.2.2';

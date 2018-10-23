@@ -8,7 +8,7 @@ const lookup = rewire('../lib/lookup');
 const makeUrl = lookup.__get__('makeUrl');
 const getLookupTable = lookup.get;
 
-test('lookup: makeUrl', function (t) {
+test('lookup: makeUrl', (t) => {
   const repo = 'https://github.com/nodejs/citgm';
 
   const tags = {
@@ -46,7 +46,7 @@ test('lookup: makeUrl', function (t) {
   t.end();
 });
 
-test('lookup[getLookupTable]:', function (t) {
+test('lookup[getLookupTable]:', (t) => {
   let table;
   try {
     table = getLookupTable({
@@ -62,7 +62,7 @@ test('lookup[getLookupTable]:', function (t) {
   t.end();
 });
 
-test('lookup[getLookupTable]: custom table', function (t) {
+test('lookup[getLookupTable]: custom table', (t) => {
   let table;
   try {
     table = getLookupTable({
@@ -84,7 +84,7 @@ test('lookup[getLookupTable]: custom table', function (t) {
   t.end();
 });
 
-test('lookup[getLookupTable]: custom table that does not exist', function (t) {
+test('lookup[getLookupTable]: custom table that does not exist', (t) => {
   let table;
   try {
     table = getLookupTable({
@@ -98,7 +98,7 @@ test('lookup[getLookupTable]: custom table that does not exist', function (t) {
   t.end();
 });
 
-test('lookup: module not in table', function (t) {
+test('lookup: module not in table', (t) => {
   const context = {
     lookup: null,
     module: {
@@ -114,7 +114,7 @@ test('lookup: module not in table', function (t) {
     emit: function () {}
   };
 
-  lookup(context, function (err) {
+  lookup(context, (err) => {
     t.error(err);
     t.notOk(context.module.raw,
           'raw should remain falsey if module is not in lookup');
@@ -122,7 +122,7 @@ test('lookup: module not in table', function (t) {
   });
 });
 
-test('lookup: module not in table with gitHead', function (t) {
+test('lookup: module not in table with gitHead', (t) => {
   const context = {
     lookup: null,
     module: {
@@ -141,7 +141,7 @@ test('lookup: module not in table with gitHead', function (t) {
     emit: function () {}
   };
 
-  lookup(context, function (err) {
+  lookup(context, (err) => {
     t.error(err);
     t.equals(context.module.raw,
              'https://github.com/nodejs/omg-i-pass/archive/abc123.tar.gz',
@@ -150,7 +150,7 @@ test('lookup: module not in table with gitHead', function (t) {
   });
 });
 
-test('lookup: module in table', function (t) {
+test('lookup: module in table', (t) => {
   const context = {
     lookup: null,
     module: {
@@ -168,7 +168,7 @@ test('lookup: module in table', function (t) {
     emit: function () {}
   };
 
-  lookup(context, function (err) {
+  lookup(context, (err) => {
     t.error(err);
     t.equals(context.module.raw,
           'https://github.com/lodash/lodash/archive/master.tar.gz',
@@ -177,7 +177,7 @@ test('lookup: module in table', function (t) {
   });
 });
 
-test('lookup: module in table with gitHead', function (t) {
+test('lookup: module in table with gitHead', (t) => {
   const context = {
     lookup: null,
     module: {
@@ -196,7 +196,7 @@ test('lookup: module in table with gitHead', function (t) {
     emit: function () {}
   };
 
-  lookup(context, function (err) {
+  lookup(context, (err) => {
     t.error(err);
     t.equals(context.module.raw,
              'https://github.com/lodash/lodash/archive/abc123.tar.gz',
@@ -205,20 +205,20 @@ test('lookup: module in table with gitHead', function (t) {
   });
 });
 
-test('lookup: no table', function (t) {
+test('lookup: no table', (t) => {
   const context = {
     options: {
       lookup: 'test/fixtures/custom-lookup-does-not-exist.json'
     }
   };
 
-  lookup(context, function (err) {
+  lookup(context, (err) => {
     t.equals(err && err.message, 'Lookup table could not be loaded');
     t.end();
   });
 });
 
-test('lookup: replace with no repo', function (t) {
+test('lookup: replace with no repo', (t) => {
   const context = {
     module: {
       name: 'omg-i-pass',
@@ -234,13 +234,13 @@ test('lookup: replace with no repo', function (t) {
     emit: function () {}
   };
 
-  lookup(context, function (err) {
+  lookup(context, (err) => {
     t.equals(err && err.message, 'no-repository-field in package.json');
     t.end();
   });
 });
 
-test('lookup: --fail-flaky', function (t) {
+test('lookup: --fail-flaky', (t) => {
   const context = {
     lookup: null,
     module: {
@@ -258,14 +258,14 @@ test('lookup: --fail-flaky', function (t) {
     emit: function () {}
   };
 
-  lookup(context, function (err) {
+  lookup(context, (err) => {
     t.error(err);
     t.false(context.module.flaky, 'flaky should be disabled');
     t.end();
   });
 });
 
-test('lookup: ensure lookup works', function (t) {
+test('lookup: ensure lookup works', (t) => {
   let lookup;
   try {
     lookup = require('../lib/lookup.json');
@@ -276,7 +276,7 @@ test('lookup: ensure lookup works', function (t) {
   t.end();
 });
 
-test('lookup: lookup with install', function (t) {
+test('lookup: lookup with install', (t) => {
   const context = {
     module: {
       name: 'omg-i-pass-with-install-param',
@@ -295,14 +295,14 @@ test('lookup: lookup with install', function (t) {
     install: [/--extra-param/]
   };
 
-  lookup(context, function (err) {
+  lookup(context, (err) => {
     t.error(err);
     t.match(context.module, expected, 'Read extra install parameter');
     t.end();
   });
 });
 
-test('lookup: logging', function (t) {
+test('lookup: logging', (t) => {
   const expectedLogMsgs = [
     { type: 'info', key: 'lookup', msg: 'omg-i-pass' },
     { type: 'info', key: 'lookup-found', msg: 'omg-i-pass' },
@@ -326,10 +326,10 @@ test('lookup: logging', function (t) {
   context.options = {
     lookup: 'test/fixtures/custom-lookup-log.json'
   };
-  context.on('data', function (type, key, msg) {
+  context.on('data', (type, key, msg) => {
     log.push({ type: type, key: key, msg: msg });
   });
-  lookup(context, function () {
+  lookup(context, () => {
     t.plan(1);
     t.strictSame(log, expectedLogMsgs);
     t.end();

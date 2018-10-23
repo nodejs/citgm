@@ -24,5 +24,6 @@
     prefer-template: 2
     template-curly-spacing: 2
     no-template-curly-in-string: 2
+    prefer-arrow-callback: 2
 
   extends: eslint:recommended

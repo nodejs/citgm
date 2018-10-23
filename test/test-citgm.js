@@ -5,7 +5,7 @@ const rewire = require('rewire');
 
 const citgm = rewire('../lib/citgm');
 
-test('citgm: omg-i-pass', function (t) {
+test('citgm: omg-i-pass', (t) => {
   const options = {
     hmac: null,
     lookup: null,
@@ -16,17 +16,17 @@ test('citgm: omg-i-pass', function (t) {
   const mod = 'omg-i-pass';
 
   citgm.Tester(mod, options)
-  .on('start', function (name) {
+  .on('start', (name) => {
     t.equals(name, mod, 'it should be omg-i-pass');
-  }).on('fail', function (err) {
+  }).on('fail', (err) => {
     t.error(err);
-  }).on('end', function () {
+  }).on('end', () => {
     t.notOk(process.exitCode, 'it should not exit');
     t.end();
   }).run();
 });
 
-test('citgm: omg-i-pass from git url', function (t) {
+test('citgm: omg-i-pass from git url', (t) => {
   const options = {
     hmac: null,
     lookup: null,
@@ -37,11 +37,11 @@ test('citgm: omg-i-pass from git url', function (t) {
   const mod = 'git+https://github.com/MylesBorins/omg-i-pass';
 
   citgm.Tester(mod, options)
-  .on('start', function (name) {
+  .on('start', (name) => {
     t.equals(name, mod, 'it should be omg-i-pass');
-  }).on('fail', function (err) {
+  }).on('fail', (err) => {
     t.error(err);
-  }).on('end', function () {
+  }).on('end', () => {
     t.notOk(process.exitCode, 'it should not exit');
     t.end();
   }).run();
