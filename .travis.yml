@@ -1,5 +1,7 @@
 language: node_js
-before_install: curl -o- -L https://yarnpkg.com/install.sh | bash
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH=$HOME/.yarn/bin:$PATH
 os:
   - linux
   - osx
