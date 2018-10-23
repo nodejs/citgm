@@ -13,7 +13,7 @@ const junit = require('../../lib/reporter/junit');
 const fixtures = require('../fixtures/reporter-fixtures');
 
 const fixturesPath = path.join(__dirname, '..', 'fixtures');
-const sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now());
+const sandbox = path.join(os.tmpdir(), `citgm-${Date.now()}`);
 const outputFile = path.join(sandbox, 'test.xml');
 const outputFileAppend = path.join(sandbox, 'test-append.xml');
 

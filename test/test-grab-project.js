@@ -13,7 +13,7 @@ const rimraf = require('rimraf');
 
 const grabProject = require('../lib/grab-project');
 
-const sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now());
+const sandbox = path.join(os.tmpdir(), `citgm-${Date.now()}`);
 const fixtures = path.join(__dirname, 'fixtures');
 
 test('grab-project: setup', function (t) {

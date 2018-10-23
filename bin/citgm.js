@@ -87,7 +87,7 @@ function launch(mod, options) {
     module.duration = new Date() - start;
     reporter.logger(log, module);
 
-    log.info('duration', 'test duration: ' + module.duration + 'ms');
+    log.info('duration', `test duration: ${module.duration}ms`);
     if (app.markdown) {
       reporter.markdown(log.bypass, module);
     }

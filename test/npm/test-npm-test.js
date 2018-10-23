@@ -13,7 +13,7 @@ const makeContext = require('../helpers/make-context');
 const packageManager = require('../../lib/package-manager');
 const packageManagerTest = rewire('../../lib/package-manager/test');
 
-const sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now());
+const sandbox = path.join(os.tmpdir(), `citgm-${Date.now()}`);
 const fixtures = path.join(__dirname, '..', 'fixtures');
 
 const passFixtures = path.join(fixtures, 'omg-i-pass');

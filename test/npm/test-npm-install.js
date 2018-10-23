@@ -12,7 +12,7 @@ const packageManager = require('../../lib/package-manager');
 const packageManagerInstall = require('../../lib/package-manager/install');
 const makeContext = require('../helpers/make-context');
 
-const sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now());
+const sandbox = path.join(os.tmpdir(), `citgm-${Date.now()}`);
 const fixtures = path.join(__dirname, '..', 'fixtures');
 const moduleFixtures = path.join(fixtures, 'omg-i-pass');
 const moduleTemp = path.join(sandbox, 'omg-i-pass');
