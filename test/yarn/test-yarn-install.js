@@ -3,9 +3,7 @@ const os = require('os');
 const path = require('path');
 const fs = require('fs');
 
-const tap = require('tap');
-const test = tap.test;
-const skip = tap.skip;
+const test = require('tap').test;
 const mkdirp = require('mkdirp');
 const rimraf = require('rimraf');
 const ncp = require('ncp');
@@ -49,8 +47,7 @@ test('yarn-install: basic module', function (t) {
   });
 });
 
-// Skipped because yarn does not have the same behavior.
-skip('yarn-install: extra install parameters', function (t) {
+test('yarn-install: extra install parameters', function (t) {
   const context = makeContext.npmContext({
     name: 'omg-i-pass-with-install-param',
     install: ['--extra-param']
