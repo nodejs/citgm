@@ -3,7 +3,9 @@ const os = require('os');
 const path = require('path');
 const fs = require('fs');
 
-const test = require('tap').test;
+const tap = require('tap');
+const test = tap.test;
+const skip = tap.skip;
 const mkdirp = require('mkdirp');
 const rimraf = require('rimraf');
 const ncp = require('ncp');
@@ -76,7 +78,8 @@ test('yarn-test: no package.json', function (t) {
   });
 });
 
-test('yarn-test: alternative test-path', function (t) {
+// Skipped since this does not work with shell scripts
+skip('yarn-test: alternative test-path', function (t) {
   // Same test as 'basic module passing', except with alt node bin which fails.
   const nodeBinName = packageManagerTest.__get__('nodeBinName');
   packageManagerTest.__set__('nodeBinName', 'fake-node');
