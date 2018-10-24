@@ -504,5 +504,15 @@
   "@nearform/bubbleprof": {
     "maintainers": ["mcollina", "BridgeAR"],
     "prefix": "v"
+  },
+  "jest": {
+    "maintainers": ["cpojer", "SimenB"],
+    "prefix": "v",
+    "customTestScript": "test-ci-partial",
+    "yarn":  true,
+    "stripAnsi": true,
+    "envVar": {
+      "FORCE_COLOR": 1
+    }
   }
 }
