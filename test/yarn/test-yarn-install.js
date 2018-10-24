@@ -47,18 +47,6 @@ test('yarn-install: basic module', function (t) {
   });
 });
 
-test('yarn-install: extra install parameters', function (t) {
-  const context = makeContext.npmContext({
-    name: 'omg-i-pass-with-install-param',
-    install: ['--extra-param']
-  }, sandbox);
-  packageManagerInstall('yarn', context, function (err) {
-    t.error(err);
-    t.notOk(context.module.flaky, 'Module passed and is not flaky');
-    t.end();
-  });
-});
-
 test('yarn-install: no package.json', function (t) {
   const context = makeContext.npmContext('omg-i-fail', sandbox);
   packageManagerInstall('yarn', context, function (err) {
