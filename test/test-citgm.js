@@ -50,12 +50,19 @@ test('citgm: omg-i-pass from git url', function (t) {
 
 test('citgm: internal function find with error', function (t) {
   const which = citgm.__get__('which');
+  const npmWhich = citgm.__get__('npmWhich');
   citgm.__set__('which', function (app, next) {
     return next('Error');
+  });
+  citgm.__set__('npmWhich', function () {
+    return function (app, next) {
+      return next('Error');
+    };
   });
   find(undefined, undefined, function (err) {
     t.equals(err && err.message, 'undefined not found in path!');
     citgm.__set__('which', which);
+    citgm.__set__('npmWhich', npmWhich);
     t.end();
   });
 });
