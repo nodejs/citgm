@@ -42,6 +42,8 @@ test('yarn-install: setup', function (t) {
 test('yarn-install: basic module', function (t) {
   const context = makeContext.npmContext('omg-i-pass', sandbox);
   packageManagerInstall('yarn', context, function (err) {
+    context.testOutput = context.testOutput.toString();
+    context.testError = context.testError.toString();
     t.error(err);
     t.end();
   });
@@ -50,6 +52,8 @@ test('yarn-install: basic module', function (t) {
 test('yarn-install: no package.json', function (t) {
   const context = makeContext.npmContext('omg-i-fail', sandbox);
   packageManagerInstall('yarn', context, function (err) {
+    context.testOutput = context.testOutput.toString();
+    context.testError = context.testError.toString();
     t.equals(err && err.message, 'Install Failed');
     t.notOk(context.module.flaky, 'Module failed but is not flaky');
     t.end();
@@ -61,6 +65,8 @@ test('yarn-install: timeout', function (t) {
     timeoutLength: 100
   });
   packageManagerInstall('yarn', context, function (err) {
+    context.testOutput = context.testOutput.toString();
+    context.testError = context.testError.toString();
     t.ok(context.module.flaky, 'Module is Flaky because install timed out');
     t.equals(err && err.message, 'Install Timed Out');
     t.end();
@@ -73,6 +79,8 @@ test('yarn-install: failed install', function (t) {
     testError: /"https:\/\/registry.yarnpkg.com\/THIS-WILL-FAIL: Not found/
   };
   packageManagerInstall('yarn', context, function (err) {
+    context.testOutput = context.testOutput.toString();
+    context.testError = context.testError.toString();
     t.notOk(context.module.flaky, 'Module failed is not flaky');
     t.equals(err && err.message, 'Install Failed');
     t.match(context, expected, 'Install error reported');
