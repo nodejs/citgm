@@ -76,7 +76,7 @@ test('yarn-install: timeout', function (t) {
 test('yarn-install: failed install', function (t) {
   const context = makeContext.npmContext('omg-bad-tree', sandbox);
   const expected = {
-    testError: /"https:\/\/registry.yarnpkg.com\/THIS-WILL-FAIL: Not found/
+    testError: /\/THIS-WILL-FAIL: Not found/
   };
   packageManagerInstall('yarn', context, function (err) {
     context.testOutput = context.testOutput.toString();
