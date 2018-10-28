@@ -126,6 +126,7 @@
     "maintainers": "substack"
   },
   "stylus": {
+    "skip": "11",
     "flaky": ["win32", "aix"],
     "maintainers": "tj"
   },
@@ -259,6 +260,7 @@
     "maintainers": ["aearly", "megawac"]
   },
   "bluebird": {
+    "skip": "11",
     "prefix": "v",
     "maintainers": "petkaantonov"
   },
@@ -375,6 +377,7 @@
     "maintainers": "srl295"
   },
   "sqlite3": {
+    "skip": "11",
     "prefix": "v",
     "tags": "native",
     "flaky": "ppc",
@@ -483,7 +486,7 @@
   "shot": {
     "prefix": "v",
     "maintainers": "mtharrison",
-    "skip": "<8"
+    "skip": ["<8", "11"]
   },
   "blake2b-wasm": {
     "maintainers": ["mafintosh", "addaleax"],
