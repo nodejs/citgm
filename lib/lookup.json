@@ -386,12 +386,6 @@
     "tags": "native",
     "maintainers": "bnoordhuis"
   },
-  "electron-prebuilt": {
-    "prefix": "v",
-    "flaky": "s390",
-    "skip": "ppc",
-    "maintainers": "maxogden"
-  },
   "libxmljs": {
     "prefix": "v",
     "flaky": ["aix", "sles", "rhel", "darwin"],
