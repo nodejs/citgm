@@ -494,7 +494,8 @@
   },
   "@nearform/flame": {
     "maintainers": ["mcollina", "BridgeAR"],
-    "prefix": "v"
+    "prefix": "v",
+    "skip": "<=8"
   },
   "@nearform/doctor": {
     "maintainers": ["mcollina", "BridgeAR"],
