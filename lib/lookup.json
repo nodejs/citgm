@@ -355,7 +355,7 @@
   "bson": {
     "prefix": "V",
     "maintainers": "christkv",
-    "skip": ">=10"
+    "skip": true
   },
   "ember-cli": {
     "prefix": "v",
