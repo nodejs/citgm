@@ -141,9 +141,9 @@
   },
   "react": {
     "prefix": "v",
-    "flaky": ["v6"],
-    "skip": true,
-    "maintainers": ["zpao", "spicyj", "sebmarkbage"]
+    "maintainers": ["acdlite", "gaearon", "sophiebits"],
+    "yarn": true,
+    "skip": ["<8", ">=11"]
   },
   "gulp": {
     "prefix": "v",
