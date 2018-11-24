@@ -3,7 +3,7 @@
 const test = require('tap').test;
 const rewire = require('rewire');
 
-const npmTest = rewire('../../lib/npm/test');
+const npmTest = rewire('../../lib/package-manager/test');
 
 const authorName = npmTest.__get__('authorName');
 

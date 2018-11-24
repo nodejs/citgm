@@ -71,6 +71,7 @@ const options = {
   timeoutLength: app.timeout,
   tmpDir: app.tmpDir,
   customTest: app.customTest,
+  yarn: app.yarn,
   includeTags: app.includeTags || [],
   excludeTags: app.excludeTags || []
 };

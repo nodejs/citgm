@@ -2,7 +2,7 @@
 
 const BufferList = require('bl');
 
-function npmContext(mod, path, options) {
+function npmContext(mod, packageManagers, path, options) {
   if (typeof mod === 'string') {
     mod = {
       name: mod
@@ -16,7 +16,9 @@ function npmContext(mod, path, options) {
     testOutput: new BufferList(),
     testError: new BufferList(),
     meta: {},
-    options: options
+    options: options,
+    npmPath: packageManagers.npm,
+    yarnPath: packageManagers.yarn
   };
   return context;
 }

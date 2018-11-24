@@ -48,7 +48,8 @@ const options = {
   timeoutLength: app.timeout,
   sha: app.sha,
   tmpDir: app.tmpDir,
-  customTest: app.customTest
+  customTest: app.customTest,
+  yarn: app.yarn
 };
 
 if (!citgm.windows) {

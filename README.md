@@ -112,6 +112,7 @@ Options:
   --includeTags tag1 tag2     Only test modules from the lookup that contain a matching tag field
   --excludeTags tag1 tag2     Specify which tags to skip from the lookup (takes priority over includeTags)
                               Module names are automatically added as tags.
+  -y, --yarn                  Install and test the project using yarn instead of npm
 ```
 
 When using a JSON config file, the properties need to be the same as the
@@ -140,6 +141,7 @@ For syntax, see [lookup.json](./lib/lookup.json), the available attributes are:
 "maintainers": ["user1", "user2"] - List of module maintainers to be contacted with issues
 "tags": ["tag1", "tag2"]     Specify which tags apply to the module
 "ignoreGitHead":             Ignore the gitHead field if it exists and fallback to using github tags
+"yarn":                      Install and test the project using yarn instead of npm
 ```
 
 If you want to pass options to npm, eg `--registry`, you can usually define an
