@@ -89,7 +89,7 @@
   },
   "jquery": {
     "skip": "win32",
-    "flaky": ["linux", "aix"],
+    "flaky": ["linux", "aix", "darwin"],
     "maintainers": "jeresig",
     "ignoreGitHead": true
   },
