@@ -502,6 +502,7 @@
   },
   "@nearform/bubbleprof": {
     "maintainers": ["mcollina", "BridgeAR"],
-    "prefix": "v"
+    "prefix": "v",
+    "flaky": true
   }
 }
