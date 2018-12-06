@@ -499,7 +499,7 @@
   "@nearform/doctor": {
     "maintainers": ["mcollina", "BridgeAR"],
     "prefix": "v",
-    "skip": ["ubuntu", "debian"]
+    "skip": true
   },
   "@nearform/bubbleprof": {
     "maintainers": ["mcollina", "BridgeAR"],
