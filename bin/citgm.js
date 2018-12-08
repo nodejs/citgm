@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 'use strict';
+
 const citgm = require('../lib/citgm');
 const commonArgs = require('../lib/common-args');
 const logger = require('../lib/out');

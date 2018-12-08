@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 'use strict';
+
 const os = require('os');
 
 const _ = require('lodash');

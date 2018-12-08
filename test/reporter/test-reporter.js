@@ -1,5 +1,6 @@
 // TODO this test does not test any functionality currently
 'use strict';
+
 const test = require('tap').test;
 
 const reporter = require('../../lib/reporter');

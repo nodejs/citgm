@@ -1,4 +1,5 @@
 'use strict';
+
 const test = require('tap').test;
 
 const markdown = require('../../lib/reporter/markdown');
