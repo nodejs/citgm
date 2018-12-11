@@ -289,6 +289,15 @@ test('lookup: ensure lookup works', (t) => {
     t.error(err);
   }
   t.ok(lookup, 'the lookup table should exist');
+
+  const lookupKeys = Object.keys(lookup);
+  const lookupKeysSorted = lookupKeys.slice().sort();
+  t.same(
+    lookupKeys,
+    lookupKeysSorted,
+    'the lookup table must be alphabetically sorted'
+  );
+
   t.end();
 });
 
