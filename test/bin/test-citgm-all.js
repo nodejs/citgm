@@ -5,6 +5,9 @@ const spawn = require('../../lib/spawn');
 
 const citgmAllPath = require.resolve('../../bin/citgm-all.js');
 
+const isWin32 = process.platform === 'win32';
+const nullDevice = isWin32 ? '\\\\.\\NUL' : '/dev/null';
+
 test('citgm-all: /w markdown /w -j', (t) => {
   t.plan(1);
   const proc = spawn(citgmAllPath, [
@@ -233,9 +236,9 @@ test('citgm-all: skip /w rootcheck /w tap to fs /w junit to fs /w append', (t) =
     'test/fixtures/custom-lookup-skip.json',
     '-s',
     '--tap',
-    '/dev/null',
+    nullDevice,
     '--junit',
-    '/dev/null',
+    nullDevice,
     '-a'
   ]);
   proc.on('error', (err) => {
@@ -261,8 +264,12 @@ test('bin: sigterm', (t) => {
   proc.stdout.once('data', () => {
     proc.kill('SIGINT');
   });
-  proc.on('exit', (code) => {
-    t.equal(code, 1, 'citgm-all should fail');
+  proc.on('exit', (code, signal) => {
+    if (isWin32) {
+      t.equal(signal, 'SIGINT', 'citgm-all should fail');
+    } else {
+      t.equal(code, 1, 'citgm-all should fail');
+    }
   });
 });
 

@@ -6,14 +6,17 @@ const spawn = require('../../lib/spawn');
 
 const citgmPath = require.resolve('../../bin/citgm.js');
 
+const isWin32 = process.platform === 'win32';
+const nullDevice = isWin32 ? '\\\\.\\NUL' : '/dev/null';
+
 test('bin: omg-i-pass /w tap to file /w junit to file /w append', (t) => {
   t.plan(1);
   const proc = spawn(citgmPath, [
     'omg-i-pass',
     '--tap',
-    '/dev/null',
+    nullDevice,
     '--junit',
-    '/dev/null',
+    nullDevice,
     '--append'
   ]);
   proc.on('error', (err) => {
@@ -33,7 +36,7 @@ test('bin: omg-i-fail /w tap /w junit /w markdown output /w nodedir', (t) => {
     '-t',
     '-x',
     '-d',
-    '/dev/null'
+    nullDevice
   ]);
   proc.on('error', (err) => {
     t.error(err);
@@ -79,8 +82,12 @@ test('bin: sigterm', (t) => {
   proc.stdout.once('data', () => {
     proc.kill('SIGINT');
   });
-  proc.on('exit', (code) => {
-    t.equal(code, 1, 'omg-i-pass should fail from a sigint');
+  proc.on('exit', (code, signal) => {
+    if (isWin32) {
+      t.equal(signal, 'SIGINT', 'omg-i-pass should fail from a sigint');
+    } else {
+      t.equal(code, 1, 'omg-i-pass should fail from a sigint');
+    }
   });
 });
 

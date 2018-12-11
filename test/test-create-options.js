@@ -1,5 +1,7 @@
 'use strict';
 
+const path = require('path');
+
 const test = require('tap').test;
 
 const createOptions = require('../lib/create-options');
@@ -18,13 +20,16 @@ test('create-options:', (t) => {
     module: { envVar: { testenvVar: 'thisisatest' } }
   };
 
+  const options = createOptions(cwd, context);
+
+  // Create a copy of process.env to set the properties added by createOptions
+  // for the deepequal test.
   const env = Object.create(process.env);
   env['npm_loglevel'] = 'warning';
   env['npm_config_tmp'] = 'npm_config_tmp';
   env['testenvVar'] = 'thisisatest';
-  env['npm_config_nodedir'] = nodePath;
-
-  const options = createOptions(cwd, context);
+  // Set dynamically to support Windows.
+  env['npm_config_nodedir'] = path.resolve(process.cwd(), nodePath);
 
   t.equals(typeof options, 'object', 'We should get back an object');
   t.notOk(options.uid, 'There should not be a uid in the options');
@@ -51,7 +56,12 @@ test('create-options: with uid / gid', (t) => {
   const options = createOptions(cwd, context);
 
   t.equals(typeof options, 'object', 'We should get back an object');
-  t.equals(options.uid, 1337, 'The uid should be set to the expected value');
-  t.equals(options.gid, 1337, 'The gid should be set to the expected value');
+  if (process.platform === 'win32') {
+    t.equals(options.uid, undefined, 'The uid should not be set on Windows');
+    t.equals(options.gid, undefined, 'The gid should not be set on Windows');
+  } else {
+    t.equals(options.uid, 1337, 'The uid should be set to the expected value');
+    t.equals(options.gid, 1337, 'The gid should be set to the expected value');
+  }
   t.end();
 });
