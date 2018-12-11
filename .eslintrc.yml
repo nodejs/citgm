@@ -3,14 +3,17 @@ env:
   es6: true
 
 rules:
-  eqeqeq: [2, always]
-  no-useless-escape: 2
-  capitalized-comments: [2, always, { ignoreConsecutiveComments: true }]
-  strict: 2
-  no-var: 2
-  prefer-template: 2
-  no-template-curly-in-string: 2
-  prefer-arrow-callback: 2
+  eqeqeq: [error, always]
+  no-useless-escape: error
+  capitalized-comments: [error, always, { ignoreConsecutiveComments: true }]
+  strict: error
+  no-var: error
+  prefer-template: error
+  no-template-curly-in-string: error
+  prefer-arrow-callback: error
+  padding-line-between-statements:
+    - error
+    - { blankLine: always, prev: directive, next: '*' }
 
 extends:
   - eslint:recommended

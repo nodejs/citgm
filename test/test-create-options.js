@@ -1,4 +1,5 @@
 'use strict';
+
 const test = require('tap').test;
 
 const createOptions = require('../lib/create-options');

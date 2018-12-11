@@ -1,5 +1,6 @@
 // TODO this test does not test any functionality currently
 'use strict';
+
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
