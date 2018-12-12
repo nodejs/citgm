@@ -8,6 +8,10 @@ const rimraf = require('rimraf');
 
 const tempDirectory = rewire('../lib/temp-directory');
 
+const isWin32 = process.platform === 'win32';
+const skipIfWin32 = isWin32 ? { skip: 'cannot run on Windows' } : {};
+const nullDevice = isWin32 ? '\\\\.\\NUL' : '/dev/null';
+
 const context = {
   path: null,
   emit: function() {},
@@ -24,14 +28,6 @@ const contextTmpDir = {
   emit: function() {},
   module: {
     name: 'test-module'
-  }
-};
-
-const badContext = {
-  path: null,
-  emit: function() {},
-  module: {
-    name: 'test-module-bad'
   }
 };
 
@@ -52,7 +48,7 @@ test('tempDirectory.create --tmpDir:', (t) => {
   tempDirectory.create(contextTmpDir, (e, ctx) => {
     t.error(e);
     t.ok(
-      ctx.path.match(/thisisatest\/.*-.*-.*-.*-.*/),
+      ctx.path.match(/thisisatest[/\\].*-.*-.*-.*-.*/),
       'the path should match --tmpDir'
     );
     fs.stat(ctx.path, (err, stats) => {
@@ -64,20 +60,30 @@ test('tempDirectory.create --tmpDir:', (t) => {
   });
 });
 
-test('tempDirectory.create: bad path', (t) => {
+// Skip because Windows allows mkdir calls on the null device.
+test('tempDirectory.create: bad path', skipIfWin32, (t) => {
+  t.plan(2);
+
+  const badContext = {
+    path: null,
+    emit: function() {},
+    module: {
+      name: 'test-module-bad'
+    }
+  };
+
   const path = tempDirectory.__get__('path');
   tempDirectory.__set__('path', {
     join: function() {
-      return '/dev/null';
+      return nullDevice;
     }
   });
-  t.notOk(badContext.path, 'badContext should not have a path');
   tempDirectory.create(badContext, (e) => {
-    t.notEquals(
-      e.message.search(/\/dev\/null/),
-      -1,
-      'the message should include the path /dev/null'
+    t.ok(
+      e.message.includes(nullDevice),
+      `the message should include the path ${nullDevice}`
     );
+    t.ok(badContext.path, 'badContext should have a path');
     tempDirectory.__set__('path', path);
     t.end();
   });
@@ -96,12 +102,20 @@ test('tempDirectory.remove:', (t) => {
 });
 
 test('tempDirectory.remove: bad path', (t) => {
-  t.ok(badContext, 'badContext should have a path');
+  t.plan(1);
+
+  const badContext = {
+    path: nullDevice,
+    emit: function() {},
+    module: {
+      name: 'test-module-bad'
+    }
+  };
+
   tempDirectory.remove(badContext, (e) => {
-    t.notEquals(
-      e.message.search(/\/dev\/null/),
-      -1,
-      'the message should include the path /dev/null'
+    t.ok(
+      e.message.includes(nullDevice),
+      `the message should include the path ${nullDevice}`
     );
     t.end();
   });

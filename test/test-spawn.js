@@ -11,6 +11,13 @@ test('spawn:', (t) => {
   let error = '';
   let message = '';
 
+  const expectedMessage =
+    process.platform === 'win32' ? '"Hello world."\r\n' : 'Hello world.\n';
+
+  child.stderr.on('data', (chunk) => {
+    error += chunk;
+  });
+
   child.stdout.on('data', (chunk) => {
     message += chunk;
   });
@@ -18,7 +25,7 @@ test('spawn:', (t) => {
   child.on('close', () => {
     t.equals(
       message,
-      'Hello world.\n',
+      expectedMessage,
       'we should receive "Hello world." on stdout'
     );
     t.equals(error, '', 'there should be no data on stderr');
