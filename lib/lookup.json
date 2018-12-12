@@ -107,7 +107,8 @@
     "skip": true
   },
   "debug": {
-    "maintainers": ["qix", "tootallnate"]
+    "maintainers": ["qix", "tootallnate"],
+    "skip": ["aix", "ppc", "s390", "win32"]
   },
   "dicer": {
     "prefix": "v",
