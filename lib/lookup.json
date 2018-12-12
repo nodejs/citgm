@@ -184,6 +184,11 @@
     "expectFail": "fips",
     "maintainers": "isaacs"
   },
+  "got": {
+    "maintainers": ["sindresorhus"],
+    "prefix": "v",
+    "skip": ["<8", ">=11"]
+  },
   "graceful-fs": {
     "prefix": "v",
     "maintainers": "isaacs"
