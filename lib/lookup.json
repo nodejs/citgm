@@ -1,16 +1,16 @@
 {
   "@nearform/bubbleprof": {
-    "maintainers": ["mcollina", "BridgeAR"],
+    "maintainers": "mcollina",
     "prefix": "v",
     "flaky": true
   },
   "@nearform/doctor": {
-    "maintainers": ["mcollina", "BridgeAR"],
+    "maintainers": "mcollina",
     "prefix": "v",
     "flaky": true
   },
   "@nearform/flame": {
-    "maintainers": ["mcollina", "BridgeAR"],
+    "maintainers": "mcollina",
     "prefix": "v",
     "flaky": true
   },
@@ -82,7 +82,7 @@
     "maintainers": ["matthewmueller", "jugglinmike"]
   },
   "clinic": {
-    "maintainers": ["mcollina", "BridgeAR"],
+    "maintainers": "mcollina",
     "prefix": "v"
   },
   "coffeescript": {
