@@ -106,6 +106,10 @@
     "maintainers": "alanshaw",
     "skip": true
   },
+  "debug": {
+    "maintainers": ["qix", "tootallnate"],
+    "skip": ["aix", "ppc", "s390", "win32"]
+  },
   "dicer": {
     "prefix": "v",
     "maintainers": "mscdex"
