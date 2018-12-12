@@ -7,12 +7,12 @@
   "@nearform/doctor": {
     "maintainers": ["mcollina", "BridgeAR"],
     "prefix": "v",
-    "skip": true
+    "flaky": true
   },
   "@nearform/flame": {
     "maintainers": ["mcollina", "BridgeAR"],
     "prefix": "v",
-    "skip": true
+    "flaky": true
   },
   "JSONStream": {
     "prefix": "v",
