@@ -196,7 +196,8 @@
   },
   "graceful-fs": {
     "prefix": "v",
-    "maintainers": "isaacs"
+    "maintainers": "isaacs",
+    "skip": ">=11"
   },
   "gulp": {
     "prefix": "v",
