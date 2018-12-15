@@ -43,7 +43,7 @@ Options:
   --customTest <path>         Run a custom node test script instead of "npm test"
   -x, --junit [path]          Output results in junit xml with optional file path
   -o, --timeout <length>      Set timeout for npm install
-  -c, --sha <commit-sha>      Install module from commit-sha
+  -c, --sha <commit-sha>      Install module from commit-sha, branch or tag
   -u, --uid <uid>             Set the uid (posix only)
   -g, --gid <uid>             Set the gid (posix only)
   -a, --append                Turns on append results to file mode rather than replace
