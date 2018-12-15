@@ -304,6 +304,33 @@ test('lookup: replace with no repo', (t) => {
   }
 });
 
+test('lookup: not found in lookup.json with --sha', (t) => {
+  t.plan(1);
+  const context = {
+    lookup: null,
+    module: {
+      name: 'test'
+    },
+    meta: {
+      gitHead: 'metaGitHead',
+      repository: {
+        url: 'https://github.com/test-org/test-repo'
+      }
+    },
+    options: {
+      sha: 'customsha'
+    },
+    emit: function() {}
+  };
+
+  lookup(context);
+  t.equals(
+    context.module.raw,
+    'https://github.com/test-org/test-repo/archive/customsha.tar.gz'
+  );
+  t.end();
+});
+
 test('lookup: --fail-flaky', (t) => {
   t.plan(1);
   const context = {
