@@ -289,6 +289,10 @@
     "skip": "win32",
     "maintainers": "linusu"
   },
+  "nan": {
+    "prefix": "v",
+    "tags": "native"
+  },
   "node-gyp": {
     "prefix": "v",
     "tags": "native",
