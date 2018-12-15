@@ -36,7 +36,8 @@
   "bcrypt": {
     "prefix": "v",
     "tags": "native",
-    "maintainers": "ncb000gt"
+    "maintainers": "ncb000gt",
+    "skip": "12"
   },
   "binary-split": {
     "prefix": "v",
@@ -258,7 +259,8 @@
   "microtime": {
     "prefix": "v",
     "tags": "native",
-    "maintainers": "wadey"
+    "maintainers": "wadey",
+    "skip": "12"
   },
   "mime": {
     "prefix": "v",
@@ -298,7 +300,8 @@
     "prefix": "v",
     "flaky": "win32",
     "tags": "native",
-    "maintainers": ["rnchamberlain", "richardlau"]
+    "maintainers": ["rnchamberlain", "richardlau"],
+    "skip": "12"
   },
   "node-sass": {
     "prefix": "v",
@@ -343,7 +346,8 @@
   "ref": {
     "flaky": "aix",
     "tags": "native",
-    "maintainers": "TooTallNate"
+    "maintainers": "TooTallNate",
+    "skip": "12"
   },
   "request": {
     "prefix": "v",
@@ -380,7 +384,8 @@
     "prefix": "serialport@",
     "flaky": "ppc",
     "tags": "native",
-    "maintainers": "reconbot"
+    "maintainers": "reconbot",
+    "skip": "12"
   },
   "shot": {
     "prefix": "v",
