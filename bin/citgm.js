@@ -16,7 +16,7 @@ const yargs = commonArgs(require('yargs'))
   .option('sha', {
     alias: 'c',
     type: 'string',
-    description: 'Install module from commit-sha'
+    description: 'Install module from commit-sha, branch or tag'
   });
 
 const app = yargs.argv;
