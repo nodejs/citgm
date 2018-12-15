@@ -420,7 +420,8 @@
   },
   "stylus": {
     "flaky": ["win32", "aix"],
-    "maintainers": "tj"
+    "maintainers": "tj",
+    "skip": ">=11"
   },
   "tape": {
     "prefix": "v",
