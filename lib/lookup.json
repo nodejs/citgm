@@ -463,7 +463,8 @@
   "uglify-js": {
     "prefix": "v",
     "flaky": ["ppc", "darwin"],
-    "maintainers": "mishoo"
+    "maintainers": "mishoo",
+    "skip": "12"
   },
   "underscore": {
     "flaky": ["aix", "s390"],
