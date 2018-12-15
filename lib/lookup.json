@@ -446,7 +446,8 @@
     "flaky": ["linux-ia32", "s390"],
     "skip": ["win32", "aix"],
     "tags": "native",
-    "maintainers": "TooTallNate"
+    "maintainers": "TooTallNate",
+    "skip": ">=11"
   },
   "torrent-stream": {
     "prefix": "v",
