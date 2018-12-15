@@ -57,7 +57,8 @@
   },
   "bluebird": {
     "prefix": "v",
-    "maintainers": "petkaantonov"
+    "maintainers": "petkaantonov",
+    "skip": ["ppc", "s390"]
   },
   "body-parser": {
     "flaky": "aix",
