@@ -315,9 +315,10 @@
     "maintainers": "blakeembrey"
   },
   "pug": {
-    "flaky": "ppc",
-    "skip": true,
-    "maintainers": ["tj", "ForbesLindesay"]
+    "prefix": "pug@",
+    "yarn": true,
+    "maintainers": ["tj", "ForbesLindesay"],
+    "skip": ["6", "win32"]
   },
   "pumpify": {
     "prefix": "v",
