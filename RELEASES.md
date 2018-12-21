@@ -1,6 +1,8 @@
 # CITGM Release Process
 
-This document describes the technical aspects of the citgm release process. The intended audience is those who have been authorized to create official releases for citgm, hosted on npm.
+This document describes the technical aspects of the citgm release process. The
+intended audience is those who have been authorized to create official releases
+for citgm, hosted on npm.
 
 ## Who can make a release?
 

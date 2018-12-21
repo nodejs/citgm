@@ -1,12 +1,13 @@
 'use strict';
+
 const test = require('tap').test;
 
 const markdown = require('../../lib/reporter/markdown');
 const fixtures = require('../fixtures/reporter-fixtures');
 
-test('single passing module:', function (t) {
+test('single passing module:', (t) => {
   let output = '';
-  markdown(function logger(data) {
+  markdown((data) => {
     output += data;
   }, fixtures.iPass);
   let expected = '## 🎉🎉 CITGM Passed 🎉🎉';
@@ -16,9 +17,9 @@ test('single passing module:', function (t) {
   t.end();
 });
 
-test('single failing module:', function (t) {
+test('single failing module:', (t) => {
   let output = '';
-  markdown(function logger(data) {
+  markdown((data) => {
     output += data;
   }, fixtures.iFail);
   let expected = '## 🔥⚠️🔥 CITGM FAILED 🔥⚠️🔥';
@@ -30,11 +31,14 @@ test('single failing module:', function (t) {
   t.end();
 });
 
-test('multiple modules passing, with a flaky module that fails:', function (t) {
+test('multiple modules passing, with a flaky module that fails:', (t) => {
   let output = '';
-  markdown(function logger(data) {
-    output += data;
-  }, [fixtures.iPass, fixtures.iFlakyPass, fixtures.iFlakyFail]);
+  markdown(
+    (data) => {
+      output += data;
+    },
+    [fixtures.iPass, fixtures.iFlakyPass, fixtures.iFlakyFail]
+  );
   let expected = '## 🎉🎉 CITGM Passed 🎉🎉';
   expected += '## 📛 But with Flaky Failures 📛';
   expected += '### Passing Modules';

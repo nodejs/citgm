@@ -1,130 +1,202 @@
 {
-  "lodash": {
-    "expectFail": "fips",
-    "maintainers": "jdalton"
+  "@nearform/bubbleprof": {
+    "maintainers": "mcollina",
+    "prefix": "v",
+    "flaky": true
   },
-  "underscore": {
-    "flaky": ["aix", "s390"],
+  "@nearform/doctor": {
+    "maintainers": "mcollina",
+    "prefix": "v",
+    "flaky": true
+  },
+  "@nearform/flame": {
+    "maintainers": "mcollina",
+    "prefix": "v",
+    "flaky": true
+  },
+  "JSONStream": {
+    "prefix": "v",
     "skip": "win32",
-    "maintainers": "jashkenas"
+    "maintainers": "dominictarr"
   },
-  "request": {
+  "acorn": {
+    "maintainers": "marijnh"
+  },
+  "async": {
     "prefix": "v",
     "flaky": true,
-    "skip": "aix",
-    "maintainers": "mikeal"
+    "maintainers": ["aearly", "megawac"]
+  },
+  "ava": {
+    "prefix": "v",
+    "skip": ["ppc", "win32", "x86", "rhel", "aix", "10"],
+    "flaky": "<8",
+    "maintainers": ["sindresorhus", "novemberborn"]
+  },
+  "bcrypt": {
+    "prefix": "v",
+    "tags": "native",
+    "maintainers": "ncb000gt",
+    "skip": "12"
+  },
+  "binary-split": {
+    "prefix": "v",
+    "flaky": "win32",
+    "maintainers": ["maxogden", "mourner"]
+  },
+  "bl": {
+    "prefix": "v",
+    "stripAnsi": true,
+    "expectFail": "fips",
+    "maintainers": "rvagg"
+  },
+  "blake2b-wasm": {
+    "maintainers": ["mafintosh", "addaleax"],
+    "prefix": "v",
+    "skip": "<8"
+  },
+  "bluebird": {
+    "prefix": "v",
+    "maintainers": "petkaantonov"
+  },
+  "body-parser": {
+    "flaky": "aix",
+    "maintainers": "dougwilson"
+  },
+  "browserify": {
+    "flaky": ">=v8",
+    "expectFail": "fips",
+    "maintainers": "substack"
+  },
+  "bson": {
+    "prefix": "V",
+    "maintainers": "christkv",
+    "skip": true
+  },
+  "bufferutil": {
+    "prefix": "v",
+    "tags": "native",
+    "maintainers": ["3rdeden", "einaros", "lpinca"]
+  },
+  "cheerio": {
+    "skip": "win32",
+    "maintainers": ["matthewmueller", "jugglinmike"]
+  },
+  "clinic": {
+    "maintainers": "mcollina",
+    "prefix": "v"
+  },
+  "coffeescript": {
+    "maintainers": ["jashkenas", "GeoffreyBooth"]
   },
   "commander": {
     "prefix": "v",
     "skip": "win32",
     "maintainers": "tj"
   },
-  "express": {
-    "flaky": "ppc",
-    "maintainers": "tj"
+  "crc32-stream": {
+    "maintainers": "ctalkington"
   },
-  "q": {
-    "prefix": "v",
-    "maintainers": "kriskowal"
-  },
-  "coffee-script": {
-    "maintainers": "jashkenas",
-    "skip": "v4"
-  },
-  "through2": {
-    "prefix": "v",
-    "stripAnsi": true,
-    "maintainers": "rvagg"
-  },
-  "glob": {
-    "prefix": "v",
-    "flaky": ["v6", "v7", "win32"],
-    "expectFail": "fips",
-    "maintainers": "isaacs"
-  },
-  "gulp-util": {
-    "prefix": "v",
-    "flaky": "rhel",
-    "maintainers": "contra"
-  },
-  "pug": {
-    "flaky": "ppc",
-    "skip": true,
-    "maintainers": ["tj", "ForbesLindesay"]
-  },
-  "socket.io": {
-    "flaky": true,
-    "maintainers": "rauchg"
-  },
-  "fs-extra": {
-    "flaky": ["linux-ia32", "aix", "s390", "win32"],
-    "expectFail": "fips",
-    "maintainers": "jprichardson"
-  },
-  "body-parser": {
-    "flaky": "aix",
-    "maintainers": "dougwilson"
-  },
-  "uglify-js": {
-    "prefix": "v",
-    "flaky": ["ppc", "win32", "v7", "darwin"],
-    "maintainers": "mishoo"
-  },
-  "jquery": {
-    "skip": "win32",
-    "flaky": ["linux", "aix"],
-    "maintainers": "jeresig"
-  },
-  "rimraf": {
+  "csv-parser": {
     "prefix": "v",
     "flaky": "win32",
-    "maintainers": "isaacs"
+    "maintainers": "mafintosh"
   },
   "david": {
     "prefix": "v",
-    "maintainers": "alanshaw"
+    "maintainers": "alanshaw",
+    "skip": true
+  },
+  "debug": {
+    "maintainers": ["qix", "tootallnate"],
+    "skip": ["aix", "ppc", "s390", "win32"]
+  },
+  "dicer": {
+    "prefix": "v",
+    "maintainers": "mscdex"
+  },
+  "duplexer2": {
+    "prefix": "v",
+    "maintainers": ["shinn", "deoxxa"]
+  },
+  "duplexify": {
+    "prefix": "v",
+    "maintainers": "mafintosh"
+  },
+  "ember-cli": {
+    "prefix": "v",
+    "flaky": ["win32", "rhel", "sles"],
+    "expectFail": "fips",
+    "maintainers": ["stefanpenner", "rwjblue", "Turbo87", "kellyselden"]
   },
   "eslint": {
     "prefix": "v",
-    "flaky": ["v7", "s390", "ubuntu"],
-    "skip": ["v8", "ppc"],
+    "flaky": ["s390", "ubuntu"],
+    "skip": [">=8", "ppc"],
     "expectFail": "fips",
     "maintainers": ["nzakas", "mysticatea", "not-an-aardvark"]
   },
-  "tape": {
-    "prefix": "v",
-    "flaky": ["linux", "win32"],
-    "maintainers": "substack"
-  },
-  "browserify": {
-    "flaky": ["v7", "win32"],
+  "esprima": {
+    "maintainers": "ariya",
     "expectFail": "fips",
-    "maintainers": "substack"
+    "skip": "win32"
   },
-  "watchify": {
+  "express": {
+    "flaky": "ppc",
+    "maintainers": "dougwilson"
+  },
+  "express-session": {
     "prefix": "v",
-    "flaky": ["ppc", "v7", "s390", "ubuntu", "rhel"],
-    "maintainers": "substack"
+    "maintainers": "dougwilson"
   },
-  "stylus": {
-    "flaky": ["win32", "aix"],
-    "maintainers": "tj"
+  "fastify": {
+    "maintainers": ["mcollina", "delvedor"],
+    "prefix": "v"
   },
-  "level": {
+  "ffi": {
+    "flaky": ["ppc", "aix", "s390", "ubuntu"],
+    "skip": ["win32", ">=8"],
+    "tags": "native",
+    "maintainers": "TooTallNate"
+  },
+  "flush-write-stream": {
     "prefix": "v",
-    "flaky": ["aix", "s390"],
-    "maintainers": ["ralphtheninja", "rvagg"]
-  },
-  "torrent-stream": {
-    "prefix": "v",
-    "flaky": true,
     "maintainers": "mafintosh"
   },
-  "react": {
+  "from2": {
     "prefix": "v",
-    "flaky": ["v6", "v7"],
-    "skip": true,
-    "maintainers": ["zpao", "spicyj", "sebmarkbage"]
+    "maintainers": ["mafintosh", "hughsk"]
+  },
+  "fs-extra": {
+    "flaky": ["linux-ia32", "aix", "s390", "win32"],
+    "skip": ">=8",
+    "expectFail": "fips",
+    "maintainers": "jprichardson"
+  },
+  "ftp": {
+    "prefix": "v",
+    "skip": ">=8",
+    "maintainers": "mscdex"
+  },
+  "full-icu-test": {
+    "prefix": "v",
+    "maintainers": "srl295"
+  },
+  "glob": {
+    "prefix": "v",
+    "flaky": ["v6", "win32"],
+    "expectFail": "fips",
+    "maintainers": "isaacs"
+  },
+  "got": {
+    "maintainers": ["sindresorhus"],
+    "prefix": "v",
+    "skip": ["<8", ">=11"]
+  },
+  "graceful-fs": {
+    "prefix": "v",
+    "maintainers": "isaacs",
+    "skip": ">=11"
   },
   "gulp": {
     "prefix": "v",
@@ -132,15 +204,277 @@
     "skip": "win32",
     "maintainers": "contra"
   },
+  "gulp-util": {
+    "prefix": "v",
+    "flaky": "rhel",
+    "maintainers": "contra"
+  },
+  "iconv": {
+    "prefix": "v",
+    "flaky": "aix",
+    "tags": "native",
+    "maintainers": "bnoordhuis"
+  },
+  "inherits": {
+    "prefix": "v",
+    "maintainers": "isaacs"
+  },
+  "isarray": {
+    "prefix": "v",
+    "maintainers": "juliangruber"
+  },
+  "jquery": {
+    "skip": "win32",
+    "flaky": ["linux", "aix", "darwin"],
+    "maintainers": "jeresig",
+    "ignoreGitHead": true
+  },
+  "koa": {
+    "skip": "<7",
+    "flaky": "ubuntu",
+    "maintainers": "tj"
+  },
+  "level": {
+    "prefix": "v",
+    "flaky": ["aix", "s390"],
+    "maintainers": ["ralphtheninja", "rvagg"]
+  },
+  "leveldown": {
+    "prefix": "v",
+    "flaky": ["ppc", "s390"],
+    "tags": "native",
+    "maintainers": "rvagg"
+  },
+  "libxmljs": {
+    "prefix": "v",
+    "flaky": ["aix", "sles", "rhel", "darwin"],
+    "skip": ["win32", ">=8"],
+    "tags": "native",
+    "maintainers": "defunctzombie"
+  },
+  "lodash": {
+    "expectFail": "fips",
+    "maintainers": "jdalton"
+  },
+  "microtime": {
+    "prefix": "v",
+    "tags": "native",
+    "maintainers": "wadey",
+    "skip": "12"
+  },
+  "mime": {
+    "prefix": "v",
+    "flaky": true,
+    "maintainers": "broofa"
+  },
+  "minimist": {
+    "maintainers": "substack"
+  },
+  "mkdirp": {
+    "master": true,
+    "flaky": ["v6"],
+    "skip": [">=8"],
+    "maintainers": "substack"
+  },
+  "mocha": {
+    "prefix": "v",
+    "skip": true,
+    "expectFail": "fips",
+    "maintainers": ["tj", "boneskull"]
+  },
   "moment": {
     "flaky": true,
     "maintainers": "ichernev"
   },
-  "ws": {
-    "flaky": "linux",
+  "multer": {
+    "prefix": "v",
     "skip": "win32",
+    "maintainers": "linusu"
+  },
+  "node-gyp": {
+    "prefix": "v",
+    "tags": "native",
+    "maintainers": ["nodejs/node-gyp"]
+  },
+  "node-report": {
+    "prefix": "v",
+    "flaky": "win32",
+    "tags": "native",
+    "maintainers": ["rnchamberlain", "richardlau"],
+    "skip": "12"
+  },
+  "node-sass": {
+    "prefix": "v",
+    "flaky": true,
+    "tags": "native",
+    "maintainers": "xzyfer"
+  },
+  "path-to-regexp": {
+    "prefix": "v",
+    "maintainers": "blakeembrey"
+  },
+  "pug": {
+    "prefix": "pug@",
+    "yarn": true,
+    "maintainers": ["tj", "ForbesLindesay"],
+    "skip": ["6", "win32"]
+  },
+  "pumpify": {
+    "prefix": "v",
+    "maintainers": "mafintosh"
+  },
+  "q": {
+    "prefix": "v",
+    "maintainers": "kriskowal"
+  },
+  "radium": {
+    "prefix": "v",
+    "skip": true,
     "expectFail": "fips",
-    "maintainers": ["einaros", "3rd-Eden", "lpinca"]
+    "maintainers": ["ianobermiller", "alexlande"]
+  },
+  "react": {
+    "prefix": "v",
+    "flaky": ["v6"],
+    "skip": true,
+    "maintainers": ["zpao", "spicyj", "sebmarkbage"]
+  },
+  "readable-stream": {
+    "prefix": "v",
+    "flaky": ["ppc", "darwin"],
+    "maintainers": "nodejs/streams"
+  },
+  "ref": {
+    "flaky": "aix",
+    "tags": "native",
+    "maintainers": "TooTallNate",
+    "skip": "12"
+  },
+  "request": {
+    "prefix": "v",
+    "flaky": true,
+    "skip": "aix",
+    "maintainers": "mikeal"
+  },
+  "rewire": {
+    "prefix": "v",
+    "maintainers": "jhnns"
+  },
+  "rimraf": {
+    "prefix": "v",
+    "flaky": "win32",
+    "maintainers": "isaacs"
+  },
+  "router": {
+    "prefix": "v",
+    "maintainers": "dougwilson"
+  },
+  "sax": {
+    "skip": "win32",
+    "prefix": "v",
+    "expectFail": "fips",
+    "maintainers": "isaacs"
+  },
+  "semver": {
+    "skip": "win32",
+    "prefix": "v",
+    "maintainers": "isaacs",
+    "expectFail": "fips"
+  },
+  "serialport": {
+    "prefix": "serialport@",
+    "flaky": "ppc",
+    "tags": "native",
+    "maintainers": "reconbot",
+    "skip": "12"
+  },
+  "shot": {
+    "prefix": "v",
+    "maintainers": "mtharrison",
+    "skip": "<8"
+  },
+  "socket.io": {
+    "flaky": true,
+    "maintainers": "rauchg"
+  },
+  "spawn-wrap": {
+    "prefix": "v",
+    "flaky": ["sles", "aix", "darwin"],
+    "maintainers": "isaacs"
+  },
+  "spdy": {
+    "prefix": "v",
+    "flaky": ["aix", "sles"],
+    "skip": [">9", "win32"],
+    "maintainers": "diasdavid"
+  },
+  "spdy-transport": {
+    "prefix": "v",
+    "skip": [">9", "win32"],
+    "flaky": "aix",
+    "maintainers": "diasdavid"
+  },
+  "split2": {
+    "prefix": "v",
+    "maintainers": "mcollina"
+  },
+  "sqlite3": {
+    "prefix": "v",
+    "tags": "native",
+    "flaky": "ppc",
+    "maintainers": "koistya"
+  },
+  "stylus": {
+    "flaky": ["win32", "aix"],
+    "maintainers": "tj",
+    "skip": ">=11"
+  },
+  "tape": {
+    "prefix": "v",
+    "maintainers": "substack"
+  },
+  "thread-sleep": {
+    "install": ["--build-from-source"],
+    "flaky": true,
+    "tags": "native",
+    "maintainers": ["forbeslindesay", "timothygu"]
+  },
+  "through2": {
+    "prefix": "v",
+    "stripAnsi": true,
+    "maintainers": "rvagg"
+  },
+  "throughv": {
+    "prefix": "v",
+    "stripAnsi": true,
+    "maintainers": "mcollina"
+  },
+  "time": {
+    "flaky": ["linux-ia32", "s390"],
+    "skip": ["win32", "aix"],
+    "tags": "native",
+    "maintainers": "TooTallNate",
+    "skip": ">=11"
+  },
+  "torrent-stream": {
+    "prefix": "v",
+    "flaky": true,
+    "maintainers": "mafintosh"
+  },
+  "uglify-js": {
+    "prefix": "v",
+    "flaky": ["ppc", "darwin"],
+    "maintainers": "mishoo",
+    "skip": "12"
+  },
+  "underscore": {
+    "flaky": ["aix", "s390"],
+    "skip": "win32",
+    "maintainers": "jashkenas"
+  },
+  "uuid": {
+    "prefix": "v",
+    "maintainers": ["ctavan", "broofa"]
   },
   "vinyl": {
     "prefix": "v",
@@ -152,122 +486,24 @@
     "master": true,
     "maintainers": ["contra", "phated"]
   },
-  "readable-stream": {
+  "watchify": {
     "prefix": "v",
-    "flaky": ["ppc", "darwin"],
-    "maintainers": "nodejs/streams"
-  },
-  "ftp": {
-    "prefix": "v",
-		"skip": ">=8",
-    "maintainers": "mscdex"
-  },
-  "split2": {
-    "prefix": "v",
-    "maintainers": "mcollina"
-  },
-  "throughv": {
-    "prefix": "v",
-    "stripAnsi": true,
-    "maintainers": "mcollina"
-  },
-  "duplexer2": {
-    "prefix": "v",
-    "maintainers": ["shinn", "deoxxa"]
-  },
-  "bl": {
-    "prefix": "v",
-    "stripAnsi": true,
-    "expectFail": "fips",
-    "maintainers": "rvagg"
-  },
-  "binary-split": {
-    "prefix": "v",
-    "flaky": "win32",
-    "maintainers": ["maxogden", "mourner"]
-  },
-  "spdy": {
-    "prefix": "v",
-    "flaky": ["aix", "sles"],
-    "skip": "win32",
-    "maintainers": "diasdavid"
-  },
-  "dicer": {
-    "prefix": "v",
-    "maintainers": "mscdex"
-  },
-  "spdy-transport": {
-    "prefix": "v",
-    "skip": "win32",
-    "flaky": "aix",
-    "maintainers": "diasdavid"
-  },
-  "sax": {
-    "prefix": "v",
-    "expectFail": "fips",
-    "maintainers": "isaacs"
-  },
-  "duplexify": {
-    "prefix": "v",
-    "maintainers": "mafintosh"
-  },
-  "pumpify": {
-    "prefix": "v",
-    "maintainers": "mafintosh"
-  },
-  "from2": {
-    "prefix": "v",
-    "maintainers": ["mafintosh", "hughsk"]
-  },
-  "flush-write-stream": {
-    "prefix": "v",
-    "maintainers": "mafintosh"
-  },
-  "jsonstream": {
-    "prefix": "v",
-    "skip": "win32",
-    "maintainers": "dominictarr"
-  },
-  "csv-parser": {
-    "prefix": "v",
-    "flaky": "win32",
-    "maintainers": "mafintosh"
-  },
-  "async": {
-    "prefix": "v",
-    "flaky": true,
-    "maintainers": ["aearly", "megawac"]
-  },
-  "bluebird": {
-    "prefix": "v",
-    "maintainers": "petkaantonov"
-  },
-  "mkdirp": {
-    "master": true,
-    "flaky": ["v6", "v7"],
-    "skip": ["v8"],
+    "flaky": ["ppc", "s390", "ubuntu", "rhel"],
     "maintainers": "substack"
   },
-  "yeoman-generator": {
-    "prefix": "v",
-    "flaky": ["ppc", "win32", "rhel"],
-    "expectFail": "fips",
-    "maintainers": ["SBoudrias", "sindresorhus"]
-  },
-  "minimist": {
-    "maintainers": "substack"
-  },
-  "cheerio": {
-    "skip": "win32",
-    "maintainers": ["matthewmueller", "jugglinmike"]
-  },
-  "uuid": {
-    "prefix": "v",
-    "maintainers": ["ctavan", "broofa"]
+  "weak": {
+    "tags": "native",
+    "skip": [">=10"],
+    "maintainers": "tootallnate"
   },
   "winston": {
     "flaky": ["win32", "ppc", "s390"],
     "maintainers": "indexzero"
+  },
+  "ws": {
+    "skip": "win32",
+    "expectFail": "fips",
+    "maintainers": ["einaros", "3rd-Eden", "lpinca"]
   },
   "yargs": {
     "prefix": "v",
@@ -275,175 +511,16 @@
     "expectFail": "fips",
     "maintainers": ["bcoe", "addaleax"]
   },
-  "semver": {
+  "yeoman-generator": {
     "prefix": "v",
-    "maintainers": "isaacs"
-  },
-  "mime": {
-    "prefix": "v",
-    "flaky": true,
-    "maintainers": "broofa"
-  },
-  "serialport": {
-    "flaky": ["ppc", "win32"],
+    "flaky": ["ppc", "rhel"],
     "expectFail": "fips",
-    "tags": "native",
-    "maintainers": "broofa"
-  },
-  "isarray": {
-    "prefix": "v",
-    "maintainers": "juliangruber"
-  },
-  "inherits": {
-    "prefix": "v",
-    "maintainers": "isaacs"
-  },
-  "graceful-fs": {
-    "prefix": "v",
-    "maintainers": "isaacs"
-  },
-  "leveldown": {
-    "prefix": "v",
-    "flaky": ["ppc", "s390"],
-    "tags": "native",
-    "maintainers": "rvagg"
+    "maintainers": ["SBoudrias", "sindresorhus"]
   },
   "zeromq": {
     "prefix": "v",
     "tags": "native",
     "maintainers": ["lgeiger", "rgbkrk"],
-    "skip": ["s390", "ppc"]
-  },
-  "bcrypt": {
-    "prefix": "v",
-    "skip": "win32",
-    "tags": "native",
-    "maintainers": "ncb000gt"
-  },
-  "ref": {
-    "flaky": "aix",
-    "tags": "native",
-    "maintainers": "TooTallNate"
-  },
-  "time": {
-    "flaky": ["linux-ia32", "s390"],
-    "skip": ["win32", "aix"],
-    "tags": "native",
-    "maintainers": "TooTallNate"
-  },
-  "bson": {
-    "prefix": "V",
-    "maintainers": "christkv"
-  },
-  "ember-cli": {
-    "prefix": "v",
-    "flaky": ["win32", "rhel", "sles"],
-    "expectFail": "fips",
-    "maintainers": ["stefanpenner", "rwjblue", "Turbo87", "kellyselden"]
-  },
-  "node-sass": {
-    "prefix": "v",
-    "flaky": true,
-    "tags": "native",
-    "maintainers": "xzyfer"
-  },
-  "full-icu-test": {
-    "prefix": "v",
-    "maintainers": "srl295"
-  },
-  "sqlite3": {
-    "prefix": "v",
-    "tags": "native",
-    "flaky": "ppc",
-    "maintainers": "koistya"
-  },
-  "iconv": {
-    "prefix": "v",
-    "flaky": "aix",
-    "tags": "native",
-    "maintainers": "bnoordhuis"
-  },
-  "electron-prebuilt": {
-    "prefix": "v",
-    "flaky": "s390",
-    "skip": "ppc",
-    "maintainers": "maxogden"
-  },
-  "libxmljs": {
-    "prefix": "v",
-    "flaky": ["aix", "sles", "rhel", "darwin"],
-    "skip": ["win32", ">=8"],
-    "tags": "native",
-    "maintainers": "defunctzombie"
-  },
-  "radium": {
-    "prefix": "v",
-    "flaky": ["fedora", "ubuntu"],
-    "skip": ["ppc", "s390"],
-    "expectFail": "fips",
-    "maintainers": ["ianobermiller", "alexlande"]
-  },
-  "ffi": {
-    "flaky": ["ppc", "aix", "s390", "ubuntu", "v8"],
-    "skip": "win32",
-    "tags": "native",
-    "maintainers": "TooTallNate"
-  },
-  "microtime": {
-    "prefix": "v",
-    "tags": "native",
-    "maintainers": "wadey"
-  },
-  "koa": {
-    "skip": ["<7", "win32", "rhel"],
-    "flaky": "ubuntu",
-    "maintainers": "tj"
-  },
-  "spawn-wrap": {
-    "prefix": "v",
-    "flaky": ["win32", "sles", "aix", "darwin"],
-    "maintainers": "isaacs"
-  },
-  "node-report": {
-    "prefix": "v",
-    "tags": "native",
-    "maintainers": ["rnchamberlain", "richardlau"]
-  },
-  "thread-sleep": {
-    "install": ["--build-from-source"],
-    "tags": "native",
-    "maintainers": ["forbeslindesay", "timothygu"]
-  },
-  "bufferutil": {
-    "prefix": "v",
-    "tags": "native",
-    "maintainers": ["3rdeden", "einaros", "lpinca"]
-  },
-  "weak": {
-    "tags": "native",
-    "maintainers": "tootallnate"
-  },
-  "acorn": {
-    "maintainers": "marijnh",
-    "skip": "win32"
-  },
-  "esprima": {
-    "maintainers": "ariya",
-    "expectFail": "fips",
-    "skip": "win32"
-  },
-  "node-gyp": {
-    "prefix": "v",
-    "tags": "native",
-    "maintainers": ["nodejs/node-gyp"]
-  },
-  "crc32-stream": {
-    "maintainers": "ctalkington"
-  },
-  "sodium-native": {
-    "maintainers": ["mafintosh", "emilbayes"],
-    "prefix": "v",
-    "flaky": "ppc",
-    "tags": "native"
+    "skip": ["s390", "ppc", "win32"]
   }
 }

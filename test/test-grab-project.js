@@ -13,17 +13,17 @@ const rimraf = require('rimraf');
 
 const grabProject = require('../lib/grab-project');
 
-const sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now());
+const sandbox = path.join(os.tmpdir(), `citgm-${Date.now()}`);
 const fixtures = path.join(__dirname, 'fixtures');
 
-test('grab-project: setup', function (t) {
-  mkdirp(sandbox, function (err) {
+test('grab-project: setup', (t) => {
+  mkdirp(sandbox, (err) => {
     t.error(err);
     t.end();
   });
 });
 
-test('grab-project: npm module', function (t) {
+test('grab-project: npm module', (t) => {
   const context = {
     emit: function() {},
     path: sandbox,
@@ -33,9 +33,9 @@ test('grab-project: npm module', function (t) {
     meta: {},
     options: {}
   };
-  grabProject(context, function (err) {
+  grabProject(context, (err) => {
     t.error(err);
-    fs.stat(context.unpack, function (err, stats) {
+    fs.stat(context.unpack, (err, stats) => {
       t.error(err);
       t.ok(stats.isFile(), 'The tar ball should exist on the system');
       t.end();
@@ -43,7 +43,7 @@ test('grab-project: npm module', function (t) {
   });
 });
 
-test('grab-project: local', function (t) {
+test('grab-project: local', (t) => {
   const context = {
     emit: function() {},
     path: sandbox,
@@ -54,9 +54,9 @@ test('grab-project: local', function (t) {
     meta: {},
     options: {}
   };
-  grabProject(context, function (err) {
+  grabProject(context, (err) => {
     t.error(err);
-    fs.stat(context.unpack, function (err, stats) {
+    fs.stat(context.unpack, (err, stats) => {
       t.error(err);
       t.ok(stats.isFile(), 'The tar ball should exist on the system');
       t.end();
@@ -64,7 +64,7 @@ test('grab-project: local', function (t) {
   });
 });
 
-test('grab-project: lookup table', function (t) {
+test('grab-project: lookup table', (t) => {
   const context = {
     emit: function() {},
     path: sandbox,
@@ -74,9 +74,9 @@ test('grab-project: lookup table', function (t) {
     meta: {},
     options: {}
   };
-  grabProject(context, function (err) {
+  grabProject(context, (err) => {
     t.error(err);
-    fs.stat(context.unpack, function (err, stats) {
+    fs.stat(context.unpack, (err, stats) => {
       t.error(err);
       t.ok(stats.isFile(), 'The tar ball should exist on the system');
       t.end();
@@ -84,7 +84,7 @@ test('grab-project: lookup table', function (t) {
   });
 });
 
-test('grab-project: local', function (t) {
+test('grab-project: local', (t) => {
   const context = {
     emit: function() {},
     path: sandbox,
@@ -95,9 +95,9 @@ test('grab-project: local', function (t) {
     options: {}
   };
   process.chdir(fixtures);
-  grabProject(context, function (err) {
+  grabProject(context, (err) => {
     t.error(err);
-    fs.stat(context.unpack, function (err, stats) {
+    fs.stat(context.unpack, (err, stats) => {
       t.error(err);
       t.ok(stats.isFile(), 'The tar ball should exist on the system');
       process.chdir(__dirname);
@@ -106,7 +106,7 @@ test('grab-project: local', function (t) {
   });
 });
 
-test('grab-project: module does not exist', function (t) {
+test('grab-project: module does not exist', (t) => {
   const context = {
     emit: function() {},
     path: sandbox,
@@ -115,13 +115,13 @@ test('grab-project: module does not exist', function (t) {
     },
     options: {}
   };
-  grabProject(context, function (err) {
+  grabProject(context, (err) => {
     t.equals(err && err.message, 'Failure getting project from npm');
     t.end();
   });
 });
 
-test('grab-project: timeout', function (t) {
+test('grab-project: timeout', (t) => {
   const context = {
     emit: function() {},
     path: sandbox,
@@ -134,14 +134,14 @@ test('grab-project: timeout', function (t) {
       timeoutLength: 10
     }
   };
-  grabProject(context, function (err) {
+  grabProject(context, (err) => {
     t.equals(err && err.message, 'Download Timed Out');
     t.end();
   });
 });
 
-test('grab-project: teardown', function (t) {
-  rimraf(sandbox, function (err) {
+test('grab-project: teardown', (t) => {
+  rimraf(sandbox, (err) => {
     t.error(err);
     t.end();
   });

@@ -6,7 +6,7 @@ const rewire = require('rewire');
 const checkTags = rewire('../lib/check-tags');
 const log = require('../lib/out')({});
 
-test('test includeTags and matching tag multiple', function (t) {
+test('test includeTags and matching tag multiple', (t) => {
   const options = {
     includeTags: ['a'],
     excludeTags: []
@@ -19,7 +19,7 @@ test('test includeTags and matching tag multiple', function (t) {
   t.false(result, 'should return false');
 });
 
-test('test includeTags and matching tag', function (t) {
+test('test includeTags and matching tag', (t) => {
   const options = {
     includeTags: ['a'],
     excludeTags: []
@@ -32,7 +32,7 @@ test('test includeTags and matching tag', function (t) {
   t.false(result, 'should return false');
 });
 
-test('test includeTags and no matching tag', function (t) {
+test('test includeTags and no matching tag', (t) => {
   const options = {
     includeTags: ['a'],
     excludeTags: []
@@ -45,7 +45,7 @@ test('test includeTags and no matching tag', function (t) {
   t.true(result, 'should return true');
 });
 
-test('test includeTags and no tag', function (t) {
+test('test includeTags and no tag', (t) => {
   const options = {
     includeTags: ['a'],
     excludeTags: []
@@ -58,7 +58,7 @@ test('test includeTags and no tag', function (t) {
   t.true(result, 'should return true');
 });
 
-test('test excludeTags and matching tag multiple', function (t) {
+test('test excludeTags and matching tag multiple', (t) => {
   const options = {
     excludeTags: ['a'],
     includeTags: []
@@ -71,7 +71,7 @@ test('test excludeTags and matching tag multiple', function (t) {
   t.true(result, 'should return true');
 });
 
-test('test excludeTags and matching tag', function (t) {
+test('test excludeTags and matching tag', (t) => {
   const options = {
     excludeTags: ['a'],
     includeTags: []
@@ -84,7 +84,7 @@ test('test excludeTags and matching tag', function (t) {
   t.true(result, 'should return true');
 });
 
-test('test excludeTags and no matching tag', function (t) {
+test('test excludeTags and no matching tag', (t) => {
   const options = {
     excludeTags: ['a'],
     includeTags: []
@@ -97,7 +97,7 @@ test('test excludeTags and no matching tag', function (t) {
   t.false(result, 'should return false');
 });
 
-test('test excludeTags and no tag', function (t) {
+test('test excludeTags and no tag', (t) => {
   const options = {
     excludeTags: ['a'],
     includeTags: []
@@ -110,7 +110,7 @@ test('test excludeTags and no tag', function (t) {
   t.false(result, 'should return false');
 });
 
-test('test includeTags and matching tag multiple', function (t) {
+test('test includeTags and matching tag multiple', (t) => {
   const options = {
     includeTags: ['b'],
     excludeTags: []
@@ -123,7 +123,7 @@ test('test includeTags and matching tag multiple', function (t) {
   t.false(result, 'should return false');
 });
 
-test('test includeTags and no matching tag', function (t) {
+test('test includeTags and no matching tag', (t) => {
   const options = {
     includeTags: ['b'],
     excludeTags: []
@@ -136,7 +136,7 @@ test('test includeTags and no matching tag', function (t) {
   t.true(result, 'should return true');
 });
 
-test('test includeTags and matching tag', function (t) {
+test('test includeTags and matching tag', (t) => {
   const options = {
     includeTags: ['b'],
     excludeTags: []
@@ -149,7 +149,7 @@ test('test includeTags and matching tag', function (t) {
   t.false(result, 'should return false');
 });
 
-test('test includeTags and no tag', function (t) {
+test('test includeTags and no tag', (t) => {
   const options = {
     includeTags: ['b'],
     excludeTags: []
@@ -162,7 +162,7 @@ test('test includeTags and no tag', function (t) {
   t.true(result, 'should return true');
 });
 
-test('test excludeTags and matching tag multiple', function (t) {
+test('test excludeTags and matching tag multiple', (t) => {
   const options = {
     excludeTags: ['b'],
     includeTags: []
@@ -175,7 +175,7 @@ test('test excludeTags and matching tag multiple', function (t) {
   t.true(result, 'should return true');
 });
 
-test('test excludeTags and no matching tag', function (t) {
+test('test excludeTags and no matching tag', (t) => {
   const options = {
     excludeTags: ['b'],
     includeTags: []
@@ -188,7 +188,7 @@ test('test excludeTags and no matching tag', function (t) {
   t.false(result, 'should return false');
 });
 
-test('test excludeTags and matching tag', function (t) {
+test('test excludeTags and matching tag', (t) => {
   const options = {
     excludeTags: ['b'],
     includeTags: []
@@ -201,7 +201,7 @@ test('test excludeTags and matching tag', function (t) {
   t.true(result, 'should return true');
 });
 
-test('test excludeTags and no tag', function (t) {
+test('test excludeTags and no tag', (t) => {
   const options = {
     excludeTags: ['b'],
     includeTags: []
@@ -214,7 +214,7 @@ test('test excludeTags and no tag', function (t) {
   t.false(result, 'should return false');
 });
 
-test('test excludeTags, includeTags and matching tag', function (t) {
+test('test excludeTags, includeTags and matching tag', (t) => {
   const options = {
     excludeTags: ['a'],
     includeTags: ['b']
@@ -227,7 +227,7 @@ test('test excludeTags, includeTags and matching tag', function (t) {
   t.true(result, 'should return true');
 });
 
-test('test excludeTags,includeTags and matching includeTags tag', function (t) {
+test('test excludeTags,includeTags and matching includeTags tag', (t) => {
   const options = {
     excludeTags: ['b'],
     includeTags: ['a']
@@ -240,7 +240,7 @@ test('test excludeTags,includeTags and matching includeTags tag', function (t) {
   t.false(result, 'should return false');
 });
 
-test('test excludeTags,includeTags and matching excludeTags tag', function (t) {
+test('test excludeTags,includeTags and matching excludeTags tag', (t) => {
   const options = {
     excludeTags: ['b'],
     includeTags: ['a']
@@ -253,19 +253,18 @@ test('test excludeTags,includeTags and matching excludeTags tag', function (t) {
   t.true(result, 'should return true');
 });
 
-test('test excludeTags, includeTags and no matching tags', function (t) {
+test('test excludeTags, includeTags and no matching tags', (t) => {
   const options = {
     excludeTags: ['b'],
     includeTags: ['a']
   };
-  const mod = {
-  };
+  const mod = {};
   t.plan(1);
   const result = checkTags(options, mod, 'test', log);
   t.true(result, 'should return true');
 });
 
-test('test excludeTags, includeTags and matching tag', function (t) {
+test('test excludeTags, includeTags and matching tag', (t) => {
   const options = {
     excludeTags: ['b'],
     includeTags: ['a']
@@ -278,7 +277,7 @@ test('test excludeTags, includeTags and matching tag', function (t) {
   t.true(result, 'should return true');
 });
 
-test('test excludeTags,includeTags and matching excludeTags tag', function (t) {
+test('test excludeTags,includeTags and matching excludeTags tag', (t) => {
   const options = {
     excludeTags: ['a'],
     includeTags: ['b']
@@ -291,7 +290,7 @@ test('test excludeTags,includeTags and matching excludeTags tag', function (t) {
   t.true(result, 'should return true');
 });
 
-test('test excludeTags,includeTags and matching includeTags tag', function (t) {
+test('test excludeTags,includeTags and matching includeTags tag', (t) => {
   const options = {
     excludeTags: ['a'],
     includeTags: ['b']
@@ -304,7 +303,7 @@ test('test excludeTags,includeTags and matching includeTags tag', function (t) {
   t.false(result, 'should return false');
 });
 
-test('test excludeTags, includeTags and no matching tags', function (t) {
+test('test excludeTags, includeTags and no matching tags', (t) => {
   const options = {
     excludeTags: ['a'],
     includeTags: ['b']
@@ -315,4 +314,52 @@ test('test excludeTags, includeTags and no matching tags', function (t) {
   t.plan(1);
   const result = checkTags(options, mod, 'test', log);
   t.true(result, 'should return true');
+});
+
+test('test module name can be used in includeTags/excludeTags', (t) => {
+  t.plan(2);
+
+  t.equal(
+    checkTags(
+      { excludeTags: [], includeTags: ['test'] },
+      { tags: 'b' },
+      'test',
+      log
+    ),
+    false
+  );
+
+  t.equal(
+    checkTags(
+      { excludeTags: ['test'], includeTags: [] },
+      { tags: 'b' },
+      'test',
+      log
+    ),
+    true
+  );
+});
+
+test('test tags matching module name with includeTags/excludeTags', (t) => {
+  t.plan(2);
+
+  t.equal(
+    checkTags(
+      { excludeTags: [], includeTags: ['test'] },
+      { tags: 'test' },
+      'test',
+      log
+    ),
+    false
+  );
+
+  t.equal(
+    checkTags(
+      { excludeTags: ['test'], includeTags: [] },
+      { tags: 'test' },
+      'test',
+      log
+    ),
+    true
+  );
 });

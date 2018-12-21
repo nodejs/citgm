@@ -4,9 +4,11 @@ the requirements below.
 -->
 
 ##### Checklist
+
 <!-- Remove items that do not apply. For completed items, change [ ] to [x]. -->
 
 - [ ] `npm test` passes
 - [ ] tests are included
 - [ ] documentation is changed or added
-- [ ] contribution guidelines followed [here](https://github.com/nodejs/citgm/blob/master/CONTRIBUTING.md)
+- [ ] contribution guidelines followed
+      [here](https://github.com/nodejs/citgm/blob/master/CONTRIBUTING.md)
