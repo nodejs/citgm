@@ -84,7 +84,8 @@
   },
   "clinic": {
     "maintainers": "mcollina",
-    "prefix": "v"
+    "prefix": "v",
+	"skip": "<=6"
   },
   "coffeescript": {
     "maintainers": ["jashkenas", "GeoffreyBooth"]
