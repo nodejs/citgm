@@ -455,10 +455,9 @@
   },
   "time": {
     "flaky": ["linux-ia32", "s390"],
-    "skip": ["win32", "aix"],
+    "skip": ["win32", "aix", ">=11"],
     "tags": "native",
-    "maintainers": "TooTallNate",
-    "skip": ">=11"
+    "maintainers": "TooTallNate"
   },
   "torrent-stream": {
     "prefix": "v",
