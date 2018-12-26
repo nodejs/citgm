@@ -136,7 +136,7 @@
   "eslint": {
     "prefix": "v",
     "flaky": ["s390", "ubuntu"],
-    "skip": [truez, "ppc"],
+    "skip": [true, "ppc"],
     "expectFail": "fips",
     "maintainers": ["nzakas", "mysticatea", "not-an-aardvark"]
   },
