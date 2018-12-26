@@ -20,7 +20,8 @@
     "maintainers": "dominictarr"
   },
   "acorn": {
-    "maintainers": "marijnh"
+    "maintainers": "marijnh",
+    "skip": ["v6"]
   },
   "async": {
     "prefix": "v",
