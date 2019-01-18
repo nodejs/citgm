@@ -21,7 +21,7 @@
   },
   "acorn": {
     "maintainers": "marijnh",
-    "skip": ["v6"]
+    "skip": ["v6", "win32"]
   },
   "async": {
     "prefix": "v",
@@ -54,7 +54,7 @@
   "blake2b-wasm": {
     "maintainers": ["mafintosh", "addaleax"],
     "prefix": "v",
-    "skip": "<8"
+    "skip": ["<8", "win32"]
   },
   "bluebird": {
     "prefix": "v",
@@ -78,7 +78,8 @@
   "bufferutil": {
     "prefix": "v",
     "tags": "native",
-    "maintainers": ["3rdeden", "einaros", "lpinca"]
+    "maintainers": ["3rdeden", "einaros", "lpinca"],
+    "skip": "win32"
   },
   "cheerio": {
     "skip": "win32",
@@ -98,7 +99,8 @@
     "maintainers": "tj"
   },
   "crc32-stream": {
-    "maintainers": "ctalkington"
+    "maintainers": "ctalkington",
+    "skip": "win32"
   },
   "csv-parser": {
     "prefix": "v",
@@ -147,11 +149,13 @@
   },
   "express": {
     "flaky": "ppc",
-    "maintainers": "dougwilson"
+    "maintainers": "dougwilson",
+    "skip": "win32"
   },
   "express-session": {
     "prefix": "v",
-    "maintainers": "dougwilson"
+    "maintainers": "dougwilson",
+    "skip": "win32"
   },
   "fastify": {
     "maintainers": ["mcollina", "delvedor"],
@@ -165,7 +169,8 @@
   },
   "flush-write-stream": {
     "prefix": "v",
-    "maintainers": "mafintosh"
+    "maintainers": "mafintosh",
+    "skip": "win32"
   },
   "from2": {
     "prefix": "v",
@@ -211,7 +216,8 @@
   "gulp-util": {
     "prefix": "v",
     "flaky": "rhel",
-    "maintainers": "contra"
+    "maintainers": "contra",
+    "skip": "win32"
   },
   "iconv": {
     "prefix": "v",
@@ -241,7 +247,8 @@
   "level": {
     "prefix": "v",
     "flaky": ["aix", "s390"],
-    "maintainers": ["ralphtheninja", "rvagg"]
+    "maintainers": ["ralphtheninja", "rvagg"],
+    "skip": "win32"
   },
   "leveldown": {
     "prefix": "v",
@@ -298,7 +305,8 @@
   "node-gyp": {
     "prefix": "v",
     "tags": "native",
-    "maintainers": ["nodejs/node-gyp"]
+    "maintainers": ["nodejs/node-gyp"],
+    "skip": "win32"
   },
   "node-report": {
     "prefix": "v",
@@ -325,11 +333,13 @@
   },
   "pumpify": {
     "prefix": "v",
-    "maintainers": "mafintosh"
+    "maintainers": "mafintosh",
+    "skip": "win32"
   },
   "q": {
     "prefix": "v",
-    "maintainers": "kriskowal"
+    "maintainers": "kriskowal",
+    "skip": "win32"
   },
   "radium": {
     "prefix": "v",
@@ -346,13 +356,14 @@
   "readable-stream": {
     "prefix": "v",
     "flaky": ["ppc", "darwin"],
-    "maintainers": "nodejs/streams"
+    "maintainers": "nodejs/streams",
+    "skip": "win32"
   },
   "ref": {
     "flaky": "aix",
     "tags": "native",
     "maintainers": "TooTallNate",
-    "skip": "12"
+    "skip": ["12", "win32"]
   },
   "request": {
     "prefix": "v",
@@ -371,7 +382,8 @@
   },
   "router": {
     "prefix": "v",
-    "maintainers": "dougwilson"
+    "maintainers": "dougwilson",
+    "skip": "win32"
   },
   "sax": {
     "skip": "win32",
@@ -390,7 +402,7 @@
     "flaky": "ppc",
     "tags": "native",
     "maintainers": "reconbot",
-    "skip": "12"
+    "skip": ["12", "win32"]
   },
   "shot": {
     "prefix": "v",
@@ -404,7 +416,8 @@
   "spawn-wrap": {
     "prefix": "v",
     "flaky": ["sles", "aix", "darwin"],
-    "maintainers": "isaacs"
+    "maintainers": "isaacs",
+    "skip": "win32"
   },
   "spdy": {
     "prefix": "v",
@@ -426,7 +439,8 @@
     "prefix": "v",
     "tags": "native",
     "flaky": "ppc",
-    "maintainers": "koistya"
+    "maintainers": "koistya",
+    "skip": "win32"
   },
   "stylus": {
     "flaky": ["win32", "aix"],
@@ -477,11 +491,13 @@
   },
   "uuid": {
     "prefix": "v",
-    "maintainers": ["ctavan", "broofa"]
+    "maintainers": ["ctavan", "broofa"],
+    "skip": "win32"
   },
   "vinyl": {
     "prefix": "v",
-    "maintainers": ["contra", "phated"]
+    "maintainers": ["contra", "phated"],
+    "skip": "win32"
   },
   "vinyl-fs": {
     "prefix": "v",
@@ -492,7 +508,8 @@
   "watchify": {
     "prefix": "v",
     "flaky": ["ppc", "s390", "ubuntu", "rhel"],
-    "maintainers": "substack"
+    "maintainers": "substack",
+    "skip": "true"
   },
   "weak": {
     "tags": "native",
