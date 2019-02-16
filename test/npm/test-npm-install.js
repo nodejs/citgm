@@ -125,7 +125,7 @@ test('npm-install: failed install', (t) => {
   );
   const expected = {
     testOutput: /^$/,
-    testError: /npm ERR! 404 Not [Ff]ound\s*: THIS-WILL-FAIL(@0\.0\.1)?/
+    testError: /npm ERR! 404 Not [Ff]ound\s*(:)? .*THIS-WILL-FAIL(@0\.0\.1)?/
   };
   packageManagerInstall('npm', context, (err) => {
     t.notOk(context.module.flaky, 'Module failed is not flaky');
