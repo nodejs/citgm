@@ -142,6 +142,11 @@
     "expectFail": "fips",
     "maintainers": ["nzakas", "mysticatea", "not-an-aardvark"]
   },
+  "eslint-plugin-jest": {
+    "prefix": "v",
+    "maintainers": "SimenB",
+    "yarn": true
+  },
   "esprima": {
     "maintainers": "ariya",
     "expectFail": "fips",
