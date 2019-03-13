@@ -145,7 +145,8 @@
   "eslint-plugin-jest": {
     "prefix": "v",
     "maintainers": "SimenB",
-    "yarn": true
+    "yarn": true,
+    "envVar": {"YARN_IGNORE_ENGINES": true}
   },
   "esprima": {
     "maintainers": "ariya",
