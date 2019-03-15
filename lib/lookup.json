@@ -146,7 +146,8 @@
     "prefix": "v",
     "maintainers": "SimenB",
     "yarn": true,
-    "envVar": {"YARN_IGNORE_ENGINES": true}
+    "envVar": {"YARN_IGNORE_ENGINES": true},
+    "skip": ["aix"]
   },
   "esprima": {
     "maintainers": "ariya",
