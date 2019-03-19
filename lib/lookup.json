@@ -317,8 +317,7 @@
   "node-report": {
     "prefix": "v",
     "tags": "native",
-    "maintainers": ["rnchamberlain", "richardlau"],
-    "skip": "12"
+    "maintainers": ["rnchamberlain", "richardlau"]
   },
   "node-sass": {
     "prefix": "v",
