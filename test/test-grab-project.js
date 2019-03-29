@@ -124,7 +124,7 @@ test('grab-project: module does not exist', (t) => {
 test('grab-project: use git clone', (t) => {
   const context = {
     emit: function() {},
-    path: sandbox,
+    path: path.join(sandbox, 'git-clone'),
     module: {
       name: 'omg-i-pass',
       type: 'git',
@@ -149,7 +149,7 @@ test('grab-project: use git clone', (t) => {
 test('grab-project: fail with bad ref', (t) => {
   const context = {
     emit: function() {},
-    path: sandbox,
+    path: path.join(sandbox, 'git-bad-ref'),
     module: {
       name: 'omg-i-pass',
       type: 'git',
@@ -161,8 +161,9 @@ test('grab-project: fail with bad ref', (t) => {
   grabProject(context, (err) => {
     t.equals(
       err && err.message,
-      'Command failed: git fetch --depth=1 origin v1.42.42'
+      'Command failed: git fetch --depth=1 origin bad-git-ref'
     );
+    t.end();
   });
 });
 
