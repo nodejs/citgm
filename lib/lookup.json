@@ -88,7 +88,7 @@
   "clinic": {
     "maintainers": "mcollina",
     "prefix": "v",
-	"skip": "<=6"
+    "skip": "<=6"
   },
   "coffeescript": {
     "maintainers": ["jashkenas", "GeoffreyBooth"]
@@ -146,7 +146,7 @@
     "prefix": "v",
     "maintainers": "SimenB",
     "yarn": true,
-    "envVar": {"YARN_IGNORE_ENGINES": true},
+    "envVar": { "YARN_IGNORE_ENGINES": true },
     "skip": ["aix"]
   },
   "esprima": {
@@ -259,6 +259,7 @@
   },
   "leveldown": {
     "prefix": "v",
+    "useGitClone": true,
     "flaky": ["ppc", "s390"],
     "tags": "native",
     "maintainers": "rvagg"
