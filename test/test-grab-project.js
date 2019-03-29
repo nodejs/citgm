@@ -126,8 +126,8 @@ test('grab-project: use git clone', (t) => {
     emit: function() {},
     path: path.join(sandbox, 'git-clone'),
     module: {
+      useGitClone: true,
       name: 'omg-i-pass',
-      type: 'git',
       raw: 'https://github.com/MylesBorins/omg-i-pass.git',
       ref: 'v3.0.0'
     },
@@ -151,8 +151,8 @@ test('grab-project: fail with bad ref', (t) => {
     emit: function() {},
     path: path.join(sandbox, 'git-bad-ref'),
     module: {
+      useGitClone: true,
       name: 'omg-i-pass',
-      type: 'git',
       raw: 'https://github.com/MylesBorins/omg-i-pass.git',
       ref: 'bad-git-ref'
     },
