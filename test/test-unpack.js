@@ -67,3 +67,15 @@ test('unpack: valid unpack', (t) => {
     });
   });
 });
+
+test('unpack: context.unpack = false', (t) => {
+  const context = {
+    unpack: false,
+    emit: function() {}
+  };
+
+  unpack(context, (err) => {
+    t.error(err);
+    t.end();
+  });
+});

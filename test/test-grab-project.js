@@ -121,6 +121,52 @@ test('grab-project: module does not exist', (t) => {
   });
 });
 
+test('grab-project: use git clone', (t) => {
+  const context = {
+    emit: function() {},
+    path: path.join(sandbox, 'git-clone'),
+    module: {
+      useGitClone: true,
+      name: 'omg-i-pass',
+      raw: 'https://github.com/MylesBorins/omg-i-pass.git',
+      ref: 'v3.0.0'
+    },
+    options: {}
+  };
+  grabProject(context, (err) => {
+    t.error(err);
+    fs.stat(
+      path.join(context.path, 'omg-i-pass/package.json'),
+      (err, stats) => {
+        t.error(err);
+        t.ok(stats.isFile(), 'The project must be cloned locally');
+        t.end();
+      }
+    );
+  });
+});
+
+test('grab-project: fail with bad ref', (t) => {
+  const context = {
+    emit: function() {},
+    path: path.join(sandbox, 'git-bad-ref'),
+    module: {
+      useGitClone: true,
+      name: 'omg-i-pass',
+      raw: 'https://github.com/MylesBorins/omg-i-pass.git',
+      ref: 'bad-git-ref'
+    },
+    options: {}
+  };
+  grabProject(context, (err) => {
+    t.equals(
+      err && err.message,
+      'Command failed: git fetch --depth=1 origin bad-git-ref'
+    );
+    t.end();
+  });
+});
+
 test('grab-project: timeout', (t) => {
   const context = {
     emit: function() {},

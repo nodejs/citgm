@@ -1,0 +1,6 @@
+{
+  "lodash": {
+    "prefix": "v",
+    "useGitClone": true
+  }
+}

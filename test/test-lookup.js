@@ -221,6 +221,38 @@ test('lookup: module in table with gitHead', (t) => {
   });
 });
 
+test('lookup: module in table with useGitClone', (t) => {
+  const context = {
+    lookup: null,
+    module: {
+      fetchSpec: 'latest',
+      name: 'lodash',
+      raw: null
+    },
+    meta: {
+      'dist-tags': { latest: '1.2.3' },
+      repository: {
+        url: 'https://github.com/lodash/lodash'
+      }
+    },
+    options: {
+      lookup: 'test/fixtures/custom-lookup-useGitClone.json'
+    },
+    emit: function() {}
+  };
+
+  lookup(context, (err) => {
+    t.error(err);
+    t.equals(
+      context.module.raw,
+      'https://github.com/lodash/lodash.git',
+      'raw should be a git URL if useGitClone is true'
+    );
+    t.equals(context.module.ref, 'v1.2.3');
+    t.end();
+  });
+});
+
 test('lookup: no table', (t) => {
   const context = {
     options: {
