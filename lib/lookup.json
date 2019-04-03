@@ -254,14 +254,14 @@
   "level": {
     "prefix": "v",
     "flaky": ["aix", "s390"],
-    "maintainers": ["ralphtheninja", "rvagg"],
+    "maintainers": ["ralphtheninja", "vweevers"],
     "skip": "win32"
   },
   "leveldown": {
     "prefix": "v",
     "flaky": ["ppc", "s390"],
     "tags": "native",
-    "maintainers": "rvagg"
+    "maintainers": ["ralphtheninja", "vweevers"]
   },
   "libxmljs": {
     "prefix": "v",
