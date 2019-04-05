@@ -143,6 +143,7 @@ For syntax, see [lookup.json](./lib/lookup.json), the available attributes are:
 "envVar"                     Pass an environment variable before running
 "install": ["--param1", "--param2"] - Array of extra command line parameters passed to 'npm install'
 "maintainers": ["user1", "user2"] - List of module maintainers to be contacted with issues
+"scripts": ["script1", "script2"] - List of scripts from package.json to run instead of 'test'
 "tags": ["tag1", "tag2"]     Specify which tags apply to the module
 "useGitClone": true          Use a shallow git clone instead of downloading the module
 "ignoreGitHead":             Ignore the gitHead field if it exists and fallback to using github tags
