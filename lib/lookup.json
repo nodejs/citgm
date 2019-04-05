@@ -309,6 +309,12 @@
     "skip": "win32",
     "maintainers": "linusu"
   },
+  "nan": {
+    "maintainers": ["nodejs/addon-api"],
+    "prefix": "v",
+    "scripts": ["rebuild-tests", "test"],
+    "tags": "native"
+  },
   "node-gyp": {
     "prefix": "v",
     "tags": "native",
