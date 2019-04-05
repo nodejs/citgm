@@ -1,0 +1,15 @@
+{
+  "name": "omg-i-pass-with-scripts",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test-build": "node build.js",
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nodejs/citgm"
+  },
+  "author": "",
+  "license": "ISC"
+}

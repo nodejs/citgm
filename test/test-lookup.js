@@ -221,6 +221,35 @@ test('lookup: module in table with gitHead', (t) => {
   });
 });
 
+test('lookup: module in table with scripts', (t) => {
+  const context = {
+    module: {
+      name: 'omg-i-pass-with-scripts',
+      raw: null
+    },
+    meta: {
+      repository: {
+        url: 'git+https://github.com/nodejs/citgm'
+      },
+      version: '1.0.0'
+    },
+    options: {
+      lookup: 'test/fixtures/custom-lookup-scripts.json'
+    },
+    emit: function() {}
+  };
+
+  lookup(context, (err) => {
+    t.error(err);
+    t.strictSame(
+      context.module.scripts,
+      ['test-build', 'test'],
+      'lookup should read scripts'
+    );
+    t.end();
+  });
+});
+
 test('lookup: module in table with useGitClone', (t) => {
   const context = {
     lookup: null,

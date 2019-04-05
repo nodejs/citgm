@@ -25,10 +25,13 @@ const failTemp = path.join(sandbox, 'omg-i-fail');
 const badFixtures = path.join(fixtures, 'omg-i-do-not-support-testing');
 const badTemp = path.join(sandbox, 'omg-i-do-not-support-testing');
 
+const scriptsFixtures = path.join(fixtures, 'omg-i-pass-with-scripts');
+const scriptsTemp = path.join(sandbox, 'omg-i-pass-with-scripts');
+
 let packageManagers;
 
 test('npm-test: setup', (t) => {
-  t.plan(8);
+  t.plan(13);
   packageManager.getPackageManagers((e, res) => {
     packageManagers = res;
     t.error(e);
@@ -46,6 +49,13 @@ test('npm-test: setup', (t) => {
     ncp(badFixtures, badTemp, (e) => {
       t.error(e);
       t.ok(fs.existsSync(path.join(badTemp, 'package.json')));
+    });
+    ncp(scriptsFixtures, scriptsTemp, (e) => {
+      t.error(e);
+      t.ok(!fs.existsSync(path.join(scriptsTemp, '.testbuilt')));
+      t.ok(fs.existsSync(path.join(scriptsTemp, 'build.js')));
+      t.ok(fs.existsSync(path.join(scriptsTemp, 'package.json')));
+      t.ok(fs.existsSync(path.join(scriptsTemp, 'test.js')));
     });
   });
 });
@@ -131,6 +141,24 @@ test('npm-test: timeout', (t) => {
   packageManagerTest('npm', context, (err) => {
     t.ok(context.module.flaky, 'Module is Flaky because tests timed out');
     t.equals(err && err.message, 'Test Timed Out');
+    t.end();
+  });
+});
+
+test('npm-test: module with scripts passing', (t) => {
+  const context = makeContext.npmContext(
+    {
+      name: 'omg-i-pass-with-scripts',
+      scripts: ['test-build', 'test']
+    },
+    packageManagers,
+    sandbox,
+    {
+      npmLevel: 'silly'
+    }
+  );
+  packageManagerTest('npm', context, (err) => {
+    t.error(err);
     t.end();
   });
 });
