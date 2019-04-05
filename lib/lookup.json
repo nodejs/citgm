@@ -367,7 +367,7 @@
     "flaky": "aix",
     "tags": "native",
     "maintainers": "TooTallNate",
-    "skip": ["12", "win32"]
+    "skip": [true, "12", "win32"]
   },
   "request": {
     "prefix": "v",
