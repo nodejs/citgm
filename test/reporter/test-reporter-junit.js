@@ -34,7 +34,12 @@ const passingExpectedAppend = fs.readFileSync(
   'utf-8'
 );
 
-const failingInput = [fixtures.iPass, fixtures.iFlakyFail, fixtures.iFail];
+const failingInput = [
+  fixtures.iPass,
+  fixtures.iFlakyFail,
+  fixtures.iFail,
+  fixtures.iSkipped
+];
 
 const junitParserExpected = require('../fixtures/parsed-junit.json');
 const failingExpectedPath = path.join(fixturesPath, 'test-out-xml-failing.txt');
