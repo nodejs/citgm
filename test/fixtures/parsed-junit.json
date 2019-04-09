@@ -41,6 +41,14 @@
             }
           }
         ]
+      },
+      {
+        "$": {
+          "name": "iSkipped",
+          "time": "NaN"
+        },
+        "system-out": ["\n      \n    "],
+        "skipped": [""]
       }
     ]
   }
