@@ -9,6 +9,7 @@
     "citgm": "./bin/citgm.js",
     "citgm-all": "./bin/citgm-all.js"
   },
+  "files": ["bin", "lib"],
   "scripts": {
     "coverage": "npm run tap -- --coverage",
     "coverage-html": "npm coverage -- --coverage-report=html",
