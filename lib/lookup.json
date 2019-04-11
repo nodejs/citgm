@@ -37,7 +37,8 @@
   "bcrypt": {
     "prefix": "v",
     "tags": "native",
-    "maintainers": "ncb000gt"
+    "maintainers": "ncb000gt",
+    "skip": "12"
   },
   "binary-split": {
     "prefix": "v",
