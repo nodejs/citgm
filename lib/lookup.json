@@ -445,7 +445,7 @@
     "tags": "native",
     "flaky": "ppc",
     "maintainers": "koistya",
-    "skip": "win32"
+    "skip": ["12", "win32"]
   },
   "stylus": {
     "flaky": ["win32", "aix"],
