@@ -5,7 +5,7 @@
 - Consider creating an issue prior to submitting a PR as this can help speed up
   the process.
 - Include tests for your code wherever possible.
-- Include any documentation or man page changes where necessary.
+- Include any documentation changes where necessary.
 - Ensure that `npm test` passes before submitting the PR.
 - Squash each logical change into a single commit.
 - Follow the [commit guidelines](#commit-guidelines) below.
