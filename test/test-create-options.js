@@ -28,6 +28,9 @@ test('create-options:', (t) => {
   env['npm_loglevel'] = 'warning';
   env['npm_config_tmp'] = 'npm_config_tmp';
   env['testenvVar'] = 'thisisatest';
+  env['TEMP'] = 'npm_config_tmp';
+  env['TMP'] = 'npm_config_tmp';
+  env['TMPDIR'] = 'npm_config_tmp';
   // Set dynamically to support Windows.
   env['npm_config_nodedir'] = path.resolve(process.cwd(), nodePath);
 
