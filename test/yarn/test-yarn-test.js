@@ -28,10 +28,13 @@ const badTemp = path.join(sandbox, 'omg-i-do-not-support-testing');
 const scriptsFixtures = path.join(fixtures, 'omg-i-pass-with-scripts');
 const scriptsTemp = path.join(sandbox, 'omg-i-pass-with-scripts');
 
+const writeTmpdirFixtures = path.join(fixtures, 'omg-i-write-to-tmpdir');
+const writeTmpdirTemp = path.join(sandbox, 'omg-i-write-to-tmpdir');
+
 let packageManagers;
 
 test('yarn-test: setup', (t) => {
-  t.plan(13);
+  t.plan(16);
   packageManager.getPackageManagers((e, res) => {
     packageManagers = res;
     t.error(e);
@@ -56,6 +59,11 @@ test('yarn-test: setup', (t) => {
       t.ok(fs.existsSync(path.join(scriptsTemp, 'build.js')));
       t.ok(fs.existsSync(path.join(scriptsTemp, 'package.json')));
       t.ok(fs.existsSync(path.join(scriptsTemp, 'test.js')));
+    });
+    ncp(writeTmpdirFixtures, writeTmpdirTemp, (e) => {
+      t.error(e);
+      t.ok(fs.existsSync(path.join(writeTmpdirTemp, 'package.json')));
+      t.ok(fs.existsSync(path.join(writeTmpdirTemp, 'test.js')));
     });
   });
 });
@@ -154,6 +162,28 @@ test('yarn-test: module with scripts passing', (t) => {
   );
   packageManagerTest('yarn', context, (err) => {
     t.error(err);
+    t.end();
+  });
+});
+
+test('yarn-test: tmpdir is redirected', (t) => {
+  const context = makeContext.npmContext(
+    'omg-i-write-to-tmpdir',
+    packageManagers,
+    sandbox,
+    {
+      npmLevel: 'silly'
+    }
+  );
+  context.npmConfigTmp = writeTmpdirTemp;
+  packageManagerTest('npm', context, (err) => {
+    t.error(err);
+    t.ok(
+      fs.existsSync(
+        path.join(writeTmpdirTemp, 'omg-i-write-to-tmpdir-testfile')
+      ),
+      'Temporary file is written into the redirected temporary directory'
+    );
     t.end();
   });
 });
