@@ -83,8 +83,7 @@
   },
   "cheerio": {
     "skip": "win32",
-    "maintainers": ["matthewmueller", "jugglinmike"],
-    "skip": true
+    "maintainers": ["matthewmueller", "jugglinmike"]
   },
   "clinic": {
     "maintainers": "mcollina",
