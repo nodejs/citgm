@@ -27,10 +27,6 @@
     "url": "https://github.com/nodejs/citgm/issues",
     "email": "jasnell@gmail.com"
   },
-  "man": [
-    "./man/citgm.1",
-    "./man/citgm-all.1"
-  ],
   "license": "MIT",
   "dependencies": {
     "async": "^2.6.1",

@@ -23,8 +23,6 @@ npm install -g citgm
 citgm --help
 ```
 
-(If citgm is installed globally, you can also `man citgm`)
-
 ```
 Usage: citgm [options] <module>
 
