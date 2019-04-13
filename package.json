@@ -1,6 +1,6 @@
 {
   "name": "citgm",
-  "version": "4.1.2",
+  "version": "4.1.3",
   "description": "The Canary in the Goldmine",
   "homepage": "http://nodejs.org",
   "main": "bin/citgm",
@@ -9,7 +9,10 @@
     "citgm": "./bin/citgm.js",
     "citgm-all": "./bin/citgm-all.js"
   },
-  "files": ["bin", "lib"],
+  "files": [
+    "bin",
+    "lib"
+  ],
   "scripts": {
     "coverage": "npm run tap -- --coverage",
     "coverage-html": "npm coverage -- --coverage-report=html",
