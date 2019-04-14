@@ -10,4 +10,3 @@
     </system-out>
   </testcase>
 </testsuite>
-
