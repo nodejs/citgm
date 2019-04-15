@@ -25,7 +25,7 @@ test('create-options:', (t) => {
   // Create a copy of process.env to set the properties added by createOptions
   // for the deepequal test.
   const env = Object.create(process.env);
-  env['npm_loglevel'] = 'warning';
+  env['npm_config_loglevel'] = 'warning';
   env['npm_config_tmp'] = 'npm_config_tmp';
   env['testenvVar'] = 'thisisatest';
   env['TEMP'] = 'npm_config_tmp';
@@ -41,7 +41,7 @@ test('create-options:', (t) => {
     options.env,
     env,
     'The created env should be a clone of' +
-      ' process.env with the added npm_loglevel and nodedir'
+      ' process.env with the added npm_config_loglevel and nodedir'
   );
   t.end();
 });
