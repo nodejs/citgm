@@ -1,9 +1,8 @@
 'use strict';
 
 const test = require('tap').test;
-const rewire = require('rewire');
 
-const citgm = rewire('../lib/citgm');
+const citgm = require('../lib/citgm');
 
 test('citgm: omg-i-pass', (t) => {
   const options = {
