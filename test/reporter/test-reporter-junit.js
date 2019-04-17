@@ -3,12 +3,13 @@
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
+const { promisify } = require('util');
 
-const test = require('tap').test;
-const mkdirp = require('mkdirp');
-const rimraf = require('rimraf');
+const { test } = require('tap');
+const mkdirp = promisify(require('mkdirp'));
+const rimraf = promisify(require('rimraf'));
 const _ = require('lodash');
-const parseString = require('xml2js').parseString;
+const parseString = promisify(require('xml2js').parseString);
 
 const junit = require('../../lib/reporter/junit');
 const fixtures = require('../fixtures/reporter-fixtures');
@@ -50,14 +51,12 @@ const badOutputTooPath = path.join(fixturesPath, 'badOutput2');
 const badOutput = fs.readFileSync(badOutputPath, 'utf-8');
 const badOutputToo = fs.readFileSync(badOutputTooPath, 'utf-8');
 
-test('reporter.junit(): setup', (t) => {
-  mkdirp(sandbox, (err) => {
-    t.error(err);
-    t.end();
-  });
+test('reporter.junit(): setup', async () => {
+  await mkdirp(sandbox);
 });
 
 test('reporter.junit(): passing', (t) => {
+  t.plan(1);
   let output = '';
   function logger(message) {
     output += message;
@@ -98,6 +97,7 @@ test('reporter.junit(): bad output', (t) => {
 });
 
 test('reporter.junit(): failing', (t) => {
+  t.plan(1);
   let output = '';
   function logger(message) {
     output += message;
@@ -110,7 +110,8 @@ test('reporter.junit(): failing', (t) => {
   t.end();
 });
 
-test('reporter.junit(): parser', (t) => {
+test('reporter.junit(): parser', async (t) => {
+  t.plan(1);
   let output = '';
   function logger(message) {
     output += message;
@@ -118,14 +119,16 @@ test('reporter.junit(): parser', (t) => {
   }
 
   junit(logger, failingInput);
-  parseString(output, (err, result) => {
-    t.deepEquals(result, junitParserExpected),
-      'we should get the expected' + ' output when a module fails';
-    t.end();
-  });
+  const result = await parseString(output);
+  t.deepEquals(
+    result,
+    junitParserExpected,
+    'we should get the expected output when a module fails'
+  );
 });
 
 test('reporter.junit(): write to disk', (t) => {
+  t.plan(1);
   junit(outputFile, passingInput);
   const expected = fs.readFileSync(outputFile, 'utf8');
   t.equals(expected, passingExpected),
@@ -134,6 +137,7 @@ test('reporter.junit(): write to disk', (t) => {
 });
 
 test('reporter.junit(): append to disk', (t) => {
+  t.plan(1);
   const appendStartFile = fs.readFileSync(appendStartFilePath, 'utf-8');
   fs.writeFileSync(outputFileAppend, appendStartFile);
   junit(outputFileAppend, passingInput, true);
@@ -143,9 +147,6 @@ test('reporter.junit(): append to disk', (t) => {
   t.end();
 });
 
-test('reporter.junit(): teardown', (t) => {
-  rimraf(sandbox, (err) => {
-    t.error(err);
-    t.end();
-  });
+test('reporter.junit(): teardown', async () => {
+  await rimraf(sandbox);
 });

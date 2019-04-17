@@ -1,10 +1,11 @@
 'use strict';
 
-const test = require('tap').test;
+const { test } = require('tap');
 
 const citgm = require('../lib/citgm');
 
 test('citgm: omg-i-pass', (t) => {
+  t.plan(2);
   const options = {
     hmac: null,
     lookup: null,

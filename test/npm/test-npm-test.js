@@ -2,12 +2,12 @@
 
 const os = require('os');
 const path = require('path');
-const fs = require('fs');
+const { promisify } = require('util');
 
-const test = require('tap').test;
-const mkdirp = require('mkdirp');
-const rimraf = require('rimraf');
-const ncp = require('ncp');
+const { copy, existsSync } = require('fs-extra');
+const { test } = require('tap');
+const mkdirp = promisify(require('mkdirp'));
+const rimraf = promisify(require('rimraf'));
 
 const makeContext = require('../helpers/make-context');
 const packageManager = require('../../lib/package-manager');
@@ -33,42 +33,19 @@ const writeTmpdirTemp = path.join(sandbox, 'omg-i-write-to-tmpdir');
 
 let packageManagers;
 
-test('npm-test: setup', (t) => {
-  t.plan(16);
-  packageManager.getPackageManagers((e, res) => {
-    packageManagers = res;
-    t.error(e);
-  });
-  mkdirp(sandbox, (err) => {
-    t.error(err);
-    ncp(passFixtures, passTemp, (e) => {
-      t.error(e);
-      t.ok(fs.existsSync(path.join(passTemp, 'package.json')));
-    });
-    ncp(failFixtures, failTemp, (e) => {
-      t.error(e);
-      t.ok(fs.existsSync(path.join(failTemp, 'package.json')));
-    });
-    ncp(badFixtures, badTemp, (e) => {
-      t.error(e);
-      t.ok(fs.existsSync(path.join(badTemp, 'package.json')));
-    });
-    ncp(scriptsFixtures, scriptsTemp, (e) => {
-      t.error(e);
-      t.ok(!fs.existsSync(path.join(scriptsTemp, '.testbuilt')));
-      t.ok(fs.existsSync(path.join(scriptsTemp, 'build.js')));
-      t.ok(fs.existsSync(path.join(scriptsTemp, 'package.json')));
-      t.ok(fs.existsSync(path.join(scriptsTemp, 'test.js')));
-    });
-    ncp(writeTmpdirFixtures, writeTmpdirTemp, (e) => {
-      t.error(e);
-      t.ok(fs.existsSync(path.join(writeTmpdirTemp, 'package.json')));
-      t.ok(fs.existsSync(path.join(writeTmpdirTemp, 'test.js')));
-    });
-  });
+test('npm-test: setup', async () => {
+  packageManagers = await packageManager.getPackageManagers();
+  await mkdirp(sandbox);
+  await Promise.all([
+    copy(passFixtures, passTemp),
+    copy(failFixtures, failTemp),
+    copy(badFixtures, badTemp),
+    copy(scriptsFixtures, scriptsTemp),
+    copy(writeTmpdirFixtures, writeTmpdirTemp)
+  ]);
 });
 
-test('npm-test: basic module passing', (t) => {
+test('npm-test: basic module passing', async () => {
   const context = makeContext.npmContext(
     'omg-i-pass',
     packageManagers,
@@ -77,49 +54,53 @@ test('npm-test: basic module passing', (t) => {
       npmLevel: 'silly'
     }
   );
-  packageManagerTest('npm', context, (err) => {
-    t.error(err);
-    t.end();
-  });
+  await packageManagerTest('npm', context);
 });
 
-test('npm-test: basic module failing', (t) => {
+test('npm-test: basic module failing', async (t) => {
+  t.plan(1);
   const context = makeContext.npmContext(
     'omg-i-fail',
     packageManagers,
     sandbox
   );
-  packageManagerTest('npm', context, (err) => {
+  try {
+    await packageManagerTest('npm', context);
+  } catch (err) {
     t.equals(err && err.message, 'The canary is dead:');
-    t.end();
-  });
+  }
 });
 
-test('npm-test: basic module no test script', (t) => {
+test('npm-test: basic module no test script', async (t) => {
+  t.plan(1);
   const context = makeContext.npmContext(
     'omg-i-do-not-support-testing',
     packageManagers,
     sandbox
   );
-  packageManagerTest('npm', context, (err) => {
+  try {
+    await packageManagerTest('npm', context);
+  } catch (err) {
     t.equals(err && err.message, 'Module does not support npm-test!');
-    t.end();
-  });
+  }
 });
 
-test('npm-test: no package.json', (t) => {
+test('npm-test: no package.json', async (t) => {
+  t.plan(1);
   const context = makeContext.npmContext(
     'omg-i-dont-exist',
     packageManagers,
     sandbox
   );
-  packageManagerTest('npm', context, (err) => {
+  try {
+    await packageManagerTest('npm', context);
+  } catch (err) {
     t.equals(err && err.message, 'Package.json Could not be found');
-    t.end();
-  });
+  }
 });
 
-test('npm-test: alternative test-path', (t) => {
+test('npm-test: alternative test-path', async (t) => {
+  t.plan(1);
   // Same test as 'basic module passing', except with alt node bin which fails.
   const context = makeContext.npmContext(
     'omg-i-pass',
@@ -130,13 +111,15 @@ test('npm-test: alternative test-path', (t) => {
       testPath: path.resolve(__dirname, '..', 'fixtures', 'fakenodebin')
     }
   );
-  packageManagerTest('npm', context, (err) => {
+  try {
+    await packageManagerTest('npm', context);
+  } catch (err) {
     t.equals(err && err.message, 'The canary is dead:');
-    t.end();
-  });
+  }
 });
 
-test('npm-test: timeout', (t) => {
+test('npm-test: timeout', async (t) => {
+  t.plan(2);
   const context = makeContext.npmContext(
     'omg-i-pass',
     packageManagers,
@@ -146,14 +129,15 @@ test('npm-test: timeout', (t) => {
       timeoutLength: 100
     }
   );
-  packageManagerTest('npm', context, (err) => {
+  try {
+    await packageManagerTest('npm', context);
+  } catch (err) {
     t.ok(context.module.flaky, 'Module is Flaky because tests timed out');
     t.equals(err && err.message, 'Test Timed Out');
-    t.end();
-  });
+  }
 });
 
-test('npm-test: module with scripts passing', (t) => {
+test('npm-test: module with scripts passing', async () => {
   const context = makeContext.npmContext(
     {
       name: 'omg-i-pass-with-scripts',
@@ -165,13 +149,11 @@ test('npm-test: module with scripts passing', (t) => {
       npmLevel: 'silly'
     }
   );
-  packageManagerTest('npm', context, (err) => {
-    t.error(err);
-    t.end();
-  });
+  await packageManagerTest('npm', context);
 });
 
-test('npm-test: tmpdir is redirected', (t) => {
+test('npm-test: tmpdir is redirected', async (t) => {
+  t.plan(1);
   const context = makeContext.npmContext(
     'omg-i-write-to-tmpdir',
     packageManagers,
@@ -181,21 +163,13 @@ test('npm-test: tmpdir is redirected', (t) => {
     }
   );
   context.npmConfigTmp = writeTmpdirTemp;
-  packageManagerTest('npm', context, (err) => {
-    t.error(err);
-    t.ok(
-      fs.existsSync(
-        path.join(writeTmpdirTemp, 'omg-i-write-to-tmpdir-testfile')
-      ),
-      'Temporary file is written into the redirected temporary directory'
-    );
-    t.end();
-  });
+  await packageManagerTest('npm', context);
+  t.ok(
+    existsSync(path.join(writeTmpdirTemp, 'omg-i-write-to-tmpdir-testfile')),
+    'Temporary file is written into the redirected temporary directory'
+  );
 });
 
-test('npm-test: teardown', (t) => {
-  rimraf(sandbox, (err) => {
-    t.error(err);
-    t.end();
-  });
+test('npm-test: teardown', async () => {
+  await rimraf(sandbox);
 });

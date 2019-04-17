@@ -1,11 +1,13 @@
 // TODO this test does not test any functionality currently
 'use strict';
 
-const test = require('tap').test;
+const { test } = require('tap');
 const rewire = require('rewire');
+
 const Logger = rewire('../lib/out.js');
 
 test('out: no color', (t) => {
+  t.plan(5);
   const log = Logger();
   t.ok(log.silly, 'there should be a silly logging level');
   t.ok(log.verbose, 'there should be a verbose logging level');
@@ -16,6 +18,7 @@ test('out: no color', (t) => {
 });
 
 test('out: with color', (t) => {
+  t.plan(5);
   const supportsColor = Logger.__get__('supportsColor');
   Logger.__set__('supportsColor', () => {
     return { stdout: true, stderr: true };

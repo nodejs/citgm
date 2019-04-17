@@ -4,10 +4,11 @@
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
+const { promisify } = require('util');
 
-const test = require('tap').test;
-const mkdirp = require('mkdirp');
-const rimraf = require('rimraf');
+const { test } = require('tap');
+const mkdirp = promisify(require('mkdirp'));
+const rimraf = promisify(require('rimraf'));
 const Parser = require('tap-parser');
 const str = require('string-to-stream');
 
@@ -42,14 +43,12 @@ const failingInput = [fixtures.iPass, fixtures.iFlakyFail, fixtures.iFail];
 const failingExpectedPath = path.join(fixturesPath, 'test-out-tap-failing.txt');
 const failingExpected = fs.readFileSync(failingExpectedPath, 'utf-8');
 
-test('reporter.tap(): setup', (t) => {
-  mkdirp(sandbox, (err) => {
-    t.error(err);
-    t.end();
-  });
+test('reporter.tap(): setup', async () => {
+  await mkdirp(sandbox);
 });
 
 test('reporter.tap(): passing', (t) => {
+  t.plan(1);
   let output = '';
   function logger(message) {
     output += message;
@@ -66,6 +65,7 @@ test('reporter.tap(): passing', (t) => {
 });
 
 test('reporter.tap(): failing', (t) => {
+  t.plan(1);
   let output = '';
   function logger(message) {
     output += message;
@@ -79,6 +79,7 @@ test('reporter.tap(): failing', (t) => {
 });
 
 test('reporter.tap(): parser', (t) => {
+  t.plan(1);
   let output = '';
   function logger(message) {
     output += message;
@@ -94,6 +95,7 @@ test('reporter.tap(): parser', (t) => {
 });
 
 test('reporter.tap(): write to disk', (t) => {
+  t.plan(1);
   tap(outputFile, passingInput);
   const expected = fs.readFileSync(outputFile, 'utf8');
   t.equals(expected, passingExpected),
@@ -102,6 +104,7 @@ test('reporter.tap(): write to disk', (t) => {
 });
 
 test('reporter.tap(): append to disk', (t) => {
+  t.plan(1);
   const appendStartFile = fs.readFileSync(appendStartFilePath, 'utf-8');
   fs.writeFileSync(outputFileAppend, appendStartFile);
   tap(outputFileAppend, passingInput, true);
@@ -112,6 +115,7 @@ test('reporter.tap(): append to disk', (t) => {
 });
 
 test('reporter.tap(): append to disk when file does not exist', (t) => {
+  t.plan(1);
   tap(outputFileAppendBlank, passingInput, true);
   const expected = fs.readFileSync(outputFileAppendBlank, 'utf8');
   t.equals(expected, passingExpected),
@@ -119,9 +123,6 @@ test('reporter.tap(): append to disk when file does not exist', (t) => {
   t.end();
 });
 
-test('reporter.tap(): teardown', (t) => {
-  rimraf(sandbox, (err) => {
-    t.error(err);
-    t.end();
-  });
+test('reporter.tap(): teardown', async () => {
+  await rimraf(sandbox);
 });

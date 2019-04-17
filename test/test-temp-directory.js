@@ -1,10 +1,11 @@
 'use strict';
 
-const fs = require('fs');
+const { promisify } = require('util');
 
-const test = require('tap').test;
+const { stat } = require('fs-extra');
+const { test } = require('tap');
 const rewire = require('rewire');
-const rimraf = require('rimraf');
+const rimraf = promisify(require('rimraf'));
 
 const tempDirectory = rewire('../lib/temp-directory');
 
@@ -31,37 +32,29 @@ const contextTmpDir = {
   }
 };
 
-test('tempDirectory.create:', (t) => {
+test('tempDirectory.create:', async (t) => {
+  t.plan(3);
   t.notOk(context.path, 'context should not have a path');
-  tempDirectory.create(context, (e, ctx) => {
-    t.error(e);
-    t.ok(ctx.path, 'context should now have a path');
-    fs.stat(ctx.path, (err, stats) => {
-      t.error(err);
-      t.ok(stats.isDirectory(), 'the path should exist and be a folder');
-      t.end();
-    });
-  });
+  await tempDirectory.create(context);
+  t.ok(context.path, 'context should now have a path');
+  const stats = await stat(context.path);
+  t.ok(stats.isDirectory(), 'the path should exist and be a folder');
 });
 
-test('tempDirectory.create --tmpDir:', (t) => {
-  tempDirectory.create(contextTmpDir, (e, ctx) => {
-    t.error(e);
-    t.ok(
-      ctx.path.match(/thisisatest[/\\].*-.*-.*-.*-.*/),
-      'the path should match --tmpDir'
-    );
-    fs.stat(ctx.path, (err, stats) => {
-      t.error(err);
-      t.ok(stats.isDirectory(), 'the path should exist and be a folder');
-      rimraf('./.thisisatest', () => {});
-      t.end();
-    });
-  });
+test('tempDirectory.create --tmpDir:', async (t) => {
+  t.plan(2);
+  await tempDirectory.create(contextTmpDir);
+  t.ok(
+    contextTmpDir.path.match(/thisisatest[/\\].*-.*-.*-.*-.*/),
+    'the path should match --tmpDir'
+  );
+  const stats = await stat(contextTmpDir.path);
+  t.ok(stats.isDirectory(), 'the path should exist and be a folder');
+  await rimraf('./.thisisatest');
 });
 
 // Skip because Windows allows mkdir calls on the null device.
-test('tempDirectory.create: bad path', skipIfWin32, (t) => {
+test('tempDirectory.create: bad path', skipIfWin32, async (t) => {
   t.plan(2);
 
   const badContext = {
@@ -78,30 +71,29 @@ test('tempDirectory.create: bad path', skipIfWin32, (t) => {
       return nullDevice;
     }
   });
-  tempDirectory.create(badContext, (e) => {
+  try {
+    await tempDirectory.create(badContext);
+  } catch (e) {
     t.ok(
       e.message.includes(nullDevice),
       `the message should include the path ${nullDevice}`
     );
     t.ok(badContext.path, 'badContext should have a path');
     tempDirectory.__set__('path', path);
-    t.end();
-  });
+  }
 });
 
-test('tempDirectory.remove:', (t) => {
+test('tempDirectory.remove:', async (t) => {
+  t.plan(2);
   t.ok(context.path, 'context should have a path');
-  tempDirectory.remove(context, (e, ctx) => {
-    t.error(e);
-    fs.stat(ctx.path, (err, stats) => {
-      t.ok(err, 'we should get an error as the path does not exist');
-      t.notOk(stats, 'stats should be falsey');
-      t.end();
-    });
-  });
+  await tempDirectory.remove(context);
+  await t.rejects(
+    stat(context.path),
+    'we should get an error as the path does not exist'
+  );
 });
 
-test('tempDirectory.remove: bad path', (t) => {
+test('tempDirectory.remove: bad path', async (t) => {
   t.plan(1);
 
   const badContext = {
@@ -112,11 +104,12 @@ test('tempDirectory.remove: bad path', (t) => {
     }
   };
 
-  tempDirectory.remove(badContext, (e) => {
+  try {
+    await tempDirectory.remove(badContext);
+  } catch (e) {
     t.ok(
       e.message.includes(nullDevice),
       `the message should include the path ${nullDevice}`
     );
-    t.end();
-  });
+  }
 });

@@ -1,11 +1,12 @@
 'use strict';
 
-const test = require('tap').test;
+const { test } = require('tap');
 
 const markdown = require('../../lib/reporter/markdown');
 const fixtures = require('../fixtures/reporter-fixtures');
 
 test('single passing module:', (t) => {
+  t.plan(1);
   let output = '';
   markdown((data) => {
     output += data;
@@ -18,6 +19,7 @@ test('single passing module:', (t) => {
 });
 
 test('single failing module:', (t) => {
+  t.plan(1);
   let output = '';
   markdown((data) => {
     output += data;
@@ -32,6 +34,7 @@ test('single failing module:', (t) => {
 });
 
 test('multiple modules passing, with a flaky module that fails:', (t) => {
+  t.plan(1);
   let output = '';
   markdown(
     (data) => {
