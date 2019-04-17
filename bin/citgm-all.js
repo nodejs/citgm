@@ -131,7 +131,7 @@ function runCitgm(mod, name, next) {
   }
 
   const start = new Date();
-  const runner = citgm.Tester(name, options);
+  const runner = new citgm.Tester(name, options);
   let bailed = false;
 
   if (checkTags(options, mod, name, log)) {

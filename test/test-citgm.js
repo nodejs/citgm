@@ -15,8 +15,7 @@ test('citgm: omg-i-pass', (t) => {
 
   const mod = 'omg-i-pass';
 
-  citgm
-    .Tester(mod, options)
+  new citgm.Tester(mod, options)
     .on('start', (name) => {
       t.equals(name, mod, 'it should be omg-i-pass');
     })
@@ -40,8 +39,7 @@ test('citgm: omg-i-pass from git url', (t) => {
 
   const mod = 'git+https://github.com/MylesBorins/omg-i-pass';
 
-  citgm
-    .Tester(mod, options)
+  new citgm.Tester(mod, options)
     .on('start', (name) => {
       t.equals(name, mod, 'it should be omg-i-pass');
     })
