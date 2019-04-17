@@ -3,10 +3,9 @@
 const os = require('os');
 const path = require('path');
 const test = require('tap').test;
-const rewire = require('rewire');
 
 const packageManager = require('../lib/package-manager');
-const timeout = rewire('../lib/timeout');
+const timeout = require('../lib/timeout');
 const makeContext = require('./helpers/make-context');
 const sandbox = path.join(os.tmpdir(), `citgm-${Date.now()}`);
 

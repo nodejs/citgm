@@ -1,9 +1,8 @@
 'use strict';
 
 const test = require('tap').test;
-const rewire = require('rewire');
 
-const checkTags = rewire('../lib/check-tags');
+const checkTags = require('../lib/check-tags');
 const log = require('../lib/out')({ silent: true });
 
 test('test includeTags and matching tag multiple', (t) => {
