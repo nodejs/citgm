@@ -68,7 +68,7 @@ if (!citgm.windows) {
 
 const start = new Date();
 function launch(mod, options) {
-  const runner = citgm.Tester(mod, options);
+  const runner = new citgm.Tester(mod, options);
 
   function cleanup() {
     runner.cleanup();
