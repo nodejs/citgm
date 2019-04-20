@@ -17,7 +17,7 @@
     "coverage": "npm run tap -- --coverage",
     "coverage-html": "npm coverage -- --coverage-report=html",
     "lint": "eslint bin/* lib/ test/ --cache",
-    "tap": "tap -J --timeout 240 \"test/**/test-*.js\"",
+    "tap": "tap -J --timeout 480 \"test/**/test-*.js\"",
     "test": "npm run lint && npm run tap",
     "test-ci": "npm run lint && npm run coverage -- --coverage-report=lcov"
   },
