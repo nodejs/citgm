@@ -54,7 +54,7 @@ test('spawn: windows mock', (t) => {
   const result = spawn('echo', ['Hello world.']);
   const expected = {
     cmd: 'cmd',
-    args: ['/c', 'echo', 'Hello world.'],
+    args: ['/C', 'echo', 'Hello world.'],
     options: undefined
   };
 
