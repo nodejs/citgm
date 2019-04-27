@@ -413,7 +413,7 @@
     "flaky": "ppc",
     "tags": "native",
     "maintainers": "reconbot",
-    "skip": ["12", "win32"]
+    "skip": ["win32"]
   },
   "shot": {
     "prefix": "v",
