@@ -14,12 +14,11 @@
     "lib"
   ],
   "scripts": {
-    "coverage": "npm run tap -- --coverage",
-    "coverage-html": "npm coverage -- --coverage-report=html",
+    "coverage-html": "npm run tap -- --coverage-report=html",
     "lint": "eslint bin/* lib/ test/ --cache",
     "tap": "tap -J --timeout 480 \"test/**/test-*.js\"",
     "test": "npm run lint && npm run tap",
-    "test-ci": "npm run lint && npm run coverage -- --coverage-report=lcov"
+    "test-ci": "npm run lint && npm run tap -- --coverage-report=lcov"
   },
   "author": "James M Snell <jasnell@gmail.com> (http://jasnell.me)",
   "repository": {
@@ -69,7 +68,7 @@
     "proxyquire": "^2.1.0",
     "rewire": "^4.0.1",
     "string-to-stream": "^1.1.1",
-    "tap": "^12.6.1",
+    "tap": "^13.1.1",
     "tap-parser": "^7.0.0",
     "xml2js": "^0.4.19"
   },

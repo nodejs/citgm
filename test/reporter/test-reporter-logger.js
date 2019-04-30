@@ -1,9 +1,17 @@
 'use strict';
 
 const test = require('tap').test;
+const proxyquire = require('proxyquire');
 
-const loggerReporter = require('../../lib/reporter/logger');
 const fixtures = require('../fixtures/reporter-fixtures');
+
+const identity = (value) => value;
+const fakeChalk = {
+  yellow: identity
+};
+const loggerReporter = proxyquire('../../lib/reporter/logger', {
+  chalk: fakeChalk
+});
 
 let output = '';
 
