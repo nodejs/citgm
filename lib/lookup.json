@@ -530,6 +530,12 @@
     "flaky": ["win32", "ppc", "s390"],
     "maintainers": "indexzero"
   },
+  "wrtc": {
+    "maintainers": ["markandrus"],
+    "prefix": "v",
+    "skip": ["aix", "ia32", "ppc", "s390"],
+    "tags": "native"
+  },
   "ws": {
     "skip": "win32",
     "expectFail": "fips",
