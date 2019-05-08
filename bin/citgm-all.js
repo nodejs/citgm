@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 'use strict';
 
+require('make-promises-safe');
+
 const os = require('os');
 
 const async = require('async');

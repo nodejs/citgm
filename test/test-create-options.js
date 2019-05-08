@@ -2,11 +2,12 @@
 
 const path = require('path');
 
-const test = require('tap').test;
+const { test } = require('tap');
 
 const createOptions = require('../lib/create-options');
 
 test('create-options:', (t) => {
+  t.plan(4);
   const cwd = __dirname;
   const nodePath = '/path/to/node';
 
@@ -47,6 +48,7 @@ test('create-options:', (t) => {
 });
 
 test('create-options: with uid / gid', (t) => {
+  t.plan(3);
   const cwd = __dirname;
 
   const context = {

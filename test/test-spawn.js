@@ -1,11 +1,12 @@
 'use strict';
 
-const test = require('tap').test;
+const { test } = require('tap');
 const rewire = require('rewire');
 
 const spawn = rewire('../lib/spawn');
 
 test('spawn:', (t) => {
+  t.plan(2);
   const child = spawn('echo', ['Hello world.']);
 
   let error = '';
@@ -36,6 +37,7 @@ test('spawn:', (t) => {
 });
 
 test('spawn: windows mock', (t) => {
+  t.plan(1);
   const child = spawn.__get__('child');
   const sp = child.spawn;
   const platform = process.platform;

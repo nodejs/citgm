@@ -1,6 +1,6 @@
 'use strict';
 
-const test = require('tap').test;
+const { test } = require('tap');
 const proxyquire = require('proxyquire');
 
 const update = proxyquire('../lib/update', {
@@ -10,6 +10,7 @@ const update = proxyquire('../lib/update', {
 });
 
 test('update: /w callback', (t) => {
+  t.plan(1);
   const log = {
     warn: function(data) {
       t.equals(data, 'update-available');

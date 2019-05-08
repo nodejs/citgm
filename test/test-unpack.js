@@ -1,46 +1,51 @@
 'use strict';
 
-const fs = require('fs');
 const path = require('path');
 
-const test = require('tap').test;
+const { stat } = require('fs-extra');
+const { test } = require('tap');
 
 const tempDirectory = require('../lib/temp-directory');
 const unpack = require('../lib/unpack');
 
-test('unpack: context.unpack = null', (t) => {
+test('unpack: context.unpack = null', async (t) => {
+  t.plan(1);
   const context = {
     unpack: null,
     emit: function() {}
   };
 
-  unpack(context, (err) => {
+  try {
+    await unpack(context);
+  } catch (err) {
     t.deepEquals(
       err,
       new Error('Nothing to unpack... Ending'),
       'it should error out'
     );
-    t.end();
-  });
+  }
 });
 
-test('unpack: context.unpack is invalid path', (t) => {
+test('unpack: context.unpack is invalid path', async (t) => {
+  t.plan(1);
   const context = {
     unpack: path.join(__dirname, '..', 'fixtures', 'do-not-exist.tar.gz'),
     emit: function() {}
   };
 
-  unpack(context, (err) => {
+  try {
+    await unpack(context);
+  } catch (err) {
     t.deepEquals(
       err,
       new Error('Nothing to unpack... Ending'),
       'it should error out'
     );
-    t.end();
-  });
+  }
 });
 
-test('unpack: valid unpack', (t) => {
+test('unpack: valid unpack', async (t) => {
+  t.plan(1);
   const context = {
     module: {
       name: 'omg-i-pass'
@@ -52,30 +57,19 @@ test('unpack: valid unpack', (t) => {
   // FIXME I am not super convinced that the correct tar ball is being deflated
   // FIXME There is a possibility that the npm cache is trumping this
 
-  tempDirectory.create(context, (e) => {
-    t.error(e);
-    unpack(context, (err) => {
-      t.error(err);
-      fs.stat(path.join(context.path, 'omg-i-pass'), (erro, stats) => {
-        t.error(erro);
-        t.ok(stats.isDirectory(), 'the untarred result should be a directory');
-        tempDirectory.remove(context, (error) => {
-          t.error(error);
-          t.end();
-        });
-      });
-    });
-  });
+  await tempDirectory.create(context);
+
+  await unpack(context);
+  const stats = await stat(path.join(context.path, 'omg-i-pass'));
+  t.ok(stats.isDirectory(), 'the untarred result should be a directory');
+  await tempDirectory.remove(context);
 });
 
-test('unpack: context.unpack = false', (t) => {
+test('unpack: context.unpack = false', async () => {
   const context = {
     unpack: false,
     emit: function() {}
   };
 
-  unpack(context, (err) => {
-    t.error(err);
-    t.end();
-  });
+  await unpack(context);
 });

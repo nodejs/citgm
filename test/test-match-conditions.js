@@ -1,6 +1,6 @@
 'use strict';
 
-const test = require('tap').test;
+const { test } = require('tap');
 const rewire = require('rewire');
 
 const isMatch = rewire('../lib/match-conditions');
