@@ -263,7 +263,7 @@
   "libxmljs": {
     "prefix": "v",
     "flaky": ["aix", "sles", "rhel", "darwin"],
-    "skip": ["win32", true],
+    "skip": true,
     "tags": "native",
     "maintainers": "defunctzombie"
   },
