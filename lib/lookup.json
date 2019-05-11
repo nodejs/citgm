@@ -167,7 +167,7 @@
   },
   "ffi": {
     "flaky": ["ppc", "aix", "s390", "ubuntu"],
-    "skip": ["win32", true],
+    "skip": true,
     "tags": "native",
     "maintainers": "TooTallNate"
   },
