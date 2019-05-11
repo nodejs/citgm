@@ -367,7 +367,7 @@
     "prefix": "v",
     "flaky": ["ppc", "darwin"],
     "maintainers": "nodejs/streams",
-    "skip": "win32"
+    "skip": [">=12", "win32"]
   },
   "ref": {
     "flaky": "aix",
