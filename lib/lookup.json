@@ -358,7 +358,7 @@
     "prefix": "v",
     "maintainers": ["acdlite", "gaearon", "sophiebits"],
     "yarn": true,
-    "skip": [">=11"]
+    "skip": [">=12"]
   },
   "readable-stream": {
     "prefix": "v",
