@@ -72,7 +72,8 @@
   "bson": {
     "prefix": "V",
     "maintainers": "christkv",
-    "scripts": ["test-node"]
+    "scripts": ["test-node"],
+    "skip": "win32"
   },
   "bufferutil": {
     "prefix": "v",
