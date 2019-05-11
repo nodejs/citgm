@@ -539,7 +539,8 @@
     "prefix": "v",
     "flaky": "ppc",
     "expectFail": "fips",
-    "maintainers": ["bcoe", "addaleax"]
+    "maintainers": ["bcoe", "addaleax"],
+    "skip": ">=12"
   },
   "yeoman-generator": {
     "prefix": "v",
