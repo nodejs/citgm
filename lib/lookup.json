@@ -57,7 +57,8 @@
   },
   "bluebird": {
     "prefix": "v",
-    "maintainers": "petkaantonov"
+    "maintainers": "petkaantonov",
+    "skip": ["ppc", "s390"]
   },
   "body-parser": {
     "flaky": "aix",
@@ -70,7 +71,8 @@
   },
   "bson": {
     "prefix": "V",
-    "maintainers": "christkv"
+    "maintainers": "christkv",
+    "scripts": ["test-node"]
   },
   "bufferutil": {
     "prefix": "v",
@@ -352,7 +354,8 @@
   "radium": {
     "prefix": "v",
     "expectFail": "fips",
-    "maintainers": ["ianobermiller", "alexlande"]
+    "maintainers": ["ianobermiller", "alexlande"],
+    "scripts": ["test-node"]
   },
   "react": {
     "prefix": "v",
