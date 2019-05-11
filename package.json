@@ -44,6 +44,7 @@
     "npm-which": "^3.0.1",
     "osenv": "^0.1.5",
     "read-package-json": "^2.0.13",
+    "readable-stream": "^3.3.0",
     "request": "^2.88.0",
     "rimraf": "^2.6.3",
     "root-check": "^1.0.0",
