@@ -23,8 +23,6 @@ npm install -g citgm
 citgm --help
 ```
 
-(If citgm is installed globally, you can also `man citgm`)
-
 ```
 Usage: citgm [options] <module>
 
@@ -45,7 +43,7 @@ Options:
   --customTest <path>         Run a custom node test script instead of "npm test"
   -x, --junit [path]          Output results in junit xml with optional file path
   -o, --timeout <length>      Set timeout for npm install
-  -c, --sha <commit-sha>      Install module from commit-sha
+  -c, --sha <commit-sha>      Install module from commit-sha, branch or tag
   -u, --uid <uid>             Set the uid (posix only)
   -g, --gid <uid>             Set the gid (posix only)
   -a, --append                Turns on append results to file mode rather than replace
@@ -145,7 +143,9 @@ For syntax, see [lookup.json](./lib/lookup.json), the available attributes are:
 "envVar"                     Pass an environment variable before running
 "install": ["--param1", "--param2"] - Array of extra command line parameters passed to 'npm install'
 "maintainers": ["user1", "user2"] - List of module maintainers to be contacted with issues
+"scripts": ["script1", "script2"] - List of scripts from package.json to run instead of 'test'
 "tags": ["tag1", "tag2"]     Specify which tags apply to the module
+"useGitClone": true          Use a shallow git clone instead of downloading the module
 "ignoreGitHead":             Ignore the gitHead field if it exists and fallback to using github tags
 "yarn":                      Install and test the project using yarn instead of npm
 ```

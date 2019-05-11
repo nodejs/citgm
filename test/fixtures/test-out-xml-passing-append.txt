@@ -11,4 +11,3 @@ This is a test!
     </system-out>
   </testcase>
 </testsuite>
-

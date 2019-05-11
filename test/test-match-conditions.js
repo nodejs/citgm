@@ -1,6 +1,6 @@
 'use strict';
 
-const test = require('tap').test;
+const { test } = require('tap');
 const rewire = require('rewire');
 
 const isMatch = rewire('../lib/match-conditions');
@@ -98,7 +98,9 @@ function testArrays(t, testFunction) {
 
   t.notok(testFunction(['hurd', 'x86', 'v4']), 'not matchy array of string');
 
-  t.notok(testFunction([true, false, 123]), 'not matched invalid input');
+  t.ok(testFunction([true, false, 123]), 'True evaluates to true');
+
+  t.notok(testFunction([false, 123]), 'No truthy results evaluate to false');
 
   revertShim();
 }

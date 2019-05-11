@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 'use strict';
 
+require('make-promises-safe');
+
 const citgm = require('../lib/citgm');
 const commonArgs = require('../lib/common-args');
 const logger = require('../lib/out');
@@ -14,7 +16,7 @@ const yargs = commonArgs(require('yargs'))
   .option('sha', {
     alias: 'c',
     type: 'string',
-    description: 'Install module from commit-sha'
+    description: 'Install module from commit-sha, branch or tag'
   });
 
 const app = yargs.argv;
@@ -68,7 +70,7 @@ if (!citgm.windows) {
 
 const start = new Date();
 function launch(mod, options) {
-  const runner = citgm.Tester(mod, options);
+  const runner = new citgm.Tester(mod, options);
 
   function cleanup() {
     runner.cleanup();

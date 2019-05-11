@@ -2,25 +2,22 @@
 
 const os = require('os');
 const path = require('path');
-const test = require('tap').test;
-const rewire = require('rewire');
+const { test } = require('tap');
 
 const packageManager = require('../lib/package-manager');
-const timeout = rewire('../lib/timeout');
+const timeout = require('../lib/timeout');
+
 const makeContext = require('./helpers/make-context');
 const sandbox = path.join(os.tmpdir(), `citgm-${Date.now()}`);
 
 let packageManagers;
 
-test('timeout: setup', (t) => {
-  t.plan(1);
-  packageManager.getPackageManagers((e, res) => {
-    packageManagers = res;
-    t.error(e);
-  });
+test('timeout: setup', async () => {
+  packageManagers = await packageManager.getPackageManagers();
 });
 
 test('timeout:', (t) => {
+  t.plan(6);
   const context = makeContext.npmContext(
     'omg-i-pass',
     packageManagers,
@@ -57,6 +54,7 @@ test('timeout:', (t) => {
 });
 
 test('timeout:', (t) => {
+  t.plan(9);
   const context = makeContext.npmContext(
     'omg-i-pass',
     packageManagers,

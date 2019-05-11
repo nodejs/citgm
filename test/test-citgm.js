@@ -1,11 +1,11 @@
 'use strict';
 
-const test = require('tap').test;
-const rewire = require('rewire');
+const { test } = require('tap');
 
-const citgm = rewire('../lib/citgm');
+const citgm = require('../lib/citgm');
 
 test('citgm: omg-i-pass', (t) => {
+  t.plan(2);
   const options = {
     hmac: null,
     lookup: null,
@@ -15,8 +15,7 @@ test('citgm: omg-i-pass', (t) => {
 
   const mod = 'omg-i-pass';
 
-  citgm
-    .Tester(mod, options)
+  new citgm.Tester(mod, options)
     .on('start', (name) => {
       t.equals(name, mod, 'it should be omg-i-pass');
     })
@@ -31,6 +30,8 @@ test('citgm: omg-i-pass', (t) => {
 });
 
 test('citgm: omg-i-pass from git url', (t) => {
+  t.plan(3);
+
   const options = {
     hmac: null,
     lookup: null,
@@ -40,10 +41,14 @@ test('citgm: omg-i-pass from git url', (t) => {
 
   const mod = 'git+https://github.com/MylesBorins/omg-i-pass';
 
-  citgm
-    .Tester(mod, options)
+  const tester = new citgm.Tester(mod, options);
+  tester
     .on('start', (name) => {
-      t.equals(name, mod, 'it should be omg-i-pass');
+      t.equals(name, mod, 'it should be the raw URL');
+      t.equals(
+        tester.module.name,
+        `noname-44e9e903ceed542df23ff575629965f65eeaa51a`
+      );
     })
     .on('fail', (err) => {
       t.error(err);

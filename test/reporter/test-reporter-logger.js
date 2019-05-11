@@ -1,9 +1,17 @@
 'use strict';
 
-const test = require('tap').test;
+const { test } = require('tap');
+const proxyquire = require('proxyquire');
 
-const loggerReporter = require('../../lib/reporter/logger');
 const fixtures = require('../fixtures/reporter-fixtures');
+
+const identity = (value) => value;
+const fakeChalk = {
+  yellow: identity
+};
+const loggerReporter = proxyquire('../../lib/reporter/logger', {
+  chalk: fakeChalk
+});
 
 let output = '';
 
@@ -20,6 +28,7 @@ const logger = {
 };
 
 test('single passing module:', (t) => {
+  t.plan(1);
   let expected = 'passing module(s)';
   expected += 'module name:' + 'iPass';
   expected += 'version:' + '4.2.2';
@@ -32,6 +41,7 @@ test('single passing module:', (t) => {
 });
 
 test('single failing module:', (t) => {
+  t.plan(1);
   let expected = 'failing module(s)';
   expected += 'module name:' + 'iFail';
   expected += 'version:' + '3.0.1';
@@ -46,6 +56,7 @@ test('single failing module:', (t) => {
 });
 
 test('multiple modules passing, with a flaky module that fails:', (t) => {
+  t.plan(1);
   let expected = 'passing module(s)';
   expected += 'module name:' + 'iPass';
   expected += 'version:' + '4.2.2';

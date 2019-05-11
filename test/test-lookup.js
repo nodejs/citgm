@@ -1,6 +1,6 @@
 'use strict';
 
-const test = require('tap').test;
+const { test } = require('tap');
 const rewire = require('rewire');
 
 const lookup = rewire('../lib/lookup');
@@ -9,6 +9,7 @@ const makeUrl = lookup.__get__('makeUrl');
 const getLookupTable = lookup.get;
 
 test('lookup: makeUrl', (t) => {
+  t.plan(5);
   const repo = 'https://github.com/nodejs/citgm';
 
   const tags = {
@@ -59,14 +60,10 @@ test('lookup: makeUrl', (t) => {
 });
 
 test('lookup[getLookupTable]:', (t) => {
-  let table;
-  try {
-    table = getLookupTable({
-      lookup: null
-    });
-  } catch (e) {
-    t.error(e);
-  }
+  t.plan(3);
+  const table = getLookupTable({
+    lookup: null
+  });
   t.ok(table, 'table should exist');
   t.ok(table.lodash, 'lodash should be in the table');
   t.ok(
@@ -77,15 +74,10 @@ test('lookup[getLookupTable]:', (t) => {
 });
 
 test('lookup[getLookupTable]: custom table', (t) => {
-  let table;
-  try {
-    table = getLookupTable({
-      lookup: 'test/fixtures/custom-lookup.json'
-    });
-  } catch (e) {
-    t.error(e);
-  }
-
+  t.plan(1);
+  const table = getLookupTable({
+    lookup: 'test/fixtures/custom-lookup.json'
+  });
   t.deepEquals(
     table,
     {
@@ -103,20 +95,16 @@ test('lookup[getLookupTable]: custom table', (t) => {
 });
 
 test('lookup[getLookupTable]: custom table that does not exist', (t) => {
-  let table;
-  try {
-    table = getLookupTable({
-      lookup: 'test/fixtures/i-am-not-a.json'
-    });
-  } catch (e) {
-    t.error(e);
-  }
-
+  t.plan(1);
+  const table = getLookupTable({
+    lookup: 'test/fixtures/i-am-not-a.json'
+  });
   t.notOk(table, 'it should return falsey if the table does not exist');
   t.end();
 });
 
 test('lookup: module not in table', (t) => {
+  t.plan(1);
   const context = {
     lookup: null,
     module: {
@@ -128,17 +116,16 @@ test('lookup: module not in table', (t) => {
     emit: function() {}
   };
 
-  lookup(context, (err) => {
-    t.error(err);
-    t.notOk(
-      context.module.raw,
-      'raw should remain falsey if module is not in lookup'
-    );
-    t.end();
-  });
+  lookup(context);
+  t.notOk(
+    context.module.raw,
+    'raw should remain falsey if module is not in lookup'
+  );
+  t.end();
 });
 
 test('lookup: module not in table with gitHead', (t) => {
+  t.plan(1);
   const context = {
     lookup: null,
     module: {
@@ -155,18 +142,17 @@ test('lookup: module not in table with gitHead', (t) => {
     emit: function() {}
   };
 
-  lookup(context, (err) => {
-    t.error(err);
-    t.equals(
-      context.module.raw,
-      'https://github.com/nodejs/omg-i-pass/archive/abc123.tar.gz',
-      'raw should use commit SHA if package has gitHead'
-    );
-    t.end();
-  });
+  lookup(context);
+  t.equals(
+    context.module.raw,
+    'https://github.com/nodejs/omg-i-pass/archive/abc123.tar.gz',
+    'raw should use commit SHA if package has gitHead'
+  );
+  t.end();
 });
 
 test('lookup: module in table', (t) => {
+  t.plan(1);
   const context = {
     lookup: null,
     module: {
@@ -182,18 +168,17 @@ test('lookup: module in table', (t) => {
     emit: function() {}
   };
 
-  lookup(context, (err) => {
-    t.error(err);
-    t.equals(
-      context.module.raw,
-      'https://github.com/lodash/lodash/archive/master.tar.gz',
-      'raw should be truthy if the module was in the list'
-    );
-    t.end();
-  });
+  lookup(context);
+  t.equals(
+    context.module.raw,
+    'https://github.com/lodash/lodash/archive/master.tar.gz',
+    'raw should be truthy if the module was in the list'
+  );
+  t.end();
 });
 
 test('lookup: module in table with gitHead', (t) => {
+  t.plan(1);
   const context = {
     lookup: null,
     module: {
@@ -210,31 +195,92 @@ test('lookup: module in table with gitHead', (t) => {
     emit: function() {}
   };
 
-  lookup(context, (err) => {
-    t.error(err);
-    t.equals(
-      context.module.raw,
-      'https://github.com/lodash/lodash/archive/abc123.tar.gz',
-      'raw should use commit SHA if package has gitHead'
-    );
-    t.end();
-  });
+  lookup(context);
+  t.equals(
+    context.module.raw,
+    'https://github.com/lodash/lodash/archive/abc123.tar.gz',
+    'raw should use commit SHA if package has gitHead'
+  );
+  t.end();
+});
+
+test('lookup: module in table with scripts', (t) => {
+  t.plan(1);
+  const context = {
+    module: {
+      name: 'omg-i-pass-with-scripts',
+      raw: null
+    },
+    meta: {
+      repository: {
+        url: 'git+https://github.com/nodejs/citgm'
+      },
+      version: '1.0.0'
+    },
+    options: {
+      lookup: 'test/fixtures/custom-lookup-scripts.json'
+    },
+    emit: function() {}
+  };
+
+  lookup(context);
+  t.strictSame(
+    context.module.scripts,
+    ['test-build', 'test'],
+    'lookup should read scripts'
+  );
+  t.end();
+});
+
+test('lookup: module in table with useGitClone', (t) => {
+  t.plan(2);
+  const context = {
+    lookup: null,
+    module: {
+      fetchSpec: 'latest',
+      name: 'lodash',
+      raw: null
+    },
+    meta: {
+      'dist-tags': { latest: '1.2.3' },
+      repository: {
+        url: 'https://github.com/lodash/lodash'
+      }
+    },
+    options: {
+      lookup: 'test/fixtures/custom-lookup-useGitClone.json'
+    },
+    emit: function() {}
+  };
+
+  lookup(context);
+  t.equals(
+    context.module.raw,
+    'https://github.com/lodash/lodash.git',
+    'raw should be a git URL if useGitClone is true'
+  );
+  t.equals(context.module.ref, 'v1.2.3');
+  t.end();
 });
 
 test('lookup: no table', (t) => {
+  t.plan(1);
   const context = {
     options: {
       lookup: 'test/fixtures/custom-lookup-does-not-exist.json'
     }
   };
 
-  lookup(context, (err) => {
+  try {
+    lookup(context);
+  } catch (err) {
     t.equals(err && err.message, 'Lookup table could not be loaded');
     t.end();
-  });
+  }
 });
 
 test('lookup: replace with no repo', (t) => {
+  t.plan(1);
   const context = {
     module: {
       name: 'omg-i-pass',
@@ -250,13 +296,43 @@ test('lookup: replace with no repo', (t) => {
     emit: function() {}
   };
 
-  lookup(context, (err) => {
+  try {
+    lookup(context);
+  } catch (err) {
     t.equals(err && err.message, 'no-repository-field in package.json');
     t.end();
-  });
+  }
+});
+
+test('lookup: not found in lookup.json with --sha', (t) => {
+  t.plan(1);
+  const context = {
+    lookup: null,
+    module: {
+      name: 'test'
+    },
+    meta: {
+      gitHead: 'metaGitHead',
+      repository: {
+        url: 'https://github.com/test-org/test-repo'
+      }
+    },
+    options: {
+      sha: 'customsha'
+    },
+    emit: function() {}
+  };
+
+  lookup(context);
+  t.equals(
+    context.module.raw,
+    'https://github.com/test-org/test-repo/archive/customsha.tar.gz'
+  );
+  t.end();
 });
 
 test('lookup: --fail-flaky', (t) => {
+  t.plan(1);
   const context = {
     lookup: null,
     module: {
@@ -274,20 +350,14 @@ test('lookup: --fail-flaky', (t) => {
     emit: function() {}
   };
 
-  lookup(context, (err) => {
-    t.error(err);
-    t.false(context.module.flaky, 'flaky should be disabled');
-    t.end();
-  });
+  lookup(context);
+  t.false(context.module.flaky, 'flaky should be disabled');
+  t.end();
 });
 
 test('lookup: ensure lookup works', (t) => {
-  let lookup;
-  try {
-    lookup = require('../lib/lookup.json');
-  } catch (err) {
-    t.error(err);
-  }
+  t.plan(2);
+  const lookup = require('../lib/lookup.json');
   t.ok(lookup, 'the lookup table should exist');
 
   const lookupKeys = Object.keys(lookup);
@@ -302,6 +372,7 @@ test('lookup: ensure lookup works', (t) => {
 });
 
 test('lookup: lookup with install', (t) => {
+  t.plan(1);
   const context = {
     module: {
       name: 'omg-i-pass-with-install-param',
@@ -320,14 +391,13 @@ test('lookup: lookup with install', (t) => {
     install: [/--extra-param/]
   };
 
-  lookup(context, (err) => {
-    t.error(err);
-    t.match(context.module, expected, 'Read extra install parameter');
-    t.end();
-  });
+  lookup(context);
+  t.match(context.module, expected, 'Read extra install parameter');
+  t.end();
 });
 
 test('lookup: logging', (t) => {
+  t.plan(1);
   const expectedLogMsgs = [
     { type: 'info', key: 'lookup', msg: 'omg-i-pass' },
     { type: 'info', key: 'lookup-found', msg: 'omg-i-pass' },
@@ -358,9 +428,7 @@ test('lookup: logging', (t) => {
   context.on('data', (type, key, msg) => {
     log.push({ type: type, key: key, msg: msg });
   });
-  lookup(context, () => {
-    t.plan(1);
-    t.strictSame(log, expectedLogMsgs);
-    t.end();
-  });
+  lookup(context);
+  t.strictSame(log, expectedLogMsgs);
+  t.end();
 });

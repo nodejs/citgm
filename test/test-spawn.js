@@ -1,15 +1,23 @@
 'use strict';
 
-const test = require('tap').test;
+const { test } = require('tap');
 const rewire = require('rewire');
 
 const spawn = rewire('../lib/spawn');
 
 test('spawn:', (t) => {
+  t.plan(2);
   const child = spawn('echo', ['Hello world.']);
 
   let error = '';
   let message = '';
+
+  const expectedMessage =
+    process.platform === 'win32' ? '"Hello world."\r\n' : 'Hello world.\n';
+
+  child.stderr.on('data', (chunk) => {
+    error += chunk;
+  });
 
   child.stdout.on('data', (chunk) => {
     message += chunk;
@@ -18,7 +26,7 @@ test('spawn:', (t) => {
   child.on('close', () => {
     t.equals(
       message,
-      'Hello world.\n',
+      expectedMessage,
       'we should receive "Hello world." on stdout'
     );
     t.equals(error, '', 'there should be no data on stderr');
@@ -29,6 +37,7 @@ test('spawn:', (t) => {
 });
 
 test('spawn: windows mock', (t) => {
+  t.plan(1);
   const child = spawn.__get__('child');
   const sp = child.spawn;
   const platform = process.platform;
@@ -47,7 +56,7 @@ test('spawn: windows mock', (t) => {
   const result = spawn('echo', ['Hello world.']);
   const expected = {
     cmd: 'cmd',
-    args: ['/c', 'echo', 'Hello world.'],
+    args: ['/C', 'echo', 'Hello world.'],
     options: undefined
   };
 

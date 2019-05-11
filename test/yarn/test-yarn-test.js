@@ -2,17 +2,16 @@
 
 const os = require('os');
 const path = require('path');
-const fs = require('fs');
+const { promisify } = require('util');
 
-const test = require('tap').test;
-const mkdirp = require('mkdirp');
-const rimraf = require('rimraf');
-const ncp = require('ncp');
-const rewire = require('rewire');
+const { copy, existsSync } = require('fs-extra');
+const { test } = require('tap');
+const mkdirp = promisify(require('mkdirp'));
+const rimraf = promisify(require('rimraf'));
 
 const makeContext = require('../helpers/make-context');
 const packageManager = require('../../lib/package-manager');
-const packageManagerTest = rewire('../../lib/package-manager/test');
+const packageManagerTest = require('../../lib/package-manager/test');
 
 const sandbox = path.join(os.tmpdir(), `citgm-${Date.now()}`);
 const fixtures = path.join(__dirname, '..', 'fixtures');
@@ -26,83 +25,80 @@ const failTemp = path.join(sandbox, 'omg-i-fail');
 const badFixtures = path.join(fixtures, 'omg-i-do-not-support-testing');
 const badTemp = path.join(sandbox, 'omg-i-do-not-support-testing');
 
+const scriptsFixtures = path.join(fixtures, 'omg-i-pass-with-scripts');
+const scriptsTemp = path.join(sandbox, 'omg-i-pass-with-scripts');
+
+const writeTmpdirFixtures = path.join(fixtures, 'omg-i-write-to-tmpdir');
+const writeTmpdirTemp = path.join(sandbox, 'omg-i-write-to-tmpdir');
+
 let packageManagers;
 
-test('yarn-test: setup', (t) => {
-  t.plan(8);
-  packageManager.getPackageManagers((e, res) => {
-    packageManagers = res;
-    t.error(e);
-  });
-  mkdirp(sandbox, (err) => {
-    t.error(err);
-    ncp(passFixtures, passTemp, (e) => {
-      t.error(e);
-      t.ok(fs.existsSync(path.join(passTemp, 'package.json')));
-    });
-    ncp(failFixtures, failTemp, (e) => {
-      t.error(e);
-      t.ok(fs.existsSync(path.join(failTemp, 'package.json')));
-    });
-    ncp(badFixtures, badTemp, (e) => {
-      t.error(e);
-      t.ok(fs.existsSync(path.join(badTemp, 'package.json')));
-    });
-  });
+test('yarn-test: setup', async () => {
+  packageManagers = await packageManager.getPackageManagers();
+  await mkdirp(sandbox);
+  await Promise.all([
+    copy(passFixtures, passTemp),
+    copy(failFixtures, failTemp),
+    copy(badFixtures, badTemp),
+    copy(scriptsFixtures, scriptsTemp),
+    copy(writeTmpdirFixtures, writeTmpdirTemp)
+  ]);
 });
 
-test('yarn-test: basic module passing', (t) => {
+test('yarn-test: basic module passing', async () => {
   const context = makeContext.npmContext(
     'omg-i-pass',
     packageManagers,
     sandbox
   );
-  packageManagerTest('yarn', context, (err) => {
-    t.error(err);
-    t.end();
-  });
+  await packageManagerTest('yarn', context);
 });
 
-test('yarn-test: basic module failing', (t) => {
+test('yarn-test: basic module failing', async (t) => {
+  t.plan(1);
   const context = makeContext.npmContext(
     'omg-i-fail',
     packageManagers,
     sandbox
   );
-  packageManagerTest('yarn', context, (err) => {
+  try {
+    await packageManagerTest('yarn', context);
+  } catch (err) {
     t.equals(err && err.message, 'The canary is dead:');
-    t.end();
-  });
+  }
 });
 
-test('yarn-test: basic module no test script', (t) => {
+test('yarn-test: basic module no test script', async (t) => {
+  t.plan(1);
   const context = makeContext.npmContext(
     'omg-i-do-not-support-testing',
     packageManagers,
     sandbox
   );
-  packageManagerTest('yarn', context, (err) => {
+  try {
+    await packageManagerTest('yarn', context);
+  } catch (err) {
     t.equals(err && err.message, 'Module does not support yarn-test!');
-    t.end();
-  });
+  }
 });
 
-test('yarn-test: no package.json', (t) => {
+test('yarn-test: no package.json', async (t) => {
+  t.plan(1);
   const context = makeContext.npmContext(
     'omg-i-dont-exist',
     packageManagers,
     sandbox
   );
-  packageManagerTest('yarn', context, (err) => {
+  try {
+    await packageManagerTest('yarn', context);
+  } catch (err) {
     t.equals(err && err.message, 'Package.json Could not be found');
-    t.end();
-  });
+  }
 });
 
-test('yarn-test: alternative test-path', (t) => {
+test('yarn-test: alternative test-path', async (t) => {
+  t.plan(1);
   // Same test as 'basic module passing', except with alt node bin which fails.
-  const nodeBinName = packageManagerTest.__get__('nodeBinName');
-  packageManagerTest.__set__('nodeBinName', 'fake-node');
   const context = makeContext.npmContext(
     'omg-i-pass',
     packageManagers,
@@ -111,14 +107,15 @@ test('yarn-test: alternative test-path', (t) => {
       testPath: path.resolve(__dirname, '..', 'fixtures', 'fakenodebin')
     }
   );
-  packageManagerTest('yarn', context, (err) => {
-    packageManagerTest.__set__('nodeBinName', nodeBinName);
+  try {
+    await packageManagerTest('yarn', context);
+  } catch (err) {
     t.equals(err && err.message, 'The canary is dead:');
-    t.end();
-  });
+  }
 });
 
-test('yarn-test: timeout', (t) => {
+test('yarn-test: timeout', async (t) => {
+  t.plan(2);
   const context = makeContext.npmContext(
     'omg-i-pass',
     packageManagers,
@@ -127,16 +124,48 @@ test('yarn-test: timeout', (t) => {
       timeoutLength: 100
     }
   );
-  packageManagerTest('yarn', context, (err) => {
+  try {
+    await packageManagerTest('yarn', context);
+  } catch (err) {
     t.ok(context.module.flaky, 'Module is Flaky because tests timed out');
     t.equals(err && err.message, 'Test Timed Out');
-    t.end();
-  });
+  }
 });
 
-test('yarn-test: teardown', (t) => {
-  rimraf(sandbox, (err) => {
-    t.error(err);
-    t.end();
-  });
+test('yarn-test: module with scripts passing', async () => {
+  const context = makeContext.npmContext(
+    {
+      name: 'omg-i-pass-with-scripts',
+      scripts: ['test-build', 'test']
+    },
+    packageManagers,
+    sandbox,
+    {
+      npmLevel: 'silly'
+    }
+  );
+
+  await packageManagerTest('yarn', context);
+});
+
+test('yarn-test: tmpdir is redirected', async (t) => {
+  t.plan(1);
+  const context = makeContext.npmContext(
+    'omg-i-write-to-tmpdir',
+    packageManagers,
+    sandbox,
+    {
+      npmLevel: 'silly'
+    }
+  );
+  context.npmConfigTmp = writeTmpdirTemp;
+  await packageManagerTest('yarn', context);
+  t.ok(
+    existsSync(path.join(writeTmpdirTemp, 'omg-i-write-to-tmpdir-testfile')),
+    'Temporary file is written into the redirected temporary directory'
+  );
+});
+
+test('yarn-test: teardown', async () => {
+  await rimraf(sandbox);
 });

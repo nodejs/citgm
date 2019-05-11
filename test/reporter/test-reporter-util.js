@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const test = require('tap').test;
+const { test } = require('tap');
 
 const util = require('../../lib/reporter/util');
 const fixtures = require('../fixtures/reporter-fixtures');
@@ -47,6 +47,7 @@ const flakeCityUsa = [
 ];
 
 test('getPassing:', (t) => {
+  t.plan(4);
   t.equals(
     util.getPassing(noPassing).length,
     0,
@@ -71,6 +72,7 @@ test('getPassing:', (t) => {
 });
 
 test('getSkipped:', (t) => {
+  t.plan(3);
   t.equals(
     util.getSkipped(noPassing).length,
     1,
@@ -90,6 +92,7 @@ test('getSkipped:', (t) => {
 });
 
 test('getFlakyFails:', (t) => {
+  t.plan(4);
   t.equals(
     util.getFlakyFails(noPassing).length,
     4,
@@ -114,6 +117,7 @@ test('getFlakyFails:', (t) => {
 });
 
 test('getFails:', (t) => {
+  t.plan(4);
   t.equals(
     util.getFails(noPassing).length,
     3,
@@ -138,6 +142,7 @@ test('getFails:', (t) => {
 });
 
 test('hasFailures:', (t) => {
+  t.plan(4);
   t.ok(
     util.hasFailures(noPassing),
     'there should be failures in the noPassing list'
@@ -158,7 +163,7 @@ test('hasFailures:', (t) => {
 });
 
 test('util.sanitizeOutput', (t) => {
-  // Var result = util.sanitizeOutput();
+  t.plan(1);
   const raw = fs.readFileSync(carriageReturnPath, 'utf-8');
   const expected = fs.readFileSync(carriageReturnExpectedPath, 'utf-8');
   let result = util.sanitizeOutput(raw, '#');

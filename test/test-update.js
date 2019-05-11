@@ -1,15 +1,16 @@
 'use strict';
 
-const test = require('tap').test;
-const rewire = require('rewire');
+const { test } = require('tap');
+const proxyquire = require('proxyquire');
 
-const update = rewire('../lib/update');
-
-const pkg = update.__get__('pkg');
-
-pkg.version = '0.0.0';
+const update = proxyquire('../lib/update', {
+  '../package.json': {
+    version: '0.0.0'
+  }
+});
 
 test('update: /w callback', (t) => {
+  t.plan(1);
   const log = {
     warn: function(data) {
       t.equals(data, 'update-available');

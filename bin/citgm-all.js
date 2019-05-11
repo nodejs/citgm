@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 'use strict';
 
+require('make-promises-safe');
+
 const os = require('os');
 
-const _ = require('lodash');
 const async = require('async');
 
 const checkTags = require('../lib/check-tags');
@@ -113,10 +114,10 @@ if (!citgm.windows) {
   uidnumber(uid, gid, (err, uid, gid) => {
     options.uid = uid;
     options.gid = gid;
-    launch(options);
+    launch();
   });
 } else {
-  launch(options);
+  launch();
 }
 
 const modules = [];
@@ -132,7 +133,7 @@ function runCitgm(mod, name, next) {
   }
 
   const start = new Date();
-  const runner = citgm.Tester(name, options);
+  const runner = new citgm.Tester(name, options);
   let bailed = false;
 
   if (checkTags(options, mod, name, log)) {
@@ -194,16 +195,12 @@ function runTask(task, next) {
   runCitgm(task.mod, task.name, next);
 }
 
-function filterLookup(result, value, key) {
-  result.push({
-    name: key,
-    mod: value
-  });
-  return result;
+function mapCallback(name) {
+  return { name: name, mod: lookup[name] };
 }
 
 function launch() {
-  const collection = _.reduce(lookup, filterLookup, []);
+  const collection = Object.keys(lookup).map(mapCallback);
 
   const q = async.queue(runTask, app.parallel || 1);
   q.push(collection);

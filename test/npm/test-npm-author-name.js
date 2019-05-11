@@ -1,6 +1,6 @@
 'use strict';
 
-const test = require('tap').test;
+const { test } = require('tap');
 const rewire = require('rewire');
 
 const npmTest = rewire('../../lib/package-manager/test');
@@ -8,6 +8,7 @@ const npmTest = rewire('../../lib/package-manager/test');
 const authorName = npmTest.__get__('authorName');
 
 test('npm.test() authorName:', (t) => {
+  t.plan(2);
   const name = 'titus';
   const author = {
     name: 'Randy Savage',
@@ -25,6 +26,7 @@ test('npm.test() authorName:', (t) => {
 });
 
 test('npm.test() authorName partial data:', (t) => {
+  t.plan(3);
   const name = 'titus';
   const authorOne = {
     name: 'Randy Savage'
