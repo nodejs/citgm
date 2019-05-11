@@ -25,7 +25,6 @@
   },
   "async": {
     "prefix": "v",
-    "flaky": true,
     "maintainers": ["aearly", "megawac"]
   },
   "ava": {
@@ -64,7 +63,6 @@
     "maintainers": "dougwilson"
   },
   "browserify": {
-    "flaky": true,
     "expectFail": "fips",
     "maintainers": "substack"
   },
@@ -136,7 +134,7 @@
   "eslint": {
     "prefix": "v",
     "flaky": ["s390", "ubuntu"],
-    "skip": [true, "ppc"],
+    "skip": [">=12", "ppc"],
     "expectFail": "fips",
     "maintainers": ["nzakas", "mysticatea", "not-an-aardvark"]
   },
@@ -183,7 +181,7 @@
   },
   "fs-extra": {
     "flaky": ["linux-ia32", "aix", "s390", "win32"],
-    "skip": true,
+    "skip": ">=12",
     "expectFail": "fips",
     "maintainers": "jprichardson"
   },
@@ -264,7 +262,7 @@
   "libxmljs": {
     "prefix": "v",
     "flaky": ["aix", "sles", "rhel", "darwin"],
-    "skip": true,
+    "skip": ">=12",
     "tags": "native",
     "maintainers": "defunctzombie"
   },
@@ -279,7 +277,6 @@
   },
   "mime": {
     "prefix": "v",
-    "flaky": true,
     "maintainers": "broofa"
   },
   "minimist": {
@@ -292,12 +289,11 @@
   },
   "mocha": {
     "prefix": "v",
-    "skip": true,
+    "skip": ">=12",
     "expectFail": "fips",
     "maintainers": ["tj", "boneskull"]
   },
   "moment": {
-    "flaky": true,
     "maintainers": "ichernev"
   },
   "multer": {
@@ -324,7 +320,6 @@
   },
   "node-sass": {
     "prefix": "v",
-    "flaky": true,
     "tags": "native",
     "maintainers": "xzyfer"
   },
@@ -416,7 +411,6 @@
     "maintainers": "mtharrison"
   },
   "socket.io": {
-    "flaky": true,
     "maintainers": "rauchg"
   },
   "spawn-wrap": {
@@ -459,7 +453,6 @@
   },
   "thread-sleep": {
     "install": ["--build-from-source"],
-    "flaky": true,
     "tags": "native",
     "maintainers": ["forbeslindesay", "timothygu"]
   },
@@ -481,7 +474,6 @@
   },
   "torrent-stream": {
     "prefix": "v",
-    "flaky": true,
     "maintainers": "mafintosh"
   },
   "uglify-js": {
@@ -514,8 +506,7 @@
   "watchify": {
     "prefix": "v",
     "flaky": ["ppc", "s390", "ubuntu", "rhel"],
-    "maintainers": "substack",
-    "skip": "true"
+    "maintainers": "substack"
   },
   "weak": {
     "tags": "native",
