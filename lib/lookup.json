@@ -533,7 +533,7 @@
   "wrtc": {
     "maintainers": ["markandrus"],
     "prefix": "v",
-    "skip": ["aix", "ia32", "ppc", "s390"],
+    "skip": ["aix", "ia32", "ppc", "s390", "ubuntu-1204-64"],
     "tags": "native"
   },
   "ws": {
