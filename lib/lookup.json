@@ -356,8 +356,9 @@
   },
   "react": {
     "prefix": "v",
-    "skip": true,
-    "maintainers": ["zpao", "spicyj", "sebmarkbage"]
+    "maintainers": ["acdlite", "gaearon", "sophiebits"],
+    "yarn": true,
+    "skip": [">=12", "aix"]
   },
   "readable-stream": {
     "prefix": "v",
