@@ -25,6 +25,7 @@
   },
   "async": {
     "prefix": "v",
+    "flaky": true,
     "maintainers": ["aearly", "megawac"]
   },
   "ava": {
@@ -134,9 +135,10 @@
   "eslint": {
     "prefix": "v",
     "flaky": ["s390", "ubuntu"],
-    "skip": [">=12", "ppc"],
+    "skip": true,
     "expectFail": "fips",
-    "maintainers": ["nzakas", "mysticatea", "not-an-aardvark"]
+    "maintainers": ["nzakas", "mysticatea", "not-an-aardvark"],
+    "comment": "Skipped because libX11 is required for headless Chrome"
   },
   "eslint-plugin-jest": {
     "prefix": "v",
@@ -289,12 +291,14 @@
   },
   "mocha": {
     "prefix": "v",
-    "skip": ">=12",
+    "skip": true,
     "expectFail": "fips",
-    "maintainers": ["tj", "boneskull"]
+    "maintainers": ["tj", "boneskull"],
+    "comment": "Skipped because requires to install Google Chrome for browser tests"
   },
   "moment": {
-    "maintainers": "ichernev"
+    "maintainers": "ichernev",
+    "skip": ["ppc", "s390"]
   },
   "multer": {
     "prefix": "v",
@@ -320,8 +324,10 @@
   },
   "node-sass": {
     "prefix": "v",
+    "flaky": true,
     "tags": "native",
-    "maintainers": "xzyfer"
+    "maintainers": "xzyfer",
+    "comment": "Flaky because of test timeouts"
   },
   "path-to-regexp": {
     "prefix": "v",
