@@ -64,7 +64,6 @@
     "maintainers": "dougwilson"
   },
   "browserify": {
-    "flaky": true,
     "expectFail": "fips",
     "maintainers": "substack"
   },
@@ -136,9 +135,10 @@
   "eslint": {
     "prefix": "v",
     "flaky": ["s390", "ubuntu"],
-    "skip": [true, "ppc"],
+    "skip": true,
     "expectFail": "fips",
-    "maintainers": ["nzakas", "mysticatea", "not-an-aardvark"]
+    "maintainers": ["nzakas", "mysticatea", "not-an-aardvark"],
+    "comment": "Skipped because libX11 is required for headless Chrome"
   },
   "eslint-plugin-jest": {
     "prefix": "v",
@@ -182,7 +182,7 @@
   },
   "fs-extra": {
     "flaky": ["linux-ia32", "aix", "s390", "win32"],
-    "skip": true,
+    "skip": ">=12",
     "expectFail": "fips",
     "maintainers": "jprichardson"
   },
@@ -263,7 +263,7 @@
   "libxmljs": {
     "prefix": "v",
     "flaky": ["aix", "sles", "rhel", "darwin"],
-    "skip": true,
+    "skip": ">=12",
     "tags": "native",
     "maintainers": "defunctzombie"
   },
@@ -278,7 +278,6 @@
   },
   "mime": {
     "prefix": "v",
-    "flaky": true,
     "maintainers": "broofa"
   },
   "minimist": {
@@ -293,11 +292,12 @@
     "prefix": "v",
     "skip": true,
     "expectFail": "fips",
-    "maintainers": ["tj", "boneskull"]
+    "maintainers": ["tj", "boneskull"],
+    "comment": "Skipped because requires to install Google Chrome for browser tests"
   },
   "moment": {
-    "flaky": true,
-    "maintainers": "ichernev"
+    "maintainers": "ichernev",
+    "skip": ["ppc", "s390"]
   },
   "multer": {
     "prefix": "v",
@@ -325,7 +325,8 @@
     "prefix": "v",
     "flaky": true,
     "tags": "native",
-    "maintainers": "xzyfer"
+    "maintainers": "xzyfer",
+    "comment": "Flaky because of test timeouts"
   },
   "path-to-regexp": {
     "prefix": "v",
@@ -415,7 +416,6 @@
     "maintainers": "mtharrison"
   },
   "socket.io": {
-    "flaky": true,
     "maintainers": "rauchg"
   },
   "spawn-wrap": {
@@ -458,7 +458,6 @@
   },
   "thread-sleep": {
     "install": ["--build-from-source"],
-    "flaky": true,
     "tags": "native",
     "maintainers": ["forbeslindesay", "timothygu"]
   },
@@ -480,7 +479,6 @@
   },
   "torrent-stream": {
     "prefix": "v",
-    "flaky": true,
     "maintainers": "mafintosh"
   },
   "uglify-js": {
@@ -514,7 +512,7 @@
     "prefix": "v",
     "flaky": ["ppc", "s390", "ubuntu", "rhel"],
     "maintainers": "substack",
-    "skip": "true"
+    "skip": "win32"
   },
   "weak": {
     "tags": "native",
