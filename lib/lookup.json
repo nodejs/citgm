@@ -186,11 +186,6 @@
     "expectFail": "fips",
     "maintainers": "jprichardson"
   },
-  "ftp": {
-    "prefix": "v",
-    "skip": true,
-    "maintainers": "mscdex"
-  },
   "full-icu-test": {
     "prefix": "v",
     "maintainers": "srl295"
