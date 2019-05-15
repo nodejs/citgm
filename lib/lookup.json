@@ -422,12 +422,12 @@
   "spdy": {
     "prefix": "v",
     "flaky": ["aix", "sles"],
-    "skip": [">=10", "win32"],
+    "skip": ">=10",
     "maintainers": "diasdavid"
   },
   "spdy-transport": {
     "prefix": "v",
-    "skip": [">=10", "win32"],
+    "skip": ">=10",
     "flaky": "aix",
     "maintainers": "diasdavid"
   },
