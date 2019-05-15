@@ -512,7 +512,8 @@
   "watchify": {
     "prefix": "v",
     "flaky": ["ppc", "s390", "ubuntu", "rhel"],
-    "maintainers": "substack"
+    "maintainers": "substack",
+    "skip": "win32"
   },
   "weak": {
     "tags": "native",
