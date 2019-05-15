@@ -1,0 +1,6 @@
+{
+  "omg-i-pass-with-scripts": {
+    "prefix": "v",
+    "scripts": ["test-build", "test"]
+  }
+}

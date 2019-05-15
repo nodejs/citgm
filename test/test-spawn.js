@@ -1,23 +1,34 @@
 'use strict';
 
-const test = require('tap').test;
+const { test } = require('tap');
 const rewire = require('rewire');
 
 const spawn = rewire('../lib/spawn');
 
-test('spawn:', function (t) {
+test('spawn:', (t) => {
+  t.plan(2);
   const child = spawn('echo', ['Hello world.']);
 
   let error = '';
   let message = '';
 
-  child.stdout.on('data', function (chunk) {
+  const expectedMessage =
+    process.platform === 'win32' ? '"Hello world."\r\n' : 'Hello world.\n';
+
+  child.stderr.on('data', (chunk) => {
+    error += chunk;
+  });
+
+  child.stdout.on('data', (chunk) => {
     message += chunk;
   });
 
-  child.on('close', function () {
-    t.equals(message,
-        'Hello world.\n', 'we should receive "Hello world." on stdout');
+  child.on('close', () => {
+    t.equals(
+      message,
+      expectedMessage,
+      'we should receive "Hello world." on stdout'
+    );
     t.equals(error, '', 'there should be no data on stderr');
     t.end();
   });
@@ -25,7 +36,8 @@ test('spawn:', function (t) {
   child.on('error', t.error);
 });
 
-test('spawn: windows mock', function (t) {
+test('spawn: windows mock', (t) => {
+  t.plan(1);
   const child = spawn.__get__('child');
   const sp = child.spawn;
   const platform = process.platform;
@@ -33,7 +45,7 @@ test('spawn: windows mock', function (t) {
     value: 'win32'
   });
 
-  child.spawn = function (cmd, args, options) {
+  child.spawn = function(cmd, args, options) {
     return {
       cmd: cmd,
       args: args,
@@ -44,11 +56,7 @@ test('spawn: windows mock', function (t) {
   const result = spawn('echo', ['Hello world.']);
   const expected = {
     cmd: 'cmd',
-    args: [
-      '/c',
-      'echo',
-      'Hello world.'
-    ],
+    args: ['/C', 'echo', 'Hello world.'],
     options: undefined
   };
 
@@ -57,7 +65,10 @@ test('spawn: windows mock', function (t) {
     value: platform
   });
 
-  t.deepEqual(result, expected,
-        'we should have the expected options for win32');
+  t.deepEqual(
+    result,
+    expected,
+    'we should have the expected options for win32'
+  );
   t.end();
 });

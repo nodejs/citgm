@@ -2,18 +2,31 @@
 
 const os = require('os');
 const path = require('path');
-const test = require('tap').test;
-const rewire = require('rewire');
+const { test } = require('tap');
 
-const timeout = rewire('../lib/timeout');
+const packageManager = require('../lib/package-manager');
+const timeout = require('../lib/timeout');
+
 const makeContext = require('./helpers/make-context');
-const sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now());
+const sandbox = path.join(os.tmpdir(), `citgm-${Date.now()}`);
 
-test('timeout:', function (t) {
-  const context = makeContext.npmContext('omg-i-pass', sandbox, {
-    npmLevel: 'silly',
-    timeoutLength: 100
-  });
+let packageManagers;
+
+test('timeout: setup', async () => {
+  packageManagers = await packageManager.getPackageManagers();
+});
+
+test('timeout:', (t) => {
+  t.plan(6);
+  const context = makeContext.npmContext(
+    'omg-i-pass',
+    packageManagers,
+    sandbox,
+    {
+      npmLevel: 'silly',
+      timeoutLength: 100
+    }
+  );
   const proc = {
     kill() {
       this.killed++;
@@ -38,14 +51,19 @@ test('timeout:', function (t) {
     t.equals(proc.killed, 1);
     t.end();
   }, 200);
-
 });
 
-test('timeout:', function (t) {
-  const context = makeContext.npmContext('omg-i-pass', sandbox, {
-    npmLevel: 'silly',
-    timeoutLength: 100
-  });
+test('timeout:', (t) => {
+  t.plan(9);
+  const context = makeContext.npmContext(
+    'omg-i-pass',
+    packageManagers,
+    sandbox,
+    {
+      npmLevel: 'silly',
+      timeoutLength: 100
+    }
+  );
   const proc = {
     kill() {
       this.killed++;
