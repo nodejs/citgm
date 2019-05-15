@@ -17,5 +17,10 @@
     </system-out>
     <failure message="module test suite failed">[object Object] </failure>
   </testcase>
+  <testcase name="iSkipped" time="NaN">
+    <system-out>
+      <![CDATA[]]>
+    </system-out>
+    <skipped/>
+  </testcase>
 </testsuite>
-

@@ -7,5 +7,4 @@
   extra parameters to env variables prefixed 'npm_config_'. In our example, npm
   will set 'npm_config_extra_param' to true.
 */
-if (!process.env['npm_config_extra_param'])
-  process.exit(1);
+if (!process.env['npm_config_extra_param']) process.exit(1);

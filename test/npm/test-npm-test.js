@@ -1,18 +1,19 @@
 'use strict';
+
 const os = require('os');
 const path = require('path');
-const fs = require('fs');
+const { promisify } = require('util');
 
-const test = require('tap').test;
-const mkdirp = require('mkdirp');
-const rimraf = require('rimraf');
-const ncp = require('ncp');
-const rewire = require('rewire');
+const { copy, existsSync } = require('fs-extra');
+const { test } = require('tap');
+const mkdirp = promisify(require('mkdirp'));
+const rimraf = promisify(require('rimraf'));
 
 const makeContext = require('../helpers/make-context');
-const npmTest = rewire('../../lib/npm/test');
+const packageManager = require('../../lib/package-manager');
+const packageManagerTest = require('../../lib/package-manager/test');
 
-const sandbox = path.join(os.tmpdir(), 'citgm-' + Date.now());
+const sandbox = path.join(os.tmpdir(), `citgm-${Date.now()}`);
 const fixtures = path.join(__dirname, '..', 'fixtures');
 
 const passFixtures = path.join(fixtures, 'omg-i-pass');
@@ -24,90 +25,151 @@ const failTemp = path.join(sandbox, 'omg-i-fail');
 const badFixtures = path.join(fixtures, 'omg-i-do-not-support-testing');
 const badTemp = path.join(sandbox, 'omg-i-do-not-support-testing');
 
-test('npm-test: setup', function (t) {
-  t.plan(7);
-  mkdirp(sandbox, function (err) {
-    t.error(err);
-    ncp(passFixtures, passTemp, function (e) {
-      t.error(e);
-      t.ok(fs.existsSync(path.join(passTemp, 'package.json')));
-    });
-    ncp(failFixtures, failTemp, function (e) {
-      t.error(e);
-      t.ok(fs.existsSync(path.join(failTemp, 'package.json')));
-    });
-    ncp(badFixtures, badTemp, function (e) {
-      t.error(e);
-      t.ok(fs.existsSync(path.join(badTemp, 'package.json')));
-    });
-  });
+const scriptsFixtures = path.join(fixtures, 'omg-i-pass-with-scripts');
+const scriptsTemp = path.join(sandbox, 'omg-i-pass-with-scripts');
+
+const writeTmpdirFixtures = path.join(fixtures, 'omg-i-write-to-tmpdir');
+const writeTmpdirTemp = path.join(sandbox, 'omg-i-write-to-tmpdir');
+
+let packageManagers;
+
+test('npm-test: setup', async () => {
+  packageManagers = await packageManager.getPackageManagers();
+  await mkdirp(sandbox);
+  await Promise.all([
+    copy(passFixtures, passTemp),
+    copy(failFixtures, failTemp),
+    copy(badFixtures, badTemp),
+    copy(scriptsFixtures, scriptsTemp),
+    copy(writeTmpdirFixtures, writeTmpdirTemp)
+  ]);
 });
 
-test('npm-test: basic module passing', function (t) {
-  const context = makeContext.npmContext('omg-i-pass', sandbox, {
-    npmLevel: 'silly'
-  });
-  npmTest(context, function (err) {
-    t.error(err);
-    t.end();
-  });
+test('npm-test: basic module passing', async () => {
+  const context = makeContext.npmContext(
+    'omg-i-pass',
+    packageManagers,
+    sandbox,
+    {
+      npmLevel: 'silly'
+    }
+  );
+  await packageManagerTest('npm', context);
 });
 
-test('npm-test: basic module failing', function (t) {
-  const context = makeContext.npmContext('omg-i-fail', sandbox);
-  npmTest(context, function (err) {
+test('npm-test: basic module failing', async (t) => {
+  t.plan(1);
+  const context = makeContext.npmContext(
+    'omg-i-fail',
+    packageManagers,
+    sandbox
+  );
+  try {
+    await packageManagerTest('npm', context);
+  } catch (err) {
     t.equals(err && err.message, 'The canary is dead:');
-    t.end();
-  });
+  }
 });
 
-test('npm-test: basic module no test script', function (t) {
-  const context =
-    makeContext.npmContext('omg-i-do-not-support-testing', sandbox);
-  npmTest(context, function (err) {
+test('npm-test: basic module no test script', async (t) => {
+  t.plan(1);
+  const context = makeContext.npmContext(
+    'omg-i-do-not-support-testing',
+    packageManagers,
+    sandbox
+  );
+  try {
+    await packageManagerTest('npm', context);
+  } catch (err) {
     t.equals(err && err.message, 'Module does not support npm-test!');
-    t.end();
-  });
+  }
 });
 
-test('npm-test: no package.json', function (t) {
-  const context = makeContext.npmContext('omg-i-dont-exist', sandbox);
-  npmTest(context, function (err) {
+test('npm-test: no package.json', async (t) => {
+  t.plan(1);
+  const context = makeContext.npmContext(
+    'omg-i-dont-exist',
+    packageManagers,
+    sandbox
+  );
+  try {
+    await packageManagerTest('npm', context);
+  } catch (err) {
     t.equals(err && err.message, 'Package.json Could not be found');
-    t.end();
-  });
+  }
 });
 
-test('npm-test: alternative test-path', function (t) {
+test('npm-test: alternative test-path', async (t) => {
+  t.plan(1);
   // Same test as 'basic module passing', except with alt node bin which fails.
-  const nodeBinName = npmTest.__get__('nodeBinName');
-  npmTest.__set__('nodeBinName', 'fake-node');
-  const context = makeContext.npmContext('omg-i-pass', sandbox, {
-    npmLevel: 'silly',
-    testPath: path.resolve(__dirname, '..', 'fixtures', 'fakenodebin')
-  });
-  npmTest(context, function (err) {
-    npmTest.__set__('nodeBinName', nodeBinName);
+  const context = makeContext.npmContext(
+    'omg-i-pass',
+    packageManagers,
+    sandbox,
+    {
+      npmLevel: 'silly',
+      testPath: path.resolve(__dirname, '..', 'fixtures', 'fakenodebin')
+    }
+  );
+  try {
+    await packageManagerTest('npm', context);
+  } catch (err) {
     t.equals(err && err.message, 'The canary is dead:');
-    t.end();
-  });
+  }
 });
 
-test('npm-test: timeout', function (t) {
-  const context = makeContext.npmContext('omg-i-pass', sandbox, {
-    npmLevel: 'silly',
-    timeoutLength: 100
-  });
-  npmTest(context, function (err) {
+test('npm-test: timeout', async (t) => {
+  t.plan(2);
+  const context = makeContext.npmContext(
+    'omg-i-pass',
+    packageManagers,
+    sandbox,
+    {
+      npmLevel: 'silly',
+      timeoutLength: 100
+    }
+  );
+  try {
+    await packageManagerTest('npm', context);
+  } catch (err) {
     t.ok(context.module.flaky, 'Module is Flaky because tests timed out');
     t.equals(err && err.message, 'Test Timed Out');
-    t.end();
-  });
+  }
 });
 
-test('npm-test: teardown', function (t) {
-  rimraf(sandbox, function (err) {
-    t.error(err);
-    t.end();
-  });
+test('npm-test: module with scripts passing', async () => {
+  const context = makeContext.npmContext(
+    {
+      name: 'omg-i-pass-with-scripts',
+      scripts: ['test-build', 'test']
+    },
+    packageManagers,
+    sandbox,
+    {
+      npmLevel: 'silly'
+    }
+  );
+  await packageManagerTest('npm', context);
+});
+
+test('npm-test: tmpdir is redirected', async (t) => {
+  t.plan(1);
+  const context = makeContext.npmContext(
+    'omg-i-write-to-tmpdir',
+    packageManagers,
+    sandbox,
+    {
+      npmLevel: 'silly'
+    }
+  );
+  context.npmConfigTmp = writeTmpdirTemp;
+  await packageManagerTest('npm', context);
+  t.ok(
+    existsSync(path.join(writeTmpdirTemp, 'omg-i-write-to-tmpdir-testfile')),
+    'Temporary file is written into the redirected temporary directory'
+  );
+});
+
+test('npm-test: teardown', async () => {
+  await rimraf(sandbox);
 });

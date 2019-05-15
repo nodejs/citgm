@@ -1,25 +1,22 @@
-  env:
-    node: true
-    es6: true
+env:
+  node: true
+  es6: true
+parserOptions:
+  ecmaVersion: 2017
 
-  rules:
-    indent-legacy: [2, 2]
-    quotes: [2, single]
-    no-trailing-spaces: 2
-    comma-spacing: [2, { before: false, after: true }]
-    eqeqeq: [2, always]
-    linebreak-style: [2, unix]
-    semi: [2, always]
-    max-len: [2, 80]
-    no-multi-spaces: 2
-    no-useless-escape: 2
-    array-bracket-spacing: [2, never]
-    brace-style: 2
-    capitalized-comments: [2, always, { ignoreConsecutiveComments: true }]
-    eol-last: [2, always]
-    func-call-spacing: [2, never]
-    semi-spacing: 2
-    strict: 2
-    no-var: 2
+rules:
+  eqeqeq: [error, always]
+  no-useless-escape: error
+  capitalized-comments: [error, always, { ignoreConsecutiveComments: true }]
+  strict: error
+  no-var: error
+  prefer-template: error
+  no-template-curly-in-string: error
+  prefer-arrow-callback: error
+  padding-line-between-statements:
+    - error
+    - { blankLine: always, prev: directive, next: '*' }
 
-  extends: eslint:recommended
+extends:
+  - eslint:recommended
+  - plugin:prettier/recommended

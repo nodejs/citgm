@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 'use strict';
+
+require('make-promises-safe');
+
 const os = require('os');
 
-const _ = require('lodash');
 const async = require('async');
 
 const checkTags = require('../lib/check-tags');
@@ -39,11 +41,13 @@ const yargs = commonArgs(require('yargs'))
     type: 'array',
     description: 'Define which tags from the lookup to skip'
   })
-  .example('citgm-all -t /path/to/output.tap',
-           'Write test results as tap to file.')
+  .example(
+    'citgm-all -t /path/to/output.tap',
+    'Write test results as tap to file.'
+  )
   .example('citgm-all -l /path/to/lookup.json', 'Test a custom set of modules.')
   .example('citgm-all --includeTags express', 'Only test express.')
-  .example('citgm-all --excludeTags native', 'Don\'t test native modules.');
+  .example('citgm-all --excludeTags native', "Don't test native modules.");
 
 const app = yargs.argv;
 
@@ -55,8 +59,7 @@ const log = logger({
 update(log);
 
 if (!app.su) {
-  require('root-check')(); // Silently downgrade if running as root...
-                           // Unless --su is passed
+  require('root-check')(); // Silently downgrade if running as root... Unless --su is passed
 } else {
   log.warn('root', 'Running as root! Use caution!');
 }
@@ -71,17 +74,22 @@ const options = {
   timeoutLength: app.timeout,
   tmpDir: app.tmpDir,
   customTest: app.customTest,
+  yarn: app.yarn,
   includeTags: app.includeTags || [],
   excludeTags: app.excludeTags || []
 };
 
-if (options.includeTags.length){
-  log.info('includeTags', 'Only running tests matching these tags: '
-      + app.includeTags);
+if (options.includeTags.length) {
+  log.info(
+    'includeTags',
+    `Only running tests matching these tags: ${app.includeTags}`
+  );
 }
-if (options.excludeTags.length){
-  log.info('excludeTags', 'Not running tests matching these tags: '
-     + app.excludeTags);
+if (options.excludeTags.length) {
+  log.info(
+    'excludeTags',
+    `Not running tests matching these tags: ${app.excludeTags}`
+  );
 }
 
 const lookup = getLookup(options);
@@ -93,9 +101,9 @@ if (!lookup) {
 const cpus = os.cpus().length;
 if (app.autoParallel || (app.parallel && app.parallel > cpus)) {
   app.parallel = cpus;
-  log.info('cores', 'running tests using ' + app.parallel + ' cores');
+  log.info('cores', `running tests using ${app.parallel} cores`);
 }
-if (app.parallel && ((app.parallel + 1) > process.getMaxListeners())) {
+if (app.parallel && app.parallel + 1 > process.getMaxListeners()) {
   process.setMaxListeners(app.parallel + 1);
 }
 
@@ -103,18 +111,18 @@ if (!citgm.windows) {
   const uidnumber = require('uid-number');
   const uid = app.uid || process.getuid();
   const gid = app.gid || process.getgid();
-  uidnumber(uid, gid, function(err, uid, gid) {
+  uidnumber(uid, gid, (err, uid, gid) => {
     options.uid = uid;
     options.gid = gid;
-    launch(options);
+    launch();
   });
 } else {
-  launch(options);
+  launch();
 }
 
 const modules = [];
 
-function runCitgm (mod, name, next) {
+function runCitgm(mod, name, next) {
   if (isMatch(mod.skip)) {
     modules.push({
       name,
@@ -125,7 +133,7 @@ function runCitgm (mod, name, next) {
   }
 
   const start = new Date();
-  const runner = citgm.Tester(name, options);
+  const runner = new citgm.Tester(name, options);
   let bailed = false;
 
   if (checkTags(options, mod, name, log)) {
@@ -144,50 +152,59 @@ function runCitgm (mod, name, next) {
   process.on('SIGHUP', cleanup);
   process.on('SIGBREAK', cleanup);
 
-  runner.on('start', function(name) {
-    log.info('starting', name);
-  }).on('fail', function(err) {
-    log.error('failure', err.message);
-  }).on('data', function(type, key, message) {
-    log[type](key, message);
-  }).on('end', function(result) {
-    result.duration = new Date() - start;
-    log.info('duration', 'test duration: ' + result.duration + 'ms');
-    if (result.error) {
-      log.error(result.name + ' done', 'done - the test suite for ' +
-          result.name + ' version ' + result.version + ' failed');
-    } else {
-      log.info(result.name + ' done', 'done - the test suite for ' + result.name
-          + ' version ' + result.version + ' passed.');
-    }
-    modules.push(result);
-    if (!bailed) {
-      process.removeListener('SIGINT', cleanup);
-      process.removeListener('SIGHUP', cleanup);
-      process.removeListener('SIGBREAK', cleanup);
-    }
-    return next(bailed);
-  }).run();
+  runner
+    .on('start', (name) => {
+      log.info('starting', name);
+    })
+    .on('fail', (err) => {
+      log.error('failure', err.message);
+    })
+    .on('data', (type, key, message) => {
+      log[type](key, message);
+    })
+    .on('end', (result) => {
+      result.duration = new Date() - start;
+      log.info('duration', `test duration: ${result.duration}ms`);
+      if (result.error) {
+        log.error(
+          `${result.name} done`,
+          `done - the test suite for ${result.name} version ${
+            result.version
+          } failed`
+        );
+      } else {
+        log.info(
+          `${result.name} done`,
+          `done - the test suite for ${result.name} version ${
+            result.version
+          } passed.`
+        );
+      }
+      modules.push(result);
+      if (!bailed) {
+        process.removeListener('SIGINT', cleanup);
+        process.removeListener('SIGHUP', cleanup);
+        process.removeListener('SIGBREAK', cleanup);
+      }
+      return next(bailed);
+    })
+    .run();
 }
 
 function runTask(task, next) {
   runCitgm(task.mod, task.name, next);
 }
 
-function filterLookup(result, value, key) {
-  result.push({
-    name: key,
-    mod: value
-  });
-  return result;
+function mapCallback(name) {
+  return { name: name, mod: lookup[name] };
 }
 
 function launch() {
-  const collection = _.reduce(lookup, filterLookup, []);
+  const collection = Object.keys(lookup).map(mapCallback);
 
   const q = async.queue(runTask, app.parallel || 1);
   q.push(collection);
-  function done () {
+  function done() {
     q.drain = null;
     reporter.logger(log, modules);
 
@@ -200,12 +217,12 @@ function launch() {
       // If not use `log.bypass` which is currently process.stdout.write
       // TODO check that we can write to that path, perhaps require a flag to
       // Overwrite
-      const tap = (typeof app.tap === 'string') ? app.tap : log.bypass;
+      const tap = typeof app.tap === 'string' ? app.tap : log.bypass;
       reporter.tap(tap, modules, app.append);
     }
 
     if (app.junit) {
-      const junit = (typeof app.junit === 'string') ? app.junit : log.bypass;
+      const junit = typeof app.junit === 'string' ? app.junit : log.bypass;
       reporter.junit(junit, modules, app.append);
     }
 
