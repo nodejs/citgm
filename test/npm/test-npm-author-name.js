@@ -1,11 +1,8 @@
-'use strict';
+import tap from 'tap';
 
-const { test } = require('tap');
-const rewire = require('rewire');
+import { authorName } from '../../lib/package-manager/test.js';
 
-const npmTest = rewire('../../lib/package-manager/test');
-
-const authorName = npmTest.__get__('authorName');
+const { test } = tap;
 
 test('npm.test() authorName:', (t) => {
   t.plan(2);

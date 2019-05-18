@@ -1,27 +1,23 @@
-'use strict';
+import tap from 'tap';
 
-const { test } = require('tap');
-const rewire = require('rewire');
-const citgm = rewire('../lib/citgm');
-const { create } = require('../lib/temp-directory');
+import { Tester } from '../lib/citgm.js';
+import { __test__setRemove } from '../lib/temp-directory.js';
+
 let expectedError;
-citgm.__set__('tempDirectory', {
-  create,
-  remove: (context) => {
-    // Simulate an error when removing the temporary directory.
-    const err = new Error(
-      `EBUSY: resource busy or locked, rmdir '${context.path}'`
-    );
-    err.errno = -4082;
-    err.code = 'EBUSY';
-    err.syscall = 'rmdir';
-    err.path = context.path;
-    expectedError = err;
-    throw err;
-  }
+__test__setRemove((context) => {
+  // Simulate an error when removing the temporary directory.
+  const err = new Error(
+    `EBUSY: resource busy or locked, rmdir '${context.path}'`
+  );
+  err.errno = -4082;
+  err.code = 'EBUSY';
+  err.syscall = 'rmdir';
+  err.path = context.path;
+  expectedError = err;
+  throw err;
 });
 
-test('citgm: omg-i-timeout from local path', (t) => {
+tap.test('citgm: omg-i-timeout from local path', (t) => {
   t.plan(4);
 
   const options = {
@@ -34,7 +30,7 @@ test('citgm: omg-i-timeout from local path', (t) => {
 
   const mod = './test/fixtures/omg-i-timeout';
 
-  const tester = new citgm.Tester(mod, options);
+  const tester = new Tester(mod, options);
   tester
     .on('start', (name) => {
       t.equal(name, mod, 'it should be the local path');

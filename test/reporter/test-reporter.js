@@ -1,9 +1,10 @@
 // TODO this test does not test any functionality currently
-'use strict';
 
-const { test } = require('tap');
+import tap from 'tap';
 
-const reporter = require('../../lib/reporter');
+import * as reporter from '../../lib/reporter/index.js';
+
+const { test } = tap;
 
 test('reporter.markdown():', (t) => {
   t.plan(2);

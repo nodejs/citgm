@@ -1,16 +1,24 @@
-'use strict';
+import { readFileSync } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-const fs = require('fs');
-const path = require('path');
+import tap from 'tap';
 
-const { test } = require('tap');
+import * as util from '../../lib/reporter/util.js';
 
-const util = require('../../lib/reporter/util');
-const fixtures = require('../fixtures/reporter-fixtures');
+const fixtures = JSON.parse(
+  readFileSync(new URL('../fixtures/reporter-fixtures.json', import.meta.url))
+);
 
-const fixturesPath = path.join(__dirname, '..', 'fixtures');
-const carriageReturnPath = path.join(fixturesPath, 'CR-raw.txt');
-const carriageReturnExpectedPath = path.join(fixturesPath, 'CR-sanitized.txt');
+const { test } = tap;
+
+const fixturesPath = join(
+  dirname(fileURLToPath(import.meta.url)),
+  '..',
+  'fixtures'
+);
+const carriageReturnPath = join(fixturesPath, 'CR-raw.txt');
+const carriageReturnExpectedPath = join(fixturesPath, 'CR-sanitized.txt');
 
 const noPassing = [
   fixtures.iFail,
@@ -164,8 +172,8 @@ test('hasFailures:', (t) => {
 
 test('util.sanitizeOutput', (t) => {
   t.plan(1);
-  const raw = fs.readFileSync(carriageReturnPath, 'utf-8');
-  const expected = fs.readFileSync(carriageReturnExpectedPath, 'utf-8');
+  const raw = readFileSync(carriageReturnPath, 'utf-8');
+  const expected = readFileSync(carriageReturnExpectedPath, 'utf-8');
   let result = util.sanitizeOutput(raw, '#');
   result += '\n';
   t.equal(

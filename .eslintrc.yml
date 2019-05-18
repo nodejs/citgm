@@ -2,7 +2,8 @@ env:
   node: true
   es6: true
 parserOptions:
-  ecmaVersion: 2017
+  sourceType: module
+  ecmaVersion: 2020
 
 rules:
   eqeqeq: [error, always]

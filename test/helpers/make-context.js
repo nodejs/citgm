@@ -1,8 +1,6 @@
-'use strict';
+import BufferList from 'bl';
 
-const BufferList = require('bl');
-
-function npmContext(mod, packageManagers, path, options) {
+export function npmContext(mod, packageManagers, path, options) {
   if (typeof mod === 'string') {
     mod = {
       name: mod
@@ -22,7 +20,3 @@ function npmContext(mod, packageManagers, path, options) {
   };
   return context;
 }
-
-module.exports = {
-  npmContext: npmContext
-};

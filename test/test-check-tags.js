@@ -1,9 +1,10 @@
-'use strict';
+import tap from 'tap';
 
-const { test } = require('tap');
+import { logger } from '../lib/out.js';
+import { checkTags } from '../lib/check-tags.js';
 
-const checkTags = require('../lib/check-tags');
-const log = require('../lib/out')({ silent: true });
+const { test } = tap;
+const log = logger({ silent: true });
 
 test('test includeTags and matching tag multiple', (t) => {
   t.plan(1);
