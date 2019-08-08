@@ -127,6 +127,7 @@
   "ember-cli": {
     "prefix": "v",
     "flaky": ["win32", "rhel", "sles"],
+    "master": true,
     "expectFail": "fips",
     "maintainers": ["stefanpenner", "rwjblue", "Turbo87", "kellyselden"]
   },
