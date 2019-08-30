@@ -402,6 +402,7 @@
   "serialport": {
     "prefix": "serialport@",
     "flaky": "ppc",
+    "master": true,
     "tags": "native",
     "maintainers": "reconbot",
     "skip": ["win32"]
