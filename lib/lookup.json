@@ -162,8 +162,7 @@
   },
   "fastify": {
     "maintainers": ["mcollina", "delvedor"],
-    "prefix": "v",
-    "master": true
+    "prefix": "v"
   },
   "ffi": {
     "flaky": ["ppc", "aix", "s390", "ubuntu"],
