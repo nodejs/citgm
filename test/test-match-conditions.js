@@ -83,6 +83,17 @@ function testPlatforms(t, testFunction) {
   revertShim();
 }
 
+function testDistros(t, testFunction) {
+  shim();
+  t.ok(testFunction('macos-10.12.2'), 'macos-10.12.2 is matched');
+  t.ok(testFunction('macos'), 'macos is matched');
+  t.ok(testFunction('10.12.2'), '10.12.2 is matched');
+  t.notok(testFunction('macos-1.1.1'), 'macos-1.1.1 is not matched');
+  t.notok(testFunction('debian'), 'debian is not matched');
+  t.notok(testFunction('1.1.1'), '1.1.1 is not matched');
+  revertShim();
+}
+
 function testArrays(t, testFunction) {
   shim();
   t.ok(
@@ -127,6 +138,7 @@ test('isStringMatch', (t) => {
   const isStringMatch = isMatch.__get__('isStringMatch');
   testVersions(t, isStringMatch);
   testPlatforms(t, isStringMatch);
+  testDistros(t, isStringMatch);
   t.end();
 });
 
@@ -145,6 +157,7 @@ test('isArrayMatch', (t) => {
 test('isMatch', (t) => {
   testVersions(t, isMatch);
   testPlatforms(t, isMatch);
+  testDistros(t, isMatch);
   testArrays(t, isMatch);
   testObjects(t, isMatch);
   t.ok(isMatch(true), 'true is matched');
