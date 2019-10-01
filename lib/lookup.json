@@ -131,6 +131,11 @@
     "expectFail": "fips",
     "maintainers": ["stefanpenner", "rwjblue", "Turbo87", "kellyselden"]
   },
+   "end-of-stream": {
+    "prefix": "v",
+    "maintainers": "mafintosh",
+    "skip": "win32"
+  },
   "eslint": {
     "prefix": "v",
     "flaky": ["s390", "ubuntu"],
@@ -333,6 +338,11 @@
     "skip": ["win32"],
     "repo": "https://github.com/pugjs/pug"
   },
+  "pump": {
+    "prefix": "v",
+    "maintainers": "mafintosh",
+    "skip": "win32"
+  },  
   "pumpify": {
     "prefix": "v",
     "maintainers": "mafintosh",
