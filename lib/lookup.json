@@ -245,7 +245,7 @@
     "prefix": "v",
     "flaky": ["aix", "s390"],
     "maintainers": ["ralphtheninja", "vweevers"],
-    "skip": "win32"
+    "skip": ["win32", "debian-8"]
   },
   "leveldown": {
     "prefix": "v",
