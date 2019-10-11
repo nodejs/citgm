@@ -89,7 +89,7 @@ test('grab-project: local', async (t) => {
 });
 
 test('grab-project: module does not exist', async (t) => {
-  t.plan(1);
+  t.plan(2);
   const context = {
     emit: function() {},
     path: sandbox,
@@ -101,7 +101,8 @@ test('grab-project: module does not exist', async (t) => {
   try {
     await grabProject(context);
   } catch (err) {
-    t.equals(err && err.message, 'Failure getting project from npm');
+    t.ok(err);
+    t.match(err.message, /^Failure getting project from npm/);
   }
 });
 
