@@ -17,6 +17,7 @@ test('create-options:', (t) => {
       npmLevel: 'warning'
     },
     emit: function() {},
+    homeDir: 'homedir',
     npmConfigTmp: 'npm_config_tmp',
     module: { envVar: { testenvVar: 'thisisatest' } }
   };
@@ -26,6 +27,8 @@ test('create-options:', (t) => {
   // Create a copy of process.env to set the properties added by createOptions
   // for the deepequal test.
   const env = Object.create(process.env);
+  env['HOME'] = 'homedir';
+  env['USERPROFILE'] = 'homedir';
   env['npm_config_loglevel'] = 'warning';
   env['npm_config_tmp'] = 'npm_config_tmp';
   env['testenvVar'] = 'thisisatest';
