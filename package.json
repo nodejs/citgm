@@ -50,7 +50,7 @@
     "root-check": "^1.0.0",
     "semver": "^6.0.0",
     "strip-ansi": "^5.2.0",
-    "supports-color": "^6.1.0",
+    "supports-color": "^7.1.0",
     "tar": "^4.4.13",
     "uid-number": "0.0.6",
     "update-notifier": "^3.0.0",
