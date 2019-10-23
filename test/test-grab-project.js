@@ -142,7 +142,7 @@ test('grab-project: fail with bad ref', async (t) => {
   } catch (err) {
     t.match(
       err.message,
-      /^Command failed: git fetch --depth=1 origin bad-git-ref/
+      /^Command failed\b.+\bgit fetch --depth=1 origin bad-git-ref/
     );
   }
 });
