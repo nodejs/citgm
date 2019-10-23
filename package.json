@@ -32,7 +32,7 @@
   "license": "MIT",
   "dependencies": {
     "async": "^3.1.0",
-    "bl": "^3.0.0",
+    "bl": "^4.0.0",
     "chalk": "^2.4.2",
     "columnify": "^1.5.4",
     "execa": "^1.0.0",
