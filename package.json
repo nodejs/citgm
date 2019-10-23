@@ -31,7 +31,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "async": "^2.6.2",
+    "async": "^3.1.0",
     "bl": "^3.0.0",
     "chalk": "^2.4.2",
     "columnify": "^1.5.4",

@@ -205,7 +205,7 @@ function launch() {
   const q = async.queue(runTask, app.parallel || 1);
   q.push(collection);
   function done() {
-    q.drain = null;
+    q.kill();
     reporter.logger(log, modules);
 
     if (app.markdown) {
@@ -239,7 +239,7 @@ function launch() {
     done();
   }
 
-  q.drain = done;
+  q.drain(done);
 
   process.on('SIGINT', abort);
   process.on('SIGHUP', abort);
