@@ -168,16 +168,12 @@ function runCitgm(mod, name, next) {
       if (result.error) {
         log.error(
           `${result.name} done`,
-          `done - the test suite for ${result.name} version ${
-            result.version
-          } failed`
+          `done - the test suite for ${result.name} version ${result.version} failed`
         );
       } else {
         log.info(
           `${result.name} done`,
-          `done - the test suite for ${result.name} version ${
-            result.version
-          } passed.`
+          `done - the test suite for ${result.name} version ${result.version} passed.`
         );
       }
       modules.push(result);
