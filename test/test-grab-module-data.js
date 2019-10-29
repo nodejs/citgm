@@ -83,3 +83,52 @@ test('grab-module-data: hosted', async (t) => {
       ' include a type of git and the supplied url'
   );
 });
+
+test('grab-module-data: inexistant version', async (t) => {
+  t.plan(1);
+  const context = {
+    path: __dirname,
+    module: {
+      raw: 'lodash@0.0.0',
+      type: null,
+      hosted: {
+        type: null
+      }
+    },
+    emit: function() {},
+    options: {}
+  };
+
+  await t.rejects(grabModuleData(context), {
+    message: 'No module version found satisfying lodash@0.0.0'
+  });
+});
+
+test('grab-module-data: semver range', async (t) => {
+  t.plan(3);
+  const context = {
+    path: __dirname,
+    module: {
+      raw: 'omg-i-pass@^2.0.0',
+      type: null,
+      hosted: {
+        type: null
+      }
+    },
+    emit: function() {},
+    options: {}
+  };
+
+  await grabModuleData(context);
+  t.ok(context.meta, 'There should be a context.meta');
+  t.equals(
+    context.meta.name,
+    'omg-i-pass',
+    'The name of the results should be omg-i-pass'
+  );
+  t.equals(
+    context.meta.version,
+    '2.0.1',
+    'The version should be the latest satisfying the semver range'
+  );
+});
