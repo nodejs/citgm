@@ -153,7 +153,8 @@ test('grab-project: timeout', async (t) => {
     emit: function() {},
     path: sandbox,
     module: {
-      name: 'omg-i-pass'
+      name: 'omg-i-pass',
+      raw: 'omg-i-pass'
     },
     meta: {},
     options: {
