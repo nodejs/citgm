@@ -62,7 +62,7 @@ const options = {
 const runner = new citgm.Tester(mod, options);
 let pack, dependencies;
 
-//Fisrt npm install in a temp directory and grab all the dependencies and their version in semver format
+// Fisrt npm install in a temp directory and grab all the dependencies and their version in semver format
 
 let setup = async () => {
   await tempDirectory.create(runner);
@@ -75,7 +75,7 @@ let setup = async () => {
   await cleanup();
 
   if (dependencies === undefined) {
-    console.log("Module has no dependencies")
+    console.log('Module has no dependencies');
   } else {
     if (!citgm.windows) {
       const uidnumber = require('uid-number');
@@ -93,13 +93,13 @@ let setup = async () => {
 };
 
 let doInstall = async () => {
-  //Use a child process to npm install in the tmp directory
+  // Use a child process to npm install in the tmp directory
   return new Promise((resolve, reject) => {
     const child = spawn('npm', ['i', '--prefix', runner.path, pack], options);
     child.on('close', (code) => {
       console.log('exited with code: ', code);
       if (code > 0) {
-        console.log("Fail on install")
+        console.log('Fail on install');
         reject();
       } else {
         resolve();
