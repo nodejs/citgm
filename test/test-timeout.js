@@ -41,7 +41,7 @@ test('timeout:', (t) => {
   };
   const finish = timeout(context, proc, next, 'Tap');
   setTimeout(() => {
-    t.ok(context.module.flaky, 'Module is Flaky because timed out');
+    t.notOk(context.module.flaky, 'Time out should not mark module flaky');
     t.equals(proc.killed, 1);
     t.equals(ret, null);
     t.ok(err instanceof Error, 'err should be an Error');
@@ -88,7 +88,7 @@ test('timeout:', (t) => {
   t.equals(ret, sentinel3);
   setTimeout(() => {
     const r = finish(1, 2);
-    t.ok(!context.module.flaky, 'Module is not Flaky finish called');
+    t.notOk(context.module.flaky, 'Module is not Flaky finish called');
     t.equals(r, undefined);
     t.equals(proc.killed, 0);
     t.equals(err, sentinel2);
