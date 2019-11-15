@@ -71,7 +71,7 @@ test('yarn-install: timeout', async (t) => {
   try {
     await packageManagerInstall('yarn', context);
   } catch (err) {
-    t.ok(context.module.flaky, 'Module is Flaky because install timed out');
+    t.notOk(context.module.flaky, 'Time out should not mark module flaky');
     t.equals(err && err.message, 'Install Timed Out');
   }
 });

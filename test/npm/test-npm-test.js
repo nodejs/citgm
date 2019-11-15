@@ -132,7 +132,7 @@ test('npm-test: timeout', async (t) => {
   try {
     await packageManagerTest('npm', context);
   } catch (err) {
-    t.ok(context.module.flaky, 'Module is Flaky because tests timed out');
+    t.notOk(context.module.flaky, 'Time out should not mark module flaky');
     t.equals(err && err.message, 'Test Timed Out');
   }
 });
