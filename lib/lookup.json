@@ -84,6 +84,7 @@
   },
   "clinic": {
     "maintainers": "mcollina",
+    "flaky": ["rhel"],
     "prefix": "v"
   },
   "coffeescript": {
@@ -401,7 +402,7 @@
   },
   "serialport": {
     "prefix": "serialport@",
-    "flaky": "ppc",
+    "flaky": ["ppc", "rhel"],
     "tags": "native",
     "maintainers": "reconbot",
     "skip": ["win32"]
