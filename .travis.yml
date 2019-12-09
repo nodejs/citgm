@@ -4,9 +4,6 @@ os:
   - osx
   - windows
 node_js:
-  - '13'
   - '12'
-  - '10'
-  - '8'
 script: 'export PATH=/c/program\ files/git/mingw64/libexec/git-core:$PATH && echo $PATH && npm run test-ci'
 after_script: 'bash <(curl -s https://codecov.io/bash)'
