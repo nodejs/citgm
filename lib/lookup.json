@@ -21,7 +21,7 @@
   },
   "acorn": {
     "maintainers": "marijnh",
-    "skip": ["win32"]
+    "skip": ["win32", "ppc"]
   },
   "async": {
     "prefix": "v",
