@@ -376,6 +376,10 @@
     "skip": "aix",
     "maintainers": "mikeal"
   },
+  "resolve": {
+    "prefix": "v",
+    "maintainers": "ljharb"
+  },
   "rewire": {
     "prefix": "v",
     "maintainers": "jhnns"
