@@ -92,6 +92,7 @@
   },
   "commander": {
     "prefix": "v",
+    "flaky": true,
     "skip": "win32",
     "maintainers": "tj"
   },
