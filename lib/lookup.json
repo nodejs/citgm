@@ -309,7 +309,7 @@
     "prefix": "v",
     "tags": "native",
     "maintainers": ["nodejs/node-gyp"],
-    "skip": "win32"
+    "skip": [true, "win32"]
   },
   "node-report": {
     "prefix": "v",
