@@ -539,6 +539,6 @@
     "prefix": "v",
     "tags": "native",
     "maintainers": ["lgeiger", "rgbkrk"],
-    "skip": ["s390", "ppc", "win32"]
+    "skip": [true, "s390", "ppc", "win32"]
   }
 }
