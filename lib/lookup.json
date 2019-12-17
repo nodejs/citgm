@@ -88,7 +88,8 @@
     "prefix": "v"
   },
   "coffeescript": {
-    "maintainers": ["jashkenas", "GeoffreyBooth"]
+    "maintainers": ["jashkenas", "GeoffreyBooth"],
+    "skip": "rhel"
   },
   "commander": {
     "prefix": "v",
