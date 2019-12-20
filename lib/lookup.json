@@ -308,10 +308,11 @@
     "tags": "native"
   },
   "node-gyp": {
+    "envVar": {"FAST_TEST": "true"},
     "prefix": "v",
     "tags": "native",
     "maintainers": ["nodejs/node-gyp"],
-    "skip": [true, "win32"]
+    "skip": ["win32"]
   },
   "node-report": {
     "prefix": "v",
