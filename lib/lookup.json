@@ -294,7 +294,7 @@
   },
   "moment": {
     "maintainers": "ichernev",
-    "skip": ["ppc", "s390"]
+    "skip": [true, "ppc", "s390"]
   },
   "multer": {
     "prefix": "v",
