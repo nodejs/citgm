@@ -371,12 +371,6 @@
     "maintainers": "TooTallNate",
     "skip": [true, "12", "win32"]
   },
-  "request": {
-    "prefix": "v",
-    "flaky": true,
-    "skip": "aix",
-    "maintainers": "mikeal"
-  },
   "resolve": {
     "prefix": "v",
     "maintainers": "ljharb"
