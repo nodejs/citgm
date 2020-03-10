@@ -25,8 +25,8 @@
   },
   "async": {
     "prefix": "v",
-    "flaky": true,
-    "maintainers": ["aearly", "megawac"]
+    "maintainers": ["aearly", "megawac"],
+    "skip": true
   },
   "ava": {
     "prefix": "v",
@@ -93,9 +93,8 @@
   },
   "commander": {
     "prefix": "v",
-    "flaky": true,
-    "skip": "win32",
-    "maintainers": "tj"
+    "maintainers": "tj",
+    "skip": true
   },
   "crc32-stream": {
     "maintainers": "ctalkington",
@@ -321,10 +320,10 @@
   },
   "node-sass": {
     "prefix": "v",
-    "flaky": true,
     "tags": "native",
     "maintainers": "xzyfer",
-    "comment": "Flaky because of test timeouts"
+    "comment": "Flaky because of test timeouts",
+    "skip": true
   },
   "path-to-regexp": {
     "prefix": "v",
@@ -373,9 +372,8 @@
   },
   "request": {
     "prefix": "v",
-    "flaky": true,
-    "skip": "aix",
-    "maintainers": "mikeal"
+    "maintainers": "mikeal",
+    "skip": true
   },
   "resolve": {
     "prefix": "v",
@@ -507,9 +505,9 @@
   },
   "vinyl-fs": {
     "prefix": "v",
-    "flaky": true,
     "master": true,
-    "maintainers": ["contra", "phated"]
+    "maintainers": ["contra", "phated"],
+    "skip": true
   },
   "watchify": {
     "prefix": "v",
