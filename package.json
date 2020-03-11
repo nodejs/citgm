@@ -53,7 +53,7 @@
     "tar": "^6.0.0",
     "uid-number": "0.0.6",
     "update-notifier": "^3.0.1",
-    "uuid": "^3.3.3",
+    "uuid": "^7.0.2",
     "which": "^2.0.1",
     "winston": "^3.2.1",
     "xml-sanitizer": "^1.1.6",
