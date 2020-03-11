@@ -2,11 +2,11 @@
 
 const os = require('os');
 const path = require('path');
+const { mkdir } = require('fs').promises;
 const { promisify } = require('util');
 
 const { copy } = require('fs-extra');
 const { test } = require('tap');
-const mkdirp = promisify(require('mkdirp'));
 const rimraf = promisify(require('rimraf'));
 
 const packageManager = require('../../lib/package-manager');
@@ -26,7 +26,7 @@ let packageManagers;
 
 test('npm-install: setup', async () => {
   packageManagers = await packageManager.getPackageManagers();
-  await mkdirp(sandbox);
+  await mkdir(sandbox, { recursive: true });
   await Promise.all([
     copy(moduleFixtures, moduleTemp),
     copy(extraParamFixtures, extraParamTemp),

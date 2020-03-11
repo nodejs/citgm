@@ -74,10 +74,7 @@ test('tempDirectory.create: bad path', skipIfWin32, async (t) => {
   try {
     await tempDirectory.create(badContext);
   } catch (e) {
-    t.ok(
-      e.message.includes(nullDevice),
-      `the message should include the path ${nullDevice}`
-    );
+    t.ok(e.message.includes('EEXIST'), `the message should include EEXIST`);
     t.ok(badContext.path, 'badContext should have a path');
     tempDirectory.__set__('path', path);
   }

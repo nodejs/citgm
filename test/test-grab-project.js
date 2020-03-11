@@ -5,11 +5,11 @@
 
 const os = require('os');
 const path = require('path');
+const { mkdir } = require('fs').promises;
 const { promisify } = require('util');
 
 const { stat } = require('fs-extra');
 const { test } = require('tap');
-const mkdirp = promisify(require('mkdirp'));
 const rimraf = promisify(require('rimraf'));
 
 const grabProject = require('../lib/grab-project');
@@ -18,7 +18,7 @@ const sandbox = path.join(os.tmpdir(), `citgm-${Date.now()}`);
 const fixtures = path.join(__dirname, 'fixtures');
 
 test('grab-project: setup', async () => {
-  await mkdirp(sandbox);
+  await mkdir(sandbox, { recursive: true });
 });
 
 test('grab-project: npm module', async (t) => {

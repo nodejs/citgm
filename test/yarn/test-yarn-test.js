@@ -2,11 +2,11 @@
 
 const os = require('os');
 const path = require('path');
+const { mkdir } = require('fs').promises;
 const { promisify } = require('util');
 
 const { copy, existsSync } = require('fs-extra');
 const { test } = require('tap');
-const mkdirp = promisify(require('mkdirp'));
 const rimraf = promisify(require('rimraf'));
 
 const makeContext = require('../helpers/make-context');
@@ -35,7 +35,7 @@ let packageManagers;
 
 test('yarn-test: setup', async () => {
   packageManagers = await packageManager.getPackageManagers();
-  await mkdirp(sandbox);
+  await mkdir(sandbox, { recursive: true });
   await Promise.all([
     copy(passFixtures, passTemp),
     copy(failFixtures, failTemp),
