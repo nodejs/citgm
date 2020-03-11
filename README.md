@@ -73,11 +73,6 @@ By default, the tool will prevent users from running as root unless the `-s` or
 silently and automatically downgrade permissions. If it cannot downgrade, it
 will print an error and exit the process.
 
-The tool will also automatically check npm to see if there are updates
-available. If a newer version has been published to npm, an info notice will
-appear in the verbose output. If the `-v` or `--verbose` flag is not set, the
-update notice will not be displayed.
-
 ## citgm-all
 
 If you want to run all the test suites for all modules found in a lookup table
