@@ -7,7 +7,6 @@ const citgm = require('../lib/citgm');
 const commonArgs = require('../lib/common-args');
 const logger = require('../lib/out');
 const reporter = require('../lib/reporter');
-const update = require('../lib/update');
 
 let mod;
 
@@ -27,8 +26,6 @@ const log = logger({
   level: app.verbose,
   noColor: app.noColor
 });
-
-update(log);
 
 if (!app.su) {
   require('root-check')(); // Silently downgrade if running as root...
