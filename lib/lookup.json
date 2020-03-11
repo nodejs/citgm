@@ -30,7 +30,7 @@
   },
   "ava": {
     "prefix": "v",
-    "skip": [true, "ppc", "win32", "x86", "rhel", "aix", "ia32", "10"],
+    "skip": ["ppc", "x86", "rhel", "aix", "ia32"],
     "maintainers": ["sindresorhus", "novemberborn"]
   },
   "bcrypt": {
@@ -85,7 +85,8 @@
   "clinic": {
     "maintainers": "mcollina",
     "flaky": ["rhel"],
-    "prefix": "v"
+    "prefix": "v",
+    "skip": ["aix", "win32"]
   },
   "coffeescript": {
     "maintainers": ["jashkenas", "GeoffreyBooth"],
@@ -369,11 +370,6 @@
     "tags": "native",
     "maintainers": "TooTallNate",
     "skip": [true, "12", "win32"]
-  },
-  "request": {
-    "prefix": "v",
-    "maintainers": "mikeal",
-    "skip": true
   },
   "resolve": {
     "prefix": "v",
