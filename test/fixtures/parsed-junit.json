@@ -9,14 +9,14 @@
           "name": "iPass-v4.2.2",
           "time": "0.05"
         },
-        "system-out": ["\n      \n    "]
+        "system-out": [""]
       },
       {
         "$": {
           "name": "iFlakyFail-v3.3.3",
           "time": "0.05"
         },
-        "system-out": ["\n       Thanks for testing!\n    "],
+        "system-out": [" Thanks for testing!"],
         "skipped": [""],
         "failure": [
           {
@@ -32,7 +32,7 @@
           "name": "iFail-v3.0.1",
           "time": "0.05"
         },
-        "system-out": ["\n       Thanks for testing!\n    "],
+        "system-out": [" Thanks for testing!"],
         "failure": [
           {
             "_": "[object Object] ",
@@ -47,7 +47,7 @@
           "name": "iSkipped",
           "time": "NaN"
         },
-        "system-out": ["\n      \n    "],
+        "system-out": [""],
         "skipped": [""]
       }
     ]
