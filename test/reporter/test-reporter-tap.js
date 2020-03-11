@@ -2,12 +2,12 @@
 'use strict';
 
 const fs = require('fs');
+const { mkdir } = fs.promises;
 const path = require('path');
 const os = require('os');
 const { promisify } = require('util');
 
 const { test } = require('tap');
-const mkdirp = promisify(require('mkdirp'));
 const rimraf = promisify(require('rimraf'));
 const Parser = require('tap-parser');
 const str = require('string-to-stream');
@@ -44,7 +44,7 @@ const failingExpectedPath = path.join(fixturesPath, 'test-out-tap-failing.txt');
 const failingExpected = fs.readFileSync(failingExpectedPath, 'utf-8');
 
 test('reporter.tap(): setup', async () => {
-  await mkdirp(sandbox);
+  await mkdir(sandbox, { recursive: true });
 });
 
 test('reporter.tap(): passing', (t) => {

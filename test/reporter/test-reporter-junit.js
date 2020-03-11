@@ -1,12 +1,12 @@
 'use strict';
 
 const fs = require('fs');
+const { mkdir } = fs.promises;
 const path = require('path');
 const os = require('os');
 const { promisify } = require('util');
 
 const { test } = require('tap');
-const mkdirp = promisify(require('mkdirp'));
 const rimraf = promisify(require('rimraf'));
 const _ = require('lodash');
 const parseString = promisify(require('xml2js').parseString);
@@ -52,7 +52,7 @@ const badOutput = fs.readFileSync(badOutputPath, 'utf-8');
 const badOutputToo = fs.readFileSync(badOutputTooPath, 'utf-8');
 
 test('reporter.junit(): setup', async () => {
-  await mkdirp(sandbox);
+  await mkdir(sandbox, { recursive: true });
 });
 
 test('reporter.junit(): passing', (t) => {
