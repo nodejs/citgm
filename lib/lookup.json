@@ -201,7 +201,7 @@
   "got": {
     "maintainers": ["sindresorhus"],
     "prefix": "v",
-    "skip": [">=11"]
+    "skip": true
   },
   "graceful-fs": {
     "prefix": "v",
