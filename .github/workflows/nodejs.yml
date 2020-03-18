@@ -11,7 +11,7 @@ jobs:
     name: Lint using ESLint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Use Node.js 13
         uses: actions/setup-node@v1
         with:
@@ -30,15 +30,17 @@ jobs:
         os: [ubuntu-latest, windows-latest, macOS-latest]
     runs-on: ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: npm install and test
-      shell: pwsh
-      run: |
-        npm install
-        npm run tap
-      env:
-        CI: true
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install and test
+        shell: pwsh
+        run: |
+          npm install
+          npm run tap
+        env:
+          CI: true
+      - name: Upload coverage report to Codecov
+        uses: codecov/codecov-action@v1
