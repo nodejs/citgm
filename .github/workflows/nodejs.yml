@@ -39,7 +39,7 @@ jobs:
         shell: pwsh
         run: |
           npm install
-          npm run tap
+          npm run tap -- --coverage-report=lcov
         env:
           CI: true
       - name: Upload coverage report to Codecov
