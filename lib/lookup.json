@@ -361,7 +361,7 @@
   },
   "readable-stream": {
     "prefix": "v",
-    "flaky": ["ppc", "darwin"],
+    "flaky": ["ppc"],
     "maintainers": "nodejs/streams",
     "skip": [">=12", "win32"]
   },
