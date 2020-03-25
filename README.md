@@ -3,6 +3,7 @@
 citgm is a simple tool for pulling down an arbitrary module from npm and testing
 it using a specific version of the node runtime.
 
+[![Build Status](https://github.com/nodejs/citgm/workflows/Node.js%20CI/badge.svg?branch=master)](https://github.com/nodejs/citgm/actions?query=workflow%3A%22Node.js+CI%22)
 [![dependencies Status](https://david-dm.org/nodejs/citgm/status.svg)](https://david-dm.org/nodejs/citgm)
 [![devDependencies Status](https://david-dm.org/nodejs/citgm/dev-status.svg)](https://david-dm.org/nodejs/citgm?type=dev)
 
