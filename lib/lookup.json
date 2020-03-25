@@ -70,7 +70,7 @@
     "prefix": "V",
     "maintainers": "christkv",
     "scripts": ["test-node"],
-    "skip": "win32"
+    "skip": true
   },
   "bufferutil": {
     "prefix": "v",
