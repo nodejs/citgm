@@ -517,7 +517,7 @@
     "maintainers": "tootallnate"
   },
   "winston": {
-    "flaky": ["win32", "ppc", "s390"],
+    "flaky": ["win32", "ppc", "s390", "darwin"],
     "maintainers": "indexzero"
   },
   "ws": {
