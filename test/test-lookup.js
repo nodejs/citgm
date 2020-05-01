@@ -113,7 +113,7 @@ test('lookup: module not in table', (t) => {
     },
     meta: {},
     options: {},
-    emit: function() {}
+    emit: function () {}
   };
 
   lookup(context);
@@ -139,7 +139,7 @@ test('lookup: module not in table with gitHead', (t) => {
       gitHead: 'abc123'
     },
     options: {},
-    emit: function() {}
+    emit: function () {}
   };
 
   lookup(context);
@@ -165,7 +165,7 @@ test('lookup: module in table', (t) => {
       }
     },
     options: {},
-    emit: function() {}
+    emit: function () {}
   };
 
   lookup(context);
@@ -192,7 +192,7 @@ test('lookup: module in table with gitHead', (t) => {
       gitHead: 'abc123'
     },
     options: {},
-    emit: function() {}
+    emit: function () {}
   };
 
   lookup(context);
@@ -220,7 +220,7 @@ test('lookup: module in table with scripts', (t) => {
     options: {
       lookup: 'test/fixtures/custom-lookup-scripts.json'
     },
-    emit: function() {}
+    emit: function () {}
   };
 
   lookup(context);
@@ -250,7 +250,7 @@ test('lookup: module in table with useGitClone', (t) => {
     options: {
       lookup: 'test/fixtures/custom-lookup-useGitClone.json'
     },
-    emit: function() {}
+    emit: function () {}
   };
 
   lookup(context);
@@ -293,7 +293,7 @@ test('lookup: replace with no repo', (t) => {
     options: {
       lookup: 'test/fixtures/custom-lookup-no-repo.json'
     },
-    emit: function() {}
+    emit: function () {}
   };
 
   try {
@@ -320,7 +320,7 @@ test('lookup: not found in lookup.json with --sha', (t) => {
     options: {
       sha: 'customsha'
     },
-    emit: function() {}
+    emit: function () {}
   };
 
   lookup(context);
@@ -347,7 +347,7 @@ test('lookup: --fail-flaky', (t) => {
     options: {
       failFlaky: true
     },
-    emit: function() {}
+    emit: function () {}
   };
 
   lookup(context);
@@ -385,7 +385,7 @@ test('lookup: lookup with install', (t) => {
     options: {
       lookup: 'test/fixtures/custom-lookup-install.json'
     },
-    emit: function() {}
+    emit: function () {}
   };
   const expected = {
     install: [/--extra-param/]

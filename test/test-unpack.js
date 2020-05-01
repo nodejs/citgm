@@ -12,7 +12,7 @@ test('unpack: context.unpack = null', async (t) => {
   t.plan(1);
   const context = {
     unpack: null,
-    emit: function() {}
+    emit: function () {}
   };
 
   try {
@@ -30,7 +30,7 @@ test('unpack: context.unpack is invalid path', async (t) => {
   t.plan(1);
   const context = {
     unpack: path.join(__dirname, '..', 'fixtures', 'do-not-exist.tar.gz'),
-    emit: function() {}
+    emit: function () {}
   };
 
   try {
@@ -51,7 +51,7 @@ test('unpack: valid unpack', async (t) => {
       name: 'omg-i-pass'
     },
     unpack: './test/fixtures/omg-i-pass.tgz',
-    emit: function() {}
+    emit: function () {}
   };
 
   // FIXME I am not super convinced that the correct tar ball is being deflated
@@ -68,7 +68,7 @@ test('unpack: valid unpack', async (t) => {
 test('unpack: context.unpack = false', async () => {
   const context = {
     unpack: false,
-    emit: function() {}
+    emit: function () {}
   };
 
   await unpack(context);

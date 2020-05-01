@@ -308,7 +308,7 @@
     "tags": "native"
   },
   "node-gyp": {
-    "envVar": {"FAST_TEST": "true"},
+    "envVar": { "FAST_TEST": "true" },
     "prefix": "v",
     "tags": "native",
     "maintainers": ["nodejs/node-gyp"],
