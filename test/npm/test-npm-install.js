@@ -46,12 +46,12 @@ test('npm-install: basic module', async () => {
   await packageManagerInstall('npm', context);
 });
 
-test('npm-install: extra install parameters', async (t) => {
+test('npm-install: custom install command', async (t) => {
   t.plan(1);
   const context = makeContext.npmContext(
     {
       name: 'omg-i-pass-with-install-param',
-      install: ['--extra-param']
+      install: ['install', '--extra-param']
     },
     packageManagers,
     sandbox,

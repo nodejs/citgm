@@ -454,7 +454,7 @@
     "maintainers": "substack"
   },
   "thread-sleep": {
-    "install": ["--build-from-source"],
+    "install": ["install", "--build-from-source"],
     "tags": "native",
     "maintainers": ["forbeslindesay", "timothygu"]
   },
