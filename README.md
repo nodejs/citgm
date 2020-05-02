@@ -143,7 +143,7 @@ For syntax, see [lookup.json](./lib/lookup.json), the available attributes are:
 "useGitClone": true          Use a shallow git clone instead of downloading the module
 "ignoreGitHead":             Ignore the gitHead field if it exists and fallback to using github tags
 "yarn":                      Install and test the project using yarn instead of npm
-"timeoutLength":             Number of milliseconds before timeout
+"testTimeout":             Number of milliseconds before timeout
 ```
 
 If you want to pass options to npm, eg `--registry`, you can usually define an
