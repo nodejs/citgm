@@ -10,7 +10,7 @@ function RequestMock() {
 
 util.inherits(RequestMock, EventEmitter);
 
-RequestMock.prototype.pipe = function() {
+RequestMock.prototype.pipe = function () {
   this.emit('error', new Error('I am broken'));
 };
 

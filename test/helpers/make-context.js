@@ -10,7 +10,7 @@ function npmContext(mod, packageManagers, path, options) {
   }
   if (!options) options = {};
   const context = {
-    emit: function() {},
+    emit: function () {},
     path: path,
     module: mod,
     testOutput: new BufferList(),

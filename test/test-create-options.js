@@ -16,7 +16,7 @@ test('create-options:', (t) => {
       nodedir: nodePath,
       npmLevel: 'warning'
     },
-    emit: function() {},
+    emit: function () {},
     homeDir: 'homedir',
     npmConfigTmp: 'npm_config_tmp',
     module: { envVar: { testenvVar: 'thisisatest' } }

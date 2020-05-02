@@ -24,7 +24,7 @@ test('grab-project: setup', async () => {
 test('grab-project: npm module', async (t) => {
   t.plan(1);
   const context = {
-    emit: function() {},
+    emit: function () {},
     path: sandbox,
     module: {
       raw: 'omg-i-pass'
@@ -40,7 +40,7 @@ test('grab-project: npm module', async (t) => {
 test('grab-project: local', async (t) => {
   t.plan(1);
   const context = {
-    emit: function() {},
+    emit: function () {},
     path: sandbox,
     module: {
       raw: './test/fixtures/omg-i-pass',
@@ -57,7 +57,7 @@ test('grab-project: local', async (t) => {
 test('grab-project: lookup table', async (t) => {
   t.plan(1);
   const context = {
-    emit: function() {},
+    emit: function () {},
     path: sandbox,
     module: {
       raw: 'lodash'
@@ -73,7 +73,7 @@ test('grab-project: lookup table', async (t) => {
 test('grab-project: local', async (t) => {
   t.plan(1);
   const context = {
-    emit: function() {},
+    emit: function () {},
     path: sandbox,
     module: {
       raw: 'omg-i-pass',
@@ -91,7 +91,7 @@ test('grab-project: local', async (t) => {
 test('grab-project: module does not exist', async (t) => {
   t.plan(2);
   const context = {
-    emit: function() {},
+    emit: function () {},
     path: sandbox,
     module: {
       raw: 'I-DO-NOT-EXIST'
@@ -109,7 +109,7 @@ test('grab-project: module does not exist', async (t) => {
 test('grab-project: use git clone', async (t) => {
   t.plan(1);
   const context = {
-    emit: function() {},
+    emit: function () {},
     path: path.join(sandbox, 'git-clone'),
     module: {
       useGitClone: true,
@@ -127,7 +127,7 @@ test('grab-project: use git clone', async (t) => {
 test('grab-project: fail with bad ref', async (t) => {
   t.plan(1);
   const context = {
-    emit: function() {},
+    emit: function () {},
     path: path.join(sandbox, 'git-bad-ref'),
     module: {
       useGitClone: true,
@@ -150,7 +150,7 @@ test('grab-project: fail with bad ref', async (t) => {
 test('grab-project: timeout', async (t) => {
   t.plan(1);
   const context = {
-    emit: function() {},
+    emit: function () {},
     path: sandbox,
     module: {
       name: 'omg-i-pass',

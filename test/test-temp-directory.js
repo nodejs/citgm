@@ -15,7 +15,7 @@ const nullDevice = isWin32 ? '\\\\.\\NUL' : '/dev/null';
 
 const context = {
   path: null,
-  emit: function() {},
+  emit: function () {},
   module: {
     name: 'test-module'
   }
@@ -26,7 +26,7 @@ const contextTmpDir = {
     tmpDir: '.thisisatest'
   },
   path: null,
-  emit: function() {},
+  emit: function () {},
   module: {
     name: 'test-module'
   }
@@ -59,7 +59,7 @@ test('tempDirectory.create: bad path', skipIfWin32, async (t) => {
 
   const badContext = {
     path: null,
-    emit: function() {},
+    emit: function () {},
     module: {
       name: 'test-module-bad'
     }
@@ -67,7 +67,7 @@ test('tempDirectory.create: bad path', skipIfWin32, async (t) => {
 
   const path = tempDirectory.__get__('path');
   tempDirectory.__set__('path', {
-    join: function() {
+    join: function () {
       return nullDevice;
     }
   });
@@ -95,7 +95,7 @@ test('tempDirectory.remove: bad path', async (t) => {
 
   const badContext = {
     path: nullDevice,
-    emit: function() {},
+    emit: function () {},
     module: {
       name: 'test-module-bad'
     }

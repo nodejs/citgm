@@ -17,7 +17,7 @@ test('grab-module-data: lodash', async (t) => {
         type: null
       }
     },
-    emit: function() {},
+    emit: function () {},
     options: {}
   };
 
@@ -44,7 +44,7 @@ test('grab-module-data: does not exist', async (t) => {
         type: null
       }
     },
-    emit: function() {},
+    emit: function () {},
     options: {}
   };
 
@@ -64,7 +64,7 @@ test('grab-module-data: hosted', async (t) => {
         git: () => 'git://nope@nope:~/nope.git'
       }
     },
-    emit: function() {},
+    emit: function () {},
     options: {}
   };
 
@@ -95,7 +95,7 @@ test('grab-module-data: inexistant version', async (t) => {
         type: null
       }
     },
-    emit: function() {},
+    emit: function () {},
     options: {}
   };
 
@@ -115,7 +115,7 @@ test('grab-module-data: semver range', async (t) => {
         type: null
       }
     },
-    emit: function() {},
+    emit: function () {},
     options: {}
   };
 

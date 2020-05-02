@@ -45,7 +45,7 @@ test('spawn: windows mock', (t) => {
     value: 'win32'
   });
 
-  child.spawn = function(cmd, args, options) {
+  child.spawn = function (cmd, args, options) {
     return {
       cmd: cmd,
       args: args,
