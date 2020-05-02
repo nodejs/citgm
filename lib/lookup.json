@@ -240,6 +240,12 @@
     "maintainers": "jeresig",
     "ignoreGitHead": true
   },
+  "jsdom": {
+    "maintainers": ["domenic", "Zirro"],
+    "timeoutLength": 1200000,
+    "useGitClone": true,
+    "yarn": true
+  },
   "koa": {
     "flaky": "ubuntu",
     "maintainers": "tj"
