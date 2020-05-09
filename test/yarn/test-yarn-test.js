@@ -121,7 +121,7 @@ test('yarn-test: timeout', async (t) => {
     packageManagers,
     sandbox,
     {
-      timeoutLength: 100
+      testTimeout: 100
     }
   );
   try {

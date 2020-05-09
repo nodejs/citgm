@@ -159,7 +159,7 @@ test('grab-project: timeout', async (t) => {
     meta: {},
     options: {
       npmLevel: 'silly',
-      timeoutLength: 10
+      testTimeout: 10
     }
   };
   try {

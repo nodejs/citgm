@@ -89,7 +89,7 @@ test('npm-install: timeout', async (t) => {
     sandbox,
     {
       npmLevel: 'silly',
-      timeoutLength: 100
+      testTimeout: 100
     }
   );
   try {

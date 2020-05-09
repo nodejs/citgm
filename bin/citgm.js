@@ -45,7 +45,7 @@ const options = {
   testPath: app.testPath,
   level: app.verbose,
   npmLevel: app.npmLoglevel,
-  timeoutLength: app.timeout,
+  testTimeout: app.timeout,
   sha: app.sha,
   tmpDir: app.tmpDir,
   customTest: app.customTest,
