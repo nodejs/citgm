@@ -24,7 +24,7 @@ test('timeout:', (t) => {
     sandbox,
     {
       npmLevel: 'silly',
-      testTimeout: 100
+      timeout: 100
     }
   );
   const proc = {
@@ -61,7 +61,7 @@ test('timeout:', (t) => {
     sandbox,
     {
       npmLevel: 'silly',
-      testTimeout: 100
+      timeout: 100
     }
   );
   const proc = {

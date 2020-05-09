@@ -65,7 +65,7 @@ test('yarn-install: timeout', async (t) => {
     packageManagers,
     sandbox,
     {
-      testTimeout: 100
+      timeout: 100
     }
   );
   try {
