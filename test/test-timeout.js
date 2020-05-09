@@ -24,7 +24,7 @@ test('timeout:', (t) => {
     sandbox,
     {
       npmLevel: 'silly',
-      timeoutLength: 100
+      timeout: 100
     }
   );
   const proc = {
@@ -39,7 +39,7 @@ test('timeout:', (t) => {
     err = e;
     ret = r;
   };
-  const finish = timeout(context, proc, next, 'Tap');
+  const finish = timeout('npm', context, proc, next, 'Tap');
   setTimeout(() => {
     t.notOk(context.module.flaky, 'Time out should not mark module flaky');
     t.equals(proc.killed, 1);
@@ -61,7 +61,7 @@ test('timeout:', (t) => {
     sandbox,
     {
       npmLevel: 'silly',
-      timeoutLength: 100
+      timeout: 100
     }
   );
   const proc = {
@@ -80,7 +80,7 @@ test('timeout:', (t) => {
     ret = r;
     return sentinel1;
   };
-  const finish = timeout(context, proc, next, 'Tap');
+  const finish = timeout('npm', context, proc, next, 'Tap');
   const r = finish(sentinel2, sentinel3);
   t.equals(r, sentinel1);
   t.equals(proc.killed, 0);

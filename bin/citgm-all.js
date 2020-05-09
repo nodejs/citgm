@@ -68,7 +68,7 @@ const options = {
   failFlaky: app.failFlaky,
   level: app.verbose,
   npmLevel: app.npmLoglevel,
-  timeoutLength: app.timeout,
+  timeout: app.timeout,
   tmpDir: app.tmpDir,
   customTest: app.customTest,
   yarn: app.yarn,

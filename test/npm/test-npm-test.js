@@ -126,7 +126,7 @@ test('npm-test: timeout', async (t) => {
     sandbox,
     {
       npmLevel: 'silly',
-      timeoutLength: 100
+      timeout: 100
     }
   );
   try {
