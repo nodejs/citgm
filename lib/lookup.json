@@ -330,6 +330,10 @@
     "prefix": "v",
     "maintainers": "blakeembrey"
   },
+  "pino": {
+    "prefix": "v",
+    "maintainers": "mcollina"
+  },
   "pug": {
     "prefix": "pug@",
     "yarn": true,
