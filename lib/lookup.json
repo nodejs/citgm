@@ -466,6 +466,7 @@
     "maintainers": "rvagg",
     "prefix": "v",
     "scripts": ["test:node"],
+    "skip": ["aix", "win32"],
     "stripAnsi": true
   },
   "throughv": {
