@@ -463,9 +463,10 @@
     "maintainers": ["forbeslindesay", "timothygu"]
   },
   "through2": {
+    "maintainers": "rvagg",
     "prefix": "v",
-    "stripAnsi": true,
-    "maintainers": "rvagg"
+    "scripts": ["test:node"],
+    "stripAnsi": true
   },
   "throughv": {
     "prefix": "v",
