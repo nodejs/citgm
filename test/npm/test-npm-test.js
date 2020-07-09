@@ -25,6 +25,9 @@ const failTemp = path.join(sandbox, 'omg-i-fail');
 const badFixtures = path.join(fixtures, 'omg-i-do-not-support-testing');
 const badTemp = path.join(sandbox, 'omg-i-do-not-support-testing');
 
+const noTestScriptFixtures = path.join(fixtures, 'omg-i-have-no-test-script');
+const noTestScriptTemp = path.join(sandbox, 'omg-i-have-no-test-script');
+
 const scriptsFixtures = path.join(fixtures, 'omg-i-pass-with-scripts');
 const scriptsTemp = path.join(sandbox, 'omg-i-pass-with-scripts');
 
@@ -40,6 +43,7 @@ test('npm-test: setup', async () => {
     copy(passFixtures, passTemp),
     copy(failFixtures, failTemp),
     copy(badFixtures, badTemp),
+    copy(noTestScriptFixtures, noTestScriptTemp),
     copy(scriptsFixtures, scriptsTemp),
     copy(writeTmpdirFixtures, writeTmpdirTemp)
   ]);
@@ -142,6 +146,40 @@ test('npm-test: module with scripts passing', async () => {
     {
       name: 'omg-i-pass-with-scripts',
       scripts: ['test-build', 'test']
+    },
+    packageManagers,
+    sandbox,
+    {
+      npmLevel: 'silly'
+    }
+  );
+  await packageManagerTest('npm', context);
+});
+
+test('npm-test: module with no test script failing', async (t) => {
+  t.plan(1);
+  const context = makeContext.npmContext(
+    {
+      name: 'omg-i-have-no-test-script'
+    },
+    packageManagers,
+    sandbox,
+    {
+      npmLevel: 'silly'
+    }
+  );
+  try {
+    await packageManagerTest('npm', context);
+  } catch (err) {
+    t.equals(err && err.message, 'Module does not support npm-test!');
+  }
+});
+
+test('npm-test: module with no test script passing', async () => {
+  const context = makeContext.npmContext(
+    {
+      name: 'omg-i-have-no-test-script',
+      scripts: ['test:node']
     },
     packageManagers,
     sandbox,
