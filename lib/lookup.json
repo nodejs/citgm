@@ -413,6 +413,7 @@
     "skip": ["win32"]
   },
   "shot": {
+    "skip": ["14"],
     "prefix": "v",
     "maintainers": "mtharrison"
   },
