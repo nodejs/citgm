@@ -328,7 +328,8 @@
   },
   "path-to-regexp": {
     "prefix": "v",
-    "maintainers": "blakeembrey"
+    "maintainers": "blakeembrey",
+    "skip": ["aix"]
   },
   "pino": {
     "prefix": "v",
