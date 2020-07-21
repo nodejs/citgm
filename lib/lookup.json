@@ -211,7 +211,7 @@
   "gulp": {
     "prefix": "v",
     "flaky": ["ppc", "rhel"],
-    "skip": "win32",
+    "skip": ["win32", "darwin"],
     "maintainers": "contra"
   },
   "gulp-util": {
