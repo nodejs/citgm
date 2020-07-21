@@ -500,7 +500,7 @@
   "uuid": {
     "prefix": "v",
     "maintainers": ["ctavan", "broofa"],
-    "skip": "win32"
+    "skip": ["win32", "aix"]
   },
   "vinyl": {
     "prefix": "v",
