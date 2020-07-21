@@ -30,7 +30,7 @@
   },
   "ava": {
     "prefix": "v",
-    "skip": ["ppc", "win32", "x86", "rhel", "aix", "ia32"],
+    "skip": ["14", "ppc", "win32", "x86", "rhel", "aix", "ia32"],
     "maintainers": ["sindresorhus", "novemberborn"]
   },
   "bcrypt": {
