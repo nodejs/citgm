@@ -338,7 +338,7 @@
     "prefix": "pug@",
     "yarn": true,
     "maintainers": ["tj", "ForbesLindesay"],
-    "skip": ["win32"],
+    "skip": ["win32", "aix"],
     "repo": "https://github.com/pugjs/pug"
   },
   "pumpify": {
