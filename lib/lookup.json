@@ -516,7 +516,7 @@
     "prefix": "v",
     "flaky": ["ppc", "s390", "ubuntu", "rhel"],
     "maintainers": "substack",
-    "skip": "win32"
+    "skip": ["win32", "darwin"]
   },
   "weak": {
     "tags": "native",
