@@ -1,13 +1,13 @@
 {
   "name": "citgm",
-  "version": "7.1.1",
+  "version": "7.1.2",
   "description": "The Canary in the Goldmine",
   "homepage": "http://nodejs.org",
   "main": "bin/citgm",
   "preferGlobal": true,
   "bin": {
-    "citgm": "./bin/citgm.js",
-    "citgm-all": "./bin/citgm-all.js"
+    "citgm": "bin/citgm.js",
+    "citgm-all": "bin/citgm-all.js"
   },
   "files": [
     "bin",
