@@ -13,10 +13,10 @@ Any member of the @nodejs/citgm team can make a release.
 1. Ensure your branch is up to date with upstream
 
 ```bash
-$ git checkout master
+$ git checkout main
 $ git remote update -p
 $ git reset --hard upstream/master
-$ git diff upstream/master # this should be a no-op
+$ git diff upstream/main # this should be a no-op
 ```
 
 2. Bump the version and create tag with semver-sync
@@ -28,7 +28,7 @@ $ npm version [<newversion> | major | minor | patch]
 3. Push to github
 
 ```bash
-$ git push upstream master --follow-tags
+$ git push upstream main --follow-tags
 ```
 
 4. Publish to npm
