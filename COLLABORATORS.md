@@ -6,4 +6,4 @@
   - Small changes to the lookup table can be made without following the above
     process
 - Changes can be landed in any way you prefer as long as it lands on the head of
-  master with no merge commit
+  main with no merge commit

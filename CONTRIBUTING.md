@@ -75,7 +75,7 @@ At least one of:
 After making sure you adhere to the above requirements, do the following:
 
 1. Add the module to
-   [`lib/lookup.json`](https://github.com/nodejs/citgm/blob/master/lib/lookup.json)
+   [`lib/lookup.json`](https://github.com/nodejs/citgm/blob/main/lib/lookup.json)
 1. Run `npm link`
 1. Make sure the `citgm <module>` tests pass
 1. Commit your changes and open a PR. Please specify the hard and soft
