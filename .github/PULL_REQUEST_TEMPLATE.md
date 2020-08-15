@@ -11,4 +11,4 @@ the requirements below.
 - [ ] tests are included
 - [ ] documentation is changed or added
 - [ ] contribution guidelines followed
-      [here](https://github.com/nodejs/citgm/blob/master/CONTRIBUTING.md)
+      [here](https://github.com/nodejs/citgm/blob/HEAD/CONTRIBUTING.md)
