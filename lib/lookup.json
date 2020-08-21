@@ -441,7 +441,7 @@
   "split2": {
     "prefix": "v",
     "maintainers": "mcollina",
-    "skip": true
+    "master": true
   },
   "sqlite3": {
     "prefix": "v",
