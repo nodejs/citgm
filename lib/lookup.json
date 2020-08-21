@@ -440,7 +440,8 @@
   },
   "split2": {
     "prefix": "v",
-    "maintainers": "mcollina"
+    "maintainers": "mcollina",
+    "skip": true
   },
   "sqlite3": {
     "prefix": "v",
