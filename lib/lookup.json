@@ -1,4 +1,8 @@
 {
+  "@hapi/shot": {
+    "maintainers": "cjihrig",
+    "prefix": "v"
+  },
   "@nearform/bubbleprof": {
     "maintainers": "mcollina",
     "prefix": "v",
@@ -412,10 +416,6 @@
     "tags": "native",
     "maintainers": "reconbot",
     "skip": ["win32"]
-  },
-  "shot": {
-    "prefix": "v",
-    "maintainers": "mtharrison"
   },
   "socket.io": {
     "maintainers": "rauchg"
