@@ -415,7 +415,8 @@
   },
   "shot": {
     "prefix": "v",
-    "maintainers": "mtharrison"
+    "maintainers": "mtharrison",
+    "skip": true
   },
   "socket.io": {
     "maintainers": "rauchg"
