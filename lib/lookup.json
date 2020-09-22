@@ -113,7 +113,8 @@
   },
   "debug": {
     "maintainers": ["qix", "tootallnate"],
-    "skip": ["aix", "ppc", "s390", "win32"]
+    "skip": ["aix", "ppc", "s390", "win32"],
+    "scripts": ["test:node", "lint"]
   },
   "dicer": {
     "prefix": "v",
