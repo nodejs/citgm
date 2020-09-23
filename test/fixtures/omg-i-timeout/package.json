@@ -1,0 +1,19 @@
+{
+  "name": "omg-i-timeout",
+  "version": "1.0.0",
+  "description": "Test suite times out while writing to tmpdir",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nodejs/citgm.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js",
+    "install": "exit 0"
+  },
+  "keywords": [
+    "always",
+    "passes"
+  ],
+  "license": "MIT"
+}
