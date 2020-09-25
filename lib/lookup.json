@@ -341,6 +341,7 @@
     "maintainers": "mcollina"
   },
   "pug": {
+    "envVar": { "YARN_IGNORE_ENGINES": true },
     "prefix": "pug@",
     "yarn": true,
     "maintainers": ["tj", "ForbesLindesay"],
