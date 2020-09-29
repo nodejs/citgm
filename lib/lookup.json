@@ -383,7 +383,8 @@
   },
   "resolve": {
     "prefix": "v",
-    "maintainers": "ljharb"
+    "maintainers": "ljharb",
+    "scripts": ["tests-only", "posttest"]
   },
   "rewire": {
     "prefix": "v",
