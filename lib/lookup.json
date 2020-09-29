@@ -151,7 +151,7 @@
     "prefix": "v",
     "maintainers": "SimenB",
     "yarn": true,
-    "skip": ["aix"]
+    "skip": ["aix", "s390x"]
   },
   "esprima": {
     "maintainers": "ariya",
