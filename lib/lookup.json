@@ -235,6 +235,11 @@
     "prefix": "v",
     "maintainers": "isaacs"
   },
+  "is-core-module": {
+    "prefix": "v",
+    "maintainers": "ljharb",
+    "scripts": ["tests-only"]
+  },
   "isarray": {
     "prefix": "v",
     "maintainers": "juliangruber"
