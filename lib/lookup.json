@@ -133,6 +133,7 @@
     "maintainers": "mafintosh"
   },
   "ember-cli": {
+    "envVar": { "YARN_IGNORE_ENGINES": "true" },
     "prefix": "v",
     "flaky": ["win32", "rhel", "sles"],
     "master": true,

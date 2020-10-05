@@ -35,7 +35,6 @@ test('create-options:', (t) => {
   env['TEMP'] = 'npm_config_tmp';
   env['TMP'] = 'npm_config_tmp';
   env['TMPDIR'] = 'npm_config_tmp';
-  env['YARN_IGNORE_ENGINES'] = 'true';
   // Set dynamically to support Windows.
   env['npm_config_nodedir'] = path.resolve(process.cwd(), nodePath);
 
