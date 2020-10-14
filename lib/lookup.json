@@ -366,6 +366,7 @@
   "radium": {
     "prefix": "v",
     "expectFail": "fips",
+    "yarn": true,
     "maintainers": ["ianobermiller", "alexlande"],
     "scripts": ["test-node"]
   },
