@@ -248,8 +248,7 @@
     "prefix": "v",
     "maintainers": ["cpojer", "scotthovestadt", "SimenB", "thymikee", "jeysal"],
     "yarn": true,
-    "install": ["install-no-ts-build"],
-    "scripts": ["test-ci-partial"],
+    "scripts": ["build:js", "test-ci-partial"],
     "envVar": { "CI": true },
     "skip": ["aix", "s390x", "ppc"],
     "timeout": 3600000
