@@ -250,7 +250,7 @@
     "yarn": true,
     "scripts": ["build:js", "test-ci-partial"],
     "envVar": { "CI": true },
-    "skip": ["aix", "s390x", "ppc"],
+    "skip": ["aix", "s390x", "ppc", "10.x"],
     "timeout": 3600000
   },
   "jquery": {
