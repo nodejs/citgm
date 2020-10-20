@@ -252,7 +252,7 @@
     "scripts": ["test-ci-partial"],
     "envVar": { "CI": true },
     "skip": ["aix", "s390x", "ppc"],
-    "timeout": 1800000
+    "timeout": 3600000
   },
   "jquery": {
     "skip": "win32",
