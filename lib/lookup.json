@@ -428,7 +428,8 @@
     "skip": ["win32"]
   },
   "socket.io": {
-    "maintainers": "rauchg"
+    "maintainers": "rauchg",
+    "master": true
   },
   "spawn-wrap": {
     "prefix": "v",
