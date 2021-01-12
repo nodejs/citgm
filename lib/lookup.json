@@ -508,6 +508,9 @@
     "skip": "win32",
     "maintainers": "jashkenas"
   },
+  "undici": {
+    "maintainers": ["mcollina", "ronag"]
+  },
   "uuid": {
     "prefix": "v",
     "maintainers": ["ctavan", "broofa"],
