@@ -84,6 +84,7 @@
   },
   "cheerio": {
     "skip": "win32",
+    "master": true,
     "maintainers": ["matthewmueller", "jugglinmike"]
   },
   "clinic": {
