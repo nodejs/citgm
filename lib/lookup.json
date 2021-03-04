@@ -136,7 +136,7 @@
     "envVar": { "YARN_IGNORE_ENGINES": "true" },
     "prefix": "v",
     "flaky": ["win32", "rhel", "sles"],
-    "master": true,
+    "head": true,
     "expectFail": "fips",
     "maintainers": ["stefanpenner", "rwjblue", "Turbo87", "kellyselden"]
   },
@@ -292,7 +292,7 @@
     "maintainers": "substack"
   },
   "mkdirp": {
-    "master": true,
+    "head": true,
     "skip": true,
     "maintainers": "substack"
   },
@@ -429,7 +429,7 @@
   },
   "socket.io": {
     "maintainers": "rauchg",
-    "master": true
+    "head": true
   },
   "spawn-wrap": {
     "prefix": "v",
@@ -452,7 +452,7 @@
   "split2": {
     "prefix": "v",
     "maintainers": "mcollina",
-    "master": true
+    "head": true
   },
   "sqlite3": {
     "prefix": "v",
@@ -523,7 +523,7 @@
   },
   "vinyl-fs": {
     "prefix": "v",
-    "master": true,
+    "head": true,
     "maintainers": ["contra", "phated"],
     "skip": true
   },

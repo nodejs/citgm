@@ -1,7 +1,7 @@
 {
   "omg-i-pass": {
     "install": ["--extra-param"],
-    "master": true,
+    "head": true,
     "replace": true,
     "repo": "https://github.com/nodejs/citgm"
   }

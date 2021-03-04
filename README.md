@@ -127,7 +127,7 @@ For syntax, see [lookup.json](./lib/lookup.json), the available attributes are:
 
 ```
 "npm": true                  Download the module from npm instead of github
-"master": true               Use the master branch
+"head": true                 Use the head of the default branch
 "prefix": "v"                Specify the prefix used in the module version.
 "flaky": true                Ignore failures
 "skip": true                 Completely skip the module
