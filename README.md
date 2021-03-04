@@ -3,7 +3,7 @@
 citgm is a simple tool for pulling down an arbitrary module from npm and testing
 it using a specific version of the node runtime.
 
-[![Build Status](https://github.com/nodejs/citgm/workflows/Node.js%20CI/badge.svg?branch=master)](https://github.com/nodejs/citgm/actions?query=workflow%3A%22Node.js+CI%22)
+[![Build Status](https://github.com/nodejs/citgm/workflows/Node.js%20CI/badge.svg?branch=main)](https://github.com/nodejs/citgm/actions?query=workflow%3A%22Node.js+CI%22)
 [![dependencies Status](https://david-dm.org/nodejs/citgm/status.svg)](https://david-dm.org/nodejs/citgm)
 [![devDependencies Status](https://david-dm.org/nodejs/citgm/dev-status.svg)](https://david-dm.org/nodejs/citgm?type=dev)
 
@@ -58,7 +58,7 @@ Test the latest underscore module or a specific version:
 Test a local module: `citgm ./my-module`
 
 Test using a tar.gz from Github:
-`citgm http://github.com/jasnell/activitystrea.ms/archive/master.tar.gz`
+`citgm http://github.com/jasnell/activitystrea.ms/archive/HEAD.tar.gz`
 
 When using a JSON config file, the properties need to be the same as the
 longer-form CLI options. You can also use environment variables. For example,
@@ -179,7 +179,7 @@ up having to go directly to github. The most reliable approach is pulling down a
 tar ball for a specific branch from github:
 
 ```
-citgm https://github.com/caolan/async/archive/master.tar.gz
+citgm https://github.com/caolan/async/archive/HEAD.tar.gz
 ```
 
 To simplify working with modules that we know need special handling, a lookup
@@ -264,4 +264,4 @@ npm install -g nyc
 
 ## Contributors
 
-- as listed in <https://github.com/nodejs/citgm/blob/master/AUTHORS>
+- as listed in <https://github.com/nodejs/citgm/blob/HEAD/AUTHORS>
