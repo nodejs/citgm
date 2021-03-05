@@ -15,7 +15,7 @@ Any member of the @nodejs/citgm team can make a release.
 ```bash
 $ git checkout main
 $ git remote update -p
-$ git reset --hard upstream/master
+$ git reset --hard upstream/main
 $ git diff upstream/main # this should be a no-op
 ```
 
