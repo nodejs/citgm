@@ -28,8 +28,6 @@ jobs:
         run: echo "$WORKFLOW_PARAMETERS"
 
   test-module:
-    name: Test on Node.js ${{ matrix.node-version }} and ${{ matrix.os }}
-
     strategy:
       fail-fast: false
       matrix:
