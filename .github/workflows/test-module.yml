@@ -17,7 +17,7 @@ on:
 
 jobs:
   show-parameters:
-    name: Testing ${{ github.event.inputs.module }}
+    name: Parameters for testing "${{ github.event.inputs.module }}"
 
     runs-on: ubuntu-latest
 
