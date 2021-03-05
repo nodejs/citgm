@@ -9,36 +9,55 @@ on:
 jobs:
   lint:
     name: Lint using ESLint
+
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Use Node.js 14
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: 14.x
-      - name: npm install and lint
-        run: |
-          npm install
-          npm run lint
+
+      - name: Install packages
+        run: npm install
+
+      - name: Run lint
+        run: npm run lint
 
   test:
     name: Test on Node.js ${{ matrix.node-version }} and ${{ matrix.os }}
+
     strategy:
       fail-fast: false
       matrix:
-        node-version: [10.x, 12.x, 14.x]
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+        os:
+          - macos-latest
+          - ubuntu-latest
+          - windows-latest
+        node-version:
+          - 10.x
+          - 12.x
+          - 14.x
+
     runs-on: ${{ matrix.os }}
+
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - name: npm install and test
-        shell: pwsh
-        run: |
-          npm install
-          npm run tap -- --coverage-report=lcov
+
+      - name: Install packages
+        run: npm install
+
+      - name: Run test
+        run: npm run tap -- --coverage-report=lcov
+
       - name: Upload coverage report to Codecov
         uses: codecov/codecov-action@v1
