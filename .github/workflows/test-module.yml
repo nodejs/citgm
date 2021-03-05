@@ -16,6 +16,15 @@ on:
         default: main
 
 jobs:
+  show-parameters:
+    name: Testing ${{ github.event.inputs.module }}
+
+    steps:
+      - name: Log workflow parameters
+        env:
+          WORKFLOW_PARAMETERS: ${{ toJSON(github.event.inputs) }}
+        run: echo "$WORKFLOW_PARAMETERS"
+
   test-module:
     name: Test on Node.js ${{ matrix.node-version }} and ${{ matrix.os }}
 
