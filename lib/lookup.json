@@ -98,8 +98,7 @@
   },
   "commander": {
     "prefix": "v",
-    "maintainers": "tj",
-    "skip": true
+    "maintainers": ["shadowspawn", "abetomo"]
   },
   "crc32-stream": {
     "maintainers": "ctalkington",
