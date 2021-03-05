@@ -79,4 +79,4 @@ After making sure you adhere to the above requirements, do the following:
 1. Run `npm link`
 1. Make sure the `citgm <module>` tests pass
 1. Commit your changes and open a PR. Please specify the hard and soft
-   requirements the module fufills
+   requirements the module fulfills
