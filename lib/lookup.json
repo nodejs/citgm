@@ -587,6 +587,7 @@
     "prefix": "v",
     "tags": "native",
     "maintainers": ["lgeiger", "rgbkrk"],
-    "skip": [true, "s390", "ppc", "win32"]
+    "scripts": ["dev:build", "dev:test"],
+    "skip": ["s390", "ppc"]
   }
 }
