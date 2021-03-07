@@ -1,0 +1,60 @@
+name: Test a Node.js version with citgm-all
+
+on:
+  workflow_dispatch:
+    inputs:
+      node-version:
+        description: 'Node.js version to test'
+        required: true
+        default: latest
+      citgm-args:
+        description: 'CLI arguments to pass to citgm-all'
+      repository:
+        description: 'CITGM repository to checkout'
+        required: true
+        default: nodejs/citgm
+      ref:
+        description: 'CITGM GitHub ref to checkout'
+        required: true
+        default: main
+
+jobs:
+  show-parameters:
+    name: Parameters for testing "${{ github.event.inputs.node-version }}"
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Log workflow parameters
+        env:
+          WORKFLOW_PARAMETERS: ${{ toJSON(github.event.inputs) }}
+        run: echo "$WORKFLOW_PARAMETERS"
+
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - macos-latest
+          - ubuntu-latest
+          - windows-latest
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ github.event.inputs.repository }}
+          ref: ${{ github.event.inputs.ref }}
+
+      - name: Use Node.js ${{ github.event.inputs.node_version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ github.event.inputs.node_version }}
+
+      - name: Install packages
+        run: npm install
+
+      - name: Run citgm-all
+        run: node bin/citgm-all.js ${{ github.event.inputs.args }}
