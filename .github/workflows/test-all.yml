@@ -48,13 +48,13 @@ jobs:
           repository: ${{ github.event.inputs.repository }}
           ref: ${{ github.event.inputs.ref }}
 
-      - name: Use Node.js ${{ github.event.inputs.node_version }}
+      - name: Use Node.js ${{ github.event.inputs.node-version }}
         uses: actions/setup-node@v2
         with:
-          node-version: ${{ github.event.inputs.node_version }}
+          node-version: ${{ github.event.inputs.node-version }}
 
       - name: Install packages
         run: npm install
 
       - name: Run citgm-all
-        run: node bin/citgm-all.js ${{ github.event.inputs.args }}
+        run: node bin/citgm-all.js ${{ github.event.inputs.citgm-args }}
