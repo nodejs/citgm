@@ -140,7 +140,7 @@
     "expectFail": "fips",
     "maintainers": ["stefanpenner", "rwjblue", "Turbo87", "kellyselden"]
   },
-   "end-of-stream": {
+  "end-of-stream": {
     "prefix": "v",
     "maintainers": "mafintosh",
     "skip": "win32"
@@ -345,6 +345,11 @@
     "comment": "Flaky because of test timeouts",
     "skip": true
   },
+  "npm": {
+    "maintainers": ["nodejs/npm"],
+    "prefix": "v",
+    "skip": "s390"
+  },
   "path-to-regexp": {
     "prefix": "v",
     "maintainers": "blakeembrey",
@@ -365,7 +370,7 @@
     "prefix": "v",
     "maintainers": "mafintosh",
     "skip": "win32"
-  },  
+  },
   "pumpify": {
     "prefix": "v",
     "maintainers": "mafintosh",
