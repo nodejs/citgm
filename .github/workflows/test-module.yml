@@ -1,0 +1,62 @@
+name: Test a module with CITGM
+
+on:
+  workflow_dispatch:
+    inputs:
+      module:
+        description: 'Module to test'
+        required: true
+      repository:
+        description: 'CITGM repository to checkout'
+        required: true
+        default: nodejs/citgm
+      ref:
+        description: 'CITGM GitHub ref to checkout'
+        required: true
+        default: main
+
+jobs:
+  show-parameters:
+    name: Parameters for testing "${{ github.event.inputs.module }}"
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Log workflow parameters
+        env:
+          WORKFLOW_PARAMETERS: ${{ toJSON(github.event.inputs) }}
+        run: echo "$WORKFLOW_PARAMETERS"
+
+  test-module:
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - macos-latest
+          - ubuntu-latest
+          - windows-latest
+        node-version:
+          - 10.x
+          - 12.x
+          - 14.x
+          - 15.x
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ github.event.inputs.repository }}
+          ref: ${{ github.event.inputs.ref }}
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install packages
+        run: npm install
+
+      - name: Run CITGM
+        run: node bin/citgm.js ${{ github.event.inputs.module }}
