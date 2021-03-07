@@ -6,7 +6,7 @@ on:
       node-version:
         description: 'Node.js version to test'
         required: true
-        default: latest
+        default: v15.x
       citgm-args:
         description: 'CLI arguments to pass to citgm-all'
       repository:
