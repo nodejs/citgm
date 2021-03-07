@@ -153,12 +153,6 @@
     "maintainers": ["nzakas", "mysticatea", "not-an-aardvark"],
     "comment": "Skipped because libX11 is required for headless Chrome"
   },
-  "eslint-plugin-jest": {
-    "prefix": "v",
-    "maintainers": "SimenB",
-    "yarn": true,
-    "skip": ["aix", "s390x"]
-  },
   "esprima": {
     "maintainers": "ariya",
     "expectFail": "fips",
@@ -249,6 +243,15 @@
   "isarray": {
     "prefix": "v",
     "maintainers": "juliangruber"
+  },
+  "jest": {
+    "prefix": "v",
+    "maintainers": ["cpojer", "scotthovestadt", "SimenB", "thymikee", "jeysal"],
+    "yarn": true,
+    "scripts": ["build:js", "test-ci-partial"],
+    "envVar": { "CI": true },
+    "skip": ["aix", "s390x", "ppc", "10.x", "darwin", "win32"],
+    "timeout": 1800000
   },
   "jquery": {
     "skip": "win32",
