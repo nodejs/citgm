@@ -20,9 +20,9 @@ test('lookup: makeUrl', (t) => {
 
   const sha = 'abc123';
 
-  let expected = `${repo}/archive/master.tar.gz`;
+  let expected = `${repo}/archive/HEAD.tar.gz`;
   let url = makeUrl(repo);
-  t.equal(url, expected, 'by default makeUrl should give a link to master');
+  t.equal(url, expected, 'by default makeUrl should give a link to HEAD');
 
   expected = `${repo}/archive/${tags.latest}.tar.gz`;
   url = makeUrl(repo, 'latest', tags);
@@ -171,7 +171,7 @@ test('lookup: module in table', (t) => {
   lookup(context);
   t.equals(
     context.module.raw,
-    'https://github.com/lodash/lodash/archive/master.tar.gz',
+    'https://github.com/lodash/lodash/archive/HEAD.tar.gz',
     'raw should be truthy if the module was in the list'
   );
   t.end();
@@ -404,7 +404,7 @@ test('lookup: logging', (t) => {
     {
       type: 'info',
       key: 'omg-i-pass lookup-replace',
-      msg: 'https://github.com/nodejs/citgm/archive/master.tar.gz'
+      msg: 'https://github.com/nodejs/citgm/archive/HEAD.tar.gz'
     },
     {
       type: 'verbose',
