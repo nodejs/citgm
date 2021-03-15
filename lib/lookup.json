@@ -575,7 +575,8 @@
     "prefix": "v",
     "flaky": ["ppc", "rhel"],
     "expectFail": "fips",
-    "maintainers": ["SBoudrias", "sindresorhus"]
+    "maintainers": ["SBoudrias", "sindresorhus"],
+    "skip": "10.x"
   },
   "zeromq": {
     "prefix": "v",
