@@ -527,6 +527,7 @@
     "maintainers": "jashkenas"
   },
   "undici": {
+    "prefix": "v",
     "maintainers": ["mcollina", "ronag"]
   },
   "uuid": {
