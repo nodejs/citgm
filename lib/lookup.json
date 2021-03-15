@@ -34,8 +34,7 @@
   },
   "async": {
     "prefix": "v",
-    "maintainers": ["aearly", "megawac"],
-    "skip": true
+    "maintainers": ["aearly", "megawac"]
   },
   "ava": {
     "prefix": "v",
