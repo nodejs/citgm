@@ -1,4 +1,9 @@
 {
+  "@hapi/hapi": {
+    "prefix": "v",
+    "maintainers": ["devinivy", "DavidTPate", "AdriVanHoudt"],
+    "skip": ["10", "osx", "aix"]
+  },
   "@hapi/shot": {
     "maintainers": "cjihrig",
     "prefix": "v"
