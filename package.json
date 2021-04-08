@@ -1,6 +1,6 @@
 {
   "name": "citgm",
-  "version": "7.2.0",
+  "version": "7.2.1",
   "description": "The Canary in the Goldmine",
   "homepage": "http://nodejs.org",
   "main": "bin/citgm",
