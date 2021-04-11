@@ -249,6 +249,21 @@ test('citgm-all: skip /w rootcheck /w tap to fs /w junit to fs /w append', (t) =
   });
 });
 
+test('citgm-all: install with yarn', (t) => {
+  t.plan(1);
+  const proc = spawn(citgmAllPath, [
+    '-l',
+    'test/fixtures/custom-lookup.json',
+    '-y'
+  ]);
+  proc.on('error', (err) => {
+    t.error(err);
+  });
+  proc.on('close', (code) => {
+    t.equals(code, 0, 'citgm-all should only run omg-i-pass');
+  });
+});
+
 test('bin: sigterm', (t) => {
   t.plan(1);
 
