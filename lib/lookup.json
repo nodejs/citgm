@@ -342,7 +342,7 @@
     "prefix": "v",
     "tags": "native",
     "maintainers": ["richardlau"],
-    "skip:": [">=15"]
+    "skip": [">=15"]
   },
   "node-sass": {
     "prefix": "v",
