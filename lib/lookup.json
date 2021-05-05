@@ -365,6 +365,11 @@
     "prefix": "v",
     "maintainers": "mcollina"
   },
+  "prom-client": {
+    "prefix": "v",
+    "maintainers": ["siimon", "zbjornson", "SimenB"],
+    "yarn": true
+  },
   "pug": {
     "prefix": "pug@",
     "yarn": true,
