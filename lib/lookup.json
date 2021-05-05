@@ -367,8 +367,7 @@
   },
   "prom-client": {
     "prefix": "v",
-    "maintainers": ["siimon", "zbjornson", "SimenB"],
-    "yarn": true
+    "maintainers": ["siimon", "zbjornson", "SimenB"]
   },
   "pug": {
     "prefix": "pug@",
