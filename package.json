@@ -16,7 +16,7 @@
   "scripts": {
     "coverage-html": "npm run tap -- --coverage-report=html",
     "lint": "eslint bin/* lib/ test/ --cache",
-    "tap": "tap -J --timeout 480 \"test/**/test-*.js\"",
+    "tap": "tap -J \"test/**/test-*.js\"",
     "test": "npm run lint && npm run tap",
     "test-ci": "npm run lint && npm run tap -- --coverage-report=lcov"
   },
@@ -85,5 +85,9 @@
         }
       }
     ]
+  },
+  "tap": {
+    "timeout": 480,
+    "check-coverage": false
   }
 }
