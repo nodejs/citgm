@@ -64,7 +64,7 @@ test('reporter.junit(): passing', (t) => {
   }
 
   junit(logger, passingInput);
-  t.equals(
+  t.equal(
     output,
     passingExpected,
     'we should get expected output when all' + ' modules pass'
@@ -105,7 +105,7 @@ test('reporter.junit(): failing', (t) => {
   }
 
   junit(logger, failingInput);
-  t.equals(output, failingExpected),
+  t.equal(output, failingExpected),
     'we should get the expected output when a' + ' module fails';
   t.end();
 });
@@ -120,7 +120,7 @@ test('reporter.junit(): parser', async (t) => {
 
   junit(logger, failingInput);
   const result = await parseString(output);
-  t.deepEquals(
+  t.same(
     result,
     junitParserExpected,
     'we should get the expected output when a module fails'
@@ -131,7 +131,7 @@ test('reporter.junit(): write to disk', (t) => {
   t.plan(1);
   junit(outputFile, passingInput);
   const expected = fs.readFileSync(outputFile, 'utf8');
-  t.equals(expected, passingExpected),
+  t.equal(expected, passingExpected),
     'the file on disk should match the' + ' expected output';
   t.end();
 });
@@ -142,7 +142,7 @@ test('reporter.junit(): append to disk', (t) => {
   fs.writeFileSync(outputFileAppend, appendStartFile);
   junit(outputFileAppend, passingInput, true);
   const expected = fs.readFileSync(outputFileAppend, 'utf-8');
-  t.equals(expected, passingExpectedAppend),
+  t.equal(expected, passingExpectedAppend),
     'the file on disk should match the' + ' expected output';
   t.end();
 });

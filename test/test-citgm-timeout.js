@@ -37,7 +37,7 @@ test('citgm: omg-i-timeout from local path', (t) => {
   const tester = new citgm.Tester(mod, options);
   tester
     .on('start', (name) => {
-      t.equals(name, mod, 'it should be the local path');
+      t.equal(name, mod, 'it should be the local path');
     })
     .on('data', (type, key, msg) => {
       if (type === 'error' && key.endsWith('cleanup')) {

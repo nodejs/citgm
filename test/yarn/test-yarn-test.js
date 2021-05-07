@@ -68,7 +68,7 @@ test('yarn-test: basic module failing', async (t) => {
   try {
     await packageManagerTest('yarn', context);
   } catch (err) {
-    t.equals(err && err.message, 'The canary is dead:');
+    t.equal(err && err.message, 'The canary is dead:');
   }
 });
 
@@ -82,7 +82,7 @@ test('yarn-test: basic module no test script', async (t) => {
   try {
     await packageManagerTest('yarn', context);
   } catch (err) {
-    t.equals(err && err.message, 'Module does not support yarn-test!');
+    t.equal(err && err.message, 'Module does not support yarn-test!');
   }
 });
 
@@ -96,7 +96,7 @@ test('yarn-test: no package.json', async (t) => {
   try {
     await packageManagerTest('yarn', context);
   } catch (err) {
-    t.equals(err && err.message, 'Package.json Could not be found');
+    t.equal(err && err.message, 'Package.json Could not be found');
   }
 });
 
@@ -114,7 +114,7 @@ test('yarn-test: alternative test-path', async (t) => {
   try {
     await packageManagerTest('yarn', context);
   } catch (err) {
-    t.equals(err && err.message, 'The canary is dead:');
+    t.equal(err && err.message, 'The canary is dead:');
   }
 });
 
@@ -132,7 +132,7 @@ test('yarn-test: timeout', async (t) => {
     await packageManagerTest('yarn', context);
   } catch (err) {
     t.notOk(context.module.flaky, 'Time out should not mark module flaky');
-    t.equals(err && err.message, 'Test Timed Out');
+    t.equal(err && err.message, 'Test Timed Out');
   }
 });
 
@@ -167,7 +167,7 @@ test('yarn-test: module with no test script failing', async (t) => {
   try {
     await packageManagerTest('yarn', context);
   } catch (err) {
-    t.equals(err && err.message, 'Module does not support yarn-test!');
+    t.equal(err && err.message, 'Module does not support yarn-test!');
   }
 });
 

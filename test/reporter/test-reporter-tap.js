@@ -56,7 +56,7 @@ test('reporter.tap(): passing', (t) => {
   }
 
   tap(logger, passingInput);
-  t.equals(
+  t.equal(
     output,
     passingExpected,
     'we should get expected output when all' + ' modules pass'
@@ -73,7 +73,7 @@ test('reporter.tap(): failing', (t) => {
   }
 
   tap(logger, failingInput);
-  t.equals(output, failingExpected),
+  t.equal(output, failingExpected),
     'we should get the expected output when a' + ' module fails';
   t.end();
 });
@@ -87,7 +87,7 @@ test('reporter.tap(): parser', (t) => {
 
   tap(logger, failingInput);
   const p = new Parser((results) => {
-    t.deepEquals(results, tapParserExpected),
+    t.same(results, tapParserExpected),
       'the tap parser should correctly' + ' parse the tap file';
     t.end();
   });
@@ -98,7 +98,7 @@ test('reporter.tap(): write to disk', (t) => {
   t.plan(1);
   tap(outputFile, passingInput);
   const expected = fs.readFileSync(outputFile, 'utf8');
-  t.equals(expected, passingExpected),
+  t.equal(expected, passingExpected),
     'the file on disk should match the' + ' expected output';
   t.end();
 });
@@ -109,7 +109,7 @@ test('reporter.tap(): append to disk', (t) => {
   fs.writeFileSync(outputFileAppend, appendStartFile);
   tap(outputFileAppend, passingInput, true);
   const expected = fs.readFileSync(outputFileAppend, 'utf8');
-  t.equals(expected, passingExpectedAppend),
+  t.equal(expected, passingExpectedAppend),
     'the file on disk should match the' + ' expected output';
   t.end();
 });
@@ -118,7 +118,7 @@ test('reporter.tap(): append to disk when file does not exist', (t) => {
   t.plan(1);
   tap(outputFileAppendBlank, passingInput, true);
   const expected = fs.readFileSync(outputFileAppendBlank, 'utf8');
-  t.equals(expected, passingExpected),
+  t.equal(expected, passingExpected),
     'the file on disk should match the' + ' expected output';
   t.end();
 });

@@ -76,7 +76,7 @@ test('npm-install: no package.json', async (t) => {
   try {
     await packageManagerInstall('npm', context);
   } catch (err) {
-    t.equals(err && err.message, 'Install Failed');
+    t.equal(err && err.message, 'Install Failed');
     t.notOk(context.module.flaky, 'Module failed but is not flaky');
   }
 });
@@ -96,7 +96,7 @@ test('npm-install: timeout', async (t) => {
     await packageManagerInstall('npm', context);
   } catch (err) {
     t.notOk(context.module.flaky, 'Time out should not mark module flaky');
-    t.equals(err && err.message, 'Install Timed Out');
+    t.equal(err && err.message, 'Install Timed Out');
   }
 });
 
@@ -118,7 +118,7 @@ test('npm-install: failed install', async (t) => {
     await packageManagerInstall('npm', context);
   } catch (err) {
     t.notOk(context.module.flaky, 'Module failed is not flaky');
-    t.equals(err && err.message, 'Install Failed');
+    t.equal(err && err.message, 'Install Failed');
     t.match(context, expected, 'Install error reported');
   }
 });

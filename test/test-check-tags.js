@@ -15,7 +15,7 @@ test('test includeTags and matching tag multiple', (t) => {
     tags: ['a', 'b']
   };
   const result = checkTags(options, mod, 'test', log);
-  t.false(result, 'should return false');
+  t.notOk(result, 'should return false');
 });
 
 test('test includeTags and matching tag', (t) => {
@@ -28,7 +28,7 @@ test('test includeTags and matching tag', (t) => {
     tags: 'a'
   };
   const result = checkTags(options, mod, 'test', log);
-  t.false(result, 'should return false');
+  t.notOk(result, 'should return false');
 });
 
 test('test includeTags and no matching tag', (t) => {
@@ -41,7 +41,7 @@ test('test includeTags and no matching tag', (t) => {
     tags: 'b'
   };
   const result = checkTags(options, mod, 'test', log);
-  t.true(result, 'should return true');
+  t.ok(result, 'should return true');
 });
 
 test('test includeTags and no tag', (t) => {
@@ -54,7 +54,7 @@ test('test includeTags and no tag', (t) => {
     tags: []
   };
   const result = checkTags(options, mod, 'test', log);
-  t.true(result, 'should return true');
+  t.ok(result, 'should return true');
 });
 
 test('test excludeTags and matching tag multiple', (t) => {
@@ -67,7 +67,7 @@ test('test excludeTags and matching tag multiple', (t) => {
     tags: ['a', 'b']
   };
   const result = checkTags(options, mod, 'test', log);
-  t.true(result, 'should return true');
+  t.ok(result, 'should return true');
 });
 
 test('test excludeTags and matching tag', (t) => {
@@ -80,7 +80,7 @@ test('test excludeTags and matching tag', (t) => {
     tags: 'a'
   };
   const result = checkTags(options, mod, 'test', log);
-  t.true(result, 'should return true');
+  t.ok(result, 'should return true');
 });
 
 test('test excludeTags and no matching tag', (t) => {
@@ -93,7 +93,7 @@ test('test excludeTags and no matching tag', (t) => {
     tags: 'b'
   };
   const result = checkTags(options, mod, 'test', log);
-  t.false(result, 'should return false');
+  t.notOk(result, 'should return false');
 });
 
 test('test excludeTags and no tag', (t) => {
@@ -106,7 +106,7 @@ test('test excludeTags and no tag', (t) => {
     tags: []
   };
   const result = checkTags(options, mod, 'test', log);
-  t.false(result, 'should return false');
+  t.notOk(result, 'should return false');
 });
 
 test('test includeTags and matching tag multiple', (t) => {
@@ -119,7 +119,7 @@ test('test includeTags and matching tag multiple', (t) => {
     tags: ['a', 'b']
   };
   const result = checkTags(options, mod, 'test', log);
-  t.false(result, 'should return false');
+  t.notOk(result, 'should return false');
 });
 
 test('test includeTags and no matching tag', (t) => {
@@ -132,7 +132,7 @@ test('test includeTags and no matching tag', (t) => {
     tags: 'a'
   };
   const result = checkTags(options, mod, 'test', log);
-  t.true(result, 'should return true');
+  t.ok(result, 'should return true');
 });
 
 test('test includeTags and matching tag', (t) => {
@@ -145,7 +145,7 @@ test('test includeTags and matching tag', (t) => {
     tags: 'b'
   };
   const result = checkTags(options, mod, 'test', log);
-  t.false(result, 'should return false');
+  t.notOk(result, 'should return false');
 });
 
 test('test includeTags and no tag', (t) => {
@@ -158,7 +158,7 @@ test('test includeTags and no tag', (t) => {
     tags: []
   };
   const result = checkTags(options, mod, 'test', log);
-  t.true(result, 'should return true');
+  t.ok(result, 'should return true');
 });
 
 test('test excludeTags and matching tag multiple', (t) => {
@@ -171,7 +171,7 @@ test('test excludeTags and matching tag multiple', (t) => {
     tags: ['a', 'b']
   };
   const result = checkTags(options, mod, 'test', log);
-  t.true(result, 'should return true');
+  t.ok(result, 'should return true');
 });
 
 test('test excludeTags and no matching tag', (t) => {
@@ -184,7 +184,7 @@ test('test excludeTags and no matching tag', (t) => {
     tags: 'a'
   };
   const result = checkTags(options, mod, 'test', log);
-  t.false(result, 'should return false');
+  t.notOk(result, 'should return false');
 });
 
 test('test excludeTags and matching tag', (t) => {
@@ -197,7 +197,7 @@ test('test excludeTags and matching tag', (t) => {
     tags: 'b'
   };
   const result = checkTags(options, mod, 'test', log);
-  t.true(result, 'should return true');
+  t.ok(result, 'should return true');
 });
 
 test('test excludeTags and no tag', (t) => {
@@ -210,7 +210,7 @@ test('test excludeTags and no tag', (t) => {
     tags: []
   };
   const result = checkTags(options, mod, 'test', log);
-  t.false(result, 'should return false');
+  t.notOk(result, 'should return false');
 });
 
 test('test excludeTags, includeTags and matching tag', (t) => {
@@ -223,7 +223,7 @@ test('test excludeTags, includeTags and matching tag', (t) => {
     tags: ['a', 'b']
   };
   const result = checkTags(options, mod, 'test', log);
-  t.true(result, 'should return true');
+  t.ok(result, 'should return true');
 });
 
 test('test excludeTags,includeTags and matching includeTags tag', (t) => {
@@ -236,7 +236,7 @@ test('test excludeTags,includeTags and matching includeTags tag', (t) => {
     tags: 'a'
   };
   const result = checkTags(options, mod, 'test', log);
-  t.false(result, 'should return false');
+  t.notOk(result, 'should return false');
 });
 
 test('test excludeTags,includeTags and matching excludeTags tag', (t) => {
@@ -249,7 +249,7 @@ test('test excludeTags,includeTags and matching excludeTags tag', (t) => {
     tags: 'b'
   };
   const result = checkTags(options, mod, 'test', log);
-  t.true(result, 'should return true');
+  t.ok(result, 'should return true');
 });
 
 test('test excludeTags, includeTags and no matching tags', (t) => {
@@ -260,7 +260,7 @@ test('test excludeTags, includeTags and no matching tags', (t) => {
   };
   const mod = {};
   const result = checkTags(options, mod, 'test', log);
-  t.true(result, 'should return true');
+  t.ok(result, 'should return true');
 });
 
 test('test excludeTags, includeTags and matching tag', (t) => {
@@ -273,7 +273,7 @@ test('test excludeTags, includeTags and matching tag', (t) => {
     tags: ['a', 'b']
   };
   const result = checkTags(options, mod, 'test', log);
-  t.true(result, 'should return true');
+  t.ok(result, 'should return true');
 });
 
 test('test excludeTags,includeTags and matching excludeTags tag', (t) => {
@@ -286,7 +286,7 @@ test('test excludeTags,includeTags and matching excludeTags tag', (t) => {
     tags: 'a'
   };
   const result = checkTags(options, mod, 'test', log);
-  t.true(result, 'should return true');
+  t.ok(result, 'should return true');
 });
 
 test('test excludeTags,includeTags and matching includeTags tag', (t) => {
@@ -299,7 +299,7 @@ test('test excludeTags,includeTags and matching includeTags tag', (t) => {
     tags: 'b'
   };
   const result = checkTags(options, mod, 'test', log);
-  t.false(result, 'should return false');
+  t.notOk(result, 'should return false');
 });
 
 test('test excludeTags, includeTags and no matching tags', (t) => {
@@ -312,7 +312,7 @@ test('test excludeTags, includeTags and no matching tags', (t) => {
     tags: []
   };
   const result = checkTags(options, mod, 'test', log);
-  t.true(result, 'should return true');
+  t.ok(result, 'should return true');
 });
 
 test('test module name can be used in includeTags/excludeTags', (t) => {

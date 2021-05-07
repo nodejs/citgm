@@ -165,7 +165,7 @@ test('grab-project: timeout', async (t) => {
   try {
     await grabProject(context);
   } catch (err) {
-    t.equals(err && err.message, 'Download Timed Out');
+    t.equal(err && err.message, 'Download Timed Out');
   }
 });
 
