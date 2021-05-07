@@ -18,7 +18,7 @@ test('unpack: context.unpack = null', async (t) => {
   try {
     await unpack(context);
   } catch (err) {
-    t.deepEquals(
+    t.same(
       err,
       new Error('Nothing to unpack... Ending'),
       'it should error out'
@@ -36,7 +36,7 @@ test('unpack: context.unpack is invalid path', async (t) => {
   try {
     await unpack(context);
   } catch (err) {
-    t.deepEquals(
+    t.same(
       err,
       new Error('Nothing to unpack... Ending'),
       'it should error out'

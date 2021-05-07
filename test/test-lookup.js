@@ -78,7 +78,7 @@ test('lookup[getLookupTable]: custom table', (t) => {
   const table = getLookupTable({
     lookup: 'test/fixtures/custom-lookup.json'
   });
-  t.deepEquals(
+  t.same(
     table,
     {
       'omg-i-pass': {
@@ -143,7 +143,7 @@ test('lookup: module not in table with gitHead', (t) => {
   };
 
   lookup(context);
-  t.equals(
+  t.equal(
     context.module.raw,
     'https://github.com/nodejs/omg-i-pass/archive/abc123.tar.gz',
     'raw should use commit SHA if package has gitHead'
@@ -169,7 +169,7 @@ test('lookup: module in table', (t) => {
   };
 
   lookup(context);
-  t.equals(
+  t.equal(
     context.module.raw,
     'https://github.com/lodash/lodash/archive/HEAD.tar.gz',
     'raw should be truthy if the module was in the list'
@@ -196,7 +196,7 @@ test('lookup: module in table with gitHead', (t) => {
   };
 
   lookup(context);
-  t.equals(
+  t.equal(
     context.module.raw,
     'https://github.com/lodash/lodash/archive/abc123.tar.gz',
     'raw should use commit SHA if package has gitHead'
@@ -254,12 +254,12 @@ test('lookup: module in table with useGitClone', (t) => {
   };
 
   lookup(context);
-  t.equals(
+  t.equal(
     context.module.raw,
     'https://github.com/lodash/lodash.git',
     'raw should be a git URL if useGitClone is true'
   );
-  t.equals(context.module.ref, 'v1.2.3');
+  t.equal(context.module.ref, 'v1.2.3');
   t.end();
 });
 
@@ -274,7 +274,7 @@ test('lookup: no table', (t) => {
   try {
     lookup(context);
   } catch (err) {
-    t.equals(err && err.message, 'Lookup table could not be loaded');
+    t.equal(err && err.message, 'Lookup table could not be loaded');
     t.end();
   }
 });
@@ -299,7 +299,7 @@ test('lookup: replace with no repo', (t) => {
   try {
     lookup(context);
   } catch (err) {
-    t.equals(err && err.message, 'no-repository-field in package.json');
+    t.equal(err && err.message, 'no-repository-field in package.json');
     t.end();
   }
 });
@@ -324,7 +324,7 @@ test('lookup: not found in lookup.json with --sha', (t) => {
   };
 
   lookup(context);
-  t.equals(
+  t.equal(
     context.module.raw,
     'https://github.com/test-org/test-repo/archive/customsha.tar.gz'
   );
@@ -351,7 +351,7 @@ test('lookup: --fail-flaky', (t) => {
   };
 
   lookup(context);
-  t.false(context.module.flaky, 'flaky should be disabled');
+  t.notOk(context.module.flaky, 'flaky should be disabled');
   t.end();
 });
 

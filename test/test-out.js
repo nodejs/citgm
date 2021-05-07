@@ -28,25 +28,25 @@ test('out: with color', (t) => {
     return true;
   });
   const log = Logger();
-  t.notok(
+  t.notOk(
     log.silly(),
     'there should be a silly logging level that is a' +
       ' function with no return'
   );
-  t.notok(
+  t.notOk(
     log.verbose(),
     'there should be a verbose logging level that is a function with no' +
       ' return'
   );
-  t.notok(
+  t.notOk(
     log.info(),
     'there should be a info logging level that is a function with no return'
   );
-  t.notok(
+  t.notOk(
     log.warn(),
     'there should be a warn logging level that is a function with no return'
   );
-  t.notok(
+  t.notOk(
     log.error(),
     'there should be a error logging level that is a' +
       ' function with no return'

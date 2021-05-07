@@ -24,12 +24,12 @@ test('spawn:', (t) => {
   });
 
   child.on('close', () => {
-    t.equals(
+    t.equal(
       message,
       expectedMessage,
       'we should receive "Hello world." on stdout'
     );
-    t.equals(error, '', 'there should be no data on stderr');
+    t.equal(error, '', 'there should be no data on stderr');
     t.end();
   });
 
@@ -65,10 +65,6 @@ test('spawn: windows mock', (t) => {
     value: platform
   });
 
-  t.deepEqual(
-    result,
-    expected,
-    'we should have the expected options for win32'
-  );
+  t.same(result, expected, 'we should have the expected options for win32');
   t.end();
 });

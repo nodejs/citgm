@@ -48,22 +48,22 @@ const flakeCityUsa = [
 
 test('getPassing:', (t) => {
   t.plan(4);
-  t.equals(
+  t.equal(
     util.getPassing(noPassing).length,
     0,
     'there should be no passing modules in the noPassing list'
   );
-  t.equals(
+  t.equal(
     util.getPassing(somePassing).length,
     2,
     'there should be two passing modules in the somePassing list'
   );
-  t.equals(
+  t.equal(
     util.getPassing(allPassing).length,
     3,
     'there should be three passing modules in the allPassing list'
   );
-  t.equals(
+  t.equal(
     util.getPassing(flakeCityUsa).length,
     3,
     'there should be two passing modules in the flakeCityUsa list'
@@ -73,17 +73,17 @@ test('getPassing:', (t) => {
 
 test('getSkipped:', (t) => {
   t.plan(3);
-  t.equals(
+  t.equal(
     util.getSkipped(noPassing).length,
     1,
     'there should be one skipped module in the noPassing list'
   );
-  t.equals(
+  t.equal(
     util.getSkipped(somePassing).length,
     1,
     'there should be one skipped module  in the somePassing list'
   );
-  t.equals(
+  t.equal(
     util.getSkipped(allPassing).length,
     1,
     'there should be one skipped module  in the allPassing list'
@@ -93,22 +93,22 @@ test('getSkipped:', (t) => {
 
 test('getFlakyFails:', (t) => {
   t.plan(4);
-  t.equals(
+  t.equal(
     util.getFlakyFails(noPassing).length,
     4,
     'there should be two flaky failing modules in the noPassing list'
   );
-  t.equals(
+  t.equal(
     util.getFlakyFails(somePassing).length,
     1,
     'there should be one flaky failing modules in the somePassing list'
   );
-  t.equals(
+  t.equal(
     util.getFlakyFails(allPassing).length,
     0,
     'there should be no flaky failing modules in the allPassing list'
   );
-  t.equals(
+  t.equal(
     util.getFlakyFails(flakeCityUsa).length,
     2,
     'there should be two flaky failing modules in the flakeCityUsa list'
@@ -118,22 +118,22 @@ test('getFlakyFails:', (t) => {
 
 test('getFails:', (t) => {
   t.plan(4);
-  t.equals(
+  t.equal(
     util.getFails(noPassing).length,
     3,
     'there should be three failing modules in the noPassing list'
   );
-  t.equals(
+  t.equal(
     util.getFails(somePassing).length,
     1,
     'there should be one failing modules in the somePassing list'
   );
-  t.equals(
+  t.equal(
     util.getFails(allPassing).length,
     0,
     'there should be no failing modules in the allPassing list'
   );
-  t.equals(
+  t.equal(
     util.getFails(flakeCityUsa).length,
     0,
     'there should be no failing modules in the flakeCityUsa list'
@@ -151,11 +151,11 @@ test('hasFailures:', (t) => {
     util.hasFailures(somePassing),
     'there should be failures in the somePassing list'
   );
-  t.notok(
+  t.notOk(
     util.hasFailures(allPassing),
     'there should be no failures in the allPassing list'
   );
-  t.notok(
+  t.notOk(
     util.hasFailures(flakeCityUsa),
     'there should be no failures in the flakeCityUsa list'
   );
@@ -168,7 +168,7 @@ test('util.sanitizeOutput', (t) => {
   const expected = fs.readFileSync(carriageReturnExpectedPath, 'utf-8');
   let result = util.sanitizeOutput(raw, '#');
   result += '\n';
-  t.equals(
+  t.equal(
     result,
     expected,
     'there should be a # on every line & escape char' + 'should be removed'

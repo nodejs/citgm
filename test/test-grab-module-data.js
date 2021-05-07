@@ -23,7 +23,7 @@ test('grab-module-data: lodash', async (t) => {
 
   await grabModuleData(context);
   t.ok(context.meta, 'There should be a context.meta');
-  t.equals(
+  t.equal(
     context.meta.name,
     'lodash',
     'The name of the results should be lodash'
@@ -76,7 +76,7 @@ test('grab-module-data: hosted', async (t) => {
   };
 
   await grabModuleData(context);
-  t.deepequals(
+  t.same(
     context.meta,
     expected,
     'The returned meta object should' +
@@ -121,12 +121,12 @@ test('grab-module-data: semver range', async (t) => {
 
   await grabModuleData(context);
   t.ok(context.meta, 'There should be a context.meta');
-  t.equals(
+  t.equal(
     context.meta.name,
     'omg-i-pass',
     'The name of the results should be omg-i-pass'
   );
-  t.equals(
+  t.equal(
     context.meta.version,
     '2.0.1',
     'The version should be the latest satisfying the semver range'
