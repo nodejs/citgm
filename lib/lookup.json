@@ -2,7 +2,7 @@
   "@hapi/hapi": {
     "prefix": "v",
     "maintainers": ["devinivy", "DavidTPate", "AdriVanHoudt"],
-    "skip": ["10", "osx", "aix"]
+    "skip": ["osx", "aix"]
   },
   "@hapi/shot": {
     "maintainers": "cjihrig",
@@ -255,7 +255,7 @@
     "yarn": true,
     "scripts": ["build:js", "test-ci-partial"],
     "envVar": { "CI": true },
-    "skip": ["aix", "s390x", "ppc", "10.x", "darwin", "win32"],
+    "skip": ["aix", "s390x", "ppc", "darwin", "win32"],
     "timeout": 1800000
   },
   "jquery": {
@@ -342,7 +342,7 @@
     "prefix": "v",
     "tags": "native",
     "maintainers": ["richardlau"],
-    "skip": [">=15"]
+    "skip": [">=16"]
   },
   "node-sass": {
     "prefix": "v",
@@ -464,12 +464,12 @@
   "spdy": {
     "prefix": "v",
     "flaky": ["aix", "sles"],
-    "skip": ">=10",
+    "skip": ">=12",
     "maintainers": "diasdavid"
   },
   "spdy-transport": {
     "prefix": "v",
-    "skip": ">=10",
+    "skip": ">=12",
     "flaky": "aix",
     "maintainers": "diasdavid"
   },
@@ -560,7 +560,7 @@
   },
   "weak": {
     "tags": "native",
-    "skip": [">=10"],
+    "skip": [">=12"],
     "maintainers": "tootallnate"
   },
   "winston": {
@@ -581,8 +581,7 @@
     "prefix": "v",
     "flaky": ["ppc", "rhel"],
     "expectFail": "fips",
-    "maintainers": ["SBoudrias", "sindresorhus"],
-    "skip": "10.x"
+    "maintainers": ["SBoudrias", "sindresorhus"]
   },
   "zeromq": {
     "prefix": "v",
