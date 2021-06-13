@@ -5,7 +5,7 @@
   "homepage": "https://nodejs.org",
   "preferGlobal": true,
   "type": "module",
-  "exports": null,
+  "exports": false,
   "bin": {
     "citgm": "bin/citgm.js",
     "citgm-all": "bin/citgm-all.js"
