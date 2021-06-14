@@ -1,24 +1,23 @@
-'use strict';
+import { readFileSync } from 'fs';
 
-const { test } = require('tap');
-const proxyquire = require('proxyquire');
+import tap from 'tap';
+import ansiRegexLib from 'ansi-regex';
 
-const fixtures = require('../fixtures/reporter-fixtures');
+import loggerReporter from '../../lib/reporter/logger.js';
 
-const identity = (value) => value;
-const fakeChalk = {
-  yellow: identity
-};
-const loggerReporter = proxyquire('../../lib/reporter/logger', {
-  chalk: fakeChalk
-});
+const { test } = tap;
+const ansiRegex = ansiRegexLib();
+
+const fixtures = JSON.parse(
+  readFileSync(new URL('../fixtures/reporter-fixtures.json', import.meta.url))
+);
 
 let output = '';
 
 function metaLogger(title, msg) {
-  output += title;
+  output += title.replace(ansiRegex, '');
   if (msg) {
-    output += msg;
+    output += msg.replace(ansiRegex, '');
   }
 }
 const logger = {

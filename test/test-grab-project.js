@@ -1,24 +1,27 @@
-'use strict';
 // FIXME not really a unit test
 // FIXME npm should be stubbed
 // TODO Test for local module... what does it even mean?
 
-const os = require('os');
-const path = require('path');
-const { mkdir } = require('fs').promises;
-const { promisify } = require('util');
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+import { tmpdir } from 'os';
+import { promisify } from 'util';
+import { promises as fs } from 'fs';
 
-const { stat } = require('fs-extra');
-const { test } = require('tap');
-const rimraf = promisify(require('rimraf'));
+import tap from 'tap';
+import rimrafLib from 'rimraf';
 
-const grabProject = require('../lib/grab-project');
+import { grabProject } from '../lib/grab-project.js';
 
-const sandbox = path.join(os.tmpdir(), `citgm-${Date.now()}`);
-const fixtures = path.join(__dirname, 'fixtures');
+const { test } = tap;
+const rimraf = promisify(rimrafLib);
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const sandbox = join(tmpdir(), `citgm-${Date.now()}`);
+const fixtures = join(__dirname, 'fixtures');
 
 test('grab-project: setup', async () => {
-  await mkdir(sandbox, { recursive: true });
+  await fs.mkdir(sandbox, { recursive: true });
 });
 
 test('grab-project: npm module', async (t) => {
@@ -33,7 +36,7 @@ test('grab-project: npm module', async (t) => {
     options: {}
   };
   await grabProject(context);
-  const stats = await stat(context.unpack);
+  const stats = await fs.stat(context.unpack);
   t.ok(stats.isFile(), 'The tar ball should exist on the system');
 });
 
@@ -50,7 +53,7 @@ test('grab-project: local', async (t) => {
     options: {}
   };
   await grabProject(context);
-  const stats = await stat(context.unpack);
+  const stats = await fs.stat(context.unpack);
   t.ok(stats.isFile(), 'The tar ball should exist on the system');
 });
 
@@ -66,7 +69,7 @@ test('grab-project: lookup table', async (t) => {
     options: {}
   };
   await grabProject(context);
-  const stats = await stat(context.unpack);
+  const stats = await fs.stat(context.unpack);
   t.ok(stats.isFile(), 'The tar ball should exist on the system');
 });
 
@@ -83,7 +86,7 @@ test('grab-project: local', async (t) => {
   };
   process.chdir(fixtures);
   await grabProject(context);
-  const stats = await stat(context.unpack);
+  const stats = await fs.stat(context.unpack);
   t.ok(stats.isFile(), 'The tar ball should exist on the system');
   process.chdir(__dirname);
 });
@@ -110,7 +113,7 @@ test('grab-project: use git clone', async (t) => {
   t.plan(1);
   const context = {
     emit: function () {},
-    path: path.join(sandbox, 'git-clone'),
+    path: join(sandbox, 'git-clone'),
     module: {
       useGitClone: true,
       name: 'omg-i-pass',
@@ -120,7 +123,7 @@ test('grab-project: use git clone', async (t) => {
     options: {}
   };
   await grabProject(context);
-  const stats = await stat(path.join(context.path, 'omg-i-pass/package.json'));
+  const stats = await fs.stat(join(context.path, 'omg-i-pass/package.json'));
   t.ok(stats.isFile(), 'The project must be cloned locally');
 });
 
@@ -128,7 +131,7 @@ test('grab-project: fail with bad ref', async (t) => {
   t.plan(1);
   const context = {
     emit: function () {},
-    path: path.join(sandbox, 'git-bad-ref'),
+    path: join(sandbox, 'git-bad-ref'),
     module: {
       useGitClone: true,
       name: 'omg-i-pass',

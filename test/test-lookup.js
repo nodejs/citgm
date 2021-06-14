@@ -1,12 +1,11 @@
-'use strict';
+import { EventEmitter } from 'events';
+import { readFileSync } from 'fs';
 
-const { test } = require('tap');
-const rewire = require('rewire');
+import tap from 'tap';
 
-const lookup = rewire('../lib/lookup');
+import { getLookupTable, makeUrl, lookup } from '../lib/lookup.js';
 
-const makeUrl = lookup.__get__('makeUrl');
-const getLookupTable = lookup.get;
+const { test } = tap;
 
 test('lookup: makeUrl', (t) => {
   t.plan(5);
@@ -357,7 +356,9 @@ test('lookup: --fail-flaky', (t) => {
 
 test('lookup: ensure lookup works', (t) => {
   t.plan(2);
-  const lookup = require('../lib/lookup.json');
+  const lookup = JSON.parse(
+    readFileSync(new URL('../lib/lookup.json', import.meta.url))
+  );
   t.ok(lookup, 'the lookup table should exist');
 
   const lookupKeys = Object.keys(lookup);
@@ -412,7 +413,6 @@ test('lookup: logging', (t) => {
       msg: ['--extra-param']
     }
   ];
-  const EventEmitter = require('events').EventEmitter;
   const context = new EventEmitter();
   const log = [];
   context.meta = {

@@ -1,10 +1,15 @@
-'use strict';
 // FIXME this is not a real unit test
 // FIXME it does not stub npm
 
-const { test } = require('tap');
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-const grabModuleData = require('../lib/grab-module-data');
+import tap from 'tap';
+
+import { grabModuleData } from '../lib/grab-module-data.js';
+
+const { test } = tap;
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 test('grab-module-data: lodash', async (t) => {
   t.plan(5);

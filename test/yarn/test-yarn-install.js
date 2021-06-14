@@ -1,55 +1,53 @@
-'use strict';
+import { tmpdir } from 'os';
+import { promises as fs } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+import { promisify } from 'util';
 
-const os = require('os');
-const path = require('path');
-const { mkdir } = require('fs').promises;
-const { promisify } = require('util');
+import fse from 'fs-extra';
+import tap from 'tap';
+import rimrafLib from 'rimraf';
 
-const { copy } = require('fs-extra');
-const { test } = require('tap');
-const rimraf = promisify(require('rimraf'));
+import { getPackageManagers } from '../../lib/package-manager/index.js';
+import packageManagerInstall from '../../lib/package-manager/install.js';
+import { npmContext } from '../helpers/make-context.js';
 
-const packageManager = require('../../lib/package-manager');
-const packageManagerInstall = require('../../lib/package-manager/install');
-const makeContext = require('../helpers/make-context');
+const { test } = tap;
+const rimraf = promisify(rimrafLib);
 
-const sandbox = path.join(os.tmpdir(), `citgm-${Date.now()}`);
-const fixtures = path.join(__dirname, '..', 'fixtures');
-const moduleFixtures = path.join(fixtures, 'omg-i-pass');
-const moduleTemp = path.join(sandbox, 'omg-i-pass');
-const extraParamFixtures = path.join(fixtures, 'omg-i-pass-with-install-param');
-const extraParamTemp = path.join(sandbox, 'omg-i-pass-with-install-param');
-const badFixtures = path.join(fixtures, 'omg-bad-tree');
-const badTemp = path.join(sandbox, 'omg-bad-tree');
+const sandbox = join(tmpdir(), `citgm-${Date.now()}`);
+const fixtures = join(
+  dirname(fileURLToPath(import.meta.url)),
+  '..',
+  'fixtures'
+);
+const moduleFixtures = join(fixtures, 'omg-i-pass');
+const moduleTemp = join(sandbox, 'omg-i-pass');
+const extraParamFixtures = join(fixtures, 'omg-i-pass-with-install-param');
+const extraParamTemp = join(sandbox, 'omg-i-pass-with-install-param');
+const badFixtures = join(fixtures, 'omg-bad-tree');
+const badTemp = join(sandbox, 'omg-bad-tree');
 
 let packageManagers;
 
 test('yarn-install: setup', async () => {
-  packageManagers = await packageManager.getPackageManagers();
-  await mkdir(sandbox, { recursive: true });
+  packageManagers = await getPackageManagers();
+  await fs.mkdir(sandbox, { recursive: true });
   await Promise.all([
-    copy(moduleFixtures, moduleTemp),
-    copy(extraParamFixtures, extraParamTemp),
-    copy(badFixtures, badTemp)
+    fse.copy(moduleFixtures, moduleTemp),
+    fse.copy(extraParamFixtures, extraParamTemp),
+    fse.copy(badFixtures, badTemp)
   ]);
 });
 
 test('yarn-install: basic module', async () => {
-  const context = makeContext.npmContext(
-    'omg-i-pass',
-    packageManagers,
-    sandbox
-  );
+  const context = npmContext('omg-i-pass', packageManagers, sandbox);
   await packageManagerInstall('yarn', context);
 });
 
 test('yarn-install: no package.json', async (t) => {
   t.plan(2);
-  const context = makeContext.npmContext(
-    'omg-i-fail',
-    packageManagers,
-    sandbox
-  );
+  const context = npmContext('omg-i-fail', packageManagers, sandbox);
   try {
     await packageManagerInstall('yarn', context);
   } catch (err) {
@@ -60,14 +58,9 @@ test('yarn-install: no package.json', async (t) => {
 
 test('yarn-install: timeout', async (t) => {
   t.plan(2);
-  const context = makeContext.npmContext(
-    'omg-i-pass',
-    packageManagers,
-    sandbox,
-    {
-      timeout: 100
-    }
-  );
+  const context = npmContext('omg-i-pass', packageManagers, sandbox, {
+    timeout: 10
+  });
   try {
     await packageManagerInstall('yarn', context);
   } catch (err) {
@@ -78,11 +71,7 @@ test('yarn-install: timeout', async (t) => {
 
 test('yarn-install: failed install', async (t) => {
   t.plan(3);
-  const context = makeContext.npmContext(
-    'omg-bad-tree',
-    packageManagers,
-    sandbox
-  );
+  const context = npmContext('omg-bad-tree', packageManagers, sandbox);
   const expected = {
     testError: /\/THIS-WILL-FAIL: Not found/
   };

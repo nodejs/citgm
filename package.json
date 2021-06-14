@@ -2,9 +2,10 @@
   "name": "citgm",
   "version": "7.2.2",
   "description": "The Canary in the Goldmine",
-  "homepage": "http://nodejs.org",
-  "main": "bin/citgm",
+  "homepage": "https://nodejs.org",
   "preferGlobal": true,
+  "type": "module",
+  "exports": false,
   "bin": {
     "citgm": "bin/citgm.js",
     "citgm-all": "bin/citgm-all.js"
@@ -14,11 +15,9 @@
     "lib"
   ],
   "scripts": {
-    "coverage-html": "npm run tap -- --coverage-report=html",
     "lint": "eslint bin/* lib/ test/ --cache",
-    "tap": "tap -J \"test/**/test-*.js\"",
-    "test": "npm run lint && npm run tap",
-    "test-ci": "npm run lint && npm run tap -- --coverage-report=lcov"
+    "tap": "c8 --reporter lcov tap --no-coverage -J \"test/**/test-*.js\"",
+    "test": "npm run lint && npm run tap"
   },
   "author": "James M Snell <jasnell@gmail.com> (http://jasnell.me)",
   "repository": {
@@ -46,10 +45,10 @@
     "readable-stream": "^3.6.0",
     "request": "^2.88.2",
     "rimraf": "^3.0.2",
-    "root-check": "^1.0.0",
+    "root-check": "^2.0.0",
     "semver": "^7.3.5",
-    "strip-ansi": "^6.0.0",
-    "supports-color": "^8.1.1",
+    "strip-ansi": "^7.0.0",
+    "supports-color": "^9.0.1",
     "tar": "^6.1.0",
     "uid-number": "0.0.6",
     "uuid": "^8.3.2",
@@ -61,13 +60,12 @@
     "yarn": "^1.22.10"
   },
   "devDependencies": {
+    "c8": "^7.7.2",
     "eslint": "^7.28.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "fs-extra": "^10.0.0",
     "prettier": "^2.3.1",
-    "proxyquire": "^2.1.3",
-    "rewire": "^5.0.0",
     "string-to-stream": "^3.0.1",
     "tap": "^15.0.9",
     "tap-parser": "^10.1.0",

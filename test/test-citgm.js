@@ -1,8 +1,8 @@
-'use strict';
+import tap from 'tap';
 
-const { test } = require('tap');
+import { Tester } from '../lib/citgm.js';
 
-const citgm = require('../lib/citgm');
+const { test } = tap;
 
 test('citgm: omg-i-pass', (t) => {
   t.plan(2);
@@ -15,7 +15,7 @@ test('citgm: omg-i-pass', (t) => {
 
   const mod = 'omg-i-pass';
 
-  new citgm.Tester(mod, options)
+  new Tester(mod, options)
     .on('start', (name) => {
       t.equal(name, mod, 'it should be omg-i-pass');
     })
@@ -41,7 +41,7 @@ test('citgm: omg-i-pass from git url', (t) => {
 
   const mod = 'git+https://github.com/MylesBorins/omg-i-pass';
 
-  const tester = new citgm.Tester(mod, options);
+  const tester = new Tester(mod, options);
   tester
     .on('start', (name) => {
       t.equal(name, mod, 'it should be the raw URL');

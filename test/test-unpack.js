@@ -1,12 +1,12 @@
-'use strict';
+import { join } from 'path';
+import { promises as fs } from 'fs';
 
-const path = require('path');
+import tap from 'tap';
 
-const { stat } = require('fs-extra');
-const { test } = require('tap');
+import * as tempDirectory from '../lib/temp-directory.js';
+import { unpack } from '../lib/unpack.js';
 
-const tempDirectory = require('../lib/temp-directory');
-const unpack = require('../lib/unpack');
+const { test } = tap;
 
 test('unpack: context.unpack = null', async (t) => {
   t.plan(1);
@@ -29,7 +29,7 @@ test('unpack: context.unpack = null', async (t) => {
 test('unpack: context.unpack is invalid path', async (t) => {
   t.plan(1);
   const context = {
-    unpack: path.join(__dirname, '..', 'fixtures', 'do-not-exist.tar.gz'),
+    unpack: new URL('../fixtures/do-not-exist.tar.gz', import.meta.url),
     emit: function () {}
   };
 
@@ -60,7 +60,7 @@ test('unpack: valid unpack', async (t) => {
   await tempDirectory.create(context);
 
   await unpack(context);
-  const stats = await stat(path.join(context.path, 'omg-i-pass'));
+  const stats = await fs.stat(join(context.path, 'omg-i-pass'));
   t.ok(stats.isDirectory(), 'the untarred result should be a directory');
   await tempDirectory.remove(context);
 });

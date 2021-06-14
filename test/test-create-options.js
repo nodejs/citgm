@@ -1,10 +1,12 @@
-'use strict';
+import { resolve, dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-const path = require('path');
+import tap from 'tap';
 
-const { test } = require('tap');
+import { createOptions } from '../lib/create-options.js';
 
-const createOptions = require('../lib/create-options');
+const { test } = tap;
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 test('create-options:', (t) => {
   t.plan(4);
@@ -36,7 +38,7 @@ test('create-options:', (t) => {
   env['TMP'] = 'npm_config_tmp';
   env['TMPDIR'] = 'npm_config_tmp';
   // Set dynamically to support Windows.
-  env['npm_config_nodedir'] = path.resolve(process.cwd(), nodePath);
+  env['npm_config_nodedir'] = resolve(process.cwd(), nodePath);
 
   t.equal(typeof options, 'object', 'We should get back an object');
   t.notOk(options.uid, 'There should not be a uid in the options');

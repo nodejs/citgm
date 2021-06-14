@@ -1,9 +1,8 @@
-'use strict';
+import tap from 'tap';
 
-const { test } = require('tap');
-const rewire = require('rewire');
+import { spawn } from '../lib/spawn.js';
 
-const spawn = rewire('../lib/spawn');
+const { test } = tap;
 
 test('spawn:', (t) => {
   t.plan(2);
@@ -15,10 +14,12 @@ test('spawn:', (t) => {
   const expectedMessage =
     process.platform === 'win32' ? '"Hello world."\r\n' : 'Hello world.\n';
 
+  child.stderr.setEncoding('utf-8');
   child.stderr.on('data', (chunk) => {
     error += chunk;
   });
 
+  child.stdout.setEncoding('utf-8');
   child.stdout.on('data', (chunk) => {
     message += chunk;
   });
@@ -34,37 +35,4 @@ test('spawn:', (t) => {
   });
 
   child.on('error', t.error);
-});
-
-test('spawn: windows mock', (t) => {
-  t.plan(1);
-  const child = spawn.__get__('child');
-  const sp = child.spawn;
-  const platform = process.platform;
-  Object.defineProperty(process, 'platform', {
-    value: 'win32'
-  });
-
-  child.spawn = function (cmd, args, options) {
-    return {
-      cmd: cmd,
-      args: args,
-      options: options
-    };
-  };
-
-  const result = spawn('echo', ['Hello world.']);
-  const expected = {
-    cmd: 'cmd',
-    args: ['/C', 'echo', 'Hello world.'],
-    options: undefined
-  };
-
-  child.spawn = sp;
-  Object.defineProperty(process, 'platform', {
-    value: platform
-  });
-
-  t.same(result, expected, 'we should have the expected options for win32');
-  t.end();
 });

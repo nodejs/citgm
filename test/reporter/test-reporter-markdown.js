@@ -1,9 +1,14 @@
-'use strict';
+import { readFileSync } from 'fs';
 
-const { test } = require('tap');
+import tap from 'tap';
 
-const markdown = require('../../lib/reporter/markdown');
-const fixtures = require('../fixtures/reporter-fixtures');
+import markdown from '../../lib/reporter/markdown.js';
+
+const { test } = tap;
+
+const fixtures = JSON.parse(
+  readFileSync(new URL('../fixtures/reporter-fixtures.json', import.meta.url))
+);
 
 test('single passing module:', (t) => {
   t.plan(1);
