@@ -504,7 +504,8 @@
   "thread-sleep": {
     "install": ["install", "--build-from-source"],
     "tags": "native",
-    "maintainers": ["forbeslindesay", "timothygu"]
+    "maintainers": ["forbeslindesay", "timothygu"],
+    "flaky": true
   },
   "through2": {
     "maintainers": "rvagg",
