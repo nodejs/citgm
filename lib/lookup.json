@@ -253,7 +253,6 @@
     "prefix": "v",
     "maintainers": ["cpojer", "scotthovestadt", "SimenB", "thymikee", "jeysal"],
     "yarn": true,
-    "head": true,
     "scripts": ["remove-examples", "build:js", "jest --color -i"],
     "envVar": { "CI": true },
     "skip": ["aix", "s390x", "ppc", "darwin", "win32"],
