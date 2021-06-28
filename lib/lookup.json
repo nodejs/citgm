@@ -2,7 +2,7 @@
   "@hapi/hapi": {
     "prefix": "v",
     "maintainers": ["devinivy", "DavidTPate", "AdriVanHoudt"],
-    "skip": ["darwin", "aix", "debian-10"]
+    "skip": ["darwin", "aix", "debian"]
   },
   "@hapi/shot": {
     "maintainers": "cjihrig",
