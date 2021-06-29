@@ -255,7 +255,7 @@
     "prefix": "v",
     "maintainers": ["cpojer", "scotthovestadt", "SimenB", "thymikee", "jeysal"],
     "yarn": true,
-    "scripts": ["build:js", "test-ci-partial"],
+    "scripts": ["remove-examples", "build:js", "test-ci-partial"],
     "envVar": { "CI": true },
     "skip": ["aix", "s390x", "ppc", "darwin", "win32"],
     "timeout": 1800000
