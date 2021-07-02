@@ -1,4 +1,11 @@
 {
+  "@babel/core": {
+    "maintainers": "nicolo-ribaudo",
+    "prefix": "v",
+    "yarn": true,
+    "scripts": ["build", "test"],
+    "skip": ["win32", "aix", "s390"]
+  },
   "@hapi/hapi": {
     "prefix": "v",
     "maintainers": ["devinivy", "DavidTPate", "AdriVanHoudt"],
