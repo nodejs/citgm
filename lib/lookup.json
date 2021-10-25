@@ -498,6 +498,7 @@
     "skip": ">=11"
   },
   "tape": {
+    "head": true,
     "prefix": "v",
     "maintainers": "substack"
   },
