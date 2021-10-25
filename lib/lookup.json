@@ -539,7 +539,8 @@
   "underscore": {
     "flaky": ["aix", "s390"],
     "skip": "win32",
-    "maintainers": "jashkenas"
+    "maintainers": "jashkenas",
+    "ignoreGitHead": true
   },
   "undici": {
     "prefix": "v",
