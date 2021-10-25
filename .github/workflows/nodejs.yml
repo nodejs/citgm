@@ -39,6 +39,7 @@ jobs:
           - 12.x
           - 14.x
           - 16.x
+          - 17.x
 
     runs-on: ${{ matrix.os }}
 
@@ -58,4 +59,4 @@ jobs:
         run: npm run tap -- --coverage-report=lcov
 
       - name: Upload coverage report to Codecov
-        uses: codecov/codecov-action@v1
+        uses: codecov/codecov-action@v2
