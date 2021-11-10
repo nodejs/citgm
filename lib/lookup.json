@@ -375,7 +375,8 @@
     "prefix": "pug@",
     "yarn": true,
     "maintainers": ["tj", "ForbesLindesay"],
-    "skip": ["win32", "aix"],
+    "skip": ["win32", "aix", ">=16"],
+    "comment": "Error message changes in V8 9.3",
     "repo": "https://github.com/pugjs/pug"
   },
   "pump": {
