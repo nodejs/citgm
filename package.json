@@ -51,6 +51,7 @@
     "supports-color": "^9.0.2",
     "tar": "^6.1.11",
     "uid-number": "0.0.6",
+    "undici": "^4.9.5",
     "uuid": "^8.3.2",
     "which": "^2.0.2",
     "winston": "^3.3.3",
