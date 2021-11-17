@@ -186,7 +186,9 @@ test('citgm-all: includeTags multiple', (t) => {
   t.plan(1);
   const proc = spawn(citgmAllPath, [
     '--includeTags',
-    'tag1 noTag1 NoTag2',
+    'tag1',
+    'noTag1',
+    'NoTag2',
     '-l',
     'test/fixtures/custom-lookup-tags.json'
   ]);
@@ -218,7 +220,9 @@ test('citgm-all: includeTags modulename multiple', (t) => {
   t.plan(1);
   const proc = spawn(citgmAllPath, [
     '--includeTags',
-    'omg-i-pass noTag1 NoTag2',
+    'omg-i-pass',
+    'noTag1',
+    'NoTag2',
     '-l',
     'test/fixtures/custom-lookup-tags.json'
   ]);
