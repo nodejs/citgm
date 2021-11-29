@@ -2,7 +2,8 @@
   "@hapi/hapi": {
     "prefix": "v",
     "maintainers": ["devinivy", "DavidTPate", "AdriVanHoudt"],
-    "skip": ["darwin", "aix", "debian"]
+    "skip": ["darwin", "aix", "debian", ">=17"],
+    "comment": "Verbatim DNS output"
   },
   "@hapi/shot": {
     "maintainers": "cjihrig",
@@ -89,6 +90,7 @@
   "cheerio": {
     "skip": ["aix", "win32"],
     "head": true,
+    "useGitClone": true,
     "maintainers": ["matthewmueller", "jugglinmike"]
   },
   "clinic": {
@@ -99,7 +101,7 @@
   },
   "coffeescript": {
     "maintainers": ["jashkenas", "GeoffreyBooth"],
-    "skip": "rhel"
+    "skip": ["rhel", "aix"]
   },
   "commander": {
     "prefix": "v",
@@ -171,7 +173,8 @@
   "express-session": {
     "prefix": "v",
     "maintainers": "dougwilson",
-    "skip": "win32"
+    "skip": ">=16",
+    "comment": "https://github.com/expressjs/session/pull/844"
   },
   "fastify": {
     "maintainers": ["mcollina", "delvedor"],
@@ -361,7 +364,8 @@
   "path-to-regexp": {
     "prefix": "v",
     "maintainers": "blakeembrey",
-    "skip": ["aix"]
+    "skip": ["aix", ">=17"],
+    "comment": "OpenSSL 3.0"
   },
   "pino": {
     "prefix": "v",
@@ -460,7 +464,9 @@
   },
   "socket.io": {
     "maintainers": "rauchg",
-    "head": true
+    "head": true,
+    "skip": ">=17",
+    "comment": "WS is not compatible"
   },
   "spawn-wrap": {
     "prefix": "v",
@@ -534,7 +540,8 @@
     "prefix": "v",
     "flaky": ["ppc", "darwin"],
     "maintainers": "mishoo",
-    "skip": "12"
+    "skip": ["12", true],
+    "comment": "Tests timeout"
   },
   "underscore": {
     "flaky": ["aix", "s390"],
