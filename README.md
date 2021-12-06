@@ -133,7 +133,7 @@ For syntax, see [lookup.json](./lib/lookup.json), the available attributes are:
 "skip": true                 Completely skip the module
 "expectFail"                 Expect the module to fail, error if it passes
 "repo": "https://github.com/pugjs/jade" - Use a different github repo
-"skipAnsi": true             Strip ansi data from output stream of npm
+"stripAnsi": true            Strip ansi data from output stream of npm
 "sha": "<git-commit-sha>"    Test against a specific commit
 "envVar"                     Pass an environment variable before running
 "install": ["install", "--param1", "--param2"] - Array of command line parameters passed to 'npm' or 'yarn' as install arguments
