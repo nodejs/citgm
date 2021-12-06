@@ -61,7 +61,7 @@
   "blake2b-wasm": {
     "maintainers": ["mafintosh", "addaleax"],
     "prefix": "v",
-    "skip": ["win32"]
+    "skip": ["win32", "aix", "s390"]
   },
   "bluebird": {
     "prefix": "v",
