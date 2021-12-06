@@ -88,7 +88,7 @@
     "skip": "win32"
   },
   "cheerio": {
-    "skip": ["aix", "win32"],
+    "skip": ["aix", "s390", "win32"],
     "head": true,
     "useGitClone": true,
     "maintainers": ["matthewmueller", "jugglinmike"]
