@@ -91,7 +91,8 @@
     "skip": ["aix", "s390", "win32"],
     "head": true,
     "useGitClone": true,
-    "maintainers": ["matthewmueller", "jugglinmike"]
+    "maintainers": ["matthewmueller", "jugglinmike"],
+    "scripts": ["test:jest"]
   },
   "clinic": {
     "maintainers": "mcollina",
