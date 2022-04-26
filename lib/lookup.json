@@ -262,6 +262,7 @@
     "prefix": "v",
     "maintainers": ["cpojer", "scotthovestadt", "SimenB", "thymikee", "jeysal"],
     "yarn": true,
+    "install": ["install", "--no-immutable"],
     "scripts": ["remove-examples", "build:js", "test-ci-partial"],
     "envVar": { "CI": true },
     "skip": ["aix", "s390x", "ppc", "darwin", "win32"],
