@@ -263,7 +263,7 @@
     "maintainers": ["cpojer", "scotthovestadt", "SimenB", "thymikee", "jeysal"],
     "yarn": true,
     "install": ["install", "--no-immutable"],
-    "scripts": ["remove-examples", "build:js", "test-ci-partial"],
+    "scripts": ["build:js", "remove-examples", "test-ci-partial"],
     "envVar": { "CI": true },
     "skip": ["aix", "s390x", "ppc", "darwin", "win32"],
     "timeout": 1800000
