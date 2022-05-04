@@ -26,7 +26,7 @@
   },
   "JSONStream": {
     "prefix": "v",
-    "skip": "win32",
+    "skip": ["win32", "14"],
     "maintainers": "dominictarr"
   },
   "acorn": {
