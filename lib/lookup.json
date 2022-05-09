@@ -24,6 +24,23 @@
     "maintainers": "cjihrig",
     "prefix": "v"
   },
+  "@yarnpkg/cli": {
+    "install": ["install", "--mode", "skip-build"],
+    "maintainers": ["arcanis", "merceyz", "paul-soporan", "larixer"],
+    "prefix": "@yarnpkg/cli@",
+    "repo": "https://github.com/yarnpkg/berry",
+    "scripts": [
+      "build:cli",
+      "typecheck:all",
+      "test:lint",
+      "test:unit",
+      "test:integration"
+    ],
+    "flaky": "ppc",
+    "skip": ["aix", "s390x"],
+    "timeout": 1800000,
+    "yarn": true
+  },
   "JSONStream": {
     "prefix": "v",
     "skip": ["win32", "14"],
