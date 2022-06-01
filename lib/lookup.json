@@ -33,7 +33,11 @@
       "build:cli",
       "typecheck:all",
       "test:lint",
-      "test:unit",
+      [
+        "test:unit",
+        "--testPathIgnorePatterns",
+        "./packages/plugin-patch/tests/diffFolders.test.ts"
+      ],
       "test:integration"
     ],
     "flaky": "ppc",
