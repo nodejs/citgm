@@ -68,8 +68,8 @@
     "fs-extra": "^10.0.0",
     "prettier": "^2.5.1",
     "string-to-stream": "^3.0.1",
-    "tap": "^15.1.5",
-    "tap-parser": "^10.1.0",
+    "tap": "^16.2.0",
+    "tap-parser": "^11.0.1",
     "xml2js": "^0.4.23"
   },
   "prettier": {
