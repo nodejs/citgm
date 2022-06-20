@@ -16,10 +16,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Use Node.js 16
+      - name: Use LTS Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: lts/*
 
       - name: Install packages
         run: npm install
@@ -28,34 +28,12 @@ jobs:
         run: npm run lint
 
   test:
-    strategy:
-      fail-fast: false
-      matrix:
-        os:
-          - macos-latest
-          - ubuntu-latest
-          - windows-latest
-        node-version:
-          - 14.x
-          - 16.x
-          - 18.x
+    name: Test
 
-    runs-on: ${{ matrix.os }}
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Install packages
-        run: npm install
-
-      - name: Run test
-        run: npm run tap -- --coverage-report=lcov
-
-      - name: Upload coverage report to Codecov
-        uses: codecov/codecov-action@v3
+    uses: pkgjs/action/.github/workflows/node-test.yaml@v0.1
+    with:
+      runs-on: ubuntu-latest, macos-latest, windows-latest
+      test-command: npm run tap -- --coverage-report=lcov
+      post-test-steps: |
+        - name: Coverage Report
+          uses: codecov/codecov-action@v3
