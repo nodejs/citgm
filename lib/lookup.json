@@ -118,11 +118,6 @@
     "flaky": "win32",
     "maintainers": "mafintosh"
   },
-  "david": {
-    "prefix": "v",
-    "maintainers": "alanshaw",
-    "skip": true
-  },
   "debug": {
     "maintainers": ["qix", "tootallnate"],
     "skip": [true, "aix", "ppc", "s390", "win32"],
