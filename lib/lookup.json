@@ -25,6 +25,7 @@
     "prefix": "v"
   },
   "@yarnpkg/cli": {
+    "envVar": { "TEST_IGNORE_TIMEOUT_FAILURES": true },
     "install": ["install", "--mode", "skip-build"],
     "maintainers": ["arcanis", "merceyz", "paul-soporan", "larixer"],
     "prefix": "@yarnpkg/cli@",
