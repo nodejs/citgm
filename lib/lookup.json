@@ -37,7 +37,9 @@
       [
         "test:unit",
         "--testPathIgnorePatterns",
-        "./packages/plugin-patch/tests/diffFolders.test.ts"
+        "./packages/plugin-patch/tests/diffFolders.test.ts",
+        "./packages/acceptance-tests/pkg-tests-specs/sources/commands/patchCommit.test.ts",
+        "./packages/acceptance-tests/pkg-tests-specs/sources/commands/patch.test.ts"
       ],
       "test:integration"
     ],
