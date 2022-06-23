@@ -311,7 +311,7 @@
   },
   "mkdirp": {
     "head": true,
-    "skip": true,
+    "skip": "win32",
     "maintainers": "substack"
   },
   "mocha": {
