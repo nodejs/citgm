@@ -176,12 +176,6 @@
     "maintainers": ["mcollina", "delvedor"],
     "prefix": "v"
   },
-  "ffi": {
-    "flaky": ["ppc", "aix", "s390", "ubuntu"],
-    "skip": true,
-    "tags": "native",
-    "maintainers": "TooTallNate"
-  },
   "flush-write-stream": {
     "prefix": "v",
     "maintainers": "mafintosh",
