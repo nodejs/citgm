@@ -580,9 +580,9 @@
     "skip": ["win32", "darwin"]
   },
   "weak": {
-    "tags": "native",
-    "skip": [">=12"],
-    "maintainers": "tootallnate"
+    "head": true,
+    "maintainers": "tootallnate",
+    "tags": "native"
   },
   "winston": {
     "flaky": ["win32", "ppc", "s390", "darwin"],
