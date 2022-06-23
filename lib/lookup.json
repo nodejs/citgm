@@ -579,11 +579,6 @@
     "maintainers": "substack",
     "skip": ["win32", "darwin"]
   },
-  "weak": {
-    "tags": "native",
-    "skip": [">=12"],
-    "maintainers": "tootallnate"
-  },
   "winston": {
     "flaky": ["win32", "ppc", "s390", "darwin"],
     "maintainers": "indexzero"
