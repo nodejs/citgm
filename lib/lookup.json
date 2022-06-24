@@ -575,11 +575,12 @@
     "maintainers": ["einaros", "3rd-Eden", "lpinca"]
   },
   "yargs": {
+    "comment": "Appears to require npm 8 to successfully install.",
     "prefix": "v",
-    "flaky": "ppc",
     "expectFail": "fips",
     "maintainers": ["bcoe", "addaleax"],
-    "head": true
+    "head": true,
+    "skip": ["14"]
   },
   "yeoman-generator": {
     "prefix": "v",
