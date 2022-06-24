@@ -344,12 +344,6 @@
     "maintainers": ["nodejs/node-gyp"],
     "skip": ["win32"]
   },
-  "node-report": {
-    "prefix": "v",
-    "tags": "native",
-    "maintainers": ["richardlau"],
-    "skip": [">=16"]
-  },
   "node-sass": {
     "prefix": "v",
     "tags": "native",
