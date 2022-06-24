@@ -1,4 +1,19 @@
 {
+  "@clinic/bubbleprof": {
+    "maintainers": ["mcollina", "rafaelgss"],
+    "prefix": "v",
+    "flaky": true
+  },
+  "@clinic/doctor": {
+    "maintainers": ["mcollina", "rafaelgss"],
+    "prefix": "v",
+    "flaky": true
+  },
+  "@clinic/flame": {
+    "maintainers": ["mcollina", "rafaelgss"],
+    "prefix": "v",
+    "flaky": true
+  },
   "@hapi/hapi": {
     "prefix": "v",
     "maintainers": ["devinivy", "DavidTPate", "AdriVanHoudt"],
@@ -8,21 +23,6 @@
   "@hapi/shot": {
     "maintainers": "cjihrig",
     "prefix": "v"
-  },
-  "@nearform/bubbleprof": {
-    "maintainers": "mcollina",
-    "prefix": "v",
-    "flaky": true
-  },
-  "@nearform/doctor": {
-    "maintainers": "mcollina",
-    "prefix": "v",
-    "flaky": true
-  },
-  "@nearform/flame": {
-    "maintainers": "mcollina",
-    "prefix": "v",
-    "flaky": true
   },
   "JSONStream": {
     "prefix": "v",
