@@ -353,8 +353,7 @@
   "path-to-regexp": {
     "prefix": "v",
     "maintainers": "blakeembrey",
-    "skip": ["aix", ">=17"],
-    "comment": "OpenSSL 3.0"
+    "skip": ["aix"]
   },
   "pino": {
     "prefix": "v",
