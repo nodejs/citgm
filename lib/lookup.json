@@ -454,7 +454,9 @@
     "skip": "win32",
     "prefix": "v",
     "maintainers": "isaacs",
-    "expectFail": "fips"
+    "expectFail": "fips",
+    "envVar": { "npm_config_ignore_scripts": "true" },
+    "comment": "postlint script fails"
   },
   "serialport": {
     "prefix": "serialport@",
