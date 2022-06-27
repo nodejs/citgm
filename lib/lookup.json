@@ -168,9 +168,7 @@
   },
   "express-session": {
     "prefix": "v",
-    "maintainers": "dougwilson",
-    "skip": ">=16",
-    "comment": "https://github.com/expressjs/session/pull/844"
+    "maintainers": "dougwilson"
   },
   "fastify": {
     "maintainers": ["mcollina", "delvedor"],
