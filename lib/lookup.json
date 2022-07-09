@@ -39,7 +39,10 @@
         "--testPathIgnorePatterns",
         "./packages/plugin-patch/tests/diffFolders.test.ts",
         "./packages/acceptance-tests/pkg-tests-specs/sources/commands/patchCommit.test.ts",
-        "./packages/acceptance-tests/pkg-tests-specs/sources/commands/patch.test.ts"
+        "./packages/acceptance-tests/pkg-tests-specs/sources/commands/patch.test.ts",
+        "./packages/acceptance-tests/pkg-tests-specs/sources/protocols/git.test.js",
+        "./packages/acceptance-tests/pkg-tests-specs/sources/https.test.js",
+        "./packages/acceptance-tests/pkg-tests-specs/sources/script.test.js"
       ],
       "test:integration"
     ],
