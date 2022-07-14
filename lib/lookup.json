@@ -47,7 +47,6 @@
       "test:integration"
     ],
     "flaky": "ppc",
-    "skip": ["aix", "s390x"],
     "timeout": 1800000,
     "yarn": true
   },
