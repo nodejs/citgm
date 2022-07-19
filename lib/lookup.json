@@ -37,14 +37,17 @@
       [
         "test:unit",
         "--testPathIgnorePatterns",
-        "./packages/plugin-patch/tests/diffFolders.test.ts",
+        "./packages/plugin-patch/tests/diffFolders.test.ts"
+      ],
+      [
+        "test:integration",
+        "--testPathIgnorePatterns",
         "./packages/acceptance-tests/pkg-tests-specs/sources/commands/patchCommit.test.ts",
         "./packages/acceptance-tests/pkg-tests-specs/sources/commands/patch.test.ts",
         "./packages/acceptance-tests/pkg-tests-specs/sources/protocols/git.test.js",
         "./packages/acceptance-tests/pkg-tests-specs/sources/https.test.js",
         "./packages/acceptance-tests/pkg-tests-specs/sources/script.test.js"
-      ],
-      "test:integration"
+      ]
     ],
     "flaky": "ppc",
     "timeout": 1800000,
