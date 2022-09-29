@@ -299,6 +299,7 @@
     "maintainers": "broofa"
   },
   "minimist": {
+    "npm": true,
     "maintainers": "substack"
   },
   "mkdirp": {
@@ -383,14 +384,6 @@
     "prefix": "v",
     "maintainers": "kriskowal",
     "skip": "win32"
-  },
-  "radium": {
-    "prefix": "v",
-    "expectFail": "fips",
-    "yarn": true,
-    "skip": ["aix", "ppc"],
-    "maintainers": ["ianobermiller", "alexlande"],
-    "scripts": ["test-node"]
   },
   "react": {
     "prefix": "v",
@@ -574,12 +567,11 @@
     "maintainers": ["einaros", "3rd-Eden", "lpinca"]
   },
   "yargs": {
-    "comment": "Appears to require npm 8 to successfully install.",
+    "comment": "Install from source is currently broken due to TS error",
     "prefix": "v",
     "expectFail": "fips",
     "maintainers": ["bcoe", "addaleax"],
-    "head": true,
-    "skip": ["14"]
+    "skip": true
   },
   "yeoman-generator": {
     "prefix": "v",
