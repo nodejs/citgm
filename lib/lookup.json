@@ -31,7 +31,7 @@
     "prefix": "@yarnpkg/cli@",
     "repo": "https://github.com/yarnpkg/berry",
     "scripts": [
-      "build:cli --no-minify",
+      ["build:cli", "--no-minify"],
       "typecheck:all",
       "test:lint",
       [
