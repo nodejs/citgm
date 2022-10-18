@@ -255,6 +255,14 @@
     "skip": ["aix", "s390x", "ppc", "darwin", "win32"],
     "timeout": 1800000
   },
+  "jose": {
+    "maintainers": ["panva"],
+    "prefix": "v",
+    "scripts": ["test", "tap:node"],
+    "envVar": { "CITGM": true },
+    "skip": ["aix"],
+    "comment": "esbuild doesn't support aix"
+  },
   "jquery": {
     "skip": "win32",
     "flaky": ["linux", "aix", "darwin"],
