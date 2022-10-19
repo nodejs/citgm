@@ -349,6 +349,11 @@
     "prefix": "v",
     "skip": ["aix", "s390"]
   },
+  "openid-client": {
+    "maintainers": ["panva"],
+    "prefix": "v",
+    "envVar": { "CITGM": true }
+  },
   "path-to-regexp": {
     "prefix": "v",
     "maintainers": "blakeembrey",
