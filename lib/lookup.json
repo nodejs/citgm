@@ -41,6 +41,7 @@
       ],
       [
         "test:integration",
+        "--runInBand",
         "--testPathIgnorePatterns",
         "./packages/acceptance-tests/pkg-tests-specs/sources/commands/patchCommit.test.ts",
         "./packages/acceptance-tests/pkg-tests-specs/sources/commands/patch.test.ts",
