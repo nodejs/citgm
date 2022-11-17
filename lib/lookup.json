@@ -51,7 +51,7 @@
       ]
     ],
     "flaky": "ppc",
-    "timeout": 1800000,
+    "timeout": 2400000,
     "yarn": true
   },
   "JSONStream": {
