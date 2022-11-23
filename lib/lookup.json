@@ -46,13 +46,11 @@
         "./packages/acceptance-tests/pkg-tests-specs/sources/commands/patchCommit.test.ts",
         "./packages/acceptance-tests/pkg-tests-specs/sources/commands/patch.test.ts",
         "./packages/acceptance-tests/pkg-tests-specs/sources/protocols/git.test.js",
-        "./packages/acceptance-tests/pkg-tests-specs/sources/features/plugins.test.ts",
-        "./packages/acceptance-tests/pkg-tests-specs/sources/https.test.js",
         "./packages/acceptance-tests/pkg-tests-specs/sources/script.test.js"
       ]
     ],
-    "flaky": "ppc",
-    "timeout": 2400000,
+    "flaky": ["ppc", "fedora"],
+    "timeout": 3000000,
     "yarn": true
   },
   "JSONStream": {
