@@ -297,6 +297,12 @@
     "expectFail": "fips",
     "maintainers": "jdalton"
   },
+  "lru-cache": {
+    "prefix": "v",
+    "maintainers": "isaacs",
+    "flaky": ["win32"],
+    "skip": "s390"
+  },
   "microtime": {
     "prefix": "v",
     "tags": "native",
