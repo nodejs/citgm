@@ -49,7 +49,7 @@
         "./packages/acceptance-tests/pkg-tests-specs/sources/script.test.js"
       ]
     ],
-    "flaky": ["ppc", "fedora", "debian"],
+    "flaky": ["ppc", "fedora", "debian", "win"],
     "timeout": 3000000,
     "yarn": true
   },
