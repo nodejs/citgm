@@ -312,8 +312,8 @@
   },
   "mkdirp": {
     "head": true,
-    "skip": "win32",
-    "maintainers": "substack"
+    "skip": ["win32", true],
+    "maintainers": "isaacs"
   },
   "mocha": {
     "prefix": "v",
