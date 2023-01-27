@@ -5,23 +5,20 @@
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { tmpdir } from 'os';
-import { promisify } from 'util';
-import { promises as fs } from 'fs';
+import { mkdir, stat, rm } from 'node:fs/promises';
 
 import tap from 'tap';
-import rimrafLib from 'rimraf';
 
 import { grabProject } from '../lib/grab-project.js';
 
 const { test } = tap;
-const rimraf = promisify(rimrafLib);
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const sandbox = join(tmpdir(), `citgm-${Date.now()}`);
 const fixtures = join(__dirname, 'fixtures');
 
 test('grab-project: setup', async () => {
-  await fs.mkdir(sandbox, { recursive: true });
+  await mkdir(sandbox, { recursive: true });
 });
 
 test('grab-project: npm module', async (t) => {
@@ -36,7 +33,7 @@ test('grab-project: npm module', async (t) => {
     options: {}
   };
   await grabProject(context);
-  const stats = await fs.stat(context.unpack);
+  const stats = await stat(context.unpack);
   t.ok(stats.isFile(), 'The tar ball should exist on the system');
 });
 
@@ -53,7 +50,7 @@ test('grab-project: local', async (t) => {
     options: {}
   };
   await grabProject(context);
-  const stats = await fs.stat(context.unpack);
+  const stats = await stat(context.unpack);
   t.ok(stats.isFile(), 'The tar ball should exist on the system');
 });
 
@@ -69,7 +66,7 @@ test('grab-project: lookup table', async (t) => {
     options: {}
   };
   await grabProject(context);
-  const stats = await fs.stat(context.unpack);
+  const stats = await stat(context.unpack);
   t.ok(stats.isFile(), 'The tar ball should exist on the system');
 });
 
@@ -86,7 +83,7 @@ test('grab-project: local', async (t) => {
   };
   process.chdir(fixtures);
   await grabProject(context);
-  const stats = await fs.stat(context.unpack);
+  const stats = await stat(context.unpack);
   t.ok(stats.isFile(), 'The tar ball should exist on the system');
   process.chdir(__dirname);
 });
@@ -123,7 +120,7 @@ test('grab-project: use git clone', async (t) => {
     options: {}
   };
   await grabProject(context);
-  const stats = await fs.stat(join(context.path, 'omg-i-pass/package.json'));
+  const stats = await stat(join(context.path, 'omg-i-pass/package.json'));
   t.ok(stats.isFile(), 'The project must be cloned locally');
 });
 
@@ -173,5 +170,7 @@ test('grab-project: timeout', async (t) => {
 });
 
 test('grab-project: teardown', async () => {
-  await rimraf(sandbox);
+  await rm(sandbox, {
+    recursive: true
+  });
 });

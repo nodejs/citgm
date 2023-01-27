@@ -44,7 +44,6 @@
     "read-package-json": "^4.1.1",
     "readable-stream": "^3.6.0",
     "request": "^2.88.2",
-    "rimraf": "^3.0.2",
     "root-check": "^2.0.0",
     "semver": "^7.3.5",
     "strip-ansi": "^7.0.1",

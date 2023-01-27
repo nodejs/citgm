@@ -1,13 +1,10 @@
-import { promisify } from 'util';
-import { promises as fs } from 'fs';
+import { stat, rm } from 'node:fs/promises';
 
 import tap from 'tap';
-import rimrafLib from 'rimraf';
 
 import * as tempDirectory from '../lib/temp-directory.js';
 
 const { test } = tap;
-const rimraf = promisify(rimrafLib);
 
 const isWin32 = process.platform === 'win32';
 const nullDevice = isWin32 ? '\\\\.\\NUL' : '/dev/null';
@@ -36,7 +33,7 @@ test('tempDirectory.create:', async (t) => {
   t.notOk(context.path, 'context should not have a path');
   await tempDirectory.create(context);
   t.ok(context.path, 'context should now have a path');
-  const stats = await fs.stat(context.path);
+  const stats = await stat(context.path);
   t.ok(stats.isDirectory(), 'the path should exist and be a folder');
 });
 
@@ -47,9 +44,9 @@ test('tempDirectory.create --tmpDir:', async (t) => {
     contextTmpDir.path.match(/thisisatest[/\\].*-.*-.*-.*-.*/),
     'the path should match --tmpDir'
   );
-  const stats = await fs.stat(contextTmpDir.path);
+  const stats = await stat(contextTmpDir.path);
   t.ok(stats.isDirectory(), 'the path should exist and be a folder');
-  await rimraf('./.thisisatest');
+  await rm('./.thisisatest', { recursive: true });
 });
 
 test('tempDirectory.remove:', async (t) => {
@@ -57,7 +54,7 @@ test('tempDirectory.remove:', async (t) => {
   t.ok(context.path, 'context should have a path');
   await tempDirectory.remove(context);
   await t.rejects(
-    fs.stat(context.path),
+    stat(context.path),
     'we should get an error as the path does not exist'
   );
 });

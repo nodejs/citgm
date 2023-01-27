@@ -1,18 +1,17 @@
-import { readFileSync, writeFileSync, promises as fs } from 'fs';
+import { readFileSync, writeFileSync } from 'fs';
+import { mkdir, rm } from 'node:fs/promises';
 import { dirname, join } from 'path';
 import { tmpdir } from 'os';
 import { fileURLToPath } from 'url';
 import { promisify } from 'util';
 
 import tap from 'tap';
-import rimrafLib from 'rimraf';
 import _ from 'lodash';
 import xml2js from 'xml2js';
 
 import junitReporter from '../../lib/reporter/junit.js';
 
 const { test } = tap;
-const rimraf = promisify(rimrafLib);
 const parseString = promisify(xml2js.parseString);
 
 const fixtures = JSON.parse(
@@ -60,7 +59,7 @@ const badOutput = readFileSync(badOutputPath, 'utf-8');
 const badOutputToo = readFileSync(badOutputTooPath, 'utf-8');
 
 test('reporter.junit(): setup', async () => {
-  await fs.mkdir(sandbox, { recursive: true });
+  await mkdir(sandbox, { recursive: true });
 });
 
 test('reporter.junit(): passing', (t) => {
@@ -156,5 +155,5 @@ test('reporter.junit(): append to disk', (t) => {
 });
 
 test('reporter.junit(): teardown', async () => {
-  await rimraf(sandbox);
+  await rm(sandbox, { recursive: true });
 });

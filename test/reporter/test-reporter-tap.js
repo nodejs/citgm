@@ -1,13 +1,12 @@
 // TODO this test does not test any functionality currently
 
-import { readFileSync, writeFileSync, promises as fs } from 'fs';
+import { readFileSync, writeFileSync } from 'fs';
+import { mkdir, rm } from 'node:fs/promises';
 import { join, dirname } from 'path';
 import { tmpdir } from 'os';
 import { fileURLToPath } from 'url';
-import { promisify } from 'util';
 
 import tap from 'tap';
-import rimrafLib from 'rimraf';
 import Parser from 'tap-parser';
 import str from 'string-to-stream';
 
@@ -18,7 +17,6 @@ const fixtures = JSON.parse(
 );
 
 const { test } = tap;
-const rimraf = promisify(rimrafLib);
 
 const fixturesPath = join(
   dirname(fileURLToPath(import.meta.url)),
@@ -52,7 +50,7 @@ const failingExpectedPath = join(fixturesPath, 'test-out-tap-failing.txt');
 const failingExpected = readFileSync(failingExpectedPath, 'utf-8');
 
 test('reporter.tap(): setup', async () => {
-  await fs.mkdir(sandbox, { recursive: true });
+  await mkdir(sandbox, { recursive: true });
 });
 
 test('reporter.tap(): passing', (t) => {
@@ -132,5 +130,5 @@ test('reporter.tap(): append to disk when file does not exist', (t) => {
 });
 
 test('reporter.tap(): teardown', async () => {
-  await rimraf(sandbox);
+  await rm(sandbox, { recursive: true });
 });
