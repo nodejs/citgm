@@ -298,6 +298,7 @@
     "maintainers": "jdalton"
   },
   "lru-cache": {
+    "envVar": { "TAP_TIMEOUT": "300" },
     "prefix": "v",
     "maintainers": "isaacs",
     "flaky": ["win32"],
