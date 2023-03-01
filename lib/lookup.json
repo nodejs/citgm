@@ -302,7 +302,7 @@
     "prefix": "v",
     "maintainers": "isaacs",
     "flaky": ["win32"],
-    "skip": "s390",
+    "skip": "aix",
     "comment": "Marked as flaky on win32 due to this issue https://github.com/nodejs/citgm/issues/930"
   },
   "microtime": {
