@@ -5,14 +5,13 @@ import { fileURLToPath } from 'url';
 import { promisify } from 'util';
 
 import tap from 'tap';
-import rimrafLib from 'rimraf';
+import { rimraf } from 'rimraf';
 import _ from 'lodash';
 import xml2js from 'xml2js';
 
 import junitReporter from '../../lib/reporter/junit.js';
 
 const { test } = tap;
-const rimraf = promisify(rimrafLib);
 const parseString = promisify(xml2js.parseString);
 
 const fixtures = JSON.parse(

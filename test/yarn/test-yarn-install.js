@@ -2,18 +2,16 @@ import { tmpdir } from 'os';
 import { promises as fs } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { promisify } from 'util';
 
 import fse from 'fs-extra';
 import tap from 'tap';
-import rimrafLib from 'rimraf';
+import { rimraf } from 'rimraf';
 
 import { getPackageManagers } from '../../lib/package-manager/index.js';
 import packageManagerInstall from '../../lib/package-manager/install.js';
 import { npmContext } from '../helpers/make-context.js';
 
 const { test } = tap;
-const rimraf = promisify(rimrafLib);
 
 const sandbox = join(tmpdir(), `citgm-${Date.now()}`);
 const fixtures = join(
