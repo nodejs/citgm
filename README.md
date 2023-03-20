@@ -260,6 +260,31 @@ npm install -g nyc
 
 - PRs are welcome!
 
+## CITGM team
+
+<!-- ncu-team-sync.team(nodejs/citgm) -->
+
+* [@BridgeAR](https://github.com/BridgeAR) - Ruben Bridgewater
+* [@ljharb](https://github.com/ljharb) - Jordan Harband
+* [@lukekarrys](https://github.com/lukekarrys) - Luke Karrys
+* [@MylesBorins](https://github.com/MylesBorins) - Myles Borins
+* [@richardlau](https://github.com/richardlau) - Richard Lau
+* [@targos](https://github.com/targos) - Michaël Zasso
+
+<!-- ncu-team-sync end -->
+
+<details>
+<summary>CITGM team emeritus</summary>
+
+* [@al-k21](https://github.com/al-k21) - Oleksandr Kushchak
+* [@bengl](https://github.com/bengl) - Bryan English
+* [@bzoz](https://github.com/bzoz) - Bartosz Sosnowski
+* [@gdams](https://github.com/gdams) - George Adams
+* [@gibfahn](https://github.com/gibfahn) - Gibson Fahnestock
+* [@jasnell](https://github.com/jasnell) - James M Snell
+
+</details>
+
 ## Contributors
 
 - as listed in <https://github.com/nodejs/citgm/blob/HEAD/AUTHORS>
