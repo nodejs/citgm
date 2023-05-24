@@ -538,7 +538,7 @@
     "comment": "Tests timeout"
   },
   "underscore": {
-    "flaky": ["aix", "s390"],
+    "flaky": ["aix"],
     "skip": "win32",
     "maintainers": "jashkenas",
     "ignoreGitHead": true
