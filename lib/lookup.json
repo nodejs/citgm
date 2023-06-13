@@ -232,6 +232,11 @@
     "tags": "native",
     "maintainers": "bnoordhuis"
   },
+  "import-in-the-middle": {
+    "prefix": "v",
+    "skip": "win32",
+    "maintainers": ["bengl", "Qard"]
+  },
   "inherits": {
     "prefix": "v",
     "maintainers": "isaacs"
