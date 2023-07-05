@@ -4,3 +4,4 @@ test/.*
 coverage/
 .nyc_output/
 .eslintcache
+.idea

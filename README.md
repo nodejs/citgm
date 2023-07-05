@@ -22,7 +22,7 @@ citgm --help
 ```
 
 ```
-Usage: citgm [options] <module>
+Usage: citgm [options] <module-1> <module-2> <module-n>
 
 Options:
 
@@ -222,14 +222,14 @@ const coverageProcess = spawnSync('nyc', [
 ]);
 
 const coverageSummary = require(path.join(
-  process.env.WORKSPACE,
-  packageName,
-  'coverage-summary.json'
+        process.env.WORKSPACE,
+        packageName,
+        'coverage-summary.json'
 ));
 console.log(
-  packageName,
-  'total coverage result(%)',
-  coverageSummary.total.lines.pct
+        packageName,
+        'total coverage result(%)',
+        coverageSummary.total.lines.pct
 );
 ```
 
