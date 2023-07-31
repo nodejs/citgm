@@ -10,7 +10,14 @@
       "id": 3,
       "name": "iFail v3.0.1 I dun wurk",
       "fullname": "",
-      "ok": false
+      "ok": false,
+      "buffered": false,
+      "tapError": null,
+      "skip": false,
+      "todo": false,
+      "previous": null,
+      "plan": null,
+      "time": null
     }
   ],
   "ok": false,
@@ -24,5 +31,6 @@
   },
   "skip": 1,
   "todo": 0,
-  "time": null
+  "time": null,
+  "passes": null
 }

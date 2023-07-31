@@ -2,18 +2,16 @@ import { existsSync, promises as fs } from 'fs';
 import { tmpdir } from 'os';
 import { join, resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { promisify } from 'util';
 
 import fse from 'fs-extra';
 import tap from 'tap';
-import rimrafLib from 'rimraf';
+import { rimraf } from 'rimraf';
 
 import { npmContext } from '../helpers/make-context.js';
 import { getPackageManagers } from '../../lib/package-manager/index.js';
 import { test as packageManagerTest } from '../../lib/package-manager/test.js';
 
 const { test } = tap;
-const rimraf = promisify(rimrafLib);
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 

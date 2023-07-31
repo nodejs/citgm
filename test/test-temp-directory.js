@@ -1,13 +1,11 @@
-import { promisify } from 'util';
 import { promises as fs } from 'fs';
 
 import tap from 'tap';
-import rimrafLib from 'rimraf';
+import { rimraf } from 'rimraf';
 
 import * as tempDirectory from '../lib/temp-directory.js';
 
 const { test } = tap;
-const rimraf = promisify(rimrafLib);
 
 const isWin32 = process.platform === 'win32';
 const nullDevice = isWin32 ? '\\\\.\\NUL' : '/dev/null';
@@ -76,6 +74,7 @@ test('tempDirectory.remove: bad path', async (t) => {
   try {
     await tempDirectory.remove(badContext);
   } catch (e) {
+    console.log('MESSAGE', e.message);
     t.ok(
       e.message.includes(nullDevice),
       `the message should include the path ${nullDevice}`
