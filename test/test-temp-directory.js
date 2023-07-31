@@ -74,6 +74,7 @@ test('tempDirectory.remove: bad path', async (t) => {
   try {
     await tempDirectory.remove(badContext);
   } catch (e) {
+    console.log('MESSAGE', e.message);
     t.ok(
       e.message.includes(nullDevice),
       `the message should include the path ${nullDevice}`
