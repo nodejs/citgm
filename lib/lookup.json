@@ -55,10 +55,6 @@
     "prefix": "v",
     "skip": ["win32", "aix"]
   },
-  "bluebird": {
-    "prefix": "v",
-    "maintainers": "petkaantonov"
-  },
   "body-parser": {
     "flaky": "aix",
     "maintainers": "dougwilson"
@@ -90,7 +86,7 @@
     "maintainers": "mcollina",
     "flaky": ["rhel"],
     "prefix": "v",
-    "skip": ["aix", "win32"]
+    "skip": ["aix", "darwin", "win32"]
   },
   "coffeescript": {
     "maintainers": ["jashkenas", "GeoffreyBooth"],
@@ -105,19 +101,10 @@
     "maintainers": "ctalkington",
     "skip": "win32"
   },
-  "csv-parser": {
-    "prefix": "v",
-    "flaky": "win32",
-    "maintainers": "mafintosh"
-  },
   "debug": {
     "maintainers": ["qix", "tootallnate"],
     "skip": [true, "aix", "ppc", "s390", "win32"],
     "scripts": ["test:node", "lint"]
-  },
-  "dicer": {
-    "prefix": "v",
-    "maintainers": "mscdex"
   },
   "duplexer2": {
     "prefix": "v",
@@ -126,14 +113,6 @@
   "duplexify": {
     "prefix": "v",
     "maintainers": "mafintosh"
-  },
-  "ember-cli": {
-    "envVar": { "YARN_IGNORE_ENGINES": "true" },
-    "prefix": "v",
-    "flaky": ["win32", "rhel", "sles"],
-    "head": true,
-    "expectFail": "fips",
-    "maintainers": ["stefanpenner", "rwjblue", "Turbo87", "kellyselden"]
   },
   "end-of-stream": {
     "prefix": "v",
@@ -153,18 +132,9 @@
     "expectFail": "fips",
     "skip": ["win32"]
   },
-  "express": {
-    "flaky": "ppc",
-    "maintainers": "dougwilson",
-    "skip": "win32"
-  },
   "express-session": {
     "prefix": "v",
     "maintainers": "dougwilson"
-  },
-  "fastify": {
-    "maintainers": ["mcollina", "delvedor"],
-    "prefix": "v"
   },
   "flush-write-stream": {
     "prefix": "v",
@@ -214,10 +184,6 @@
     "maintainers": "contra",
     "skip": "win32"
   },
-  "https-proxy-agent": {
-    "maintainers": "TooTallNate",
-    "scripts": ["build", "test"]
-  },
   "iconv": {
     "prefix": "v",
     "flaky": "aix",
@@ -235,6 +201,7 @@
   },
   "is-core-module": {
     "prefix": "v",
+    "skip": "win32",
     "maintainers": "ljharb",
     "scripts": ["tests-only"]
   },
@@ -277,13 +244,6 @@
     "maintainers": ["ralphtheninja", "vweevers"],
     "skip": "win32"
   },
-  "leveldown": {
-    "prefix": "v",
-    "useGitClone": true,
-    "flaky": ["ppc", "s390"],
-    "tags": "native",
-    "maintainers": ["ralphtheninja", "vweevers"]
-  },
   "libxmljs": {
     "prefix": "v",
     "flaky": ["aix", "sles", "rhel", "darwin"],
@@ -308,13 +268,10 @@
     "tags": "native",
     "maintainers": "wadey"
   },
-  "mime": {
-    "prefix": "v",
-    "maintainers": "broofa"
-  },
   "minimist": {
     "npm": true,
-    "maintainers": "substack"
+    "skip": "win32",
+    "maintainers": "ljharb"
   },
   "mkdirp": {
     "head": true,
@@ -332,18 +289,6 @@
     "maintainers": "ichernev",
     "skip": [true, "ppc", "s390"]
   },
-  "multer": {
-    "prefix": "v",
-    "skip": "win32",
-    "maintainers": "linusu"
-  },
-  "nan": {
-    "maintainers": ["nodejs/addon-api"],
-    "prefix": "v",
-    "scripts": ["rebuild-tests", "test"],
-    "tags": "native",
-    "head": true
-  },
   "node-gyp": {
     "envVar": { "FAST_TEST": "true" },
     "prefix": "v",
@@ -357,11 +302,6 @@
     "maintainers": "xzyfer",
     "comment": "Flaky because of test timeouts",
     "skip": true
-  },
-  "npm": {
-    "maintainers": ["nodejs/npm"],
-    "prefix": "v",
-    "skip": ["aix", "s390"]
   },
   "path-to-regexp": {
     "prefix": "v",
@@ -385,11 +325,6 @@
     "skip": ["win32", "aix", ">=16"],
     "comment": "Error message changes in V8 9.3",
     "repo": "https://github.com/pugjs/pug"
-  },
-  "pump": {
-    "prefix": "v",
-    "maintainers": "mafintosh",
-    "skip": "win32"
   },
   "pumpify": {
     "prefix": "v",
@@ -426,17 +361,8 @@
   },
   "rewire": {
     "prefix": "v",
-    "maintainers": "jhnns"
-  },
-  "rimraf": {
-    "prefix": "v",
-    "flaky": "win32",
-    "maintainers": "isaacs"
-  },
-  "router": {
-    "prefix": "v",
-    "maintainers": "dougwilson",
-    "skip": "win32"
+    "maintainers": "jhnns",
+    "scripts": ["test -- --timeout 30000"]
   },
   "sax": {
     "skip": "win32",
@@ -454,10 +380,8 @@
   },
   "serialport": {
     "prefix": "serialport@",
-    "flaky": ["ppc", "rhel"],
     "tags": "native",
-    "maintainers": "reconbot",
-    "skip": ["win32"]
+    "maintainers": "reconbot"
   },
   "socket.io": {
     "maintainers": "rauchg",
@@ -497,7 +421,9 @@
   "tape": {
     "head": true,
     "prefix": "v",
-    "maintainers": "substack"
+    "skip": "win32",
+    "scripts": ["tests-only"],
+    "maintainers": "ljharb"
   },
   "thread-sleep": {
     "install": ["install", "--build-from-source"],
@@ -517,29 +443,12 @@
     "stripAnsi": true,
     "maintainers": "mcollina"
   },
-  "torrent-stream": {
-    "prefix": "v",
-    "maintainers": "mafintosh"
-  },
-  "tough-cookie": {
-    "maintainers": ["awaterma", "colincasey", "ruoho", "wjharney"]
-  },
   "uglify-js": {
     "prefix": "v",
     "flaky": ["ppc", "darwin"],
     "maintainers": "mishoo",
     "skip": ["12", true],
     "comment": "Tests timeout"
-  },
-  "underscore": {
-    "flaky": ["aix", "s390"],
-    "skip": "win32",
-    "maintainers": "jashkenas",
-    "ignoreGitHead": true
-  },
-  "undici": {
-    "prefix": "v",
-    "maintainers": ["mcollina", "ronag"]
   },
   "uuid": {
     "prefix": "v",
@@ -568,13 +477,10 @@
     "maintainers": "tootallnate",
     "tags": "native"
   },
-  "winston": {
-    "flaky": ["win32", "ppc", "s390", "darwin"],
-    "maintainers": "indexzero"
-  },
   "ws": {
     "expectFail": "fips",
-    "maintainers": ["einaros", "3rd-Eden", "lpinca"]
+    "maintainers": ["einaros", "3rd-Eden", "lpinca"],
+    "scripts": ["test -- --timeout 30000"]
   },
   "yargs": {
     "comment": "Install from source is currently broken due to TS error",
