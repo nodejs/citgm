@@ -3,7 +3,7 @@ import { tmpdir } from 'os';
 import { join, resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-import { test } from 'tap';
+import tap, { test } from 'tap';
 
 import { npmContext } from '../helpers/make-context.js';
 import { getPackageManagers } from '../../lib/package-manager/index.js';
@@ -180,7 +180,7 @@ test('yarn-test: tmpdir is redirected', async (t) => {
   );
 });
 
-test('yarn-test: teardown', async () => {
+tap.teardown(async () => {
   await fs.rm(sandbox, {
     recursive: true,
     force: true,

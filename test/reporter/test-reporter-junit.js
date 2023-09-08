@@ -153,7 +153,7 @@ test('reporter.junit(): append to disk', (t) => {
   t.end();
 });
 
-test('reporter.junit(): teardown', async () => {
+tap.teardown(async () => {
   await fs.rm(sandbox, {
     recursive: true,
     force: true,

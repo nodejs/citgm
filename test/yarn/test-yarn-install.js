@@ -80,7 +80,7 @@ test('yarn-install: failed install', async (t) => {
   }
 });
 
-test('yarn-install: teardown', async () => {
+tap.teardown(async () => {
   await fs.rm(sandbox, {
     recursive: true,
     force: true,
