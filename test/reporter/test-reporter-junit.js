@@ -5,14 +5,12 @@ import { fileURLToPath } from 'url';
 import { promisify } from 'util';
 
 import tap from 'tap';
-import rimrafLib from 'rimraf';
 import _ from 'lodash';
 import xml2js from 'xml2js';
 
 import junitReporter from '../../lib/reporter/junit.js';
 
 const { test } = tap;
-const rimraf = promisify(rimrafLib);
 const parseString = promisify(xml2js.parseString);
 
 const fixtures = JSON.parse(
@@ -156,5 +154,10 @@ test('reporter.junit(): append to disk', (t) => {
 });
 
 test('reporter.junit(): teardown', async () => {
-  await rimraf(sandbox);
+  await fs.rm(sandbox, {
+    recursive: true,
+    force: true,
+    maxRetries: 10,
+    retryDelay: 10
+  });
 });
