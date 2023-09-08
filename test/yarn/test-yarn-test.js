@@ -3,13 +3,11 @@ import { tmpdir } from 'os';
 import { join, resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-import tap from 'tap';
+import { test } from 'tap';
 
 import { npmContext } from '../helpers/make-context.js';
 import { getPackageManagers } from '../../lib/package-manager/index.js';
 import { test as packageManagerTest } from '../../lib/package-manager/test.js';
-
-const { test } = tap;
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -183,5 +181,10 @@ test('yarn-test: tmpdir is redirected', async (t) => {
 });
 
 test('yarn-test: teardown', async () => {
-  await fs.rm(sandbox, { recursive: true, force: true, maxRetries: 10 });
+  await fs.rm(sandbox, {
+    recursive: true,
+    force: true,
+    maxRetries: 10,
+    retryDelay: 10
+  });
 });

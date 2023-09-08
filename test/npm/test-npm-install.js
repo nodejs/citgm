@@ -103,5 +103,10 @@ test('npm-install: failed install', async (t) => {
 });
 
 test('npm-install: teardown', async () => {
-  await fs.rm(sandbox, { recursive: true, force: true, maxRetries: 10 });
+  await fs.rm(sandbox, {
+    recursive: true,
+    force: true,
+    maxRetries: 10,
+    retryDelay: 10
+  });
 });

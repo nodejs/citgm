@@ -170,5 +170,10 @@ test('grab-project: timeout', async (t) => {
 });
 
 test('grab-project: teardown', async () => {
-  await fs.rm(sandbox, { recursive: true, force: true, maxRetries: 10 });
+  await fs.rm(sandbox, {
+    recursive: true,
+    force: true,
+    maxRetries: 10,
+    retryDelay: 10
+  });
 });

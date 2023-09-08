@@ -154,5 +154,10 @@ test('reporter.junit(): append to disk', (t) => {
 });
 
 test('reporter.junit(): teardown', async () => {
-  await fs.rm(sandbox, { recursive: true, force: true, maxRetries: 10 });
+  await fs.rm(sandbox, {
+    recursive: true,
+    force: true,
+    maxRetries: 10,
+    retryDelay: 10
+  });
 });

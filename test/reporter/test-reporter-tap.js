@@ -129,5 +129,10 @@ test('reporter.tap(): append to disk when file does not exist', (t) => {
 });
 
 test('reporter.tap(): teardown', async () => {
-  await fs.rm(sandbox, { recursive: true, force: true, maxRetries: 10 });
+  await fs.rm(sandbox, {
+    recursive: true,
+    force: true,
+    maxRetries: 10,
+    retryDelay: 10
+  });
 });
