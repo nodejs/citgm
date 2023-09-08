@@ -86,6 +86,5 @@
   },
   "engines": {
     "node": "16.x || 18.x || 20.x"
-  },
-  "packageManager": "yarn@3.6.3"
+  }
 }
