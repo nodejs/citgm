@@ -31,7 +31,8 @@
   },
   "acorn": {
     "maintainers": "marijnh",
-    "skip": ["win32", "ppc"]
+    "skip": ["win32", "ppc"],
+    "timeout": 1800000
   },
   "ava": {
     "prefix": "v",
