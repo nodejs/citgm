@@ -29,11 +29,6 @@
     "skip": ["win32", "14"],
     "maintainers": "dominictarr"
   },
-  "acorn": {
-    "maintainers": "marijnh",
-    "skip": ["win32", "ppc"],
-    "timeout": 1800000
-  },
   "ava": {
     "prefix": "v",
     "skip": ["14", "ppc", "win32", "x86", "rhel", "aix", "ia32"],
