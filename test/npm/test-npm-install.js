@@ -1,19 +1,15 @@
 import { tmpdir } from 'os';
 import { join, dirname } from 'path';
-import { promisify } from 'util';
 import { fileURLToPath } from 'url';
 import { promises as fs } from 'fs';
 
-import fse from 'fs-extra';
 import tap from 'tap';
-import rimrafLib from 'rimraf';
 
 import { getPackageManagers } from '../../lib/package-manager/index.js';
 import packageManagerInstall from '../../lib/package-manager/install.js';
 import { npmContext } from '../helpers/make-context.js';
 
 const { test } = tap;
-const rimraf = promisify(rimrafLib);
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const sandbox = join(tmpdir(), `citgm-${Date.now()}`);
@@ -31,9 +27,9 @@ test('npm-install: setup', async () => {
   packageManagers = await getPackageManagers();
   await fs.mkdir(sandbox, { recursive: true });
   await Promise.all([
-    fse.copy(moduleFixtures, moduleTemp),
-    fse.copy(extraParamFixtures, extraParamTemp),
-    fse.copy(badFixtures, badTemp)
+    fs.cp(moduleFixtures, moduleTemp, { recursive: true }),
+    fs.cp(extraParamFixtures, extraParamTemp, { recursive: true }),
+    fs.cp(badFixtures, badTemp, { recursive: true })
   ]);
 });
 
@@ -107,5 +103,5 @@ test('npm-install: failed install', async (t) => {
 });
 
 test('npm-install: teardown', async () => {
-  await rimraf(sandbox);
+  await fs.rm(sandbox, { recursive: true, force: true, maxRetries: 10 });
 });

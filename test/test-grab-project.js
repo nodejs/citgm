@@ -5,16 +5,13 @@
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { tmpdir } from 'os';
-import { promisify } from 'util';
 import { promises as fs } from 'fs';
 
 import tap from 'tap';
-import rimrafLib from 'rimraf';
 
 import { grabProject } from '../lib/grab-project.js';
 
 const { test } = tap;
-const rimraf = promisify(rimrafLib);
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const sandbox = join(tmpdir(), `citgm-${Date.now()}`);
@@ -173,5 +170,5 @@ test('grab-project: timeout', async (t) => {
 });
 
 test('grab-project: teardown', async () => {
-  await rimraf(sandbox);
+  await fs.rm(sandbox, { recursive: true, force: true, maxRetries: 10 });
 });
