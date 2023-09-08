@@ -466,12 +466,6 @@
     "skip": ">=17",
     "comment": "WS is not compatible"
   },
-  "spawn-wrap": {
-    "prefix": "v",
-    "flaky": ["sles", "aix", "darwin"],
-    "maintainers": "isaacs",
-    "skip": "win32"
-  },
   "spdy": {
     "prefix": "v",
     "flaky": ["aix", "sles"],
