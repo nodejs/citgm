@@ -33,10 +33,6 @@
     "maintainers": "marijnh",
     "skip": ["win32", "ppc"]
   },
-  "async": {
-    "prefix": "v",
-    "maintainers": ["aearly", "megawac"]
-  },
   "ava": {
     "prefix": "v",
     "skip": ["14", "ppc", "win32", "x86", "rhel", "aix", "ia32"],
