@@ -169,7 +169,7 @@ test('grab-project: timeout', async (t) => {
   }
 });
 
-test('grab-project: teardown', async () => {
+tap.teardown(async () => {
   await fs.rm(sandbox, {
     recursive: true,
     force: true,

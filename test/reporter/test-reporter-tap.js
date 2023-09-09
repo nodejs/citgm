@@ -128,7 +128,7 @@ test('reporter.tap(): append to disk when file does not exist', (t) => {
   t.end();
 });
 
-test('reporter.tap(): teardown', async () => {
+tap.teardown(async () => {
   await fs.rm(sandbox, {
     recursive: true,
     force: true,

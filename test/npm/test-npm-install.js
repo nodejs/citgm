@@ -102,7 +102,7 @@ test('npm-install: failed install', async (t) => {
   }
 });
 
-test('npm-install: teardown', async () => {
+tap.teardown(async () => {
   await fs.rm(sandbox, {
     recursive: true,
     force: true,

@@ -184,7 +184,7 @@ test('npm-test: tmpdir is redirected', async (t) => {
   );
 });
 
-test('npm-test: teardown', async () => {
+tap.teardown(async () => {
   await fs.rm(sandbox, {
     recursive: true,
     force: true,
