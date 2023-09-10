@@ -2,16 +2,19 @@
   "@clinic/bubbleprof": {
     "maintainers": ["mcollina", "rafaelgss"],
     "prefix": "v",
+    "skip": ["darwin"],
     "flaky": true
   },
   "@clinic/doctor": {
     "maintainers": ["mcollina", "rafaelgss"],
     "prefix": "v",
+    "skip": ["darwin"],
     "flaky": true
   },
   "@clinic/flame": {
     "maintainers": ["mcollina", "rafaelgss"],
     "prefix": "v",
+    "skip": ["darwin"],
     "flaky": true
   },
   "@hapi/hapi": {
@@ -22,65 +25,72 @@
   },
   "@hapi/shot": {
     "maintainers": "cjihrig",
+    "skip": ["darwin"],
     "prefix": "v"
   },
   "JSONStream": {
     "prefix": "v",
-    "skip": ["win32", "14"],
+    "skip": ["darwin", "win32", "14"],
     "maintainers": "dominictarr"
   },
   "ava": {
     "prefix": "v",
-    "skip": ["14", "ppc", "win32", "x86", "rhel", "aix", "ia32"],
+    "skip": ["darwin","14", "ppc", "win32", "x86", "rhel", "aix", "ia32"],
     "maintainers": ["sindresorhus", "novemberborn"]
   },
   "bcrypt": {
     "prefix": "v",
     "tags": "native",
+    "skip": ["darwin"],
     "maintainers": "ncb000gt"
   },
   "binary-split": {
     "prefix": "v",
     "flaky": "win32",
+    "skip": ["darwin"],
     "maintainers": ["maxogden", "mourner"]
   },
   "bl": {
     "prefix": "v",
     "stripAnsi": true,
     "expectFail": "fips",
+    "skip": ["darwin"],
     "maintainers": "rvagg"
   },
   "blake2b-wasm": {
     "maintainers": ["mafintosh", "addaleax"],
     "prefix": "v",
-    "skip": ["win32", "aix"]
+    "skip": ["darwin","win32", "aix"]
   },
   "bluebird": {
     "prefix": "v",
+    "skip": ["darwin"],
     "maintainers": "petkaantonov"
   },
   "body-parser": {
     "flaky": "aix",
+    "skip": ["darwin"],
     "maintainers": "dougwilson"
   },
   "browserify": {
     "expectFail": "fips",
+    "skip": ["darwin"],
     "maintainers": "substack"
   },
   "bson": {
     "prefix": "V",
     "maintainers": "christkv",
     "scripts": ["test-node"],
-    "skip": true
+    "skip": [true, "darwin"],
   },
   "bufferutil": {
     "prefix": "v",
     "tags": "native",
     "maintainers": ["3rdeden", "einaros", "lpinca"],
-    "skip": "win32"
+    "skip": ["darwin","win32"]
   },
   "cheerio": {
-    "skip": ["aix", "win32"],
+    "skip": ["darwin", "aix", "win32"],
     "head": true,
     "useGitClone": true,
     "maintainers": ["matthewmueller", "jugglinmike"],
@@ -90,24 +100,25 @@
     "maintainers": "mcollina",
     "flaky": ["rhel"],
     "prefix": "v",
-    "skip": ["aix", "win32"]
+    "skip": ["darwin", "aix", "win32"]
   },
   "coffeescript": {
     "maintainers": ["jashkenas", "GeoffreyBooth"],
-    "skip": ["rhel", "aix"]
+    "skip": ["darwin", "rhel", "aix"]
   },
   "commander": {
     "prefix": "v",
     "maintainers": ["shadowspawn", "abetomo"],
-    "skip": ["aix"]
+    "skip": ["darwin", "aix"]
   },
   "crc32-stream": {
     "maintainers": "ctalkington",
-    "skip": "win32"
+    "skip": ["darwin", "win32"]
   },
   "csv-parser": {
     "prefix": "v",
     "flaky": "win32",
+    "skip": ["darwin"],
     "maintainers": "mafintosh"
   },
   "debug": {
@@ -117,14 +128,17 @@
   },
   "dicer": {
     "prefix": "v",
+    "skip": ["darwin"],
     "maintainers": "mscdex"
   },
   "duplexer2": {
     "prefix": "v",
+    "skip": ["darwin"],
     "maintainers": ["shinn", "deoxxa"]
   },
   "duplexify": {
     "prefix": "v",
+    "skip": ["darwin"],
     "maintainers": "mafintosh"
   },
   "ember-cli": {
@@ -133,17 +147,18 @@
     "flaky": ["win32", "rhel", "sles"],
     "head": true,
     "expectFail": "fips",
+    "skip": ["darwin"],
     "maintainers": ["stefanpenner", "rwjblue", "Turbo87", "kellyselden"]
   },
   "end-of-stream": {
     "prefix": "v",
     "maintainers": "mafintosh",
-    "skip": "win32"
+    "skip": ["darwin", "win32"]
   },
   "eslint": {
     "prefix": "v",
     "flaky": ["s390", "ubuntu"],
-    "skip": true,
+    "skip": [true, "darwin"],,
     "expectFail": "fips",
     "maintainers": ["nzakas", "mysticatea", "not-an-aardvark"],
     "comment": "Skipped because libX11 is required for headless Chrome"
@@ -151,38 +166,42 @@
   "esprima": {
     "maintainers": "ariya",
     "expectFail": "fips",
-    "skip": ["win32"]
+    "skip": ["darwin", "win32"]
   },
   "express": {
     "flaky": "ppc",
     "maintainers": "dougwilson",
-    "skip": "win32"
+    "skip": ["darwin", "win32"]
   },
   "express-session": {
     "prefix": "v",
+    "skip": ["darwin"],
     "maintainers": "dougwilson"
   },
   "fastify": {
     "maintainers": ["mcollina", "delvedor"],
+    "skip": ["darwin"],
     "prefix": "v"
   },
   "flush-write-stream": {
     "prefix": "v",
     "maintainers": "mafintosh",
-    "skip": "win32"
+    "skip": ["darwin", "win32"]
   },
   "from2": {
     "prefix": "v",
+    "skip": ["darwin"],
     "maintainers": ["mafintosh", "hughsk"]
   },
   "fs-extra": {
     "flaky": ["linux-ia32", "aix", "s390", "win32"],
-    "skip": ">=12",
+    "skip": ["darwin", ">=12"],
     "expectFail": "fips",
     "maintainers": "jprichardson"
   },
   "full-icu-test": {
     "prefix": "v",
+    "skip": ["darwin"],
     "maintainers": "srl295"
   },
   "glob": {
@@ -190,17 +209,17 @@
     "flaky": ["win32"],
     "expectFail": "fips",
     "maintainers": "isaacs",
-    "skip": true
+    "skip": [true, "darwin"],
   },
   "got": {
     "maintainers": ["sindresorhus"],
     "prefix": "v",
-    "skip": true
+    "skip": [true, "darwin"],
   },
   "graceful-fs": {
     "prefix": "v",
     "maintainers": "isaacs",
-    "skip": ">=11"
+    "skip": [">=11", "darwin"]
   },
   "gulp": {
     "prefix": "v",
@@ -212,34 +231,39 @@
     "prefix": "v",
     "flaky": "rhel",
     "maintainers": "contra",
-    "skip": "win32"
+    "skip": ["darwin", "win32"]
   },
   "https-proxy-agent": {
     "maintainers": "TooTallNate",
+    "skip": ["darwin"],
     "scripts": ["build", "test"]
   },
   "iconv": {
     "prefix": "v",
     "flaky": "aix",
     "tags": "native",
+    "skip": ["darwin"],
     "maintainers": "bnoordhuis"
   },
   "import-in-the-middle": {
     "prefix": "v",
-    "skip": "win32",
+    "skip": ["darwin", "win32"],
     "maintainers": ["bengl", "Qard"]
   },
   "inherits": {
     "prefix": "v",
+    "skip": ["darwin"],
     "maintainers": "isaacs"
   },
   "is-core-module": {
     "prefix": "v",
     "maintainers": "ljharb",
+    "skip": ["darwin"],
     "scripts": ["tests-only"]
   },
   "isarray": {
     "prefix": "v",
+    "skip": ["darwin"],
     "maintainers": "juliangruber"
   },
   "jest": {
@@ -257,41 +281,44 @@
     "prefix": "v",
     "scripts": ["test", "tap:node"],
     "envVar": { "CITGM": true },
-    "skip": ["aix"],
+    "skip": ["darwin", "aix"],
     "comment": "esbuild doesn't support aix"
   },
   "jquery": {
-    "skip": "win32",
+    "skip": ["darwin", "win32"],
     "flaky": ["linux", "aix", "darwin"],
     "maintainers": "jeresig",
     "ignoreGitHead": true
   },
   "koa": {
     "flaky": "ubuntu",
+    "skip": ["darwin"],
     "maintainers": "tj"
   },
   "level": {
     "prefix": "v",
     "flaky": ["aix", "s390"],
     "maintainers": ["ralphtheninja", "vweevers"],
-    "skip": "win32"
+    "skip": ["darwin", "win32"]
   },
   "leveldown": {
     "prefix": "v",
     "useGitClone": true,
     "flaky": ["ppc", "s390"],
     "tags": "native",
+    "skip": ["darwin"],
     "maintainers": ["ralphtheninja", "vweevers"]
   },
   "libxmljs": {
     "prefix": "v",
     "flaky": ["aix", "sles", "rhel", "darwin"],
-    "skip": ">=12",
+    "skip": [">=12", "darwin"],
     "tags": "native",
     "maintainers": "defunctzombie"
   },
   "lodash": {
     "expectFail": "fips",
+    "skip": ["darwin"],
     "maintainers": "jdalton"
   },
   "lru-cache": {
@@ -299,20 +326,23 @@
     "prefix": "v",
     "maintainers": "isaacs",
     "flaky": ["win32"],
-    "skip": "aix",
+    "skip": ["aix", "darwin"],
     "comment": "Marked as flaky on win32 due to this issue https://github.com/nodejs/citgm/issues/930"
   },
   "microtime": {
     "prefix": "v",
     "tags": "native",
+    "skip": ["darwin"],
     "maintainers": "wadey"
   },
   "mime": {
     "prefix": "v",
+    "skip": ["darwin"],
     "maintainers": "broofa"
   },
   "minimist": {
     "npm": true,
+    "skip": ["darwin"],
     "maintainers": "substack"
   },
   "mkdirp": {
@@ -322,7 +352,7 @@
   },
   "mocha": {
     "prefix": "v",
-    "skip": true,
+    "skip": [true, "darwin"],,
     "expectFail": "fips",
     "maintainers": ["tj", "boneskull"],
     "comment": "Skipped because requires to install Google Chrome for browser tests"
@@ -333,7 +363,7 @@
   },
   "multer": {
     "prefix": "v",
-    "skip": "win32",
+    "skip": ["darwin", "win32"],
     "maintainers": "linusu"
   },
   "nan": {
@@ -341,6 +371,7 @@
     "prefix": "v",
     "scripts": ["rebuild-tests", "test"],
     "tags": "native",
+    "skip": ["darwin"],
     "head": true
   },
   "node-gyp": {
@@ -348,101 +379,106 @@
     "prefix": "v",
     "tags": "native",
     "maintainers": ["nodejs/node-gyp"],
-    "skip": ["win32"]
+    "skip": ["darwin", "win32"]
   },
   "node-sass": {
     "prefix": "v",
     "tags": "native",
     "maintainers": "xzyfer",
     "comment": "Flaky because of test timeouts",
-    "skip": true
+    "skip": [true, "darwin"],
   },
   "npm": {
     "maintainers": ["nodejs/npm"],
     "prefix": "v",
-    "skip": ["aix", "s390"]
+    "skip": ["darwin", "aix", "s390"]
   },
   "path-to-regexp": {
     "prefix": "v",
     "maintainers": "blakeembrey",
-    "skip": ["aix"]
+    "skip": ["darwin", "aix"]
   },
   "pino": {
     "prefix": "v",
+    "skip": ["darwin"],
     "maintainers": "mcollina"
   },
   "prom-client": {
     "prefix": "v",
+    "skip": ["darwin"],
     "maintainers": ["siimon", "zbjornson", "SimenB"]
   },
   "pug": {
     "prefix": "pug@",
     "yarn": true,
     "maintainers": ["tj", "ForbesLindesay"],
-    "skip": ["win32", "aix", ">=16"],
+    "skip": ["darwin", "win32", "aix", ">=16"],
     "comment": "Error message changes in V8 9.3",
     "repo": "https://github.com/pugjs/pug"
   },
   "pump": {
     "prefix": "v",
     "maintainers": "mafintosh",
-    "skip": "win32"
+    "skip": ["darwin", "win32"]
   },
   "pumpify": {
     "prefix": "v",
     "maintainers": "mafintosh",
-    "skip": "win32"
+    "skip": ["darwin", "win32"]
   },
   "q": {
     "prefix": "v",
     "maintainers": "kriskowal",
-    "skip": "win32"
+    "skip": ["darwin", "win32"]
   },
   "react": {
     "prefix": "v",
     "maintainers": ["acdlite", "gaearon", "sophiebits"],
     "yarn": true,
-    "skip": [">=12", "aix", "s390", "ppc"]
+    "skip": ["darwin", ">=12", "aix", "s390", "ppc"]
   },
   "readable-stream": {
     "prefix": "v",
     "flaky": ["ppc"],
     "maintainers": "nodejs/streams",
-    "skip": [">=12", "win32"]
+    "skip": ["darwin", ">=12", "win32"]
   },
   "ref": {
     "flaky": "aix",
     "tags": "native",
     "maintainers": "TooTallNate",
-    "skip": [true, "12", "win32"]
+    "skip": [true, "12", "win32", "darwin"]
   },
   "resolve": {
     "prefix": "v",
     "maintainers": "ljharb",
+    "skip": ["darwin"],
     "scripts": ["tests-only", "posttest"]
   },
   "rewire": {
     "prefix": "v",
+    "skip": ["darwin"],
     "maintainers": "jhnns"
   },
   "rimraf": {
     "prefix": "v",
     "flaky": "win32",
+    "skip": ["darwin"],
     "maintainers": "isaacs"
   },
   "router": {
     "prefix": "v",
     "maintainers": "dougwilson",
-    "skip": "win32"
+    "skip": ["darwin", "win32"]
   },
   "sax": {
-    "skip": "win32",
+    "skip": ["darwin", "win32"],
     "prefix": "v",
     "expectFail": "fips",
     "maintainers": "isaacs"
   },
   "semver": {
-    "skip": "win32",
+    "skip": ["darwin","win32"],
     "prefix": "v",
     "maintainers": "isaacs",
     "expectFail": "fips",
@@ -459,24 +495,25 @@
   "socket.io": {
     "maintainers": "rauchg",
     "head": true,
-    "skip": ">=17",
+    "skip": ["darwin", ">=17"],
     "comment": "WS is not compatible"
   },
   "spdy": {
     "prefix": "v",
     "flaky": ["aix", "sles"],
-    "skip": ">=12",
+    "skip": ["darwin", ">=12"],
     "maintainers": "diasdavid"
   },
   "spdy-transport": {
     "prefix": "v",
-    "skip": ">=12",
+    "skip": ["darwin", ">=12"],
     "flaky": "aix",
     "maintainers": "diasdavid"
   },
   "split2": {
     "prefix": "v",
     "maintainers": "mcollina",
+    "skip": ["darwin"],
     "head": true
   },
   "sqlite3": {
@@ -484,21 +521,23 @@
     "tags": "native",
     "flaky": "ppc",
     "maintainers": "koistya",
-    "skip": ["12", "win32"]
+    "skip": ["12", "darwin", "win32"]
   },
   "stylus": {
     "flaky": ["win32", "aix"],
     "maintainers": "tj",
-    "skip": ">=11"
+    "skip": [">=11", "darwin"]
   },
   "tape": {
     "head": true,
     "prefix": "v",
+    "skip": ["darwin"],
     "maintainers": "substack"
   },
   "thread-sleep": {
     "install": ["install", "--build-from-source"],
     "tags": "native",
+    "skip": ["darwin"],
     "maintainers": ["forbeslindesay", "timothygu"],
     "flaky": true
   },
@@ -506,53 +545,57 @@
     "maintainers": "rvagg",
     "prefix": "v",
     "scripts": ["test:node"],
-    "skip": ["aix", "win32"],
+    "skip": ["aix", "win32", "darwin"],
     "stripAnsi": true
   },
   "throughv": {
     "prefix": "v",
     "stripAnsi": true,
+    "skip": ["darwin"],
     "maintainers": "mcollina"
   },
   "torrent-stream": {
     "prefix": "v",
+    "skip": ["darwin"],
     "maintainers": "mafintosh"
   },
   "tough-cookie": {
+    "skip": ["darwin"],
     "maintainers": ["awaterma", "colincasey", "ruoho", "wjharney"]
   },
   "uglify-js": {
     "prefix": "v",
     "flaky": ["ppc", "darwin"],
     "maintainers": "mishoo",
-    "skip": ["12", true],
+    "skip": ["12", true, "darwin"],
     "comment": "Tests timeout"
   },
   "underscore": {
     "flaky": ["aix", "s390"],
-    "skip": "win32",
+    "skip": ["win32", "darwin"],
     "maintainers": "jashkenas",
     "ignoreGitHead": true
   },
   "undici": {
     "prefix": "v",
+    "skip": ["darwin"],
     "maintainers": ["mcollina", "ronag"]
   },
   "uuid": {
     "prefix": "v",
     "maintainers": ["ctavan", "broofa"],
-    "skip": ["win32", "aix"]
+    "skip": ["win32", "aix", "darwin"]
   },
   "vinyl": {
     "prefix": "v",
     "maintainers": ["contra", "phated"],
-    "skip": "win32"
+    "skip": ["win32", "darwin"]
   },
   "vinyl-fs": {
     "prefix": "v",
     "head": true,
     "maintainers": ["contra", "phated"],
-    "skip": true
+    "skip": [true, "darwin"]
   },
   "watchify": {
     "prefix": "v",
@@ -563,14 +606,17 @@
   "weak": {
     "head": true,
     "maintainers": "tootallnate",
+    "skip": ["darwin"],
     "tags": "native"
   },
   "winston": {
     "flaky": ["win32", "ppc", "s390", "darwin"],
+    "skip": ["darwin"],
     "maintainers": "indexzero"
   },
   "ws": {
     "expectFail": "fips",
+    "skip": ["darwin"],
     "maintainers": ["einaros", "3rd-Eden", "lpinca"]
   },
   "yargs": {
@@ -578,18 +624,19 @@
     "prefix": "v",
     "expectFail": "fips",
     "maintainers": ["bcoe", "addaleax"],
-    "skip": true
+    "skip": [true, "darwin"],
   },
   "yeoman-generator": {
     "prefix": "v",
     "flaky": ["ppc", "rhel"],
     "expectFail": "fips",
+    "skip": ["darwin"],
     "maintainers": ["SBoudrias", "sindresorhus"]
   },
   "zeromq": {
     "prefix": "v",
     "tags": "native",
     "maintainers": ["lgeiger", "rgbkrk"],
-    "skip": [true, "s390", "ppc", "win32"]
+    "skip": [true, "s390", "ppc", "win32", "darwin"]
   }
 }
