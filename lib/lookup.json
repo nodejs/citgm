@@ -244,7 +244,7 @@
   },
   "jest": {
     "prefix": "v",
-    "maintainers": ["cpojer", "scotthovestadt", "SimenB", "thymikee", "jeysal"],
+    "maintainers": ["cpojer", "SimenB", "thymikee", "jeysal"],
     "yarn": true,
     "install": ["install", "--no-immutable"],
     "scripts": ["build:js", "remove-examples", "test-ci-partial"],
