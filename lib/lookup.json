@@ -375,6 +375,7 @@
   "prom-client": {
     "prefix": "v",
     "maintainers": ["siimon", "zbjornson", "SimenB"]
+    "head": true
   },
   "pug": {
     "prefix": "pug@",
