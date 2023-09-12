@@ -155,7 +155,7 @@
   },
   "fastify": {
     "maintainers": ["mcollina", "delvedor"],
-    "prefix": "v"
+    "prefix": "v",
     "skip": ["s390x", "aix"],
     "scripts": ["citgm"]
   },
