@@ -400,8 +400,8 @@
   },
   "pino": {
     "prefix": "v",
-    "skip": ["darwin"],
-    "maintainers": "mcollina"
+    "maintainers": "mcollina",
+    "skip": ["darwin", "aix", "s390x"]
   },
   "prom-client": {
     "prefix": "v",
