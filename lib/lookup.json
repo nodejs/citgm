@@ -452,7 +452,6 @@
   "resolve": {
     "prefix": "v",
     "maintainers": "ljharb",
-    "skip": ["darwin"],
     "scripts": ["tests-only", "posttest"]
   },
   "rewire": {
