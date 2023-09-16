@@ -407,6 +407,7 @@
     "prefix": "v",
     "skip": ["darwin"],
     "maintainers": ["siimon", "zbjornson", "SimenB"]
+    "head": true
   },
   "pug": {
     "prefix": "pug@",
