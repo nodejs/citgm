@@ -16,7 +16,7 @@
   ],
   "scripts": {
     "lint": "eslint bin/* lib/ test/ --cache",
-    "tap": "c8 --reporter lcov tap --no-coverage -J \"test/**/test-*.js\"",
+    "tap": "c8 --reporter lcov tap --no-coverage \"test/**/test-*.js\"",
     "test": "npm run lint && npm run tap"
   },
   "author": "James M Snell <jasnell@gmail.com> (http://jasnell.me)",
