@@ -495,16 +495,16 @@
     "skip": ["12", true],
     "comment": "Tests timeout"
   },
-  "uuid": {
-    "prefix": "v",
-    "maintainers": ["ctavan", "broofa"],
-    "skip": ["win32", "aix"]
-  },
   "underscore": {
     "flaky": ["aix", "s390"],
     "skip": "win32",
     "maintainers": "jashkenas",
     "ignoreGitHead": true
+  },
+  "uuid": {
+    "prefix": "v",
+    "maintainers": ["ctavan", "broofa"],
+    "skip": ["win32", "aix"]
   },
   "vinyl": {
     "prefix": "v",
