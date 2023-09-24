@@ -55,10 +55,6 @@
     "prefix": "v",
     "skip": ["win32", "aix"]
   },
-  "bluebird": {
-    "prefix": "v",
-    "maintainers": "petkaantonov"
-  },
   "body-parser": {
     "flaky": "aix",
     "maintainers": "dougwilson"
@@ -90,7 +86,7 @@
     "maintainers": "mcollina",
     "flaky": ["rhel"],
     "prefix": "v",
-    "skip": ["aix", "win32"]
+    "skip": ["aix", "darwin", "win32"]
   },
   "coffeescript": {
     "maintainers": ["jashkenas", "GeoffreyBooth"],
@@ -153,18 +149,9 @@
     "expectFail": "fips",
     "skip": ["win32"]
   },
-  "express": {
-    "flaky": "ppc",
-    "maintainers": "dougwilson",
-    "skip": "win32"
-  },
   "express-session": {
     "prefix": "v",
     "maintainers": "dougwilson"
-  },
-  "fastify": {
-    "maintainers": ["mcollina", "delvedor"],
-    "prefix": "v"
   },
   "flush-write-stream": {
     "prefix": "v",
@@ -214,10 +201,6 @@
     "maintainers": "contra",
     "skip": "win32"
   },
-  "https-proxy-agent": {
-    "maintainers": "TooTallNate",
-    "scripts": ["build", "test"]
-  },
   "iconv": {
     "prefix": "v",
     "flaky": "aix",
@@ -235,6 +218,7 @@
   },
   "is-core-module": {
     "prefix": "v",
+    "skip": "win32",
     "maintainers": "ljharb",
     "scripts": ["tests-only"]
   },
@@ -310,11 +294,13 @@
   },
   "mime": {
     "prefix": "v",
-    "maintainers": "broofa"
+    "maintainers": "broofa",
+    "skip": "win32"
   },
   "minimist": {
     "npm": true,
-    "maintainers": "substack"
+    "skip": "win32",
+    "maintainers": "ljharb"
   },
   "mkdirp": {
     "head": true,
@@ -358,11 +344,6 @@
     "comment": "Flaky because of test timeouts",
     "skip": true
   },
-  "npm": {
-    "maintainers": ["nodejs/npm"],
-    "prefix": "v",
-    "skip": ["aix", "s390"]
-  },
   "path-to-regexp": {
     "prefix": "v",
     "maintainers": "blakeembrey",
@@ -385,11 +366,6 @@
     "skip": ["win32", "aix", ">=16"],
     "comment": "Error message changes in V8 9.3",
     "repo": "https://github.com/pugjs/pug"
-  },
-  "pump": {
-    "prefix": "v",
-    "maintainers": "mafintosh",
-    "skip": "win32"
   },
   "pumpify": {
     "prefix": "v",
@@ -426,17 +402,8 @@
   },
   "rewire": {
     "prefix": "v",
-    "maintainers": "jhnns"
-  },
-  "rimraf": {
-    "prefix": "v",
-    "flaky": "win32",
-    "maintainers": "isaacs"
-  },
-  "router": {
-    "prefix": "v",
-    "maintainers": "dougwilson",
-    "skip": "win32"
+    "maintainers": "jhnns",
+    "scripts": ["test -- --timeout 30000"]
   },
   "sax": {
     "skip": "win32",
@@ -454,10 +421,8 @@
   },
   "serialport": {
     "prefix": "serialport@",
-    "flaky": ["ppc", "rhel"],
     "tags": "native",
-    "maintainers": "reconbot",
-    "skip": ["win32"]
+    "maintainers": "reconbot"
   },
   "socket.io": {
     "maintainers": "rauchg",
@@ -497,7 +462,9 @@
   "tape": {
     "head": true,
     "prefix": "v",
-    "maintainers": "substack"
+    "skip": "win32",
+    "scripts": ["tests-only"],
+    "maintainers": "ljharb"
   },
   "thread-sleep": {
     "install": ["install", "--build-from-source"],
@@ -521,9 +488,6 @@
     "prefix": "v",
     "maintainers": "mafintosh"
   },
-  "tough-cookie": {
-    "maintainers": ["awaterma", "colincasey", "ruoho", "wjharney"]
-  },
   "uglify-js": {
     "prefix": "v",
     "flaky": ["ppc", "darwin"],
@@ -536,10 +500,6 @@
     "skip": "win32",
     "maintainers": "jashkenas",
     "ignoreGitHead": true
-  },
-  "undici": {
-    "prefix": "v",
-    "maintainers": ["mcollina", "ronag"]
   },
   "uuid": {
     "prefix": "v",
@@ -568,13 +528,10 @@
     "maintainers": "tootallnate",
     "tags": "native"
   },
-  "winston": {
-    "flaky": ["win32", "ppc", "s390", "darwin"],
-    "maintainers": "indexzero"
-  },
   "ws": {
     "expectFail": "fips",
-    "maintainers": ["einaros", "3rd-Eden", "lpinca"]
+    "maintainers": ["einaros", "3rd-Eden", "lpinca"],
+    "scripts": ["test -- --timeout 30000"]
   },
   "yargs": {
     "comment": "Install from source is currently broken due to TS error",
