@@ -1,8 +1,6 @@
-import tap from 'tap';
+import { test } from 'tap';
 
 import { Tester } from '../lib/citgm.js';
-
-const { test } = tap;
 
 test('citgm: omg-i-pass', (t) => {
   t.plan(2);

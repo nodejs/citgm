@@ -43,10 +43,11 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: ${{ github.event.inputs.repository }}
           ref: ${{ github.event.inputs.ref }}
+          show-progress: false
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3

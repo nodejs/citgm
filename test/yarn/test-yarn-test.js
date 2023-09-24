@@ -2,18 +2,12 @@ import { existsSync, promises as fs } from 'fs';
 import { tmpdir } from 'os';
 import { join, resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { promisify } from 'util';
 
-import fse from 'fs-extra';
-import tap from 'tap';
-import rimrafLib from 'rimraf';
+import tap, { test } from 'tap';
 
 import { npmContext } from '../helpers/make-context.js';
 import { getPackageManagers } from '../../lib/package-manager/index.js';
 import { test as packageManagerTest } from '../../lib/package-manager/test.js';
-
-const { test } = tap;
-const rimraf = promisify(rimrafLib);
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -44,12 +38,12 @@ test('yarn-test: setup', async () => {
   packageManagers = await getPackageManagers();
   await fs.mkdir(sandbox, { recursive: true });
   await Promise.all([
-    fse.copy(passFixtures, passTemp),
-    fse.copy(failFixtures, failTemp),
-    fse.copy(badFixtures, badTemp),
-    fse.copy(noTestScriptFixtures, noTestScriptTemp),
-    fse.copy(scriptsFixtures, scriptsTemp),
-    fse.copy(writeTmpdirFixtures, writeTmpdirTemp)
+    fs.cp(passFixtures, passTemp, { recursive: true }),
+    fs.cp(failFixtures, failTemp, { recursive: true }),
+    fs.cp(badFixtures, badTemp, { recursive: true }),
+    fs.cp(noTestScriptFixtures, noTestScriptTemp, { recursive: true }),
+    fs.cp(scriptsFixtures, scriptsTemp, { recursive: true }),
+    fs.cp(writeTmpdirFixtures, writeTmpdirTemp, { recursive: true })
   ]);
 });
 
@@ -186,6 +180,11 @@ test('yarn-test: tmpdir is redirected', async (t) => {
   );
 });
 
-test('yarn-test: teardown', async () => {
-  await rimraf(sandbox);
+tap.teardown(async () => {
+  await fs.rm(sandbox, {
+    recursive: true,
+    force: true,
+    maxRetries: 10,
+    retryDelay: 10
+  });
 });

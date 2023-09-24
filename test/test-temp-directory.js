@@ -1,13 +1,10 @@
-import { promisify } from 'util';
 import { promises as fs } from 'fs';
 
 import tap from 'tap';
-import rimrafLib from 'rimraf';
 
 import * as tempDirectory from '../lib/temp-directory.js';
 
 const { test } = tap;
-const rimraf = promisify(rimrafLib);
 
 const isWin32 = process.platform === 'win32';
 const nullDevice = isWin32 ? '\\\\.\\NUL' : '/dev/null';
@@ -49,7 +46,11 @@ test('tempDirectory.create --tmpDir:', async (t) => {
   );
   const stats = await fs.stat(contextTmpDir.path);
   t.ok(stats.isDirectory(), 'the path should exist and be a folder');
-  await rimraf('./.thisisatest');
+  await fs.rm('./.thisisatest', {
+    recursive: true,
+    force: true,
+    maxRetries: 10
+  });
 });
 
 test('tempDirectory.remove:', async (t) => {

@@ -4,10 +4,8 @@ import { readFileSync, writeFileSync, promises as fs } from 'fs';
 import { join, dirname } from 'path';
 import { tmpdir } from 'os';
 import { fileURLToPath } from 'url';
-import { promisify } from 'util';
 
 import tap from 'tap';
-import rimrafLib from 'rimraf';
 import Parser from 'tap-parser';
 import str from 'string-to-stream';
 
@@ -18,7 +16,6 @@ const fixtures = JSON.parse(
 );
 
 const { test } = tap;
-const rimraf = promisify(rimrafLib);
 
 const fixturesPath = join(
   dirname(fileURLToPath(import.meta.url)),
@@ -131,6 +128,11 @@ test('reporter.tap(): append to disk when file does not exist', (t) => {
   t.end();
 });
 
-test('reporter.tap(): teardown', async () => {
-  await rimraf(sandbox);
+tap.teardown(async () => {
+  await fs.rm(sandbox, {
+    recursive: true,
+    force: true,
+    maxRetries: 10,
+    retryDelay: 10
+  });
 });
