@@ -457,6 +457,9 @@
     "maintainers": "tootallnate",
     "tags": "native"
   },
+  "winston": {
+    "maintainers": "indexzero"
+  },
   "ws": {
     "expectFail": "fips",
     "maintainers": ["einaros", "3rd-Eden", "lpinca"],
