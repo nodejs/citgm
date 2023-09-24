@@ -405,6 +405,10 @@
     "maintainers": "jhnns",
     "scripts": ["test -- --timeout 30000"]
   },
+  "rimraf": {
+    "prefix": "v",
+    "maintainers": "isaacs"
+  },
   "sax": {
     "skip": "win32",
     "prefix": "v",
