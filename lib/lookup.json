@@ -101,10 +101,19 @@
     "maintainers": "ctalkington",
     "skip": "win32"
   },
+  "csv-parser": {
+    "prefix": "v",
+    "flaky": "win32",
+    "maintainers": "mafintosh"
+  },
   "debug": {
     "maintainers": ["qix", "tootallnate"],
     "skip": [true, "aix", "ppc", "s390", "win32"],
     "scripts": ["test:node", "lint"]
+  },
+  "dicer": {
+    "prefix": "v",
+    "maintainers": "mscdex"
   },
   "duplexer2": {
     "prefix": "v",
@@ -113,6 +122,14 @@
   "duplexify": {
     "prefix": "v",
     "maintainers": "mafintosh"
+  },
+  "ember-cli": {
+    "envVar": { "YARN_IGNORE_ENGINES": "true" },
+    "prefix": "v",
+    "flaky": ["win32", "rhel", "sles"],
+    "head": true,
+    "expectFail": "fips",
+    "maintainers": ["stefanpenner", "rwjblue", "Turbo87", "kellyselden"]
   },
   "end-of-stream": {
     "prefix": "v",
@@ -244,6 +261,13 @@
     "maintainers": ["ralphtheninja", "vweevers"],
     "skip": "win32"
   },
+  "leveldown": {
+    "prefix": "v",
+    "useGitClone": true,
+    "flaky": ["ppc", "s390"],
+    "tags": "native",
+    "maintainers": ["ralphtheninja", "vweevers"]
+  },
   "libxmljs": {
     "prefix": "v",
     "flaky": ["aix", "sles", "rhel", "darwin"],
@@ -268,6 +292,11 @@
     "tags": "native",
     "maintainers": "wadey"
   },
+  "mime": {
+    "prefix": "v",
+    "maintainers": "broofa",
+    "skip": "win32"
+  },
   "minimist": {
     "npm": true,
     "skip": "win32",
@@ -288,6 +317,18 @@
   "moment": {
     "maintainers": "ichernev",
     "skip": [true, "ppc", "s390"]
+  },
+  "multer": {
+    "prefix": "v",
+    "skip": "win32",
+    "maintainers": "linusu"
+  },
+  "nan": {
+    "maintainers": ["nodejs/addon-api"],
+    "prefix": "v",
+    "scripts": ["rebuild-tests", "test"],
+    "tags": "native",
+    "head": true
   },
   "node-gyp": {
     "envVar": { "FAST_TEST": "true" },
@@ -443,6 +484,10 @@
     "stripAnsi": true,
     "maintainers": "mcollina"
   },
+  "torrent-stream": {
+    "prefix": "v",
+    "maintainers": "mafintosh"
+  },
   "uglify-js": {
     "prefix": "v",
     "flaky": ["ppc", "darwin"],
@@ -454,6 +499,12 @@
     "prefix": "v",
     "maintainers": ["ctavan", "broofa"],
     "skip": ["win32", "aix"]
+  },
+  "underscore": {
+    "flaky": ["aix", "s390"],
+    "skip": "win32",
+    "maintainers": "jashkenas",
+    "ignoreGitHead": true
   },
   "vinyl": {
     "prefix": "v",
