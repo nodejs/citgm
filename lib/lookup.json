@@ -501,6 +501,10 @@
     "maintainers": "jashkenas",
     "ignoreGitHead": true
   },
+  "undici": {
+    "prefix": "v",
+    "maintainers": ["mcollina", "ronag"]
+  },
   "uuid": {
     "prefix": "v",
     "maintainers": ["ctavan", "broofa"],
