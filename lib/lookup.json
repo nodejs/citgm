@@ -344,6 +344,10 @@
     "comment": "Flaky because of test timeouts",
     "skip": true
   },
+  "npm": {
+    "maintainers": ["nodejs/npm"],
+    "prefix": "v"
+  },
   "path-to-regexp": {
     "prefix": "v",
     "maintainers": "blakeembrey",
