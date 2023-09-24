@@ -201,6 +201,10 @@
     "maintainers": "contra",
     "skip": "win32"
   },
+  "https-proxy-agent": {
+    "maintainers": "TooTallNate",
+    "scripts": ["build", "test"]
+  },
   "iconv": {
     "prefix": "v",
     "flaky": "aix",
