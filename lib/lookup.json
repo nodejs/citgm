@@ -264,7 +264,7 @@
   "leveldown": {
     "head": true,
     "useGitClone": true,
-    "flaky": ["ppc", "s390"],
+    "skip": ["ppc", "s390"],
     "tags": "native",
     "maintainers": ["ralphtheninja", "vweevers"]
   },
