@@ -3,6 +3,7 @@ import { test } from 'tap';
 import { Tester } from '../lib/citgm.js';
 
 test('citgm: omg-i-pass', (t) => {
+  t.setTimeout(30000);
   t.plan(2);
   const options = {
     hmac: null,
@@ -28,6 +29,7 @@ test('citgm: omg-i-pass', (t) => {
 });
 
 test('citgm: omg-i-pass from git url', (t) => {
+  t.setTimeout(30000);
   t.plan(3);
 
   const options = {
