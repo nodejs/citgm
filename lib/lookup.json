@@ -102,7 +102,7 @@
     "skip": "win32"
   },
   "csv-parser": {
-    "prefix": "v",
+    "head": true,
     "flaky": "win32",
     "maintainers": "mafintosh"
   },
@@ -112,7 +112,7 @@
     "scripts": ["test:node", "lint"]
   },
   "dicer": {
-    "prefix": "v",
+    "head": true,
     "maintainers": "mscdex"
   },
   "duplexer2": {
@@ -498,8 +498,7 @@
   "underscore": {
     "flaky": ["aix", "s390"],
     "skip": "win32",
-    "maintainers": "jashkenas",
-    "ignoreGitHead": true
+    "maintainers": "jashkenas"
   },
   "uuid": {
     "prefix": "v",
