@@ -332,10 +332,10 @@
   },
   "node-gyp": {
     "envVar": { "FAST_TEST": "true" },
-    "prefix": "v",
     "tags": "native",
     "maintainers": ["nodejs/node-gyp"],
-    "skip": ["win32"]
+    "skip": ["win32"],
+    "head": true
   },
   "node-sass": {
     "prefix": "v",
