@@ -55,6 +55,10 @@
     "prefix": "v",
     "skip": ["win32", "aix"]
   },
+  "bluebird": {
+    "prefix": "v",
+    "maintainers": "petkaantonov"
+  },
   "body-parser": {
     "flaky": "aix",
     "maintainers": "dougwilson"
