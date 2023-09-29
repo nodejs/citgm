@@ -57,7 +57,8 @@
   },
   "bluebird": {
     "prefix": "v",
-    "maintainers": "petkaantonov"
+    "maintainers": "petkaantonov",
+    "stripAnsi": true
   },
   "body-parser": {
     "flaky": "aix",
