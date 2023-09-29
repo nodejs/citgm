@@ -31,23 +31,11 @@
     "prefix": "@yarnpkg/cli@",
     "repo": "https://github.com/yarnpkg/berry",
     "scripts": [
-      ["build:cli", "--no-minify"],
+      "build:cli --no-minify",
       "typecheck:all",
       "test:lint",
-      [
-        "test:unit",
-        "--testPathIgnorePatterns",
-        "./packages/plugin-patch/tests/diffFolders.test.ts"
-      ],
-      [
-        "test:integration",
-        "--runInBand",
-        "--testPathIgnorePatterns",
-        "./packages/acceptance-tests/pkg-tests-specs/sources/commands/patchCommit.test.ts",
-        "./packages/acceptance-tests/pkg-tests-specs/sources/commands/patch.test.ts",
-        "./packages/acceptance-tests/pkg-tests-specs/sources/protocols/git.test.js",
-        "./packages/acceptance-tests/pkg-tests-specs/sources/script.test.js"
-      ]
+      "test:unit --testPathIgnorePatterns ./packages/plugin-patch/tests/diffFolders.test.ts",
+      "test:integration --runInBand --testPathIgnorePatterns ./packages/acceptance-tests/pkg-tests-specs/sources/commands/patchCommit.test.ts ./packages/acceptance-tests/pkg-tests-specs/sources/commands/patch.test.ts ./packages/acceptance-tests/pkg-tests-specs/sources/protocols/git.test.js ./packages/acceptance-tests/pkg-tests-specs/sources/script.test.js"
     ],
     "flaky": ["ppc", "fedora", "debian", "win"],
     "timeout": 3000000,
@@ -57,14 +45,6 @@
     "prefix": "v",
     "skip": ["win32", "14"],
     "maintainers": "dominictarr"
-  },
-  "acorn": {
-    "maintainers": "marijnh",
-    "skip": ["win32", "ppc"]
-  },
-  "async": {
-    "prefix": "v",
-    "maintainers": ["aearly", "megawac"]
   },
   "ava": {
     "prefix": "v",
@@ -90,11 +70,7 @@
   "blake2b-wasm": {
     "maintainers": ["mafintosh", "addaleax"],
     "prefix": "v",
-    "skip": ["win32", "aix", "s390"]
-  },
-  "bluebird": {
-    "prefix": "v",
-    "maintainers": "petkaantonov"
+    "skip": ["win32", "aix"]
   },
   "body-parser": {
     "flaky": "aix",
@@ -127,7 +103,7 @@
     "maintainers": "mcollina",
     "flaky": ["rhel"],
     "prefix": "v",
-    "skip": ["aix", "win32"]
+    "skip": ["aix", "darwin", "win32"]
   },
   "coffeescript": {
     "maintainers": ["jashkenas", "GeoffreyBooth"],
@@ -143,7 +119,7 @@
     "skip": "win32"
   },
   "csv-parser": {
-    "prefix": "v",
+    "head": true,
     "flaky": "win32",
     "maintainers": "mafintosh"
   },
@@ -153,7 +129,7 @@
     "scripts": ["test:node", "lint"]
   },
   "dicer": {
-    "prefix": "v",
+    "head": true,
     "maintainers": "mscdex"
   },
   "duplexer2": {
@@ -190,18 +166,9 @@
     "expectFail": "fips",
     "skip": ["win32"]
   },
-  "express": {
-    "flaky": "ppc",
-    "maintainers": "dougwilson",
-    "skip": "win32"
-  },
   "express-session": {
     "prefix": "v",
     "maintainers": "dougwilson"
-  },
-  "fastify": {
-    "maintainers": ["mcollina", "delvedor"],
-    "prefix": "v"
   },
   "flush-write-stream": {
     "prefix": "v",
@@ -251,15 +218,16 @@
     "maintainers": "contra",
     "skip": "win32"
   },
-  "https-proxy-agent": {
-    "maintainers": "TooTallNate",
-    "scripts": ["build", "test"]
-  },
   "iconv": {
     "prefix": "v",
     "flaky": "aix",
     "tags": "native",
     "maintainers": "bnoordhuis"
+  },
+  "import-in-the-middle": {
+    "prefix": "v",
+    "skip": "win32",
+    "maintainers": ["bengl", "Qard"]
   },
   "inherits": {
     "prefix": "v",
@@ -267,6 +235,7 @@
   },
   "is-core-module": {
     "prefix": "v",
+    "skip": "win32",
     "maintainers": "ljharb",
     "scripts": ["tests-only"]
   },
@@ -276,13 +245,22 @@
   },
   "jest": {
     "prefix": "v",
-    "maintainers": ["cpojer", "scotthovestadt", "SimenB", "thymikee", "jeysal"],
+    "maintainers": ["cpojer", "SimenB", "thymikee", "jeysal"],
     "yarn": true,
+    "head": true,
     "install": ["install", "--no-immutable"],
     "scripts": ["build:js", "remove-examples", "test-ci-partial"],
     "envVar": { "CI": true },
     "skip": ["aix", "s390x", "ppc", "darwin", "win32"],
     "timeout": 1800000
+  },
+  "jose": {
+    "maintainers": ["panva"],
+    "prefix": "v",
+    "scripts": ["test", "tap:node"],
+    "envVar": { "CITGM": true },
+    "skip": ["aix"],
+    "comment": "esbuild doesn't support aix"
   },
   "jquery": {
     "skip": "win32",
@@ -301,9 +279,9 @@
     "skip": "win32"
   },
   "leveldown": {
-    "prefix": "v",
+    "head": true,
     "useGitClone": true,
-    "flaky": ["ppc", "s390"],
+    "skip": ["ppc", "s390"],
     "tags": "native",
     "maintainers": ["ralphtheninja", "vweevers"]
   },
@@ -318,6 +296,14 @@
     "expectFail": "fips",
     "maintainers": "jdalton"
   },
+  "lru-cache": {
+    "envVar": { "TAP_TIMEOUT": "300" },
+    "prefix": "v",
+    "maintainers": "isaacs",
+    "flaky": ["win32"],
+    "skip": "aix",
+    "comment": "Marked as flaky on win32 due to this issue https://github.com/nodejs/citgm/issues/930"
+  },
   "microtime": {
     "prefix": "v",
     "tags": "native",
@@ -325,15 +311,18 @@
   },
   "mime": {
     "prefix": "v",
-    "maintainers": "broofa"
+    "maintainers": "broofa",
+    "skip": "win32"
   },
   "minimist": {
-    "maintainers": "substack"
+    "npm": true,
+    "skip": "win32",
+    "maintainers": "ljharb"
   },
   "mkdirp": {
     "head": true,
-    "skip": "win32",
-    "maintainers": "substack"
+    "skip": ["win32", true],
+    "maintainers": "isaacs"
   },
   "mocha": {
     "prefix": "v",
@@ -360,10 +349,10 @@
   },
   "node-gyp": {
     "envVar": { "FAST_TEST": "true" },
-    "prefix": "v",
     "tags": "native",
     "maintainers": ["nodejs/node-gyp"],
-    "skip": ["win32"]
+    "skip": ["win32"],
+    "head": true
   },
   "node-sass": {
     "prefix": "v",
@@ -372,11 +361,6 @@
     "comment": "Flaky because of test timeouts",
     "skip": true
   },
-  "npm": {
-    "maintainers": ["nodejs/npm"],
-    "prefix": "v",
-    "skip": ["aix", "s390"]
-  },
   "path-to-regexp": {
     "prefix": "v",
     "maintainers": "blakeembrey",
@@ -384,11 +368,13 @@
   },
   "pino": {
     "prefix": "v",
-    "maintainers": "mcollina"
+    "maintainers": "mcollina",
+    "skip": ["aix", "s390x"]
   },
   "prom-client": {
     "prefix": "v",
-    "maintainers": ["siimon", "zbjornson", "SimenB"]
+    "maintainers": ["siimon", "zbjornson", "SimenB"],
+    "head": true
   },
   "pug": {
     "prefix": "pug@",
@@ -397,11 +383,6 @@
     "skip": ["win32", "aix", ">=16"],
     "comment": "Error message changes in V8 9.3",
     "repo": "https://github.com/pugjs/pug"
-  },
-  "pump": {
-    "prefix": "v",
-    "maintainers": "mafintosh",
-    "skip": "win32"
   },
   "pumpify": {
     "prefix": "v",
@@ -412,14 +393,6 @@
     "prefix": "v",
     "maintainers": "kriskowal",
     "skip": "win32"
-  },
-  "radium": {
-    "prefix": "v",
-    "expectFail": "fips",
-    "yarn": true,
-    "skip": ["aix", "ppc"],
-    "maintainers": ["ianobermiller", "alexlande"],
-    "scripts": ["test-node"]
   },
   "react": {
     "prefix": "v",
@@ -446,17 +419,8 @@
   },
   "rewire": {
     "prefix": "v",
-    "maintainers": "jhnns"
-  },
-  "rimraf": {
-    "prefix": "v",
-    "flaky": "win32",
-    "maintainers": "isaacs"
-  },
-  "router": {
-    "prefix": "v",
-    "maintainers": "dougwilson",
-    "skip": "win32"
+    "maintainers": "jhnns",
+    "scripts": ["test -- --timeout 30000"]
   },
   "sax": {
     "skip": "win32",
@@ -474,22 +438,14 @@
   },
   "serialport": {
     "prefix": "serialport@",
-    "flaky": ["ppc", "rhel"],
     "tags": "native",
-    "maintainers": "reconbot",
-    "skip": ["win32"]
+    "maintainers": "reconbot"
   },
   "socket.io": {
     "maintainers": "rauchg",
     "head": true,
     "skip": ">=17",
     "comment": "WS is not compatible"
-  },
-  "spawn-wrap": {
-    "prefix": "v",
-    "flaky": ["sles", "aix", "darwin"],
-    "maintainers": "isaacs",
-    "skip": "win32"
   },
   "spdy": {
     "prefix": "v",
@@ -523,7 +479,9 @@
   "tape": {
     "head": true,
     "prefix": "v",
-    "maintainers": "substack"
+    "skip": "win32",
+    "scripts": ["tests-only"],
+    "maintainers": "ljharb"
   },
   "thread-sleep": {
     "install": ["install", "--build-from-source"],
@@ -547,9 +505,6 @@
     "prefix": "v",
     "maintainers": "mafintosh"
   },
-  "tough-cookie": {
-    "maintainers": ["awaterma", "colincasey", "ruoho", "wjharney"]
-  },
   "uglify-js": {
     "prefix": "v",
     "flaky": ["ppc", "darwin"],
@@ -560,12 +515,7 @@
   "underscore": {
     "flaky": ["aix", "s390"],
     "skip": "win32",
-    "maintainers": "jashkenas",
-    "ignoreGitHead": true
-  },
-  "undici": {
-    "prefix": "v",
-    "maintainers": ["mcollina", "ronag"]
+    "maintainers": "jashkenas"
   },
   "uuid": {
     "prefix": "v",
@@ -594,21 +544,17 @@
     "maintainers": "tootallnate",
     "tags": "native"
   },
-  "winston": {
-    "flaky": ["win32", "ppc", "s390", "darwin"],
-    "maintainers": "indexzero"
-  },
   "ws": {
     "expectFail": "fips",
-    "maintainers": ["einaros", "3rd-Eden", "lpinca"]
+    "maintainers": ["einaros", "3rd-Eden", "lpinca"],
+    "scripts": ["test -- --timeout 30000"]
   },
   "yargs": {
-    "comment": "Appears to require npm 8 to successfully install.",
+    "comment": "Install from source is currently broken due to TS error",
     "prefix": "v",
     "expectFail": "fips",
     "maintainers": ["bcoe", "addaleax"],
-    "head": true,
-    "skip": ["14"]
+    "skip": true
   },
   "yeoman-generator": {
     "prefix": "v",
