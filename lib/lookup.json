@@ -420,7 +420,7 @@
     "comment": "postlint script fails"
   },
   "serialport": {
-    "prefix": "serialport@",
+    "head": true,
     "tags": "native",
     "maintainers": "reconbot"
   },
