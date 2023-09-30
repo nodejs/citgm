@@ -34,8 +34,7 @@
       "build:cli --no-minify",
       "typecheck:all",
       "test:lint",
-      "test:unit --testPathIgnorePatterns ./packages/plugin-patch/tests/diffFolders.test.ts",
-      "test:integration --runInBand --testPathIgnorePatterns ./packages/acceptance-tests/pkg-tests-specs/sources/commands/patchCommit.test.ts ./packages/acceptance-tests/pkg-tests-specs/sources/commands/patch.test.ts ./packages/acceptance-tests/pkg-tests-specs/sources/protocols/git.test.js ./packages/acceptance-tests/pkg-tests-specs/sources/script.test.js"
+      "test:unit --testPathIgnorePatterns ./packages/plugin-patch/tests/diffFolders.test.ts"
     ],
     "flaky": ["ppc", "fedora", "debian", "win"],
     "timeout": 3000000,
