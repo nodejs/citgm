@@ -420,6 +420,7 @@
     "comment": "postlint script fails"
   },
   "serialport": {
+    "skip": ["ppc", "s390x"],
     "head": true,
     "tags": "native",
     "maintainers": "reconbot"
