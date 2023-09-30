@@ -36,6 +36,7 @@
       "test:lint",
       "test:unit --testPathIgnorePatterns ./packages/plugin-patch/tests/diffFolders.test.ts"
     ],
+    "skip": ["aix", "win32"],
     "timeout": 3000000,
     "yarn": true
   },
