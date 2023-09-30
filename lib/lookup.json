@@ -36,7 +36,6 @@
       "test:lint",
       "test:unit --testPathIgnorePatterns ./packages/plugin-patch/tests/diffFolders.test.ts"
     ],
-    "flaky": ["ppc", "fedora", "debian", "win"],
     "timeout": 3000000,
     "yarn": true
   },
