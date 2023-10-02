@@ -34,7 +34,8 @@
       "build:cli --no-minify",
       "typecheck:all",
       "test:lint",
-      "test:unit --testPathIgnorePatterns ./packages/plugin-patch/tests/diffFolders.test.ts"
+      "test:unit --testPathIgnorePatterns ./packages/plugin-patch/tests/diffFolders.test.ts",
+      "test:integration sources/basic.test sources/pnp.test sources/pnp-esm.test sources/require.test sources/https.test sources/exports.test sources/commands/add.test"
     ],
     "skip": ["aix", "win32"],
     "timeout": 3000000,
