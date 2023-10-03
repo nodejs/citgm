@@ -321,7 +321,8 @@
   "multer": {
     "prefix": "v",
     "skip": "win32",
-    "maintainers": "linusu"
+    "maintainers": "linusu",
+    "flaky": ["darwin"]
   },
   "nan": {
     "maintainers": ["nodejs/addon-api"],
