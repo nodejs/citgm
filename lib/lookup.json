@@ -501,10 +501,6 @@
     "stripAnsi": true,
     "maintainers": "mcollina"
   },
-  "torrent-stream": {
-    "prefix": "v",
-    "maintainers": "mafintosh"
-  },
   "uglify-js": {
     "prefix": "v",
     "flaky": ["ppc", "darwin"],
