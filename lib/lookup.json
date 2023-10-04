@@ -32,7 +32,8 @@
   "ava": {
     "prefix": "v",
     "skip": ["14", "ppc", "win32", "x86", "rhel", "aix", "ia32"],
-    "maintainers": ["sindresorhus", "novemberborn"]
+    "maintainers": ["sindresorhus", "novemberborn"],
+    "timeout": 600000
   },
   "bcrypt": {
     "prefix": "v",
