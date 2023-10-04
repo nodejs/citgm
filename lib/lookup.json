@@ -24,6 +24,22 @@
     "maintainers": "cjihrig",
     "prefix": "v"
   },
+  "@yarnpkg/cli": {
+    "envVar": { "TEST_IGNORE_TIMEOUT_FAILURES": true },
+    "install": ["install", "--mode", "skip-build"],
+    "maintainers": ["arcanis", "merceyz", "paul-soporan", "larixer"],
+    "head": true,
+    "repo": "https://github.com/yarnpkg/berry",
+    "scripts": [
+      "build:cli --no-minify",
+      "typecheck:all",
+      "test:lint",
+      "test:unit --testPathIgnorePatterns ./packages/plugin-patch/tests/diffFolders.test.ts"
+    ],
+    "skip": ["aix", "win32"],
+    "timeout": 3000000,
+    "yarn": true
+  },
   "JSONStream": {
     "prefix": "v",
     "skip": ["win32", "14"],
@@ -421,7 +437,8 @@
     "comment": "postlint script fails"
   },
   "serialport": {
-    "prefix": "serialport@",
+    "skip": ["ppc", "s390x"],
+    "head": true,
     "tags": "native",
     "maintainers": "reconbot"
   },
