@@ -154,9 +154,9 @@
     "maintainers": "dougwilson"
   },
   "fastify": {
-    "maintainers": ["mcollina", "delvedor"],
+    "maintainers": ["mcollina"],
     "prefix": "v",
-    "skip": ["s390x", "aix"],
+    "skip": ["s390x", "aix", "aix72-ppc64"],
     "scripts": ["citgm"]
   },
   "flush-write-stream": {
