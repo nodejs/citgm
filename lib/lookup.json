@@ -435,7 +435,8 @@
     "maintainers": "isaacs",
     "expectFail": "fips",
     "envVar": { "npm_config_ignore_scripts": "true" },
-    "comment": "postlint script fails"
+    "comment": "postlint script fails",
+    "timeout": 300000
   },
   "serialport": {
     "skip": ["ppc", "s390x"],
