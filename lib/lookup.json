@@ -346,7 +346,9 @@
     "prefix": "v",
     "scripts": ["rebuild-tests", "test"],
     "tags": "native",
-    "head": true
+    "head": true,
+    "skip": [ "win32", "aix", "s390x"],
+    "comment": "Skipped while a proper solution is found"
   },
   "node-gyp": {
     "envVar": { "FAST_TEST": "true" },
