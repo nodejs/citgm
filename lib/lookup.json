@@ -438,7 +438,8 @@
     "expectFail": "fips",
     "envVar": { "npm_config_ignore_scripts": "true" },
     "comment": "postlint script fails",
-    "timeout": 300000
+    "timeout": 300000,
+    "scripts": ["test -- --timeout 60000"]
   },
   "serialport": {
     "skip": ["ppc", "s390x"],
