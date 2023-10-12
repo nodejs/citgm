@@ -173,7 +173,7 @@
   "fastify": {
     "maintainers": ["mcollina"],
     "prefix": "v",
-    "skip": ["s390x", "aix", "aix72-ppc64"],
+    "skip": ["s390x", "aix"],
     "scripts": ["citgm"]
   },
   "flush-write-stream": {
