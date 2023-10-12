@@ -24,6 +24,22 @@
     "maintainers": "cjihrig",
     "prefix": "v"
   },
+  "@yarnpkg/cli": {
+    "envVar": { "TEST_IGNORE_TIMEOUT_FAILURES": true },
+    "install": ["install", "--mode", "skip-build"],
+    "maintainers": ["arcanis", "merceyz", "paul-soporan", "larixer"],
+    "head": true,
+    "repo": "https://github.com/yarnpkg/berry",
+    "scripts": [
+      "build:cli --no-minify",
+      "typecheck:all",
+      "test:lint",
+      "test:unit --testPathIgnorePatterns ./packages/plugin-patch/tests/diffFolders.test.ts"
+    ],
+    "skip": ["aix", "win32"],
+    "timeout": 3000000,
+    "yarn": true
+  },
   "JSONStream": {
     "prefix": "v",
     "skip": ["win32", "14"],
@@ -32,7 +48,8 @@
   "ava": {
     "prefix": "v",
     "skip": ["14", "ppc", "win32", "x86", "rhel", "aix", "ia32"],
-    "maintainers": ["sindresorhus", "novemberborn"]
+    "maintainers": ["sindresorhus", "novemberborn"],
+    "timeout": 600000
   },
   "bcrypt": {
     "prefix": "v",
@@ -102,7 +119,7 @@
     "skip": "win32"
   },
   "csv-parser": {
-    "prefix": "v",
+    "head": true,
     "flaky": "win32",
     "maintainers": "mafintosh"
   },
@@ -112,7 +129,7 @@
     "scripts": ["test:node", "lint"]
   },
   "dicer": {
-    "prefix": "v",
+    "head": true,
     "maintainers": "mscdex"
   },
   "duplexer2": {
@@ -268,9 +285,9 @@
     "skip": "win32"
   },
   "leveldown": {
-    "prefix": "v",
+    "head": true,
     "useGitClone": true,
-    "flaky": ["ppc", "s390"],
+    "skip": ["ppc", "s390"],
     "tags": "native",
     "maintainers": ["ralphtheninja", "vweevers"]
   },
@@ -327,21 +344,24 @@
   "multer": {
     "prefix": "v",
     "skip": "win32",
-    "maintainers": "linusu"
+    "maintainers": "linusu",
+    "flaky": ["darwin"]
   },
   "nan": {
     "maintainers": ["nodejs/addon-api"],
     "prefix": "v",
     "scripts": ["rebuild-tests", "test"],
     "tags": "native",
-    "head": true
+    "head": true,
+    "skip": [ "win32", "aix", "s390x"],
+    "comment": "Skipped while a proper solution is found"
   },
   "node-gyp": {
     "envVar": { "FAST_TEST": "true" },
-    "prefix": "v",
     "tags": "native",
     "maintainers": ["nodejs/node-gyp"],
-    "skip": ["win32"]
+    "skip": ["win32"],
+    "head": true
   },
   "node-sass": {
     "prefix": "v",
@@ -423,10 +443,12 @@
     "maintainers": "isaacs",
     "expectFail": "fips",
     "envVar": { "npm_config_ignore_scripts": "true" },
-    "comment": "postlint script fails"
+    "comment": "postlint script fails",
+    "timeout": 300000
   },
   "serialport": {
-    "prefix": "serialport@",
+    "skip": ["ppc", "s390x"],
+    "head": true,
     "tags": "native",
     "maintainers": "reconbot"
   },
@@ -490,10 +512,6 @@
     "stripAnsi": true,
     "maintainers": "mcollina"
   },
-  "torrent-stream": {
-    "prefix": "v",
-    "maintainers": "mafintosh"
-  },
   "uglify-js": {
     "prefix": "v",
     "flaky": ["ppc", "darwin"],
@@ -504,8 +522,7 @@
   "underscore": {
     "flaky": ["aix", "s390"],
     "skip": "win32",
-    "maintainers": "jashkenas",
-    "ignoreGitHead": true
+    "maintainers": "jashkenas"
   },
   "uuid": {
     "prefix": "v",
