@@ -46,6 +46,7 @@ Options:
   -g, --gid <uid>             Set the gid (posix only)
   -a, --append                Turns on append results to file mode rather than replace
   --tmpDir <path>             Directory to test modules in
+  --printLockFile             Print the failed module's package-lock.json/yarn.lock file
 ```
 
 ### Examples:
