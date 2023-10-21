@@ -22,7 +22,7 @@ const fixturesPath = join(
   '..',
   'fixtures'
 );
-const sandbox = join(tmpdir(), `citgm-${Date.now()}`);
+const sandbox = join(tmpdir(), `citgm-${Date.now()}-test-reporter-junit`);
 const outputFile = join(sandbox, 'test.xml');
 const outputFileAppend = join(sandbox, 'test-append.xml');
 
