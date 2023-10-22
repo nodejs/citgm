@@ -170,6 +170,12 @@
     "prefix": "v",
     "maintainers": "dougwilson"
   },
+  "fastify": {
+    "maintainers": ["mcollina"],
+    "prefix": "v",
+    "skip": ["s390x", "aix"],
+    "scripts": ["citgm"]
+  },
   "flush-write-stream": {
     "prefix": "v",
     "maintainers": "mafintosh",
