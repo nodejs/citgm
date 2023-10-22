@@ -11,7 +11,7 @@ import { test as packageManagerTest } from '../../lib/package-manager/test.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const sandbox = join(tmpdir(), `citgm-${Date.now()}`);
+const sandbox = join(tmpdir(), `citgm-${Date.now()}-yarn-test`);
 const fixtures = join(__dirname, '..', 'fixtures');
 
 const passFixtures = join(fixtures, 'omg-i-pass');

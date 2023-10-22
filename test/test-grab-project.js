@@ -14,7 +14,7 @@ import { grabProject } from '../lib/grab-project.js';
 const { test } = tap;
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const sandbox = join(tmpdir(), `citgm-${Date.now()}`);
+const sandbox = join(tmpdir(), `citgm-${Date.now()}-grab-project`);
 const fixtures = join(__dirname, 'fixtures');
 
 test('grab-project: setup', async () => {
