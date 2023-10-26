@@ -49,7 +49,8 @@
   "ava": {
     "prefix": "v",
     "skip": ["14", "ppc", "win32", "x86", "rhel", "aix", "ia32"],
-    "maintainers": ["sindresorhus", "novemberborn"]
+    "maintainers": ["sindresorhus", "novemberborn"],
+    "timeout": 600000
   },
   "bcrypt": {
     "prefix": "v",
@@ -169,6 +170,12 @@
   "express-session": {
     "prefix": "v",
     "maintainers": "dougwilson"
+  },
+  "fastify": {
+    "maintainers": ["mcollina"],
+    "prefix": "v",
+    "skip": ["s390x", "aix"],
+    "scripts": ["citgm"]
   },
   "flush-write-stream": {
     "prefix": "v",
@@ -338,14 +345,17 @@
   "multer": {
     "prefix": "v",
     "skip": "win32",
-    "maintainers": "linusu"
+    "maintainers": "linusu",
+    "flaky": ["darwin"]
   },
   "nan": {
     "maintainers": ["nodejs/addon-api"],
     "prefix": "v",
     "scripts": ["rebuild-tests", "test"],
     "tags": "native",
-    "head": true
+    "head": true,
+    "skip": [ "win32", "aix", "s390x"],
+    "comment": "Skipped while a proper solution is found"
   },
   "node-gyp": {
     "envVar": { "FAST_TEST": "true" },
@@ -434,7 +444,8 @@
     "maintainers": "isaacs",
     "expectFail": "fips",
     "envVar": { "npm_config_ignore_scripts": "true" },
-    "comment": "postlint script fails"
+    "comment": "postlint script fails",
+    "timeout": 300000
   },
   "serialport": {
     "skip": ["ppc", "s390x"],
@@ -501,10 +512,6 @@
     "prefix": "v",
     "stripAnsi": true,
     "maintainers": "mcollina"
-  },
-  "torrent-stream": {
-    "prefix": "v",
-    "maintainers": "mafintosh"
   },
   "uglify-js": {
     "prefix": "v",

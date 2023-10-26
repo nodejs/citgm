@@ -12,7 +12,7 @@ import { npmContext } from '../helpers/make-context.js';
 const { test } = tap;
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const sandbox = join(tmpdir(), `citgm-${Date.now()}`);
+const sandbox = join(tmpdir(), `citgm-${Date.now()}-npm-install`);
 const fixtures = join(__dirname, '..', 'fixtures');
 const moduleFixtures = join(fixtures, 'omg-i-pass');
 const moduleTemp = join(sandbox, 'omg-i-pass');

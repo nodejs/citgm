@@ -11,7 +11,7 @@ import { npmContext } from '../helpers/make-context.js';
 
 const { test } = tap;
 
-const sandbox = join(tmpdir(), `citgm-${Date.now()}`);
+const sandbox = join(tmpdir(), `citgm-${Date.now()}-yarn-install`);
 const fixtures = join(
   dirname(fileURLToPath(import.meta.url)),
   '..',
