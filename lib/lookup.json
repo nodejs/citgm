@@ -454,10 +454,7 @@
     "maintainers": "reconbot"
   },
   "socket.io": {
-    "maintainers": "rauchg",
-    "head": true,
-    "skip": ">=17",
-    "comment": "WS is not compatible"
+    "maintainers": ["rauchg", "darrachequesne"]
   },
   "spdy": {
     "prefix": "v",
