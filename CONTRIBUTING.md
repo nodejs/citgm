@@ -52,7 +52,8 @@ This is for adding a module to be included in the default `citgm-all` runs.
 - Module source code must be on Github.
 - Published versions must include a tag on Github
 - The test process must be executable with only the commands
-  `npm install && npm test` or (`yarn install && yarn test`) using the tarball
+  `npm install && npm test` or (`yarn install && yarn test`
+  or `pnpm install && pnpm test`) using the tarball
   downloaded from the Github tag mentioned above
 - The tests pass on supported major release lines
 - The maintainers of the module remain responsive when there are problems

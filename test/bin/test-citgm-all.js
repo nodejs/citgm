@@ -269,6 +269,21 @@ test('citgm-all: install with yarn', (t) => {
   });
 });
 
+test('citgm-all: install with pnpm', (t) => {
+  t.plan(1);
+  const proc = spawn(citgmAllPath, [
+    '-l',
+    'test/fixtures/custom-lookup.json',
+    '--pnpm'
+  ]);
+  proc.on('error', (err) => {
+    t.error(err);
+  });
+  proc.on('close', (code) => {
+    t.equal(code, 0, 'citgm-all should only run omg-i-pass');
+  });
+});
+
 test('bin: sigterm', (t) => {
   t.plan(1);
 
