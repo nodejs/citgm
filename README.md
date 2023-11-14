@@ -3,7 +3,7 @@
 citgm is a simple tool for pulling down an arbitrary module from npm and testing
 it using a specific version of the node runtime.
 
-[![Build Status](https://github.com/nodejs/citgm/workflows/Node.js%20CI/badge.svg?branch=main)](https://github.com/nodejs/citgm/actions?query=workflow%3A%22Node.js+CI%22)
+[![Build Status](https://github.com/nodejs/citgm/actions/workflows/nodejs.yml/badge.svg?branch=main)](https://github.com/nodejs/citgm/actions/workflows/nodejs.yml)
 
 The Node.js project uses citgm to smoke test our releases and controversial
 changes. The Jenkins job that utilizes citgm can be found
