@@ -281,9 +281,9 @@
   },
   "level": {
     "prefix": "v",
-    "flaky": ["aix", "s390"],
+    "flaky": ["aix"],
     "maintainers": ["ralphtheninja", "vweevers"],
-    "skip": "win32"
+    "skip": ["win32", "s390"]
   },
   "leveldown": {
     "head": true,
