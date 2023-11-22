@@ -535,12 +535,6 @@
     "maintainers": ["contra", "phated"],
     "skip": "win32"
   },
-  "vinyl-fs": {
-    "prefix": "v",
-    "head": true,
-    "maintainers": ["contra", "phated"],
-    "skip": true
-  },
   "watchify": {
     "prefix": "v",
     "flaky": ["ppc", "s390", "ubuntu", "rhel"],
