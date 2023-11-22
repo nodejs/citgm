@@ -16,7 +16,8 @@ export function npmContext(mod, packageManagers, path, options) {
     meta: {},
     options: options,
     npmPath: packageManagers.npm,
-    yarnPath: packageManagers.yarn
+    yarnPath: packageManagers.yarn,
+    pnpmPath: packageManagers.pnpm
   };
   return context;
 }

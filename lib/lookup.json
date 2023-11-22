@@ -34,7 +34,8 @@
       "build:cli --no-minify",
       "typecheck:all",
       "test:lint",
-      "test:unit --testPathIgnorePatterns ./packages/plugin-patch/tests/diffFolders.test.ts"
+      "test:unit --testPathIgnorePatterns ./packages/plugin-patch/tests/diffFolders.test.ts",
+      "test:integration sources/basic.test sources/pnp.test sources/pnp-esm.test sources/require.test sources/https.test sources/exports.test sources/commands/add.test"
     ],
     "skip": ["aix", "win32"],
     "timeout": 3000000,
@@ -170,6 +171,12 @@
     "prefix": "v",
     "maintainers": "dougwilson"
   },
+  "fastify": {
+    "maintainers": ["mcollina"],
+    "prefix": "v",
+    "skip": ["s390x", "aix"],
+    "scripts": ["citgm"]
+  },
   "flush-write-stream": {
     "prefix": "v",
     "maintainers": "mafintosh",
@@ -274,9 +281,9 @@
   },
   "level": {
     "prefix": "v",
-    "flaky": ["aix", "s390"],
+    "flaky": ["aix"],
     "maintainers": ["ralphtheninja", "vweevers"],
-    "skip": "win32"
+    "skip": ["win32", "s390"]
   },
   "leveldown": {
     "head": true,
@@ -346,7 +353,9 @@
     "prefix": "v",
     "scripts": ["rebuild-tests", "test"],
     "tags": "native",
-    "head": true
+    "head": true,
+    "skip": [ "win32", "aix", "s390x"],
+    "comment": "Skipped while a proper solution is found"
   },
   "node-gyp": {
     "envVar": { "FAST_TEST": "true" },
@@ -435,7 +444,8 @@
     "maintainers": "isaacs",
     "expectFail": "fips",
     "envVar": { "npm_config_ignore_scripts": "true" },
-    "comment": "postlint script fails"
+    "comment": "postlint script fails",
+    "timeout": 300000
   },
   "serialport": {
     "skip": ["ppc", "s390x"],
@@ -511,7 +521,7 @@
     "comment": "Tests timeout"
   },
   "underscore": {
-    "flaky": ["aix", "s390"],
+    "flaky": ["aix"],
     "skip": ["win32", "darwin"],
     "maintainers": "jashkenas"
   },

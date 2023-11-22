@@ -10,7 +10,7 @@ import { npmContext } from './helpers/make-context.js';
 
 const { test } = tap;
 
-const sandbox = join(tmpdir(), `citgm-${Date.now()}`);
+const sandbox = join(tmpdir(), `citgm-${Date.now()}-test-timeout`);
 
 let packageManagers;
 

@@ -22,7 +22,7 @@ const fixturesPath = join(
   '..',
   'fixtures'
 );
-const sandbox = join(tmpdir(), `citgm-${Date.now()}`);
+const sandbox = join(tmpdir(), `citgm-${Date.now()}-test-reporter-tap`);
 const outputFile = join(sandbox, 'test.tap');
 const outputFileAppend = join(sandbox, 'test-append.tap');
 const outputFileAppendBlank = join(sandbox, 'test-append-blank.tap');

@@ -11,7 +11,7 @@ import { npmContext } from '../helpers/make-context.js';
 
 const { test } = tap;
 
-const sandbox = join(tmpdir(), `citgm-${Date.now()}-yarn-install`);
+const sandbox = join(tmpdir(), `citgm-${Date.now()}-pnpm-install`);
 const fixtures = join(
   dirname(fileURLToPath(import.meta.url)),
   '..',
@@ -26,7 +26,7 @@ const badTemp = join(sandbox, 'omg-bad-tree');
 
 let packageManagers;
 
-test('yarn-install: setup', async () => {
+test('pnpm-install: setup', async () => {
   packageManagers = await getPackageManagers();
   await fs.mkdir(sandbox, { recursive: true });
   await Promise.all([
@@ -36,47 +36,45 @@ test('yarn-install: setup', async () => {
   ]);
 });
 
-test('yarn-install: basic module', async () => {
+test('pnpm-install: basic module', async () => {
   const context = npmContext('omg-i-pass', packageManagers, sandbox);
-  await packageManagerInstall('yarn', context);
+  await packageManagerInstall('pnpm', context);
 });
 
-test('yarn-install: no package.json', async (t) => {
+test('pnpm-install: no package.json', async (t) => {
   t.plan(2);
   const context = npmContext('omg-i-fail', packageManagers, sandbox);
   try {
-    await packageManagerInstall('yarn', context);
+    await packageManagerInstall('pnpm', context);
   } catch (err) {
     t.equal(err && err.message, 'Install Failed');
     t.notOk(context.module.flaky, 'Module failed but is not flaky');
   }
 });
 
-test('yarn-install: timeout', async (t) => {
+test('pnpm-install: timeout', async (t) => {
   t.plan(2);
   const context = npmContext('omg-i-pass', packageManagers, sandbox, {
     timeout: 10
   });
   try {
-    await packageManagerInstall('yarn', context);
+    await packageManagerInstall('pnpm', context);
   } catch (err) {
     t.notOk(context.module.flaky, 'Time out should not mark module flaky');
     t.equal(err && err.message, 'Install Timed Out');
   }
 });
 
-test('yarn-install: failed install', async (t) => {
+test('pnpm-install: failed install', async (t) => {
   t.plan(3);
   const context = npmContext('omg-bad-tree', packageManagers, sandbox);
-  const expected = {
-    testError: /\/THIS-WILL-FAIL: Not found/
-  };
+  const expected = /\/THIS-WILL-FAIL: Not Found/;
   try {
-    await packageManagerInstall('yarn', context);
+    await packageManagerInstall('pnpm', context);
   } catch (err) {
     t.notOk(context.module.flaky, 'Module failed is not flaky');
     t.equal(err && err.message, 'Install Failed');
-    t.match(context, expected, 'Install error reported');
+    t.match(context.testError.toString(), expected, 'Install error reported');
   }
 });
 
