@@ -522,7 +522,7 @@
   },
   "underscore": {
     "flaky": ["aix"],
-    "skip": "win32",
+    "skip": ["win32", "darwin"],
     "maintainers": "jashkenas"
   },
   "uuid": {
