@@ -238,6 +238,7 @@
   },
   "inherits": {
     "prefix": "v",
+    "head": true,
     "maintainers": "isaacs"
   },
   "is-core-module": {
