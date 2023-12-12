@@ -344,12 +344,6 @@
     "maintainers": "kriskowal",
     "skip": "win32"
   },
-  "ref": {
-    "flaky": "aix",
-    "tags": "native",
-    "maintainers": "TooTallNate",
-    "skip": [true, "12", "win32"]
-  },
   "resolve": {
     "prefix": "v",
     "maintainers": "ljharb",
