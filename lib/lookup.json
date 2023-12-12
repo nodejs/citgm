@@ -344,12 +344,6 @@
     "maintainers": "kriskowal",
     "skip": "win32"
   },
-  "readable-stream": {
-    "prefix": "v",
-    "flaky": ["ppc"],
-    "maintainers": "nodejs/streams",
-    "skip": [">=12", "win32"]
-  },
   "ref": {
     "flaky": "aix",
     "tags": "native",
