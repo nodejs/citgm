@@ -375,12 +375,6 @@
     "tags": "native",
     "maintainers": "reconbot"
   },
-  "socket.io": {
-    "maintainers": "rauchg",
-    "head": true,
-    "skip": ">=17",
-    "comment": "WS is not compatible"
-  },
   "spdy": {
     "prefix": "v",
     "flaky": ["aix", "sles"],
