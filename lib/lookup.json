@@ -412,13 +412,6 @@
     "stripAnsi": true,
     "maintainers": "mcollina"
   },
-  "uglify-js": {
-    "prefix": "v",
-    "flaky": ["ppc", "darwin"],
-    "maintainers": "mishoo",
-    "skip": ["12", true],
-    "comment": "Tests timeout"
-  },
   "underscore": {
     "flaky": ["aix"],
     "skip": ["win32", "darwin"],
