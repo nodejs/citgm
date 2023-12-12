@@ -174,12 +174,6 @@
     "prefix": "v",
     "maintainers": ["mafintosh", "hughsk"]
   },
-  "fs-extra": {
-    "flaky": ["linux-ia32", "aix", "s390", "win32"],
-    "skip": ">=12",
-    "expectFail": "fips",
-    "maintainers": "jprichardson"
-  },
   "full-icu-test": {
     "prefix": "v",
     "maintainers": "srl295"
