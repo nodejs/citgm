@@ -375,12 +375,6 @@
     "tags": "native",
     "maintainers": "reconbot"
   },
-  "spdy-transport": {
-    "prefix": "v",
-    "skip": ">=12",
-    "flaky": "aix",
-    "maintainers": "diasdavid"
-  },
   "split2": {
     "prefix": "v",
     "maintainers": "mcollina",
