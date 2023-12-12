@@ -448,11 +448,5 @@
     "flaky": ["ppc", "rhel"],
     "expectFail": "fips",
     "maintainers": ["SBoudrias", "sindresorhus"]
-  },
-  "zeromq": {
-    "prefix": "v",
-    "tags": "native",
-    "maintainers": ["lgeiger", "rgbkrk"],
-    "skip": [true, "s390", "ppc", "win32"]
   }
 }
