@@ -319,13 +319,6 @@
     "skip": ["win32"],
     "head": true
   },
-  "node-sass": {
-    "prefix": "v",
-    "tags": "native",
-    "maintainers": "xzyfer",
-    "comment": "Flaky because of test timeouts",
-    "skip": true
-  },
   "path-to-regexp": {
     "prefix": "v",
     "maintainers": "blakeembrey",
