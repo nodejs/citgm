@@ -403,7 +403,7 @@
   "q": {
     "prefix": "v",
     "maintainers": "kriskowal",
-    "skip": "win32"
+    "skip": ["win32", ">=21"]
   },
   "react": {
     "prefix": "v",
