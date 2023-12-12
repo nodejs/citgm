@@ -568,6 +568,7 @@
   "yeoman-generator": {
     "prefix": "v",
     "flaky": ["ppc", "rhel"],
+    "skip": [">=21"],
     "expectFail": "fips",
     "maintainers": ["SBoudrias", "sindresorhus"]
   },
