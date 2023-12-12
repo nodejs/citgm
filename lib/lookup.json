@@ -75,12 +75,6 @@
     "expectFail": "fips",
     "maintainers": "substack"
   },
-  "bson": {
-    "prefix": "V",
-    "maintainers": "christkv",
-    "scripts": ["test-node"],
-    "skip": true
-  },
   "bufferutil": {
     "prefix": "v",
     "tags": "native",
