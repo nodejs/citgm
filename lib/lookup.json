@@ -297,11 +297,6 @@
     "skip": "win32",
     "maintainers": "ljharb"
   },
-  "mkdirp": {
-    "head": true,
-    "skip": ["win32", true],
-    "maintainers": "isaacs"
-  },
   "mocha": {
     "prefix": "v",
     "skip": true,
