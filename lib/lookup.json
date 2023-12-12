@@ -297,10 +297,6 @@
     "skip": "win32",
     "maintainers": "ljharb"
   },
-  "moment": {
-    "maintainers": "ichernev",
-    "skip": [true, "ppc", "s390"]
-  },
   "multer": {
     "prefix": "v",
     "skip": "win32",
