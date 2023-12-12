@@ -144,6 +144,7 @@
   "ember-cli": {
     "envVar": { "YARN_IGNORE_ENGINES": "true" },
     "prefix": "v",
+    "skip": [">=21"],
     "flaky": ["win32", "rhel", "sles"],
     "head": true,
     "expectFail": "fips",
