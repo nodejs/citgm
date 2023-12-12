@@ -443,13 +443,6 @@
     "maintainers": ["einaros", "3rd-Eden", "lpinca"],
     "scripts": ["test -- --timeout 30000"]
   },
-  "yargs": {
-    "comment": "Install from source is currently broken due to TS error",
-    "prefix": "v",
-    "expectFail": "fips",
-    "maintainers": ["bcoe", "addaleax"],
-    "skip": true
-  },
   "yeoman-generator": {
     "prefix": "v",
     "flaky": ["ppc", "rhel"],
