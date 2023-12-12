@@ -14,12 +14,6 @@
     "prefix": "v",
     "flaky": true
   },
-  "@hapi/hapi": {
-    "prefix": "v",
-    "maintainers": ["devinivy", "DavidTPate", "AdriVanHoudt"],
-    "skip": ["darwin", "aix", "debian", ">=17"],
-    "comment": "Verbatim DNS output"
-  },
   "@hapi/shot": {
     "maintainers": "cjihrig",
     "prefix": "v"
