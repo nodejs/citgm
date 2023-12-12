@@ -344,12 +344,6 @@
     "maintainers": "kriskowal",
     "skip": "win32"
   },
-  "react": {
-    "prefix": "v",
-    "maintainers": ["acdlite", "gaearon", "sophiebits"],
-    "yarn": true,
-    "skip": [">=12", "aix", "s390", "ppc"]
-  },
   "readable-stream": {
     "prefix": "v",
     "flaky": ["ppc"],
