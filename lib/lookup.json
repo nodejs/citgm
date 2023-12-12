@@ -297,13 +297,6 @@
     "skip": "win32",
     "maintainers": "ljharb"
   },
-  "mocha": {
-    "prefix": "v",
-    "skip": true,
-    "expectFail": "fips",
-    "maintainers": ["tj", "boneskull"],
-    "comment": "Skipped because requires to install Google Chrome for browser tests"
-  },
   "moment": {
     "maintainers": "ichernev",
     "skip": [true, "ppc", "s390"]
