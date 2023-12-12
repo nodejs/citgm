@@ -190,11 +190,6 @@
     "prefix": "v",
     "skip": true
   },
-  "graceful-fs": {
-    "prefix": "v",
-    "maintainers": "isaacs",
-    "skip": ">=11"
-  },
   "gulp": {
     "prefix": "v",
     "flaky": ["ppc", "rhel"],
