@@ -387,11 +387,6 @@
     "maintainers": "koistya",
     "skip": ["12", "win32"]
   },
-  "stylus": {
-    "flaky": ["win32", "aix"],
-    "maintainers": "tj",
-    "skip": ">=11"
-  },
   "tape": {
     "head": true,
     "prefix": "v",
