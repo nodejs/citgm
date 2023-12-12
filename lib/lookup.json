@@ -270,13 +270,6 @@
     "tags": "native",
     "maintainers": ["ralphtheninja", "vweevers"]
   },
-  "libxmljs": {
-    "prefix": "v",
-    "flaky": ["aix", "sles", "rhel", "darwin"],
-    "skip": ">=12",
-    "tags": "native",
-    "maintainers": "defunctzombie"
-  },
   "lodash": {
     "expectFail": "fips",
     "maintainers": "jdalton"
