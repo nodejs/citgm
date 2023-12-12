@@ -375,12 +375,6 @@
     "tags": "native",
     "maintainers": "reconbot"
   },
-  "spdy": {
-    "prefix": "v",
-    "flaky": ["aix", "sles"],
-    "skip": ">=12",
-    "maintainers": "diasdavid"
-  },
   "spdy-transport": {
     "prefix": "v",
     "skip": ">=12",
