@@ -144,6 +144,7 @@
   "ember-cli": {
     "envVar": { "YARN_IGNORE_ENGINES": "true" },
     "prefix": "v",
+    "skip": [">=21"],
     "flaky": ["win32", "rhel", "sles"],
     "head": true,
     "expectFail": "fips",
@@ -403,7 +404,7 @@
   "q": {
     "prefix": "v",
     "maintainers": "kriskowal",
-    "skip": "win32"
+    "skip": ["win32", ">=21"]
   },
   "react": {
     "prefix": "v",
@@ -568,6 +569,7 @@
   "yeoman-generator": {
     "prefix": "v",
     "flaky": ["ppc", "rhel"],
+    "skip": [">=21"],
     "expectFail": "fips",
     "maintainers": ["SBoudrias", "sindresorhus"]
   },
