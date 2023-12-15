@@ -416,7 +416,7 @@
     "prefix": "v",
     "flaky": ["ppc"],
     "maintainers": "nodejs/streams",
-    "skip": [">=12", "win32"]
+    "skip": ["win32"]
   },
   "ref": {
     "flaky": "aix",
