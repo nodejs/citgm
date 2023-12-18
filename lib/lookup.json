@@ -348,7 +348,7 @@
   "readable-stream": {
     "prefix": "v",
     "maintainers": "nodejs/streams",
-    "skip": ["win32", "ppc", "aix"]
+    "skip": ["win32", "aix"]
   },
   "resolve": {
     "prefix": "v",
