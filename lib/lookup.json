@@ -14,12 +14,6 @@
     "prefix": "v",
     "flaky": true
   },
-  "@hapi/hapi": {
-    "prefix": "v",
-    "maintainers": ["devinivy", "DavidTPate", "AdriVanHoudt"],
-    "skip": ["darwin", "aix", "debian", ">=17"],
-    "comment": "Verbatim DNS output"
-  },
   "@hapi/shot": {
     "maintainers": "cjihrig",
     "prefix": "v"
@@ -80,12 +74,6 @@
   "browserify": {
     "expectFail": "fips",
     "maintainers": "substack"
-  },
-  "bson": {
-    "prefix": "V",
-    "maintainers": "christkv",
-    "scripts": ["test-node"],
-    "skip": true
   },
   "bufferutil": {
     "prefix": "v",
@@ -187,12 +175,6 @@
     "prefix": "v",
     "maintainers": ["mafintosh", "hughsk"]
   },
-  "fs-extra": {
-    "flaky": ["linux-ia32", "aix", "s390", "win32"],
-    "skip": ">=12",
-    "expectFail": "fips",
-    "maintainers": "jprichardson"
-  },
   "full-icu-test": {
     "prefix": "v",
     "maintainers": "srl295"
@@ -208,11 +190,6 @@
     "maintainers": ["sindresorhus"],
     "prefix": "v",
     "skip": true
-  },
-  "graceful-fs": {
-    "prefix": "v",
-    "maintainers": "isaacs",
-    "skip": ">=11"
   },
   "gulp": {
     "prefix": "v",
@@ -294,13 +271,6 @@
     "tags": "native",
     "maintainers": ["ralphtheninja", "vweevers"]
   },
-  "libxmljs": {
-    "prefix": "v",
-    "flaky": ["aix", "sles", "rhel", "darwin"],
-    "skip": ">=12",
-    "tags": "native",
-    "maintainers": "defunctzombie"
-  },
   "lodash": {
     "expectFail": "fips",
     "maintainers": "jdalton"
@@ -328,22 +298,6 @@
     "skip": "win32",
     "maintainers": "ljharb"
   },
-  "mkdirp": {
-    "head": true,
-    "skip": ["win32", true],
-    "maintainers": "isaacs"
-  },
-  "mocha": {
-    "prefix": "v",
-    "skip": true,
-    "expectFail": "fips",
-    "maintainers": ["tj", "boneskull"],
-    "comment": "Skipped because requires to install Google Chrome for browser tests"
-  },
-  "moment": {
-    "maintainers": "ichernev",
-    "skip": [true, "ppc", "s390"]
-  },
   "multer": {
     "prefix": "v",
     "skip": "win32",
@@ -366,13 +320,6 @@
     "skip": ["win32"],
     "head": true
   },
-  "node-sass": {
-    "prefix": "v",
-    "tags": "native",
-    "maintainers": "xzyfer",
-    "comment": "Flaky because of test timeouts",
-    "skip": true
-  },
   "path-to-regexp": {
     "prefix": "v",
     "maintainers": "blakeembrey",
@@ -388,14 +335,6 @@
     "maintainers": ["siimon", "zbjornson", "SimenB"],
     "head": true
   },
-  "pug": {
-    "prefix": "pug@",
-    "yarn": true,
-    "maintainers": ["tj", "ForbesLindesay"],
-    "skip": ["win32", "aix", ">=16"],
-    "comment": "Error message changes in V8 9.3",
-    "repo": "https://github.com/pugjs/pug"
-  },
   "pumpify": {
     "prefix": "v",
     "maintainers": "mafintosh",
@@ -406,23 +345,10 @@
     "maintainers": "kriskowal",
     "skip": ["win32", ">=21"]
   },
-  "react": {
-    "prefix": "v",
-    "maintainers": ["acdlite", "gaearon", "sophiebits"],
-    "yarn": true,
-    "skip": [">=12", "aix", "s390", "ppc"]
-  },
   "readable-stream": {
     "prefix": "v",
-    "flaky": ["ppc"],
     "maintainers": "nodejs/streams",
-    "skip": ["win32"]
-  },
-  "ref": {
-    "flaky": "aix",
-    "tags": "native",
-    "maintainers": "TooTallNate",
-    "skip": [true, "12", "win32"]
+    "skip": ["win32", "ppc", "aix"]
   },
   "resolve": {
     "prefix": "v",
@@ -455,24 +381,6 @@
     "tags": "native",
     "maintainers": "reconbot"
   },
-  "socket.io": {
-    "maintainers": "rauchg",
-    "head": true,
-    "skip": ">=17",
-    "comment": "WS is not compatible"
-  },
-  "spdy": {
-    "prefix": "v",
-    "flaky": ["aix", "sles"],
-    "skip": ">=12",
-    "maintainers": "diasdavid"
-  },
-  "spdy-transport": {
-    "prefix": "v",
-    "skip": ">=12",
-    "flaky": "aix",
-    "maintainers": "diasdavid"
-  },
   "split2": {
     "prefix": "v",
     "maintainers": "mcollina",
@@ -484,11 +392,6 @@
     "flaky": "ppc",
     "maintainers": "koistya",
     "skip": ["12", "win32"]
-  },
-  "stylus": {
-    "flaky": ["win32", "aix"],
-    "maintainers": "tj",
-    "skip": ">=11"
   },
   "tape": {
     "head": true,
@@ -515,13 +418,6 @@
     "stripAnsi": true,
     "maintainers": "mcollina"
   },
-  "uglify-js": {
-    "prefix": "v",
-    "flaky": ["ppc", "darwin"],
-    "maintainers": "mishoo",
-    "skip": ["12", true],
-    "comment": "Tests timeout"
-  },
   "underscore": {
     "flaky": ["aix"],
     "skip": ["win32", "darwin"],
@@ -536,12 +432,6 @@
     "prefix": "v",
     "maintainers": ["contra", "phated"],
     "skip": "win32"
-  },
-  "vinyl-fs": {
-    "prefix": "v",
-    "head": true,
-    "maintainers": ["contra", "phated"],
-    "skip": true
   },
   "watchify": {
     "prefix": "v",
@@ -559,24 +449,11 @@
     "maintainers": ["einaros", "3rd-Eden", "lpinca"],
     "scripts": ["test -- --timeout 30000"]
   },
-  "yargs": {
-    "comment": "Install from source is currently broken due to TS error",
-    "prefix": "v",
-    "expectFail": "fips",
-    "maintainers": ["bcoe", "addaleax"],
-    "skip": true
-  },
   "yeoman-generator": {
     "prefix": "v",
     "flaky": ["ppc", "rhel"],
     "skip": [">=21"],
     "expectFail": "fips",
     "maintainers": ["SBoudrias", "sindresorhus"]
-  },
-  "zeromq": {
-    "prefix": "v",
-    "tags": "native",
-    "maintainers": ["lgeiger", "rgbkrk"],
-    "skip": [true, "s390", "ppc", "win32"]
   }
 }
