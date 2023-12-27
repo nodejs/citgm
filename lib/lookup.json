@@ -37,12 +37,12 @@
   },
   "JSONStream": {
     "prefix": "v",
-    "skip": ["win32", "14"],
+    "skip": "win32",
     "maintainers": "dominictarr"
   },
   "ava": {
     "prefix": "v",
-    "skip": ["14", "ppc", "win32", "x86", "rhel", "aix", "ia32"],
+    "skip": ["ppc", "win32", "x86", "rhel", "aix", "ia32"],
     "maintainers": ["sindresorhus", "novemberborn"],
     "timeout": 600000
   },
@@ -386,7 +386,7 @@
     "tags": "native",
     "flaky": "ppc",
     "maintainers": "koistya",
-    "skip": ["12", "win32"]
+    "skip": "win32"
   },
   "tape": {
     "head": true,
