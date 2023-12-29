@@ -345,6 +345,11 @@
     "maintainers": "kriskowal",
     "skip": ["win32", ">=21"]
   },
+  "readable-stream": {
+    "prefix": "v",
+    "maintainers": "nodejs/streams",
+    "skip": ["win32"]
+  },
   "resolve": {
     "prefix": "v",
     "maintainers": "ljharb",
