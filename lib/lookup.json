@@ -316,6 +316,7 @@
   "next": {
     "maintainers": ["Ethan-Arrowood", "styfle", "timneutkens"],
     "prefix": "v",
+    "repo": "https://github.com/vercel/next.js",
     "scripts": ["build", "test-unit"],
     "tags": "native",
     "head": true,
