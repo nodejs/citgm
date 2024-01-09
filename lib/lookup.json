@@ -313,6 +313,14 @@
     "skip": [ "win32", "aix", "s390x"],
     "comment": "Skipped while a proper solution is found"
   },
+  "next": {
+    "maintainers": ["Ethan-Arrowood", "styfle", "timneutkens"],
+    "prefix": "v",
+    "scripts": ["build", "test-unit"],
+    "tags": "native",
+    "head": true,
+    "pnpm": true
+  },
   "node-gyp": {
     "envVar": { "FAST_TEST": "true" },
     "tags": "native",
