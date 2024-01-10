@@ -1,28 +1,52 @@
 {
-  "bailout": false,
+  "ok": false,
   "count": 3,
+  "pass": 2,
   "fail": 1,
+  "bailout": false,
+  "todo": 0,
+  "skip": 1,
   "failures": [
     {
-      "diag": {
-        "duration_ms": 50
-      },
-      "id": 3,
+      "ok": false,
       "name": "iFail v3.0.1 I dun wurk",
-      "fullname": "",
-      "ok": false
+      "id": 3,
+      "buffered": false,
+      "tapError": null,
+      "skip": false,
+      "todo": false,
+      "previous": null,
+      "plan": null,
+      "diag": {},
+      "time": 50,
+      "fullname": "iFail v3.0.1 I dun wurk",
+      "closingTestPoint": false
     }
   ],
-  "ok": false,
-  "pass": 2,
+  "time": null,
   "plan": {
-    "comment": "",
     "start": 1,
+    "end": 3,
     "skipAll": false,
     "skipReason": "",
-    "end": 3
+    "comment": ""
   },
-  "skip": 1,
-  "todo": 0,
-  "time": null
+  "skips": [
+    {
+      "ok": true,
+      "name": "iFlakyFail v3.3.3",
+      "id": 2,
+      "buffered": false,
+      "tapError": null,
+      "skip": "I dun wurk",
+      "todo": false,
+      "previous": null,
+      "plan": null,
+      "diag": {},
+      "time": 50,
+      "fullname": "iFlakyFail v3.3.3",
+      "closingTestPoint": false
+    }
+  ],
+  "todos": []
 }
