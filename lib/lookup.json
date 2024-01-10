@@ -318,6 +318,7 @@
     "prefix": "v",
     "repo": "https://github.com/vercel/next.js",
     "scripts": ["build", "test-unit"],
+    "skip": ["win32"],
     "tags": "native",
     "head": true,
     "pnpm": true
