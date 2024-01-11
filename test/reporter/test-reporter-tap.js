@@ -6,7 +6,7 @@ import { tmpdir } from 'os';
 import { fileURLToPath } from 'url';
 
 import tap from 'tap';
-import Parser from 'tap-parser';
+import { Parser } from 'tap-parser';
 import str from 'string-to-stream';
 
 import tapReporter from '../../lib/reporter/tap.js';
@@ -92,7 +92,10 @@ test('reporter.tap(): parser', (t) => {
 
   tapReporter(logger, failingInput);
   const p = new Parser((results) => {
-    t.same(results, tapParserExpected),
+    // `results` contains JS classes that are not considered same as the
+    // plain objects loaded from the JSON file.
+    const plainResults = JSON.parse(JSON.stringify(results));
+    t.same(plainResults, tapParserExpected),
       'the tap parser should correctly' + ' parse the tap file';
     t.end();
   });
