@@ -79,7 +79,7 @@
     "prefix": "v",
     "tags": "native",
     "maintainers": ["3rdeden", "einaros", "lpinca"],
-    "skip": "win32"
+    "skip": ["win32", "darwin"]
   },
   "cheerio": {
     "skip": ["aix", "win32"],
@@ -267,7 +267,7 @@
   "leveldown": {
     "head": true,
     "useGitClone": true,
-    "skip": ["ppc", "s390"],
+    "skip": ["ppc", "s390", "darwin"],
     "tags": "native",
     "maintainers": ["ralphtheninja", "vweevers"]
   },
@@ -286,7 +286,8 @@
   "microtime": {
     "prefix": "v",
     "tags": "native",
-    "maintainers": "wadey"
+    "maintainers": "wadey",
+    "skip": ["darwin"]
   },
   "mime": {
     "prefix": "v",
