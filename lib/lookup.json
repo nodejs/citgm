@@ -78,8 +78,7 @@
   "bufferutil": {
     "prefix": "v",
     "tags": "native",
-    "maintainers": ["3rdeden", "einaros", "lpinca"],
-    "skip": "win32"
+    "maintainers": ["3rdeden", "einaros", "lpinca"]
   },
   "cheerio": {
     "skip": ["aix", "win32"],
