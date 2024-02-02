@@ -9,6 +9,7 @@ import _ from 'lodash';
 import xml2js from 'xml2js';
 
 import junitReporter from '../../lib/reporter/junit.js';
+import { removeDirectory } from '../../lib/utils.js';
 
 const { test } = tap;
 const parseString = promisify(xml2js.parseString);
@@ -154,10 +155,5 @@ test('reporter.junit(): append to disk', (t) => {
 });
 
 tap.teardown(async () => {
-  await fs.rm(sandbox, {
-    recursive: true,
-    force: true,
-    maxRetries: 10,
-    retryDelay: 10
-  });
+  await removeDirectory(sandbox);
 });

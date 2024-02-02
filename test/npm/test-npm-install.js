@@ -7,6 +7,7 @@ import tap from 'tap';
 
 import { getPackageManagers } from '../../lib/package-manager/index.js';
 import packageManagerInstall from '../../lib/package-manager/install.js';
+import { removeDirectory } from '../../lib/utils.js';
 import { npmContext } from '../helpers/make-context.js';
 
 const { test } = tap;
@@ -103,10 +104,5 @@ test('npm-install: failed install', async (t) => {
 });
 
 tap.teardown(async () => {
-  await fs.rm(sandbox, {
-    recursive: true,
-    force: true,
-    maxRetries: 10,
-    retryDelay: 10
-  });
+  await removeDirectory(sandbox);
 });

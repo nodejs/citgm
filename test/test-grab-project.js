@@ -10,6 +10,7 @@ import { promises as fs } from 'fs';
 import tap from 'tap';
 
 import { grabProject } from '../lib/grab-project.js';
+import { removeDirectory } from '../lib/utils.js';
 
 const { test } = tap;
 
@@ -170,10 +171,5 @@ test('grab-project: timeout', async (t) => {
 });
 
 tap.teardown(async () => {
-  await fs.rm(sandbox, {
-    recursive: true,
-    force: true,
-    maxRetries: 10,
-    retryDelay: 10
-  });
+  await removeDirectory(sandbox);
 });
