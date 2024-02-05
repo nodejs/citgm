@@ -8,6 +8,7 @@ import tap, { test } from 'tap';
 import { npmContext } from '../helpers/make-context.js';
 import { getPackageManagers } from '../../lib/package-manager/index.js';
 import { test as packageManagerTest } from '../../lib/package-manager/test.js';
+import { removeDirectory } from '../../lib/utils.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -181,10 +182,5 @@ test('yarn-test: tmpdir is redirected', async (t) => {
 });
 
 tap.teardown(async () => {
-  await fs.rm(sandbox, {
-    recursive: true,
-    force: true,
-    maxRetries: 10,
-    retryDelay: 10
-  });
+  await removeDirectory(sandbox);
 });

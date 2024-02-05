@@ -10,6 +10,7 @@ import { Parser } from 'tap-parser';
 import str from 'string-to-stream';
 
 import tapReporter from '../../lib/reporter/tap.js';
+import { removeDirectory } from '../../lib/utils.js';
 
 const fixtures = JSON.parse(
   readFileSync(new URL('../fixtures/reporter-fixtures.json', import.meta.url))
@@ -132,10 +133,5 @@ test('reporter.tap(): append to disk when file does not exist', (t) => {
 });
 
 tap.teardown(async () => {
-  await fs.rm(sandbox, {
-    recursive: true,
-    force: true,
-    maxRetries: 10,
-    retryDelay: 10
-  });
+  await removeDirectory(sandbox);
 });
