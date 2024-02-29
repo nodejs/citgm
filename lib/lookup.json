@@ -150,7 +150,7 @@
     "skip": ["win32"]
   },
   "express": {
-    "maintainers": "dougwilson"
+    "maintainers": ["wesleytodd", "ulisesgascon", "sheplu"]
   },
   "express-session": {
     "prefix": "v",
