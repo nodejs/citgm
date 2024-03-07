@@ -3,6 +3,10 @@
     "maintainers": ["romainlanz", "julienr44", "thetutlage"],
     "prefix": "v"
   },
+  "@adonisjs/fold": {
+    "maintainers": ["romainlanz", "julienr44", "thetutlage"],
+    "prefix": "v"
+  },
   "@clinic/bubbleprof": {
     "maintainers": ["mcollina", "rafaelgss"],
     "prefix": "v",
