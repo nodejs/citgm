@@ -22,7 +22,7 @@ citgm --help
 ```
 
 ```
-Usage: citgm [options] <module>
+Usage: citgm [options] <module-1> <module-2> <module-n>
 
 Options:
 
