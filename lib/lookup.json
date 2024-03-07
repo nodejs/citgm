@@ -155,6 +155,9 @@
     "expectFail": "fips",
     "skip": ["win32"]
   },
+  "express": {
+    "maintainers": ["wesleytodd", "ulisesgascon", "sheplu"]
+  },
   "express-session": {
     "prefix": "v",
     "maintainers": "dougwilson"
