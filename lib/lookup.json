@@ -1,4 +1,11 @@
 {
+  "@babel/core": {
+    "maintainers": ["nicolo-ribaudo", "JLHwung", "liuxingbaoyu"],
+    "prefix": "v",
+    "yarn": true,
+    "scripts": ["build", "test"],
+    "skip": ["win32", "aix", "s390"]
+  },
   "@clinic/bubbleprof": {
     "maintainers": ["mcollina", "rafaelgss"],
     "prefix": "v",
