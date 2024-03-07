@@ -322,6 +322,10 @@
     "skip": ["win32"],
     "head": true
   },
+  "npm": {
+    "maintainers": ["nodejs/npm"],
+    "prefix": "v"
+  },
   "path-to-regexp": {
     "prefix": "v",
     "maintainers": "blakeembrey",
