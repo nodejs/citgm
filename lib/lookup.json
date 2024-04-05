@@ -42,8 +42,8 @@
   },
   "astro": {
     "scripts": [
-      "build:ci",
-      "test"
+      "build:ci:no-cache",
+      "test:citgm"
     ],
     "maintainers": "@princesseuh",
     "prefix": "astro@",
