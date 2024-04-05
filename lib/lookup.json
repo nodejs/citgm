@@ -464,7 +464,7 @@
   },
   "astro": {
     "scripts": [
-      "build",
+      "build:ci",
       "test"
     ],
     "maintainers": "@princesseuh",
