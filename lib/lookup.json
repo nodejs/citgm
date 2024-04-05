@@ -40,6 +40,17 @@
     "skip": "win32",
     "maintainers": "dominictarr"
   },
+  "astro": {
+    "scripts": [
+      "build:ci",
+      "test"
+    ],
+    "maintainers": "@princesseuh",
+    "prefix": "astro@",
+    "pnpm": true,
+    "tags": "latest",
+    "head": true
+  },
   "ava": {
     "prefix": "v",
     "skip": ["ppc", "win32", "x86", "rhel", "aix", "ia32"],
@@ -461,16 +472,5 @@
     "skip": [">=21"],
     "expectFail": "fips",
     "maintainers": ["SBoudrias", "sindresorhus"]
-  },
-  "astro": {
-    "scripts": [
-      "build:ci",
-      "test"
-    ],
-    "maintainers": "@princesseuh",
-    "prefix": "astro@",
-    "pnpm": true,
-    "tags": "latest",
-    "head": true
   }
 }
