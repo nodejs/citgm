@@ -461,5 +461,16 @@
     "skip": [">=21"],
     "expectFail": "fips",
     "maintainers": ["SBoudrias", "sindresorhus"]
+  },
+  "astro": {
+    "scripts": [
+      "build",
+      "test"
+    ],
+    "maintainers": "@princesseuh",
+    "prefix": "astro@",
+    "pnpm": true,
+    "tags": "latest",
+    "head": true
   }
 }
