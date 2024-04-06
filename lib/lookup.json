@@ -52,7 +52,10 @@
     ],
     "pnpm": true,
     "tags": "latest",
-    "head": true
+    "head": true,
+    "envVar": {
+      "DO_NOT_TRACK": "1"
+    }
   },
   "ava": {
     "prefix": "v",
