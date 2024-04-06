@@ -47,6 +47,9 @@
     ],
     "maintainers": "@princesseuh",
     "prefix": "astro@",
+    "skip": [
+      "aix"
+    ],
     "pnpm": true,
     "tags": "latest",
     "head": true
