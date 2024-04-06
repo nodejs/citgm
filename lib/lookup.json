@@ -43,7 +43,7 @@
   "astro": {
     "scripts": [
       "build:ci:no-cache",
-      "test:citgm"
+      "--filter=\"astro\" test"
     ],
     "maintainers": "@princesseuh",
     "prefix": "astro@",
