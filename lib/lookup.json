@@ -41,21 +41,17 @@
     "maintainers": "dominictarr"
   },
   "astro": {
-    "scripts": [
-      "build:ci:no-cache",
-      "--filter=astro test"
-    ],
+    "scripts": ["build:ci:no-cache", "test:citgm"],
     "maintainers": "@princesseuh",
     "prefix": "astro@",
-    "skip": [
-      "aix"
-    ],
+    "skip": ["aix"],
     "pnpm": true,
     "tags": "latest",
     "head": true,
     "envVar": {
-      "DO_NOT_TRACK": "1"
-    }
+      "DO_NOT_TRACK": "1",
+      "TELEMETRY_DISABLED": true
+    },
   },
   "ava": {
     "prefix": "v",
