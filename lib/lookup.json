@@ -1,15 +1,18 @@
 {
   "@adonisjs/core": {
     "maintainers": ["romainlanz", "julienr44", "thetutlage"],
-    "prefix": "v"
+    "prefix": "v",
+    "skip": ["ppc", "s390x"]
   },
   "@adonisjs/fold": {
     "maintainers": ["romainlanz", "julienr44", "thetutlage"],
-    "prefix": "v"
+    "prefix": "v",
+    "skip": ["ppc", "s390x"]
   },
   "@adonisjs/http-server": {
     "maintainers": ["romainlanz", "julienr44", "thetutlage"],
-    "prefix": "v"
+    "prefix": "v",
+    "skip": ["ppc", "s390x"]
   },
   "@clinic/bubbleprof": {
     "maintainers": ["mcollina", "rafaelgss"],
