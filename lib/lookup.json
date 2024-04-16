@@ -2,17 +2,20 @@
   "@adonisjs/core": {
     "maintainers": ["romainlanz", "julienr44", "thetutlage"],
     "prefix": "v",
-    "skip": ["ppc", "s390x"]
+    "skip": ["ppc", "s390x"],
+    "scripts": ["citgm"]
   },
   "@adonisjs/fold": {
     "maintainers": ["romainlanz", "julienr44", "thetutlage"],
     "prefix": "v",
-    "skip": ["ppc", "s390x"]
+    "skip": ["ppc", "s390x"],
+    "scripts": ["citgm"]
   },
   "@adonisjs/http-server": {
     "maintainers": ["romainlanz", "julienr44", "thetutlage"],
     "prefix": "v",
-    "skip": ["ppc", "s390x"]
+    "skip": ["ppc", "s390x"],
+    "scripts": ["citgm"]
   },
   "@clinic/bubbleprof": {
     "maintainers": ["mcollina", "rafaelgss"],
