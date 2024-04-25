@@ -84,6 +84,6 @@
     "allow-incomplete-coverage": true
   },
   "engines": {
-    "node": "18.x || 20.x || 21.x"
+    "node": "18.x || 20.x || 21.x || 22.x"
   }
 }
