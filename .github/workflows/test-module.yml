@@ -15,6 +15,9 @@ on:
         required: true
         default: main
 
+permissions:
+  contents: read
+
 jobs:
   show-parameters:
     name: Parameters for testing "${{ github.event.inputs.module }}"
@@ -45,14 +48,14 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
         with:
           repository: ${{ github.event.inputs.repository }}
           ref: ${{ github.event.inputs.ref }}
           show-progress: false
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d # v3.8.1
         with:
           node-version: ${{ matrix.node-version }}
 
