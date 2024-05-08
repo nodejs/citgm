@@ -92,7 +92,8 @@ test('npm-install: failed install', async (t) => {
   });
   const expected = {
     testOutput: /^$/,
-    testError: /npm ERR! 404 Not [Ff]ound\s*(:)? .*THIS-WILL-FAIL(@0\.0\.1)?/
+    testError:
+      /npm (?:ERR!|error) 404 Not [Ff]ound\s*(:)? .*THIS-WILL-FAIL(@0\.0\.1)?/
   };
   try {
     await packageManagerInstall('npm', context);
