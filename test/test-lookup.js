@@ -4,8 +4,34 @@ import { readFileSync } from 'fs';
 import tap from 'tap';
 
 import { getLookupTable, makeUrl, lookup } from '../lib/lookup.js';
+import { parsePackageArg } from '../lib/utils.js';
 
 const { test } = tap;
+
+function createFakeMeta(config) {
+  const { name, version = '1.0.0', repository, gitHead } = config;
+  if (!name) {
+    throw new Error('name is required');
+  }
+  const now = new Date().toISOString();
+  return {
+    _id: `${name}@${version}`,
+    name,
+    description: 'Some module',
+    'dist-tags': {
+      latest: version
+    },
+    versions: [version],
+    time: {
+      created: now,
+      modified: now,
+      [version]: now
+    },
+    repository,
+    version,
+    gitHead
+  };
+}
 
 test('lookup: makeUrl', (t) => {
   t.plan(5);
@@ -103,19 +129,18 @@ test('lookup: module not in table', (t) => {
   t.plan(1);
   const context = {
     lookup: null,
-    module: {
-      name: 'omg-i-pass',
-      raw: null
-    },
-    meta: {},
+    module: parsePackageArg('omg-i-pass'),
+    meta: createFakeMeta({ name: 'omg-i-pass' }),
     options: {},
     emit: function () {}
   };
 
+  const rawBefore = context.module.raw;
   lookup(context);
-  t.notOk(
+  t.equal(
     context.module.raw,
-    'raw should remain falsey if module is not in lookup'
+    rawBefore,
+    'raw should remain unchanged if module is not in lookup'
   );
   t.end();
 });
@@ -124,16 +149,14 @@ test('lookup: module not in table with gitHead', (t) => {
   t.plan(1);
   const context = {
     lookup: null,
-    module: {
+    module: parsePackageArg('omg-i-pass'),
+    meta: createFakeMeta({
       name: 'omg-i-pass',
-      raw: null
-    },
-    meta: {
       repository: {
         url: 'https://github.com/nodejs/omg-i-pass'
       },
       gitHead: 'abc123'
-    },
+    }),
     options: {},
     emit: function () {}
   };
@@ -151,15 +174,13 @@ test('lookup: module in table', (t) => {
   t.plan(1);
   const context = {
     lookup: null,
-    module: {
+    module: parsePackageArg('lodash'),
+    meta: createFakeMeta({
       name: 'lodash',
-      raw: null
-    },
-    meta: {
       repository: {
         url: 'https://github.com/lodash/lodash'
       }
-    },
+    }),
     options: {},
     emit: function () {}
   };
@@ -167,7 +188,7 @@ test('lookup: module in table', (t) => {
   lookup(context);
   t.equal(
     context.module.raw,
-    'https://github.com/lodash/lodash/archive/HEAD.tar.gz',
+    'https://github.com/lodash/lodash/archive/1.0.0.tar.gz',
     'raw should be truthy if the module was in the list'
   );
   t.end();
@@ -177,16 +198,14 @@ test('lookup: module in table with gitHead', (t) => {
   t.plan(1);
   const context = {
     lookup: null,
-    module: {
+    module: parsePackageArg('lodash'),
+    meta: createFakeMeta({
       name: 'lodash',
-      raw: null
-    },
-    meta: {
       repository: {
         url: 'https://github.com/lodash/lodash'
       },
       gitHead: 'abc123'
-    },
+    }),
     options: {},
     emit: function () {}
   };
@@ -203,16 +222,13 @@ test('lookup: module in table with gitHead', (t) => {
 test('lookup: module in table with scripts', (t) => {
   t.plan(1);
   const context = {
-    module: {
+    module: parsePackageArg('omg-i-pass-with-scripts'),
+    meta: createFakeMeta({
       name: 'omg-i-pass-with-scripts',
-      raw: null
-    },
-    meta: {
       repository: {
         url: 'git+https://github.com/nodejs/citgm'
-      },
-      version: '1.0.0'
-    },
+      }
+    }),
     options: {
       lookup: 'test/fixtures/custom-lookup-scripts.json'
     },
@@ -232,17 +248,14 @@ test('lookup: module in table with useGitClone', (t) => {
   t.plan(2);
   const context = {
     lookup: null,
-    module: {
-      fetchSpec: 'latest',
+    module: parsePackageArg('lodash'),
+    meta: createFakeMeta({
       name: 'lodash',
-      raw: null
-    },
-    meta: {
-      'dist-tags': { latest: '1.2.3' },
+      version: '1.2.3',
       repository: {
         url: 'https://github.com/lodash/lodash'
       }
-    },
+    }),
     options: {
       lookup: 'test/fixtures/custom-lookup-useGitClone.json'
     },
@@ -278,14 +291,11 @@ test('lookup: no table', (t) => {
 test('lookup: replace with no repo', (t) => {
   t.plan(1);
   const context = {
-    module: {
+    module: parsePackageArg('omg-i-pass'),
+    meta: createFakeMeta({
       name: 'omg-i-pass',
-      raw: null
-    },
-    meta: {
-      repository: undefined,
       version: '1.2.3'
-    },
+    }),
     options: {
       lookup: 'test/fixtures/custom-lookup-no-repo.json'
     },
@@ -304,15 +314,14 @@ test('lookup: not found in lookup.json with --sha', (t) => {
   t.plan(1);
   const context = {
     lookup: null,
-    module: {
-      name: 'test'
-    },
-    meta: {
-      gitHead: 'metaGitHead',
+    module: parsePackageArg('test'),
+    meta: createFakeMeta({
+      name: 'test',
       repository: {
         url: 'https://github.com/test-org/test-repo'
-      }
-    },
+      },
+      gitHead: 'metaGitHead'
+    }),
     options: {
       sha: 'customsha'
     },
@@ -331,15 +340,13 @@ test('lookup: --fail-flaky', (t) => {
   t.plan(1);
   const context = {
     lookup: null,
-    module: {
+    module: parsePackageArg('lodash'),
+    meta: createFakeMeta({
       name: 'lodash',
-      raw: null
-    },
-    meta: {
       repository: {
         url: 'https://github.com/lodash/lodash'
       }
-    },
+    }),
     options: {
       failFlaky: true
     },
@@ -372,14 +379,12 @@ test('lookup: ensure lookup works', (t) => {
 test('lookup: lookup with install', (t) => {
   t.plan(1);
   const context = {
-    module: {
+    module: parsePackageArg('omg-i-pass-with-install-param'),
+    meta: createFakeMeta({
       name: 'omg-i-pass-with-install-param',
-      raw: null
-    },
-    meta: {
-      repository: '/dev/null',
-      version: '0.1.1'
-    },
+      version: '0.1.1',
+      repository: '/dev/null'
+    }),
     options: {
       lookup: 'test/fixtures/custom-lookup-install.json'
     },
