@@ -347,6 +347,14 @@
     "maintainers": "kriskowal",
     "skip": ["win32", ">=21"]
   },
+  "react": {
+    "prefix": "v",
+    "yarn": true,
+    "scripts": ["test --ci"],
+    "envVar": {
+      "ELECTRON_SKIP_BINARY_DOWNLOAD": 1
+    }
+  },
   "readable-stream": {
     "prefix": "v",
     "maintainers": "nodejs/streams",
