@@ -231,17 +231,6 @@
     "prefix": "v",
     "maintainers": "juliangruber"
   },
-  "jest": {
-    "prefix": "v",
-    "maintainers": ["cpojer", "SimenB", "thymikee", "jeysal"],
-    "yarn": true,
-    "head": true,
-    "install": ["install", "--no-immutable"],
-    "scripts": ["build:js", "remove-examples", "test-ci-partial"],
-    "envVar": { "CI": true },
-    "skip": ["aix", "s390x", "ppc", "darwin", "win32"],
-    "timeout": 1800000
-  },
   "jose": {
     "maintainers": ["panva"],
     "prefix": "v",
