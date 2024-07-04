@@ -290,11 +290,6 @@
     "tags": "native",
     "maintainers": "wadey"
   },
-  "mime": {
-    "prefix": "v",
-    "maintainers": "broofa",
-    "skip": "win32"
-  },
   "minimist": {
     "npm": true,
     "skip": "win32",
