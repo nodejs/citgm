@@ -8,7 +8,7 @@ on:
 
 jobs:
   lint:
-    name: Lint using ESLint
+    name: Lint using ESLint and Prettier
 
     runs-on: ubuntu-latest
 
