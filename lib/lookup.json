@@ -312,7 +312,7 @@
     "scripts": ["rebuild-tests", "test"],
     "tags": "native",
     "head": true,
-    "skip": [ "win32", "aix", "s390x"],
+    "skip": ["win32", "aix", "s390x"],
     "comment": "Skipped while a proper solution is found"
   },
   "node-gyp": {
