@@ -434,7 +434,10 @@
   },
   "undici": {
     "prefix": "v",
-    "maintainers": ["mcollina", "ronag"]
+    "skip": ["aix"],
+    "envVar": { "CITGM": true }, 
+    "maintainers": ["mcollina", "ronag"],
+    "comment": "esbuild doesn't support aix" 
   },
   "uuid": {
     "prefix": "v",
