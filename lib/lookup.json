@@ -458,7 +458,8 @@
     "tags": "native"
   },
   "winston": {
-    "maintainers": "indexzero"
+    "maintainers": "indexzero",
+    "skip": "win32"
   },
   "ws": {
     "expectFail": "fips",
