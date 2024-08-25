@@ -92,7 +92,7 @@
     "head": true,
     "useGitClone": true,
     "maintainers": ["matthewmueller", "jugglinmike"],
-    "scripts": ["test:jest"]
+    "scripts": ["test:vi"]
   },
   "clinic": {
     "maintainers": "mcollina",
