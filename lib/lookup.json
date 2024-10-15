@@ -329,6 +329,12 @@
     "skip": ["win32"],
     "head": true
   },
+  "openid-client": {
+    "maintainers": ["panva"],
+    "prefix": "v",
+    "scripts": ["tap:node"],
+    "skip": ["<20"]
+  },
   "path-to-regexp": {
     "prefix": "v",
     "maintainers": "blakeembrey",
