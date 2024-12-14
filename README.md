@@ -9,6 +9,8 @@ The Node.js project uses citgm to smoke test our releases and controversial
 changes. The Jenkins job that utilizes citgm can be found
 [on our CI](https://ci.nodejs.org/view/Node.js-citgm/job/citgm-smoker/).
 
+See the talk by [@MylesBorins](https://github.com/MylesBorins) explaining it it great detail - [onCITGM Diaries](https://www.youtube.com/watch?v=8is8iKlo8oQ)
+
 ## Installation
 
 ```
