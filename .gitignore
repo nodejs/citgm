@@ -5,3 +5,4 @@ coverage/
 /.tap
 .nyc_output/
 .eslintcache
+.idea
