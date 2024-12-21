@@ -23,6 +23,7 @@
   },
   "@hapi/shot": {
     "maintainers": "cjihrig",
+    "head": true,
     "prefix": "v"
   },
   "@yarnpkg/cli": {
