@@ -109,6 +109,9 @@
     "maintainers": ["shadowspawn", "abetomo"],
     "skip": ["aix"]
   },
+  "compression": {
+    "maintainers": ["UlisesGascon", "bjohansebas"]
+  },
   "crc32-stream": {
     "maintainers": "ctalkington",
     "skip": "win32"
