@@ -89,8 +89,6 @@
   },
   "cheerio": {
     "skip": ["aix", "win32"],
-    "head": true,
-    "useGitClone": true,
     "maintainers": ["matthewmueller", "jugglinmike"],
     "scripts": ["test:vi"]
   },
