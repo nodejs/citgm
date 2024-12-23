@@ -113,6 +113,11 @@
     "maintainers": "ctalkington",
     "skip": "win32"
   },
+  "csv-parser": {
+    "head": true,
+    "flaky": "win32",
+    "maintainers": "mafintosh"
+  },
   "debug": {
     "maintainers": ["qix", "tootallnate"],
     "skip": [true, "aix", "ppc", "s390", "win32"],
