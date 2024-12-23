@@ -116,7 +116,6 @@
     "skip": "win32"
   },
   "csv-parser": {
-    "head": true,
     "flaky": "win32",
     "maintainers": "mafintosh"
   },
