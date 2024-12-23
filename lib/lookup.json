@@ -419,6 +419,7 @@
   "through2": {
     "maintainers": "rvagg",
     "prefix": "v",
+    "install": ["install", "--ignore-scripts"],
     "scripts": ["test:node"],
     "skip": ["aix", "win32"],
     "stripAnsi": true
