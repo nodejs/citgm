@@ -103,7 +103,8 @@
   },
   "coffeescript": {
     "maintainers": ["jashkenas", "GeoffreyBooth"],
-    "skip": ["rhel", "aix"]
+    "comment": "https://github.com/jashkenas/coffeescript/pull/5478 may fix the test failures",
+    "skip": [true, "rhel", "aix"]
   },
   "commander": {
     "prefix": "v",
