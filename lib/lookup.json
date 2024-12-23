@@ -328,6 +328,9 @@
     "skip": ["win32"],
     "head": true
   },
+  "on-finished": {
+    "maintainers": "wesleytodd"
+  },
   "path-to-regexp": {
     "prefix": "v",
     "maintainers": "blakeembrey",
