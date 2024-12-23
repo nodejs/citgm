@@ -48,6 +48,19 @@
     "skip": "win32",
     "maintainers": "dominictarr"
   },
+  "astro": {
+    "scripts": ["build:ci:no-cache", "test:citgm"],
+    "maintainers": "@princesseuh",
+    "prefix": "astro@",
+    "skip": ["aix"],
+    "pnpm": true,
+    "tags": "latest",
+    "head": true,
+    "envVar": {
+      "DO_NOT_TRACK": "1",
+      "TELEMETRY_DISABLED": true
+    }
+  },
   "ava": {
     "prefix": "v",
     "skip": ["ppc", "win32", "x86", "rhel", "aix", "ia32"],
