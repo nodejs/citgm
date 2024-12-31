@@ -359,6 +359,11 @@
     "maintainers": "kriskowal",
     "skip": ["win32", ">=21"]
   },
+  "react": {
+    "prefix": "v",
+    "yarn": true,
+    "scripts": ["test -r=stable --env=production --ci"]
+  },
   "readable-stream": {
     "prefix": "v",
     "maintainers": "nodejs/streams",
