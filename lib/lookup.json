@@ -338,7 +338,7 @@
     "prefix": "v",
     "maintainers": "mcollina",
     "scripts": ["test-ci"],
-    "skip": ["aix", "ppc64le", "s390x"]
+    "skip": ["aix", "ppc", "s390x"]
   },
   "prom-client": {
     "prefix": "v",
