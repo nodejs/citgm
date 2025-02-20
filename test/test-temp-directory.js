@@ -1,13 +1,11 @@
 import { promises as fs } from 'fs';
+import { devNull as nullDevice } from 'os';
 
 import tap from 'tap';
 
 import * as tempDirectory from '../lib/temp-directory.js';
 
 const { test } = tap;
-
-const isWin32 = process.platform === 'win32';
-const nullDevice = isWin32 ? '\\\\.\\NUL' : '/dev/null';
 
 const context = {
   path: null,
