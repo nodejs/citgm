@@ -1,4 +1,5 @@
 import { fileURLToPath } from 'url';
+import { devNull as nullDevice } from 'os';
 
 import tap from 'tap';
 
@@ -9,7 +10,6 @@ const citgmPath = fileURLToPath(new URL('../../bin/citgm.js', import.meta.url));
 const { test } = tap;
 
 const isWin32 = process.platform === 'win32';
-const nullDevice = isWin32 ? '\\\\.\\NUL' : '/dev/null';
 
 test('bin: omg-i-pass /w tap to file /w junit to file /w append', (t) => {
   t.plan(1);

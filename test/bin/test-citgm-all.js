@@ -1,4 +1,5 @@
 import { fileURLToPath } from 'url';
+import { devNull as nullDevice } from 'os';
 
 import tap from 'tap';
 
@@ -11,7 +12,6 @@ const citgmAllPath = fileURLToPath(
 const { test } = tap;
 
 const isWin32 = process.platform === 'win32';
-const nullDevice = isWin32 ? '\\\\.\\NUL' : '/dev/null';
 
 test('citgm-all: /w markdown /w -j', (t) => {
   t.plan(1);
