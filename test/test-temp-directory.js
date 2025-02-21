@@ -41,7 +41,7 @@ test('tempDirectory.create --tmpDir:', async (t) => {
   t.plan(2);
   await tempDirectory.create(contextTmpDir);
   t.ok(
-    contextTmpDir.path.match(/thisisatest[/\\].*-.*-.*-.*-.*/),
+    contextTmpDir.path.match(/thisisatest[/\\][0-9a-f]{8}/),
     'the path should match --tmpDir'
   );
   const stats = await fs.stat(contextTmpDir.path);
