@@ -256,8 +256,7 @@
     "prefix": "v",
     "scripts": ["test", "tap:node"],
     "envVar": { "CITGM": true },
-    "skip": ["aix"],
-    "comment": "esbuild doesn't support aix"
+    "skip": ["<20", "win32"]
   },
   "jquery": {
     "skip": "win32",
