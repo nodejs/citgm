@@ -439,7 +439,8 @@
   },
   "undici": {
     "prefix": "v",
-    "maintainers": ["mcollina", "ronag"]
+    "maintainers": ["mcollina", "ronag"],
+    "timeout": 900000
   },
   "uuid": {
     "prefix": "v",
