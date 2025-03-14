@@ -324,6 +324,16 @@
     "skip": ["win32", "aix", "s390x"],
     "comment": "Skipped while a proper solution is found"
   },
+  "next": {
+    "maintainers": ["Ethan-Arrowood", "styfle", "timneutkens"],
+    "prefix": "v",
+    "repo": "https://github.com/vercel/next.js",
+    "scripts": ["build", "test-unit"],
+    "skip": ["win32"],
+    "tags": "native",
+    "head": true,
+    "pnpm": true
+  },
   "node-gyp": {
     "envVar": { "FAST_TEST": "true" },
     "tags": "native",
