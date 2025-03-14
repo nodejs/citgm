@@ -433,6 +433,9 @@
     "stripAnsi": true,
     "maintainers": "mcollina"
   },
+  "tough-cookie": {
+    "maintainers": ["awaterma", "colincasey", "ruoho", "wjharney"]
+  },
   "underscore": {
     "flaky": ["aix"],
     "skip": ["win32", "darwin"],
