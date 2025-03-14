@@ -169,7 +169,8 @@
   },
   "express-session": {
     "prefix": "v",
-    "maintainers": "dougwilson"
+    "maintainers": "ulisesGascon",
+    "head": true
   },
   "fastify": {
     "maintainers": ["mcollina"],
