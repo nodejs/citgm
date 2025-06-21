@@ -338,7 +338,7 @@
     "maintainers": ["panva"],
     "prefix": "v",
     "scripts": ["tap:node"],
-    "skip": ["aix", "<20"],
+    "skip": ["aix", "<20"]
   },
   "path-to-regexp": {
     "prefix": "v",
