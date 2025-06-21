@@ -1,13 +1,11 @@
 import { promises as fs } from 'fs';
+import { devNull as nullDevice } from 'os';
 
 import tap from 'tap';
 
 import * as tempDirectory from '../lib/temp-directory.js';
 
 const { test } = tap;
-
-const isWin32 = process.platform === 'win32';
-const nullDevice = isWin32 ? '\\\\.\\NUL' : '/dev/null';
 
 const context = {
   path: null,
@@ -41,7 +39,7 @@ test('tempDirectory.create --tmpDir:', async (t) => {
   t.plan(2);
   await tempDirectory.create(contextTmpDir);
   t.ok(
-    contextTmpDir.path.match(/thisisatest[/\\].*-.*-.*-.*-.*/),
+    contextTmpDir.path.match(/thisisatest[/\\][0-9a-f]{8}/),
     'the path should match --tmpDir'
   );
   const stats = await fs.stat(contextTmpDir.path);

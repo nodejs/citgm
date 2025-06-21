@@ -23,6 +23,7 @@
   },
   "@hapi/shot": {
     "maintainers": "cjihrig",
+    "head": true,
     "prefix": "v"
   },
   "@yarnpkg/cli": {
@@ -89,8 +90,6 @@
   },
   "cheerio": {
     "skip": ["aix", "win32"],
-    "head": true,
-    "useGitClone": true,
     "maintainers": ["matthewmueller", "jugglinmike"],
     "scripts": ["test:vi"]
   },
@@ -102,19 +101,22 @@
   },
   "coffeescript": {
     "maintainers": ["jashkenas", "GeoffreyBooth"],
-    "skip": ["rhel", "aix"]
+    "comment": "https://github.com/jashkenas/coffeescript/pull/5478 may fix the test failures",
+    "skip": [true, "rhel", "aix"]
   },
   "commander": {
     "prefix": "v",
     "maintainers": ["shadowspawn", "abetomo"],
     "skip": ["aix"]
   },
+  "compression": {
+    "maintainers": ["UlisesGascon", "bjohansebas"]
+  },
   "crc32-stream": {
     "maintainers": "ctalkington",
     "skip": "win32"
   },
   "csv-parser": {
-    "head": true,
     "flaky": "win32",
     "maintainers": "mafintosh"
   },
@@ -167,7 +169,8 @@
   },
   "express-session": {
     "prefix": "v",
-    "maintainers": "dougwilson"
+    "maintainers": "ulisesGascon",
+    "head": true
   },
   "fastify": {
     "maintainers": ["mcollina"],
@@ -254,8 +257,7 @@
     "prefix": "v",
     "scripts": ["test", "tap:node"],
     "envVar": { "CITGM": true },
-    "skip": ["aix"],
-    "comment": "esbuild doesn't support aix"
+    "skip": ["<20", "win32"]
   },
   "jquery": {
     "skip": "win32",
@@ -328,6 +330,9 @@
     "maintainers": ["nodejs/node-gyp"],
     "skip": ["win32"],
     "head": true
+  },
+  "on-finished": {
+    "maintainers": "wesleytodd"
   },
   "openid-client": {
     "maintainers": ["panva"],
@@ -424,6 +429,7 @@
   "through2": {
     "maintainers": "rvagg",
     "prefix": "v",
+    "install": ["install", "--ignore-scripts"],
     "scripts": ["test:node"],
     "skip": ["aix", "win32"],
     "stripAnsi": true
