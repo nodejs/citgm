@@ -112,8 +112,8 @@ test('reporter.junit(): failing', (t) => {
   }
 
   junitReporter(logger, failingInput);
-  t.equal(output, failingExpected),
-    'we should get the expected output when a' + ' module fails';
+  (t.equal(output, failingExpected),
+    'we should get the expected output when a' + ' module fails');
   t.end();
 });
 
@@ -138,8 +138,8 @@ test('reporter.junit(): write to disk', (t) => {
   t.plan(1);
   junitReporter(outputFile, passingInput);
   const expected = readFileSync(outputFile, 'utf8');
-  t.equal(expected, passingExpected),
-    'the file on disk should match the' + ' expected output';
+  (t.equal(expected, passingExpected),
+    'the file on disk should match the' + ' expected output');
   t.end();
 });
 
@@ -149,8 +149,8 @@ test('reporter.junit(): append to disk', (t) => {
   writeFileSync(outputFileAppend, appendStartFile);
   junitReporter(outputFileAppend, passingInput, true);
   const expected = readFileSync(outputFileAppend, 'utf-8');
-  t.equal(expected, passingExpectedAppend),
-    'the file on disk should match the' + ' expected output';
+  (t.equal(expected, passingExpectedAppend),
+    'the file on disk should match the' + ' expected output');
   t.end();
 });
 

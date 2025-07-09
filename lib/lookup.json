@@ -440,9 +440,9 @@
   },
   "undici": {
     "prefix": "v",
-    "envVar": { "CITGM": true }, 
+    "envVar": { "CITGM": true },
     "maintainers": ["mcollina", "ronag"],
-    "comment": "skip a few tests that are too dependent on the network" 
+    "comment": "skip a few tests that are too dependent on the network"
   },
   "uuid": {
     "prefix": "v",
