@@ -265,6 +265,12 @@
     "maintainers": "jeresig",
     "ignoreGitHead": true
   },
+  "jsonwebtoken": {
+    "maintainers": ["panva"],
+    "prefix": "v",
+    "scripts": ["test"],
+    "skip": ["win32"]
+  },
   "koa": {
     "flaky": "ubuntu",
     "maintainers": "tj"
