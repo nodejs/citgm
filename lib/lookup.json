@@ -444,6 +444,13 @@
     "maintainers": ["mcollina", "ronag"],
     "comment": "skip a few tests that are too dependent on the network"
   },
+  "utp-native": {
+    "maintainers": ["mafintosh"],
+    "prefix": "v",
+    "install": ["install", "--ignore-scripts"],
+    "scripts": ["fetch-libutp", "install", "test"],
+    "useGitClone": true
+  },
   "uuid": {
     "prefix": "v",
     "maintainers": ["ctavan", "broofa"],
