@@ -14,12 +14,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           show-progress: false
 
       - name: Use LTS Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: lts/*
 
@@ -38,4 +38,4 @@ jobs:
       test-command: npm run tap -- --coverage-report=lcov
       post-test-steps: |
         - name: Coverage Report
-          uses: codecov/codecov-action@v3
+          uses: codecov/codecov-action@fdcc8476540edceab3de004e990f80d881c6cc00  # v5.5.0
