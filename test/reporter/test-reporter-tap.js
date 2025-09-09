@@ -62,11 +62,7 @@ test('reporter.tap(): passing', (t) => {
   }
 
   tapReporter(logger, passingInput);
-  t.equal(
-    output,
-    passingExpected,
-    'we should get expected output when all' + ' modules pass'
-  );
+  t.equal(output, passingExpected);
   t.end();
 });
 
@@ -79,8 +75,7 @@ test('reporter.tap(): failing', (t) => {
   }
 
   tapReporter(logger, failingInput);
-  (t.equal(output, failingExpected),
-    'we should get the expected output when a' + ' module fails');
+  t.equal(output, failingExpected);
   t.end();
 });
 
@@ -96,8 +91,7 @@ test('reporter.tap(): parser', (t) => {
     // `results` contains JS classes that are not considered same as the
     // plain objects loaded from the JSON file.
     const plainResults = JSON.parse(JSON.stringify(results));
-    (t.same(plainResults, tapParserExpected),
-      'the tap parser should correctly' + ' parse the tap file');
+    t.same(plainResults, tapParserExpected);
     t.end();
   });
   str(output).pipe(p);
@@ -107,8 +101,7 @@ test('reporter.tap(): write to disk', (t) => {
   t.plan(1);
   tapReporter(outputFile, passingInput);
   const expected = readFileSync(outputFile, 'utf8');
-  (t.equal(expected, passingExpected),
-    'the file on disk should match the' + ' expected output');
+  t.equal(expected, passingExpected);
   t.end();
 });
 
@@ -118,8 +111,7 @@ test('reporter.tap(): append to disk', (t) => {
   writeFileSync(outputFileAppend, appendStartFile);
   tapReporter(outputFileAppend, passingInput, true);
   const expected = readFileSync(outputFileAppend, 'utf8');
-  (t.equal(expected, passingExpectedAppend),
-    'the file on disk should match the' + ' expected output');
+  t.equal(expected, passingExpectedAppend);
   t.end();
 });
 
@@ -127,8 +119,7 @@ test('reporter.tap(): append to disk when file does not exist', (t) => {
   t.plan(1);
   tapReporter(outputFileAppendBlank, passingInput, true);
   const expected = readFileSync(outputFileAppendBlank, 'utf8');
-  (t.equal(expected, passingExpected),
-    'the file on disk should match the' + ' expected output');
+  t.equal(expected, passingExpected);
   t.end();
 });
 
