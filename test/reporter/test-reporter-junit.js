@@ -71,11 +71,7 @@ test('reporter.junit(): passing', (t) => {
   }
 
   junitReporter(logger, passingInput);
-  t.equal(
-    output,
-    passingExpected,
-    'we should get expected output when all' + ' modules pass'
-  );
+  t.equal(output, passingExpected);
   t.end();
 });
 
@@ -94,11 +90,11 @@ test('reporter.junit(): bad output', (t) => {
 
   t.doesNotThrow(() => {
     junitReporter(logger, corruptXml);
-  }, 'parsing bad data should not throw');
+  });
 
   t.doesNotThrow(() => {
     junitReporter(logger, corruptXmlToo);
-  }, 'parsing bad data should not throw');
+  });
 
   t.ok(output);
 });
@@ -112,8 +108,7 @@ test('reporter.junit(): failing', (t) => {
   }
 
   junitReporter(logger, failingInput);
-  (t.equal(output, failingExpected),
-    'we should get the expected output when a' + ' module fails');
+  t.equal(output, failingExpected);
   t.end();
 });
 
@@ -127,19 +122,14 @@ test('reporter.junit(): parser', async (t) => {
 
   junitReporter(logger, failingInput);
   const result = await parseString(output);
-  t.same(
-    result,
-    junitParserExpected,
-    'we should get the expected output when a module fails'
-  );
+  t.same(result, junitParserExpected);
 });
 
 test('reporter.junit(): write to disk', (t) => {
   t.plan(1);
   junitReporter(outputFile, passingInput);
   const expected = readFileSync(outputFile, 'utf8');
-  (t.equal(expected, passingExpected),
-    'the file on disk should match the' + ' expected output');
+  t.equal(expected, passingExpected);
   t.end();
 });
 
@@ -149,8 +139,7 @@ test('reporter.junit(): append to disk', (t) => {
   writeFileSync(outputFileAppend, appendStartFile);
   junitReporter(outputFileAppend, passingInput, true);
   const expected = readFileSync(outputFileAppend, 'utf-8');
-  (t.equal(expected, passingExpectedAppend),
-    'the file on disk should match the' + ' expected output');
+  t.equal(expected, passingExpectedAppend);
   t.end();
 });
 
