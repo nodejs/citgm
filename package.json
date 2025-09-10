@@ -34,6 +34,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@npmcli/package-json": "^7.0.0",
     "async": "^3.2.6",
     "bl": "^6.0.16",
     "chalk": "^5.4.0",
@@ -44,7 +45,6 @@
     "npm-package-arg": "^12.0.1",
     "npm-which": "^3.0.1",
     "pnpm": "^9.15.1",
-    "read-package-json": "^7.0.1",
     "root-check": "^2.0.0",
     "semver": "^7.6.3",
     "strip-ansi": "^7.1.0",
