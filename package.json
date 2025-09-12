@@ -63,12 +63,12 @@
     "@eslint/js": "^9.35.0",
     "ansi-regex": "^6.2.2",
     "eslint": "^9.35.0",
-    "eslint-config-prettier": "^9.1.2",
-    "globals": "^15.15.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^16.4.0",
     "prettier": "^3.6.2",
     "string-to-stream": "^3.0.1",
-    "tap": "^20.0.3",
-    "tap-parser": "^17.0.0",
+    "tap": "^21.1.0",
+    "tap-parser": "^18.0.0",
     "xml2js": "^0.6.2"
   },
   "prettier": {
