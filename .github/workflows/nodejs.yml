@@ -24,7 +24,7 @@ jobs:
           node-version: lts/*
 
       - name: Install packages
-        run: npm install
+        run: npm ci
 
       - name: Run lint
         run: npm run lint

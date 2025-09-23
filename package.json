@@ -12,7 +12,8 @@
   },
   "files": [
     "bin",
-    "lib"
+    "lib",
+    "npm-shrinkwrap.json"
   ],
   "scripts": {
     "lint": "npm run lint:eslint && npm run lint:prettier",
