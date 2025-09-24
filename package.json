@@ -1,6 +1,6 @@
 {
   "name": "citgm",
-  "version": "10.0.0",
+  "version": "10.0.1",
   "description": "The Canary in the Goldmine",
   "homepage": "https://nodejs.org",
   "preferGlobal": true,

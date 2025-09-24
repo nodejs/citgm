@@ -1,12 +1,12 @@
 {
   "name": "citgm",
-  "version": "10.0.0",
+  "version": "10.0.1",
   "lockfileVersion": 3,
   "requires": true,
   "packages": {
     "": {
       "name": "citgm",
-      "version": "10.0.0",
+      "version": "10.0.1",
       "license": "MIT",
       "dependencies": {
         "@npmcli/package-json": "^7.0.0",
