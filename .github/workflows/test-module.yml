@@ -56,7 +56,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Install packages
-        run: npm install
+        run: npm ci
 
       - name: Run CITGM
         run: node bin/citgm.js ${{ github.event.inputs.module }}
