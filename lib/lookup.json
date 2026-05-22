@@ -470,6 +470,10 @@
     "maintainers": ["einaros", "3rd-Eden", "lpinca"],
     "scripts": ["test -- --timeout 30000"]
   },
+  "yargs": {
+    "prefix": "v",
+    "maintainers": ["bcoe"]
+  },
   "yeoman-generator": {
     "prefix": "v",
     "flaky": ["ppc", "rhel"],
