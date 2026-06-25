@@ -441,8 +441,26 @@
   "undici": {
     "prefix": "v",
     "envVar": { "CITGM": true },
+    "scripts": [
+      "generate-pem",
+      "test:unit",
+      "test:fetch",
+      "test:node-fetch",
+      "test:infra",
+      "test:cache",
+      "test:cache-interceptor",
+      "test:interceptors",
+      "test:cookies",
+      "test:eventsource",
+      "test:subresource-integrity",
+      "test:websocket",
+      "test:node-test",
+      "test:cache-tests",
+      "test:jest",
+      "test:typescript"
+    ],
     "maintainers": ["mcollina", "ronag"],
-    "comment": "skip a few tests that are too dependent on the network"
+    "comment": "run the default test suite without WPT; skip a few tests that are too dependent on the network"
   },
   "uuid": {
     "prefix": "v",
