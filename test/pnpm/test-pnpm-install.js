@@ -67,16 +67,13 @@ test('pnpm-install: timeout', async (t) => {
 });
 
 test('pnpm-install: failed install', async (t) => {
-  t.plan(3);
+  t.plan(4);
   const context = npmContext('omg-bad-tree', packageManagers, sandbox);
   const expected = /\/THIS-WILL-FAIL: Not Found/;
-  try {
-    await packageManagerInstall('pnpm', context);
-  } catch (err) {
-    t.notOk(context.module.flaky, 'Module failed is not flaky');
-    t.equal(err && err.message, 'Install Failed');
-    t.match(context.testError.toString(), expected, 'Install error reported');
-  }
+  const err = await t.rejects(packageManagerInstall('pnpm', context));
+  t.notOk(context.module.flaky, 'Module failed is not flaky');
+  t.equal(err?.message, 'Install Failed');
+  t.match(context.testOutput.toString(), expected, 'Install error reported');
 });
 
 tap.teardown(async () => {
