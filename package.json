@@ -27,7 +27,7 @@
   "author": "James M Snell <jasnell@gmail.com> (http://jasnell.me)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nodejs/citgm"
+    "url": "git+https://github.com/nodejs/citgm.git"
   },
   "bugs": {
     "url": "https://github.com/nodejs/citgm/issues",
