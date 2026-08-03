@@ -354,11 +354,6 @@
     "maintainers": "mafintosh",
     "skip": "win32"
   },
-  "q": {
-    "prefix": "v",
-    "maintainers": "kriskowal",
-    "skip": ["win32", ">=21"]
-  },
   "readable-stream": {
     "prefix": "v",
     "maintainers": "nodejs/streams",
