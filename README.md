@@ -142,6 +142,7 @@ For syntax, see [lookup.json](./lib/lookup.json), the available attributes are:
 "scripts": ["script1", "script2"] - List of scripts from package.json to run instead of 'test'
 "tags": ["tag1", "tag2"]     Specify which tags apply to the module
 "useGitClone": true          Use a shallow git clone instead of downloading the module
+"submodules": ["path/to/submodule"]  Initialize only the listed submodules when using a git clone
 "ignoreGitHead":             Ignore the gitHead field if it exists and fallback to using github tags
 "yarn":                      Install and test the project using yarn instead of npm
 "pnpm":                      Install and test the project using pnpm instead of npm
