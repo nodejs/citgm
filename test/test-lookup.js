@@ -245,7 +245,7 @@ test('lookup: module in table with scripts', (t) => {
 });
 
 test('lookup: module in table with useGitClone', (t) => {
-  t.plan(2);
+  t.plan(3);
   const context = {
     lookup: null,
     module: parsePackageArg('lodash'),
@@ -269,6 +269,7 @@ test('lookup: module in table with useGitClone', (t) => {
     'raw should be a git URL if useGitClone is true'
   );
   t.equal(context.module.ref, 'v1.2.3');
+  t.strictSame(context.module.submodules, ['test/fixtures']);
   t.end();
 });
 
