@@ -433,6 +433,8 @@
   },
   "undici": {
     "prefix": "v",
+    "useGitClone": true,
+    "submodules": ["test/fixtures/cache-tests"],
     "envVar": { "CITGM": true },
     "scripts": [
       "generate-pem",
