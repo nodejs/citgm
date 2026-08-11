@@ -1,6 +1,7 @@
 {
   "lodash": {
     "prefix": "v",
-    "useGitClone": true
+    "useGitClone": true,
+    "submodules": ["test/fixtures"]
   }
 }
