@@ -46,7 +46,7 @@ test('npm-install: custom install command', async (t) => {
   const context = npmContext(
     {
       name: 'omg-i-pass-with-install-param',
-      install: ['install', '--extra-param']
+      envVar: { npm_config_extra_param: 'true' }
     },
     packageManagers,
     sandbox,
