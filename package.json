@@ -68,7 +68,7 @@
     "globals": "^16.4.0",
     "prettier": "^3.9.6",
     "string-to-stream": "^3.0.1",
-    "tap": "^21.1.0",
+    "tap": "^21.7.5",
     "tap-parser": "^18.0.0",
     "xml2js": "^0.6.2"
   },
