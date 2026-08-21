@@ -43,11 +43,6 @@
     "timeout": 3000000,
     "yarn": true
   },
-  "JSONStream": {
-    "prefix": "v",
-    "skip": "win32",
-    "maintainers": "dominictarr"
-  },
   "ava": {
     "prefix": "v",
     "skip": ["ppc", "win32", "x86", "rhel", "aix", "ia32"],
