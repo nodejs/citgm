@@ -17,7 +17,7 @@
   ],
   "scripts": {
     "lint": "npm run lint:eslint && npm run lint:prettier",
-    "lint:eslint": "eslint . --cache",
+    "lint:eslint": "eslint --cache",
     "lint:eslint:fix": "npm run eslint -- --fix",
     "lint:prettier": "prettier --check .",
     "lint:prettier:fix": "prettier --write .",
@@ -61,9 +61,9 @@
     "yarn": "^1.22.22"
   },
   "devDependencies": {
-    "@eslint/js": "^9.35.0",
+    "@eslint/js": "^10.0.1",
     "ansi-regex": "^6.2.2",
-    "eslint": "^9.35.0",
+    "eslint": "^10.8.1",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^16.4.0",
     "prettier": "^3.9.6",
