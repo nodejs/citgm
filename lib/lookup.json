@@ -400,13 +400,6 @@
     "maintainers": "mcollina",
     "head": true
   },
-  "sqlite3": {
-    "prefix": "v",
-    "tags": "native",
-    "flaky": "ppc",
-    "maintainers": "koistya",
-    "skip": "win32"
-  },
   "tape": {
     "head": true,
     "prefix": "v",
