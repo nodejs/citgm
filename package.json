@@ -18,7 +18,7 @@
   "scripts": {
     "lint": "npm run lint:eslint && npm run lint:prettier",
     "lint:eslint": "eslint --cache",
-    "lint:eslint:fix": "npm run eslint -- --fix",
+    "lint:eslint:fix": "npm run lint:eslint -- --fix",
     "lint:prettier": "prettier --check .",
     "lint:prettier:fix": "prettier --write .",
     "tap": "tap run \"test/**/test-*.js\"",
