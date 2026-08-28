@@ -1,4 +1,4 @@
-import BufferList from 'bl';
+import { BufferList } from 'bl';
 
 export function npmContext(mod, packageManagers, path, options) {
   if (typeof mod === 'string') {
