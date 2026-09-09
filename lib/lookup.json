@@ -334,6 +334,9 @@
   "on-finished": {
     "maintainers": "wesleytodd"
   },
+  "on-headers": {
+    "maintainers": ["blakeembrey"]
+  },
   "path-to-regexp": {
     "prefix": "v",
     "maintainers": "blakeembrey",
