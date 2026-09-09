@@ -344,6 +344,15 @@
     "maintainers": "mcollina",
     "skip": ["aix", "s390x"]
   },
+  "pnpm": {
+    "prefix": "v",
+    "head": true,
+    "maintainers": ["zkochan"],
+    "scripts": ["--filter core test"],
+    "customTest": ["./node_modules/.bin/pnpm --filter core test"],
+    "pnpm": true,
+    "timeout": 1800000
+  },
   "prom-client": {
     "prefix": "v",
     "maintainers": ["siimon", "zbjornson", "SimenB"],
