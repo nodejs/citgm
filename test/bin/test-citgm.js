@@ -61,6 +61,29 @@ test('bin: omg-i-pass /w local module', (t) => {
   });
 });
 
+test('bin: multiple packages', (t) => {
+  t.plan(3);
+  const proc = spawn(citgmPath, ['omg-i-pass', 'omg-i-fail']);
+  let stdout = '';
+
+  proc.on('close', (code) => {
+    t.ok(code !== 0, 'omg-i-fail should fail with a non-zero exit code');
+    t.match(
+      stdout,
+      /info:\s*starting\s*\|\s*omg-i-pass\s*/,
+      'stdout should contain omg-i-pass'
+    );
+    t.match(
+      stdout,
+      /info:\s*starting\s*\|\s*omg-i-fail\s*/,
+      'stdout should contain omg-i-fail'
+    );
+  });
+  proc.stdout.on('data', (data) => {
+    stdout += data;
+  });
+});
+
 test('bin: no module /w root check', (t) => {
   t.plan(1);
   const proc = spawn(citgmPath, ['-s']);
