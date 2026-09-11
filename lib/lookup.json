@@ -385,7 +385,7 @@
     "timeout": 300000
   },
   "serialport": {
-    "skip": ["ppc", "s390x"],
+    "skip": "ppc",
     "head": true,
     "tags": "native",
     "maintainers": "reconbot"
