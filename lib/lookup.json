@@ -196,7 +196,7 @@
     "flaky": ["win32"],
     "expectFail": "fips",
     "maintainers": "isaacs",
-    "skip": true
+    "skip": ["win32", "darwin"]
   },
   "got": {
     "maintainers": ["sindresorhus"],
