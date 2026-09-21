@@ -269,6 +269,7 @@ npm install -g nyc
 
 <!-- ncu-team-sync.team(nodejs/citgm) -->
 
+* [@BethGriggs](https://github.com/BethGriggs) - Beth Griggs
 * [@BridgeAR](https://github.com/BridgeAR) - Ruben Bridgewater
 * [@ljharb](https://github.com/ljharb) - Jordan Harband
 * [@lukekarrys](https://github.com/lukekarrys) - Luke Karrys
