@@ -193,10 +193,10 @@
   },
   "glob": {
     "prefix": "v",
-    "flaky": ["win32"],
+    "flaky": ["win32", "aix"],
     "expectFail": "fips",
     "maintainers": "isaacs",
-    "skip": ["win32", "darwin", "aix"]
+    "skip": ["win32", "darwin"]
   },
   "got": {
     "maintainers": ["sindresorhus"],
