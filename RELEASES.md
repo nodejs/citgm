@@ -6,33 +6,15 @@ for citgm, hosted on npm.
 
 ## Who can make a release?
 
-Any member of the @nodejs/citgm team can make a release.
+Anyone with permission to merge the release PR to `main` can make a release.
 
-## How to create a release
+## How releases work
 
-1. Ensure your branch is up to date with upstream
+Releases are automated via the
+[release-please workflow](.github/workflows/release-please.yml) using
+[Conventional Commits](https://www.conventionalcommits.org/). When a release PR
+is merged, the package is published to npm automatically with provenance.
 
-```bash
-$ git checkout main
-$ git remote update -p
-$ git reset --hard upstream/main
-$ git diff upstream/main # this should be a no-op
-```
+### npm Trusted Publishing
 
-2. Bump the version and create tag with semver-sync
-
-```bash
-$ npm version [<newversion> | major | minor | patch]
-```
-
-3. Push to github
-
-```bash
-$ git push upstream main --follow-tags
-```
-
-4. Publish to npm
-
-```bash
-$ npm publish
-```
+The workflow publishes via GitHub OIDC — no `NPM_TOKEN` secret is needed.

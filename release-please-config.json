@@ -1,0 +1,14 @@
+{
+  "packages": {
+    ".": {
+      "release-type": "node",
+      "changelog-sections": [
+        { "type": "feat", "section": "Features" },
+        { "type": "fix", "section": "Bug Fixes" },
+        { "type": "lookup", "section": "Lookup Updates", "hidden": true }
+      ],
+      "version-bump-minor-types": ["feat"],
+      "version-bump-patch-types": ["fix", "lookup"]
+    }
+  }
+}
