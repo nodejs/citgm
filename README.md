@@ -269,10 +269,9 @@ npm install -g nyc
 
 <!-- ncu-team-sync.team(nodejs/citgm) -->
 
+* [@BethGriggs](https://github.com/BethGriggs) - Beth Griggs
 * [@BridgeAR](https://github.com/BridgeAR) - Ruben Bridgewater
 * [@ljharb](https://github.com/ljharb) - Jordan Harband
-* [@lukekarrys](https://github.com/lukekarrys) - Luke Karrys
-* [@MylesBorins](https://github.com/MylesBorins) - Myles Borins
 * [@richardlau](https://github.com/richardlau) - Richard Lau
 * [@targos](https://github.com/targos) - Michaël Zasso
 
@@ -287,6 +286,8 @@ npm install -g nyc
 * [@gdams](https://github.com/gdams) - George Adams
 * [@gibfahn](https://github.com/gibfahn) - Gibson Fahnestock
 * [@jasnell](https://github.com/jasnell) - James M Snell
+* [@lukekarrys](https://github.com/lukekarrys) - Luke Karrys
+* [@MylesBorins](https://github.com/MylesBorins) - Myles Borins
 
 </details>
 
