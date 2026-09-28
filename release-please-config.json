@@ -1,0 +1,13 @@
+{
+  "bootstrap-sha": "6d76d2eda57364f151cd63e8937c30b9421a744b",
+  "packages": {
+    ".": {
+      "release-type": "node",
+      "changelog-sections": [
+        { "type": "feat", "section": "Features" },
+        { "type": "fix", "section": "Bug Fixes" },
+        { "type": "lookup", "section": "Lookup Updates" }
+      ]
+    }
+  }
+}
