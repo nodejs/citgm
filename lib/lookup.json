@@ -234,7 +234,7 @@
   },
   "is-core-module": {
     "prefix": "v",
-    "skip": "win32",
+    "skip": ["win32", "s390"],
     "maintainers": "ljharb",
     "scripts": ["tests-only"]
   },
