@@ -275,13 +275,6 @@
     "maintainers": ["ralphtheninja", "vweevers"],
     "skip": ["win32", "s390"]
   },
-  "leveldown": {
-    "head": true,
-    "useGitClone": true,
-    "skip": ["ppc", "s390"],
-    "tags": "native",
-    "maintainers": ["ralphtheninja", "vweevers"]
-  },
   "lodash": {
     "expectFail": "fips",
     "maintainers": "jdalton"
