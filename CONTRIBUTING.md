@@ -1,3 +1,13 @@
+## Contribution Guidelines
+
+- All changes must come in a PR
+- All changes must be reviewed by another Collaborator or member of
+  `@nodejs/citgm`
+  - Small changes to the lookup table can be made without following the above
+    process
+- Changes can be landed in any way you prefer as long as it lands on the head of
+  main with no merge commit
+
 ## Making changes to CitGM
 
 #### There are a few basic requirements for making changes to CitGM
@@ -12,36 +22,28 @@
 
 #### Commit Guidelines
 
-- The first line should be 50 characters or less and contain a short description
-  of the change. All words in the description should be in lowercase with the
-  exception of proper nouns, acronyms, and the ones that refer to code, like
-  function/variable names. The description should be prefixed with the name of
-  the changed subsystem and start with an imperative verb. Example:
-  `lookup: add module to lookup.json`. Use `git log` for inspiration if you are
-  unsure about what the subsystem should be.
+This project uses [Conventional Commits](https://www.conventionalcommits.org/).
+Commit messages must be structured as:
+
+```
+<type>(<optional scope>): <short description>
+
+[optional body]
+
+[optional footers]
+```
+
+- Use a [Conventional Commits](https://www.conventionalcommits.org/) type prefix
+  (`feat:`, `fix:`, `docs:`, `chore:`, etc.). `lookup:` can be used for patch
+  changes to `lib/lookup.json`.
+- Keep the subject line to 50 characters or less, generally in lowercase, using
+  an imperative verb. Example: `feat(lookup): add express`
 - Keep the second line blank.
-- Wrap all other lines at 72 columns.
-- Optionally you can include a `PR-URL:` line. (This can be useful when landing
-  someone else's commits).
+- Wrap body lines at 72 columns.
 - If the PR fixes an issue, please include a `Fixes:` or `Closes:` line.
 
-A good commit log can look something like this:
-
-```
-subsystem: explain the commit in one line
-
-Body of commit message is a few lines of text, explaining things
-in more detail, possibly giving some background about the issue
-being fixed, etc.
-
-The body of the commit message can be several paragraphs, and
-please do proper word-wrap and keep columns shorter than about
-72 characters or so. That way, `git log` will show things
-nicely even when it is indented.
-
-PR-URL: https://github.com/nodejs/citgm/pull/314
-Fixes: https://github.com/nodejs/citgm/issues/313
-```
+See [RELEASES.md](RELEASES.md) for how commits drive the automated release
+process.
 
 ## Submitting a module to CitGM
 
