@@ -46,7 +46,10 @@
   "JSONStream": {
     "prefix": "v",
     "skip": "win32",
-    "maintainers": "dominictarr"
+    "maintainers": "dominictarr",
+    "envVar": {
+      "npm_config_allow_git": "all"
+    }
   },
   "ava": {
     "prefix": "v",
