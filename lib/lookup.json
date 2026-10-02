@@ -94,12 +94,6 @@
     "maintainers": ["matthewmueller", "jugglinmike"],
     "scripts": ["test:vi"]
   },
-  "clinic": {
-    "maintainers": "mcollina",
-    "flaky": ["rhel"],
-    "prefix": "v",
-    "skip": ["aix", "darwin", "win32"]
-  },
   "coffeescript": {
     "maintainers": ["jashkenas", "GeoffreyBooth"],
     "comment": "https://github.com/jashkenas/coffeescript/pull/5478 may fix the test failures",
