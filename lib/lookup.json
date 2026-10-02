@@ -397,8 +397,6 @@
     "maintainers": "ljharb"
   },
   "thread-sleep": {
-    "install": ["install", "--build-from-source"],
-    "tags": "native",
     "maintainers": ["forbeslindesay", "timothygu"],
     "flaky": true
   },
