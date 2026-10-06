@@ -4,7 +4,7 @@
     "prefix": "v",
     "yarn": true,
     "scripts": ["build", "test-only"],
-    "skip": ["aix", "ppc", "s390", "win32"]
+    "skip": ["aix", "ppc", "win32"]
   },
   "@clinic/bubbleprof": {
     "maintainers": ["mcollina", "rafaelgss"],
