@@ -170,7 +170,7 @@
   "fastify": {
     "maintainers": ["mcollina"],
     "prefix": "v",
-    "skip": ["win32", "aix", "darwin"],
+    "skip": "aix",
     "scripts": ["citgm"]
   },
   "flush-write-stream": {
