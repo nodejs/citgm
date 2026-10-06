@@ -204,12 +204,6 @@
     "skip": ["win32", "darwin"],
     "maintainers": "contra"
   },
-  "gulp-util": {
-    "prefix": "v",
-    "flaky": "rhel",
-    "maintainers": "contra",
-    "skip": "win32"
-  },
   "iconv": {
     "prefix": "v",
     "flaky": "aix",
