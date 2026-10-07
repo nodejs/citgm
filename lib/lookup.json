@@ -6,21 +6,6 @@
     "scripts": ["build", "test-only"],
     "skip": ["aix", "ppc", "s390", "win32"]
   },
-  "@clinic/bubbleprof": {
-    "maintainers": ["mcollina", "rafaelgss"],
-    "prefix": "v",
-    "flaky": true
-  },
-  "@clinic/doctor": {
-    "maintainers": ["mcollina", "rafaelgss"],
-    "prefix": "v",
-    "flaky": true
-  },
-  "@clinic/flame": {
-    "maintainers": ["mcollina", "rafaelgss"],
-    "prefix": "v",
-    "flaky": true
-  },
   "@hapi/shot": {
     "maintainers": "cjihrig",
     "head": true,
