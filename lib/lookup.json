@@ -48,7 +48,7 @@
     "prefix": "v",
     "flaky": "win32",
     "repo": "https://github.com/max-mapper/binary-split",
-    "maintainers": ["maxogden", "mourner"]
+    "maintainers": ["mourner"]
   },
   "bl": {
     "prefix": "v",
