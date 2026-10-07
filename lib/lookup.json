@@ -309,7 +309,7 @@
   "pino": {
     "prefix": "v",
     "maintainers": "mcollina",
-    "skip": ["aix", "s390x"]
+    "skip": "aix"
   },
   "prom-client": {
     "prefix": "v",
