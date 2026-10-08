@@ -155,7 +155,7 @@
   "fastify": {
     "maintainers": ["mcollina"],
     "prefix": "v",
-    "skip": ["s390x", "aix"],
+    "skip": "aix",
     "scripts": ["citgm"]
   },
   "flush-write-stream": {
