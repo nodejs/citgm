@@ -1,0 +1,6 @@
+{
+  "omg-i-pass-with-scripts": {
+    "prefix": "v",
+    "scripts": [{ "script": "test", "skip": true }]
+  }
+}
