@@ -329,7 +329,7 @@
   "resolve": {
     "prefix": "v",
     "maintainers": "ljharb",
-    "scripts": ["tests-only", "posttest"]
+    "scripts": ["tests-only", { "script": "posttest", "skip": "win32" }]
   },
   "rewire": {
     "prefix": "v",

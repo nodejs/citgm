@@ -244,6 +244,79 @@ test('lookup: module in table with scripts', (t) => {
   t.end();
 });
 
+test('lookup: module in table with conditionally skipped scripts', (t) => {
+  t.plan(1);
+  const context = {
+    module: parsePackageArg('omg-i-pass-with-scripts'),
+    meta: createFakeMeta({
+      name: 'omg-i-pass-with-scripts',
+      repository: {
+        url: 'git+https://github.com/nodejs/citgm'
+      }
+    }),
+    options: {
+      lookup: 'test/fixtures/custom-lookup-scripts-skip.json'
+    },
+    emit: function () {}
+  };
+
+  lookup(context);
+  t.strictSame(
+    context.module.scripts,
+    ['test-build', 'test', 'test-not-skipped'],
+    'lookup should omit scripts whose skip condition matches'
+  );
+  t.end();
+});
+
+test('lookup: module in table with invalid scripts entry', (t) => {
+  t.plan(1);
+  const context = {
+    module: parsePackageArg('omg-i-pass-with-scripts'),
+    meta: createFakeMeta({
+      name: 'omg-i-pass-with-scripts',
+      repository: {
+        url: 'git+https://github.com/nodejs/citgm'
+      }
+    }),
+    options: {
+      lookup: 'test/fixtures/custom-lookup-scripts-skip-invalid.json'
+    },
+    emit: function () {}
+  };
+
+  t.throws(
+    () => lookup(context),
+    { name: 'TypeError', message: /must be a string or an object/ },
+    'lookup should throw on a scripts entry without a string script'
+  );
+  t.end();
+});
+
+test('lookup: module in table with every script skipped', (t) => {
+  t.plan(1);
+  const context = {
+    module: parsePackageArg('omg-i-pass-with-scripts'),
+    meta: createFakeMeta({
+      name: 'omg-i-pass-with-scripts',
+      repository: {
+        url: 'git+https://github.com/nodejs/citgm'
+      }
+    }),
+    options: {
+      lookup: 'test/fixtures/custom-lookup-scripts-skip-all.json'
+    },
+    emit: function () {}
+  };
+
+  t.throws(
+    () => lookup(context),
+    /every "scripts" entry is skipped/,
+    'lookup should throw when every script is skipped'
+  );
+  t.end();
+});
+
 test('lookup: module in table with useGitClone', (t) => {
   t.plan(3);
   const context = {
