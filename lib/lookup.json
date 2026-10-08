@@ -435,11 +435,6 @@
     "maintainers": "substack",
     "skip": ["win32", "darwin"]
   },
-  "weak": {
-    "head": true,
-    "maintainers": "tootallnate",
-    "tags": "native"
-  },
   "ws": {
     "expectFail": "fips",
     "maintainers": ["einaros", "3rd-Eden", "lpinca"],
