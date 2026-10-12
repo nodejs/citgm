@@ -133,11 +133,9 @@
   },
   "eslint": {
     "prefix": "v",
-    "flaky": ["s390", "ubuntu"],
-    "skip": true,
     "expectFail": "fips",
-    "maintainers": ["nzakas", "mysticatea", "not-an-aardvark"],
-    "comment": "Skipped because libX11 is required for headless Chrome"
+    "skip": "aix",
+    "maintainers": ["nzakas", "mysticatea", "not-an-aardvark"]
   },
   "esprima": {
     "maintainers": "ariya",
