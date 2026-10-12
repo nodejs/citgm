@@ -128,5 +128,41 @@ test('isMatch', (t) => {
   t.ok(isMatch(true), 'true is matched');
   t.notOk(isMatch(false), 'false is not matched');
   t.notOk(isMatch(123), 'invalid input is not matched');
+  t.ok(isMatch('darwin && v5'), 'isMatch delegates && string to isStringMatch');
+  t.notOk(
+    isMatch('darwin && hurd'),
+    'isMatch delegates partial && string -> false'
+  );
+  t.end();
+});
+
+test('isStringMatch - && malformed', (t) => {
+  t.notOk(
+    testMatcher.isStringMatch('darwin &&'),
+    'trailing && produces empty part -> false'
+  );
+  t.notOk(
+    testMatcher.isStringMatch('&& darwin'),
+    'leading && produces empty part -> false'
+  );
+  t.notOk(testMatcher.isStringMatch('&&'), 'bare && -> false');
+  t.notOk(
+    testMatcher.isStringMatch('darwin && && v5'),
+    'repeated && produces empty middle part -> false'
+  );
+  t.end();
+});
+
+test('isStringMatch - && syntax with semver range: aix && >=26', (t) => {
+  const testMatcher = new ConditionMatcher({
+    version: 'v26.0.0',
+    platform: 'aix',
+    arch: 'ppc64',
+    distro: '',
+    release: '',
+    endian: 'big',
+    fips: ''
+  });
+  t.ok(testMatcher.isStringMatch('aix && >=26'), 'aix + v26 -> true');
   t.end();
 });
