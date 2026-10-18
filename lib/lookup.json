@@ -261,11 +261,6 @@
     "skip": "aix",
     "comment": "Marked as flaky on win32 due to this issue https://github.com/nodejs/citgm/issues/930"
   },
-  "microtime": {
-    "prefix": "v",
-    "tags": "native",
-    "maintainers": "wadey"
-  },
   "mime": {
     "prefix": "v",
     "maintainers": "broofa",
