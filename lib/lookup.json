@@ -370,8 +370,6 @@
     "maintainers": "ljharb"
   },
   "thread-sleep": {
-    "install": ["install", "--build-from-source"],
-    "tags": "native",
     "maintainers": ["forbeslindesay", "timothygu"],
     "flaky": true
   },
@@ -434,11 +432,6 @@
     "flaky": ["ppc", "s390", "ubuntu", "rhel"],
     "maintainers": "substack",
     "skip": ["win32", "darwin"]
-  },
-  "weak": {
-    "head": true,
-    "maintainers": "tootallnate",
-    "tags": "native"
   },
   "ws": {
     "expectFail": "fips",
