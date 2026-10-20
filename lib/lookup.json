@@ -92,10 +92,6 @@
   "compression": {
     "maintainers": ["UlisesGascon", "bjohansebas"]
   },
-  "crc32-stream": {
-    "maintainers": "ctalkington",
-    "skip": "win32"
-  },
   "csv-parser": {
     "flaky": "win32",
     "maintainers": "mafintosh"
