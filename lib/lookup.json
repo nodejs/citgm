@@ -6,21 +6,6 @@
     "scripts": ["build", "test-only"],
     "skip": ["aix", "ppc", "s390", "win32"]
   },
-  "@clinic/bubbleprof": {
-    "maintainers": ["mcollina", "rafaelgss"],
-    "prefix": "v",
-    "flaky": true
-  },
-  "@clinic/doctor": {
-    "maintainers": ["mcollina", "rafaelgss"],
-    "prefix": "v",
-    "flaky": true
-  },
-  "@clinic/flame": {
-    "maintainers": ["mcollina", "rafaelgss"],
-    "prefix": "v",
-    "flaky": true
-  },
   "@hapi/shot": {
     "maintainers": "cjihrig",
     "head": true,
@@ -66,7 +51,7 @@
     "prefix": "v",
     "flaky": "win32",
     "repo": "https://github.com/max-mapper/binary-split",
-    "maintainers": ["maxogden", "mourner"]
+    "maintainers": ["mourner"]
   },
   "bl": {
     "prefix": "v",
@@ -96,12 +81,6 @@
     "skip": ["aix", "win32"],
     "maintainers": ["matthewmueller", "jugglinmike"],
     "scripts": ["test:vi"]
-  },
-  "clinic": {
-    "maintainers": "mcollina",
-    "flaky": ["rhel"],
-    "prefix": "v",
-    "skip": ["aix", "darwin", "win32"]
   },
   "coffeescript": {
     "maintainers": ["jashkenas", "GeoffreyBooth"],
@@ -179,7 +158,7 @@
   "fastify": {
     "maintainers": ["mcollina"],
     "prefix": "v",
-    "skip": ["s390x", "aix"],
+    "skip": "aix",
     "scripts": ["citgm"]
   },
   "flush-write-stream": {
@@ -212,12 +191,6 @@
     "flaky": ["ppc", "rhel"],
     "skip": ["win32", "darwin"],
     "maintainers": "contra"
-  },
-  "gulp-util": {
-    "prefix": "v",
-    "flaky": "rhel",
-    "maintainers": "contra",
-    "skip": "win32"
   },
   "iconv": {
     "prefix": "v",
@@ -339,7 +312,7 @@
   "pino": {
     "prefix": "v",
     "maintainers": "mcollina",
-    "skip": ["aix", "s390x"]
+    "skip": "aix"
   },
   "prom-client": {
     "prefix": "v",
@@ -400,8 +373,6 @@
     "maintainers": "ljharb"
   },
   "thread-sleep": {
-    "install": ["install", "--build-from-source"],
-    "tags": "native",
     "maintainers": ["forbeslindesay", "timothygu"],
     "flaky": true
   },
@@ -464,11 +435,6 @@
     "flaky": ["ppc", "s390", "ubuntu", "rhel"],
     "maintainers": "substack",
     "skip": ["win32", "darwin"]
-  },
-  "weak": {
-    "head": true,
-    "maintainers": "tootallnate",
-    "tags": "native"
   },
   "ws": {
     "expectFail": "fips",
