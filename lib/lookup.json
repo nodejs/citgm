@@ -80,9 +80,9 @@
     "scripts": ["test:vi"]
   },
   "coffeescript": {
+    "head": true,
     "maintainers": ["jashkenas", "GeoffreyBooth"],
-    "comment": "https://github.com/jashkenas/coffeescript/pull/5478 may fix the test failures",
-    "skip": [true, "rhel", "aix"]
+    "skip": ["darwin", "win32", "aix"]
   },
   "commander": {
     "prefix": "v",
