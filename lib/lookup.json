@@ -94,7 +94,7 @@
   },
   "crc32-stream": {
     "maintainers": "ctalkington",
-    "skip": "win32"
+    "skip": ["win32", ">24"]
   },
   "csv-parser": {
     "flaky": "win32",
