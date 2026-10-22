@@ -1,5 +1,6 @@
 {
   "@babel/core": {
+    "envVar": { "CITGM": true },
     "maintainers": ["nicolo-ribaudo", "JLHwung", "liuxingbaoyu"],
     "prefix": "v",
     "yarn": true,
