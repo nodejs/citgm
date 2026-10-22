@@ -136,7 +136,7 @@
     "flaky": ["s390", "ubuntu"],
     "skip": true,
     "expectFail": "fips",
-    "maintainers": ["nzakas", "mysticatea", "not-an-aardvark"],
+    "maintainers": ["nzakas", "fasttime", "mdjermanovic"],
     "comment": "Skipped because libX11 is required for headless Chrome"
   },
   "esprima": {
