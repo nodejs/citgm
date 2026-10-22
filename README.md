@@ -131,7 +131,7 @@ For syntax, see [lookup.json](./lib/lookup.json), the available attributes are:
 "head": true                 Use the head of the default branch
 "prefix": "v"                Specify the prefix used in the module version.
 "flaky": true                Ignore failures
-"skip": true                 Completely skip the module
+"skip": true                 Completely skip the module. May also be a condition (platform, arch, distro, semver range, or an array/object of these, eg "win32" or ["aix", ">=24"]) to skip only when it matches
 "expectFail"                 Expect the module to fail, error if it passes
 "repo": "https://github.com/pugjs/jade" - Use a different github repo
 "stripAnsi": true            Strip ansi data from output stream of npm
@@ -140,6 +140,8 @@ For syntax, see [lookup.json](./lib/lookup.json), the available attributes are:
 "install": ["install", "--param1", "--param2"] - Array of command line parameters passed to `npm` or `yarn` or `pnpm` as install arguments
 "maintainers": ["user1", "user2"] - List of module maintainers to be contacted with issues
 "scripts": ["script1", "script2"] - List of scripts from package.json to run instead of 'test'
+                             An entry may also be an object, eg `{ "script": "script2", "skip": "win32" }`,
+                             where the optional "skip" takes the same values as the top-level "skip"; if every entry is skipped, use the top-level "skip" instead
 "tags": ["tag1", "tag2"]     Specify which tags apply to the module
 "useGitClone": true          Use a shallow git clone instead of downloading the module
 "submodules": ["path/to/submodule"]  Initialize only the listed submodules when using a git clone
