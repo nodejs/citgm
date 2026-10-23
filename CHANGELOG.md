@@ -1,5 +1,13 @@
 # Changelog
 
+## [10.0.5](https://github.com/nodejs/citgm/compare/v10.0.4...v10.0.5) (2026-10-23)
+
+
+### Lookup Updates
+
+* replace coffeescript skip:true with platform-specific skips ([#1209](https://github.com/nodejs/citgm/issues/1209)) ([b4fce12](https://github.com/nodejs/citgm/commit/b4fce12169b59e68138e3bc4e9014e69e2f451f5))
+* skip &gt;24 for crc32-stream ([#1211](https://github.com/nodejs/citgm/issues/1211)) ([f967b75](https://github.com/nodejs/citgm/commit/f967b758e7e59f46bc44e5c09c35f327551b124f))
+
 ## [10.0.4](https://github.com/nodejs/citgm/compare/v10.0.3...v10.0.4) (2026-10-12)
 
 
