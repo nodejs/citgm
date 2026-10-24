@@ -1,5 +1,6 @@
 {
   "@babel/core": {
+    "envVar": { "CITGM": true },
     "maintainers": ["nicolo-ribaudo", "JLHwung", "liuxingbaoyu"],
     "prefix": "v",
     "yarn": true,
@@ -80,9 +81,9 @@
     "scripts": ["test:vi"]
   },
   "coffeescript": {
+    "head": true,
     "maintainers": ["jashkenas", "GeoffreyBooth"],
-    "comment": "https://github.com/jashkenas/coffeescript/pull/5478 may fix the test failures",
-    "skip": [true, "rhel", "aix"]
+    "skip": ["win32", "aix"]
   },
   "commander": {
     "prefix": "v",
@@ -94,7 +95,7 @@
   },
   "crc32-stream": {
     "maintainers": "ctalkington",
-    "skip": "win32"
+    "skip": ["win32", ">24"]
   },
   "csv-parser": {
     "flaky": "win32",
