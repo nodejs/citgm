@@ -12,6 +12,10 @@
     "head": true,
     "prefix": "v"
   },
+  "@prometheus-io/client": {
+    "prefix": "v",
+    "maintainers": ["jdmarshall", "zbjornson"]
+  },
   "@yarnpkg/cli": {
     "envVar": { "TEST_IGNORE_TIMEOUT_FAILURES": true },
     "install": ["install", "--mode", "skip-build"],
@@ -311,11 +315,6 @@
     "prefix": "v",
     "maintainers": "mcollina",
     "skip": "aix"
-  },
-  "prom-client": {
-    "prefix": "v",
-    "maintainers": ["siimon", "zbjornson", "SimenB"],
-    "head": true
   },
   "pumpify": {
     "prefix": "v",
