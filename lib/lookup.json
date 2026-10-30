@@ -64,7 +64,7 @@
   },
   "body-parser": {
     "flaky": "aix",
-    "maintainers": "dougwilson"
+    "maintainers": ["jonchurch", "UlisesGascon"]
   },
   "browserify": {
     "expectFail": "fips",
@@ -146,7 +146,7 @@
     "skip": ["win32"]
   },
   "express": {
-    "maintainers": ["wesleytodd", "ulisesgascon", "sheplu"]
+    "maintainers": ["wesleytodd", "ulisesgascon", "sheplu" "bjohansebas", "Phillip9587"]
   },
   "express-session": {
     "prefix": "v",
@@ -280,7 +280,7 @@
   "multer": {
     "prefix": "v",
     "skip": "win32",
-    "maintainers": "linusu",
+    "maintainers": ["LinusU", "UlisesGascon"],
     "flaky": ["darwin"]
   },
   "nan": {
@@ -300,7 +300,7 @@
     "head": true
   },
   "on-finished": {
-    "maintainers": "wesleytodd"
+    "maintainers": ["wesleytodd", "UlisesGascon", "Phillip9587"]
   },
   "path-to-regexp": {
     "prefix": "v",
