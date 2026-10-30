@@ -146,7 +146,13 @@
     "skip": ["win32"]
   },
   "express": {
-    "maintainers": ["wesleytodd", "ulisesgascon", "sheplu" "bjohansebas", "Phillip9587"]
+    "maintainers": [
+      "wesleytodd",
+      "ulisesgascon",
+      "sheplu",
+      "bjohansebas",
+      "Phillip9587"
+    ]
   },
   "express-session": {
     "prefix": "v",
