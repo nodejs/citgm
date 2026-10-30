@@ -63,7 +63,6 @@
     "skip": ["win32", "aix"]
   },
   "body-parser": {
-    "flaky": "aix",
     "maintainers": "dougwilson"
   },
   "browserify": {
