@@ -151,7 +151,8 @@
   "express-session": {
     "prefix": "v",
     "maintainers": "ulisesGascon",
-    "head": true
+    "head": true,
+    "skip": "win32"
   },
   "fastify": {
     "maintainers": ["mcollina"],
