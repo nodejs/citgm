@@ -83,7 +83,7 @@
   "coffeescript": {
     "head": true,
     "maintainers": ["jashkenas", "GeoffreyBooth"],
-    "skip": ["win32", "aix"]
+    "skip": ["aix"]
   },
   "commander": {
     "prefix": "v",
