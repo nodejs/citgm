@@ -309,6 +309,7 @@
     "maintainers": ["wesleytodd", "UlisesGascon", "Phillip9587"]
   },
   "path-to-regexp": {
+    "envVar": { "CITGM": true },
     "prefix": "v",
     "maintainers": "blakeembrey",
     "skip": ["aix"]
