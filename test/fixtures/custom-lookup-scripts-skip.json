@@ -1,0 +1,12 @@
+{
+  "omg-i-pass-with-scripts": {
+    "prefix": "v",
+    "scripts": [
+      "test-build",
+      { "script": "test" },
+      { "script": "test-skipped", "skip": true },
+      { "script": "test-not-skipped", "skip": false },
+      { "script": "test-skipped-condition", "skip": ">=0" }
+    ]
+  }
+}
