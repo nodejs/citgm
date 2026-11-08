@@ -40,6 +40,7 @@ test('citgm: omg-i-pass from git url', (t) => {
   const mod = 'git+https://github.com/MylesBorins/omg-i-pass';
 
   const tester = new Tester(mod, options);
+  tester.module.envVar = { npm_config_allow_git: 'all' };
   tester
     .on('start', (name) => {
       t.equal(name, mod, 'it should be the raw URL');

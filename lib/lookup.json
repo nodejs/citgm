@@ -1,25 +1,11 @@
 {
   "@babel/core": {
+    "envVar": { "CITGM": true },
     "maintainers": ["nicolo-ribaudo", "JLHwung", "liuxingbaoyu"],
     "prefix": "v",
     "yarn": true,
     "scripts": ["build", "test-only"],
-    "skip": ["aix", "ppc", "s390", "win32"]
-  },
-  "@clinic/bubbleprof": {
-    "maintainers": ["mcollina", "rafaelgss"],
-    "prefix": "v",
-    "flaky": true
-  },
-  "@clinic/doctor": {
-    "maintainers": ["mcollina", "rafaelgss"],
-    "prefix": "v",
-    "flaky": true
-  },
-  "@clinic/flame": {
-    "maintainers": ["mcollina", "rafaelgss"],
-    "prefix": "v",
-    "flaky": true
+    "skip": ["aix", "ppc", "win32"]
   },
   "@hapi/shot": {
     "maintainers": "cjihrig",
@@ -63,7 +49,7 @@
     "prefix": "v",
     "flaky": "win32",
     "repo": "https://github.com/max-mapper/binary-split",
-    "maintainers": ["maxogden", "mourner"]
+    "maintainers": ["mourner"]
   },
   "bl": {
     "prefix": "v",
@@ -78,7 +64,7 @@
   },
   "body-parser": {
     "flaky": "aix",
-    "maintainers": "dougwilson"
+    "maintainers": ["jonchurch", "UlisesGascon"]
   },
   "browserify": {
     "expectFail": "fips",
@@ -94,16 +80,10 @@
     "maintainers": ["matthewmueller", "jugglinmike"],
     "scripts": ["test:vi"]
   },
-  "clinic": {
-    "maintainers": "mcollina",
-    "flaky": ["rhel"],
-    "prefix": "v",
-    "skip": ["aix", "darwin", "win32"]
-  },
   "coffeescript": {
+    "head": true,
     "maintainers": ["jashkenas", "GeoffreyBooth"],
-    "comment": "https://github.com/jashkenas/coffeescript/pull/5478 may fix the test failures",
-    "skip": [true, "rhel", "aix"]
+    "skip": ["win32", "aix"]
   },
   "commander": {
     "prefix": "v",
@@ -115,7 +95,7 @@
   },
   "crc32-stream": {
     "maintainers": "ctalkington",
-    "skip": "win32"
+    "skip": ["win32", ">24"]
   },
   "csv-parser": {
     "flaky": "win32",
@@ -166,7 +146,13 @@
     "skip": ["win32"]
   },
   "express": {
-    "maintainers": ["wesleytodd", "ulisesgascon", "sheplu"]
+    "maintainers": [
+      "wesleytodd",
+      "ulisesgascon",
+      "sheplu",
+      "bjohansebas",
+      "Phillip9587"
+    ]
   },
   "express-session": {
     "prefix": "v",
@@ -176,7 +162,7 @@
   "fastify": {
     "maintainers": ["mcollina"],
     "prefix": "v",
-    "skip": ["s390x", "aix"],
+    "skip": "aix",
     "scripts": ["citgm"]
   },
   "flush-write-stream": {
@@ -209,12 +195,6 @@
     "flaky": ["ppc", "rhel"],
     "skip": ["win32", "darwin"],
     "maintainers": "contra"
-  },
-  "gulp-util": {
-    "prefix": "v",
-    "flaky": "rhel",
-    "maintainers": "contra",
-    "skip": "win32"
   },
   "iconv": {
     "prefix": "v",
@@ -324,7 +304,7 @@
     "head": true
   },
   "on-finished": {
-    "maintainers": "wesleytodd"
+    "maintainers": ["wesleytodd", "UlisesGascon", "Phillip9587"]
   },
   "path-to-regexp": {
     "prefix": "v",
@@ -334,7 +314,7 @@
   "pino": {
     "prefix": "v",
     "maintainers": "mcollina",
-    "skip": ["aix", "s390x"]
+    "skip": "aix"
   },
   "prom-client": {
     "prefix": "v",
@@ -395,8 +375,6 @@
     "maintainers": "ljharb"
   },
   "thread-sleep": {
-    "install": ["install", "--build-from-source"],
-    "tags": "native",
     "maintainers": ["forbeslindesay", "timothygu"],
     "flaky": true
   },
@@ -459,11 +437,6 @@
     "flaky": ["ppc", "s390", "ubuntu", "rhel"],
     "maintainers": "substack",
     "skip": ["win32", "darwin"]
-  },
-  "weak": {
-    "head": true,
-    "maintainers": "tootallnate",
-    "tags": "native"
   },
   "ws": {
     "expectFail": "fips",
