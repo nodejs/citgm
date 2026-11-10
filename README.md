@@ -29,7 +29,7 @@ Usage: citgm [options] <module>
 Options:
 
   -h, --help                  output usage information
-  --version               output the version number
+  --version                   output the version number
   --config                    Path to a JSON config file
   -v, --verbose, --loglevel [level], Verbose output (silly, verbose, info, warn, error)
   -q, --npm-loglevel [level]  Verbose output (silent, error, warn, http, info, verbose, silly)
@@ -44,8 +44,8 @@ Options:
   -x, --junit [path]          Output results in junit xml with optional file path
   -o, --timeout <length>      Set timeout for npm install
   -c, --sha <commit-sha>      Install module from commit-sha, branch or tag
-  -y, --yarn                 Install and test the project using yarn instead of npm
-  --pnpm                 Install and test the project using pnpm instead of npm
+  -y, --yarn                  Install and test the project using yarn instead of npm
+  --pnpm                      Install and test the project using pnpm instead of npm
   -u, --uid <uid>             Set the uid (posix only)
   -g, --gid <uid>             Set the gid (posix only)
   -a, --append                Turns on append results to file mode rather than replace
@@ -88,7 +88,7 @@ Usage: citgm-all [options]
 Options:
 
   -h, --help                  output usage information
-  --version               output the version number
+  --version                   output the version number
   --config                    Path to a JSON config file
   -v, --verbose, --loglevel [level], Verbose output (silly, verbose, info, warn, error)
   -q, --npm-loglevel [level]  Verbose output (silent, error, warn, http, info, verbose, silly)
