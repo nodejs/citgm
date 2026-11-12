@@ -64,7 +64,6 @@
     "skip": ["win32", "aix"]
   },
   "body-parser": {
-    "flaky": "aix",
     "maintainers": ["jonchurch", "UlisesGascon"]
   },
   "browserify": {
@@ -259,7 +258,7 @@
   },
   "lodash": {
     "expectFail": "fips",
-    "maintainers": "jdalton"
+    "maintainers": ["jdalton", "UlisesGascon", "ljharb", "falsyvalues"]
   },
   "lru-cache": {
     "envVar": { "TAP_TIMEOUT": "300" },
