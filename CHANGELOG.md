@@ -1,5 +1,23 @@
 # Changelog
 
+## [10.0.5](https://github.com/nodejs/citgm/compare/v10.0.4...v10.0.5) (2026-11-12)
+
+
+### Bug Fixes
+
+* moving example for citgm-all to citgm-all.js file ([abd1d01](https://github.com/nodejs/citgm/commit/abd1d01ba23ac6c72139c8f2b88c0d8a2b5cff05))
+* remove aix flaky tests on body-parser ([#1224](https://github.com/nodejs/citgm/issues/1224)) ([a985d4f](https://github.com/nodejs/citgm/commit/a985d4f2c71f7fa302501b9051b43588356698ea))
+* removing deprecated and unused library uid-number ([#1237](https://github.com/nodejs/citgm/issues/1237)) ([c760390](https://github.com/nodejs/citgm/commit/c7603907984443ff512c704f49246074ec8507eb))
+
+
+### Lookup Updates
+
+* replace coffeescript skip:true with platform-specific skips ([#1209](https://github.com/nodejs/citgm/issues/1209)) ([b4fce12](https://github.com/nodejs/citgm/commit/b4fce12169b59e68138e3bc4e9014e69e2f451f5))
+* skip &gt;24 for crc32-stream ([#1211](https://github.com/nodejs/citgm/issues/1211)) ([f967b75](https://github.com/nodejs/citgm/commit/f967b758e7e59f46bc44e5c09c35f327551b124f))
+* unskip s390 from babel ([#1177](https://github.com/nodejs/citgm/issues/1177)) ([147e8d8](https://github.com/nodejs/citgm/commit/147e8d87d927022d2a4d9c1c6cac4e33f1773556))
+* update eslint maintainers ([#1214](https://github.com/nodejs/citgm/issues/1214)) ([2f3ea20](https://github.com/nodejs/citgm/commit/2f3ea202da4dece245cc9ceec445a33e384de427))
+* update lodash maintainers ([#1104](https://github.com/nodejs/citgm/issues/1104)) ([c31531d](https://github.com/nodejs/citgm/commit/c31531d5ad81c31d7c076056129d63a940035292))
+
 ## [10.0.4](https://github.com/nodejs/citgm/compare/v10.0.3...v10.0.4) (2026-10-12)
 
 
