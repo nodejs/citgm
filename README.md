@@ -24,36 +24,45 @@ citgm --help
 ```
 
 ```
-Usage: citgm [options] <module>
+citgm [options] <module>
 
 Options:
-
-  -h, --help                  output usage information
-  -V, --version               output the version number
-  --config                    Path to a JSON config file
-  -v, --verbose, --loglevel [level], Verbose output (silly, verbose, info, warn, error)
-  -q, --npm-loglevel [level]  Verbose output (silent, error, warn, http, info, verbose, silly)
-  -l, --lookup <path>         Use the lookup table provided at <path>
-  -d, --nodedir <path>        Path to the node source to use when compiling native addons
-  -p, --test-path <path>      Path to prepend to $PATH when running tests
-  -n, --no-color              Turns off colorized output
-  -s, --su                    Allow running the tool as root.
-  -m, --markdown              Output results in markdown
-  -t, --tap [path]            Output results in tap with optional file path
-  --customTest <path>         Run a custom node test script instead of "npm test"
-  -x, --junit [path]          Output results in junit xml with optional file path
-  -o, --timeout <length>      Set timeout for npm install
-  -c, --sha <commit-sha>      Install module from commit-sha, branch or tag
-  -u, --uid <uid>             Set the uid (posix only)
-  -g, --gid <uid>             Set the gid (posix only)
-  -a, --append                Turns on append results to file mode rather than replace
-  --tmpDir <path>             Directory to test modules in
+  -h, --help                 Show help                                 [boolean]
+      --version              Show version number                       [boolean]
+      --config               Path to JSON config file
+  -v, --verbose, --loglevel  Verbose output
+        [choices: "silly", "verbose", "info", "warn", "error"] [default: "info"]
+  -q, --npm-loglevel         Verbose output for npm
+        [choices: "silly", "verbose", "info", "warn", "error", "http", "silent"]
+                                                              [default: "error"]
+  -l, --lookup               Use the lookup table provided at <path>    [string]
+  -d, --nodedir              Path to the node source to use when compiling
+                             native addons                              [string]
+      --tmpDir               Directory to test modules in               [string]
+  -p, --test-path            Path to prepend to $PATH when running tests[string]
+  -a, --append               Append results to file rather than replace[boolean]
+  -n, --no-color             Turns off colorized output                [boolean]
+  -s, --su                   Allow running the tool as root.           [boolean]
+  -m, --markdown             Output results in markdown                [boolean]
+  -t, --tap                  Output results in tap with optional file path
+      --customTest           Run a custom node test script instead of "npm test"
+                                                                        [string]
+  -x, --junit                Output results in junit xml with optional file path
+  -o, --timeout              Set timeout for `install` and `test` phases[number]
+  -y, --yarn                 Install and test the project using yarn instead of
+                             npm                      [boolean] [default: false]
+      --pnpm                 Install and test the project using pnpm instead of
+                             npm                      [boolean] [default: false]
+  -u, --uid                  Set the uid (posix only)                   [number]
+  -g, --gid                  Set the gid (posix only)                   [number]
+  -c, --sha                  Install module from commit-sha, branch or tag
+                                                                        [string]
 ```
 
 ### Examples:
 
 Test the latest underscore module or a specific version:
-`citgm underscore@latest` or `citgm underscore@1.3.0`
+`citgm underscore@latest` or `citgm underscore@1.13.0`
 
 Test a local module: `citgm ./my-module`
 
@@ -81,37 +90,52 @@ results at the end. It has all the same options as citgm except for the added
 markdown option which will print the results in markdown.
 
 ```
-Usage: citgm-all [options]
+citgm-all [options]
 
 Options:
+  -h, --help                 Show help                                 [boolean]
+      --version              Show version number                       [boolean]
+      --config               Path to JSON config file
+  -v, --verbose, --loglevel  Verbose output
+        [choices: "silly", "verbose", "info", "warn", "error"] [default: "info"]
+  -q, --npm-loglevel         Verbose output for npm
+        [choices: "silly", "verbose", "info", "warn", "error", "http", "silent"]
+                                                              [default: "error"]
+  -l, --lookup               Use the lookup table provided at <path>    [string]
+  -d, --nodedir              Path to the node source to use when compiling
+                             native addons                              [string]
+      --tmpDir               Directory to test modules in               [string]
+  -p, --test-path            Path to prepend to $PATH when running tests[string]
+  -a, --append               Append results to file rather than replace[boolean]
+  -n, --no-color             Turns off colorized output                [boolean]
+  -s, --su                   Allow running the tool as root.           [boolean]
+  -m, --markdown             Output results in markdown                [boolean]
+  -t, --tap                  Output results in tap with optional file path
+      --customTest           Run a custom node test script instead of "npm test"
+                                                                        [string]
+  -x, --junit                Output results in junit xml with optional file path
+  -o, --timeout              Set timeout for `install` and `test` phases[number]
+  -y, --yarn                 Install and test the project using yarn instead of
+                             npm                      [boolean] [default: false]
+      --pnpm                 Install and test the project using pnpm instead of
+                             npm                      [boolean] [default: false]
+  -u, --uid                  Set the uid (posix only)                   [number]
+  -g, --gid                  Set the gid (posix only)                   [number]
+  -f, --fail-flaky           Ignore flaky flags. Do not ignore any failures.
+                                                                       [boolean]
+  -j, --parallel             Number of tests to run in parallel         [number]
+  -J, --autoParallel         Auto detect number of cores to use to run tests in
+                             parallel                                  [boolean]
+      --includeTags          Define which tags from the lookup to run    [array]
+      --excludeTags          Define which tags from the lookup to skip   [array]
 
-  -h, --help                  output usage information
-  -V, --version               output the version number
-  --config                    Path to a JSON config file
-  -v, --verbose, --loglevel [level], Verbose output (silly, verbose, info, warn, error)
-  -q, --npm-loglevel [level]  Verbose output (silent, error, warn, http, info, verbose, silly)
-  -l, --lookup <path>         Use the lookup table provided at <path>
-  -d, --nodedir <path>        Path to the node source to use when compiling native addons
-  -p, --test-path <path>      Path to prepend to $PATH when running tests
-  -n, --no-color              Turns off colorized output
-  -s, --su                    Allow running the tool as root.
-  -m, --markdown              Output results in markdown
-  -t, --tap [path]            Output results in tap with optional file path
-  --customTest <path>         Run a custom node test script instead of "npm test"
-  -x, --junit [path]          Output results in junit xml with optional file path
-  -o, --timeout <length>      Set timeout for npm install
-  -f, --fail-flaky            Ignore flaky flags. Do not ignore any failures.
-  -u, --uid <uid>             Set the uid (posix only)
-  -g, --gid <uid>             Set the gid (posix only)
-  -a, --append                Turns on append results to file mode rather than replace
-  -j, --parallel <number>     Run tests in parallel
-  -J, --autoParallel          Run tests in parallel (automatically detect core count)
-  --tmpDir <path>             Directory to test modules in
-  --includeTags tag1 tag2     Only test modules from the lookup that contain a matching tag field
-  --excludeTags tag1 tag2     Specify which tags to skip from the lookup (takes priority over includeTags)
-                              Module names are automatically added as tags.
-  -y, --yarn                  Install and test the project using yarn instead of npm
-  --pnpm                      Install and test the project using pnpm instead of npm
+Examples:
+  citgm-all --customTest                    Runs a custom node test script
+  /path/to/customTest.js                    instead of "npm test"
+  citgm-all -t /path/to/output.tap          Write test results as tap to file.
+  citgm-all -l /path/to/lookup.json         Test a custom set of modules.
+  citgm-all --includeTags express           Only test express.
+  citgm-all --excludeTags native            Don't test native modules.
 ```
 
 When using a JSON config file, the properties need to be the same as the
