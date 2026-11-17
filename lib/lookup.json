@@ -197,7 +197,7 @@
     "prefix": "v",
     "flaky": ["ppc", "rhel"],
     "skip": ["win32", "darwin"],
-    "maintainers": "contra"
+    "maintainers": ["yocontra", "phated"]
   },
   "iconv": {
     "prefix": "v",
