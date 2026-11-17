@@ -91,7 +91,10 @@ test('lookup[getLookupTable]:', (t) => {
   });
   t.ok(table, 'table should exist');
   t.ok(table.lodash, 'lodash should be in the table');
-  t.ok(table.weak.maintainers, 'weak should contain a maintainers parameter');
+  t.ok(
+    table.undici.maintainers,
+    'undici should contain a maintainers parameter'
+  );
   t.end();
 });
 
