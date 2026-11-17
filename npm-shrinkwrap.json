@@ -25,7 +25,6 @@
         "strip-ansi": "^7.2.0",
         "supports-color": "^11.0.0",
         "tar": "^7.5.22",
-        "uid-number": "0.0.6",
         "undici": "^8.10.0",
         "which": "^7.0.0",
         "winston": "^3.19.0",
@@ -5437,16 +5436,6 @@
       },
       "engines": {
         "node": ">=14.17"
-      }
-    },
-    "node_modules/uid-number": {
-      "version": "0.0.6",
-      "resolved": "https://registry.npmjs.org/uid-number/-/uid-number-0.0.6.tgz",
-      "integrity": "sha512-c461FXIljswCuscZn67xq9PpszkPT6RjheWFQTgCyabJrTUozElanb0YEqv2UGgk247YpcJkFBuSGNvBlpXM9w==",
-      "deprecated": "This package is no longer supported.",
-      "license": "ISC",
-      "engines": {
-        "node": "*"
       }
     },
     "node_modules/undici": {
