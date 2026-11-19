@@ -196,7 +196,7 @@
   "gulp": {
     "prefix": "v",
     "flaky": ["ppc", "rhel"],
-    "skip": ["win32", "darwin"],
+    "skip": ["win32-ia32"],
     "maintainers": "contra"
   },
   "iconv": {
