@@ -5,7 +5,6 @@ import { fileURLToPath } from 'url';
 import { promisify } from 'util';
 
 import tap from 'tap';
-import _ from 'lodash';
 import xml2js from 'xml2js';
 
 import junitReporter from '../../lib/reporter/junit.js';
@@ -83,9 +82,9 @@ test('reporter.junit(): bad output', (t) => {
     output += '\n';
   }
 
-  const corruptXml = _.cloneDeep(passingInput);
+  const corruptXml = structuredClone(passingInput);
   corruptXml[0].testOutput = badOutput;
-  const corruptXmlToo = _.cloneDeep(passingInput);
+  const corruptXmlToo = structuredClone(passingInput);
   corruptXmlToo[0].testOutput = badOutputToo;
 
   t.doesNotThrow(() => {
