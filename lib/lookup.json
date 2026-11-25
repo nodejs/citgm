@@ -41,6 +41,10 @@
       "npm_config_allow_git": "all"
     }
   },
+  "amaro": {
+    "prefix": "v",
+    "maintainers": "marco-ippolito"
+  },
   "ava": {
     "prefix": "v",
     "skip": ["ppc", "win32", "x86", "rhel", "aix", "ia32"],
